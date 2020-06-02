@@ -1,2 +1,3 @@
 rootProject.name='MasterRoad'
 include ':app'
+include ':custom_view'

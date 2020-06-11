@@ -7,6 +7,7 @@ import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Path;
 import android.graphics.PathDashPathEffect;
+import android.graphics.PathMeasure;
 import android.graphics.RectF;
 import android.os.Looper;
 import android.util.AttributeSet;
@@ -46,6 +47,7 @@ public class Dashboard extends View {
                 Path.Direction.CW);
         pathDashPathEffect = new PathDashPathEffect(dash, DensityUtils.dp2px(getContext(), 20),
                 0, PathDashPathEffect.Style.ROTATE);
+        PathMeasure pathMeasure = new PathMeasure();
     }
 
     @Override

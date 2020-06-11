@@ -21,6 +21,7 @@ public class Dashboard extends View {
     Paint mPaint;
     float RADIUS = 300;
     Path dash = new Path();
+    private PathDashPathEffect pathDashPathEffect;
 
     public Dashboard(Context context) {
         this(context, null);
@@ -43,8 +44,8 @@ public class Dashboard extends View {
         dash.addRect(0, 0,
                 DensityUtils.dp2px(getContext(), 2), DensityUtils.dp2px(getContext(), 10),
                 Path.Direction.CW);
-        PathDashPathEffect pathDashPathEffect = new PathDashPathEffect(dash,DensityUtils.dp2px(getContext(), 20),0, PathDashPathEffect.Style.ROTATE);
-        mPaint.setPathEffect(pathDashPathEffect);
+        pathDashPathEffect = new PathDashPathEffect(dash, DensityUtils.dp2px(getContext(), 20),
+                0, PathDashPathEffect.Style.ROTATE);
     }
 
     @Override
@@ -60,5 +61,8 @@ public class Dashboard extends View {
                 (getWidth() >> 1) + RADIUS,
                 (getHeight() >> 1) + RADIUS);
         canvas.drawOval(rectF, mPaint);
+        mPaint.setPathEffect(pathDashPathEffect);
+        canvas.drawOval(rectF, mPaint);
+        mPaint.setPathEffect(null);
     }
 }

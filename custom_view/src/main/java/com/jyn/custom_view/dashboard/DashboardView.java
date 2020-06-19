@@ -14,6 +14,8 @@ import android.view.View;
 
 import androidx.annotation.Nullable;
 
+import com.jyn.common.utils.DensityUtils;
+
 /**
  * Created by jiaoyaning on 2020/6/2.
  */

@@ -1,4 +1,4 @@
-package com.jyn.custom_view.dashboard;
+package com.jyn.common.utils;
 
 import android.content.Context;
 import android.util.DisplayMetrics;

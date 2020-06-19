@@ -1,4 +1,4 @@
-package com.jyn.custom_view.views;
+package com.jyn.custom_view.dashboard;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
@@ -9,7 +9,6 @@ import android.graphics.Path;
 import android.graphics.PathDashPathEffect;
 import android.graphics.PathMeasure;
 import android.graphics.RectF;
-import android.os.Looper;
 import android.util.AttributeSet;
 import android.view.View;
 
@@ -18,21 +17,21 @@ import androidx.annotation.Nullable;
 /**
  * Created by jiaoyaning on 2020/6/2.
  */
-public class Dashboard extends View {
+public class DashboardView extends View {
     Paint mPaint;
     float RADIUS = 300;
     Path dash = new Path();
     private PathDashPathEffect pathDashPathEffect;
 
-    public Dashboard(Context context) {
+    public DashboardView(Context context) {
         this(context, null);
     }
 
-    public Dashboard(Context context, @Nullable AttributeSet attrs) {
+    public DashboardView(Context context, @Nullable AttributeSet attrs) {
         this(context, attrs, 0);
     }
 
-    public Dashboard(Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
+    public DashboardView(Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
         initView();
     }

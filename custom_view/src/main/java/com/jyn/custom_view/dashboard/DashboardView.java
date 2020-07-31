@@ -24,9 +24,9 @@ public class DashboardView extends View {
     float RADIUS = 300;
     Path arcPath = new Path(); //弧线路径
     Path calibration = new Path(); //刻度路径
+    private int mAngle = 90;
 
-    private int num = 20;
-
+    private int mNum = 5;
 
     public DashboardView(Context context) {
         this(context, null);
@@ -57,7 +57,9 @@ public class DashboardView extends View {
         super.onDraw(canvas);
         drawArc(canvas);
         drawCalibration(canvas);
+        drawPointer(canvas);
     }
+
 
     /**
      * 弧线
@@ -70,7 +72,7 @@ public class DashboardView extends View {
                 (getHeight() >> 1) + RADIUS);
 
         //添加弧形，并绘制
-        arcPath.addArc(arcRectF, 135, 270);
+        arcPath.addArc(arcRectF, (mAngle / 2) + 90, 360 - mAngle);
         canvas.drawPath(arcPath, mPaint);
     }
 
@@ -90,7 +92,7 @@ public class DashboardView extends View {
         //获取 arcPath（弧线）的长度
         float length = pathMeasure.getLength();
         //需要减去一个刻度的宽度
-        float advance = (length - DensityUtils.dp2px(getContext(), 2)) / (num - 1);
+        float advance = (length - DensityUtils.dp2px(getContext(), 2)) / (mNum - 1);
 
         PathDashPathEffect pathDashPathEffect = new PathDashPathEffect(calibration,
                 advance,
@@ -100,5 +102,25 @@ public class DashboardView extends View {
         mPaint.setPathEffect(pathDashPathEffect);
         canvas.drawPath(arcPath, mPaint);
         mPaint.setPathEffect(null);
+    }
+
+    /**
+     * 指针
+     */
+    private void drawPointer(Canvas canvas) {
+        for (int i = 0; i < mNum; i++) {
+            //根据刻度获取角度。
+            int angle = getAngleFromCalibration(i);
+            canvas.save();
+            canvas.rotate(angle + 180f, getWidth() / 2, getHeight() / 2);
+            canvas.drawLine(getWidth() / 2, getHeight() / 2,
+                    getWidth() / 2 - RADIUS + DensityUtils.dp2px(getContext(), 14),
+                    getHeight() / 2 - DensityUtils.dp2px(getContext(), 2), mPaint);
+            canvas.restore();
+        }
+    }
+
+    private int getAngleFromCalibration(int mark) {
+        return (int) ((float) (mAngle / 2) + 90 + (360 - (float) mAngle) / mNum * mark);
     }
 }

@@ -7,12 +7,17 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
+import com.alibaba.android.arouter.launcher.ARouter;
+
 /**
  * Created by jiao on 2020/7/31.
  */
 public class MyApp extends Application {
     @Override
     public void onCreate() {
+
+        ARouter.init(this);
+
         super.onCreate();
         this.registerActivityLifecycleCallbacks(new ActivityLifecycleCallbacks() {
             @Override

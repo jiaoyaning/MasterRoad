@@ -12,6 +12,9 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.Toast;
 
+import com.alibaba.android.arouter.facade.annotation.Route;
+
+@Route(path = "/test/mainActivity")
 public class MainActivity extends AppCompatActivity {
 
     private MyTouchRecyclerView rv_layout;

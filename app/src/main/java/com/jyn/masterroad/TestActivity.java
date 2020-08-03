@@ -6,6 +6,8 @@ import android.os.Bundle;
 import android.util.Log;
 import android.widget.FrameLayout;
 
+import com.alibaba.android.arouter.facade.annotation.Route;
+
 import io.reactivex.Observable;
 import io.reactivex.ObservableEmitter;
 import io.reactivex.ObservableOnSubscribe;
@@ -15,6 +17,7 @@ import io.reactivex.disposables.Disposable;
 import io.reactivex.functions.Function;
 import io.reactivex.schedulers.Schedulers;
 
+@Route(path = "/test/TestActivity")
 public class TestActivity extends AppCompatActivity {
 
     FrameLayout fragment;
@@ -30,7 +33,7 @@ public class TestActivity extends AppCompatActivity {
                 .beginTransaction()
                 .replace(R.id.fragment, new Test1Fragment())
                 .addToBackStack(null)
-                .commitNow();
+                .commit();
 
 
         //步骤1. 创建被观察者(Observable),定义要发送的事件。

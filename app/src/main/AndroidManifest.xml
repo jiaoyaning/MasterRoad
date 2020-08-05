@@ -10,10 +10,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".EventBusActivity" />
+        <activity android:name=".eventbus.EventBusActivity" />
         <activity android:name=".MainActivity" />
-        <activity android:name=".TestActivity"/>
-        <activity android:name=".ThreadActivity">
+        <activity android:name=".rxjava.RxJavaActivity"/>
+        <activity android:name=".thread.ThreadActivity">
 
             <!-- android:excludeFromRecents="true"> -->
             <intent-filter>

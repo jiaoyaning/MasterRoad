@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
-    <com.jyn.masterroad.MyButtom
+    <com.jyn.masterroad.touch.MyButtom
         android:id="@+id/button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

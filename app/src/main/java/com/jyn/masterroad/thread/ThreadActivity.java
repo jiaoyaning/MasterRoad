@@ -1,9 +1,11 @@
-package com.jyn.masterroad;
+package com.jyn.masterroad.thread;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.util.Log;
+
+import com.jyn.masterroad.R;
 
 public class ThreadActivity extends AppCompatActivity {
 
@@ -16,7 +18,8 @@ public class ThreadActivity extends AppCompatActivity {
 
         Log.i("main", "main 线程：" + System.identityHashCode(a));
 
-        new Thread01().start();
+        Thread01 thread01 = new Thread01();
+        thread01.start();
     }
 
     class Thread01 extends Thread {

@@ -7,7 +7,7 @@
     android:orientation="vertical"
     tools:context=".MainActivity">
 
-    <com.jyn.masterroad.MyTouchRecyclerView
+    <com.jyn.masterroad.touch.MyTouchRecyclerView
         android:id="@+id/rv_layout"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />

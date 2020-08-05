@@ -1,4 +1,4 @@
-package com.jyn.masterroad;
+package com.jyn.masterroad.rxjava;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -7,6 +7,9 @@ import android.util.Log;
 import android.widget.FrameLayout;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
+import com.jyn.masterroad.Presenter;
+import com.jyn.masterroad.R;
+import com.jyn.masterroad.Test1Fragment;
 
 import io.reactivex.Observable;
 import io.reactivex.ObservableEmitter;
@@ -18,14 +21,14 @@ import io.reactivex.functions.Function;
 import io.reactivex.schedulers.Schedulers;
 
 @Route(path = "/test/TestActivity")
-public class TestActivity extends AppCompatActivity {
+public class RxJavaActivity extends AppCompatActivity {
 
     FrameLayout fragment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_test);
+        setContentView(R.layout.activity_rxjava);
         getLifecycle().addObserver(new Presenter());
         fragment = findViewById(R.id.fragment);
 

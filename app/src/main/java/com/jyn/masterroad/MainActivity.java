@@ -6,6 +6,8 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,6 +15,7 @@ import android.widget.Button;
 import android.widget.Toast;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
+import com.jyn.masterroad.touch.MyTouchRecyclerView;
 
 @Route(path = "/test/mainActivity")
 public class MainActivity extends AppCompatActivity {
@@ -31,6 +34,10 @@ public class MainActivity extends AppCompatActivity {
         rv_layout.setLayoutManager(layoutManager);
         RvAdapter adapter = new RvAdapter();
         rv_layout.setAdapter(adapter);
+    }
+
+    public void fun1(){
+
     }
 
     public void scroll(View view) {

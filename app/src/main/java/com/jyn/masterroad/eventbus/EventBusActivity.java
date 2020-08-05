@@ -1,10 +1,12 @@
-package com.jyn.masterroad;
+package com.jyn.masterroad.eventbus;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
+import com.jyn.masterroad.Presenter;
+import com.jyn.masterroad.R;
 
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;

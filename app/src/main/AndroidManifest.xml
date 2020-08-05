@@ -12,7 +12,7 @@
         android:theme="@style/AppTheme">
         <activity android:name=".eventbus.EventBusActivity" />
         <activity android:name=".MainActivity" />
-        <activity android:name=".rxjava.RxJavaActivity"/>
+        <activity android:name=".rxjava.RxJavaActivity" />
         <activity android:name=".thread.ThreadActivity">
 
             <!-- android:excludeFromRecents="true"> -->

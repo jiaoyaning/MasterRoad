@@ -29,6 +29,16 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        Handler handler  = new Handler();
+
+        handler.post(new Runnable() {
+            @Override
+            public void run() {
+
+            }
+        });
+
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);
         rv_layout = findViewById(R.id.rv_layout);
         rv_layout.setLayoutManager(layoutManager);

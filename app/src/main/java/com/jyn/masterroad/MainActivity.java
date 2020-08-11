@@ -17,6 +17,8 @@ import android.widget.Toast;
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.jyn.masterroad.touch.MyTouchRecyclerView;
 
+import java.util.Queue;
+
 @Route(path = "/test/mainActivity")
 public class MainActivity extends AppCompatActivity {
 
@@ -29,6 +31,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
 
         Handler handler  = new Handler();
 

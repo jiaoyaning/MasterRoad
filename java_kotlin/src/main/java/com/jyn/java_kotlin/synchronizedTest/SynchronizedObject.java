@@ -23,6 +23,11 @@ class SynchronizedObject {
         String s = "1";
         synchronized (s) {
             System.out.println("showC...同步块 新对象");
+            try {
+                Thread.sleep(3000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
         }
     }
 }

@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+import android.os.PersistableBundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,6 +17,8 @@ import android.widget.Toast;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.jyn.masterroad.touch.MyTouchRecyclerView;
+
+import java.util.Queue;
 
 @Route(path = "/test/mainActivity")
 public class MainActivity extends AppCompatActivity {
@@ -29,6 +32,17 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+
+        Handler handler  = new Handler();
+
+        handler.post(new Runnable() {
+            @Override
+            public void run() {
+
+            }
+        });
+
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);
         rv_layout = findViewById(R.id.rv_layout);
         rv_layout.setLayoutManager(layoutManager);
@@ -85,5 +99,15 @@ public class MainActivity extends AppCompatActivity {
                 button = itemView.findViewById(R.id.button);
             }
         }
+    }
+
+    @Override
+    public void onSaveInstanceState(@NonNull Bundle outState, @NonNull PersistableBundle outPersistentState) {
+        super.onSaveInstanceState(outState, outPersistentState);
+    }
+
+    @Override
+    protected void onRestoreInstanceState(@NonNull Bundle savedInstanceState) {
+        super.onRestoreInstanceState(savedInstanceState);
     }
 }

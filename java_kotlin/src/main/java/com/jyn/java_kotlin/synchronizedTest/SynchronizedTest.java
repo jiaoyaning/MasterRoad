@@ -27,5 +27,12 @@ public class SynchronizedTest {
                 synchronizedObject.showC();
             }
         }).start();
+
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                synchronizedObject.showC();
+            }
+        }).start();
     }
 }

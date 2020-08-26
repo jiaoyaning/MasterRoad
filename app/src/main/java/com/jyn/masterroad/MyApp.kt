@@ -6,6 +6,7 @@ import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.lifecycle.ProcessLifecycleOwner
 
 import com.alibaba.android.arouter.launcher.ARouter;
 import com.apkfuns.logutils.LogUtils
@@ -25,6 +26,8 @@ class MyApp : Application() {
             ARouter.openDebug()
         }
         ARouter.init(this)
+
+        ProcessLifecycleOwner.get().lifecycle.addObserver(LifecycleChecker())
         this.registerActivityLifecycleCallbacks(object : ActivityLifecycleCallbacks {
             override fun onActivityPaused(activity: Activity) {
 //                LogUtils.tag("main").i("onActivityPaused:" + activity.localClassName)

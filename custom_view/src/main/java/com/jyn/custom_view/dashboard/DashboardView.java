@@ -41,6 +41,11 @@ public class DashboardView extends View {
         initPath();
     }
 
+    @Override
+    protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
+        super.onMeasure(widthMeasureSpec, heightMeasureSpec);
+    }
+
     private void initPath() {
         //抗锯齿
         mPaint = new Paint(Paint.ANTI_ALIAS_FLAG);

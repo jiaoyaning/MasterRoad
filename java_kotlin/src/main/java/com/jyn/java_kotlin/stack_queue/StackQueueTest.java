@@ -9,7 +9,8 @@ import java.util.Stack;
  */
 public class StackQueueTest {
     public static void main(String[] args) {
-        Stack<String> stack = new Stack<>(); //栈，先进后出
+        //栈，先进后出
+        Stack<String> stack = new Stack<>();
         stack.push("1");
         stack.push("2");
         stack.push("3");

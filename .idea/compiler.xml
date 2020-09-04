@@ -3,6 +3,7 @@
   <component name="CompilerConfiguration">
     <bytecodeTargetLevel>
       <module name="java_kotlin" target="1.7" />
+      <module name="Leetcode" target="1.7" />
     </bytecodeTargetLevel>
   </component>
 </project>

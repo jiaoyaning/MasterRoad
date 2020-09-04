@@ -2,6 +2,7 @@ package com.jyn.masterroad;
 
 import android.app.Activity;
 import android.app.Application;
+import android.content.res.Configuration
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -58,5 +59,33 @@ class MyApp : Application() {
             }
 
         })
+    }
+
+    /**
+     * 应用中止
+     */
+    override fun onTerminate() {
+        super.onTerminate()
+    }
+
+    /**
+     * 低内存
+     */
+    override fun onLowMemory() {
+        super.onLowMemory()
+    }
+
+    /**
+     * 程序正在清理内存，有7个等级
+     */
+    override fun onTrimMemory(level: Int) {
+        super.onTrimMemory(level)
+    }
+
+    /**
+     * 配置信息改变，如屏幕旋转
+     */
+    override fun onConfigurationChanged(newConfig: Configuration) {
+        super.onConfigurationChanged(newConfig)
     }
 }

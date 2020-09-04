@@ -51,6 +51,8 @@ dependencies {
 
     implementation project(path: ':java_kotlin')
     implementation project(path: ':custom_view')
+    implementation project(path: ':Leetcode')
+    implementation project(path: ':common')
 
     testImplementation rootProject.ext.androidx["junit"]
     androidTestImplementation rootProject.ext.androidx["androidx.test.ext-junit"]
@@ -65,6 +67,7 @@ dependencies {
 
     implementation 'com.squareup.retrofit2:retrofit:2.3.0'
     implementation 'com.squareup.retrofit2:converter-scalars:2.3.0'
+    implementation 'com.squareup.retrofit2:converter-gson:2.2.0'
 
     implementation 'io.reactivex.rxjava2:rxjava:2.2.10'
     implementation 'io.reactivex.rxjava2:rxandroid:2.1.1'
@@ -74,9 +77,6 @@ dependencies {
     // Replace with the latest version
     implementation 'com.alibaba:arouter-api:1.5.0'
     annotationProcessor 'com.alibaba:arouter-compiler:1.1.4'
-
-    implementation 'com.google.dagger:dagger-android:2.15'
-    annotationProcessor 'com.google.dagger:dagger-android-processor:2.15'
 
     implementation 'com.google.dagger:hilt-android:2.28-alpha'
     kapt 'com.google.dagger:hilt-android-compiler:2.28-alpha'

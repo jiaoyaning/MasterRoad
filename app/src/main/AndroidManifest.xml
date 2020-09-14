@@ -10,6 +10,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".handler.HandlerActivity"/>
         <activity android:name=".eventbus.EventBusActivity" />
         <activity android:name=".hilt_dagger.HiltDaggerActivity" />
         <activity android:name=".rxjava.RxJavaActivity" />
@@ -23,17 +24,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
-<!--        <provider-->
-<!--            android:name="androidx.startup.InitializationProvider"-->
-<!--            android:authorities="${applicationId}.androidx-startup"-->
-<!--            android:exported="false">-->
-<!--            &lt;!&ndash; This entry makes ExampleLoggerInitializer discoverable. &ndash;&gt;-->
-<!--            <meta-data-->
-<!--                android:name="com.jyn.masterroad.startup.TestInitializer"-->
-<!--                android:value="androidx.startup" />-->
-<!--        </provider>-->
-
     </application>
 
 </manifest>

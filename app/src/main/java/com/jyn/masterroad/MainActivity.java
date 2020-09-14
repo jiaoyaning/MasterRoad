@@ -1,113 +1,33 @@
 package com.jyn.masterroad;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
 import android.os.Bundle;
-import android.os.Handler;
-import android.os.Message;
-import android.os.PersistableBundle;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.alibaba.android.arouter.facade.annotation.Route;
-import com.jyn.masterroad.touch.MyTouchRecyclerView;
+import com.alibaba.android.arouter.launcher.ARouter;
+import com.jyn.masterroad.databinding.ActivityMainBinding;
 
-import java.util.Queue;
+@Route(path = "/app/mainActivity")
+public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
-@Route(path = "/test/mainActivity")
-public class MainActivity extends AppCompatActivity {
-
-    private MyTouchRecyclerView rv_layout;
-
-    static int position = 0;
-    static boolean isScroll = false;
+    private ActivityMainBinding activityMainBinding;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-
-        Handler handler  = new Handler();
-
-        handler.post(new Runnable() {
-            @Override
-            public void run() {
-
-            }
-        });
-
-        LinearLayoutManager layoutManager = new LinearLayoutManager(this);
-        rv_layout = findViewById(R.id.rv_layout);
-        rv_layout.setLayoutManager(layoutManager);
-        RvAdapter adapter = new RvAdapter();
-        rv_layout.setAdapter(adapter);
-    }
-
-    public void fun1(){
-
-    }
-
-    public void scroll(View view) {
-        rv_layout.smoothScrollToPosition(++position);
-
-    }
-
-    public void isScroll(View view) {
-        isScroll = !isScroll;
-        ((Button) view).setText(String.valueOf(isScroll));
-        rv_layout.setCanScroll(isScroll);
-    }
-
-    public class RvAdapter extends RecyclerView.Adapter<RvAdapter.ViewHolder> {
-
-        @NonNull
-        @Override
-        public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-            View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.view_test, parent, false);
-            return new ViewHolder(view);
-        }
-
-        @Override
-        public void onBindViewHolder(@NonNull ViewHolder holder, final int position) {
-            holder.button.setText("按钮：" + position);
-            holder.button.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    Toast.makeText(MainActivity.this, "position:" + position, Toast.LENGTH_SHORT).show();
-                }
-            });
-        }
-
-        @Override
-        public int getItemCount() {
-            return 50;
-        }
-
-        class ViewHolder extends RecyclerView.ViewHolder {
-
-            Button button;
-
-            public ViewHolder(@NonNull View itemView) {
-                super(itemView);
-                button = itemView.findViewById(R.id.button);
-            }
-        }
+        activityMainBinding = ActivityMainBinding.inflate(getLayoutInflater());
+//        activityMainBinding.handlerTest.setOnClickListener(this);
+        findViewById(R.id.handler_test).setOnClickListener(this);
     }
 
     @Override
-    public void onSaveInstanceState(@NonNull Bundle outState, @NonNull PersistableBundle outPersistentState) {
-        super.onSaveInstanceState(outState, outPersistentState);
-    }
-
-    @Override
-    protected void onRestoreInstanceState(@NonNull Bundle savedInstanceState) {
-        super.onRestoreInstanceState(savedInstanceState);
+    public void onClick(View v) {
+        if (v.getId() == R.id.handler_test) {
+            ARouter.getInstance().build("/app/handler").navigation();
+        }
     }
 }

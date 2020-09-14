@@ -12,7 +12,7 @@ import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
 
-@Route(path = "/test/EventBusActivity")
+@Route(path = "/app/EventBusActivity")
 public class EventBusActivity extends AppCompatActivity {
 
     @Override

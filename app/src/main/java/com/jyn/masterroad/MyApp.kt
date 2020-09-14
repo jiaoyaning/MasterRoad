@@ -27,6 +27,7 @@ class MyApp : Application() {
             ARouter.openDebug()
         }
         ARouter.init(this)
+        LogUtils.getLogConfig().configShowBorders(false)
 
         ProcessLifecycleOwner.get().lifecycle.addObserver(LifecycleChecker())
         this.registerActivityLifecycleCallbacks(object : ActivityLifecycleCallbacks {

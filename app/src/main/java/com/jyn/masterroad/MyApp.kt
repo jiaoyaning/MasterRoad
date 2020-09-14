@@ -67,6 +67,7 @@ class MyApp : Application() {
      */
     override fun onTerminate() {
         super.onTerminate()
+        LogUtils.i("onTerminate")
     }
 
     /**
@@ -74,6 +75,7 @@ class MyApp : Application() {
      */
     override fun onLowMemory() {
         super.onLowMemory()
+        LogUtils.i("onLowMemory")
     }
 
     /**
@@ -81,6 +83,7 @@ class MyApp : Application() {
      */
     override fun onTrimMemory(level: Int) {
         super.onTrimMemory(level)
+        LogUtils.i("onTrimMemory level:$level")
     }
 
     /**
@@ -88,5 +91,6 @@ class MyApp : Application() {
      */
     override fun onConfigurationChanged(newConfig: Configuration) {
         super.onConfigurationChanged(newConfig)
+        LogUtils.i("onConfigurationChanged")
     }
 }

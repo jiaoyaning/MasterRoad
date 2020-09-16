@@ -7,16 +7,9 @@ import android.util.Log;
 import android.widget.FrameLayout;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
-import com.jyn.masterroad.Presenter;
 import com.jyn.masterroad.R;
-import com.jyn.masterroad.Test1Fragment;
+import com.jyn.masterroad.fragment.Test1Fragment;
 
-import org.greenrobot.eventbus.Subscribe;
-
-import io.reactivex.BackpressureStrategy;
-import io.reactivex.Flowable;
-import io.reactivex.FlowableEmitter;
-import io.reactivex.FlowableOnSubscribe;
 import io.reactivex.Observable;
 import io.reactivex.ObservableEmitter;
 import io.reactivex.ObservableOnSubscribe;
@@ -35,7 +28,6 @@ public class RxJavaActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_rxjava);
-        getLifecycle().addObserver(new Presenter());
         fragment = findViewById(R.id.fragment);
 
         getSupportFragmentManager()

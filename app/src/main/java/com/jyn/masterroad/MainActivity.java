@@ -26,7 +26,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         activityMainBinding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(activityMainBinding.getRoot());
         activityMainBinding.handlerTest.setOnClickListener(this);
-        LogUtils.tag("main").i(activityMainBinding.handlerTest);
     }
 
     @Override

@@ -1,4 +1,4 @@
-package com.jyn.masterroad;
+package com.jyn.masterroad.fragment;
 
 import android.os.Bundle;
 
@@ -7,6 +7,8 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import com.jyn.masterroad.R;
 
 public class Test1Fragment extends Fragment {
 

@@ -24,7 +24,7 @@ class HandlerActivity : AppCompatActivity() {
         }
     }
 
-    //自带callback的handler
+    //自带callback的handler ，如果返回true则不会再走handleMessage方法回调
     var handlerCallback: Handler = Handler {
         false
     }

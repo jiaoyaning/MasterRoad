@@ -26,7 +26,7 @@ class MyApp : Application() {
             ARouter.openDebug()
         }
         ARouter.init(this)
-//        LogUtils.getLogConfig().configShowBorders(false)
+        LogUtils.getLogConfig().configShowBorders(false)
 
         //第一种可检测activity生命周期的方式
         ProcessLifecycleOwner.get().lifecycle.addObserver(LifecycleChecker())

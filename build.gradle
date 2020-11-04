@@ -13,7 +13,11 @@ buildscript {
         maven { url 'http://maven.aliyun.com/nexus/content/groups/public/' }
     }
     dependencies {
+<<<<<<< HEAD
         classpath 'com.android.tools.build:gradle:4.0.2'
+=======
+        classpath 'com.android.tools.build:gradle:4.0.1'
+>>>>>>> 56fdf7801abe8cc3ece925155c1e70bfbad003c5
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:1.3.61"
         classpath 'com.google.dagger:hilt-android-gradle-plugin:2.28-alpha'
         classpath "com.alibaba:arouter-register:1.0.2"

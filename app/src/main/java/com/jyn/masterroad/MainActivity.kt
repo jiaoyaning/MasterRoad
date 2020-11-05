@@ -51,13 +51,13 @@ class MainActivity : AppCompatActivity() {
         }
 
         override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MainViewHolder {
-            val layoutInflater = LayoutInflater.from(context)
-            val itemMainBinding = ItemMainBinding.inflate(layoutInflater)
-            return MainViewHolder(itemMainBinding.root)
+            val layoutInflater = LayoutInflater.from(parent.context)
+            val itemView: View = layoutInflater.inflate(R.layout.item_main, parent, false)
+            return MainViewHolder(itemView)
         }
 
         override fun onBindViewHolder(holder: MainViewHolder, position: Int) {
-            val itemMainBinding = ItemMainBinding.bind(holder.itemView)
+            val itemMainBinding = ItemMainBinding.bind(holder.itemView);
             itemMainBinding.list = routerList[0]
             itemMainBinding.executePendingBindings()
         }

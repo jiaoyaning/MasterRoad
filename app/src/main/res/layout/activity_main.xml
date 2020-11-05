@@ -5,10 +5,11 @@
 
     <data>
 
-        <variable
-            name="MainViewModel"
-            type="com.jyn.masterroad.MainViewModel" />
+        <import type="com.jyn.masterroad.MainViewModel" />
 
+        <variable
+            name="mainViewModel"
+            type="MainViewModel" />
     </data>
 
     <androidx.core.widget.NestedScrollView
@@ -26,8 +27,8 @@
                 android:id="@+id/handler_test"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:onClick="@{MainViewModel::goToHandler}"
-                android:text="@{MainViewModel.handler}"
+                android:onClick="@{mainViewModel::goToHandler}"
+                android:text="@{mainViewModel.handler}"
                 android:textAllCaps="false" />
 
         </LinearLayout>

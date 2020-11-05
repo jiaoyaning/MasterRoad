@@ -5,11 +5,11 @@
 
     <data>
 
-        <import type="com.jyn.masterroad.MainViewModel" />
+        <import type="com.jyn.masterroad.MainViewModel.RouterList" />
 
         <variable
-            name="mainViewModel"
-            type="MainViewModel" />
+            name="list"
+            type="RouterList" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -20,7 +20,7 @@
             android:id="@+id/main_recycle_item_btn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@{mainViewModel.name}"
+            android:text="@{list.name}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />

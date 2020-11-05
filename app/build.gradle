@@ -58,6 +58,7 @@ dependencies {
     implementation project(path: ':custom_view')
     implementation project(path: ':Leetcode')
     implementation project(path: ':common')
+    implementation project(path: ':animation')
 
     testImplementation rootProject.ext.androidx["junit"]
     androidTestImplementation rootProject.ext.androidx["androidx.test.ext-junit"]

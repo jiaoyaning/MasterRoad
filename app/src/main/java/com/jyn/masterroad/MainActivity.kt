@@ -21,11 +21,11 @@ import kotlinx.android.synthetic.main.activity_main.*
  * RecycleView列表绑定
  * https://blog.csdn.net/yu75567218/article/details/87860020
  */
-@Route(path = RoutePath.MAIN)
+@Route(path = RoutePath.Main.path)
 class MainActivity : AppCompatActivity() {
     private lateinit var activityMainBinding: ActivityMainBinding
 
-    var routerList = arrayListOf<MainViewModel.RouterList>()
+    private var routerList: ArrayList<MainViewModel.RouterList> = RoutePath.getRouterList()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -35,10 +35,6 @@ class MainActivity : AppCompatActivity() {
 
         main_recycle.layoutManager = LinearLayoutManager(this)
         main_recycle.adapter = MainAdapter(routerList, this);
-    }
-
-    init {
-        routerList.add(MainViewModel.RouterList("handler", RoutePath.HANDLER))
     }
 
     /**
@@ -58,12 +54,12 @@ class MainActivity : AppCompatActivity() {
 
         override fun onBindViewHolder(holder: MainViewHolder, position: Int) {
             val itemMainBinding = ItemMainBinding.bind(holder.itemView);
-            itemMainBinding.list = routerList[0]
+            itemMainBinding.list = routerList[position]
             itemMainBinding.executePendingBindings()
         }
 
         override fun getItemCount(): Int {
-            return 10
+            return routerList.size
         }
     }
 }

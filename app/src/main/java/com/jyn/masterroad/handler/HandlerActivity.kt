@@ -8,11 +8,11 @@ import android.os.MessageQueue
 import androidx.appcompat.app.AppCompatActivity
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.jyn.masterroad.R
-import com.jyn.masterroad.base.RoutePath.HANDLER
+import com.jyn.masterroad.base.RoutePath
 import java.lang.reflect.Method
 
 
-@Route(path = HANDLER)
+@Route(path = RoutePath.Handle.path)
 class HandlerActivity : AppCompatActivity() {
 
     private var token: Int = 0

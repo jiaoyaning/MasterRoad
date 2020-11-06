@@ -34,4 +34,9 @@ public class MyButtom extends androidx.appcompat.widget.AppCompatButton {
         Log.i("main", "MyButtom onTouchEvent "+onTouchEvent);
         return onTouchEvent;
     }
+
+    public @interface WVCallBackType {
+        String NOTIFY = "notify";
+        String CALLBACK = "callback";
+    }
 }

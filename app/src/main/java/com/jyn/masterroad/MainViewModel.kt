@@ -13,7 +13,7 @@ class MainViewModel : ViewModel() {
     val handler = "Handler"
 
     fun goToHandler(view: View) {
-        ARouter.getInstance().build(RoutePath.HANDLER).navigation();
+        ARouter.getInstance().build(RoutePath.Handle.path).navigation();
     }
 
     class RouterList(var name: String, var path: String) {

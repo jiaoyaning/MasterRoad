@@ -3,14 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
-    <data>
-
-        <import type="com.jyn.masterroad.MainViewModel" />
-
-        <variable
-            name="mainViewModel"
-            type="MainViewModel" />
-    </data>
+    <data />
 
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
@@ -22,14 +15,6 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical">
-
-            <Button
-                android:id="@+id/main_handler_test"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:onClick="@{mainViewModel::goToHandler}"
-                android:text="@{mainViewModel.handler}"
-                android:textAllCaps="false" />
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/main_recycle"

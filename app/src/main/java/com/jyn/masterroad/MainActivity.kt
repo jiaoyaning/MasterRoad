@@ -20,6 +20,9 @@ import kotlinx.android.synthetic.main.activity_main.*
  *
  * RecycleView列表绑定
  * https://blog.csdn.net/yu75567218/article/details/87860020
+ *
+ * item 直接绑定方式
+ * http://www.voidcn.com/article/p-zannxayh-brz.html
  */
 @Route(path = RoutePath.Main.path)
 class MainActivity : AppCompatActivity() {
@@ -31,20 +34,18 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         activityMainBinding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(activityMainBinding.root)
-        activityMainBinding.mainViewModel = MainViewModel()
 
         main_recycle.layoutManager = LinearLayoutManager(this)
         main_recycle.adapter = MainAdapter(routerList, this);
     }
 
     /**
+     * 第一版参考
      * https://www.jianshu.com/p/379a8f5347de
      */
     class MainAdapter(var routerList: ArrayList<MainViewModel.RouterList>, var context: Context) : Adapter<MainAdapter.MainViewHolder>() {
 
-        class MainViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-
-        }
+        class MainViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView)
 
         override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MainViewHolder {
             val layoutInflater = LayoutInflater.from(parent.context)

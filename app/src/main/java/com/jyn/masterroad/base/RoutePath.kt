@@ -1,6 +1,5 @@
 package com.jyn.masterroad.base
 
-import com.apkfuns.logutils.LogUtils
 import com.jyn.masterroad.MainViewModel
 
 /**

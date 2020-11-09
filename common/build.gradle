@@ -1,6 +1,7 @@
 apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
 
 android {
     compileSdkVersion 29
@@ -23,6 +24,11 @@ android {
         }
     }
 
+    kapt {
+        arguments {
+            arg("AROUTER_MODULE_NAME", project.getName())
+        }
+    }
 }
 
 dependencies {
@@ -36,4 +42,7 @@ dependencies {
 
     implementation 'com.google.dagger:dagger-android:2.15'
     annotationProcessor 'com.google.dagger:dagger-android-processor:2.15'
+
+    implementation 'com.alibaba:arouter-api:1.5.0'
+//    kapt 'com.alibaba:arouter-compiler:1.2.2'
 }

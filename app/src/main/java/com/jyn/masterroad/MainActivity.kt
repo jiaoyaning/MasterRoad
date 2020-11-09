@@ -10,10 +10,13 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.Adapter
 import com.alibaba.android.arouter.facade.annotation.Route
+import com.apkfuns.logutils.LogUtils
+import com.jyn.common.utils.Router
 import com.jyn.masterroad.base.RoutePath
 import com.jyn.masterroad.databinding.ActivityMainBinding
 import com.jyn.masterroad.databinding.ItemMainBinding
 import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.item_main.view.*
 
 /**
  * https://www.jianshu.com/p/2ee3672efb1f
@@ -23,6 +26,9 @@ import kotlinx.android.synthetic.main.activity_main.*
  *
  * item 直接绑定方式
  * http://www.voidcn.com/article/p-zannxayh-brz.html
+ *
+ * DataBinding 教程
+ * https://blog.csdn.net/guiying712/article/details/80206037
  */
 @Route(path = RoutePath.Main.path)
 class MainActivity : AppCompatActivity() {
@@ -55,6 +61,13 @@ class MainActivity : AppCompatActivity() {
 
         override fun onBindViewHolder(holder: MainViewHolder, position: Int) {
             val itemMainBinding = ItemMainBinding.bind(holder.itemView);
+            holder
+                    .itemView
+                    .main_recycle_item_btn
+                    .setOnClickListener {
+                        LogUtils.tag("main").i(routerList[position].path)
+                        Router.goto(routerList[position].path)
+                    }
             itemMainBinding.list = routerList[position]
             itemMainBinding.executePendingBindings()
         }

@@ -50,6 +50,7 @@ class MainActivity : AppCompatActivity() {
      * https://www.jianshu.com/p/379a8f5347de
      */
     class MainAdapter(var routerList: ArrayList<MainViewModel.RouterList>, var context: Context) : Adapter<MainAdapter.MainViewHolder>() {
+        var i = 0;
 
         class MainViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView)
 
@@ -66,7 +67,9 @@ class MainActivity : AppCompatActivity() {
                     .main_recycle_item_btn
                     .setOnClickListener {
                         LogUtils.tag("main").i(routerList[position].path)
-                        Router.goto(routerList[position].path)
+                        routerList[position].path.get()?.let { it1 ->
+                            Router.goto(it1)
+                        }
                     }
             itemMainBinding.list = routerList[position]
             itemMainBinding.executePendingBindings()

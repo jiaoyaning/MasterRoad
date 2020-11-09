@@ -20,7 +20,7 @@
             android:id="@+id/main_recycle_item_btn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@{list.name}"
+            android:text="@{list.name,default=点击跳转}"
             android:textAllCaps="false"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

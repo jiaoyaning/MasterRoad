@@ -1,5 +1,6 @@
 package com.jyn.masterroad.base
 
+import androidx.databinding.ObservableField
 import com.jyn.masterroad.MainViewModel
 
 /**
@@ -16,7 +17,7 @@ object RoutePath {
         for (i in classes.indices) {
             val name: String = classes[i].getField("name")[this] as String
             val path: String = classes[i].getField("path")[this] as String
-            routerList.add(MainViewModel.RouterList(name, path))
+            routerList.add(MainViewModel.RouterList(ObservableField(name), ObservableField(path)))
         }
         return routerList
     }

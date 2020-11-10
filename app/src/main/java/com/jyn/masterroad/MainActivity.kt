@@ -70,7 +70,7 @@ class MainActivity : AppCompatActivity() {
                         routerList[position].path.get()?.let { it1 ->
                             Router.goto(it1)
 
-                            //可以动态修复数据
+                            //可以动态修改数据
 //                            routerList[position].name.set(routerList[position].name.get() + ++i)
 //                            itemMainBinding.executePendingBindings()
                         }

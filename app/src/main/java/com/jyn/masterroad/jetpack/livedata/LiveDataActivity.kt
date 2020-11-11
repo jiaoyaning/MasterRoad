@@ -4,6 +4,8 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
+import androidx.databinding.Observable
+import androidx.databinding.Observable.OnPropertyChangedCallback
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
@@ -20,22 +22,25 @@ import kotlinx.android.synthetic.main.activity_live_data.*
 @Route(path = RoutePath.LiveData.path)
 class LiveDataActivity : AppCompatActivity() {
 
-    var i = 0;
-
     lateinit var dataBinding: ActivityLiveDataBinding;
     lateinit var viewModel: LiveDataTestViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        //获取dataBinding对象
         dataBinding = ActivityLiveDataBinding.inflate(layoutInflater)
         setContentView(dataBinding.root)
 
+        //获取viewModel对象
         viewModel = ViewModelProvider(this).get(LiveDataTestViewModel::class.java)
         dataBinding.model = viewModel
 
+        /**
+         * 点击方法设置之，在xml中绑定OnClickListener接口
+         */
         dataBinding.onClick = View.OnClickListener {
-            LogUtils.tag("main").i("我被点击了")
             viewModel.subtract()
+            viewModel.numString.value = "subtract"
         }
 
         viewModel.num.observe(this, Observer {

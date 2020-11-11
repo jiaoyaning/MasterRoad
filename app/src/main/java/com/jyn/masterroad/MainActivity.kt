@@ -32,6 +32,8 @@ import kotlinx.android.synthetic.main.item_main.view.*
  *
  * 自定义databinding双向绑定
  * https://www.jianshu.com/p/4a2ae008bae5
+ *
+ * https://www.jianshu.com/p/c69b0e4e18f1
  */
 @Route(path = RoutePath.Main.path)
 class MainActivity : AppCompatActivity() {

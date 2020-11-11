@@ -40,4 +40,13 @@ object RoutePath {
         const val name = "HandlerActivity"
         const val path = "/app/HandlerActivity"
     }
+
+    /**
+     * handler测试
+     * [com.jyn.masterroad.jetpack.livedata.LiveDataActivity]
+     */
+    object LiveData{
+        const val name = "LiveDataActivity"
+        const val path = "/app/LiveDataActivity"
+    }
 }

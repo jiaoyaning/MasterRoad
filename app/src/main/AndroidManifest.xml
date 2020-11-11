@@ -12,7 +12,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="AllowBackup">
-        <activity android:name=".jetpack.livedata.LiveDataActivity"></activity>
+        <activity android:name=".jetpack.livedata.LiveDataActivity" />
         <activity android:name=".kotlin_flow.KotlinFlowActivity" />
         <activity android:name=".base.BaseActivity" />
         <activity android:name=".handler.HandlerActivity" />

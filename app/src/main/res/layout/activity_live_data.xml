@@ -1,9 +1,61 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".jetpack.livedata.LiveDataActivity">
+    xmlns:tools="http://schemas.android.com/tools">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <data>
+
+        <import type="com.jyn.masterroad.jetpack.livedata.LiveDataTestViewModel" />
+
+        <import type="android.view.View.OnClickListener"/>
+
+        <variable
+            name="model"
+            type="LiveDataTestViewModel" />
+        
+        <variable
+            name="onClick"
+            type="OnClickListener" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".jetpack.livedata.LiveDataActivity">
+
+        <TextView
+            android:id="@+id/tv_num"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:minHeight="50dp"
+            android:paddingLeft="10dp"
+            android:text="@{model.num.toString()}"
+            android:textSize="22sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Button
+            android:id="@+id/btn_livedata_add"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:text="+1"
+            android:onClick="@{model::add}"
+            app:layout_constraintEnd_toStartOf="@+id/btn_livedata_subtract"
+            app:layout_constraintHorizontal_chainStyle="spread"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_num" />
+
+        <Button
+            android:id="@+id/btn_livedata_subtract"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="-1"
+            android:onClick="@{onClick}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/btn_livedata_add"
+            app:layout_constraintTop_toTopOf="@+id/btn_livedata_add" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

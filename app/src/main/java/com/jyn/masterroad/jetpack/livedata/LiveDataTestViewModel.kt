@@ -10,7 +10,7 @@ import kotlinx.android.synthetic.main.activity_live_data.*
 
 class LiveDataTestViewModel : ViewModel() {
 
-    var numString: MutableLiveData<String> = MutableLiveData("null")
+    var numString: MutableLiveData<String> = MutableLiveData("1111")
 
     var num: MutableLiveData<Int> = MutableLiveData(0)
 

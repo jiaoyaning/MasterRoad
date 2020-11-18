@@ -45,8 +45,17 @@ object RoutePath {
      * handler测试
      * [com.jyn.masterroad.jetpack.livedata.LiveDataActivity]
      */
-    object LiveData{
+    object LiveData {
         const val name = "LiveDataActivity"
         const val path = "/app/LiveDataActivity"
+    }
+
+    /**
+     * BindingCollection 双向绑定 recyclerview
+     * [com.jyn.masterroad.jetpack.bindingcollection.BindingCollectionActivity]
+     */
+    object BindingCollection {
+        const val name = "BindingCollectionAdapter"
+        const val path = "/app/BindingCollectionActivity"
     }
 }

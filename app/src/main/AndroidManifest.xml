@@ -12,6 +12,9 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="AllowBackup">
+        <activity
+            android:name=".jetpack.bindingcollection.BindingCollectionActivity"
+            android:label="BindingCollectionAdapter" />
         <activity android:name=".jetpack.livedata.LiveDataActivity" />
         <activity android:name=".kotlin_flow.KotlinFlowActivity" />
         <activity android:name=".base.BaseActivity" />

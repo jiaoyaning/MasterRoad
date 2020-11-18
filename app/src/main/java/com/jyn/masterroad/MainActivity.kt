@@ -45,7 +45,6 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         activityMainBinding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(activityMainBinding.root)
-
         main_recycle.layoutManager = LinearLayoutManager(this)
         main_recycle.adapter = MainAdapter(routerList, this);
     }

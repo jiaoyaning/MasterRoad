@@ -40,10 +40,11 @@
             android:id="@+id/tv_num2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
             android:gravity="center"
             android:minHeight="50dp"
             android:paddingLeft="10dp"
-            android:text="@={model.numString}"
+            android:text="@{model.numString}"
             android:textSize="22sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -70,5 +71,27 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/btn_livedata_add"
             app:layout_constraintTop_toTopOf="@+id/btn_livedata_add" />
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:text="单向绑定："
+            android:textSize="20sp"
+            app:layout_constraintBottom_toBottomOf="@+id/tv_num"
+            app:layout_constraintStart_toStartOf="@+id/tv_num"
+            app:layout_constraintTop_toTopOf="@+id/tv_num" />
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:text="双向绑定："
+            android:textSize="20sp"
+            app:layout_constraintBottom_toBottomOf="@+id/tv_num2"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/tv_num2" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

@@ -3,18 +3,27 @@ package com.jyn.masterroad.jetpack.livedata
 import android.view.View
 import androidx.databinding.Observable
 import androidx.databinding.ObservableInt
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.apkfuns.logutils.LogUtils
-import kotlinx.android.synthetic.main.activity_live_data.*
+import androidx.lifecycle.MutableLiveData
 
 class LiveDataTestViewModel : ViewModel() {
 
-    var numString: MutableLiveData<String> = MutableLiveData("1111")
+    var numString: MutableLiveData<String>? = null //千万不能直接初始化一个默认值，否则get时就会永远获取默认值
+        get() {
+            if (field == null) {
+                numString = MutableLiveData("0")
+            }
+            return field
+        }
 
     var num: MutableLiveData<Int> = MutableLiveData(0)
+        set(value) {
+            numString?.value = value.toString()
+            field = value
+        }
 
-    var numObservable = ObservableInt(0)
+    private var numObservable = ObservableInt(0)
 
     init {
         numObservable.addOnPropertyChangedCallback(object : Observable.OnPropertyChangedCallback() {
@@ -29,12 +38,11 @@ class LiveDataTestViewModel : ViewModel() {
      */
     fun add(v: View) {
         num.value = num.value?.plus(1);
-//        num.set(num.get().plus(1))
-        numString.value = "add"
+        numString?.value = num.value.toString()
     }
 
     fun subtract() {
         num.value = num.value?.minus(1)
-//        num.set(num.get().minus(1))
+        numString?.value = num.value.toString()
     }
 }

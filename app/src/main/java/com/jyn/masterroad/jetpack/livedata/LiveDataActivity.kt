@@ -30,6 +30,7 @@ class LiveDataActivity : AppCompatActivity() {
         //获取dataBinding对象
         dataBinding = ActivityLiveDataBinding.inflate(layoutInflater)
         setContentView(dataBinding.root)
+        dataBinding.lifecycleOwner = this
 
         //获取viewModel对象
         viewModel = ViewModelProvider(this).get(LiveDataTestViewModel::class.java)
@@ -40,12 +41,15 @@ class LiveDataActivity : AppCompatActivity() {
          */
         dataBinding.onClick = View.OnClickListener {
             viewModel.subtract()
-            viewModel.numString.value = "subtract"
         }
 
         viewModel.num.observe(this, Observer {
-            LogUtils.tag("main").i("我改变了$it")
+            LogUtils.tag("main").i("num改变了$it")
             tv_num.text = it.toString()
+        })
+
+        viewModel.numString?.observe(this, Observer {
+            LogUtils.tag("main").i("numString改变了$it")
         })
     }
 }

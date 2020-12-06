@@ -46,11 +46,11 @@ class LiveDataTestViewModel : ViewModel() {
      */
     fun add(v: View) {
         num.value = num.value?.plus(1);
-        numString?.value = num.value.toString()
+//        numString?.value = num.value.toString()
     }
 
     fun subtract() {
         num.value = num.value?.minus(1)
-        numString?.value = num.value.toString()
+//        numString?.value = num.value.toString()
     }
 }

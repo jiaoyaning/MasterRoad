@@ -3,9 +3,9 @@ package com.jyn.masterroad.jetpack.livedata
 import android.view.View
 import androidx.databinding.Observable
 import androidx.databinding.ObservableInt
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.apkfuns.logutils.LogUtils
-import androidx.lifecycle.MutableLiveData
 
 class LiveDataTestViewModel : ViewModel() {
 
@@ -18,10 +18,6 @@ class LiveDataTestViewModel : ViewModel() {
         }
 
     var num: MutableLiveData<Int> = MutableLiveData(0)
-        set(value) {
-            numString?.value = value.toString()
-            field = value
-        }
 
     /**
      * ObservableField只有在数据发生改变时UI才会收到通知，而LiveData不同，

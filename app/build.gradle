@@ -44,7 +44,12 @@ android {
         targetCompatibility JavaVersion.VERSION_1_8
     }
 }
-
+/**
+ *
+ * https://www.jianshu.com/p/cc98a6b4f52e
+ * gradle 高级用法
+ *
+ */
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 

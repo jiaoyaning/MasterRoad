@@ -12,6 +12,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="AllowBackup">
+        <activity android:name=".constraintlayout.MotionLayoutActivity"/>
+        <activity android:name=".constraintlayout.ConstraintlayoutActivity" />
         <activity
             android:name=".jetpack.bindingcollection.BindingCollectionActivity"
             android:label="BindingCollectionAdapter" />

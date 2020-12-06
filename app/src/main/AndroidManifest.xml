@@ -13,7 +13,7 @@
         android:theme="@style/AppTheme"
         tools:ignore="AllowBackup">
         <activity android:name=".constraintlayout.MotionLayoutActivity"/>
-        <activity android:name=".constraintlayout.ConstraintlayoutActivity" />
+        <activity android:name=".constraintlayout.ConstraintLayoutActivity" />
         <activity
             android:name=".jetpack.bindingcollection.BindingCollectionActivity"
             android:label="BindingCollectionAdapter" />

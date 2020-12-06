@@ -9,7 +9,7 @@ import com.jyn.masterroad.R
  *
  * http://www.flyou.ren/2019/10/10/ConstraintLayout/
  */
-class ConstraintlayoutActivity : AppCompatActivity() {
+class ConstraintLayoutActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_constraintlayout)

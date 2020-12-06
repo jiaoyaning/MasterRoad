@@ -1,4 +1,4 @@
-package com.jyn.leetcode.fanzhuanlianbiao206;
+package com.jyn.leetcode;
 
 /**
  * Created by jiao on 2020/9/1.
@@ -6,7 +6,8 @@ package com.jyn.leetcode.fanzhuanlianbiao206;
  */
 class ListNode {
     int val;
-    ListNode next;
+    ListNode first;
+    ListNode last;
 
     ListNode(int x) {
         val = x;
@@ -18,18 +19,23 @@ class ListNode {
         ListNode node3 = new ListNode(3);
         ListNode node4 = new ListNode(4);
         ListNode node5 = new ListNode(5);
-        node1.next = node2;
-        node2.next = node3;
-        node3.next = node4;
-        node4.next = node5;
-        node5.next = null;
+
+        node1.last = node2;
+        node2.first = node1;
+        node2.last = node3;
+        node3.first = node2;
+        node3.last = node4;
+        node4.first = node3;
+        node4.last = node5;
+        node5.first = node4;
+        node5.last = null;
         return node1;
     }
 
-    public static void traverse(ListNode head){
-        while (head!=null){
+    public static void traverse(ListNode head) {
+        while (head != null) {
             System.out.println(head.val);
-            head = head.next;
+            head = head.last;
         }
     }
 }

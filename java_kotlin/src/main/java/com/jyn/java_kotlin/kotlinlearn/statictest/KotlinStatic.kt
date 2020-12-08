@@ -58,6 +58,13 @@ class KotlinStaticClass {
         @JvmField
         var testVarWithJvmField = "4.这是一个正常类里面的伴生静态对象，非const，添加@JvmField注解！"
 
+
+        //JvmName注解，可以设置一个调用名字
+        @JvmStatic //不加JvmStatic 调用时需要Companion
+        @get:JvmName("JvmNameTest")
+        var testVarWithJvmName = "5.这是一个正常类里面的伴生静态对象，非const，添加@JvmName注解！"
+            private set
+
         fun testFun() {
             println("这是一个class里面伴生对象的静态方法！")
         }

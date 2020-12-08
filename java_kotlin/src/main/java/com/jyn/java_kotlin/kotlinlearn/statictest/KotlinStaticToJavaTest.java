@@ -15,6 +15,7 @@ class KotlinStaticToJavaTest {
         System.out.println(KotlinStaticObject.getTestVarWithJvmStatic());
         System.out.println(KotlinStaticClass.Companion.getTestVar());
         System.out.println(KotlinStaticClass.testVarWithJvmField);
+        System.out.println(KotlinStaticClass.JvmNameTest());
 
         /*
          * java调用kotlin静态方法

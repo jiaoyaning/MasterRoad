@@ -13,7 +13,6 @@ fun main() {
     functionTypeTest1 { println("这是一个无参无返回值的函数类型 ") }//大括号表示这是一个方法
     functionTypeTest1(Learn()::fun1) //方法调用，要用小括号
 
-    //TODO 有参无返回值的函数类型 失败
     functionTypeTest2 { println("这是一个有参无返回值的内部函数类型 int -> $it") }
     functionTypeTest2(::intFun)
 }

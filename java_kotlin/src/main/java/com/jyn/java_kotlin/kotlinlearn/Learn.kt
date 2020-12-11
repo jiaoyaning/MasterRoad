@@ -9,16 +9,27 @@ fun main() {
     10.testAttr = " 猜猜我是几？ "
     println(10.testAttr)
 
-    println("============方法类型=============")
+    println("============方法类型 无返回值=============")
     functionTypeTest1 { println("这是一个无参无返回值的函数类型 ") }//大括号表示这是一个方法
     functionTypeTest1(Learn()::fun1) //方法调用，要用小括号
 
     functionTypeTest2 { println("这是一个有参无返回值的内部函数类型 int -> $it") }
     functionTypeTest2(::intFun)
+
+    println("============方法类型 有返回值=============")
+    functionTypeTest3(::intToString)
+
+    functionTypeTest3(fun(intTest: Int): String {
+        return "$intTest to String 内部函数"
+    })
 }
 
 fun intFun(int: Int) {
     println("这是一个有参无返回值的外部函数类型 int -> $int")
+}
+
+fun intToString(int: Int): String {
+    return "$int to String"
 }
 
 /**
@@ -44,6 +55,10 @@ fun functionTypeTest1(fun1: () -> Unit) {
 
 fun functionTypeTest2(fun1: (intTest: (Int)) -> Unit) {
     fun1(10)
+}
+
+fun functionTypeTest3(fun1: (intTest: (Int)) -> String) {
+    println("这是一个方法属性 返回值 -> ${fun1(100)}")
 }
 
 class Learn {

@@ -21,7 +21,7 @@ fun main() {
     println("testOption2L$testOption2")
 
     //解构可用于循环Map集合
-    val map:Map<Int,String> = mapOf<Int,String>(1 to "111",2 to "222")
+    val map:Map<Int,String> = mapOf(1 to "111",2 to "222")
     for ((k,v) in map){
         println("$k ---- $v")
     }

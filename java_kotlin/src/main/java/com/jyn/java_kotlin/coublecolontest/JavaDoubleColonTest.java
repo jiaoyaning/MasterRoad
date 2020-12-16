@@ -60,7 +60,11 @@ public class JavaDoubleColonTest {
 
         // 函数引用也是一种函数式接口，所以也可以将函数引用作为方法的参数
         String sayHello = sayHello(String::toUpperCase, "xiao xie hello");
+
+        Function<String, String> toUpperCase = String::toUpperCase;
+        String sayHello2 = sayHello(toUpperCase, "xiao xie hello");
         System.out.println("方法引用:" + sayHello);
+        System.out.println("方法引用:" + sayHello2);
     }
 
     public static void print(String content) {

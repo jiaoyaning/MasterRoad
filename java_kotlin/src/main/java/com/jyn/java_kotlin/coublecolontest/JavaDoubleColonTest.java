@@ -13,6 +13,9 @@ import java.util.function.Supplier;
  *
  * Java方法引用
  * https://www.cnblogs.com/wuhenzhidu/p/10727065.html
+ *
+ * Optional类
+ * https://www.cnblogs.com/zhangboyu/p/7580262.html
  * <p>
  * Created by jiaoyaning on 2020/12/16.
  */

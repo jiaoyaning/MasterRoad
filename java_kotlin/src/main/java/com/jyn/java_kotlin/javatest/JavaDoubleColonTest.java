@@ -1,4 +1,4 @@
-package com.jyn.java_kotlin.coublecolontest;
+package com.jyn.java_kotlin.javatest;
 
 import java.util.Arrays;
 import java.util.List;
@@ -7,13 +7,13 @@ import java.util.function.Function;
 import java.util.function.Supplier;
 
 /**
- * 双冒号语法测试
+ * 双冒号 方法引用
  * https://blog.csdn.net/zhoufanyang_china/article/details/87798829
  * https://www.toutiao.com/i6807719546158318092/
- *
+ * <p>
  * Java方法引用
  * https://www.cnblogs.com/wuhenzhidu/p/10727065.html
- *
+ * <p>
  * Optional类
  * https://www.cnblogs.com/zhangboyu/p/7580262.html
  * <p>
@@ -23,31 +23,34 @@ import java.util.function.Supplier;
 public class JavaDoubleColonTest {
     public static void main(String[] args) {
         List<String> list = Arrays.asList("01", "02", "03");
+        list.forEach(it -> System.out.println(it));
+        list.forEach(System.out::println);
         list.forEach(JavaDoubleColonTest::print);
 
-        //双冒号:: 来构造静态函数引用
+        //双冒号::静态方法引用
         Function<String, Integer> function = Integer::parseInt;
         Integer apply = function.apply("10");
-        System.out.println(apply);
+        System.out.println("静态方法引用 Function<Integer, String>"+apply);
 
-        // 使用双冒号::来构造非静态函数引用
+        //双冒号::对象的实例方法引用
         String test1 = "Hello JDK8";
         Function<Integer, String> function1 = test1::substring;
         String apply1 = function1.apply(2);
-        System.out.println("Function<Integer, String>" + apply1);
+        System.out.println("对象的实例方法引用 Function<Integer, String>" + apply1);
 
-        // 构造函数引用
+
+        //双冒号::构造方法引用
         Supplier<Example> exampleSupplier = Example::new;
         Example get = exampleSupplier.get();
-        System.out.println("Supplier<Example> 无参" + get.toString());
+        System.out.println("构造方法引用 Supplier<Example> 无参" + get.toString());
 
         Function<String, Example> exampleFunction = Example::new;
         Example apply2 = exampleFunction.apply("构造函数");
-        System.out.println("Function<String, Example> 一个参数" + apply2.toString());
+        System.out.println("构造方法引用 Function<String, Example> 一个参数" + apply2.toString());
 
         BiFunction<String, String, Example> exampleBiFunction = Example::new;
         Example apply3 = exampleBiFunction.apply("构造参数name", "构造参数age");
-        System.out.println("BiFunction<String, String, Example> 两个参数" + apply3.toString());
+        System.out.println("构造方法引用 BiFunction<String, String, Example> 两个参数" + apply3.toString());
 
         /*
          * Example 类并没有implements InterfaceExample接口

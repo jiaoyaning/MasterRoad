@@ -1,4 +1,6 @@
-package com.jyn.java_kotlin.coublecolontest;
+package com.jyn.java_kotlin.javatest;
+
+import java.util.function.Function;
 
 /**
  * Created by jiaoyaning on 2020/12/16.
@@ -18,6 +20,26 @@ class Example {
     public Example(String name, String age) {
         this.name = name;
         this.age = age;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getAge() {
+        return age;
+    }
+
+    public void setAge(String age) {
+        this.age = age;
+    }
+
+    public String create() {
+        return "create name";
     }
 
     @Override

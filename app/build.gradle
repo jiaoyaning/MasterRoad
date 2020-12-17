@@ -71,7 +71,7 @@ dependencies {
     implementation project(path: ':common')
     implementation project(path: ':animation')
 
-    testImplementation rootProject.ext.androidx["junit"]
+    testImplementation 'junit:junit:4.12'
     androidTestImplementation rootProject.ext.androidx["androidx.test.ext-junit"]
     androidTestImplementation rootProject.ext.androidx["androidx.test.espresso:espresso-core"]
 

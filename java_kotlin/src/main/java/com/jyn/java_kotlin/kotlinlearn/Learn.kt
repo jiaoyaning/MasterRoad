@@ -62,6 +62,8 @@ fun functionTypeTest3(fun1: (intTest: (Int)) -> String) {
 }
 
 class Learn {
+    var test: String? = null
+
     fun fun1() {
         println("这是一个无参无返回值的方法")
     }

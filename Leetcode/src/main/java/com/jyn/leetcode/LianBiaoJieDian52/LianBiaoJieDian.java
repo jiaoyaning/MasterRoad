@@ -1,5 +1,7 @@
 package com.jyn.leetcode.LianBiaoJieDian52;
 
+import com.jyn.leetcode.ListNode;
+
 /**
  * Created by jiao on 2020/9/16.
  * 剑指 Offer 52. 两个链表的第一个公共节点

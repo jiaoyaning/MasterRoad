@@ -58,4 +58,13 @@ object RoutePath {
         const val name = "BindingCollectionAdapter"
         const val path = "/app/BindingCollectionActivity"
     }
+
+    /**
+     * ConstraintLayout 约束布局
+     * [com.jyn.masterroad.constraintlayout.ConstraintLayoutActivity]
+     */
+    object ConstraintLayout{
+        const val name = "ConstraintLayout"
+        const val path = "/app/ConstraintLayout"
+    }
 }

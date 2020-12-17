@@ -1,5 +1,7 @@
 package com.jyn.leetcode.fanzhuanlianbiao206;
 
+import com.jyn.leetcode.ListNode;
+
 /**
  * Created by jiao on 2020/9/1.
  * 反转链表

@@ -24,6 +24,14 @@ import javax.security.auth.callback.Callback
  *
  * 当这3种实现方式同时存在的时候，遵循优先级：
  * Message.callback > Callback.handleMessage > handleMessage：
+ *
+ *
+ * https://mp.weixin.qq.com/s/mR7XIVbaKsB4q-Rxe1ip2g
+ *
+ * IdleHandler是一个回调接口，可以通过MessageQueue的addIdleHandler添加实现类。
+ * 当MessageQueue中的任务暂时处理完了（没有新任务或者下一个任务延时在之后），这个时候会回调这个接口.
+ * 返回false，那么就会移除它，返回true就会在下次message处理完了的时候继续回调。
+ *
  */
 @Route(path = RoutePath.Handle.path)
 class HandlerActivity : AppCompatActivity() {
@@ -31,7 +39,7 @@ class HandlerActivity : AppCompatActivity() {
     private var token: Int = 0
 
     //一个平平无奇的handler
-    val normalHandler = Handler(Looper.getMainLooper())
+    private val normalHandler = Handler(Looper.getMainLooper())
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

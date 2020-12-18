@@ -49,15 +49,15 @@ public interface DefaultFunInterface {
      * 1.9
      * 私有方法
      */
-    private String privateFunTest() {
-        return "1.9新特性 , 可以在接口里写私有方法";
-    }
+//    private String privateFunTest() {
+//        return "1.9新特性 , 可以在接口里写私有方法";
+//    }
 
     /**
      * 1.9
      * 私有静态方法
      */
-    private static String privateStaticFunTest() {
-        return "1.9新特性 , 可以在接口里写私有静态方法";
-    }
+//    private static String privateStaticFunTest() {
+//        return "1.9新特性 , 可以在接口里写私有静态方法";
+//    }
 }

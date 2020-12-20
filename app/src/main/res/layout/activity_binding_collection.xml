@@ -19,6 +19,7 @@
         tools:context=".jetpack.bindingcollection.BindingCollectionActivity">
 
         <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/binding_collection_recycler"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             app:itemBinding="@{viewModel.itemBinding}"

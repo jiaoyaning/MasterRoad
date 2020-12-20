@@ -2,15 +2,14 @@ package com.jyn.masterroad.jetpack.bindingcollection
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.alibaba.android.arouter.facade.annotation.Route
-import com.apkfuns.logutils.LogUtils
 import com.jyn.masterroad.base.RoutePath
 import com.jyn.masterroad.databinding.ActivityBindingCollectionBinding
 
 /**
- * 库位置: https://github.com/evant/binding-collection-adapter
+ * 库位置:
+ * https://github.com/evant/binding-collection-adapter
  */
 @Route(path = RoutePath.BindingCollection.path)
 class BindingCollectionActivity : AppCompatActivity() {

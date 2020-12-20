@@ -14,7 +14,8 @@ class BindingCollectionModel : ViewModel() {
     var items: ObservableList<String> = ObservableArrayList()
 
 
-    var itemBinding: ItemBinding<String> = ItemBinding.of(BR.binding_collection_item, R.layout.item_binding_collection)
+    var itemBinding: ItemBinding<String> = ItemBinding
+            .of(BR.binding_collection_item, R.layout.item_binding_collection)
 
     fun addOne(v: View) {
         items.add("测试数据:" + (items.size.plus(1)))

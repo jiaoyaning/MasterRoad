@@ -4,6 +4,9 @@ import android.app.Activity;
 import android.app.Application;
 import android.content.res.Configuration
 import android.os.Bundle;
+import android.os.Handler
+import android.os.Looper
+import android.widget.Toast
 
 import androidx.lifecycle.ProcessLifecycleOwner
 
@@ -28,11 +31,42 @@ class MyApp : Application() {
         ARouter.init(this)
         LogUtils.getLogConfig().configShowBorders(false)
 
+        setUncaught()
+
         //第一种可检测activity生命周期的方式
         ProcessLifecycleOwner.get().lifecycle.addObserver(LifecycleChecker())
 
         //第二种可检测activity生命周期的方式
         this.registerActivityLifecycleCallbacks(ActivityLifecycle())
+    }
+
+    /**
+     * 全局捕获异常
+     * https://mp.weixin.qq.com/s/K8ScqrB9sF9gzxwSAoueCQ
+     */
+    private fun setUncaught() {
+        Thread.setDefaultUncaughtExceptionHandler { t, e ->
+            LogUtils.tag("main").e("程序遇到错误:" + e.message)
+            Toast.makeText(this, "程序遇到错误:" + e.message, Toast.LENGTH_LONG).show()
+            e.printStackTrace()
+        }
+
+        Handler(Looper.getMainLooper()).post {
+            while (true) {
+                try {
+                    Looper.loop()
+                } catch (e: Throwable) {
+                    e.printStackTrace();
+                    LogUtils.tag("main").e("程序遇到错误:" + e.message)
+                    if (e.message?.startsWith("Unable to start activity") == true) {
+                        Toast.makeText(this, "程序遇到错误:" + e.message, Toast.LENGTH_LONG).show()
+                        // TODO 来自 Activity 生命周期崩溃，杀死进程
+                        android.os.Process.killProcess(android.os.Process.myPid());
+                        break
+                    }
+                }
+            }
+        }
     }
 
     /**

@@ -17,6 +17,7 @@ import com.jyn.masterroad.databinding.ActivityMainBinding
 import com.jyn.masterroad.databinding.ItemMainBinding
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.item_main.view.*
+import java.lang.NullPointerException
 
 /**
  * https://www.jianshu.com/p/2ee3672efb1f
@@ -46,7 +47,7 @@ class MainActivity : AppCompatActivity() {
         activityMainBinding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(activityMainBinding.root)
         main_recycle.layoutManager = LinearLayoutManager(this)
-        main_recycle.adapter = MainAdapter(routerList, this);
+        main_recycle.adapter = MainAdapter(routerList, this)
     }
 
     /**

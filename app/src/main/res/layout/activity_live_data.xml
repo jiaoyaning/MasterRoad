@@ -29,12 +29,14 @@
             android:layout_height="wrap_content"
             android:gravity="center"
             android:minHeight="50dp"
-            android:paddingLeft="10dp"
+            android:paddingStart="10dp"
             android:text="@{model.num.toString()}"
             android:textSize="22sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="RtlSymmetry"
+            tools:text="0" />
 
         <TextView
             android:id="@+id/tv_num2"
@@ -43,12 +45,14 @@
             android:layout_marginTop="10dp"
             android:gravity="center"
             android:minHeight="50dp"
-            android:paddingLeft="10dp"
+            android:paddingStart="10dp"
             android:text="@{model.numString}"
             android:textSize="22sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tv_num" />
+            app:layout_constraintTop_toBottomOf="@+id/tv_num"
+            tools:ignore="RtlSymmetry"
+            tools:text="0" />
 
         <Button
             android:id="@+id/btn_livedata_add"
@@ -60,7 +64,8 @@
             app:layout_constraintEnd_toStartOf="@+id/btn_livedata_subtract"
             app:layout_constraintHorizontal_chainStyle="spread"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tv_num2" />
+            app:layout_constraintTop_toBottomOf="@+id/tv_num2"
+            tools:ignore="HardcodedText" />
 
         <Button
             android:id="@+id/btn_livedata_subtract"
@@ -70,7 +75,8 @@
             android:text="-1"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/btn_livedata_add"
-            app:layout_constraintTop_toTopOf="@+id/btn_livedata_add" />
+            app:layout_constraintTop_toTopOf="@+id/btn_livedata_add"
+            tools:ignore="HardcodedText" />
 
         <TextView
             android:id="@+id/textView"
@@ -81,7 +87,8 @@
             android:textSize="20sp"
             app:layout_constraintBottom_toBottomOf="@+id/tv_num"
             app:layout_constraintStart_toStartOf="@+id/tv_num"
-            app:layout_constraintTop_toTopOf="@+id/tv_num" />
+            app:layout_constraintTop_toTopOf="@+id/tv_num"
+            tools:ignore="HardcodedText" />
 
         <TextView
             android:id="@+id/textView2"
@@ -92,6 +99,7 @@
             android:textSize="20sp"
             app:layout_constraintBottom_toBottomOf="@+id/tv_num2"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/tv_num2" />
+            app:layout_constraintTop_toTopOf="@+id/tv_num2"
+            tools:ignore="HardcodedText" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

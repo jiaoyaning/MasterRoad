@@ -6,6 +6,8 @@ import com.jyn.masterroad.R
 
 /**
  * https://juejin.cn/post/6854573206653812743
+ *
+ * https://juejin.cn/post/6844903918598635534
  */
 class MotionLayoutActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

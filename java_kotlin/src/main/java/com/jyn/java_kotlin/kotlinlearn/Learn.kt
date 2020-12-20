@@ -22,6 +22,10 @@ fun main() {
     functionTypeTest3(fun(intTest: Int): String {
         return "$intTest to String 内部函数"
     })
+
+    val learn: Learn? by lazy {
+        Learn()
+    }
 }
 
 fun intFun(int: Int) {

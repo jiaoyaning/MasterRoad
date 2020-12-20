@@ -66,11 +66,13 @@ class HandlerActivity : AppCompatActivity() {
         /**
          * 就算是返回了true也不是一直运行，而是在MessageQueue.next的时候执行
          * 一次next只执行一次，等下一次next的时候如果还返回true就会再执行一遍。
+         *
+         * false:只执行一遍
          */
         normalHandler.looper.queue.addIdleHandler(object : MessageQueue.IdleHandler {
             override fun queueIdle(): Boolean {
                 LogUtils.tag("Handler").i("这是一个IdleHandler")
-                return true
+                return false
             }
         })
     }

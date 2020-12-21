@@ -10,6 +10,8 @@ import java.util.function.Supplier;
  * 双冒号 方法引用
  * https://blog.csdn.net/zhoufanyang_china/article/details/87798829
  * https://www.toutiao.com/i6807719546158318092/
+ *
+ * https://blog.csdn.net/zhoufanyang_china/article/details/87798829 TODO 未看
  * <p>
  * Java方法引用
  * https://www.cnblogs.com/wuhenzhidu/p/10727065.html
@@ -17,6 +19,8 @@ import java.util.function.Supplier;
  * Optional类
  * https://www.cnblogs.com/zhangboyu/p/7580262.html
  * <p>
+ *
+ *
  * Created by jiaoyaning on 2020/12/16.
  */
 @SuppressWarnings("NewApi")
@@ -30,14 +34,13 @@ public class JavaDoubleColonTest {
         //双冒号::静态方法引用
         Function<String, Integer> function = Integer::parseInt;
         Integer apply = function.apply("10");
-        System.out.println("静态方法引用 Function<Integer, String>"+apply);
+        System.out.println("静态方法引用 Function<Integer, String>" + apply);
 
         //双冒号::对象的实例方法引用
         String test1 = "Hello JDK8";
         Function<Integer, String> function1 = test1::substring;
         String apply1 = function1.apply(2);
         System.out.println("对象的实例方法引用 Function<Integer, String>" + apply1);
-
 
         //双冒号::构造方法引用
         Supplier<Example> exampleSupplier = Example::new;

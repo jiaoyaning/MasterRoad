@@ -67,4 +67,13 @@ object RoutePath {
         const val name = "ConstraintLayout"
         const val path = "/app/ConstraintLayout"
     }
+
+    /**
+     * MotionLayout 动画
+     * [com.jyn.masterroad.constraintlayout.MotionLayoutActivity]
+     */
+    object  MotionLayout{
+        const val name = " MotionLayout"
+        const val path = "/app/ MotionLayout"
+    }
 }

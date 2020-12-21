@@ -5,6 +5,7 @@ import android.os.Bundle
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.jyn.masterroad.R
 import com.jyn.masterroad.base.RoutePath
+import kotlinx.android.synthetic.main.activity_motion_layout.*
 
 /**
  * https://juejin.cn/post/6854573206653812743
@@ -16,5 +17,8 @@ class MotionLayoutActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_motion_layout)
+        val constraintSet = motionLayout.getConstraintSet(R.id.end)
+        constraintSet.setRotation(R.id.ball, 180f)
+        motionLayout.updateState(R.id.end, constraintSet)
     }
 }

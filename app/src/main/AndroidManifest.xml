@@ -12,7 +12,19 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="AllowBackup">
-        <activity android:name=".constraintlayout.MotionLayoutActivity"/>
+
+        <!-- startup初始化 -->
+        <provider
+            android:name="androidx.startup.InitializationProvider"
+            android:authorities="${applicationId}.androidx-startup"
+            android:exported="false"
+            tools:node="merge">
+            <meta-data
+                android:name="com.jyn.masterroad.startup.LitePalInitializer"
+                android:value="androidx.startup" />
+        </provider>
+
+        <activity android:name=".constraintlayout.MotionLayoutActivity" />
         <activity android:name=".constraintlayout.ConstraintLayoutActivity" />
         <activity
             android:name=".jetpack.bindingcollection.BindingCollectionActivity"

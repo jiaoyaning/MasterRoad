@@ -1,7 +1,2 @@
-include ':animation'
-include ':Leetcode'
-include ':java_kotlin'
 rootProject.name='MasterRoad'
 include ':app'
-include ':custom_view'
-include ':common'

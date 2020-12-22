@@ -24,19 +24,6 @@
                 android:value="androidx.startup" />
         </provider>
 
-        <activity android:name=".constraintlayout.MotionLayoutActivity" />
-        <activity android:name=".constraintlayout.ConstraintLayoutActivity" />
-        <activity
-            android:name=".jetpack.bindingcollection.BindingCollectionActivity"
-            android:label="BindingCollectionAdapter" />
-        <activity android:name=".jetpack.livedata.LiveDataActivity" />
-        <activity android:name=".kotlin_flow.KotlinFlowActivity" />
-        <activity android:name=".base.BaseActivity" />
-        <activity android:name=".handler.HandlerActivity" />
-        <activity android:name=".eventbus.EventBusActivity" />
-        <activity android:name=".hilt_dagger.HiltDaggerActivity" />
-        <activity android:name=".rxjava.RxJavaActivity" />
-        <activity android:name=".thread.ThreadActivity" />
         <activity android:name=".MainActivity">
 
             <!-- android:excludeFromRecents="true"> -->

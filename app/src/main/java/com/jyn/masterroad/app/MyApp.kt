@@ -1,20 +1,13 @@
 package com.jyn.masterroad.app;
 
-import android.app.Activity;
-import android.app.Application;
+import android.app.Application
 import android.content.res.Configuration
-import android.os.Bundle;
 import android.os.Handler
 import android.os.Looper
 import android.widget.Toast
-
 import androidx.lifecycle.ProcessLifecycleOwner
-
-import com.alibaba.android.arouter.launcher.ARouter;
 import com.apkfuns.logutils.LogUtils
-import com.jyn.masterroad.BuildConfig
-
-import dagger.hilt.android.HiltAndroidApp;
+import dagger.hilt.android.HiltAndroidApp
 
 /**
  * Created by jiao on 2020/7/31.
@@ -24,18 +17,9 @@ class MyApp : Application() {
 
     override fun onCreate() {
         super.onCreate()
-        if (BuildConfig.DEBUG) {
-            ARouter.openLog()
-            ARouter.openDebug()
-        }
-        ARouter.init(this)
-        LogUtils.getLogConfig().configShowBorders(false)
-
         setUncaught()
-
         //第一种可检测activity生命周期的方式
         ProcessLifecycleOwner.get().lifecycle.addObserver(LifecycleChecker())
-
         //第二种可检测activity生命周期的方式
         this.registerActivityLifecycleCallbacks(ActivityLifecycle())
     }
@@ -51,10 +35,11 @@ class MyApp : Application() {
             e.printStackTrace()
         }
 
+        //主线程崩溃时，防止Loop跳出循环而导致ANR
         Handler(Looper.getMainLooper()).post {
             while (true) {
                 try {
-                    Looper.loop()
+                    Looper.loop() //loop本身也是个循环，所有外层的while(true)只有在loop跳出自己的循环后才会再次生效
                 } catch (e: Throwable) {
                     e.printStackTrace();
                     LogUtils.tag("main").e("程序遇到错误:" + e.message)

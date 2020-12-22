@@ -15,22 +15,23 @@
             android:id="@+id/ball"
             android:layout_width="100dp"
             android:layout_height="100dp"
+            android:rotation="360"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            android:rotation="360" />
+            app:layout_constraintTop_toTopOf="parent" />
     </ConstraintSet>
     <Transition
+        app:autoTransition="none"
         app:constraintSetEnd="@+id/move_ball_end"
         app:constraintSetStart="@+id/move_ball_start"
         app:duration="1000">
         <OnClick app:targetId="@+id/ball" />
-        <KeyFrameSet >
-<!--            <KeyTimeCycle-->
-<!--                app:motionTarget="@+id/ball"-->
-<!--                app:framePosition="100"-->
-<!--                app:wavePeriod="2"-->
-<!--                android:rotation="45"-->
-<!--                app:waveOffset="0dp" />-->
+        <KeyFrameSet>
+            <!--            <KeyTimeCycle-->
+            <!--                app:motionTarget="@+id/ball"-->
+            <!--                app:framePosition="100"-->
+            <!--                app:wavePeriod="2"-->
+            <!--                android:rotation="45"-->
+            <!--                app:waveOffset="0dp" />-->
         </KeyFrameSet>
     </Transition>
 

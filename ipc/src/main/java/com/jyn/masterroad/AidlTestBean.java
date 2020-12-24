@@ -3,6 +3,9 @@ package com.jyn.masterroad;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+/**
+ * 需要再client端copy一份，路径要与serve端一直
+ */
 public class AidlTestBean implements Parcelable {
     private int x;
     private int y;

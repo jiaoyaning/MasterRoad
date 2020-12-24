@@ -8,13 +8,13 @@ import com.apkfuns.logutils.LogUtils
 class AidlTestService : Service() {
 
     override fun onStartCommand(intent: Intent?, flags: Int, startId: Int): Int {
-        LogUtils.tag(TAG).i("AidlStringTestService onStartCommand启动")
+        LogUtils.tag(TAG).i("AidlTestService onStartCommand启动")
         return super.onStartCommand(intent, flags, startId)
     }
 
     override fun onCreate() {
         super.onCreate()
-        LogUtils.tag(TAG).i("AidlStringTestService onCreate启动")
+        LogUtils.tag(TAG).i("AidlTestService onCreate启动")
     }
 
     override fun onBind(intent: Intent): IBinder {
@@ -22,7 +22,7 @@ class AidlTestService : Service() {
     }
 
     class AidlStringTestBinder : AidlTestInterface.Stub() {
-        private var innerTest = "张三"
+        private var innerTest = "AidlTestService 初始值"
 
         override fun setTest(test: String) {
             innerTest = test

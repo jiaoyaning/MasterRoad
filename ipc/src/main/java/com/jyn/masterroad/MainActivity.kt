@@ -8,6 +8,7 @@ import android.os.Bundle
 import android.os.IBinder
 import androidx.appcompat.app.AppCompatActivity
 import com.apkfuns.logutils.LogUtils
+import kotlinx.android.synthetic.main.activity_main.*
 
 /**
  * Messenger与AIDL的异同:
@@ -22,7 +23,9 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        LogUtils.getLogConfig().configShowBorders(false)
         initService()
+        initView()
     }
 
     /**
@@ -32,6 +35,15 @@ class MainActivity : AppCompatActivity() {
         val intent = Intent()
         intent.setClassName("com.jyn.masterroad", "com.jyn.masterroad.AidlTestService")
         bindService(intent, serviceConnection, Context.BIND_AUTO_CREATE)
+    }
+
+    private fun initView() {
+        send_aidl_serve.setOnClickListener {
+            val testFun = aidlTestInterface.testFun(
+                    AidlTestBean().also { it.x = 100;it.y = 200 },
+                    AidlTestBean().also { it.x = 200;it.y = 200 })
+            LogUtils.tag(TAG).i("MainActivity 获取结果" + testFun.name)
+        }
     }
 
     private val serviceConnection: ServiceConnection by lazy {

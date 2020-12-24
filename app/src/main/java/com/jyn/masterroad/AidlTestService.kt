@@ -5,7 +5,7 @@ import android.content.Intent
 import android.os.IBinder
 import com.apkfuns.logutils.LogUtils
 
-class AidlStringTestService : Service() {
+class AidlTestService : Service() {
 
     override fun onStartCommand(intent: Intent?, flags: Int, startId: Int): Int {
         LogUtils.tag(TAG).i("AidlStringTestService onStartCommand启动")
@@ -21,8 +21,8 @@ class AidlStringTestService : Service() {
         return AidlStringTestBinder()
     }
 
-    class AidlStringTestBinder : StringTestAidlInterface.Stub() {
-        var innerTest = "张三"
+    class AidlStringTestBinder : AidlTestInterface.Stub() {
+        private var innerTest = "张三"
 
         override fun setTest(test: String) {
             innerTest = test

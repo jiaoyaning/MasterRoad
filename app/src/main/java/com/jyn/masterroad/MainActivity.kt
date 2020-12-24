@@ -19,7 +19,7 @@ import com.jyn.masterroad.databinding.ActivityMainBinding
 val TAG = "AIDLTest"
 
 class MainActivity : AppCompatActivity() {
-    private lateinit var stringTestAidl: StringTestAidlInterface
+    private lateinit var aidlTestInterface: AidlTestInterface
 
     private lateinit var activityMainBinding: ActivityMainBinding
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -45,9 +45,9 @@ class MainActivity : AppCompatActivity() {
             }
 
             override fun onServiceConnected(name: ComponentName?, service: IBinder?) {
-                stringTestAidl = StringTestAidlInterface.Stub.asInterface(service)
+                aidlTestInterface = AidlTestInterface.Stub.asInterface(service)
                 LogUtils.tag(TAG).i("AidlStringTestService 链接成功:$name")
-                LogUtils.tag(TAG).i("test:" + stringTestAidl.test)
+                LogUtils.tag(TAG).i("test:" + aidlTestInterface.test)
             }
         }
     }

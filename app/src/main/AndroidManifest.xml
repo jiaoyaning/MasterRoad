@@ -12,7 +12,7 @@
         android:theme="@style/AppTheme"
         tools:ignore="AllowBackup">
         <service
-            android:name=".AidlStringTestService"
+            android:name=".AidlTestService"
             android:enabled="true"
             android:exported="true"
             android:process=":aidl_test" />

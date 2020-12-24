@@ -4,7 +4,6 @@
     package="com.jyn.masterroad">
 
     <application
-        android:name=".app.MyApp"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -12,6 +11,11 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="AllowBackup">
+        <service
+            android:name=".AidlStringTestService"
+            android:enabled="true"
+            android:exported="true"
+            android:process=":aidl_test" />
         <service
             android:name=".BinderTestService"
             android:enabled="true"

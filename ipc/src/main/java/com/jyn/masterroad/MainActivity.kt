@@ -8,7 +8,6 @@ import android.os.Bundle
 import android.os.IBinder
 import androidx.appcompat.app.AppCompatActivity
 import com.apkfuns.logutils.LogUtils
-import com.jyn.masterroad.databinding.ActivityMainBinding
 
 /**
  * Messenger与AIDL的异同:
@@ -20,12 +19,9 @@ val TAG = "AIDLTest"
 
 class MainActivity : AppCompatActivity() {
     private lateinit var aidlTestInterface: AidlTestInterface
-
-    private lateinit var activityMainBinding: ActivityMainBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        activityMainBinding = ActivityMainBinding.inflate(layoutInflater)
-        setContentView(activityMainBinding.root)
+        setContentView(R.layout.activity_main)
         initService()
     }
 
@@ -34,20 +30,20 @@ class MainActivity : AppCompatActivity() {
      */
     private fun initService() {
         val intent = Intent()
-        intent.setClassName("com.jyn.masterroad", "com.jyn.masterroad.AidlStringTestService")
+        intent.setClassName("com.jyn.masterroad", "com.jyn.masterroad.AidlTestService")
         bindService(intent, serviceConnection, Context.BIND_AUTO_CREATE)
     }
 
     private val serviceConnection: ServiceConnection by lazy {
         object : ServiceConnection {
             override fun onServiceDisconnected(name: ComponentName?) {
-                LogUtils.tag(TAG).i("AidlStringTestService 失去链接:$name")
+                LogUtils.tag(TAG).i("MainActivity 失去链接:$name")
             }
 
             override fun onServiceConnected(name: ComponentName?, service: IBinder?) {
                 aidlTestInterface = AidlTestInterface.Stub.asInterface(service)
-                LogUtils.tag(TAG).i("AidlStringTestService 链接成功:$name")
-                LogUtils.tag(TAG).i("test:" + aidlTestInterface.test)
+                LogUtils.tag(TAG).i("MainActivity 链接成功:$name")
+                LogUtils.tag(TAG).i("MainActivity test:" + aidlTestInterface.test)
             }
         }
     }

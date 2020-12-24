@@ -28,6 +28,12 @@ class AidlTestService : Service() {
             innerTest = test
         }
 
+        override fun testFun(aidlTestBean1: AidlTestBean, aidlTestBean2: AidlTestBean): AidlTestBean {
+            val aidlTestBean = AidlTestBean()
+            aidlTestBean.name = (aidlTestBean1.x + aidlTestBean2.y).toString()
+            return aidlTestBean
+        }
+
         override fun getTest(): String {
             return innerTest
         }

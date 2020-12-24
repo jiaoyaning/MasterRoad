@@ -1,5 +1,5 @@
 package com.jyn.masterroad;
-
+import com.jyn.masterroad.AidlTestBean;
 /*
  * in 表示数据只能由客户端流向服务端，
  * out 表示数据只能由服务端流向客户端

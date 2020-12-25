@@ -50,6 +50,15 @@ public class AidlTestBean implements Parcelable {
         name = in.readString();
     }
 
+    @Override
+    public String toString() {
+        return "AidlTestBean{" +
+                "x=" + x +
+                ", y=" + y +
+                ", name='" + name + '\'' +
+                '}';
+    }
+
     public static final Creator<AidlTestBean> CREATOR = new Creator<AidlTestBean>() {
         @Override
         public AidlTestBean createFromParcel(Parcel in) {

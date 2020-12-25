@@ -16,7 +16,37 @@
             android:id="@+id/send_aidl_serve"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="给Aidl Service发消息"
+            android:text="向Aidl Service发消息 testFun()"
             android:textAllCaps="false" />
+
+        <Button
+            android:id="@+id/send_aidl_serve_in"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="向Aidl Service发消息 setInTest()"
+            android:textAllCaps="false" />
+
+        <Button
+            android:id="@+id/send_aidl_serve_out"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="向Aidl Service发消息 setOutTest()"
+            android:textAllCaps="false" />
+
+        <Button
+            android:id="@+id/send_aidl_serve_inout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="向Aidl Service发消息 setInOutTest()"
+            android:textAllCaps="false" />
+
+        <Button
+            android:id="@+id/get_aidl_serve_bean"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="从Aidl Service获取bean值 getTestBean()"
+            android:textAllCaps="false" />
+
+
     </LinearLayout>
 </androidx.core.widget.NestedScrollView>

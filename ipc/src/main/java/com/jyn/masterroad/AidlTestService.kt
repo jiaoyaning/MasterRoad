@@ -24,6 +24,12 @@ class AidlTestService : Service() {
     class AidlStringTestBinder : AidlTestInterface.Stub() {
         private var innerTest = "AidlTestService 初始值"
 
+        private var bean = AidlTestBean().also {
+            it.x = 0
+            it.y = 0
+            it.name = "AidlTestService 初始值"
+        }
+
         override fun setTest(test: String) {
             innerTest = test
         }
@@ -36,6 +42,22 @@ class AidlTestService : Service() {
 
         override fun getTest(): String {
             return innerTest
+        }
+
+        override fun getTestBean(): AidlTestBean {
+            return bean
+        }
+
+        override fun setInOutTest(inoutTest: AidlTestBean) {
+            bean = inoutTest
+        }
+
+        override fun setOutTest(outTest: AidlTestBean) {
+            bean = outTest
+        }
+
+        override fun setInTest(inTest: AidlTestBean) {
+            bean = inTest
         }
     }
 }

@@ -12,4 +12,9 @@ interface AidlTestInterface {
     void setTest(String test);
 
     AidlTestBean testFun(in AidlTestBean aidlTestBean1,in AidlTestBean aidlTestBean2);
+
+    void setInTest(in AidlTestBean inTest); //基本数据类型默认切必须是in
+    void setOutTest(out AidlTestBean outTest); //自定义类型必须制定Tag
+    void setInOutTest(inout AidlTestBean inoutTest);
+    AidlTestBean getTestBean();
 }

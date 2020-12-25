@@ -40,5 +40,12 @@
             android:text="向Aidl Service发消息 setInOutTest()"
             android:textAllCaps="false" />
 
+        <Button
+            android:id="@+id/send_aidl_serve_oneway"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="向Aidl Service发消息 onewayTest()"
+            android:textAllCaps="false" />
+
     </LinearLayout>
 </androidx.core.widget.NestedScrollView>

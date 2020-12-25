@@ -85,6 +85,24 @@ class MainActivity : AppCompatActivity() {
             aidlTestInterface.setInOutTest(testBean)
             LogUtils.tag(TAG).i("MainActivity setInOutTest 修改后：$testBean")
         }
+
+        /**
+         * 完全不会等服务端处理数据，直接下一行代码
+         *
+         * oneway情况下：
+         * 不能有返回值；
+         * 不能有 out 类型的参数；
+         * 只对不同进程的调用有用，本地进程无效，依然是同步调用；
+         *
+         * 适合用来通知服务端，不修改数据，也没有返回值
+         */
+        send_aidl_serve_oneway.setOnClickListener {
+            LogUtils.tag(TAG).i("MainActivity onewayTest 修改前：$testBean")
+            aidlTestInterface.onewayTest(testBean)
+            LogUtils.tag(TAG).i("MainActivity onewayTest 修改后：$testBean")
+            Thread.sleep(3000)
+            LogUtils.tag(TAG).i("MainActivity onewayTest 修改后 & sleep：$testBean")
+        }
     }
 
     private val serviceConnection: ServiceConnection by lazy {

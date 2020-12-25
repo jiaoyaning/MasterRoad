@@ -78,5 +78,16 @@ class AidlTestService : Service() {
             }
             LogUtils.tag(TAG).i("AidlTestService inTest 接受并修改的数据: $inTest")
         }
+
+        override fun onewayTest(aidlTestBean: AidlTestBean) {
+            LogUtils.tag(TAG).i("AidlTestService onewayTest 接受到的数据: $aidlTestBean")
+            Thread.sleep(2000)
+            aidlTestBean.also {
+                it.x = 40
+                it.y = 40
+                it.name = "AidlTestService onewayTest"
+            }
+            LogUtils.tag(TAG).i("AidlTestService onewayTest 接受并修改的数据: $aidlTestBean")
+        }
     }
 }

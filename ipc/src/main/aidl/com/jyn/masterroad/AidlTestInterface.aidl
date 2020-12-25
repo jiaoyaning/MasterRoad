@@ -22,4 +22,13 @@ interface AidlTestInterface {
     void setOutTest(out AidlTestBean outTest); //自定义类型必须制定Tag，bean类不能被客户端更改，只能由服务端更改
     void setInOutTest(inout AidlTestBean inoutTest); //服务端修改后，自动同步到客户端
     AidlTestBean getTestBean();
+
+    /*
+     * oneway 修饰的方法不能有返回值；
+     * oneway 修饰的方法不能有 out 类型的参数；
+     * oneway 只对不同进程的调用有用，本地进程无效，依然是同步调用；
+     *
+     * 客户端调用该方法立马就返回的，不会等服务端处理的结果，那么最好不修改参数也不返回数据。
+     */
+    oneway void onewayTest(in AidlTestBean aidlTestBean);
 }

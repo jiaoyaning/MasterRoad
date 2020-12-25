@@ -1,7 +1,6 @@
 package com.jyn.masterroad
 
 import android.content.ComponentName
-import android.content.Context
 import android.content.Intent
 import android.content.ServiceConnection
 import android.os.Bundle
@@ -18,10 +17,6 @@ import kotlinx.android.synthetic.main.activity_main.*
  */
 val TAG = "AIDLTest"
 
-fun Log(any: Any) {
-    LogUtils.tag(TAG).i(any)
-}
-
 class MainActivity : AppCompatActivity() {
     private lateinit var aidlTestInterface: AidlTestInterface
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -36,9 +31,27 @@ class MainActivity : AppCompatActivity() {
      * 先启动aidl_test进程，模仿server端
      */
     private fun initService() {
-        val intent = Intent()
-        intent.setClassName("com.jyn.masterroad", "com.jyn.masterroad.AidlTestService")
-        bindService(intent, serviceConnection, Context.BIND_AUTO_CREATE)
+
+        val intent1 = Intent()
+        intent1.setClassName("com.jyn.masterroad", "com.jyn.masterroad.AidlTestService")
+        bindService(intent1, serviceConnection, BIND_AUTO_CREATE)
+
+        //需要在清单文件里配置 <action /> 才行
+//        val intent2 = Intent("com.jyn.masterroad.AidlTestService.Action")
+//        intent2.setPackage("com.jyn.masterroad")
+//        bindService(intent2, serviceConnection, BIND_AUTO_CREATE)
+
+        //通过 package 和 classname
+//        val intent3 = Intent()
+//        intent3.component = ComponentName("com.jyn.masterroad","com.jyn.masterroad.AidlTestService")
+//        bindService(intent3, serviceConnection, BIND_AUTO_CREATE)
+    }
+
+
+    private val testBean = AidlTestBean().also {
+        it.y = 1
+        it.x = 1
+        it.name = "MainActivity 默认 testBean"
     }
 
     private fun initView() {
@@ -46,38 +59,31 @@ class MainActivity : AppCompatActivity() {
             val testFun = aidlTestInterface.testFun(
                     AidlTestBean().also { it.x = 100;it.y = 200 },
                     AidlTestBean().also { it.x = 200;it.y = 200 })
-            Log("MainActivity 获取结果" + testFun.name)
+            LogUtils.tag(TAG).i("MainActivity 获取结果" + testFun.name)
         }
 
         send_aidl_serve_in.setOnClickListener {
-            aidlTestInterface.setInTest(AidlTestBean().also {
-                it.y = 1
-                it.x = 1
-                it.name = "MainActivity setInTest"
-            })
+            LogUtils.tag(TAG).i("MainActivity setInTest 修改前：$testBean")
+            aidlTestInterface.setInTest(testBean)
+            LogUtils.tag(TAG).i("MainActivity setInTest 修改后：$testBean")
         }
 
         /**
          * 测试后发现，out Tag修饰的形参，set失败
          */
         send_aidl_serve_out.setOnClickListener {
-            aidlTestInterface.setOutTest(AidlTestBean().also {
-                it.y = 2
-                it.x = 2
-                it.name = "MainActivity setOutTest"
-            })
+            LogUtils.tag(TAG).i("MainActivity setOutTest 修改前：$testBean")
+            aidlTestInterface.setOutTest(testBean)
+            LogUtils.tag(TAG).i("MainActivity setOutTest 修改后：$testBean")
         }
 
+        /**
+         * inout bean类被两端同步修改
+         */
         send_aidl_serve_inout.setOnClickListener {
-            aidlTestInterface.setInOutTest(AidlTestBean().also {
-                it.y = 3
-                it.x = 3
-                it.name = "MainActivity setInOutTest"
-            })
-        }
-
-        get_aidl_serve_bean.setOnClickListener {
-            Log(aidlTestInterface.testBean.toString())
+            LogUtils.tag(TAG).i("MainActivity setInOutTest 修改前：$testBean")
+            aidlTestInterface.setInOutTest(testBean)
+            LogUtils.tag(TAG).i("MainActivity setInOutTest 修改后：$testBean")
         }
     }
 

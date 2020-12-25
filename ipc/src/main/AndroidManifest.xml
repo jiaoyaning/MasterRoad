@@ -11,11 +11,18 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="AllowBackup">
+
         <service
             android:name=".AidlTestService"
             android:enabled="true"
             android:exported="true"
-            android:process=":aidl_test" />
+            android:process=":aidl_test">
+
+            <!-- Android 5.0 后，隐式绑定 Service 需要设置包名。-->
+            <intent-filter>
+                <action android:name="com.jyn.masterroad.AidlTestService.Action" />
+            </intent-filter>
+        </service>
         <service
             android:name=".BinderTestService"
             android:enabled="true"

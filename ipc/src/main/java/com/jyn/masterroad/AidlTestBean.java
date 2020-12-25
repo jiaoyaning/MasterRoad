@@ -7,9 +7,9 @@ import android.os.Parcelable;
  * 需要再client端copy一份，路径要与serve端一直
  */
 public class AidlTestBean implements Parcelable {
-    private int x;
-    private int y;
-    private String name;
+    private int x = -1;
+    private int y = -1;
+    private String name = "默认name";
 
     public int getX() {
         return x;
@@ -36,6 +36,7 @@ public class AidlTestBean implements Parcelable {
     }
 
     public AidlTestBean() {
+
     }
 
     public AidlTestBean(int x, int y, String name) {
@@ -88,11 +89,12 @@ public class AidlTestBean implements Parcelable {
      * 如果不添加，则在使用AIDL时只支持 in 的定向tag
      * 如果添加了，则支持 in、out、inout
      *
+     * 注意：顺序不能错
      * @param dest 参数是一个Parcel,用它来存储与传输数据
      */
     public void readFromParcel(Parcel dest) {
-        name = dest.readString();
         x = dest.readInt();
         y = dest.readInt();
+        name = dest.readString();
     }
 }

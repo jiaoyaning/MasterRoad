@@ -14,6 +14,7 @@ class AidlTestService : Service() {
 
     override fun onCreate() {
         super.onCreate()
+        LogUtils.getLogConfig().configShowBorders(false)
         LogUtils.tag(TAG).i("AidlTestService onCreate启动")
     }
 
@@ -49,15 +50,33 @@ class AidlTestService : Service() {
         }
 
         override fun setInOutTest(inoutTest: AidlTestBean) {
-            bean = inoutTest
+            LogUtils.tag(TAG).i("AidlTestService setInOutTest 接受到的数据: $inoutTest")
+            inoutTest.also {
+                it.name = "AidlTestService setInOutTest"
+                it.x = 10
+                it.y = 10
+            }
+            LogUtils.tag(TAG).i("AidlTestService setInOutTest 接受并修改的数据: $inoutTest")
         }
 
         override fun setOutTest(outTest: AidlTestBean) {
-            bean = outTest
+            LogUtils.tag(TAG).i("AidlTestService outTest receive: $outTest")
+            outTest.also {
+                it.name = "AidlTestService setOutTest"
+                it.x = 20
+                it.y = 20
+            }
+            LogUtils.tag(TAG).i("AidlTestService outTest change: $outTest")
         }
 
         override fun setInTest(inTest: AidlTestBean) {
-            bean = inTest
+            LogUtils.tag(TAG).i("AidlTestService inTest 接受到的数据: $inTest")
+            inTest.also {
+                it.name = "AidlTestService inTest"
+                it.x = 30
+                it.y = 30
+            }
+            LogUtils.tag(TAG).i("AidlTestService inTest 接受并修改的数据: $inTest")
         }
     }
 }

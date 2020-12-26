@@ -124,6 +124,11 @@ class MainActivity : AppCompatActivity() {
                 it.data = Bundle().also {
                     it.putString("key", "MainActivity 发出的消息")
                 }
+                /**
+                 * 在message中放入自己的信使对象
+                 *
+                 * 消息接收方的message中，可以拿到该对象，这样，发送方和接收方就可以建立起链接了
+                 */
                 it.replyTo = clientMessenger
             }
             serverMessenger.send(message)

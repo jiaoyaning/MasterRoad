@@ -21,12 +21,14 @@ class MessengerTestService : Service() {
     @SuppressLint("HandlerLeak")
     val handler = object : Handler() {
         override fun handleMessage(msg: Message) {
-            LogUtils.tag(TAG).i("MessengerTestService 接受到消息：$msg")
+            LogUtils.tag(TAG).i("MessengerTestService 接受到消息：$msg replyTo: " + msg.replyTo)
             val obtain = Message.obtain()
-            obtain.data = Bundle().also {
-                it.putString("key", "MessengerTestService 发出的消息")
+            obtain.also {
+                it.data = Bundle().also {
+                    it.putString("key", "MessengerTestService 发出的消息")
+                }
             }
-            msg.replyTo.send(obtain)
+            msg.replyTo?.send(obtain)
         }
     }
 

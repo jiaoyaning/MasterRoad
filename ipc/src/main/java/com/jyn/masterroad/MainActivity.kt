@@ -1,12 +1,10 @@
 package com.jyn.masterroad
 
+import android.annotation.SuppressLint
 import android.content.ComponentName
 import android.content.Intent
 import android.content.ServiceConnection
-import android.os.Bundle
-import android.os.IBinder
-import android.os.Message
-import android.os.Messenger
+import android.os.*
 import androidx.appcompat.app.AppCompatActivity
 import com.apkfuns.logutils.LogUtils
 import kotlinx.android.synthetic.main.activity_main.*
@@ -21,7 +19,16 @@ const val TAG = "AIDLTest"
 
 class MainActivity : AppCompatActivity() {
     private lateinit var aidlTestInterface: AidlTestInterface
-    private lateinit var messenger: Messenger
+    private lateinit var serverMessenger: Messenger
+
+    @SuppressLint("HandlerLeak")
+    private var clientMessenger: Messenger = Messenger(object : Handler() {
+        override fun handleMessage(msg: Message) {
+            super.handleMessage(msg)
+            LogUtils.tag(TAG).i("MainActivity 接受到消息：$msg replyTo: " + msg.replyTo)
+        }
+    })
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -113,8 +120,13 @@ class MainActivity : AppCompatActivity() {
 
         send_messenger_serve_oneway.setOnClickListener {
             val message: Message = Message.obtain()
-
-
+            message.also {
+                it.data = Bundle().also {
+                    it.putString("key", "MainActivity 发出的消息")
+                }
+                it.replyTo = clientMessenger
+            }
+            serverMessenger.send(message)
         }
     }
 
@@ -131,6 +143,7 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+
     private val messengerTestService: ServiceConnection by lazy {
         object : ServiceConnection {
             override fun onServiceDisconnected(name: ComponentName?) {
@@ -139,7 +152,7 @@ class MainActivity : AppCompatActivity() {
 
             override fun onServiceConnected(name: ComponentName?, service: IBinder?) {
                 LogUtils.tag(TAG).i("MainActivity Messenger 链接成功:${name?.className}")
-                messenger = Messenger(service)
+                serverMessenger = Messenger(service)
             }
         }
     }

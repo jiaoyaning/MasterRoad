@@ -5,6 +5,8 @@ import android.content.Intent
 import android.content.ServiceConnection
 import android.os.Bundle
 import android.os.IBinder
+import android.os.Message
+import android.os.Messenger
 import androidx.appcompat.app.AppCompatActivity
 import com.apkfuns.logutils.LogUtils
 import kotlinx.android.synthetic.main.activity_main.*
@@ -15,10 +17,11 @@ import kotlinx.android.synthetic.main.activity_main.*
  *
  * https://github.com/leavesC/IPCSamples/blob/master/note/AndroidIPC%E6%9C%BA%E5%88%B6%EF%BC%883%EF%BC%89-AIDL.md
  */
-val TAG = "AIDLTest"
+const val TAG = "AIDLTest"
 
 class MainActivity : AppCompatActivity() {
     private lateinit var aidlTestInterface: AidlTestInterface
+    private lateinit var messenger: Messenger
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -34,7 +37,7 @@ class MainActivity : AppCompatActivity() {
 
         val intent1 = Intent()
         intent1.setClassName("com.jyn.masterroad", "com.jyn.masterroad.AidlTestService")
-        bindService(intent1, serviceConnection, BIND_AUTO_CREATE)
+        bindService(intent1, aidlServiceConnection, BIND_AUTO_CREATE)
 
         //需要在清单文件里配置 <action /> 才行
 //        val intent2 = Intent("com.jyn.masterroad.AidlTestService.Action")
@@ -45,6 +48,10 @@ class MainActivity : AppCompatActivity() {
 //        val intent3 = Intent()
 //        intent3.component = ComponentName("com.jyn.masterroad","com.jyn.masterroad.AidlTestService")
 //        bindService(intent3, serviceConnection, BIND_AUTO_CREATE)
+
+        val intent4 = Intent()
+        intent4.setClassName("com.jyn.masterroad", "com.jyn.masterroad.MessengerTestService")
+        bindService(intent4, messengerTestService, BIND_AUTO_CREATE)
     }
 
 
@@ -97,23 +104,42 @@ class MainActivity : AppCompatActivity() {
          * 适合用来通知服务端，不修改数据，也没有返回值
          */
         send_aidl_serve_oneway.setOnClickListener {
-            LogUtils.tag(TAG).i("MainActivity onewayTest 修改前：$testBean")
+            LogUtils.tag(TAG).i("MainActivity oneWayTest 修改前：$testBean")
             aidlTestInterface.onewayTest(testBean)
-            LogUtils.tag(TAG).i("MainActivity onewayTest 修改后：$testBean")
+            LogUtils.tag(TAG).i("MainActivity oneWayTest 修改后：$testBean")
             Thread.sleep(3000)
-            LogUtils.tag(TAG).i("MainActivity onewayTest 修改后 & sleep：$testBean")
+            LogUtils.tag(TAG).i("MainActivity oneWayTest 修改后 & sleep：$testBean")
+        }
+
+        send_messenger_serve_oneway.setOnClickListener {
+            val message: Message = Message.obtain()
+
+
         }
     }
 
-    private val serviceConnection: ServiceConnection by lazy {
+    private val aidlServiceConnection: ServiceConnection by lazy {
         object : ServiceConnection {
             override fun onServiceDisconnected(name: ComponentName?) {
-                LogUtils.tag(TAG).i("MainActivity 失去链接:$name")
+                LogUtils.tag(TAG).i("MainActivity AIDL 失去链接:${name?.className}")
             }
 
             override fun onServiceConnected(name: ComponentName?, service: IBinder?) {
                 aidlTestInterface = AidlTestInterface.Stub.asInterface(service)
-                LogUtils.tag(TAG).i("MainActivity 链接成功:$name")
+                LogUtils.tag(TAG).i("MainActivity AIDL 链接成功:${name?.className}")
+            }
+        }
+    }
+
+    private val messengerTestService: ServiceConnection by lazy {
+        object : ServiceConnection {
+            override fun onServiceDisconnected(name: ComponentName?) {
+                LogUtils.tag(TAG).i("MainActivity Messenger 失去链接:${name?.className}")
+            }
+
+            override fun onServiceConnected(name: ComponentName?, service: IBinder?) {
+                LogUtils.tag(TAG).i("MainActivity Messenger 链接成功:${name?.className}")
+                messenger = Messenger(service)
             }
         }
     }

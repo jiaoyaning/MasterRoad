@@ -22,6 +22,9 @@ import kotlinx.android.synthetic.main.activity_nested_scrolling1.*
  * https://juejin.cn/post/6844904184915951630#heading-8
  *
  * https://juejin.cn/post/6844903761060577294
+ *
+ * 源码解析
+ * https://crazymo.blog.csdn.net/article/details/103191241
  */
 @Route(path = RoutePath.NestedScrolling.path)
 class NestedScrolling1Activity : AppCompatActivity() {

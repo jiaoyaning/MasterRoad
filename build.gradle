@@ -1,7 +1,9 @@
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
 apply from: "config.gradle"
 apply plugin: 'com.alibaba.arouter'
-
+/**
+ * https://crazymo.blog.csdn.net/article/details/105188273
+ */
 buildscript {
 
     ext {

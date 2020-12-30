@@ -52,7 +52,6 @@
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <!-- 滑动的内容-->
-
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycler_view_content"
         android:layout_width="match_parent"

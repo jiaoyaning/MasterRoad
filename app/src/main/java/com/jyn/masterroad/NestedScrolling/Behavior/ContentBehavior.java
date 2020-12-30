@@ -2,7 +2,6 @@ package com.jyn.masterroad.NestedScrolling.Behavior;
 
 import android.content.Context;
 import android.util.AttributeSet;
-import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.OverScroller;
@@ -18,15 +17,14 @@ import com.jyn.masterroad.R;
 
 import java.lang.reflect.Field;
 
+/**
+ * https://juejin.cn/post/6844904184915951630#heading-6
+ */
 public class ContentBehavior extends CoordinatorLayout.Behavior {
     private String TAG = "NestedScrolling";
 
     private float topBarHeight;//topBar内容高度
     private float contentMaxTransY;//滑动内容初始化TransY
-    private float downEndY;//下滑时终点值
-
-    private float contentTransY;
-    private View contentView;
 
     public ContentBehavior() {
     }
@@ -66,13 +64,6 @@ public class ContentBehavior extends CoordinatorLayout.Behavior {
     }
 
     @Override
-    public boolean onLayoutChild(@NonNull CoordinatorLayout parent, @NonNull View child, int layoutDirection) {
-        boolean layoutChild = super.onLayoutChild(parent, child, layoutDirection);
-        contentView = child; //获取子view
-        return layoutChild;
-    }
-
-    @Override
     public boolean onStartNestedScroll(@NonNull CoordinatorLayout coordinatorLayout, @NonNull View child, @NonNull View directTargetChild, @NonNull View target, int axes, int type) {
         //只接受内容View的垂直滑动
         return directTargetChild.getId() == R.id.recycler_view_content
@@ -85,6 +76,10 @@ public class ContentBehavior extends CoordinatorLayout.Behavior {
     @Override
     public void onNestedPreScroll(@NonNull CoordinatorLayout coordinatorLayout, @NonNull View child, @NonNull View target, int dx, int dy, @NonNull int[] consumed, int type) {
         float transY = child.getTranslationY() - dy;
+
+        LogUtils.tag(TAG).i("dy:" + dy);
+        LogUtils.tag(TAG).i("transY:" + transY);
+
         //处理上滑
         if (dy > 0) {
             if (transY >= topBarHeight) {
@@ -97,15 +92,17 @@ public class ContentBehavior extends CoordinatorLayout.Behavior {
                 child.setTranslationY(topBarHeight);
             }
         } else {
-//            //子view已经到定，不能继续向下滑动了
-//            if (!child.canScrollVertically(-1)) {
-//                if (transY >= topBarHeight && transY <= contentMaxTransY){
-//                    //把y方向的滑动给消耗掉（不消耗掉会出现滑动失灵的问题）
-//                    consumed[1] = (int) dy;
-//                    //设置距上高度
-//                    child.setTranslationY(transY);
-//                }
-//            }
+            //子view已经到定，不能继续向下滑动了
+            if (!child.canScrollVertically(-1)) {
+                if (transY >= topBarHeight && transY <= contentMaxTransY) {
+                    //把y方向的滑动给消耗掉（不消耗掉会出现滑动失灵的问题）
+                    consumed[1] = (int) dy;
+                    //设置距上高度
+                    child.setTranslationY(transY);
+                } else {
+                    child.setTranslationY(contentMaxTransY);
+                }
+            }
         }
     }
 

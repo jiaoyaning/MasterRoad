@@ -7,9 +7,11 @@ import android.view.View;
 import androidx.annotation.NonNull;
 import androidx.coordinatorlayout.widget.CoordinatorLayout;
 
+import com.apkfuns.logutils.LogUtils;
 import com.jyn.masterroad.R;
 
 public class ToolbarBehavior extends CoordinatorLayout.Behavior {
+    private String TAG = "ToolbarBehavior";
     private float topBarHeight;     //topBar内容高度
     private float contentMaxTransY; //滑动内容最大滑动位置
 
@@ -32,11 +34,13 @@ public class ToolbarBehavior extends CoordinatorLayout.Behavior {
 
     @Override
     public boolean onDependentViewChanged(@NonNull CoordinatorLayout parent, @NonNull View child, @NonNull View dependency) {
-        dependency.getTranslationY();
+        float alpha = calculateAlpha(dependency.getTranslationY());
+        child.findViewById(R.id.tool_bar_title).setAlpha(alpha);
         return true;
     }
 
     private float calculateAlpha(float translationY) {
-        return (contentMaxTransY - translationY) / contentMaxTransY;
+        float v = contentMaxTransY - translationY;
+        return 1 - v / (contentMaxTransY - topBarHeight);
     }
 }

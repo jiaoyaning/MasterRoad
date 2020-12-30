@@ -76,4 +76,13 @@ object RoutePath {
         const val name = " MotionLayout"
         const val path = "/app/ MotionLayout"
     }
+
+    /**
+     * NestedScrolling 嵌套联动布局
+     * [com.jyn.masterroad.NestedScrolling.NestedScrolling1Activity]
+     */
+    object  NestedScrolling{
+        const val name = " NestedScrolling"
+        const val path = "/app/ NestedScrolling"
+    }
 }

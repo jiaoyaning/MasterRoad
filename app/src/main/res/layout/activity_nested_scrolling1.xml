@@ -22,6 +22,7 @@
     <androidx.appcompat.widget.Toolbar
         android:layout_width="match_parent"
         android:layout_height="@dimen/top_bar_height"
+        app:layout_behavior=".NestedScrolling.Behavior.ToolbarBehavior"
         tools:ignore="PrivateResource">
 
         <ImageView
@@ -29,19 +30,29 @@
             android:layout_height="wrap_content"
             android:src="@drawable/abc_vector_test" />
 
+        <TextView
+            android:id="@+id/tool_bar_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="标题"
+            android:textColor="#FFFFFF"
+            android:textSize="20sp" />
+
     </androidx.appcompat.widget.Toolbar>
 
     <!-- 滑动的标题-->
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/nested_scrolling_title_bar"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/top_bar_height">
+        android:layout_height="@dimen/top_bar_height"
+        tools:visibility="gone">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:text="滑动的标题"
+            android:text="我是一个吸顶"
             android:textColor="#FFFFFF"
             android:textSize="20sp"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -55,7 +66,7 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycler_view_content"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:background="#90FFFFFF"
         android:translationY="@dimen/nested_scrolling_content_translation_y"
         app:layout_behavior=".NestedScrolling.Behavior.ContentBehavior"

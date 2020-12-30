@@ -16,6 +16,9 @@ import com.jyn.masterroad.databinding.ItemMainBinding
 import kotlinx.android.synthetic.main.activity_nested_scrolling1.*
 
 /**
+ * 基础：
+ * https://juejin.cn/post/6844904184911773709
+ *
  * https://juejin.cn/post/6844904184915951630#heading-8
  *
  * https://juejin.cn/post/6844903761060577294

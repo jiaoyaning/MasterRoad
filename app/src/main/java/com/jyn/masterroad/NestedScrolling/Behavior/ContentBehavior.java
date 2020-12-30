@@ -33,7 +33,6 @@ public class ContentBehavior extends CoordinatorLayout.Behavior {
         super(context, attrs);
         contentMaxTransY = context.getResources().getDimension(R.dimen.nested_scrolling_content_translation_y);
         topBarHeight = context.getResources().getDimension(R.dimen.top_bar_height);
-        LogUtils.tag(TAG).i("topBarHeight:" + topBarHeight);
     }
 
     @Override
@@ -66,8 +65,9 @@ public class ContentBehavior extends CoordinatorLayout.Behavior {
     @Override
     public boolean onStartNestedScroll(@NonNull CoordinatorLayout coordinatorLayout, @NonNull View child, @NonNull View directTargetChild, @NonNull View target, int axes, int type) {
         //只接受内容View的垂直滑动
-        return directTargetChild.getId() == R.id.recycler_view_content
-                && axes == ViewCompat.SCROLL_AXIS_VERTICAL;
+//        return directTargetChild.getId() == R.id.recycler_view_content
+//                && axes == ViewCompat.SCROLL_AXIS_VERTICAL;
+        return true;
     }
 
     /**

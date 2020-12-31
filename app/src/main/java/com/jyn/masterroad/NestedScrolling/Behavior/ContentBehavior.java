@@ -78,7 +78,6 @@ public class ContentBehavior extends CoordinatorLayout.Behavior {
         float transY = child.getTranslationY() - dy;
 
         LogUtils.tag(TAG).i("dy:" + dy);
-        LogUtils.tag(TAG).i("transY:" + transY);
 
         //处理上滑
         if (dy > 0) {
@@ -91,6 +90,11 @@ public class ContentBehavior extends CoordinatorLayout.Behavior {
                 //有可能滑动太快导致transY计算过大，这种情况下直接到最顶
                 child.setTranslationY(topBarHeight);
             }
+
+
+            if (!child.canScrollVertically(1)) {
+                stopViewScroll(child);
+            }
         } else {
             //子view已经到定，不能继续向下滑动了
             if (!child.canScrollVertically(-1)) {
@@ -101,12 +105,15 @@ public class ContentBehavior extends CoordinatorLayout.Behavior {
                     child.setTranslationY(transY);
                 } else {
                     child.setTranslationY(contentMaxTransY);
+                    stopViewScroll(child);
                 }
             }
         }
     }
 
-
+    /**
+     * 不能滑动的时候，就停止掉惯性滑动
+     */
     private void stopViewScroll(View target) {
         if (target instanceof RecyclerView) {
             ((RecyclerView) target).stopScroll();

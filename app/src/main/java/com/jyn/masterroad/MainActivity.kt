@@ -11,7 +11,7 @@ import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.Adapter
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.apkfuns.logutils.LogUtils
-import com.jyn.common.utils.Router
+import com.jyn.common.utils.goto
 import com.jyn.masterroad.base.RoutePath
 import com.jyn.masterroad.databinding.ActivityMainBinding
 import com.jyn.masterroad.databinding.ItemMainBinding
@@ -73,7 +73,7 @@ class MainActivity : AppCompatActivity() {
                     .setOnClickListener {
                         LogUtils.tag("main").i(routerList[position].path)
                         routerList[position].path.get()?.let { it1 ->
-                            Router.goto(it1)
+                            goto(it1)
 
                             //可以动态修改数据
 //                            routerList[position].name.set(routerList[position].name.get() + ++i)

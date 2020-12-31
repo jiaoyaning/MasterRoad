@@ -35,7 +35,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:text="标题"
+            android:text="我是顶部标题"
             android:textColor="#FFFFFF"
             android:textSize="20sp" />
 
@@ -46,13 +46,14 @@
         android:id="@+id/nested_scrolling_title_bar"
         android:layout_width="match_parent"
         android:layout_height="@dimen/top_bar_height"
+        app:layout_behavior=".NestedScrolling.Behavior.TitleBarBehavior"
         tools:visibility="gone">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:text="我是一个吸顶"
+            android:text="我是一个吸顶标题"
             android:textColor="#FFFFFF"
             android:textSize="20sp"
             app:layout_constraintBottom_toBottomOf="parent"

@@ -1,4 +1,4 @@
-package com.jyn.java_kotlin.javaclassinit;
+package com.jyn.java_kotlin.JavaClassInit;
 
 /**
  * Created by jiaoyaning on 2020/12/26.

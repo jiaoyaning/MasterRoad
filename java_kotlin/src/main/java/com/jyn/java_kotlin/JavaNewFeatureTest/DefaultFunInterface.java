@@ -1,4 +1,4 @@
-package com.jyn.java_kotlin.javatest;
+package com.jyn.java_kotlin.JavaNewFeatureTest;
 
 /**
  * https://www.runoob.com/java/java9-private-interface-methods.html

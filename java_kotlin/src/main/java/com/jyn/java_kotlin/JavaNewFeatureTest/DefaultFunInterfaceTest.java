@@ -1,4 +1,4 @@
-package com.jyn.java_kotlin.javatest;
+package com.jyn.java_kotlin.JavaNewFeatureTest;
 
 /**
  * Java8 Java9 接口方法测试

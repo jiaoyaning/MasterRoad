@@ -1,4 +1,4 @@
-package com.jyn.java_kotlin.javatest;
+package com.jyn.java_kotlin.JavaNewFeatureTest;
 
 import java.util.Arrays;
 import java.util.List;

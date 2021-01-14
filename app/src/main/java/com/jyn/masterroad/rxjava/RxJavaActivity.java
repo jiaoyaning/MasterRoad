@@ -19,6 +19,10 @@ import io.reactivex.disposables.Disposable;
 import io.reactivex.functions.Function;
 import io.reactivex.schedulers.Schedulers;
 
+/**
+ * RxJava中Observable、Flowable、Single、Maybe 有何区别?
+ * https://www.wanandroid.com/wenda/show/16634
+ */
 @Route(path = "/test/TestActivity")
 public class RxJavaActivity extends AppCompatActivity {
 

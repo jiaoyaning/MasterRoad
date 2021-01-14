@@ -28,9 +28,14 @@ android {
         }
     }
 
+    /**
+     * R8编译器官方文档
+     * https://developer.android.google.cn/studio/build/shrink-code
+     */
     buildTypes {
         release {
-            minifyEnabled false
+            minifyEnabled true //R8 代码缩减功能
+            shrinkResources true //缩减资源 : 资源缩减只有在与代码缩减配合使用时才能发挥作用
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
@@ -112,4 +117,6 @@ dependencies {
     implementation 'me.tatarka.bindingcollectionadapter2:bindingcollectionadapter:4.0.0'
     implementation 'me.tatarka.bindingcollectionadapter2:bindingcollectionadapter-recyclerview:4.0.0'
     implementation 'me.tatarka.bindingcollectionadapter2:bindingcollectionadapter-viewpager2:4.0.0'
+
+    debugImplementation 'com.squareup.leakcanary:leakcanary-android:2.6'
 }

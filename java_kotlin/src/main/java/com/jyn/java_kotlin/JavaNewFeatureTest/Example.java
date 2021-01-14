@@ -1,6 +1,4 @@
-package com.jyn.java_kotlin.javatest;
-
-import java.util.function.Function;
+package com.jyn.java_kotlin.JavaNewFeatureTest;
 
 /**
  * Created by jiaoyaning on 2020/12/16.

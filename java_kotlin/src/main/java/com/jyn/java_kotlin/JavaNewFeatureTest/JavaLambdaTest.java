@@ -1,4 +1,4 @@
-package com.jyn.java_kotlin.javatest;
+package com.jyn.java_kotlin.JavaNewFeatureTest;
 
 import java.util.function.BinaryOperator;
 import java.util.function.Consumer;

@@ -1,4 +1,4 @@
-package com.jyn.java_kotlin.javaclassinit;
+package com.jyn.java_kotlin.JavaClassInit;
 
 /*
  * 类的初始化：是类的生命周期中的一个阶段，会为类中各个类成员赋初始值。
@@ -77,7 +77,7 @@ public class Son extends Father {
 
 
         // 《《 类的实例化测试  》》
-//        Son son = new Son();
+        Son son = new Son();
 
         /*
          * 执行结果：
@@ -89,10 +89,17 @@ public class Son extends Father {
          *
          * =======================   // 前面的执行结果是类的初始化过程
          *
-         * Son1 成员变量所调用方法      // 执行 i 变量初始化的时候调用test()方法，
-         * Father 普通代码块           //
-         * Father 构造方法
+         *  执行 i 变量初始化的时候调用test()方法
+         *  执行父类test()方法，但是在父类的<init>()方法中test是有this对象调用的
+         *  this对象又指正在创建的对象所以这里就调用的是子类的test
          * Son1 成员变量所调用方法
+         *
+         * Father 普通代码块
+         * Father 构造方法
+         *
+         *  又把test()方法执行一遍
+         * Son1 成员变量所调用方法
+         *
          * Son1 普通代码块
          * Son1 构造方法
          */

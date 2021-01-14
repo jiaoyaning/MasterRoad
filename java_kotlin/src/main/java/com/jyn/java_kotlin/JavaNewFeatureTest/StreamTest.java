@@ -1,11 +1,9 @@
-package com.jyn.java_kotlin.javatest;
+package com.jyn.java_kotlin.JavaNewFeatureTest;
 
 import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
-import java.util.function.BiConsumer;
 import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 /**
  * Java 8 中新增的 Stream 类提供了一种新的数据处理方式。

@@ -5,6 +5,8 @@ apply plugin: 'kotlin-android-extensions'
 apply plugin: 'dagger.hilt.android.plugin'
 apply plugin: 'kotlin-kapt'
 
+apply plugin: 'com.jyn.plugin'
+
 apply from: '../timer.gradle'
 
 android {
@@ -74,7 +76,6 @@ dependencies {
     implementation project(path: ':custom_view')
     implementation project(path: ':Leetcode')
     implementation project(path: ':common')
-    implementation project(path: ':animation')
 
     testImplementation 'junit:junit:4.12'
     androidTestImplementation rootProject.ext.androidx["androidx.test.ext-junit"]

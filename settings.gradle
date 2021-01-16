@@ -1,4 +1,4 @@
-include ':animation'
+include ':plugin'
 include ':Leetcode'
 include ':java_kotlin'
 rootProject.name='MasterRoad'

@@ -1,0 +1,32 @@
+plugins {
+    id 'java-library'
+    id 'groovy'
+    id 'kotlin'
+    id 'maven'
+    id 'maven-publish'
+}
+
+java {
+    sourceCompatibility = JavaVersion.VERSION_1_8
+    targetCompatibility = JavaVersion.VERSION_1_8
+}
+
+dependencies {
+    implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+    //gradle sdk
+    implementation gradleApi()
+    //groovy sdk
+    implementation localGroovy()
+    implementation 'org.javassist:javassist:3.24.0-GA'
+}
+
+publishing{
+    publications{
+        GreetingPlugin(MavenPublication){
+            from components.java
+            groupId 'com.jyn'
+            artifactId 'GreetingPlugin'
+            version '1.0'
+        }
+    }
+}

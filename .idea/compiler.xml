@@ -4,6 +4,7 @@
     <bytecodeTargetLevel target="1.8">
       <module name="java_kotlin" target="1.7" />
       <module name="Leetcode" target="1.8" />
+      <module name="MasterRoad.animation" target="1.8" />
     </bytecodeTargetLevel>
   </component>
 </project>

@@ -74,7 +74,7 @@ public class ProxyTest {
         /*
          * 通过Javassist动态生成class对象
          */
-        JavassistBuildClass javassistBuildClass = new JavassistBuildClass(ActionDao.class);
+        JavassistBuildClass<?> javassistBuildClass = new JavassistBuildClass<ActionDao>(ActionDao.class);
         ActionDao actionDao1 = (ActionDao) javassistBuildClass.getProxyObject();
         actionDao1.doSomething();
 
@@ -83,7 +83,7 @@ public class ProxyTest {
         /*
          * 通过Javassist动态生成class对象，然后实现动态代理
          */
-        Class aClass = createObjectClass();
+        Class<?> aClass = createObjectClass();
         ActionDao actionDao2 = (ActionDao) getProxy(aClass);
         actionDao2.doSomething();
     }
@@ -92,7 +92,7 @@ public class ProxyTest {
      * Javaassist方式
      * 创建class类
      */
-    public static Class createObjectClass() {
+    public static Class<?> createObjectClass() {
         try {
             ClassPool classPool = ClassPool.getDefault();
             CtClass cc = classPool.makeClass("java_kotlin.src.main.java.com.jyn.java_kotlin.DesignPattern.Proxy.ActionDaoImpl2");
@@ -112,7 +112,7 @@ public class ProxyTest {
         return null;
     }
 
-    public static Object getProxy(Class clazz) {
+    public static Object getProxy(Class<?> clazz) {
 
         // 代理工厂
         ProxyFactory proxyFactory = new ProxyFactory();

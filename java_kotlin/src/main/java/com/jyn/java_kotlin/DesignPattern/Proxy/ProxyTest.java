@@ -72,13 +72,20 @@ public class ProxyTest {
         System.out.println();
 
         /*
-         * 通过Javassist动态生成class对象来实现动态代理
+         * 通过Javassist动态生成class对象
          */
-        JavassistProxy javassistProxy = new JavassistProxy(ActionDao.class);
-        ActionDao actionDao1 = (ActionDao) javassistProxy.getProxyObject();
+        JavassistBuildClass javassistBuildClass = new JavassistBuildClass(ActionDao.class);
+        ActionDao actionDao1 = (ActionDao) javassistBuildClass.getProxyObject();
         actionDao1.doSomething();
 
         System.out.println();
+
+        /*
+         * 通过Javassist动态生成class对象，然后实现动态代理
+         */
+        Class aClass = createObjectClass();
+        ActionDao actionDao2 = (ActionDao) getProxy(aClass);
+        actionDao2.doSomething();
     }
 
     /**
@@ -88,8 +95,8 @@ public class ProxyTest {
     public static Class createObjectClass() {
         try {
             ClassPool classPool = ClassPool.getDefault();
-//            CtClass cc = classPool.makeClass("java_kotlin.src.main.java.com.jyn.java_kotlin.DesignPattern.Proxy.ActionDaoImpl2");
-            CtClass cc = classPool.makeClass("java_kotlin.build.classes.java.main.com.jyn.java_kotlin.DesignPattern.Proxy.ActionDaoImpl2");
+            CtClass cc = classPool.makeClass("java_kotlin.src.main.java.com.jyn.java_kotlin.DesignPattern.Proxy.ActionDaoImpl2");
+//            CtClass cc = classPool.makeClass("java_kotlin.build.classes.java.main.com.jyn.java_kotlin.DesignPattern.Proxy.ActionDaoImpl2");
             // 设置接口
             CtClass ctClass = null;
             ctClass = classPool.get("com.jyn.java_kotlin.DesignPattern.Proxy.ActionDao");
@@ -105,7 +112,7 @@ public class ProxyTest {
         return null;
     }
 
-    public static Object getProxy(Class clazz) throws Exception {
+    public static Object getProxy(Class clazz) {
 
         // 代理工厂
         ProxyFactory proxyFactory = new ProxyFactory();
@@ -119,6 +126,11 @@ public class ProxyTest {
 
             return result;
         });
-        return proxyFactory.createClass().newInstance();
+        try {
+            return proxyFactory.createClass().newInstance();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
     }
 }

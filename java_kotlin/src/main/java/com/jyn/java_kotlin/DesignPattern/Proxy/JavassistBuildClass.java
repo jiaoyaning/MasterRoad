@@ -13,10 +13,10 @@ import javassist.CtMethod;
  * <p>
  * https://my.oschina.net/u/2457218/blog/1499778
  */
-public class JavassistProxy<T> {
+public class JavassistBuildClass<T> {
     private final Class<T> t;//接口
 
-    public JavassistProxy(Class<T> t) {
+    public JavassistBuildClass(Class<T> t) {
         this.t = t;
     }
 

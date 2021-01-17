@@ -1,4 +1,4 @@
-include ':plugin'
+include ':Plugin:PluginHelloWorld'
 include ':Leetcode'
 include ':java_kotlin'
 rootProject.name='MasterRoad'

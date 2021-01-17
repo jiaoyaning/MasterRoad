@@ -5,7 +5,7 @@ apply plugin: 'kotlin-android-extensions'
 apply plugin: 'dagger.hilt.android.plugin'
 apply plugin: 'kotlin-kapt'
 
-apply plugin: 'com.jyn.plugin'
+apply plugin: 'com.jyn.helloworld'
 
 apply from: '../timer.gradle'
 

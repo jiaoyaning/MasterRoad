@@ -24,8 +24,8 @@ publishing{
     publications{
         GreetingPlugin(MavenPublication){
             from components.java
-            groupId 'com.jyn'
-            artifactId 'GreetingPlugin'
+            groupId 'com.jyn.plugin'
+            artifactId 'HelloWorld'
             version '1.0'
         }
     }

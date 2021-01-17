@@ -4,7 +4,7 @@ apply plugin: 'kotlin-android-extensions'
 apply plugin: 'dagger.hilt.android.plugin'
 apply plugin: 'kotlin-kapt'
 
-apply plugin: 'com.jyn.helloworld'
+//apply plugin: 'com.jyn.helloworld'
 
 apply from: '../timer.gradle'
 
@@ -41,8 +41,8 @@ android {
         }
     }
 
-    dataBinding {
-        enabled true
+    buildFeatures{
+        dataBinding = true
     }
 
     compileOptions {

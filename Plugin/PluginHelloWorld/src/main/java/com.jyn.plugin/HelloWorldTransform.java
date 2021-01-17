@@ -13,6 +13,9 @@ import java.util.Set;
 
 /**
  * Transform 是 Android 官方提供给开发者在项目构建阶段由 class 到 dex 转换期间修改class文件的一套api。
+ * <p>
+ * Gradle 学习之 Android 插件的 Transform API
+ * https://juejin.cn/post/6844903891138674696
  */
 class HelloWorldTransform extends Transform {
     Project project;
@@ -22,7 +25,10 @@ class HelloWorldTransform extends Transform {
     }
 
     /**
-     * Transform的名称，但是这里并不是真正的名称，真正的名称还需要进行拼接
+     * Transform的名称，也对应了该 Transform 所代表的 Task 名称
+     * <p>
+     * 类似：transformClassesWith + getName() + ForXXX
+     * 这里应该是：transformClassesWithHelloWorldTransformForXXX
      */
     @Override
     public String getName() {
@@ -58,20 +64,20 @@ class HelloWorldTransform extends Transform {
 
     /**
      * 是否支持增量编译，增量编译就是如果第二次编译相应的task没有改变，那么就直接跳过，节省时间
-     *
+     * <p>
      * https://www.cnblogs.com/davenkin/p/3418260.html
      */
     @Override
     public boolean isIncremental() {
-        return false;
+        return true;
     }
 
     /**
      * 最主要的方法，这里对文件或jar进行处理，进行代码的插入
-     *
+     * <p>
      * TransformInput:        对输入的class文件转变成目标字节码文件，TransformInput就是这些输入文件的抽象。
      * 目前它包含DirectoryInput集合与JarInput集合。
-     *
+     * <p>
      * DirectoryInput:        源码方式参与项目编译的所有目录结构及其目录下的源文件。
      * JarInput:              Jar包方式参与项目编译的所有本地jar或远程jar包
      * TransformOutProvider:  通过这个类来获取输出路径。

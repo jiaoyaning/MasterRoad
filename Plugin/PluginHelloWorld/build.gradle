@@ -17,6 +17,9 @@ dependencies {
     implementation gradleApi()
     //groovy sdk
     implementation localGroovy()
+    //Android 插件
+    implementation 'com.android.tools.build:gradle:4.0.2'
+
     implementation 'org.javassist:javassist:3.24.0-GA'
 }
 

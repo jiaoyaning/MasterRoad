@@ -4,6 +4,7 @@
  */
 
 import java.util.concurrent.TimeUnit
+
 // Log timings per task.
 class TimingsListener implements TaskExecutionListener, BuildListener {
     private long startTime
@@ -12,6 +13,7 @@ class TimingsListener implements TaskExecutionListener, BuildListener {
     @Override
     void beforeExecute(Task task) {
         startTime = System.nanoTime()
+        println "-- TimingsListener beforeExecute task:" + task.name
     }
 
     @Override
@@ -19,11 +21,12 @@ class TimingsListener implements TaskExecutionListener, BuildListener {
         def ms = TimeUnit.MILLISECONDS.convert(System.nanoTime() - startTime, TimeUnit.NANOSECONDS);
         timings.add([ms, task.path])
         task.project.logger.warn "${task.path} took ${ms}ms"
+        println "-- TimingsListener afterExecute task:" + task.name
     }
 
     @Override
     void buildFinished(BuildResult result) {
-        println "Task timings:"
+        println "----- TimingsListener Task timings:"
         for (timing in timings) {
             if (timing[0] >= 50) {
                 printf "%7sms  %s\n", timing

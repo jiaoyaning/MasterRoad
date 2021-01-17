@@ -73,7 +73,6 @@ dependencies {
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
 
     implementation project(path: ':java_kotlin')
-    implementation project(path: ':custom_view')
     implementation project(path: ':Leetcode')
     implementation project(path: ':common')
 

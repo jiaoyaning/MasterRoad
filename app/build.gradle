@@ -8,6 +8,11 @@ apply plugin: 'com.jyn.helloworld'
 
 apply from: '../timer.gradle'
 
+/**
+ * 配置构建 官方文档
+ * https://developer.android.com/studio/build?hl=zh-cn
+ */
+
 android {
     compileSdkVersion rootProject.ext.compileSdkVersion
     buildToolsVersion rootProject.ext.buildToolsVersion

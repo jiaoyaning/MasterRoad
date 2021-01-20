@@ -12,6 +12,7 @@ import java.util.stream.Collectors;
  * https://blog.csdn.net/y_k_y/article/details/84633001
  */
 public class StreamTest {
+    @SuppressWarnings("NewApi")
     public static void main(String[] args) {
         List<String> list = Arrays.asList("mma", "aqqq", "abbbb", "ccccccc");
 

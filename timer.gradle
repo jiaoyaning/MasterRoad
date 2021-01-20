@@ -47,4 +47,7 @@ class TimingsListener implements TaskExecutionListener, BuildListener {
     void settingsEvaluated(Settings settings) {}
 }
 
-gradle.addListener new TimingsListener()
+/**
+ * 注册task监听
+ */
+//gradle.addListener new TimingsListener()

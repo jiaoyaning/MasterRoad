@@ -51,6 +51,15 @@ object RoutePath {
     }
 
     /**
+     * RxJava 测试
+     * [com.jyn.masterroad.RxJava.RxJavaActivity]
+     */
+    object RxJava {
+        const val name = "RxJavaActivity"
+        const val path = "/app/RxJavaActivity"
+    }
+
+    /**
      * BindingCollection 双向绑定 recyclerview
      * [com.jyn.masterroad.jetpack.bindingcollection.BindingCollectionActivity]
      */

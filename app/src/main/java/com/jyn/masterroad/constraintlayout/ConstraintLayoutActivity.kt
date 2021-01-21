@@ -12,6 +12,8 @@ import com.jyn.masterroad.base.RoutePath
  * http://www.flyou.ren/2019/10/10/ConstraintLayout/
  *
  * https://mp.weixin.qq.com/s/7wEr6okR-CAAoNDYB4gHig
+ *
+ * https://juejin.cn/post/6844903733948579847
  */
 @Route(path = RoutePath.ConstraintLayout.path)
 class ConstraintLayoutActivity : AppCompatActivity() {

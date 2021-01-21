@@ -1,5 +1,6 @@
 package com.jyn.masterroad
 
+import android.app.ActivityManager
 import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -17,7 +18,7 @@ import com.jyn.masterroad.databinding.ActivityMainBinding
 import com.jyn.masterroad.databinding.ItemMainBinding
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.item_main.view.*
-import java.lang.NullPointerException
+
 
 /**
  * https://www.jianshu.com/p/2ee3672efb1f
@@ -48,6 +49,23 @@ class MainActivity : AppCompatActivity() {
         setContentView(activityMainBinding.root)
         main_recycle.layoutManager = LinearLayoutManager(this)
         main_recycle.adapter = MainAdapter(routerList, this)
+
+        val activityManager = getSystemService(Context.ACTIVITY_SERVICE) as ActivityManager
+        //最大分配内存
+        val memory = activityManager.memoryClass
+        LogUtils.tag("main").i("最大可用内存: $memory")
+
+
+        //应用程序最大可用内存
+        val maxMemory = Runtime.getRuntime().maxMemory().toInt() / 1024 / 1024
+        //应用程序已被分配的内存
+        val totalMemory = Runtime.getRuntime().totalMemory().toInt() / 1024 / 1024.toLong()
+        //应用程序已获得内存中未使用内存
+        val freeMemory = Runtime.getRuntime().freeMemory().toInt() / 1024 / 1024.toLong()
+
+        LogUtils.tag("main").i("maxMemory : $maxMemory")
+        LogUtils.tag("main").i("totalMemory : $totalMemory")
+        LogUtils.tag("main").i("freeMemory : $freeMemory")
     }
 
     /**
@@ -71,7 +89,6 @@ class MainActivity : AppCompatActivity() {
                     .itemView
                     .main_recycle_item_btn
                     .setOnClickListener {
-                        LogUtils.tag("main").i(routerList[position].path)
                         routerList[position].path.get()?.let { it1 ->
                             goto(it1)
 

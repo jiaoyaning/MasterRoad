@@ -23,6 +23,7 @@ fun testFun() {
 }
 
 object KotlinStaticObject {
+    //const的作用就是把此处的默认的private给变成public
     //const只能修饰val，没有自定义的getter方法，如果进行拼接或者运算，被拼接的其他变量也要是宏变量，否则编译不通过
     const val testValWithConst = "2.这是一个object的静态常量！val常量，被const修饰！"
 

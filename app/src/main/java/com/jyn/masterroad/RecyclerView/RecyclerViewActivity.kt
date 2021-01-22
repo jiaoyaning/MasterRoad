@@ -13,6 +13,9 @@ import com.jyn.masterroad.R
  *
  * 抽丝剥茧RecyclerView - LayoutManager
  * https://juejin.cn/post/6844903924256735239
+ *
+ * 把LayoutManager撸出花儿来，自定义无限循环的LayoutManager
+ * https://mp.weixin.qq.com/s/NAI4ZmoGPoW8UubwNHRXtA
  */
 class RecyclerViewActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

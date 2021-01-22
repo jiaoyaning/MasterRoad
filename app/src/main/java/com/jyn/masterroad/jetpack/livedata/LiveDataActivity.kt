@@ -13,6 +13,9 @@ import kotlinx.android.synthetic.main.activity_live_data.*
 
 /**
  * https://juejin.im/post/6892704779781275662
+ *
+ * Android官方架构组件LiveData: 观察者模式领域二三事
+ * https://juejin.cn/post/6844903748574117901
  */
 @Route(path = RoutePath.LiveData.path)
 class LiveDataActivity : AppCompatActivity() {

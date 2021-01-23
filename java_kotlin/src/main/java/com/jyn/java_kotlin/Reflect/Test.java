@@ -1,8 +1,16 @@
-package com.jyn.java_kotlin.Reflection;
+package com.jyn.java_kotlin.Reflect;
 
 public class Test {
     private int integer;
+    @TestAnnotation
     public String string;
+
+    //测试反射能不能修改final
+    public final String finalStringTest = "finalStringTest final 修饰 默认值";
+    public final Inner finalInner = new Inner();
+
+    //反射 对于 static
+    public static String staticStringTest = "staticStringTest static 修饰 默认值";
 
     public Test() {
         System.out.println("== 调用了 public Test() 构造方法");
@@ -35,6 +43,7 @@ public class Test {
         return string;
     }
 
+    @TestAnnotation(value = "注解value所设置的值")
     private void setString(String string) {
         System.out.println("== 调用了 private setString(string) 私有方法 ; " + "string :" + string);
         this.string = string;
@@ -46,5 +55,19 @@ public class Test {
                 "integer=" + integer +
                 ", string='" + string + '\'' +
                 '}';
+    }
+
+    /*
+     * 内联优化后，等于 :
+     * public String getFinalStringTest() {
+     *      return "finalStringTest 默认值";
+     * }
+     */
+    public String getFinalStringTest() {
+        return finalStringTest;
+    }
+
+    static class Inner {
+
     }
 }

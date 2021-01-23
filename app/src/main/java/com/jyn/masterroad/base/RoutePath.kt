@@ -91,7 +91,7 @@ object RoutePath {
      * [com.jyn.masterroad.NestedScrolling.NestedScrolling1Activity]
      */
     object  NestedScrolling{
-        const val name = " NestedScrolling"
-        const val path = "/app/ NestedScrolling"
+        const val name = " NestedScrolling1"
+        const val path = "/app/ NestedScrolling1"
     }
 }

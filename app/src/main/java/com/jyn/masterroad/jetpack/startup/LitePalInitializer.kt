@@ -1,4 +1,4 @@
-package com.jyn.masterroad.startup
+package com.jyn.masterroad.jetpack.startup
 
 import android.app.Application
 import android.content.Context

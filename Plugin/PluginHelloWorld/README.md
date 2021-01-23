@@ -24,5 +24,8 @@ Gradle 学习之 Android 插件的 Transform API
 https://juejin.cn/post/6844903891138674696
 
 
+一起玩转Android项目中的字节码
+http://quinnchen.cn/2018/09/13/2018-09-13-asm-transform/
 
-
+写个更牛逼的Transform | Plugin 进阶教程
+https://juejin.cn/post/6916304559602139149

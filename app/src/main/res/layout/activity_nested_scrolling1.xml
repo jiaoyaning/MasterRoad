@@ -14,6 +14,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:adjustViewBounds="true"
+            android:scaleType="centerCrop"
             android:src="@mipmap/icon_master_road2" />
 
     </FrameLayout>
@@ -47,13 +48,13 @@
         android:layout_width="match_parent"
         android:layout_height="@dimen/top_bar_height"
         app:layout_behavior=".NestedScrolling.Behavior.TitleBarBehavior"
-        tools:visibility="gone">
+        tools:visibility="visible">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:text="我是一个吸顶标题"
+            android:text="我是一个可滑动的吸顶标题"
             android:textColor="#FFFFFF"
             android:textSize="20sp"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -63,7 +64,10 @@
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-    <!-- 滑动的内容-->
+    <!-- 滑动的内容
+         app:layout_behavior=".NestedScrolling.Behavior.ContentBehavior"
+         @string/appbar_scrolling_view_behavior
+    -->
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycler_view_content"
         android:layout_width="match_parent"

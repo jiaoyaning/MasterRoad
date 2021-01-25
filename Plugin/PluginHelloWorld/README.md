@@ -11,8 +11,11 @@ https://blog.csdn.net/wise18146705004/article/details/104203205
 Android Gradle Plugin插件开发——基础
 https://blog.csdn.net/guy_guy/article/details/80914600
 
-Transform详解
-https://www.jianshu.com/p/37a5e058830a
+Transform详解 -- Reading
+https://www.jianshu.com/p/37a5e058830a 
+
+一起玩转Android项目中的字节码（上）
+https://blog.csdn.net/weixin_34413802/article/details/89543858
 
 深入了解TransformApi
 https://yutiantina.github.io/2019/04/24/%E6%B7%B1%E5%85%A5%E4%BA%86%E8%A7%A3TransformApi/

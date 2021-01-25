@@ -3,6 +3,7 @@ package com.jyn.plugin;
 import com.android.build.api.transform.Context;
 import com.android.build.api.transform.Format;
 import com.android.build.api.transform.QualifiedContent;
+import com.android.build.api.transform.Status;
 import com.android.build.api.transform.Transform;
 import com.android.build.api.transform.TransformException;
 import com.android.build.api.transform.TransformInput;
@@ -78,7 +79,7 @@ class HelloWorldTransform extends Transform {
     /*
      * 是否支持增量编译，增量编译就是如果第二次编译相应的task没有改变，那么就直接跳过，节省时间
      *
-     * 注意: 即使某些情况下返回了 true ，但是在运行时它还是会返回 false
+     * 注意: 即使某些情况下返回了 true ，但是在运行时它还是会返回 false ，比如 clean build
      *
      * https://www.cnblogs.com/davenkin/p/3418260.html
      */
@@ -103,68 +104,112 @@ class HelloWorldTransform extends Transform {
         super.transform(context, inputs, referencedInputs, outputProvider, isIncremental);
     }
 
-    /**
+    /*
      * TransformInput 接口 {@link TransformInput}
      * 所谓 Transform 就是对输入的 class 文件转变成目标字节码文件，
      * 而TransformInput 就是这些输入文件的抽象。目前它包括两部分：DirectoryInput 集合与 JarInput 集合。
-     * <p>
+     *
      * DirectoryInput 代表以源码方式参与项目编译的所有目录结构及其目录下的源码文件，
      * 可以借助于它来修改输出文件的目录结构以及目标字节码文件。
-     * <p>
+     *
      * JarInput 代表以 jar 包方式参与项目编译的所有本地 jar 包或远程 jar 包，可以借助它来动态添加 jar 包。
-     * <p>
+     *
      * --------------------------------
-     * <p>
+     *
      * TransformOutputProvider 接口 {@link TransformOutputProvider}
      * 可调用 getContentLocation 获取输出目录
+     * 我们将每个jar包和class文件复制到 contentLocation 路径，这个 contentLocation 路径就是下一个Transform的输入数据
      */
     @Override
-    public void transform(TransformInvocation transformInvocation) throws TransformException, InterruptedException, IOException {
+    public void transform(TransformInvocation transformInvocation) throws IOException {
         long startTime = System.currentTimeMillis();
 
         System.out.println("--- transform 开始");
 
-        Collection<TransformInput> invocationInputs = transformInvocation.getInputs();
+        //当前是否是增量编译
+        boolean isIncremental = transformInvocation.isIncremental();
+        System.out.println("---- 当前是否是增量编译 : " + isIncremental);
+
+        //消费型输入，可以从中获取jar包和class文件夹路径。需要输出给下一个任务
+        Collection<TransformInput> inputs = transformInvocation.getInputs();
+
+        //引用型输入，无需输出。
+        Collection<TransformInput> referencedInputs = transformInvocation.getReferencedInputs();
+
+        //OutputProvider管理输出路径，如果消费型输入为空，你会发现OutputProvider == null
         TransformOutputProvider outputProvider = transformInvocation.getOutputProvider();
 
-        invocationInputs.forEach(transformInput -> {
+        //如果非增量，则清空旧的输出内容
+        if (!isIncremental) {
+            outputProvider.deleteAll();
+        }
+
+        inputs.forEach(input -> {
             // 对文件夹进行遍历，里面包含的是我们手写的类以及R.class、BuildConfig.class以及R$XXX.class等
-            transformInput.getDirectoryInputs().forEach(directoryInput -> {
-                // 获取输出目录
-                System.out.println("---- directory input :" + directoryInput.getFile().getAbsolutePath());
-
-                File contentLocation = outputProvider.getContentLocation(directoryInput.getName(),
-                        directoryInput.getContentTypes(), directoryInput.getScopes(), Format.DIRECTORY);
-
-                System.out.println("---- directory output :" + contentLocation.getAbsolutePath());
-
-                // 将input的目录复制到output指定目录
-                try {
-                    FileUtils.copyDirectory(directoryInput.getFile(), contentLocation);
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-            });
+            input.getDirectoryInputs()
+                    .forEach(directoryInput -> {
+                        try {
+                            // 获取输出目录
+                            System.out.println("---- directory input :" + directoryInput.getFile().getAbsolutePath());
+                            File contentLocation = outputProvider.getContentLocation(
+                                    directoryInput.getName(),
+                                    directoryInput.getContentTypes(),
+                                    directoryInput.getScopes(),
+                                    Format.DIRECTORY);
+                            System.out.println("---- directory output :" + contentLocation.getAbsolutePath());
+                            // 将input的目录复制到output指定目录
+                            FileUtils.copyDirectory(directoryInput.getFile(), contentLocation);
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
+                    });
 
             // 对类型为jar文件的input进行遍历
-            transformInput.getJarInputs().forEach(jarInput -> {
+            input.getJarInputs()
+                    .forEach(jarInput -> {
+                        try {
+                            System.out.println("---- jar input :" + jarInput.getFile().getAbsolutePath());
+                            // 重命名输出文件（同目录copyFile会冲突）
+                            // String newName = jarInput.getName().replace(".jar", "") + DigestUtils.md5Hex(jarInput.getName());
+                            File contentLocation = outputProvider.getContentLocation(
+//                        newName,
+                                    jarInput.getFile().getAbsolutePath(),
+                                    jarInput.getContentTypes(),
+                                    jarInput.getScopes(),
+                                    Format.JAR);
+//                            /*
+//                             * NOTCHANGED: 当前文件不需处理，甚至复制操作都不用；
+//                             * ADDED、CHANGED: 正常处理，输出给下一个任务；
+//                             * REMOVED: 移除outputProvider获取路径对应的文件。
+//                             */
+//                            Status status = jarInput.getStatus();
+//                            System.out.println("---- jar input status :" + status);
+//                            if (isIncremental) {
+//                                switch (status) {
+//                                    case NOTCHANGED:
+//                                        break;
+//                                    case ADDED:
+//                                    case CHANGED:
+//                                        //TODO 做一些ASM处理
+//                                        break;
+//                                    case REMOVED:
+//                                        if (contentLocation.exists()) {
+//                                            FileUtils.delete(contentLocation);
+//                                        }
+//                                        break;
+//                                    default:
+//                                        throw new IllegalStateException("Unexpected value: " + status);
+//                                }
+//                            }
 
-                System.out.println("---- jar input :" + jarInput.getFile().getAbsolutePath());
-                // 重命名输出文件（同目录copyFile会冲突）
-                String newName = jarInput.getName().replace(".jar", "") + DigestUtils.md5Hex(jarInput.getName());
+                            System.out.println("---- jar output :" + contentLocation.getAbsolutePath());
 
-                File contentLocation = outputProvider.getContentLocation(newName,
-                        jarInput.getContentTypes(), jarInput.getScopes(), Format.JAR);
-
-                System.out.println("---- jar output :" + contentLocation.getAbsolutePath());
-                try {
-                    FileUtils.copyFile(jarInput.getFile(), contentLocation);
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-            });
-
+                            FileUtils.copyFile(jarInput.getFile(), contentLocation);
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
+                    });
+            System.out.println("--- transform 结束 历时:" + (System.currentTimeMillis() - startTime) + "ms");
         });
-        System.out.println("--- transform 结束 历时:" + (System.currentTimeMillis() - startTime) + "ms");
     }
 }

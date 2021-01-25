@@ -22,6 +22,7 @@ class BindingCollectionActivity : AppCompatActivity() {
         binding = ActivityBindingCollectionBinding.inflate(layoutInflater)
         setContentView(binding.root)
         viewmodel = ViewModelProvider(this).get(BindingCollectionModel::class.java)
+        viewmodel.recyclerView = binding.bindingCollectionRecycler;
         binding.viewModel = viewmodel
     }
 }

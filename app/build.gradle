@@ -46,8 +46,13 @@ android {
         }
     }
 
-    buildFeatures{
-        dataBinding = true
+    /*
+     * kotlin-android-extensions插件被废弃，推荐使用viewBinding
+     * https://mp.weixin.qq.com/s/keR7bO-Nu9bBr5Nhevbe1Q
+     */
+    buildFeatures {
+        dataBinding true
+        viewBinding true
     }
 
     compileOptions {

@@ -126,9 +126,6 @@ class HelloWorldTransform extends Transform {
 
         System.out.println("--- transform 开始");
 
-        //当前是否是增量编译
-        boolean isIncremental = transformInvocation.isIncremental();
-        System.out.println("---- 当前是否是增量编译 : " + isIncremental);
 
         //消费型输入，可以从中获取jar包和class文件夹路径。需要输出给下一个任务
         Collection<TransformInput> inputs = transformInvocation.getInputs();
@@ -139,44 +136,37 @@ class HelloWorldTransform extends Transform {
         //OutputProvider管理输出路径，如果消费型输入为空，你会发现OutputProvider == null
         TransformOutputProvider outputProvider = transformInvocation.getOutputProvider();
 
-        //如果非增量，则清空旧的输出内容
-        if (!isIncremental) {
-            outputProvider.deleteAll();
-        }
-
         inputs.forEach(input -> {
             // 对文件夹进行遍历，里面包含的是我们手写的类以及R.class、BuildConfig.class以及R$XXX.class等
-            input.getDirectoryInputs()
-                    .forEach(directoryInput -> {
-                        try {
-                            // 获取输出目录
-                            System.out.println("---- directory input :" + directoryInput.getFile().getAbsolutePath());
-                            File contentLocation = outputProvider.getContentLocation(
-                                    directoryInput.getName(),
-                                    directoryInput.getContentTypes(),
-                                    directoryInput.getScopes(),
-                                    Format.DIRECTORY);
-                            System.out.println("---- directory output :" + contentLocation.getAbsolutePath());
-                            // 将input的目录复制到output指定目录
-                            FileUtils.copyDirectory(directoryInput.getFile(), contentLocation);
-                        } catch (IOException e) {
-                            e.printStackTrace();
-                        }
-                    });
+            input.getDirectoryInputs().forEach(directoryInput -> {
+                try {
+                    // 获取输出目录
+                    System.out.println("---- directory input :" + directoryInput.getFile().getAbsolutePath());
+                    File contentLocation = outputProvider.getContentLocation(
+                            directoryInput.getName(),
+                            directoryInput.getContentTypes(),
+                            directoryInput.getScopes(),
+                            Format.DIRECTORY);
+                    System.out.println("---- directory output :" + contentLocation.getAbsolutePath());
+                    // 将input的目录复制到output指定目录
+                    FileUtils.copyDirectory(directoryInput.getFile(), contentLocation);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            });
 
             // 对类型为jar文件的input进行遍历
-            input.getJarInputs()
-                    .forEach(jarInput -> {
-                        try {
-                            System.out.println("---- jar input :" + jarInput.getFile().getAbsolutePath());
-                            // 重命名输出文件（同目录copyFile会冲突）
-                            // String newName = jarInput.getName().replace(".jar", "") + DigestUtils.md5Hex(jarInput.getName());
-                            File contentLocation = outputProvider.getContentLocation(
+            input.getJarInputs().forEach(jarInput -> {
+                try {
+                    System.out.println("---- jar input :" + jarInput.getFile().getAbsolutePath());
+                    // 重命名输出文件（同目录copyFile会冲突）
+                    // String newName = jarInput.getName().replace(".jar", "") + DigestUtils.md5Hex(jarInput.getName());
+                    File contentLocation = outputProvider.getContentLocation(
 //                        newName,
-                                    jarInput.getFile().getAbsolutePath(),
-                                    jarInput.getContentTypes(),
-                                    jarInput.getScopes(),
-                                    Format.JAR);
+                            jarInput.getFile().getAbsolutePath(),
+                            jarInput.getContentTypes(),
+                            jarInput.getScopes(),
+                            Format.JAR);
 //                            /*
 //                             * NOTCHANGED: 当前文件不需处理，甚至复制操作都不用；
 //                             * ADDED、CHANGED: 正常处理，输出给下一个任务；
@@ -202,14 +192,15 @@ class HelloWorldTransform extends Transform {
 //                                }
 //                            }
 
-                            System.out.println("---- jar output :" + contentLocation.getAbsolutePath());
+                    System.out.println("---- jar output :" + contentLocation.getAbsolutePath());
 
-                            FileUtils.copyFile(jarInput.getFile(), contentLocation);
-                        } catch (IOException e) {
-                            e.printStackTrace();
-                        }
-                    });
-            System.out.println("--- transform 结束 历时:" + (System.currentTimeMillis() - startTime) + "ms");
+                    FileUtils.copyFile(jarInput.getFile(), contentLocation);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            });
         });
+
+        System.out.println("--- transform 结束 历时:" + (System.currentTimeMillis() - startTime) + "ms");
     }
 }

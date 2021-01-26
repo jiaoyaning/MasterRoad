@@ -42,7 +42,7 @@ object RoutePath {
     }
 
     /**
-     * handler测试
+     * LiveData测试
      * [com.jyn.masterroad.jetpack.livedata.LiveDataActivity]
      */
     object LiveData {

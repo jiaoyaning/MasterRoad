@@ -1,4 +1,4 @@
-package com.jyn.common.utils
+package com.jyn.common.utils.ARouter
 
 import com.alibaba.android.arouter.launcher.ARouter
 

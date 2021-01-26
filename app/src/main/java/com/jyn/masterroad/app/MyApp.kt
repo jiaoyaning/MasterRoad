@@ -1,18 +1,14 @@
 package com.jyn.masterroad.app;
 
-import android.app.Activity;
 import android.app.Application;
 import android.content.res.Configuration
-import android.os.Bundle;
 import android.os.Handler
 import android.os.Looper
 import android.widget.Toast
 
 import androidx.lifecycle.ProcessLifecycleOwner
 
-import com.alibaba.android.arouter.launcher.ARouter;
 import com.apkfuns.logutils.LogUtils
-import com.jyn.masterroad.BuildConfig
 
 import dagger.hilt.android.HiltAndroidApp;
 
@@ -24,14 +20,7 @@ class MyApp : Application() {
 
     override fun onCreate() {
         super.onCreate()
-        if (BuildConfig.DEBUG) {
-            ARouter.openLog()
-            ARouter.openDebug()
-        }
-        ARouter.init(this)
-        LogUtils.getLogConfig().configShowBorders(false)
-
-        setUncaught()
+        setUncaughtException()
 
         //第一种可检测activity生命周期的方式
         ProcessLifecycleOwner.get().lifecycle.addObserver(LifecycleChecker())
@@ -44,7 +33,7 @@ class MyApp : Application() {
      * 全局捕获异常
      * https://mp.weixin.qq.com/s/K8ScqrB9sF9gzxwSAoueCQ
      */
-    private fun setUncaught() {
+    private fun setUncaughtException() {
         Thread.setDefaultUncaughtExceptionHandler { t, e ->
             LogUtils.tag("main").e("程序遇到错误:" + e.message)
             Toast.makeText(this, "程序遇到错误:" + e.message, Toast.LENGTH_LONG).show()

@@ -7,15 +7,17 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.Adapter
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.apkfuns.logutils.LogUtils
-import com.jyn.common.utils.goto
+import com.jyn.common.utils.ARouter.goto
 import com.jyn.masterroad.base.RoutePath
 import com.jyn.masterroad.databinding.ActivityMainBinding
 import com.jyn.masterroad.databinding.ItemMainBinding
+import com.jyn.masterroad.jetpack.livedata.LiveDataTestViewModel
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.item_main.view.*
 
@@ -72,31 +74,20 @@ class MainActivity : AppCompatActivity() {
      * 第一版参考
      * https://www.jianshu.com/p/379a8f5347de
      */
-    class MainAdapter(var routerList: ArrayList<MainViewModel.RouterList>, var context: Context) : Adapter<MainAdapter.MainViewHolder>() {
-        var i = 0;
+    inner class MainAdapter(var routerList: ArrayList<MainViewModel.RouterList>, var context: Context) : Adapter<MainAdapter.MainViewHolder>() {
 
-        class MainViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView)
+        inner class MainViewHolder(var binding: ItemMainBinding) : RecyclerView.ViewHolder(binding.root)
 
         override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MainViewHolder {
-            val layoutInflater = LayoutInflater.from(parent.context)
-            val itemView: View = layoutInflater.inflate(R.layout.item_main, parent, false)
-            return MainViewHolder(itemView)
+            val binding = ItemMainBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+            return MainViewHolder(binding)
         }
 
         override fun onBindViewHolder(holder: MainViewHolder, position: Int) {
-            val itemMainBinding = ItemMainBinding.bind(holder.itemView);
-            holder
-                    .itemView
-                    .main_recycle_item_btn
-                    .setOnClickListener {
-                        routerList[position].path.get()?.let { it1 ->
-                            goto(it1)
-
-                            //可以动态修改数据
-//                            routerList[position].name.set(routerList[position].name.get() + ++i)
-//                            itemMainBinding.executePendingBindings()
-                        }
-                    }
+            val itemMainBinding = holder.binding
+            itemMainBinding.mainRecycleItemBtn.setOnClickListener {
+                routerList[position].path.get()?.let { it1 -> goto(it1) }
+            }
             itemMainBinding.list = routerList[position]
             itemMainBinding.executePendingBindings()
         }

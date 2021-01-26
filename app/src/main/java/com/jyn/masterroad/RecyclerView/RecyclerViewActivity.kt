@@ -16,6 +16,9 @@ import com.jyn.masterroad.R
  *
  * 把LayoutManager撸出花儿来，自定义无限循环的LayoutManager
  * https://mp.weixin.qq.com/s/NAI4ZmoGPoW8UubwNHRXtA
+ *
+ * 巧用RecyclerView ItemDecoration 实现炫酷视差效果
+ * https://mp.weixin.qq.com/s/-q4L8BNfs141RtWJa8-N7Q
  */
 class RecyclerViewActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

@@ -3,7 +3,11 @@ plugins {
     id 'groovy'
     id 'kotlin'
     id 'maven'
-    id 'maven-publish'
+    /*
+     * [Gradle] 发布 library 到本地 maven 仓库
+     * https://www.cnblogs.com/shaobin0604/p/11038386.html
+     */
+    id 'maven-publish' //可以我们的编译的输出物（artifacts）发布到Apache Maven仓库当中
 }
 
 java {
@@ -23,9 +27,12 @@ dependencies {
     implementation 'org.javassist:javassist:3.24.0-GA'
 }
 
+/*
+ * 上传本地mavenLocal : ./gradlew publishHelloWorldPluginPublicationToMavenLocal
+ */
 publishing{
     publications{
-        GreetingPlugin(MavenPublication){
+        HelloWorldPlugin(MavenPublication){
             from components.java
             groupId 'com.jyn.plugin'
             artifactId 'HelloWorld'

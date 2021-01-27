@@ -22,6 +22,8 @@ import java.util.jar.JarEntry;
 import java.util.jar.JarFile;
 
 /*
+ *
+ *
  * Transform的优化：增量与并发 部分
  * https://blog.csdn.net/weixin_34413802/article/details/89543858
  * https://github.com/Leaking/Hunter/blob/master/hunter-transform/src/main/java/com/quinn/hunter/transform/HunterTransform.java
@@ -29,8 +31,6 @@ import java.util.jar.JarFile;
  *
  * 手把手教大家用Transform API和ASM实现一个防快速点击案例
  * https://mp.weixin.qq.com/s?__biz=MzUzOTk2MDUxMw==&mid=2247484076&idx=1&sn=e06a95632487c5d3975ecdfce8ef5295&chksm=fac13702cdb6be14325e125a269d1db20335291867d2380f1e0dbabf887b324899fdb87294ec#rd
- *
- *
  */
 class IncrementalTransForm extends Transform {
 
@@ -64,9 +64,18 @@ class IncrementalTransForm extends Transform {
         return true;
     }
 
+    /*
+     * 开启了增量编译之后需要检查每个文件的Status,然后根据这个文件的Status进行不同的操作.
+     *
+     * 具体的Status如下:
+     * NOTCHANGED:     当前文件不需要处理,连复制操作也不用
+     * ADDED:          正常处理,输出给下一个任务
+     * CHANGED:        正常处理,输出给下一个任务
+     * REMOVED:        移除outputProvider获取路径对应的文件
+     */
     @Override
     public void transform(TransformInvocation transformInvocation) throws IOException {
-        //当前是否是增量编译
+        //当前是否是增量编译，clean之后第一次运行必然是false
         boolean isIncremental = transformInvocation.isIncremental();
         System.out.println("---- IncrementalTransForm 当前是否是增量编译 : " + isIncremental);
 
@@ -80,13 +89,6 @@ class IncrementalTransForm extends Transform {
         //OutputProvider管理输出路径，如果消费型输入为空，你会发现OutputProvider == null
         TransformOutputProvider outputProvider = transformInvocation.getOutputProvider();
 
-        /*
-         * 如果非增量，则清空旧的输出内容
-         * 如果是增量，则要检查每个文件的Status，Status分四种，并且对这四种文件的操作也不尽相同
-         *    NOTCHANGED: 当前文件不需处理，甚至复制操作都不用；
-         *    ADDED、CHANGED: 正常处理，输出给下一个任务；
-         *    REMOVED: 移除outputProvider获取路径对应的文件。
-         */
         if (!isIncremental) {
             outputProvider.deleteAll();
         }
@@ -100,9 +102,6 @@ class IncrementalTransForm extends Transform {
                         directoryInput.getContentTypes(),
                         directoryInput.getScopes(),
                         Format.DIRECTORY);
-
-
-
             });
 
             // 对类型为jar文件的input进行遍历

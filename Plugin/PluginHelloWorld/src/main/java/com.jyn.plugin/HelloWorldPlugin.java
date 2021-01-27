@@ -14,7 +14,7 @@ import java.util.Iterator;
  * Android Gradle Plugin插件开发——基础
  * https://blog.csdn.net/guy_guy/article/details/80914600
  */
-class HelloWorld implements Plugin<Project> {
+class HelloWorldPlugin implements Plugin<Project> {
 
     @Override
     public void apply(Project target) {
@@ -35,6 +35,12 @@ class HelloWorld implements Plugin<Project> {
             System.out.println("-- 该Project拥有 android{} 闭包");
             AppExtension appExtension = target.getExtensions().getByType(AppExtension.class);
             System.out.println("-- 开始注册 Transform ");
+
+            /*
+             * 这里注册之后,会在编译过程中的TransformManager#addTransform中生成一个task,
+             * 然后在执行这个task的时候会执行到我们自定义的Transform的transform方法.
+             * 这个task的执行时机其实就是.class文件转换成.dex文件的时候,转换的逻辑是定义在transform方法中的.
+             */
             appExtension.registerTransform(new HelloWorldTransform(target));
             System.out.println("-- Transform 注册成功");
         }

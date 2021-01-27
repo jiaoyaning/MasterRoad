@@ -32,7 +32,7 @@ public class ListNode {
         return node1;
     }
 
-    public static void traverse(ListNode head) {
+    public static void print(ListNode head) {
         while (head != null) {
             System.out.println(head.val);
             head = head.next;

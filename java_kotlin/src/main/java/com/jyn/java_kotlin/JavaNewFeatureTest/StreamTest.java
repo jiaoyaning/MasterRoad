@@ -4,12 +4,17 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
+import java.util.stream.IntStream;
+import java.util.stream.Stream;
 
-/**
+/*
  * Java 8 中新增的 Stream 类提供了一种新的数据处理方式。
  * 这种方式将元素集合看做一种流，在管道中传输，经过一系列处理节点，最终输出结果。
- * <p>
+ *
  * https://blog.csdn.net/y_k_y/article/details/84633001
+ *
+ * Java8 Stream：2万字20个实例，玩转集合的筛选、归约、分组、聚合
+ * https://mp.weixin.qq.com/s/-vvEbf1d4z5Um7qy2zJNkg
  */
 public class StreamTest {
     @SuppressWarnings("NewApi")
@@ -54,9 +59,10 @@ public class StreamTest {
                 .forEach(System.out::println);
 
         //转成map,注:key不能相同，否则报错
-        Map<String, String> collect = examples.stream().collect(Collectors.toMap(Example::getName, Example::getAge));
+        Map<String, String> collect = examples
+                .stream()
+                .collect(Collectors.toMap(Example::getName, Example::getAge));
         collect.forEach((s, s2) -> System.out.print(s + " : " + s2));
-
 
         System.out.println("=========分割线==========");
 
@@ -70,5 +76,33 @@ public class StreamTest {
         examples.stream()
                 .peek(it -> it.setName("我消费了"))
                 .forEach(System.out::println);
+    }
+
+    /*
+     * 创建steam的三种方式
+     *
+     * 1、通过 java.util.Collection.stream() 方法用集合创建流
+     * 2、使用 java.util.Arrays.stream(T[] array)方法用数组创建流
+     * 3、使用 Stream 的静态方法：of()、iterate()、generate()
+     */
+    @SuppressWarnings("NewApi")
+    public void createSteam() {
+        /*
+         * stream是顺序流，由主线程按顺序对流执行操作，
+         * parallelStream是并行流，内部以多线程并行执行的方式对流进行分段操作
+         * 如果流中的数据量足够大，并行流可以加快处速度。
+         */
+        List<String> list = Arrays.asList("a", "b", "c");
+        Stream<String> stream = list.stream();                  // 创建一个顺序流
+        Stream<String> parallelStream = list.parallelStream();  // 创建一个并行流
+        Stream<String> streamToParallel = stream.parallel();    // 把顺序流转成并行流
+
+
+        int[] array = {1, 3, 5, 6, 8};
+        IntStream arrayStream = Arrays.stream(array);           // 用数组创建流
+
+        Stream<Integer> stream1 = Stream.of(1, 3, 5, 6, 8);
+        Stream<Integer> stream2 = Stream.iterate(0, (x) -> x + 3).limit(4);  // 0 3 6 9s
+        Stream<Double> stream3 = Stream.generate(Math::random).limit(3);
     }
 }

@@ -21,8 +21,8 @@ public class FanZhuanLianBiao {
     }
 
     public static void main(String[] args) {
-        ListNode.traverse(ListNode.getListNodeTest());
+        ListNode.print(ListNode.getListNodeTest());
         ListNode listNode = reverseList(ListNode.getListNodeTest());
-        ListNode.traverse(listNode);
+        ListNode.print(listNode);
     }
 }

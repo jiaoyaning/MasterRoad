@@ -35,7 +35,7 @@ class MyApp : Application() {
      */
     private fun setUncaughtException() {
         Thread.setDefaultUncaughtExceptionHandler { t, e ->
-            LogUtils.tag("main").e("程序遇到错误:" + e.message)
+            LogUtils.tag("main").e("线程:" +t.name+ " 遇到错误:" + e.message)
             Toast.makeText(this, "程序遇到错误:" + e.message, Toast.LENGTH_LONG).show()
             e.printStackTrace()
         }

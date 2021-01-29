@@ -25,8 +25,8 @@
                 android:value="androidx.startup" />
         </provider>
 
-        <activity android:name=".constraintlayout.MotionLayoutActivity" />
-        <activity android:name=".constraintlayout.ConstraintLayoutActivity" />
+        <activity android:name=".ConstraintLayout.MotionLayoutActivity" />
+        <activity android:name=".ConstraintLayout.ConstraintLayoutActivity" />
         <activity
             android:name=".jetpack.bindingcollection.BindingCollectionActivity"
             android:label="BindingCollectionAdapter" />

@@ -1,4 +1,4 @@
-package com.jyn.masterroad.constraintlayout
+package com.jyn.masterroad.ConstraintLayout
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle

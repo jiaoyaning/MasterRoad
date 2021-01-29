@@ -70,7 +70,7 @@ object RoutePath {
 
     /**
      * ConstraintLayout 约束布局
-     * [com.jyn.masterroad.constraintlayout.ConstraintLayoutActivity]
+     * [com.jyn.masterroad.ConstraintLayout.ConstraintLayoutActivity]
      */
     object ConstraintLayout{
         const val name = "ConstraintLayout"
@@ -79,7 +79,7 @@ object RoutePath {
 
     /**
      * MotionLayout 动画
-     * [com.jyn.masterroad.constraintlayout.MotionLayoutActivity]
+     * [com.jyn.masterroad.ConstraintLayout.MotionLayoutActivity]
      */
     object  MotionLayout{
         const val name = " MotionLayout"

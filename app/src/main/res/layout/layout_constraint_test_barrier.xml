@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <import type="android.view.View.OnClickListener" />
+
+        <variable
+            name="onClick"
+            type="OnClickListener" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/textView20"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Barrier 可以把多个空间合成一个屏障"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tv_barrier_test1"
+            style="@style/constraint_btn"
+            android:layout_marginTop="20dp"
+            android:paddingTop="5dp"
+            android:paddingBottom="5dp"
+            android:text="这是一个很长很长很长的文本"
+            android:textSize="15sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tv_barrier_test2"
+            style="@style/constraint_btn"
+            android:paddingTop="5dp"
+            android:paddingBottom="5dp"
+            android:text="短文本"
+            android:textSize="15sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_barrier_test1" />
+
+        <androidx.constraintlayout.widget.Barrier
+            android:id="@+id/barrier"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:barrierDirection="right"
+            app:constraint_referenced_ids="tv_barrier_test1,tv_barrier_test2" />
+
+        <Button
+            android:id="@+id/btn_barrier_test"
+            style="@style/constraint_btn"
+            android:onClick="@{onClick}"
+            android:text="以Barrier为基准，位于其右边"
+            app:layout_constraintBottom_toBottomOf="@+id/tv_barrier_test2"
+            app:layout_constraintStart_toEndOf="@+id/barrier"
+            app:layout_constraintTop_toTopOf="@+id/tv_barrier_test1" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

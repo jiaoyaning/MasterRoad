@@ -64,7 +64,7 @@
 
             <TextView
                 android:id="@+id/textView9"
-                android:layout_width="150dp"
+                android:layout_width="130dp"
                 android:layout_height="wrap_content"
                 android:text="Layer 背景 不可被当成约束条件"
                 app:layout_constraintBottom_toBottomOf="@id/textView3"
@@ -140,7 +140,7 @@
                 android:layout_marginTop="8dp"
                 android:text="Bias 两端约束后的偏差值"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/view2"
+                app:layout_constraintTop_toBottomOf="@id/view2"
                 tools:ignore="HardcodedText" />
 
             <Button
@@ -151,7 +151,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.2"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/view2"
+                app:layout_constraintTop_toBottomOf="@id/view2"
                 tools:ignore="HardcodedText" />
 
             <SeekBar
@@ -162,13 +162,13 @@
                 android:progress="20"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/bias_show_test" />
+                app:layout_constraintTop_toBottomOf="@id/bias_show_test" />
 
             <View
                 android:id="@+id/view3"
                 style="@style/cutting_line"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/bias_seek_bar_test" />
+                app:layout_constraintTop_toBottomOf="@id/bias_seek_bar_test" />
 
             <TextView
                 android:id="@+id/textView6"
@@ -180,7 +180,7 @@
                 android:text="基准view"
                 android:textSize="16sp"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/view3" />
+                app:layout_constraintTop_toBottomOf="@id/view3" />
 
             <Space
                 android:id="@+id/space"
@@ -210,16 +210,16 @@
                 android:layout_width="150dp"
                 android:layout_height="wrap_content"
                 android:text="Space 百分比相对位置"
-                app:layout_constraintBottom_toTopOf="@+id/view4"
+                app:layout_constraintBottom_toTopOf="@id/view4"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/view3" />
+                app:layout_constraintTop_toBottomOf="@id/view3" />
 
             <View
                 android:id="@+id/view4"
                 style="@style/cutting_line"
                 android:layout_marginTop="55dp"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textView6" />
+                app:layout_constraintTop_toBottomOf="@id/textView6" />
 
             <TextView
                 android:id="@+id/textView11"
@@ -228,7 +228,7 @@
                 android:layout_marginTop="10dp"
                 android:text="chainStyle 链条 "
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/view4" />
+                app:layout_constraintTop_toBottomOf="@id/view4" />
 
             <Button
                 android:id="@+id/btn_chain_style_spread"
@@ -304,9 +304,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Baseline 文本基准线"
-                app:layout_constraintBottom_toBottomOf="@+id/textView13"
+                app:layout_constraintBottom_toBottomOf="@id/textView13"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/textView13" />
+                app:layout_constraintTop_toTopOf="@id/textView13" />
 
             <TextView
                 android:id="@+id/textView13"
@@ -379,7 +379,8 @@
                 android:text="锚点gone时 MarginLeft20生效"
                 app:layout_constraintStart_toEndOf="@id/btn_gone_margin_anchor"
                 app:layout_constraintTop_toTopOf="@id/btn_gone_margin_anchor"
-                app:layout_goneMarginLeft="20dp" />
+                app:layout_goneMarginLeft="20dp"
+                app:layout_goneMarginTop="30dp" />
 
             <View
                 android:id="@+id/view8"
@@ -393,6 +394,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/view8"
                 bind:onClick="@{onClick}" />
 
@@ -408,6 +411,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/view9"
                 bind:onClick="@{onClick}" />
 
@@ -423,6 +428,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/view10"
                 bind:onClick="@{onClick}" />
 

@@ -26,6 +26,7 @@
         tools:context=".ConstraintLayout.ConstraintLayoutActivity">
 
         <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/constraintLayout"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:padding="10dp">
@@ -66,7 +67,7 @@
                 android:id="@+id/textView9"
                 android:layout_width="130dp"
                 android:layout_height="wrap_content"
-                android:text="Layer 背景 不可被当成约束条件"
+                android:text="Layer 背景 动画 但不可被当成约束条件"
                 app:layout_constraintBottom_toBottomOf="@id/textView3"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="@id/textView3" />
@@ -143,10 +144,11 @@
                 app:layout_constraintTop_toBottomOf="@id/view2"
                 tools:ignore="HardcodedText" />
 
-            <Button
+            <TextView
                 android:id="@+id/bias_show_test"
-                style="@style/constraint_btn"
+                style="@style/constraint_tv"
                 android:layout_marginTop="30dp"
+                android:background="@drawable/bg_white_stroke"
                 android:text="bias:0.20"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.2"

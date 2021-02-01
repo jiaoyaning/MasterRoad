@@ -42,14 +42,14 @@ class ConstraintLayoutActivity : AppCompatActivity() {
 
     private fun initView() {
         binding.biasSeekBarTest.setOnSeekBarChangeListener(seekBarChange)
+        binding.clGuideline.guidelineSeekBar.setOnSeekBarChangeListener(seekBarChange)
     }
 
     private val seekBarChange = object : SeekBar.OnSeekBarChangeListener {
         override fun onProgressChanged(seekBar: SeekBar?, progress: Int, fromUser: Boolean) {
             when (seekBar) {
-                binding.biasSeekBarTest -> {
-                    changeBias(progress)
-                }
+                binding.biasSeekBarTest -> changeBias(progress)
+                binding.clGuideline.guidelineSeekBar -> changeGuideLine(progress)
             }
         }
 
@@ -62,6 +62,10 @@ class ConstraintLayoutActivity : AppCompatActivity() {
         }
     }
 
+    private fun changeGuideLine(progress: Int) {
+        binding.clGuideline.guideline.setGuidelinePercent(progress / 100f)
+    }
+
     private var click = View.OnClickListener {
         when (it.id) {
             R.id.tv_space_test -> switchSpaceBias()                 //space 可用来当约束锚点
@@ -72,9 +76,6 @@ class ConstraintLayoutActivity : AppCompatActivity() {
 
             R.id.btn_gone_margin_test -> switchGoneMargin()         // goneMargin 属性测试
             R.id.btn_barrier_test -> switchBarrierTest()            //barrier 内容屏障测试
-
-            R.id.btn_guideline_left,
-            R.id.btn_guideline_right -> removeGuideline(it.id)      //guideline 移动基准线
 
             R.id.btn_group_control_myself,
             R.id.btn_group_control_all -> controlGroup(it.id)       //Group 组控制
@@ -154,12 +155,9 @@ class ConstraintLayoutActivity : AppCompatActivity() {
         }
     }
 
-    private fun removeGuideline(id: Int) {
-        val guidePercent = if (id == R.id.btn_guideline_left) 0.3f else 0.5f
-        binding.clGuideline.guideline.setGuidelinePercent(guidePercent)
-    }
-
-
+    /**
+     * 切换到占位
+     */
     private fun switchPlaceholder() {
         binding.clPlaceholder.placeholder.setContentId(R.id.btn_placeholder)
     }

@@ -1,4 +1,4 @@
-package com.jyn.plugin;
+package com.jyn.plugins;
 
 import com.android.build.gradle.AppExtension;
 import com.android.build.gradle.AppPlugin;  //这是com.android.application所属的Plugin

@@ -450,6 +450,22 @@
                 app:layout_constraintTop_toBottomOf="@id/view11"
                 bind:onClick="@{onClick}" />
 
+            <View
+                android:id="@+id/view12"
+                style="@style/cutting_line"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/cl_placeholder" />
+
+
+            <include
+                android:id="@+id/cl_flow"
+                layout="@layout/layout_constraint_flow"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                app:layout_constraintTop_toBottomOf="@id/view12"
+                bind:onClick="@{onClick}" />
+
             <!-- https://www.paincker.com/constraint-layout#1_2_BaselineAlign -->
             <!-- https://mp.weixin.qq.com/s/Z_TnoyMRYZEQXvlqiKX8Uw -->
 

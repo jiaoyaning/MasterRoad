@@ -25,22 +25,17 @@
 
         <TextView
             android:id="@+id/tv_barrier_test1"
-            style="@style/constraint_btn"
+            style="@style/constraint_tv"
             android:layout_marginTop="20dp"
-            android:paddingTop="5dp"
-            android:paddingBottom="5dp"
             android:text="这是一个很长很长很长的文本"
-            android:textSize="15sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/tv_barrier_test2"
-            style="@style/constraint_btn"
-            android:paddingTop="5dp"
-            android:paddingBottom="5dp"
+            style="@style/constraint_tv"
             android:text="短文本"
-            android:textSize="15sp"
+            android:background="@drawable/bg_white_stroke2"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tv_barrier_test1" />
 

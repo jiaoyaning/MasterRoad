@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="android.view.View.OnClickListener" />
+
+        <variable
+            name="onClick"
+            type="OnClickListener" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="Flow 流式布局"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.constraintlayout.helper.widget.Flow
+            android:id="@+id/cl_flow"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginTop="30dp"
+            app:constraint_referenced_ids="btn_flow_wrap_mode,btn_flow_max_elements_wrap,btn_flow_horizontal_style,tv_flow4,tv_flow5,tv_flow6,tv_flow7"
+            app:flow_horizontalBias="0"
+            app:flow_horizontalStyle="packed"
+            app:flow_maxElementsWrap="4"
+            app:flow_verticalGap="5dp"
+            app:flow_wrapMode="chain"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Button
+            android:id="@+id/btn_flow_wrap_mode"
+            style="@style/constraint_tv"
+            android:onClick="@{onClick}"
+            android:text="wrapMode: chain"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <!--  maxElementsWrap : 最大支持几个元素（默认会自动换行，如果指定数目总尺寸小于parent宽度生效） -->
+        <Button
+            android:id="@+id/btn_flow_max_elements_wrap"
+            style="@style/constraint_tv"
+            android:onClick="@{onClick}"
+            android:text="maxElementsWrap : 4"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Button
+            android:id="@+id/btn_flow_horizontal_style"
+            style="@style/constraint_tv"
+            android:onClick="@{onClick}"
+            android:text="horizontalStyle : packed"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tv_flow4"
+            style="@style/constraint_tv"
+            android:text="Flow4 超长"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tv_flow5"
+            style="@style/constraint_tv"
+            android:text="Flow5 长"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tv_flow6"
+            style="@style/constraint_tv"
+            android:text="Flow6 超超长"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tv_flow7"
+            style="@style/constraint_tv"
+            android:text="Flow7"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <SeekBar
+            android:id="@+id/flow_seekBar_horizontal_bias"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="3dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/cl_flow" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

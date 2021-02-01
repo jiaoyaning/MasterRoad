@@ -43,6 +43,7 @@ class ConstraintLayoutActivity : AppCompatActivity() {
     private fun initView() {
         binding.biasSeekBarTest.setOnSeekBarChangeListener(seekBarChange)
         binding.clGuideline.guidelineSeekBar.setOnSeekBarChangeListener(seekBarChange)
+        binding.clFlow.flowSeekBarHorizontalBias.setOnSeekBarChangeListener(seekBarChange)
     }
 
     private val seekBarChange = object : SeekBar.OnSeekBarChangeListener {
@@ -50,6 +51,7 @@ class ConstraintLayoutActivity : AppCompatActivity() {
             when (seekBar) {
                 binding.biasSeekBarTest -> changeBias(progress)
                 binding.clGuideline.guidelineSeekBar -> changeGuideLine(progress)
+                binding.clFlow.flowSeekBarHorizontalBias -> changeFlowBias(progress)
             }
         }
 
@@ -81,6 +83,12 @@ class ConstraintLayoutActivity : AppCompatActivity() {
             R.id.btn_group_control_all -> controlGroup(it.id)       //Group 组控制
 
             R.id.btn_placeholder -> switchPlaceholder()
+
+            R.id.btn_flow_wrap_mode,
+            R.id.btn_flow_max_elements_wrap,
+            R.id.btn_flow_horizontal_style -> switchFlow(it.id)     //flow 测试
+
+
         }
     }
 
@@ -160,6 +168,14 @@ class ConstraintLayoutActivity : AppCompatActivity() {
      */
     private fun switchPlaceholder() {
         binding.clPlaceholder.placeholder.setContentId(R.id.btn_placeholder)
+    }
+
+    private fun switchFlow(id: Int) {
+        
+    }
+
+    private fun changeFlowBias(progress: Int) {
+
     }
 
     /**

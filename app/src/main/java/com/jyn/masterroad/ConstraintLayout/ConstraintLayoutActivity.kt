@@ -23,6 +23,9 @@ import com.jyn.masterroad.databinding.ActivityConstraintlayoutBinding
  * https://mp.weixin.qq.com/s/Z_TnoyMRYZEQXvlqiKX8Uw
  *
  * https://www.paincker.com/constraint-layout
+ *
+ * ConstraintLayout 2.0 新特性详解及实战
+ * https://blog.csdn.net/weixin_34677811/article/details/90719945
  */
 @SuppressLint("SetTextI18n")
 @Route(path = RoutePath.ConstraintLayout.path)
@@ -75,6 +78,8 @@ class ConstraintLayoutActivity : AppCompatActivity() {
 
             R.id.btn_group_control_myself,
             R.id.btn_group_control_all -> controlGroup(it.id)       //Group 组控制
+
+            R.id.btn_placeholder -> switchPlaceholder()
         }
     }
 
@@ -82,7 +87,7 @@ class ConstraintLayoutActivity : AppCompatActivity() {
         if (id == R.id.btn_group_control_all) {
             if (binding.clGroup.group.visibility == View.VISIBLE) binding.clGroup.group.visibility = View.GONE
             else binding.clGroup.group.visibility = View.VISIBLE
-        }else {
+        } else {
             if (binding.clGroup.btnGroupControlMyself.visibility == View.VISIBLE) binding.clGroup.btnGroupControlMyself.visibility = View.GONE
             else binding.clGroup.btnGroupControlMyself.visibility = View.VISIBLE
         }
@@ -154,6 +159,10 @@ class ConstraintLayoutActivity : AppCompatActivity() {
         binding.clGuideline.guideline.setGuidelinePercent(guidePercent)
     }
 
+
+    private fun switchPlaceholder() {
+        binding.clPlaceholder.placeholder.setContentId(R.id.btn_placeholder)
+    }
 
     /**
      * 获取view的LayoutParams

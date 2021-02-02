@@ -1,0 +1,17 @@
+Index: Plugin/PluginHelloWorld/build.gradle
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>plugins {\n    id 'java-library'\n    id 'groovy'\n    id 'kotlin'\n    id 'maven'\n    /*\n     * [Gradle] 发布 library 到本地 maven 仓库\n     * https://www.cnblogs.com/shaobin0604/p/11038386.html\n     */\n    id 'maven-publish' //可以我们的编译的输出物（artifacts）发布到Apache Maven仓库当中\n}\n\njava {\n    sourceCompatibility = JavaVersion.VERSION_1_8\n    targetCompatibility = JavaVersion.VERSION_1_8\n}\n\ndependencies {\n    implementation \"org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version\"\n    //gradle sdk\n    implementation gradleApi()\n    //groovy sdk\n    implementation localGroovy()\n    //Android 插件\n    implementation 'com.android.tools.build:gradle:4.0.2'\n\n    implementation 'org.javassist:javassist:3.24.0-GA'\n\n    /**\n     * ASM官网  https://asm.ow2.io/\n     */\n    implementation 'org.ow2.asm:asm:7.1'\n    implementation 'org.ow2.asm:asm-util:7.1'\n    implementation 'org.ow2.asm:asm-commons:7.1'\n}\n\n/*\n * 上传本地mavenLocal : ./gradlew publishHelloWorldPluginPublicationToMavenLocal\n */\npublishing{\n    publications{\n        HelloWorldPlugin(MavenPublication){\n            from components.java\n            groupId 'com.jyn.plugins'\n            artifactId 'HelloWorld'\n            version '1.0'\n        }\n    }\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- Plugin/PluginHelloWorld/build.gradle	(revision d034f1e1592fb30bf4faa8b9a432986b84447a59)
++++ Plugin/PluginHelloWorld/build.gradle	(date 1612192432000)
+@@ -28,6 +28,7 @@
+ 
+     /**
+      * ASM官网  https://asm.ow2.io/
++     * 教程 https://github.com/MyGitBooks/asm
+      */
+     implementation 'org.ow2.asm:asm:7.1'
+     implementation 'org.ow2.asm:asm-util:7.1'

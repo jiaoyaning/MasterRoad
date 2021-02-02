@@ -35,66 +35,87 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_marginTop="30dp"
-            app:constraint_referenced_ids="btn_flow_wrap_mode,btn_flow_max_elements_wrap,btn_flow_horizontal_style,tv_flow4,tv_flow5,tv_flow6,tv_flow7"
+            app:constraint_referenced_ids="
+                    btn_flow_wrap_mode_none,
+                    btn_flow_wrap_mode_chain,
+                    btn_flow_wrap_mode_aligned,
+                    btn_flow_max_elements_wrap3,
+                    btn_flow_max_elements_wrap1,
+                    btn_flow_horizontal_style_packed,
+                    btn_flow_horizontal_style_spread,
+                    btn_flow_horizontal_style_spread_inside"
             app:flow_horizontalBias="0"
+            app:flow_horizontalGap="3dp"
             app:flow_horizontalStyle="packed"
-            app:flow_maxElementsWrap="4"
+            app:flow_maxElementsWrap="3"
             app:flow_verticalGap="5dp"
-            app:flow_wrapMode="chain"
+            app:flow_wrapMode="aligned"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <Button
-            android:id="@+id/btn_flow_wrap_mode"
+            android:id="@+id/btn_flow_wrap_mode_none"
             style="@style/constraint_tv"
             android:onClick="@{onClick}"
-            android:text="wrapMode: chain"
+            android:text="wrapMode: none"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Button
+            android:id="@+id/btn_flow_wrap_mode_chain"
+            style="@style/constraint_tv"
+            android:onClick="@{onClick}"
+            android:text="chain"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Button
+            android:id="@+id/btn_flow_wrap_mode_aligned"
+            style="@style/constraint_tv"
+            android:onClick="@{onClick}"
+            android:text="aligned"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <!--  maxElementsWrap : 最大支持几个元素（默认会自动换行，如果指定数目总尺寸小于parent宽度生效） -->
         <Button
-            android:id="@+id/btn_flow_max_elements_wrap"
+            android:id="@+id/btn_flow_max_elements_wrap3"
             style="@style/constraint_tv"
             android:onClick="@{onClick}"
-            android:text="maxElementsWrap : 4"
+            android:text="maxElementsWrap : 3"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <Button
-            android:id="@+id/btn_flow_horizontal_style"
+            android:id="@+id/btn_flow_max_elements_wrap1"
+            style="@style/constraint_tv"
+            android:onClick="@{onClick}"
+            android:text="...Wrap : 1"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Button
+            android:id="@+id/btn_flow_horizontal_style_packed"
             style="@style/constraint_tv"
             android:onClick="@{onClick}"
             android:text="horizontalStyle : packed"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <TextView
-            android:id="@+id/tv_flow4"
+        <Button
+            android:id="@+id/btn_flow_horizontal_style_spread"
             style="@style/constraint_tv"
-            android:text="Flow4 超长"
+            android:onClick="@{onClick}"
+            android:text="spread"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <TextView
-            android:id="@+id/tv_flow5"
+        <Button
+            android:id="@+id/btn_flow_horizontal_style_spread_inside"
             style="@style/constraint_tv"
-            android:text="Flow5 长"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <TextView
-            android:id="@+id/tv_flow6"
-            style="@style/constraint_tv"
-            android:text="Flow6 超超长"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <TextView
-            android:id="@+id/tv_flow7"
-            style="@style/constraint_tv"
-            android:text="Flow7"
+            android:onClick="@{onClick}"
+            android:text="spread_inside"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 

@@ -3,7 +3,6 @@ package com.jyn.masterroad.ConstraintLayout
 import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.View
-import android.widget.SeekBar
 import androidx.appcompat.app.AppCompatActivity
 import androidx.constraintlayout.core.widgets.Flow
 import androidx.constraintlayout.widget.ConstraintLayout
@@ -71,11 +70,14 @@ class ConstraintLayoutActivity : AppCompatActivity() {
 
             R.id.btn_placeholder -> switchPlaceholder()
 
-            R.id.btn_flow_wrap_mode,
-            R.id.btn_flow_max_elements_wrap,
-            R.id.btn_flow_horizontal_style -> switchFlow(it.id)     //flow 测试
-
-
+            R.id.btn_flow_wrap_mode_none,
+            R.id.btn_flow_wrap_mode_chain,
+            R.id.btn_flow_wrap_mode_aligned,
+            R.id.btn_flow_max_elements_wrap3,
+            R.id.btn_flow_max_elements_wrap1,
+            R.id.btn_flow_horizontal_style_spread,
+            R.id.btn_flow_horizontal_style_spread_inside,
+            R.id.btn_flow_horizontal_style_packed -> switchFlow(it.id)     //flow 测试
         }
     }
 
@@ -158,13 +160,20 @@ class ConstraintLayoutActivity : AppCompatActivity() {
     }
 
     private fun switchFlow(id: Int) {
-        if (R.id.btn_flow_wrap_mode == id) {
-            binding.clFlow.clFlow.setWrapMode(Flow.WRAP_CHAIN)
+        when (id) {
+            R.id.btn_flow_wrap_mode_none -> binding.clFlow.clFlow.setWrapMode(Flow.WRAP_NONE)
+            R.id.btn_flow_wrap_mode_chain -> binding.clFlow.clFlow.setWrapMode(Flow.WRAP_CHAIN)
+            R.id.btn_flow_wrap_mode_aligned -> binding.clFlow.clFlow.setWrapMode(Flow.WRAP_ALIGNED)
+            R.id.btn_flow_max_elements_wrap3 -> binding.clFlow.clFlow.setMaxElementsWrap(3)
+            R.id.btn_flow_max_elements_wrap1 -> binding.clFlow.clFlow.setMaxElementsWrap(1)
+            R.id.btn_flow_horizontal_style_packed -> binding.clFlow.clFlow.setHorizontalStyle(Flow.CHAIN_PACKED)
+            R.id.btn_flow_horizontal_style_spread -> binding.clFlow.clFlow.setHorizontalStyle(Flow.CHAIN_SPREAD)
+            R.id.btn_flow_horizontal_style_spread_inside -> binding.clFlow.clFlow.setHorizontalStyle(Flow.CHAIN_SPREAD_INSIDE)
         }
     }
 
     private fun changeFlowBias(progress: Int) {
-
+        binding.clFlow.clFlow.setHorizontalBias(progress / 100f)
     }
 
     /**

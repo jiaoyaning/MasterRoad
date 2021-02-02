@@ -2,6 +2,7 @@
 apply from: "config.gradle"
 apply plugin: 'com.alibaba.arouter'
 /**
+ * 最大程度提升你的Android Studio 中Gradle编译速度完全攻略
  * https://crazymo.blog.csdn.net/article/details/105188273
  */
 buildscript {

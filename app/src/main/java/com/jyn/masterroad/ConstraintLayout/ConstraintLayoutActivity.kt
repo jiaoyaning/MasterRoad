@@ -36,14 +36,9 @@ class ConstraintLayoutActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityConstraintlayoutBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        binding.onClick = click
-        initView()
-    }
 
-    private fun initView() {
-        binding.biasSeekBarTest.setOnSeekBarChangeListener(seekBarChange)
-        binding.clGuideline.guidelineSeekBar.setOnSeekBarChangeListener(seekBarChange)
-        binding.clFlow.flowSeekBarHorizontalBias.setOnSeekBarChangeListener(seekBarChange)
+        binding.onClick = click
+        binding.onSeekBarChange = seekBarChange
     }
 
     private val seekBarChange = object : SeekBar.OnSeekBarChangeListener {

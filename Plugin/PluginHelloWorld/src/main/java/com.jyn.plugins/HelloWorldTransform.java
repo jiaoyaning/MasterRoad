@@ -1,4 +1,4 @@
-package com.jyn.plugin;
+package com.jyn.plugins;
 
 import com.android.build.api.transform.Context;
 import com.android.build.api.transform.DirectoryInput;

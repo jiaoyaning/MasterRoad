@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.View
 import android.widget.SeekBar
 import androidx.appcompat.app.AppCompatActivity
+import androidx.constraintlayout.core.widgets.Flow
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.databinding.adapters.SeekBarBindingAdapter
 import com.alibaba.android.arouter.facade.annotation.Route
@@ -42,13 +43,11 @@ class ConstraintLayoutActivity : AppCompatActivity() {
         binding.onProgressChanged = onProgressChanged
     }
 
-    private val onProgressChanged = object : SeekBarBindingAdapter.OnProgressChanged {
-        override fun onProgressChanged(seekBar: SeekBar?, progress: Int, fromUser: Boolean) {
-            when (seekBar) {
-                binding.biasSeekBarTest -> changeBias(progress)
-                binding.clGuideline.guidelineSeekBar -> changeGuideLine(progress)
-                binding.clFlow.flowSeekBarHorizontalBias -> changeFlowBias(progress)
-            }
+    private val onProgressChanged = SeekBarBindingAdapter.OnProgressChanged { seekBar, progress, _ ->
+        when (seekBar) {
+            binding.biasSeekBarTest -> changeBias(progress)
+            binding.clGuideline.guidelineSeekBar -> changeGuideLine(progress)
+            binding.clFlow.flowSeekBarHorizontalBias -> changeFlowBias(progress)
         }
     }
 
@@ -159,7 +158,9 @@ class ConstraintLayoutActivity : AppCompatActivity() {
     }
 
     private fun switchFlow(id: Int) {
-        
+        if (R.id.btn_flow_wrap_mode == id) {
+            binding.clFlow.clFlow.setWrapMode(Flow.WRAP_CHAIN)
+        }
     }
 
     private fun changeFlowBias(progress: Int) {

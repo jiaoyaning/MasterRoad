@@ -12,8 +12,9 @@
             type="OnClickListener" />
 
         <variable
-            name="onSeekBarChange"
-            type="android.widget.SeekBar.OnSeekBarChangeListener" />
+            name="onProgressChanged"
+            type="androidx.databinding.adapters.SeekBarBindingAdapter.OnProgressChanged" />
+
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -58,11 +59,11 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
+            android:onProgressChanged="@{onProgressChanged}"
             android:progress="50"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/btn_guideline_left"
-            app:onSeekBarChangeListener="@{onSeekBarChange}" />
+            app:layout_constraintTop_toBottomOf="@+id/btn_guideline_left" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

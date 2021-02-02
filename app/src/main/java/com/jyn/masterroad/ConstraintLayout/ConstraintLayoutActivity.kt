@@ -6,6 +6,7 @@ import android.view.View
 import android.widget.SeekBar
 import androidx.appcompat.app.AppCompatActivity
 import androidx.constraintlayout.widget.ConstraintLayout
+import androidx.databinding.adapters.SeekBarBindingAdapter
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.jyn.masterroad.R
 import com.jyn.masterroad.base.RoutePath
@@ -38,24 +39,16 @@ class ConstraintLayoutActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         binding.onClick = click
-        binding.onSeekBarChange = seekBarChange
+        binding.onProgressChanged = onProgressChanged
     }
 
-    private val seekBarChange = object : SeekBar.OnSeekBarChangeListener {
+    private val onProgressChanged = object : SeekBarBindingAdapter.OnProgressChanged {
         override fun onProgressChanged(seekBar: SeekBar?, progress: Int, fromUser: Boolean) {
             when (seekBar) {
                 binding.biasSeekBarTest -> changeBias(progress)
                 binding.clGuideline.guidelineSeekBar -> changeGuideLine(progress)
                 binding.clFlow.flowSeekBarHorizontalBias -> changeFlowBias(progress)
             }
-        }
-
-        override fun onStartTrackingTouch(seekBar: SeekBar?) {
-
-        }
-
-        override fun onStopTrackingTouch(seekBar: SeekBar?) {
-
         }
     }
 

@@ -40,7 +40,7 @@ import kotlinx.android.synthetic.main.activity_main.*
 class MainActivity : AppCompatActivity() {
     private lateinit var activityMainBinding: ActivityMainBinding
 
-    private var routerList: ArrayList<MainViewModel.RouterList> = getRouterList()
+    private var routerList: ArrayList<MainViewModel> = getRouterList()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -70,13 +70,13 @@ class MainActivity : AppCompatActivity() {
     /**
      * 通过反射创建Router列表
      */
-    private fun getRouterList(): ArrayList<MainViewModel.RouterList> {
-        val routerList = arrayListOf<MainViewModel.RouterList>()
+    private fun getRouterList(): ArrayList<MainViewModel> {
+        val routerList = arrayListOf<MainViewModel>()
         val classes = RoutePath.javaClass.classes
         for (i in classes.indices) {
             val name: String = classes[i].getField("name")[this] as String
             val path: String = classes[i].getField("path")[this] as String
-            routerList.add(MainViewModel.RouterList(ObservableField(name), ObservableField(path)))
+            routerList.add(MainViewModel(ObservableField(name), ObservableField(path)))
         }
         return routerList
     }
@@ -85,7 +85,7 @@ class MainActivity : AppCompatActivity() {
      * 第一版参考
      * https://www.jianshu.com/p/379a8f5347de
      */
-    inner class MainAdapter(var routerList: ArrayList<MainViewModel.RouterList>, var context: Context) : Adapter<MainAdapter.MainViewHolder>() {
+    inner class MainAdapter(var routerList: ArrayList<MainViewModel>, var context: Context) : Adapter<MainAdapter.MainViewHolder>() {
 
         inner class MainViewHolder(var binding: ItemMainBinding) : RecyclerView.ViewHolder(binding.root)
 

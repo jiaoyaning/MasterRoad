@@ -6,9 +6,6 @@ import androidx.lifecycle.ViewModel
 /**
  * Created by jiaoyaning on 2020/11/2.
  */
-class MainViewModel : ViewModel() {
+data class MainViewModel(var name: ObservableField<String>, var path: ObservableField<String>) : ViewModel() {
 
-    class RouterList(var name: ObservableField<String>, var path: ObservableField<String>) {
-
-    }
 }

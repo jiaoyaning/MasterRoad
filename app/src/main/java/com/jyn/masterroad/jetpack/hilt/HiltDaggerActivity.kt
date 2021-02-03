@@ -1,4 +1,4 @@
-package com.jyn.masterroad.hilt_dagger;
+package com.jyn.masterroad.jetpack.hilt;
 
 import android.os.Bundle
 import android.os.PersistableBundle

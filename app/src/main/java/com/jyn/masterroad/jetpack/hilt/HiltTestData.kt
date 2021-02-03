@@ -1,4 +1,4 @@
-package com.jyn.masterroad.hilt_dagger
+package com.jyn.masterroad.jetpack.hilt
 
 import com.apkfuns.logutils.LogUtils
 import javax.inject.Inject

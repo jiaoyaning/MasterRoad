@@ -45,13 +45,9 @@ class ConstraintLayoutActivity : AppCompatActivity() {
     private val onProgressChanged = SeekBarBindingAdapter.OnProgressChanged { seekBar, progress, _ ->
         when (seekBar) {
             binding.biasSeekBarTest -> changeBias(progress)
-            binding.clGuideline.guidelineSeekBar -> changeGuideLine(progress)
-            binding.clFlow.flowSeekBarHorizontalBias -> changeFlowBias(progress)
+            binding.clGuideline.guidelineSeekBar -> binding.clGuideline.guideline.setGuidelinePercent(progress / 100f)
+            binding.clFlow.flowSeekBarHorizontalBias -> binding.clFlow.clFlow.setHorizontalBias(progress / 100f)
         }
-    }
-
-    private fun changeGuideLine(progress: Int) {
-        binding.clGuideline.guideline.setGuidelinePercent(progress / 100f)
     }
 
     private var click = View.OnClickListener {
@@ -59,14 +55,14 @@ class ConstraintLayoutActivity : AppCompatActivity() {
             R.id.tv_space_test -> switchSpaceBias()                 //space 可用来当约束锚点
 
             R.id.btn_chain_style_spread,
-            R.id.btn_chain_style_spread_inside,
-            R.id.btn_chain_style_packed -> switchChainStyle(it.id)  //chain 链式布局
+            R.id.btn_chain_style_packed,
+            R.id.btn_chain_style_spread_inside -> switchChainStyle(it.id)  //chain 链式布局
 
             R.id.btn_gone_margin_test -> switchGoneMargin()         // goneMargin 属性测试
             R.id.btn_barrier_test -> switchBarrierTest()            //barrier 内容屏障测试
 
-            R.id.btn_group_control_myself,
-            R.id.btn_group_control_all -> controlGroup(it.id)       //Group 组控制
+            R.id.btn_group_control_all,
+            R.id.btn_group_control_myself -> controlGroup(it.id)       //Group 组控制
 
             R.id.btn_placeholder -> switchPlaceholder()
 
@@ -76,8 +72,8 @@ class ConstraintLayoutActivity : AppCompatActivity() {
             R.id.btn_flow_max_elements_wrap3,
             R.id.btn_flow_max_elements_wrap1,
             R.id.btn_flow_horizontal_style_spread,
-            R.id.btn_flow_horizontal_style_spread_inside,
-            R.id.btn_flow_horizontal_style_packed -> switchFlow(it.id)     //flow 测试
+            R.id.btn_flow_horizontal_style_packed,
+            R.id.btn_flow_horizontal_style_spread_inside -> switchFlow(it.id)     //flow 测试
         }
     }
 
@@ -109,15 +105,9 @@ class ConstraintLayoutActivity : AppCompatActivity() {
     private fun switchChainStyle(style: Int) {
         val layoutParams = getLayoutParams(binding.btnChainStyleSpread)
         when (style) {
-            R.id.btn_chain_style_spread -> {
-                layoutParams.horizontalChainStyle = ConstraintLayout.LayoutParams.CHAIN_SPREAD
-            }
-            R.id.btn_chain_style_spread_inside -> {
-                layoutParams.horizontalChainStyle = ConstraintLayout.LayoutParams.CHAIN_SPREAD_INSIDE
-            }
-            R.id.btn_chain_style_packed -> {
-                layoutParams.horizontalChainStyle = ConstraintLayout.LayoutParams.CHAIN_PACKED
-            }
+            R.id.btn_chain_style_spread -> layoutParams.horizontalChainStyle = ConstraintLayout.LayoutParams.CHAIN_SPREAD
+            R.id.btn_chain_style_spread_inside -> layoutParams.horizontalChainStyle = ConstraintLayout.LayoutParams.CHAIN_SPREAD_INSIDE
+            R.id.btn_chain_style_packed -> layoutParams.horizontalChainStyle = ConstraintLayout.LayoutParams.CHAIN_PACKED
         }
 
         binding.btnChainStyleSpread.layoutParams = layoutParams
@@ -170,10 +160,6 @@ class ConstraintLayoutActivity : AppCompatActivity() {
             R.id.btn_flow_horizontal_style_spread -> binding.clFlow.clFlow.setHorizontalStyle(Flow.CHAIN_SPREAD)
             R.id.btn_flow_horizontal_style_spread_inside -> binding.clFlow.clFlow.setHorizontalStyle(Flow.CHAIN_SPREAD_INSIDE)
         }
-    }
-
-    private fun changeFlowBias(progress: Int) {
-        binding.clFlow.clFlow.setHorizontalBias(progress / 100f)
     }
 
     /**

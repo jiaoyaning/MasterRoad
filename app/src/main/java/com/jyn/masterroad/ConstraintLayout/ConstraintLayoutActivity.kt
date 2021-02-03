@@ -8,8 +8,8 @@ import androidx.constraintlayout.core.widgets.Flow
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.databinding.adapters.SeekBarBindingAdapter
 import com.alibaba.android.arouter.facade.annotation.Route
+import com.jyn.common.utils.ARouter.RoutePath
 import com.jyn.masterroad.R
-import com.jyn.masterroad.base.RoutePath
 import com.jyn.masterroad.databinding.ActivityConstraintlayoutBinding
 
 /**

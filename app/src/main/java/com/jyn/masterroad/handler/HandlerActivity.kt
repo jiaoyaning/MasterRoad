@@ -5,10 +5,9 @@ import android.os.*
 import androidx.appcompat.app.AppCompatActivity
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.apkfuns.logutils.LogUtils
+import com.jyn.common.utils.ARouter.RoutePath
 import com.jyn.masterroad.R
-import com.jyn.masterroad.base.RoutePath
 import java.lang.reflect.Method
-import javax.security.auth.callback.Callback
 
 /**
  * https://mp.weixin.qq.com/s/7S9NITBi3sXsqrzxNfMa8Q

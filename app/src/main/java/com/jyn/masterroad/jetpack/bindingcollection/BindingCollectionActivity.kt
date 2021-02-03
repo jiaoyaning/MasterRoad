@@ -4,7 +4,7 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import com.alibaba.android.arouter.facade.annotation.Route
-import com.jyn.masterroad.base.RoutePath
+import com.jyn.common.utils.ARouter.RoutePath
 import com.jyn.masterroad.databinding.ActivityBindingCollectionBinding
 
 /**

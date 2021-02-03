@@ -1,20 +1,15 @@
 package com.jyn.masterroad.RxJava
 
 import android.os.Bundle
-import android.os.PersistableBundle
-import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.apkfuns.logutils.LogUtils
+import com.jyn.common.utils.ARouter.RoutePath
 import com.jyn.masterroad.R
-import com.jyn.masterroad.base.RoutePath
 import io.reactivex.Observable
-import io.reactivex.ObservableEmitter
-import io.reactivex.ObservableOnSubscribe
 import io.reactivex.Observer
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.Disposable
-import io.reactivex.functions.Function
 import io.reactivex.schedulers.Schedulers
 
 /**

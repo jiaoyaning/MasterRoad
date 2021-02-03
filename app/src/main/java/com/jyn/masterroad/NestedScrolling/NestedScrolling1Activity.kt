@@ -10,9 +10,8 @@ import android.widget.Button
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.alibaba.android.arouter.facade.annotation.Route
+import com.jyn.common.utils.ARouter.RoutePath
 import com.jyn.masterroad.R
-import com.jyn.masterroad.base.RoutePath
-import com.jyn.masterroad.databinding.ItemMainBinding
 import kotlinx.android.synthetic.main.activity_nested_scrolling1.*
 
 /**

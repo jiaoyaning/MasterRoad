@@ -4,22 +4,19 @@ import android.app.ActivityManager
 import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
-import androidx.lifecycle.ViewModelProvider
+import androidx.databinding.ObservableField
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.Adapter
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.apkfuns.logutils.LogUtils
+import com.jyn.common.utils.ARouter.RoutePath
 import com.jyn.common.utils.ARouter.goto
-import com.jyn.masterroad.base.RoutePath
 import com.jyn.masterroad.databinding.ActivityMainBinding
 import com.jyn.masterroad.databinding.ItemMainBinding
-import com.jyn.masterroad.jetpack.livedata.LiveDataTestViewModel
 import kotlinx.android.synthetic.main.activity_main.*
-import kotlinx.android.synthetic.main.item_main.view.*
 
 
 /**
@@ -43,7 +40,7 @@ import kotlinx.android.synthetic.main.item_main.view.*
 class MainActivity : AppCompatActivity() {
     private lateinit var activityMainBinding: ActivityMainBinding
 
-    private var routerList: ArrayList<MainViewModel.RouterList> = RoutePath.getRouterList()
+    private var routerList: ArrayList<MainViewModel.RouterList> = getRouterList()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -68,6 +65,20 @@ class MainActivity : AppCompatActivity() {
         LogUtils.tag("main").i("maxMemory : $maxMemory")
         LogUtils.tag("main").i("totalMemory : $totalMemory")
         LogUtils.tag("main").i("freeMemory : $freeMemory")
+    }
+
+    /**
+     * 通过反射创建Router列表
+     */
+    private fun getRouterList(): ArrayList<MainViewModel.RouterList> {
+        val routerList = arrayListOf<MainViewModel.RouterList>()
+        val classes = RoutePath.javaClass.classes
+        for (i in classes.indices) {
+            val name: String = classes[i].getField("name")[this] as String
+            val path: String = classes[i].getField("path")[this] as String
+            routerList.add(MainViewModel.RouterList(ObservableField(name), ObservableField(path)))
+        }
+        return routerList
     }
 
     /**

@@ -6,6 +6,9 @@ import org.jetbrains.kotlin.config.KotlinCompilerVersion
  *
  * 官方文档 (Migrating build logic from Groovy to Kotlin)
  * https://docs.gradle.org/nightly/userguide/migrating_from_groovy_to_kotlin_dsl.html
+ *
+ * Gradle Kotlin DSL (不错)
+ * https://blog.csdn.net/Utzw0p0985/article/details/107551455
  */
 
 plugins {
@@ -59,4 +62,5 @@ dependencies {
     annotationProcessor("com.google.dagger:dagger-android-processor:2.15")
 
     implementation("com.alibaba:arouter-api:1.5.0")
+    implementation("com.apkfuns.logutils:library:1.7.5")
 }

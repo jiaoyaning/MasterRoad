@@ -76,4 +76,12 @@ object RoutePath {
         const val name = " NestedScrolling1"
         const val path = "/app/ NestedScrolling1"
     }
+
+    /**
+     * Thread 线程
+     */
+    object Thread{
+        const val name = "Thread"
+        const val path = "app/Thread"
+    }
 }

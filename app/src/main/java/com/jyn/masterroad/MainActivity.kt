@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
+import androidx.databinding.DataBindingUtil
 import androidx.databinding.ObservableField
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -44,7 +45,8 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        activityMainBinding = ActivityMainBinding.inflate(layoutInflater)
+//        activityMainBinding = ActivityMainBinding.inflate(layoutInflater)
+        activityMainBinding = DataBindingUtil.setContentView(this, R.layout.activity_main)
         setContentView(activityMainBinding.root)
         main_recycle.layoutManager = LinearLayoutManager(this)
         main_recycle.adapter = MainAdapter(routerList, this)

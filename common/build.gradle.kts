@@ -43,6 +43,14 @@ android {
         }
     }
 
+    @Suppress("UnstableApiUsage")
+    buildFeatures{
+        dataBinding = true
+        viewBinding = true
+    }
+//    buildFeatures.dataBinding = true
+//    buildFeatures.viewBinding = true
+
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_1_8
         targetCompatibility = JavaVersion.VERSION_1_8
@@ -57,6 +65,8 @@ dependencies {
     testImplementation("junit:junit:4.12")
     androidTestImplementation("androidx.test.ext:junit:1.1.1")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.2.0")
+
+    implementation("androidx.lifecycle:lifecycle-extensions:2.2.0")
 
     implementation("com.google.dagger:dagger-android:2.15")
     annotationProcessor("com.google.dagger:dagger-android-processor:2.15")

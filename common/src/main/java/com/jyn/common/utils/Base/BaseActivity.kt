@@ -1,24 +1,24 @@
 package com.jyn.masterroad.base
 
 import android.os.Bundle
+import android.os.PersistableBundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
-import androidx.lifecycle.ViewModelProvider
 
-public abstract class BaseActivity<T : ViewDataBinding> : AppCompatActivity() {
+abstract class BaseActivity<dataBinding : ViewDataBinding> : AppCompatActivity() {
 
-    val binding: T by lazy {
-        DataBindingUtil.setContentView<T>(this, getLayoutId())
-    }
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
+    public open val binding: dataBinding by lazy {
+        DataBindingUtil.setContentView<dataBinding>(this, getLayoutId())
     }
 
     abstract fun getLayoutId(): Int
 
-    public fun getProvider(): ViewModelProvider? {
-        return ViewModelProvider(this, this.defaultViewModelProviderFactory)
+    override fun onCreate(savedInstanceState: Bundle?, persistentState: PersistableBundle?) {
+        super.onCreate(savedInstanceState, persistentState)
+        setContentView(binding.root)
+        init()
     }
+
+    abstract fun init()
 }

@@ -5,12 +5,50 @@
 
     <data>
 
+        <variable
+            name="onClick"
+            type="android.view.View.OnClickListener" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".thread.ThreadActivity">
+        tools:context=".Thread.ThreadActivity">
 
+        <TextView
+            android:id="@+id/textView14"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="线程创建和运行"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Button
+            android:id="@+id/thread_btn_thread"
+            style="@style/constraint_tv"
+            android:layout_marginTop="30dp"
+            android:onClick="@{onClick}"
+            android:text="Thread"
+            app:layout_constraintEnd_toStartOf="@id/thread_btn_runnable"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Button
+            android:id="@+id/thread_btn_runnable"
+            style="@style/constraint_tv2"
+            android:onClick="@{onClick}"
+            android:text="Runnable"
+            app:layout_constraintEnd_toStartOf="@id/thread_btn_future_task"
+            app:layout_constraintStart_toEndOf="@+id/thread_btn_thread"
+            app:layout_constraintTop_toTopOf="@+id/thread_btn_thread" />
+
+        <Button
+            android:id="@+id/thread_btn_future_task"
+            style="@style/constraint_tv"
+            android:onClick="@{onClick}"
+            android:text="FutureTask\n + Callable"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/thread_btn_runnable"
+            app:layout_constraintTop_toTopOf="@+id/thread_btn_thread" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

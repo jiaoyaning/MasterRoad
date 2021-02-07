@@ -23,10 +23,6 @@
     </style>
 
     <style name="base_constraint_tv">
-
-    </style>
-
-    <style name="constraint_tv">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height" tools:ignore="PrivateResource">
             @dimen/abc_action_button_min_height_material
@@ -36,7 +32,14 @@
         <item name="android:paddingRight">8dp</item>
         <item name="android:gravity">center</item>
         <item name="android:textSize">11sp</item>
+    </style>
+
+    <style name="constraint_tv" parent="base_constraint_tv">
         <item name="android:background">@drawable/bg_white_stroke</item>
+    </style>
+
+    <style name="constraint_tv2" parent="base_constraint_tv">
+        <item name="android:background">@drawable/bg_white_stroke2</item>
     </style>
 
 </resources>

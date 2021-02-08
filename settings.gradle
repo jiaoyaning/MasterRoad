@@ -1,3 +1,4 @@
+include ':ipc'
 include ':Plugin:PluginHelloWorld'
 include ':Leetcode'
 include ':java_kotlin'

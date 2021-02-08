@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".MainActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <Button
+            android:id="@+id/send_aidl_serve"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="向Aidl Service发消息 testFun()"
+            android:textAllCaps="false" />
+
+        <Button
+            android:id="@+id/send_aidl_serve_in"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="向Aidl Service发消息 setInTest()"
+            android:textAllCaps="false" />
+
+        <Button
+            android:id="@+id/send_aidl_serve_out"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="向Aidl Service发消息 setOutTest()"
+            android:textAllCaps="false" />
+
+        <Button
+            android:id="@+id/send_aidl_serve_inout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="向Aidl Service发消息 setInOutTest()"
+            android:textAllCaps="false" />
+
+        <Button
+            android:id="@+id/send_aidl_serve_oneway"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="向Aidl Service发消息 onewayTest()"
+            android:textAllCaps="false" />
+
+        <Button
+            android:id="@+id/send_messenger_serve_oneway"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="向Messenger Service发消息"
+            android:textAllCaps="false" />
+
+    </LinearLayout>
+</androidx.core.widget.NestedScrollView>

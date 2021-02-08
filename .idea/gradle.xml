@@ -15,6 +15,7 @@
             <option value="$PROJECT_DIR$/Plugin/PluginHelloWorld" />
             <option value="$PROJECT_DIR$/app" />
             <option value="$PROJECT_DIR$/common" />
+            <option value="$PROJECT_DIR$/ipc" />
             <option value="$PROJECT_DIR$/java_kotlin" />
           </set>
         </option>

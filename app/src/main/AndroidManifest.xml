@@ -31,7 +31,6 @@
             android:name=".jetpack.bindingcollection.BindingCollectionActivity"
             android:label="BindingCollectionAdapter" />
         <activity android:name=".jetpack.livedata.LiveDataActivity" />
-        <activity android:name=".base.BaseActivity" />
         <activity android:name=".handler.HandlerActivity" />
         <activity android:name=".eventbus.EventBusActivity" />
         <activity android:name="com.jyn.masterroad.jetpack.hilt.HiltDaggerActivity" />

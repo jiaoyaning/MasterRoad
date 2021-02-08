@@ -82,6 +82,6 @@ object RoutePath {
      */
     object Thread{
         const val name = "Thread"
-        const val path = "app/Thread"
+        const val path = "/app/Thread"
     }
 }

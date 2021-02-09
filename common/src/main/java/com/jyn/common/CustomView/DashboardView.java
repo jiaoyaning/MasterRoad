@@ -1,4 +1,4 @@
-package com.jyn.common.utils.CustomView;
+package com.jyn.common.CustomView;
 
 import android.content.Context;
 import android.graphics.Canvas;
@@ -13,7 +13,7 @@ import android.view.View;
 
 import androidx.annotation.Nullable;
 
-import com.jyn.common.utils.DensityUtils;
+import com.jyn.common.Utils.DensityUtils;
 
 /**
  * Created by jiaoyaning on 2020/6/2.

@@ -1,4 +1,4 @@
-package com.jyn.common.utils;
+package com.jyn.common.Utils;
 
 import android.content.Context;
 import android.util.DisplayMetrics;

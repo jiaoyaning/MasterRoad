@@ -1,24 +1,17 @@
 package com.jyn.masterroad
 
-import android.app.ActivityManager
 import android.content.Context
-import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.appcompat.app.AppCompatActivity
-import androidx.databinding.DataBindingUtil
-import androidx.databinding.ObservableField
-import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.Adapter
 import com.alibaba.android.arouter.facade.annotation.Route
-import com.apkfuns.logutils.LogUtils
-import com.jyn.common.utils.ARouter.RoutePath
-import com.jyn.common.utils.ARouter.goto
+import com.jyn.common.ARouter.RoutePath
+import com.jyn.common.ARouter.goto
+import com.jyn.masterroad.base.BaseActivity
 import com.jyn.masterroad.databinding.ActivityMainBinding
 import com.jyn.masterroad.databinding.ItemMainBinding
 import kotlinx.android.synthetic.main.activity_main.*
-
 
 /**
  * https://www.jianshu.com/p/2ee3672efb1f
@@ -38,49 +31,15 @@ import kotlinx.android.synthetic.main.activity_main.*
  * https://www.jianshu.com/p/c69b0e4e18f1
  */
 @Route(path = RoutePath.Main.path)
-class MainActivity : AppCompatActivity() {
-    private lateinit var activityMainBinding: ActivityMainBinding
+class MainActivity : BaseActivity<ActivityMainBinding>() {
 
-    private var routerList: ArrayList<MainViewModel> = getRouterList()
+    private var routerList: ArrayList<MainViewModel> = MainViewModel.getRouterList()
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-//        activityMainBinding = ActivityMainBinding.inflate(layoutInflater)
-        activityMainBinding = DataBindingUtil.setContentView(this, R.layout.activity_main)
-        setContentView(activityMainBinding.root)
-        main_recycle.layoutManager = LinearLayoutManager(this)
+    override fun getLayoutId() = R.layout.activity_main
+
+    override fun init() {
+//        binding = ActivityMainBinding.inflate(layoutInflater) //第二种实现方式
         main_recycle.adapter = MainAdapter(routerList, this)
-
-        val activityManager = getSystemService(Context.ACTIVITY_SERVICE) as ActivityManager
-        //最大分配内存
-        val memory = activityManager.memoryClass
-        LogUtils.tag("main").i("最大可用内存: $memory")
-
-
-        //应用程序最大可用内存
-        val maxMemory = Runtime.getRuntime().maxMemory().toInt() / 1024 / 1024
-        //应用程序已被分配的内存
-        val totalMemory = Runtime.getRuntime().totalMemory().toInt() / 1024 / 1024.toLong()
-        //应用程序已获得内存中未使用内存
-        val freeMemory = Runtime.getRuntime().freeMemory().toInt() / 1024 / 1024.toLong()
-
-        LogUtils.tag("main").i("maxMemory : $maxMemory")
-        LogUtils.tag("main").i("totalMemory : $totalMemory")
-        LogUtils.tag("main").i("freeMemory : $freeMemory")
-    }
-
-    /**
-     * 通过反射创建Router列表
-     */
-    private fun getRouterList(): ArrayList<MainViewModel> {
-        val routerList = arrayListOf<MainViewModel>()
-        val classes = RoutePath.javaClass.classes
-        for (i in classes.indices) {
-            val name: String = classes[i].getField("name")[this] as String
-            val path: String = classes[i].getField("path")[this] as String
-            routerList.add(MainViewModel(ObservableField(name), ObservableField(path)))
-        }
-        return routerList
     }
 
     /**
@@ -105,8 +64,6 @@ class MainActivity : AppCompatActivity() {
             itemMainBinding.executePendingBindings()
         }
 
-        override fun getItemCount(): Int {
-            return routerList.size
-        }
+        override fun getItemCount(): Int = routerList.size
     }
 }

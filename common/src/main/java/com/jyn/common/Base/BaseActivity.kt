@@ -8,13 +8,14 @@ import androidx.databinding.ViewDataBinding
 
 abstract class BaseActivity<dataBinding : ViewDataBinding> : AppCompatActivity() {
 
-    lateinit var binding: dataBinding
+    val binding: dataBinding by lazy {
+        DataBindingUtil.setContentView<dataBinding>(this, getLayoutId())
+    }
 
     abstract fun getLayoutId(): Int
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = DataBindingUtil.setContentView<dataBinding>(this, getLayoutId())
         setContentView(binding.root)
         init()
     }

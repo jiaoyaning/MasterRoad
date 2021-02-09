@@ -3,7 +3,7 @@ package com.jyn.masterroad.ConstraintLayout
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.alibaba.android.arouter.facade.annotation.Route
-import com.jyn.common.utils.ARouter.RoutePath
+import com.jyn.common.ARouter.RoutePath
 import com.jyn.masterroad.R
 import kotlinx.android.synthetic.main.activity_motion_layout.*
 

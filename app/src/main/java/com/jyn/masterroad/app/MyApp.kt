@@ -9,6 +9,7 @@ import android.widget.Toast
 import androidx.lifecycle.ProcessLifecycleOwner
 
 import com.apkfuns.logutils.LogUtils
+import com.jyn.common.Utils.MemoryCase
 
 import dagger.hilt.android.HiltAndroidApp;
 
@@ -35,7 +36,7 @@ class MyApp : Application() {
      */
     private fun setUncaughtException() {
         Thread.setDefaultUncaughtExceptionHandler { t, e ->
-            LogUtils.tag("main").e("线程:" +t.name+ " 遇到错误:" + e.message)
+            LogUtils.tag("main").e("线程:" + t.name + " 遇到错误:" + e.message)
             Toast.makeText(this, "程序遇到错误:" + e.message, Toast.LENGTH_LONG).show()
             e.printStackTrace()
         }
@@ -80,6 +81,7 @@ class MyApp : Application() {
     override fun onTrimMemory(level: Int) {
         super.onTrimMemory(level)
         LogUtils.i("onTrimMemory level:$level")
+        MemoryCase.getMemoryCase() //获取内存分配情况
     }
 
     /**

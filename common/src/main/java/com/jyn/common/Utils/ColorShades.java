@@ -1,4 +1,4 @@
-package com.jyn.common.utils;
+package com.jyn.common.Utils;
 
 import android.graphics.Color;
 

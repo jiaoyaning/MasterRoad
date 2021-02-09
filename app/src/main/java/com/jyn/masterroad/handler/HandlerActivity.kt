@@ -5,7 +5,7 @@ import android.os.*
 import androidx.appcompat.app.AppCompatActivity
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.apkfuns.logutils.LogUtils
-import com.jyn.common.utils.ARouter.RoutePath
+import com.jyn.common.ARouter.RoutePath
 import com.jyn.masterroad.R
 import java.lang.reflect.Method
 

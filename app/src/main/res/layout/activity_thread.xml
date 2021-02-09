@@ -46,7 +46,7 @@
             android:id="@+id/thread_btn_future_task"
             style="@style/constraint_tv"
             android:onClick="@{onClick}"
-            android:text="FutureTask\n + Callable"
+            android:text="FutureTask +\nCallable"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/thread_btn_runnable"
             app:layout_constraintTop_toTopOf="@+id/thread_btn_thread" />

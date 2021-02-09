@@ -11,10 +11,14 @@
         android:orientation="vertical"
         tools:context=".MainActivity">
 
+        <!-- RecyclerView可以在xml文件中配置的特别属性  -->
+        <!-- https://blog.csdn.net/ljd1991/article/details/51851015 -->
+
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/main_recycle"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            app:layoutManager="LinearLayoutManager"
             tools:itemCount="5"
             tools:listitem="@layout/item_main" />
 

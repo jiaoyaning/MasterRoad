@@ -3,7 +3,7 @@ package com.jyn.masterroad.Thread
 import android.view.View
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.apkfuns.logutils.LogUtils
-import com.jyn.common.utils.ARouter.RoutePath
+import com.jyn.common.ARouter.RoutePath
 import com.jyn.masterroad.R
 import com.jyn.masterroad.base.BaseActivity
 import com.jyn.masterroad.databinding.ActivityThreadBinding
@@ -24,19 +24,7 @@ import java.util.concurrent.FutureTask
 @Route(path = RoutePath.Thread.path)
 class ThreadActivity : BaseActivity<ActivityThreadBinding>() {
 
-    //1.继承Thread类
-    private val threadTest: ThreadCreate.ThreadTest by lazy { ThreadCreate.ThreadTest() }
-
-    //2.实现Runnable接口，可避免Java单继承问题，依然需要Thread类
-    private val runnableThreadTest: Thread by lazy { Thread(ThreadCreate.RunnableTest()) }
-
-    //3.FutureTask类 + Callable接口，可携带返回值，需要Thread类或者Executors
-    private val callableTest: Callable<String> by lazy { ThreadCreate.CallableTest() }
-    private val futureTaskTest: FutureTask<String> by lazy { FutureTask<String>(callableTest) }
-
-    override fun getLayoutId(): Int {
-        return R.layout.activity_thread
-    }
+    override fun getLayoutId() = R.layout.activity_thread
 
     override fun init() {
         binding.onClick = onClick
@@ -44,24 +32,43 @@ class ThreadActivity : BaseActivity<ActivityThreadBinding>() {
 
     val onClick = View.OnClickListener {
         when (it.id) {
-            R.id.thread_btn_thread -> threadTest.start()
-            R.id.thread_btn_runnable -> runnableThreadTest.start()
+            R.id.thread_btn_thread -> threadTest()
+            R.id.thread_btn_runnable -> runnableThreadTest()
             R.id.thread_btn_future_task -> futureTaskTest()
         }
     }
 
+    /*
+     * 1.继承Thread类
+     */
+    private fun threadTest() {
+        val threadTest = ThreadCreate.ThreadTest()
+        threadTest.start()
+    }
+
+    /*
+     * 2.实现Runnable接口，可避免Java单继承问题，依然需要Thread类
+     */
+    private fun runnableThreadTest() {
+        val runnableThreadTest = Thread(ThreadCreate.RunnableTest())
+        runnableThreadTest.start()
+    }
+
     /**
-     *
+     *  3.FutureTask类 + Callable接口，可携带返回值，需要Thread类或者Executors
      */
     private fun futureTaskTest() {
-        //第一种方式 Executors.submit(Callable)
+        val callableTest: Callable<String> = ThreadCreate.CallableTest()
+        val futureTaskTest: FutureTask<String> = FutureTask<String>(callableTest)
+
+        //第一种futureTask方式 Executors.submit(Callable)
         val executor = Executors.newCachedThreadPool()
         val submit = executor.submit(callableTest)
-        LogUtils.tag("main").i("第一种Future实现方式: Executors.submit(Callable) 返回结果:$submit")
+        LogUtils.tag("main").i("第一种Future实现方式: Executors.submit(Callable) 返回结果:${submit.get()}")
         executor.shutdown()
 
-        //第二种方式
+        //第二种futureTask方式
         Thread(futureTaskTest).start()
-        LogUtils.tag("main").i("第二种Future实现方式: Thread(FutureTask) 返回结果:$futureTaskTest.get()")
+        LogUtils.tag("main").i("第二种Future实现方式: Thread(FutureTask) 返回结果:${futureTaskTest.get()}")
     }
 }

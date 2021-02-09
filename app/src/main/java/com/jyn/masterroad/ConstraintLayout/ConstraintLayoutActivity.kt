@@ -1,15 +1,14 @@
 package com.jyn.masterroad.ConstraintLayout
 
 import android.annotation.SuppressLint
-import android.os.Bundle
 import android.view.View
-import androidx.appcompat.app.AppCompatActivity
 import androidx.constraintlayout.core.widgets.Flow
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.databinding.adapters.SeekBarBindingAdapter
 import com.alibaba.android.arouter.facade.annotation.Route
-import com.jyn.common.utils.ARouter.RoutePath
+import com.jyn.common.ARouter.RoutePath
 import com.jyn.masterroad.R
+import com.jyn.masterroad.base.BaseActivity
 import com.jyn.masterroad.databinding.ActivityConstraintlayoutBinding
 
 /**
@@ -30,14 +29,11 @@ import com.jyn.masterroad.databinding.ActivityConstraintlayoutBinding
  */
 @SuppressLint("SetTextI18n")
 @Route(path = RoutePath.ConstraintLayout.path)
-class ConstraintLayoutActivity : AppCompatActivity() {
-    private lateinit var binding: ActivityConstraintlayoutBinding
+class ConstraintLayoutActivity : BaseActivity<ActivityConstraintlayoutBinding>() {
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        binding = ActivityConstraintlayoutBinding.inflate(layoutInflater)
-        setContentView(binding.root)
+    override fun getLayoutId() = R.layout.activity_constraintlayout
 
+    override fun init() {
         binding.onClick = click
         binding.onProgressChanged = onProgressChanged
     }

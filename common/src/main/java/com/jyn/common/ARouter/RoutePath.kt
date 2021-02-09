@@ -1,4 +1,4 @@
-package com.jyn.common.utils.ARouter
+package com.jyn.common.ARouter
 
 /**
  * Created by jiaoyaning on 2020/9/16.

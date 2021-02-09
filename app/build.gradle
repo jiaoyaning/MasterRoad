@@ -141,7 +141,6 @@ dependencies {
      * https://insert-koin.io/docs/quickstart/kotlin
      */
     implementation "org.koin:koin-core:$koin_version"   // Koin for Kotlin apps
-    debugImplementation "org.koin:koin-test:$koin_version"   // Testing
 
 //    /**
 //     * https://mp.weixin.qq.com/s/vNf9rDt3RxDPVacR9-e7Yw

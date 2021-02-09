@@ -135,6 +135,14 @@ dependencies {
      */
     implementation "androidx.datastore:datastore-core:1.0.0-alpha06"
 
+
+    /**
+     * Kotlin 的依赖注入框架
+     * https://insert-koin.io/docs/quickstart/kotlin
+     */
+    implementation "org.koin:koin-core:$koin_version"   // Koin for Kotlin apps
+    debugImplementation "org.koin:koin-test:$koin_version"   // Testing
+
 //    /**
 //     * https://mp.weixin.qq.com/s/vNf9rDt3RxDPVacR9-e7Yw
 //     */

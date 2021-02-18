@@ -1,9 +1,7 @@
-package com.jyn.java_kotlin.kotlinlearn.collection
+package com.jyn.java_kotlin.KotlinLearn.collection
 
 /**
- * Created by jiaoyaning on 2020/12/8.
- *
- *  kotlin集合基本API
+ * kotlin集合基本API
  * https://blog.csdn.net/xuyankuanrong/article/details/77477976
  */
 fun main() {

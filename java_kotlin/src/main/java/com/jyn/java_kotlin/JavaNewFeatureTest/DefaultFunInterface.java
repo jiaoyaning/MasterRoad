@@ -1,19 +1,19 @@
 package com.jyn.java_kotlin.JavaNewFeatureTest;
 
-/**
+/*
  * https://www.runoob.com/java/java9-private-interface-methods.html
  * java8 Java9 支持接口的默认实现，通过default关键字实现
- * <p>
+ *
  * 1.8中，接口可以实现如下变量/方法
  * 常量
  * 抽象方法
  * 默认方法
  * 静态方法
- * <p>
+ *
  * 1.9中
  * 私有方法
  * 私有静态方法
- * <p>
+ *
  *
  * https://blog.csdn.net/Mandypan/article/details/52138062
  * https://developer.ibm.com/zh/articles/l-javainterface-abstract/

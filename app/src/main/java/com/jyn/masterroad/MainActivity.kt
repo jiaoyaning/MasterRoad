@@ -39,7 +39,7 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
 
     override fun init() {
 //        binding = ActivityMainBinding.inflate(layoutInflater) //第二种实现方式
-        main_recycle.adapter = MainAdapter(routerList, this)
+        binding.mainRecycle.adapter = MainAdapter(routerList, this)
     }
 
     /**

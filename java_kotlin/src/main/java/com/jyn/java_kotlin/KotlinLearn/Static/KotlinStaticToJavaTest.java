@@ -1,4 +1,4 @@
-package com.jyn.java_kotlin.kotlinlearn.statictest;
+package com.jyn.java_kotlin.KotlinLearn.Static;
 
 /**
  * Created by jiaoyaning on 2020/12/6.

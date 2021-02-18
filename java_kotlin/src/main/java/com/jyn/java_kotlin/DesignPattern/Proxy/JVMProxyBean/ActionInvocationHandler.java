@@ -1,10 +1,9 @@
-package com.jyn.java_kotlin.DesignPattern.Proxy;
+package com.jyn.java_kotlin.DesignPattern.Proxy.JVMProxyBean;
 
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Method;
 
 /**
- * Created by jiaoyaning on 2021/1/16.
  * 动态代理类
  */
 public class ActionInvocationHandler implements InvocationHandler {

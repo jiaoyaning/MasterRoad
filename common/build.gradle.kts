@@ -57,6 +57,9 @@ android {
     }
 }
 
+/**
+ * https://docs.gradle.org/current/userguide/organizing_gradle_projects.html#sec:build_sources
+ */
 dependencies {
     implementation(fileTree(mapOf("dir" to "libs", "include" to listOf("*.jar"))))
     implementation(kotlin("stdlib-jdk7", KotlinCompilerVersion.VERSION))

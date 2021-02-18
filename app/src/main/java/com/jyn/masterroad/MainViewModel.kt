@@ -33,14 +33,3 @@ data class MainViewModel(var name: ObservableField<String>, var path: Observable
         }
     }
 }
-
-
-/**
- * 解构方法测试
- * 可以把data的属性，全部剥离出来单独使用
- */
-fun main() {
-    val test = MainViewModel(ObservableField("测试name"), ObservableField("测试path"))
-    val (a, b) = test
-    println("a:${a.get()} ; b:${b.get()}")
-}

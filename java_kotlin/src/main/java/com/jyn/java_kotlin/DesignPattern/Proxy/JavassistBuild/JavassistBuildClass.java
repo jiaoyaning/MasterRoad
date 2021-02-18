@@ -1,4 +1,4 @@
-package com.jyn.java_kotlin.DesignPattern.Proxy;
+package com.jyn.java_kotlin.DesignPattern.Proxy.JavassistBuild;
 
 import javassist.ClassPool;
 import javassist.CtClass;

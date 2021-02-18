@@ -1,4 +1,4 @@
-package com.jyn.java_kotlin.kotlinlearn
+package com.jyn.java_kotlin.KotlinLearn
 
 /**
  * Created by jiaoyaning on 2020/12/8.

@@ -1,8 +1,11 @@
-package com.jyn.java_kotlin.kotlinlearn.statictest
+package com.jyn.java_kotlin.KotlinLearn.Static
 
 /**
  * kotlin 静态
- * Created by jiaoyaning on 2020/12/6.
+ *
+ * 1.top-level(顶层函数)
+ * 2.object 修饰类
+ * 3.companion object
  */
 fun main() {
     testFun()
@@ -47,7 +50,6 @@ class KotlinStaticClass {
      * 在 companion object 中的公共、非 const 的属性 实际上为常量必须用 @JvmField 注解才能暴露为静态字段。
      * 如果没有这个注解，这些属性只能作为静态 Companion 字段中奇怪命名的 ‘getters’ 实例。
      * 而只使用 @JvmStatic 而不是 @JvmField 的话，会将奇怪命名的 ‘getters’ 移到类的静态方法中，但仍然是不正确的。
-     *
      */
     companion object {
         var testVar = "3.这是一个正常类里面的伴生静态对象，var，非const！"

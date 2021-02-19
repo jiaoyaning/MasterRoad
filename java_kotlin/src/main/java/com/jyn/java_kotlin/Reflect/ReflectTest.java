@@ -41,18 +41,16 @@ public class ReflectTest {
 
         /*
          * 1、根据类路径获取类对象
-         * TODO 需要引入class文件，单个Java执行下，暂时没找到好的解决方案
          */
-
-//        try {
-//            Class clzForName = Class.forName("com.jyn.java_kotlin.Reflection.reflection.Test");
-//            System.out.println("Class.forName方法得到的 class :" + clzForName);
-//        } catch (ClassNotFoundException e) {
-//            e.printStackTrace();
-//        }
+        try {
+            Class<?> clzForName = Class.forName("com.jyn.java_kotlin.Reflect.Test");
+            System.out.println("Class.forName方法得到的 class :" + clzForName);
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
 
         /*
-         * 实例对象的getClass()方法
+         * 2.实例对象的getClass()方法
          */
         Test test = new Test();
         Class<? extends Test> clzGetClass = test.getClass();
@@ -63,6 +61,7 @@ public class ReflectTest {
          */
         Class<Test> clz = Test.class;
         System.out.println("Test.class方法得到的 class :" + clz);
+
         //endregion
 
         //反射获取构造方法

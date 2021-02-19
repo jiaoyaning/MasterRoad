@@ -96,7 +96,7 @@ class ThreadActivity : BaseActivity<ActivityThreadBinding>() {
         es.shutdown()
         // shutdownNow() 则是将线程池的状态设置为STOP，正在执行的任务会被尝试 interrupt()中断，没被执行任务的则返回。
         val shutdownNow = es.shutdownNow()
-        LogUtils.tag("main").i(shutdownNow)
+        //awaitTermination() //TODO 待学习
     }
     //endregion
 

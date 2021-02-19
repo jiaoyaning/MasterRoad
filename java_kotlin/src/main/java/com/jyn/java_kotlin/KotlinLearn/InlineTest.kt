@@ -1,6 +1,6 @@
 package com.jyn.java_kotlin.KotlinLearn
 
-/**
+/*
  * inline、noinline、crossinline傻傻分不清楚
  * https://mp.weixin.qq.com/s/qpxdSoyFB2vFs6iZpXPsHg
  */
@@ -40,7 +40,7 @@ class InlineTest {
             })
             println()
 
-            /**
+            /*
              * Kotlin语言中，Lambda表达式里不允许使用return方式结束main方法
              * （并不代表着没办法使用return关键字，如上所示可以加上@方法名表示只结束本方法），除非整个Lambda表达式是内联函数的参数。
              *
@@ -75,7 +75,7 @@ class InlineTest {
             warpAfter(after)
         }
 
-        /**
+        /*
          * 内联函数里函数类型参数不允许间接调用，通过crossinline修饰符允许函数类型参数被间接调用。
          */
         private inline fun crossinlineTest(before: () -> Unit, crossinline after: () -> Unit) {

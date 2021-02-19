@@ -32,16 +32,8 @@ public class ReflectTest {
         System.out.println("\n");
 
         //region 获取class的三种方式
-        /*
-         * 主要有三种方法获取Class对象：
-         * 1、根据类路径获取类对象
-         * 2、直接获取
-         * 3、实例对象的getClass()方法
-         */
 
-        /*
-         * 1、根据类路径获取类对象
-         */
+        // 1、根据类路径获取类对象
         try {
             Class<?> clzForName = Class.forName("com.jyn.java_kotlin.Reflect.Test");
             System.out.println("Class.forName方法得到的 class :" + clzForName);
@@ -49,16 +41,12 @@ public class ReflectTest {
             e.printStackTrace();
         }
 
-        /*
-         * 2.实例对象的getClass()方法
-         */
+        // 2.实例对象的getClass()方法
         Test test = new Test();
         Class<? extends Test> clzGetClass = test.getClass();
         System.out.println("getClass()方法得到的 class :" + clzGetClass);
 
-        /*
-         * 3.直接获取
-         */
+        // 3.直接获取
         Class<Test> clz = Test.class;
         System.out.println("Test.class方法得到的 class :" + clz);
 

@@ -142,6 +142,9 @@ dependencies {
      */
     implementation "org.koin:koin-core:$koin_version"   // Koin for Kotlin apps
 
+    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.4.1'
+
+
 //    /**
 //     * https://mp.weixin.qq.com/s/vNf9rDt3RxDPVacR9-e7Yw
 //     */

@@ -26,7 +26,7 @@
 
         <TextView
             android:id="@+id/textView10"
-            style="@style/constraint_tv"
+            style="@style/tv"
             android:layout_marginTop="35dp"
             android:background="@drawable/bg_white_stroke"
             android:text="成员A"

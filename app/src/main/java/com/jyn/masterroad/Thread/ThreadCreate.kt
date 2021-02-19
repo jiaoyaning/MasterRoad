@@ -11,7 +11,6 @@ class ThreadCreate {
     class ThreadTest : Thread() {
         override fun run() {
             super.run()
-            sleep(2000)
             LogUtils.tag("main").i("继承 Thread 后创建的线程")
         }
     }
@@ -22,7 +21,6 @@ class ThreadCreate {
      */
     class RunnableTest : Runnable {
         override fun run() {
-            Thread.sleep(3000)
             LogUtils.tag("main").i("实现 Runnable 后创建的线程")
         }
     }

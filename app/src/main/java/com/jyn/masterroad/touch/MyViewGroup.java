@@ -8,6 +8,9 @@ import android.widget.LinearLayout;
 
 import androidx.annotation.Nullable;
 
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+
 /**
  * Created by jiao on 2020/7/30.
  */
@@ -30,6 +33,7 @@ public class MyViewGroup extends LinearLayout {
     public boolean dispatchTouchEvent(MotionEvent ev) {
         Log.i("main", "MyViewGroup——>dispatchTouchEvent");
         boolean dispatchTouchEvent = super.dispatchTouchEvent(ev);
+
         return dispatchTouchEvent;
     }
 

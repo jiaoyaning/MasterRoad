@@ -23,8 +23,6 @@ public class AllBaseType {
          * 实际执行：int b = a.intValue();
          */
         int b = a;//自动拆箱
-
-
         intTest();
     }
 

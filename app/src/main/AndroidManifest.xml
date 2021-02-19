@@ -12,7 +12,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="AllowBackup">
-        <activity android:name=".RecyclerView.RecyclerViewActivity"/>
+        <activity android:name="com.jyn.masterroad.Kotlin.Coroutines.KotlinCoroutinesActivity"></activity>
+        <activity android:name=".RecyclerView.RecyclerViewActivity" />
         <activity android:name=".NestedScrolling.NestedScrolling1Activity" />
         <activity android:name=".NestedScrolling.scrollview.ScrollViewActivity" /> <!-- startup初始化 -->
         <provider
@@ -33,7 +34,7 @@
         <activity android:name=".jetpack.livedata.LiveDataActivity" />
         <activity android:name=".handler.HandlerActivity" />
         <activity android:name=".eventbus.EventBusActivity" />
-        <activity android:name="com.jyn.masterroad.jetpack.hilt.HiltDaggerActivity" />
+        <activity android:name=".jetpack.hilt.HiltDaggerActivity" />
         <activity android:name=".Thread.ThreadActivity" />
         <activity android:name=".RxJava.RxJavaActivity" />
         <activity android:name=".MainActivity">

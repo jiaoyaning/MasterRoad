@@ -152,7 +152,7 @@
 
             <TextView
                 android:id="@+id/bias_show_test"
-                style="@style/constraint_tv"
+                style="@style/tv"
                 android:layout_marginTop="30dp"
                 android:background="@drawable/bg_white_stroke"
                 android:text="bias:0.20"
@@ -270,7 +270,7 @@
 
             <TextView
                 android:id="@+id/button7"
-                style="@style/constraint_tv"
+                style="@style/tv"
                 android:layout_width="0dp"
                 android:background="@drawable/bg_white_stroke"
                 android:text="权重1"
@@ -281,7 +281,7 @@
 
             <TextView
                 android:id="@+id/button8"
-                style="@style/constraint_tv"
+                style="@style/tv"
                 android:layout_width="0dp"
                 android:background="@drawable/bg_white_stroke"
                 android:text="权重2"
@@ -292,7 +292,7 @@
 
             <TextView
                 android:id="@+id/button9"
-                style="@style/constraint_tv"
+                style="@style/tv"
                 android:layout_width="0dp"
                 android:background="@drawable/bg_white_stroke"
                 android:text="权重3"
@@ -374,7 +374,7 @@
 
             <TextView
                 android:id="@+id/btn_gone_margin_anchor"
-                style="@style/constraint_tv"
+                style="@style/tv"
                 android:layout_marginTop="30dp"
                 android:background="@drawable/bg_white_stroke"
                 android:text="锚点View"

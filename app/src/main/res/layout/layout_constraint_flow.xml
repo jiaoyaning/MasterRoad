@@ -56,7 +56,7 @@
 
         <Button
             android:id="@+id/btn_flow_wrap_mode_none"
-            style="@style/constraint_tv"
+            style="@style/tv"
             android:onClick="@{onClick}"
             android:text="wrapMode: none"
             app:layout_constraintLeft_toLeftOf="parent"
@@ -64,7 +64,7 @@
 
         <Button
             android:id="@+id/btn_flow_wrap_mode_chain"
-            style="@style/constraint_tv"
+            style="@style/tv"
             android:onClick="@{onClick}"
             android:text="chain"
             app:layout_constraintLeft_toLeftOf="parent"
@@ -72,7 +72,7 @@
 
         <Button
             android:id="@+id/btn_flow_wrap_mode_aligned"
-            style="@style/constraint_tv"
+            style="@style/tv"
             android:onClick="@{onClick}"
             android:text="aligned"
             app:layout_constraintLeft_toLeftOf="parent"
@@ -81,7 +81,7 @@
         <!--  maxElementsWrap : 最大支持几个元素（默认会自动换行，如果指定数目总尺寸小于parent宽度生效） -->
         <Button
             android:id="@+id/btn_flow_max_elements_wrap3"
-            style="@style/constraint_tv"
+            style="@style/tv"
             android:onClick="@{onClick}"
             android:text="maxElementsWrap : 3"
             app:layout_constraintLeft_toLeftOf="parent"
@@ -89,7 +89,7 @@
 
         <Button
             android:id="@+id/btn_flow_max_elements_wrap1"
-            style="@style/constraint_tv"
+            style="@style/tv"
             android:onClick="@{onClick}"
             android:text="...Wrap : 1"
             app:layout_constraintLeft_toLeftOf="parent"
@@ -97,7 +97,7 @@
 
         <Button
             android:id="@+id/btn_flow_horizontal_style_packed"
-            style="@style/constraint_tv"
+            style="@style/tv"
             android:onClick="@{onClick}"
             android:text="horizontalStyle : packed"
             app:layout_constraintLeft_toLeftOf="parent"
@@ -105,7 +105,7 @@
 
         <Button
             android:id="@+id/btn_flow_horizontal_style_spread"
-            style="@style/constraint_tv"
+            style="@style/tv"
             android:onClick="@{onClick}"
             android:text="spread"
             app:layout_constraintLeft_toLeftOf="parent"
@@ -113,7 +113,7 @@
 
         <Button
             android:id="@+id/btn_flow_horizontal_style_spread_inside"
-            style="@style/constraint_tv"
+            style="@style/tv"
             android:onClick="@{onClick}"
             android:text="spread_inside"
             app:layout_constraintLeft_toLeftOf="parent"

@@ -38,7 +38,7 @@
 
         <TextView
             android:id="@+id/btn_guideline_left"
-            style="@style/constraint_tv"
+            style="@style/tv"
             android:onClick="@{onClick}"
             android:text="基准线左边"
             app:layout_constraintEnd_toStartOf="@id/guideline"
@@ -46,7 +46,7 @@
 
         <TextView
             android:id="@+id/btn_guideline_right"
-            style="@style/constraint_tv2"
+            style="@style/tv2"
             android:onClick="@{onClick}"
             android:text="基准线右边"
             app:layout_constraintStart_toStartOf="@id/guideline"

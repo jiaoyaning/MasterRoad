@@ -25,7 +25,7 @@
 
         <TextView
             android:id="@+id/tv_barrier_test1"
-            style="@style/constraint_tv"
+            style="@style/tv"
             android:layout_marginTop="20dp"
             android:text="这是一个很长很长很长的文本"
             app:layout_constraintStart_toStartOf="parent"
@@ -33,7 +33,7 @@
 
         <TextView
             android:id="@+id/tv_barrier_test2"
-            style="@style/constraint_tv"
+            style="@style/tv"
             android:text="短文本"
             android:background="@drawable/bg_white_stroke2"
             app:layout_constraintStart_toStartOf="parent"

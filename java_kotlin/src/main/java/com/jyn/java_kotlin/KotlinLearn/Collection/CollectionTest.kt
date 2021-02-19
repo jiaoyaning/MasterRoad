@@ -1,4 +1,4 @@
-package com.jyn.java_kotlin.KotlinLearn.collection
+package com.jyn.java_kotlin.KotlinLearn.Collection
 
 /**
  * kotlin集合基本API

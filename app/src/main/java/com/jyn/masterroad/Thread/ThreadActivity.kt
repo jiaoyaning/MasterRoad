@@ -20,6 +20,16 @@ import java.util.concurrent.FutureTask
  *
  * 线程攻略，夯实基础很重要！
  * https://juejin.cn/post/6866834999081959438
+ *
+ * 2w字长文带你深入理解线程池
+ * https://mp.weixin.qq.com/s/c4A4ow-TDaG6COArX1rXmg
+ *
+ * synchronized 的使用场景和原理简介
+ * https://www.cnblogs.com/54chensongxia/p/11899031.html
+ *
+ * Thread.yield()和Thread.sleep(0)
+ * https://blog.csdn.net/qq_15037231/article/details/103440060
+ * https://blog.csdn.net/u013218720/article/details/21947613
  */
 @Route(path = RoutePath.Thread.path)
 class ThreadActivity : BaseActivity<ActivityThreadBinding>() {
@@ -35,9 +45,11 @@ class ThreadActivity : BaseActivity<ActivityThreadBinding>() {
             R.id.thread_btn_thread -> threadTest()
             R.id.thread_btn_runnable -> runnableThreadTest()
             R.id.thread_btn_future_task -> futureTaskTest()
+            R.id.thread_btn_executors -> executorsTest()
         }
     }
 
+    //region 一、线程创建的四种方式 测试
     /*
      * 1.继承Thread类
      */
@@ -54,8 +66,8 @@ class ThreadActivity : BaseActivity<ActivityThreadBinding>() {
         runnableThreadTest.start()
     }
 
-    /**
-     *  3.FutureTask类 + Callable接口，可携带返回值，需要Thread类或者Executors
+    /*
+     * 3.FutureTask类 + Callable接口，可携带返回值，需要Thread类或者Executors
      */
     private fun futureTaskTest() {
         val callableTest: Callable<String> = ThreadCreate.CallableTest()
@@ -71,4 +83,27 @@ class ThreadActivity : BaseActivity<ActivityThreadBinding>() {
         Thread(futureTaskTest).start()
         LogUtils.tag("main").i("第二种Future实现方式: Thread(FutureTask) 返回结果:${futureTaskTest.get()}")
     }
+
+    /*
+     * 4.借助Executors(线程池)
+     */
+    private fun executorsTest() {
+        val es = Executors.newCachedThreadPool()
+        es.execute {
+            LogUtils.tag("main").i("使用 Executors 创建的线程")
+        }
+        // shutdown() 只是将线程池的状态设置为SHUTWDOWN状态，正在执行的任务会继续执行下去，没有被执行的则中断。
+        es.shutdown()
+        // shutdownNow() 则是将线程池的状态设置为STOP，正在执行的任务会被尝试 interrupt()中断，没被执行任务的则返回。
+        val shutdownNow = es.shutdownNow()
+        LogUtils.tag("main").i(shutdownNow)
+    }
+    //endregion
+
+    //region 二、java 中的 wait 和 notify
+    /**
+     * https://www.cnblogs.com/jerryshao2015/p/4419638.html
+     */
+
+    //endregion
 }

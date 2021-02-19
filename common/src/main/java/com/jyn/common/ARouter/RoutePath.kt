@@ -54,7 +54,7 @@ object RoutePath {
      * ConstraintLayout 约束布局
      * [com.jyn.masterroad.ConstraintLayout.ConstraintLayoutActivity]
      */
-    object ConstraintLayout{
+    object ConstraintLayout {
         const val name = "ConstraintLayout"
         const val path = "/app/ConstraintLayout"
     }
@@ -63,7 +63,7 @@ object RoutePath {
      * MotionLayout 动画
      * [com.jyn.masterroad.ConstraintLayout.MotionLayoutActivity]
      */
-    object  MotionLayout{
+    object MotionLayout {
         const val name = " MotionLayout"
         const val path = "/app/ MotionLayout"
     }
@@ -72,7 +72,7 @@ object RoutePath {
      * NestedScrolling 嵌套联动布局
      * [com.jyn.masterroad.NestedScrolling.NestedScrolling1Activity]
      */
-    object  NestedScrolling{
+    object NestedScrolling {
         const val name = " NestedScrolling1"
         const val path = "/app/ NestedScrolling1"
     }
@@ -80,8 +80,16 @@ object RoutePath {
     /**
      * Thread 线程
      */
-    object Thread{
+    object Thread {
         const val name = "Thread"
         const val path = "/app/Thread"
+    }
+
+    /**
+     * Kotlin Coroutines协程
+     */
+    object KotlinCoroutines {
+        const val name = "KotlinCoroutines"
+        const val path = "/app/KotlinCoroutines"
     }
 }

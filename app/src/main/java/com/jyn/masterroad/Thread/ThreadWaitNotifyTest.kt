@@ -30,9 +30,13 @@ class ThreadWaitNotifyTest {
         isWait = true
     }
 
+    /*
+     * notify() 仅仅通知一个线程，并且我们不知道哪个线程会收到通知
+     * notifyAll() 会通知所有等待中的线程
+     */
     fun notifyThread() {
         synchronized(lock) {
-            lock.notify()
+            lock.notifyAll()
             LogUtils.tag("main").i("Thread 被 notify!")
         }
     }

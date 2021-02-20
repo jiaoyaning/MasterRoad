@@ -4,7 +4,7 @@ package com.jyn.java_kotlin.JavaNewFeatureTest;
  * https://www.runoob.com/java/java9-private-interface-methods.html
  * java8 Java9 支持接口的默认实现，通过default关键字实现
  *
- * 1.8中，接口可以实现如下变量/方法
+ * 1.8中，接口可以实现如下常量/方法
  * 常量
  * 抽象方法
  * 默认方法
@@ -45,7 +45,7 @@ public interface DefaultFunInterface {
         return "接口static方法默认返回值";
     }
 
-    /**
+    /*
      * 1.9
      * 私有方法
      */
@@ -53,7 +53,7 @@ public interface DefaultFunInterface {
 //        return "1.9新特性 , 可以在接口里写私有方法";
 //    }
 
-    /**
+    /*
      * 1.9
      * 私有静态方法
      */

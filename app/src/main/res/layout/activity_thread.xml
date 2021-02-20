@@ -62,29 +62,77 @@
             app:layout_constraintStart_toEndOf="@id/thread_btn_future_task"
             app:layout_constraintTop_toTopOf="@id/thread_btn_thread" />
 
+
         <TextView
-            android:id="@+id/textView17"
+            android:id="@+id/textView21"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:layout_marginEnd="8dp"
-            android:text="object中的wait()和notify()"
+            android:text="Executors的三种关闭方式"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@id/thread_btn_thread" />
 
         <Button
-            android:id="@+id/thread_btn_start"
+            android:id="@+id/thread_btn_start_executors"
             style="@style/tv2"
             android:layout_marginTop="8dp"
             android:onClick="@{onClick}"
-            android:text="启动线程"
+            android:text="启动线程池"
+            app:layout_constraintEnd_toStartOf="@id/thread_btn_shutdown"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/textView21" />
+
+        <Button
+            android:id="@+id/thread_btn_shutdown"
+            style="@style/tv"
+            android:onClick="@{onClick}"
+            android:text="shutdown"
+            app:layout_constraintEnd_toStartOf="@id/thread_btn_shutdown_new"
+            app:layout_constraintStart_toEndOf="@id/thread_btn_start_executors"
+            app:layout_constraintTop_toTopOf="@id/thread_btn_start_executors" />
+
+        <Button
+            android:id="@+id/thread_btn_shutdown_new"
+            style="@style/tv2"
+            android:onClick="@{onClick}"
+            android:text="shutdownNow"
+            app:layout_constraintEnd_toStartOf="@id/thread_btn_awaitTermination"
+            app:layout_constraintStart_toEndOf="@id/thread_btn_shutdown"
+            app:layout_constraintTop_toTopOf="@id/thread_btn_start_executors" />
+
+        <Button
+            android:id="@+id/thread_btn_awaitTermination"
+            style="@style/tv"
+            android:onClick="@{onClick}"
+            android:text="awaitTermination"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/thread_btn_shutdown_new"
+            app:layout_constraintTop_toTopOf="@id/thread_btn_start_executors" />
+
+        <TextView
+            android:id="@+id/textView17"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="120dp"
+            android:layout_marginEnd="8dp"
+            android:text="object中的wait()和notify()"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/thread_btn_start_executors" />
+
+        <Button
+            android:id="@+id/thread_btn_start"
+            style="@style/tv"
+            android:layout_marginTop="8dp"
+            android:onClick="@{onClick}"
+            android:text="启动线程循环"
             app:layout_constraintEnd_toStartOf="@id/thread_btn_wait"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/textView17" />
 
         <Button
             android:id="@+id/thread_btn_wait"
-            style="@style/tv"
+            style="@style/tv2"
             android:onClick="@{onClick}"
             android:text="wait()"
             app:layout_constraintEnd_toStartOf="@id/thread_btn_notify"
@@ -93,7 +141,7 @@
 
         <Button
             android:id="@+id/thread_btn_notify"
-            style="@style/tv2"
+            style="@style/tv"
             android:onClick="@{onClick}"
             android:text="notify()"
             app:layout_constraintEnd_toStartOf="@id/thread_btn_producer_and_customer"
@@ -102,11 +150,12 @@
 
         <Button
             android:id="@+id/thread_btn_producer_and_customer"
-            style="@style/tv"
+            style="@style/tv2"
             android:onClick="@{onClick}"
             android:text="生产者-\n消费者模式"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@id/thread_btn_notify"
             app:layout_constraintTop_toTopOf="@id/thread_btn_start" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

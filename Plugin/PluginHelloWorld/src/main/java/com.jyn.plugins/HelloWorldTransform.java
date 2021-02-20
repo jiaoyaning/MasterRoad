@@ -161,11 +161,13 @@ class HelloWorldTransform extends Transform {
         inputs.forEach(input -> {
             // 对文件夹进行遍历，里面包含的是我们手写的类以及R.class、BuildConfig.class以及R$XXX.class等
             input.getDirectoryInputs().forEach(directoryInput ->
-                    processDirectoryInput(directoryInput, outputProvider));
+                    processDirectoryInput(directoryInput, outputProvider)
+            );
 
             // 对类型为jar文件的input进行遍历
             input.getJarInputs().forEach(jarInput ->
-                    processJarInput(jarInput, outputProvider));
+                    processJarInput(jarInput, outputProvider)
+            );
         });
 
         System.out.println("--- transform 结束 历时:" + (System.currentTimeMillis() - startTime) + "ms");

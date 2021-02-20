@@ -6,22 +6,19 @@ import java.util.function.BiFunction;
 import java.util.function.Function;
 import java.util.function.Supplier;
 
-/**
+/*
  * 双冒号 方法引用
  * https://blog.csdn.net/zhoufanyang_china/article/details/87798829
  * https://www.toutiao.com/i6807719546158318092/
  *
- * https://blog.csdn.net/zhoufanyang_china/article/details/87798829 TODO 未看
- * <p>
+ * 深入理解Java双冒号(::)运算符的使用
+ * https://blog.csdn.net/zhoufanyang_china/article/details/87798829
+ *
  * Java方法引用
  * https://www.cnblogs.com/wuhenzhidu/p/10727065.html
- * <p>
+ *
  * Optional类
  * https://www.cnblogs.com/zhangboyu/p/7580262.html
- * <p>
- *
- *
- * Created by jiaoyaning on 2020/12/16.
  */
 @SuppressWarnings("NewApi")
 public class JavaDoubleColonTest {

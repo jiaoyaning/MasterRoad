@@ -14,7 +14,6 @@ public class DefaultFunInterfaceTest implements DefaultFunInterface {
     public static void main(String[] args) {
         DefaultFunInterfaceTest test = new DefaultFunInterfaceTest();
         System.out.println(variable);
-
         System.out.println(test.notDefaultTest());
         System.out.println(test.defaultTest());
         System.out.println(DefaultFunInterface.staticTest());

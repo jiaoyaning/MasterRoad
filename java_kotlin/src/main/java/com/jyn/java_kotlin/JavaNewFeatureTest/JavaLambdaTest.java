@@ -7,7 +7,7 @@ import java.util.function.Predicate;
 import java.util.function.Supplier;
 import java.util.function.UnaryOperator;
 
-/**
+/*
  * https://juejin.cn/post/6844903849753329678
  * Lambda表达式，即函数式编程，可以将行为进行传递。
  * 把函数作为一个方法的参数（函数作为参数传递进方法中）。

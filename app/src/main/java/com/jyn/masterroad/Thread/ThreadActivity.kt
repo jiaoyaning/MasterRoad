@@ -2,19 +2,14 @@ package com.jyn.masterroad.Thread
 
 import android.view.View
 import com.alibaba.android.arouter.facade.annotation.Route
-import com.apkfuns.logutils.LogUtils
 import com.jyn.common.ARouter.RoutePath
 import com.jyn.masterroad.R
 import com.jyn.masterroad.base.BaseActivity
 import com.jyn.masterroad.databinding.ActivityThreadBinding
-import java.util.concurrent.*
 
 /*
  * JDK线程池源码分析之ThreadPoolExecutor
  * https://www.jianshu.com/p/072703367564
- *
- * ExecutorService 的 shutdown 和 shutdownNow 区别与联系
- * https://www.jianshu.com/p/f2591bdd0877
  *
  * 线程攻略，夯实基础很重要！
  * https://juejin.cn/post/6866834999081959438
@@ -34,9 +29,10 @@ class ThreadActivity : BaseActivity<ActivityThreadBinding>() {
 
     override fun getLayoutId() = R.layout.activity_thread
 
-
     private val threadCreate: ThreadCreate by lazy { ThreadCreate() }       //线程创建
     private val executorsTest: ExecutorsTest by lazy { ExecutorsTest() }    //线程池
+    private val threadWaitNotifyTest: ThreadWaitNotifyTest by lazy { ThreadWaitNotifyTest() }
+
 
     override fun init() {
         binding.onClick = onClick
@@ -55,6 +51,11 @@ class ThreadActivity : BaseActivity<ActivityThreadBinding>() {
             R.id.thread_btn_shutdown -> executorsTest.shutdown()
             R.id.thread_btn_shutdown_new -> executorsTest.shutdownNow()
             R.id.thread_btn_awaitTermination -> executorsTest.awaitTermination()
+
+            //三、wait 和 notify
+            R.id.thread_btn_start -> threadWaitNotifyTest.startThread()
+            R.id.thread_btn_wait -> threadWaitNotifyTest.waitThread()
+            R.id.thread_btn_notify -> threadWaitNotifyTest.notifyThread()
         }
     }
 

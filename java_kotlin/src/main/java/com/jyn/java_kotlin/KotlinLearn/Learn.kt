@@ -1,7 +1,6 @@
 package com.jyn.java_kotlin.KotlinLearn
 
 /**
- * Created by jiaoyaning on 2020/12/8.
  */
 fun main() {
     println("============扩展特性=============")

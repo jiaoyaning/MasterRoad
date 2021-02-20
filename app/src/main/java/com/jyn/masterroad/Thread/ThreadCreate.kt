@@ -5,6 +5,9 @@ import java.util.concurrent.Callable
 import java.util.concurrent.Executors
 import java.util.concurrent.FutureTask
 
+/**
+ * 线程创建的四种方式
+ */
 class ThreadCreate {
 
     class ThreadTest : Thread() {

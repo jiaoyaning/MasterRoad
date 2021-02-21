@@ -26,8 +26,8 @@ https://www.jianshu.com/p/9aac53bb1098
 ## App Shortcuts——实现应用快捷方式
 https://www.jianshu.com/p/6b6f79096256
 
-
-
+## uiautomator2
+https://github.com/openatx/uiautomator2
 
 
 

@@ -32,6 +32,12 @@
 2. 线程池行为和shutdown()基本相同，只是阻塞时间内继续添加线程并不会抛出异常，过了阻塞期后可以继续添加
 3. 返回结果 = 阻塞结束时线程池是否已被销毁 (shutdown 和 shutdownNow方法可以销毁线程池，因此经常会和awaitTermination连用)
 
+## sleep() 和 wait() 的区别
+1. sleep是Thread类的方法,wait是Object类中定义的方法
+2. Thread.sleep不会导致锁行为的改变，如果当前线程是拥有锁的，那么Thread.sleep不会让线程释放锁。
+3. Thread.sleep和Object.wait都会暂停当前的线程，对于CPU资源来说，不管是哪种方式暂停的线程，都表示它暂时不再需要CPU的执行时间。
+OS会将执行时间分配给其它线程。区别是，调用wait后，需要别的线程执行notify/notifyAll才能够重新获得CPU执行时间。
+
 # 二、java 中的 wait 和 notify
 参考:  
 java中wait和notify : [https://www.cnblogs.com/jerryshao2015/p/4419638.html](https://www.cnblogs.com/jerryshao2015/p/4419638.html)

@@ -56,13 +56,7 @@ class ThreadActivity : BaseActivity<ActivityThreadBinding>() {
             R.id.thread_btn_start -> threadWaitNotifyTest.startThread()
             R.id.thread_btn_wait -> threadWaitNotifyTest.waitThread()
             R.id.thread_btn_notify -> threadWaitNotifyTest.notifyThread()
+            R.id.thread_btn_producer_and_customer -> threadWaitNotifyTest.startProduceAndConsume()
         }
     }
-
-    // region 三、java 中的 wait 和 notify
-    /*
-     * https://www.cnblogs.com/jerryshao2015/p/4419638.html
-     */
-
-    // endregion
 }

@@ -16,7 +16,6 @@
 ## shutdown() 和 shutdownNow() 和 awaitTermination() 区别
 > shutdown() 和 shutdownNow()作用于关闭线程池。  
 > awaitTermination()作用为阻塞主线程 & 判断阻塞结束时线程池是否已被销毁    
-
 ### shutdown()
 1. 将线程池的状态设置为 SHUTDOWN
 2. 不会立即停止线程池，会继续执行尚未结束的任务 & 任务队列中的任务，直到全部执行完毕  

@@ -57,6 +57,7 @@ class ThreadActivity : BaseActivity<ActivityThreadBinding>() {
             R.id.thread_btn_wait -> threadWaitNotifyTest.waitThread()
             R.id.thread_btn_notify -> threadWaitNotifyTest.notifyThread()
             R.id.thread_btn_producer_and_customer -> threadWaitNotifyTest.startProduceAndConsume()
+            R.id.thread_btn_deadlock -> threadWaitNotifyTest.startDeadlock()
         }
     }
 }

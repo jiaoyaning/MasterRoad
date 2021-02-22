@@ -21,6 +21,9 @@ import io.reactivex.schedulers.Schedulers
  *
  * 不要打破链式调用！一个极低成本的RxJava全局Error处理方案
  * https://juejin.cn/post/6844903711416778765
+ *
+ * RxJava源码解析(三)
+ * https://yutiantina.github.io/2019/03/05/RxJava%E6%BA%90%E7%A0%81%E8%A7%A3%E6%9E%90(%E4%B8%89)-%E8%83%8C%E5%8E%8B/
  */
 @Route(path = RoutePath.RxJava.path)
 class RxJavaActivity : AppCompatActivity() {

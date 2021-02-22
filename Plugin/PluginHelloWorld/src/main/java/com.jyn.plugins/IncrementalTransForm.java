@@ -10,7 +10,9 @@ import com.android.build.api.transform.TransformInput;
 import com.android.build.api.transform.TransformInvocation;
 import com.android.build.api.transform.TransformOutputProvider;
 import com.android.build.gradle.internal.pipeline.TransformManager;
+import com.android.build.gradle.internal.tasks.Workers;
 import com.android.ide.common.internal.WaitableExecutor;
+import com.android.ide.common.workers.ExecutorServiceAdapter;
 
 import org.apache.commons.io.FileUtils;
 import org.gradle.api.Project;
@@ -28,9 +30,6 @@ import java.util.Set;
  * https://blog.csdn.net/weixin_34413802/article/details/89543858
  * https://github.com/Leaking/Hunter/blob/master/hunter-transform/src/main/java/com/quinn/hunter/transform/HunterTransform.java
  * https://github.com/Leifzhang/AndroidAutoTrack/blob/master/Plugin/BasePlugin/src/main/java/com/kronos/plugin/base/BaseTransform.kt
- *
- * 手把手教大家用Transform API和ASM实现一个防快速点击案例 （贼好）
- * https://mp.weixin.qq.com/s?__biz=MzUzOTk2MDUxMw==&mid=2247484076&idx=1&sn=e06a95632487c5d3975ecdfce8ef5295&chksm=fac13702cdb6be14325e125a269d1db20335291867d2380f1e0dbabf887b324899fdb87294ec#rd
  */
 class IncrementalTransForm extends Transform {
 

@@ -16,6 +16,9 @@ import kotlinx.android.synthetic.main.activity_live_data.*
  *
  * Android官方架构组件LiveData: 观察者模式领域二三事
  * https://juejin.cn/post/6844903748574117901
+ *
+ * https://yutiantina.github.io/2019/09/20/%E5%9F%BA%E4%BA%8ELiveData%E5%AE%9E%E7%8E%B0%E4%BA%8B%E4%BB%B6%E6%80%BB%E7%BA%BF%E6%80%9D%E8%B7%AF%E5%92%8C%E6%96%B9%E6%A1%88/
+ * 基于LiveData实现事件总线思路和方案
  */
 @Route(path = RoutePath.LiveData.path)
 class LiveDataActivity : AppCompatActivity() {

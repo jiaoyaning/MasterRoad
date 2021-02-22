@@ -10,10 +10,6 @@ import org.gradle.api.plugins.PluginContainer;
 
 import java.util.Iterator;
 
-/**
- * Android Gradle Plugin插件开发——基础
- * https://blog.csdn.net/guy_guy/article/details/80914600
- */
 class HelloWorldPlugin implements Plugin<Project> {
 
     @Override

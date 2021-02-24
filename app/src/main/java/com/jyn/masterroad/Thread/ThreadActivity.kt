@@ -23,6 +23,9 @@ import com.jyn.masterroad.databinding.ActivityThreadBinding
  * Thread.yield()和Thread.sleep(0)
  * https://blog.csdn.net/qq_15037231/article/details/103440060
  * https://blog.csdn.net/u013218720/article/details/21947613
+ *
+ * 面试老爱问的线程池，一把梭哈！
+ * https://mp.weixin.qq.com/s/b2PUpprFFWGthZyGDd8g-g（思路强）
  */
 @Route(path = RoutePath.Thread.path)
 class ThreadActivity : BaseActivity<ActivityThreadBinding>() {

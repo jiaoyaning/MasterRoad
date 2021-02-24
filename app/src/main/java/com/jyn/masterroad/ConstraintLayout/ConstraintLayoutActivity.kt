@@ -11,7 +11,7 @@ import com.jyn.masterroad.R
 import com.jyn.masterroad.base.BaseActivity
 import com.jyn.masterroad.databinding.ActivityConstraintlayoutBinding
 
-/**
+/*
  * https://juejin.cn/post/6854573221312725000
  *
  * http://www.flyou.ren/2019/10/10/ConstraintLayout/
@@ -26,6 +26,9 @@ import com.jyn.masterroad.databinding.ActivityConstraintlayoutBinding
  *
  * ConstraintLayout 2.0 新特性详解及实战
  * https://blog.csdn.net/weixin_34677811/article/details/90719945
+ *
+ * ConstraintLayout2.0进阶之路
+ * https://mp.weixin.qq.com/s/wXTujdVSlb3KsJpDRU6Nog
  */
 @SuppressLint("SetTextI18n")
 @Route(path = RoutePath.ConstraintLayout.path)
@@ -62,14 +65,14 @@ class ConstraintLayoutActivity : BaseActivity<ActivityConstraintlayoutBinding>()
 
             R.id.btn_placeholder -> switchPlaceholder()
 
-            R.id.btn_flow_wrap_mode_none,
-            R.id.btn_flow_wrap_mode_chain,
-            R.id.btn_flow_wrap_mode_aligned,
-            R.id.btn_flow_max_elements_wrap3,
-            R.id.btn_flow_max_elements_wrap1,
-            R.id.btn_flow_horizontal_style_spread,
-            R.id.btn_flow_horizontal_style_packed,
-            R.id.btn_flow_horizontal_style_spread_inside -> switchFlow(it.id)     //flow 测试
+//            R.id.btn_flow_wrap_mode_none,
+//            R.id.btn_flow_wrap_mode_chain,
+//            R.id.btn_flow_wrap_mode_aligned,
+//            R.id.btn_flow_max_elements_wrap3,
+//            R.id.btn_flow_max_elements_wrap1,
+//            R.id.btn_flow_horizontal_style_spread,
+//            R.id.btn_flow_horizontal_style_packed,
+//            R.id.btn_flow_horizontal_style_spread_inside -> switchFlow(it.id)     //flow 测试
         }
     }
 
@@ -145,18 +148,18 @@ class ConstraintLayoutActivity : BaseActivity<ActivityConstraintlayoutBinding>()
         binding.clPlaceholder.placeholder.setContentId(R.id.btn_placeholder)
     }
 
-    private fun switchFlow(id: Int) {
-        when (id) {
-            R.id.btn_flow_wrap_mode_none -> binding.clFlow.clFlow.setWrapMode(Flow.WRAP_NONE)
-            R.id.btn_flow_wrap_mode_chain -> binding.clFlow.clFlow.setWrapMode(Flow.WRAP_CHAIN)
-            R.id.btn_flow_wrap_mode_aligned -> binding.clFlow.clFlow.setWrapMode(Flow.WRAP_ALIGNED)
-            R.id.btn_flow_max_elements_wrap3 -> binding.clFlow.clFlow.setMaxElementsWrap(3)
-            R.id.btn_flow_max_elements_wrap1 -> binding.clFlow.clFlow.setMaxElementsWrap(1)
-            R.id.btn_flow_horizontal_style_packed -> binding.clFlow.clFlow.setHorizontalStyle(Flow.CHAIN_PACKED)
-            R.id.btn_flow_horizontal_style_spread -> binding.clFlow.clFlow.setHorizontalStyle(Flow.CHAIN_SPREAD)
-            R.id.btn_flow_horizontal_style_spread_inside -> binding.clFlow.clFlow.setHorizontalStyle(Flow.CHAIN_SPREAD_INSIDE)
-        }
-    }
+//    private fun switchFlow(id: Int) {
+//        when (id) {
+//            R.id.btn_flow_wrap_mode_none -> binding.clFlow.clFlow.setWrapMode(Flow.WRAP_NONE)
+//            R.id.btn_flow_wrap_mode_chain -> binding.clFlow.clFlow.setWrapMode(Flow.WRAP_CHAIN)
+//            R.id.btn_flow_wrap_mode_aligned -> binding.clFlow.clFlow.setWrapMode(Flow.WRAP_ALIGNED)
+//            R.id.btn_flow_max_elements_wrap3 -> binding.clFlow.clFlow.setMaxElementsWrap(3)
+//            R.id.btn_flow_max_elements_wrap1 -> binding.clFlow.clFlow.setMaxElementsWrap(1)
+//            R.id.btn_flow_horizontal_style_packed -> binding.clFlow.clFlow.setHorizontalStyle(Flow.CHAIN_PACKED)
+//            R.id.btn_flow_horizontal_style_spread -> binding.clFlow.clFlow.setHorizontalStyle(Flow.CHAIN_SPREAD)
+//            R.id.btn_flow_horizontal_style_spread_inside -> binding.clFlow.clFlow.setHorizontalStyle(Flow.CHAIN_SPREAD_INSIDE)
+//        }
+//    }
 
     /**
      * 获取view的LayoutParams

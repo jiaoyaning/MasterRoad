@@ -1,12 +1,9 @@
-package com.jyn.java_kotlin.stack_queue;
+package com.jyn.leetcode.stack_queue;
 
 import java.util.LinkedList;
 import java.util.Queue;
 import java.util.Stack;
 
-/**
- * Created by jiao on 2020/8/11.
- */
 public class StackQueueTest {
     public static void main(String[] args) {
         //栈，先进后出

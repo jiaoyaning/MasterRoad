@@ -3,6 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <!-- https://mp.weixin.qq.com/s/wXTujdVSlb3KsJpDRU6Nog -->
+
     <data>
 
         <import type="android.view.View.OnClickListener" />
@@ -30,104 +32,107 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <androidx.constraintlayout.helper.widget.Flow
-            android:id="@+id/cl_flow"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_marginTop="30dp"
-            app:constraint_referenced_ids="
-                    btn_flow_wrap_mode_none,
-                    btn_flow_wrap_mode_chain,
-                    btn_flow_wrap_mode_aligned,
-                    btn_flow_max_elements_wrap3,
-                    btn_flow_max_elements_wrap1,
-                    btn_flow_horizontal_style_packed,
-                    btn_flow_horizontal_style_spread,
-                    btn_flow_horizontal_style_spread_inside"
-            app:flow_horizontalBias="0"
-            app:flow_horizontalGap="3dp"
-            app:flow_horizontalStyle="packed"
-            app:flow_maxElementsWrap="3"
-            app:flow_verticalGap="5dp"
-            app:flow_wrapMode="aligned"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+<!--        <androidx.constraintlayout.helper.widget.Flow-->
+<!--            android:id="@+id/cl_flow"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="0dp"-->
+<!--            android:layout_marginTop="30dp"-->
+<!--            app:constraint_referenced_ids="-->
+<!--                    btn_flow_wrap_mode_none,-->
+<!--                    btn_flow_wrap_mode_chain,-->
+<!--                    btn_flow_wrap_mode_aligned,-->
+<!--                    btn_flow_max_elements_wrap3,-->
+<!--                    btn_flow_max_elements_wrap1,-->
+<!--                    btn_flow_horizontal_style_packed,-->
+<!--                    btn_flow_horizontal_style_spread,-->
+<!--                    btn_flow_horizontal_style_spread_inside"-->
+<!--            app:flow_horizontalBias="0"-->
+<!--            app:flow_horizontalGap="3dp"-->
+<!--            app:flow_horizontalStyle="packed"-->
+<!--            app:flow_maxElementsWrap="3"-->
+<!--            app:flow_verticalGap="5dp"-->
+<!--            app:flow_wrapMode="aligned"-->
+<!--            app:layout_constraintEnd_toEndOf="parent"-->
+<!--            app:layout_constraintStart_toStartOf="parent"-->
+<!--            app:layout_constraintTop_toTopOf="parent" />-->
 
-        <Button
-            android:id="@+id/btn_flow_wrap_mode_none"
-            style="@style/tv"
-            android:onClick="@{onClick}"
-            android:text="wrapMode: none"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+<!--        <Button-->
+<!--            android:id="@+id/btn_flow_wrap_mode_none"-->
+<!--            style="@style/tv"-->
+<!--            android:onClick="@{onClick}"-->
+<!--            android:text="wrapMode: none"-->
+<!--            app:layout_constraintLeft_toLeftOf="parent"-->
+<!--            app:layout_constraintTop_toTopOf="parent" />-->
 
-        <Button
-            android:id="@+id/btn_flow_wrap_mode_chain"
-            style="@style/tv"
-            android:onClick="@{onClick}"
-            android:text="chain"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+<!--        <Button-->
+<!--            android:id="@+id/btn_flow_wrap_mode_chain"-->
+<!--            style="@style/tv"-->
+<!--            android:onClick="@{onClick}"-->
+<!--            android:text="chain"-->
+<!--            app:layout_constraintLeft_toLeftOf="parent"-->
+<!--            app:layout_constraintTop_toTopOf="parent" />-->
 
-        <Button
-            android:id="@+id/btn_flow_wrap_mode_aligned"
-            style="@style/tv"
-            android:onClick="@{onClick}"
-            android:text="aligned"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+<!--        <Button-->
+<!--            android:id="@+id/btn_flow_wrap_mode_aligned"-->
+<!--            style="@style/tv"-->
+<!--            android:onClick="@{onClick}"-->
+<!--            android:text="aligned"-->
+<!--            app:layout_constraintLeft_toLeftOf="parent"-->
+<!--            app:layout_constraintTop_toTopOf="parent" />-->
 
-        <!--  maxElementsWrap : 最大支持几个元素（默认会自动换行，如果指定数目总尺寸小于parent宽度生效） -->
-        <Button
-            android:id="@+id/btn_flow_max_elements_wrap3"
-            style="@style/tv"
-            android:onClick="@{onClick}"
-            android:text="maxElementsWrap : 3"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+<!--        &lt;!&ndash;  maxElementsWrap : 最大支持几个元素（默认会自动换行，如果指定数目总尺寸小于parent宽度生效） &ndash;&gt;-->
+<!--        <Button-->
+<!--            android:id="@+id/btn_flow_max_elements_wrap3"-->
+<!--            style="@style/tv"-->
+<!--            android:onClick="@{onClick}"-->
+<!--            android:text="maxElementsWrap : 3"-->
+<!--            app:layout_constraintLeft_toLeftOf="parent"-->
+<!--            app:layout_constraintTop_toTopOf="parent" />-->
 
-        <Button
-            android:id="@+id/btn_flow_max_elements_wrap1"
-            style="@style/tv"
-            android:onClick="@{onClick}"
-            android:text="...Wrap : 1"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+<!--        <Button-->
+<!--            android:id="@+id/btn_flow_max_elements_wrap1"-->
+<!--            style="@style/tv"-->
+<!--            android:onClick="@{onClick}"-->
+<!--            android:text="...Wrap : 1"-->
+<!--            app:layout_constraintLeft_toLeftOf="parent"-->
+<!--            app:layout_constraintTop_toTopOf="parent" />-->
 
-        <Button
-            android:id="@+id/btn_flow_horizontal_style_packed"
-            style="@style/tv"
-            android:onClick="@{onClick}"
-            android:text="horizontalStyle : packed"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+<!--        <Button-->
+<!--            android:id="@+id/btn_flow_horizontal_style_packed"-->
+<!--            style="@style/tv"-->
+<!--            android:onClick="@{onClick}"-->
+<!--            android:text="horizontalStyle : packed"-->
+<!--            app:layout_constraintLeft_toLeftOf="parent"-->
+<!--            app:layout_constraintTop_toTopOf="parent" />-->
 
-        <Button
-            android:id="@+id/btn_flow_horizontal_style_spread"
-            style="@style/tv"
-            android:onClick="@{onClick}"
-            android:text="spread"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+<!--        <Button-->
+<!--            android:id="@+id/btn_flow_horizontal_style_spread"-->
+<!--            style="@style/tv"-->
+<!--            android:onClick="@{onClick}"-->
+<!--            android:text="spread"-->
+<!--            app:layout_constraintLeft_toLeftOf="parent"-->
+<!--            app:layout_constraintTop_toTopOf="parent" />-->
 
-        <Button
-            android:id="@+id/btn_flow_horizontal_style_spread_inside"
-            style="@style/tv"
-            android:onClick="@{onClick}"
-            android:text="spread_inside"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+<!--        <Button-->
+<!--            android:id="@+id/btn_flow_horizontal_style_spread_inside"-->
+<!--            style="@style/tv"-->
+<!--            android:onClick="@{onClick}"-->
+<!--            android:text="spread_inside"-->
+<!--            app:layout_constraintLeft_toLeftOf="parent"-->
+<!--            app:layout_constraintTop_toTopOf="parent" />-->
 
-        <SeekBar
-            android:id="@+id/flow_seekBar_horizontal_bias"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="3dp"
-            android:onProgressChanged="@{onProgressChanged}"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/cl_flow" />
+<!--        <SeekBar-->
+<!--            android:id="@+id/flow_seekBar_horizontal_bias"-->
+<!--            android:layout_width="0dp"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginTop="3dp"-->
+<!--            android:onProgressChanged="@{onProgressChanged}"-->
+<!--            app:layout_constraintEnd_toEndOf="parent"-->
+<!--            app:layout_constraintStart_toStartOf="parent"-->
+<!--            app:layout_constraintTop_toBottomOf="@+id/cl_flow" />-->
+
+
+
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

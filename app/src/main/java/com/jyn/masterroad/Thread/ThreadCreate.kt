@@ -36,7 +36,6 @@ class ThreadCreate {
         }
     }
 
-    // region 一、线程创建的四种方式
     // 1.继承Thread类
     fun threadTest() {
         val threadTest = ThreadTest()
@@ -74,5 +73,4 @@ class ThreadCreate {
         val es = Executors.newCachedThreadPool()
         es.execute { LogUtils.tag("main").i("使用 Executors 创建的线程") }
     }
-    // endregion
 }

@@ -5,8 +5,9 @@ import androidx.lifecycle.LifecycleObserver
 import androidx.lifecycle.OnLifecycleEvent
 import com.apkfuns.logutils.LogUtils
 
-/**
- * Created by jiao on 2020/8/26.
+/*
+ * Activity是如何实现LifecycleOwner的？
+ * https://juejin.cn/post/6925620141170524167
  */
 internal class LifecycleChecker : LifecycleObserver {
     @OnLifecycleEvent(Lifecycle.Event.ON_STOP)

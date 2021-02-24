@@ -19,6 +19,9 @@ import com.jyn.masterroad.R
  *
  * 巧用RecyclerView ItemDecoration 实现炫酷视差效果
  * https://mp.weixin.qq.com/s/-q4L8BNfs141RtWJa8-N7Q
+ *
+ * 你了解RecyclerView的布局过程吗？
+ * https://mp.weixin.qq.com/s/OSuJTbFvn2RQMLVlzYgDDw
  */
 class RecyclerViewActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

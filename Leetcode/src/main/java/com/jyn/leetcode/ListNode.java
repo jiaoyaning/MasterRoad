@@ -1,8 +1,7 @@
 package com.jyn.leetcode;
 
-/**
- * Created by jiao on 2020/9/1.
- * <a href ="https://leetcode-cn.com/problems/fan-zhuan-lian-biao-lcof/"></a>
+/*
+ * https://leetcode-cn.com/problems/fan-zhuan-lian-biao-lcof/
  */
 public class ListNode {
     int val;

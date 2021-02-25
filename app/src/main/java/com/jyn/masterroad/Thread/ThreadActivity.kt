@@ -36,7 +36,6 @@ class ThreadActivity : BaseActivity<ActivityThreadBinding>() {
     private val executorsTest: ExecutorsTest by lazy { ExecutorsTest() }    //线程池
     private val threadWaitNotifyTest: ThreadWaitNotifyTest by lazy { ThreadWaitNotifyTest() }
 
-
     override fun init() {
         binding.onClick = onClick
     }

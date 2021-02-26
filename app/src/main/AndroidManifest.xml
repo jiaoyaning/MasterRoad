@@ -12,7 +12,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="AllowBackup">
-        <activity android:name="com.jyn.masterroad.Kotlin.Coroutines.KotlinCoroutinesActivity"></activity>
+        <activity android:name="com.jyn.masterroad.Kotlin.Coroutines.KotlinCoroutinesActivity"/>
         <activity android:name=".RecyclerView.RecyclerViewActivity" />
         <activity android:name=".NestedScrolling.NestedScrolling1Activity" />
         <activity android:name=".NestedScrolling.scrollview.ScrollViewActivity" /> <!-- startup初始化 -->

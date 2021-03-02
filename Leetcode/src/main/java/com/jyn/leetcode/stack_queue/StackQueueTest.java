@@ -4,6 +4,10 @@ import java.util.LinkedList;
 import java.util.Queue;
 import java.util.Stack;
 
+/*
+ * 栈栈
+ * https://mp.weixin.qq.com/s/fc48Z5tSMlBHweYIS1UL0g
+ */
 public class StackQueueTest {
     public static void main(String[] args) {
         //栈，先进后出

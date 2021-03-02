@@ -45,7 +45,7 @@ class ConstraintLayoutActivity : BaseActivity<ActivityConstraintlayoutBinding>()
         when (seekBar) {
             binding.biasSeekBarTest -> changeBias(progress)
             binding.clGuideline.guidelineSeekBar -> binding.clGuideline.guideline.setGuidelinePercent(progress / 100f)
-            binding.clFlow.flowSeekBarHorizontalBias -> binding.clFlow.clFlow.setHorizontalBias(progress / 100f)
+//            binding.clFlow.flowSeekBarHorizontalBias -> binding.clFlow.clFlow.setHorizontalBias(progress / 100f)
         }
     }
 

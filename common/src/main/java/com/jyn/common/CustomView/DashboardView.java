@@ -15,8 +15,7 @@ import androidx.annotation.Nullable;
 
 import com.jyn.common.Utils.DensityUtils;
 
-/**
- * Created by jiaoyaning on 2020/6/2.
+/*
  * 仪表盘
  */
 public class DashboardView extends View {
@@ -117,10 +116,10 @@ public class DashboardView extends View {
             //根据刻度获取角度。
             int angle = getAngleFromCalibration(i);
             canvas.save();
-            canvas.rotate(angle + 180f, getWidth() / 2, getHeight() / 2);
-            canvas.drawLine(getWidth() / 2, getHeight() / 2,
-                    getWidth() / 2 - RADIUS + DensityUtils.dp2px(getContext(), 14),
-                    getHeight() / 2 - DensityUtils.dp2px(getContext(), 2), mPaint);
+            canvas.rotate(angle + 180f, getWidth() >> 1, getHeight() >> 1);
+            canvas.drawLine(getWidth() >> 1, getHeight() >> 1,
+                    (getWidth() >> 1) - RADIUS + DensityUtils.dp2px(getContext(), 14),
+                    (getHeight() >> 1) - DensityUtils.dp2px(getContext(), 2), mPaint);
             canvas.restore();
         }
     }

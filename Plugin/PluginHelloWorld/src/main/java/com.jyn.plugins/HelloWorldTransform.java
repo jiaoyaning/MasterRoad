@@ -29,7 +29,7 @@ import java.util.Set;
  * https://juejin.cn/post/6844903891138674696
  *
  * 手把手教大家用Transform API和ASM实现一个防快速点击案例 （基础）
- * https://mp.weixin.qq.com/s?__biz=MzUzOTk2MDUxMw==&mid=2247484076&idx=1&sn=e06a95632487c5d3975ecdfce8ef5295&chksm=fac13702cdb6be14325e125a269d1db20335291867d2380f1e0dbabf887b324899fdb87294ec&scene=178&cur_album_id=1506297590487777283#rd
+ * https://mp.weixin.qq.com/s/xcgKPK7RFUkujNYY5nxu3A
  *
  * Transform 是 Android 官方提供给开发者在项目构建阶段由 class 到 dex 转换期间修改class文件的一套api。
  *

@@ -27,10 +27,10 @@ import com.jyn.masterroad.databinding.ActivityThreadBinding
  * 面试老爱问的线程池，一把梭哈！
  * https://mp.weixin.qq.com/s/b2PUpprFFWGthZyGDd8g-g（思路强）
  *
- * 让线程按顺序执行8种方法 TODO
+ * TODO 让线程按顺序执行8种方法
  * https://cnblogs.com/wenjunwei/p/10573289.html
  *
- * ThreadLocal详解
+ * TODO ThreadLocal详解
  * https://mp.weixin.qq.com/s/lHntG7C_nBa_a59gMdfx1Q
  */
 @Route(path = RoutePath.Thread.path)
@@ -66,6 +66,7 @@ class ThreadActivity : BaseActivity<ActivityThreadBinding>() {
             R.id.thread_btn_notify -> threadWaitNotifyTest.notifyThread()
             R.id.thread_btn_producer_and_customer -> threadWaitNotifyTest.startProduceAndConsume()
             R.id.thread_btn_deadlock -> threadWaitNotifyTest.startDeadlock()
+            R.id.thread_btn_printABC -> threadWaitNotifyTest.startPrintABC()
         }
     }
 }

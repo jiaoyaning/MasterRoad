@@ -133,4 +133,53 @@ class ThreadWaitNotifyTest {
         Thread { deadlockBTest() }.apply { name = "线程B" }.start()
     }
     //endregion
+
+    //--------------------分割线-----------------------
+
+    //region 4.轮流打印ABC
+
+    @Volatile
+    var state = 0 // 0对应A，1对应B，2对应C
+    fun startPrintABC() {
+        for (i in 1..10) {
+            Thread { printA() }.apply { name = "打印A的线程" }.start()
+            Thread { printB() }.apply { name = "打印B的线程" }.start()
+            Thread { printC() }.apply { name = "打印C的线程" }.start()
+        }
+    }
+
+    private fun printA() {
+        synchronized(lock) {
+            while (state != 0) { //开始打印A
+                lock.wait() //先保证自己不该打印的时候，处于暂停状态
+            }
+            LogUtils.tag("main").i("A -->${Thread.currentThread()}")
+            state = 1 //打印完改变状态
+            lock.notifyAll() //通知对应线程可以继续打印
+        }
+    }
+
+    private fun printB() {
+        synchronized(lock) {
+            while (state != 1) { //开始打印B
+                lock.wait()
+            }
+            LogUtils.tag("main").i("B -->${Thread.currentThread()}")
+            state = 2
+            lock.notifyAll()
+        }
+    }
+
+    private fun printC() {
+        synchronized(lock) {
+            while (state != 2) { //开始打印C
+                lock.wait()
+            }
+            LogUtils.tag("main").i("C -->${Thread.currentThread()}")
+            state = 0
+            lock.notifyAll()
+        }
+    }
+
+    //endregion
 }

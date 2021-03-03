@@ -52,7 +52,6 @@ class MyApp : Application() {
                     LogUtils.tag("main").e("程序遇到错误:" + e.message)
                     if (e.message?.startsWith("Unable to start activity") == true) {
                         Toast.makeText(this, "程序遇到错误:" + e.message, Toast.LENGTH_LONG).show()
-                        // TODO 来自 Activity 生命周期崩溃，杀死进程
                         android.os.Process.killProcess(android.os.Process.myPid());
                         break
                     }

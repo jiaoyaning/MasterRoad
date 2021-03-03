@@ -27,7 +27,7 @@ import com.jyn.masterroad.databinding.ActivityThreadBinding
  * 面试老爱问的线程池，一把梭哈！
  * https://mp.weixin.qq.com/s/b2PUpprFFWGthZyGDd8g-g（思路强）
  *
- * TODO 让线程按顺序执行8种方法
+ * 让线程按顺序执行8种方法
  * https://cnblogs.com/wenjunwei/p/10573289.html
  *
  * TODO ThreadLocal详解

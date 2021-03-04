@@ -64,6 +64,21 @@ notify()方法就是对象锁的唤醒操作。但有一点需要注意的是not
 这样就提供了在线程间同步、唤醒的操作。  
 
 
+#三、ThreadLocal 和 InheritableThreadLocal
+
+## ThreadLocal 
+一个现在只唯一，不能进行传递不可在线程间继承。子线程不能获取到父线程的ThreadLocal。  
+当 ThreadLocal 调用 set或get 方法时，ThreadLocalMap 才会被真正创建，并用于存储数据
+
+### ThreadLocal 内存泄漏
+ThreadLocalMap 中的 Entry 的 key 使用的是 ThreadLocal 对象的弱引用，
+在没有其他地方对ThreadLocal依赖，ThreadLocalMap中的ThreadLocal对象就会被回收掉，
+但是对应的value不会被回收，这个时候Map中就可能存在key为null但是value不为null的项，这需要实际的时候使用完毕及时调用remove方法避免内存泄漏。
+
+## InheritableThreadLocal
+可以把父线程变量传递到子线程的ThreadLocal，不可逆向传递(子传父)
+父线程创建子线程的时候，ThreadLocalMap中的构造函数会将父线程的inheritableThreadLocals中的变量复制一份到子线程的inheritableThreadLocals变量中。
+
 
 
 

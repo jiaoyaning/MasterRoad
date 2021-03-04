@@ -30,8 +30,8 @@ import com.jyn.masterroad.databinding.ActivityThreadBinding
  * 让线程按顺序执行8种方法
  * https://cnblogs.com/wenjunwei/p/10573289.html
  *
- * TODO ThreadLocal详解
- * https://mp.weixin.qq.com/s/lHntG7C_nBa_a59gMdfx1Q
+ * 【236期】面试官：线程池中多余的线程是如何回收的？
+ * https://mp.weixin.qq.com/s/HlHps1T-8MqE458IDxAkQg
  */
 @Route(path = RoutePath.Thread.path)
 class ThreadActivity : BaseActivity<ActivityThreadBinding>() {

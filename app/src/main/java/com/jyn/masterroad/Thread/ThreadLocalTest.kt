@@ -20,7 +20,7 @@ class ThreadLocalTest {
      *
      * 内存泄漏问题:
      * ThreadLocalMap中的Entry的key使用的是ThreadLocal对象的弱引用，在没有其他地方对ThreadLocal依赖，ThreadLocalMap中的ThreadLocal对象就会被回收掉，
-     * 但是对应的不会被回收，这个时候Map中就可能存在key为null但是value不为null的项，这需要实际的时候使用完毕及时调用remove方法避免内存泄漏。
+     * 但是对应的value不会被回收，这个时候Map中就可能存在key为null但是value不为null的项，这需要实际的时候使用完毕及时调用remove方法避免内存泄漏。
      */
     fun threadLocalTest() {
         Thread {
@@ -48,7 +48,7 @@ class ThreadLocalTest {
 
     /**
      * 可以把父线程变量传递到子线程的ThreadLocal，不可逆向传递(子传父)
-     * 而父线程创建子线程的时候，ThreadLocalMap中的构造函数会将父线程的inheritableThreadLocals中的变量复制一份到子线程的inheritableThreadLocals变量中。
+     * 父线程创建子线程的时候，ThreadLocalMap中的构造函数会将父线程的inheritableThreadLocals中的变量复制一份到子线程的inheritableThreadLocals变量中。
      */
     private val inheritableThreadLocal: InheritableThreadLocal<String> by lazy {
         InheritableThreadLocal<String>().apply {

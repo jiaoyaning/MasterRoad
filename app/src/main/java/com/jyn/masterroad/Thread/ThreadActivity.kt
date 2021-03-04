@@ -41,6 +41,7 @@ class ThreadActivity : BaseActivity<ActivityThreadBinding>() {
     private val threadCreate: ThreadCreate by lazy { ThreadCreate() }       //线程创建
     private val executorsTest: ExecutorsTest by lazy { ExecutorsTest() }    //线程池
     private val threadWaitNotifyTest: ThreadWaitNotifyTest by lazy { ThreadWaitNotifyTest() }
+    private val threadLocalTest: ThreadLocalTest by lazy { ThreadLocalTest() }
 
     override fun init() {
         binding.onClick = onClick
@@ -67,6 +68,10 @@ class ThreadActivity : BaseActivity<ActivityThreadBinding>() {
             R.id.thread_btn_producer_and_customer -> threadWaitNotifyTest.startProduceAndConsume()
             R.id.thread_btn_deadlock -> threadWaitNotifyTest.startDeadlock()
             R.id.thread_btn_printABC -> threadWaitNotifyTest.startPrintABC()
+
+            //四、ThreadLocal
+            R.id.thread_btn_thread_local -> threadLocalTest.threadLocalTest()
+            R.id.thread_btn_inheritable_thread_local -> threadLocalTest.inheritableThreadLocalTest()
         }
     }
 }

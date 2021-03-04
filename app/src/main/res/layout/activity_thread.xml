@@ -154,8 +154,8 @@
             android:onClick="@{onClick}"
             android:text="生产者-\n消费者模式"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/thread_btn_notify"
-            app:layout_constraintTop_toTopOf="@+id/thread_btn_start" />
+            app:layout_constraintStart_toEndOf="@id/thread_btn_notify"
+            app:layout_constraintTop_toTopOf="@id/thread_btn_start" />
 
         <Button
             android:id="@+id/thread_btn_deadlock"
@@ -165,7 +165,7 @@
             android:text="死锁"
             app:layout_constraintEnd_toStartOf="@id/thread_btn_printABC"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/thread_btn_start" />
+            app:layout_constraintTop_toBottomOf="@id/thread_btn_start" />
 
         <Button
             android:id="@+id/thread_btn_printABC"
@@ -173,8 +173,38 @@
             android:onClick="@{onClick}"
             android:text="轮流打印ABC"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/thread_btn_deadlock"
-            app:layout_constraintTop_toTopOf="@+id/thread_btn_deadlock" />
+            app:layout_constraintStart_toEndOf="@id/thread_btn_deadlock"
+            app:layout_constraintTop_toTopOf="@id/thread_btn_deadlock" />
+
+        <TextView
+            android:id="@+id/textView22"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:text="ThreadLocal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/thread_btn_deadlock" />
+
+        <Button
+            android:id="@+id/thread_btn_thread_local"
+            style="@style/tv2"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:onClick="@{onClick}"
+            android:text="ThreadLocal"
+            app:layout_constraintEnd_toStartOf="@id/thread_btn_inheritable_thread_local"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/textView22" />
+
+        <Button
+            android:id="@+id/thread_btn_inheritable_thread_local"
+            style="@style/tv"
+            android:onClick="@{onClick}"
+            android:text="InheritableThreadLocal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/thread_btn_thread_local"
+            app:layout_constraintTop_toTopOf="@id/thread_btn_thread_local" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

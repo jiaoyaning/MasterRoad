@@ -14,7 +14,6 @@ import com.jyn.masterroad.BuildConfig
  *
  * 第三方startup框架
  * https://blog.csdn.net/fan757709373/article/details/108526626
- * implementation 'com.rousetime.android:android-startup:latest release'
  */
 class LitePalInitializer : Initializer<Unit> {
     override fun create(context: Context) {

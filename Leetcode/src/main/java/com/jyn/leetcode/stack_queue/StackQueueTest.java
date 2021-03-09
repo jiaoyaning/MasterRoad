@@ -7,6 +7,9 @@ import java.util.Stack;
 /*
  * 栈栈
  * https://mp.weixin.qq.com/s/fc48Z5tSMlBHweYIS1UL0g
+ *
+ * 队列
+ * https://mp.weixin.qq.com/s/TCg9_3cVuDfZLqK2eYrc7w
  */
 public class StackQueueTest {
     public static void main(String[] args) {

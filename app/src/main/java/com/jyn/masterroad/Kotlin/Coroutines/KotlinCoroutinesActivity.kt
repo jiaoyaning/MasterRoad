@@ -14,8 +14,4 @@ import com.jyn.masterroad.databinding.ActivityKotlinCoroutinesBinding
 class KotlinCoroutinesActivity : BaseActivity<ActivityKotlinCoroutinesBinding>() {
 
     override fun getLayoutId() = R.layout.activity_kotlin_coroutines
-
-    override fun init() {
-
-    }
 }

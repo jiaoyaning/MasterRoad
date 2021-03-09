@@ -32,13 +32,13 @@ class MyApp : Application() {
         //第三种可检测activity生命周期的方式 - 在BaseActivity中
     }
 
-    /**
+    /*
      * 全局捕获异常
      * https://mp.weixin.qq.com/s/K8ScqrB9sF9gzxwSAoueCQ
      */
     private fun setUncaughtException() {
         Thread.setDefaultUncaughtExceptionHandler { t, e ->
-            LogUtils.tag("main").e("线程:" + t.name + " 遇到错误:" + e.message)
+            LogUtils.tag("MasterRoad").e("线程:" + t.name + " 遇到错误:" + e.message)
             Toast.makeText(this, "程序遇到错误:" + e.message, Toast.LENGTH_LONG).show()
             e.printStackTrace()
         }
@@ -49,7 +49,7 @@ class MyApp : Application() {
                     Looper.loop()
                 } catch (e: Throwable) {
                     e.printStackTrace();
-                    LogUtils.tag("main").e("程序遇到错误:" + e.message)
+                    LogUtils.tag("MasterRoad").e("程序遇到错误:" + e.message)
                     if (e.message?.startsWith("Unable to start activity") == true) {
                         Toast.makeText(this, "程序遇到错误:" + e.message, Toast.LENGTH_LONG).show()
                         android.os.Process.killProcess(android.os.Process.myPid());
@@ -65,7 +65,7 @@ class MyApp : Application() {
      */
     override fun onTerminate() {
         super.onTerminate()
-        LogUtils.i("onTerminate")
+        LogUtils.tag("MasterRoad").i("onTerminate")
     }
 
     /**
@@ -73,7 +73,7 @@ class MyApp : Application() {
      */
     override fun onLowMemory() {
         super.onLowMemory()
-        LogUtils.i("onLowMemory")
+        LogUtils.tag("MasterRoad").i("onLowMemory")
     }
 
     /**
@@ -81,7 +81,7 @@ class MyApp : Application() {
      */
     override fun onTrimMemory(level: Int) {
         super.onTrimMemory(level)
-        LogUtils.i("onTrimMemory level:$level")
+        LogUtils.tag("MasterRoad").i("onTrimMemory level:$level")
         MemoryCase.getMemoryCase() //获取内存分配情况
     }
 
@@ -90,6 +90,6 @@ class MyApp : Application() {
      */
     override fun onConfigurationChanged(newConfig: Configuration) {
         super.onConfigurationChanged(newConfig)
-        LogUtils.i("onConfigurationChanged")
+        LogUtils.tag("MasterRoad").i("onConfigurationChanged")
     }
 }

@@ -21,5 +21,5 @@ abstract class BaseActivity<dataBinding : ViewDataBinding> : AppCompatActivity()
         init()
     }
 
-    abstract fun init()
+    open fun init(){}
 }

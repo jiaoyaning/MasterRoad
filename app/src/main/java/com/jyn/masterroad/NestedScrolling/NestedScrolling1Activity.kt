@@ -14,7 +14,7 @@ import com.jyn.common.ARouter.RoutePath
 import com.jyn.masterroad.R
 import kotlinx.android.synthetic.main.activity_nested_scrolling1.*
 
-/**
+/*
  * 基础：
  * https://juejin.cn/post/6844904184911773709
  *

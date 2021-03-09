@@ -10,17 +10,16 @@ import androidx.lifecycle.ProcessLifecycleOwner
 
 import com.apkfuns.logutils.LogUtils
 import com.jyn.common.Utils.MemoryCase
+import com.jyn.common.Utils.context
 
 import dagger.hilt.android.HiltAndroidApp;
 
-/**
- * Created by jiao on 2020/7/31.
- */
 @HiltAndroidApp
 class MyApp : Application() {
 
     override fun onCreate() {
         super.onCreate()
+        context = this
         setUncaughtException()
 
         //第一种可检测activity生命周期的方式

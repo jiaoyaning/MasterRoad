@@ -13,7 +13,7 @@ import android.view.View;
 
 import androidx.annotation.Nullable;
 
-import com.jyn.common.Utils.DensityUtils;
+import static com.jyn.common.Utils.DensityUtilsKt.dp2px;
 
 /*
  * 仪表盘
@@ -51,7 +51,7 @@ public class DashboardView extends View {
         //画笔模式
         mPaint.setStyle(Paint.Style.STROKE);
         //画笔宽度
-        mPaint.setStrokeWidth(DensityUtils.dp2px(getContext(), 2));
+        mPaint.setStrokeWidth(dp2px(2));
         //画笔颜色
         mPaint.setColor(Color.BLACK);
     }
@@ -85,9 +85,7 @@ public class DashboardView extends View {
      */
     private void drawCalibration(Canvas canvas) {
         //定义刻度方块
-        RectF calibrationRectF = new RectF(0, 0,
-                DensityUtils.dp2px(getContext(), 2),
-                DensityUtils.dp2px(getContext(), 10));
+        RectF calibrationRectF = new RectF(0, 0, dp2px(2), dp2px(10));
 
         //添加刻度。
         calibration.addRect(calibrationRectF, Path.Direction.CW);
@@ -96,7 +94,7 @@ public class DashboardView extends View {
         //获取 arcPath（弧线）的长度
         float length = pathMeasure.getLength();
         //需要减去一个刻度的宽度
-        float advance = (length - DensityUtils.dp2px(getContext(), 2)) / (mNum - 1);
+        float advance = (length - dp2px(2)) / (mNum - 1);
 
         PathDashPathEffect pathDashPathEffect = new PathDashPathEffect(calibration,
                 advance,
@@ -118,8 +116,8 @@ public class DashboardView extends View {
             canvas.save();
             canvas.rotate(angle + 180f, getWidth() >> 1, getHeight() >> 1);
             canvas.drawLine(getWidth() >> 1, getHeight() >> 1,
-                    (getWidth() >> 1) - RADIUS + DensityUtils.dp2px(getContext(), 14),
-                    (getHeight() >> 1) - DensityUtils.dp2px(getContext(), 2), mPaint);
+                    (getWidth() >> 1) - RADIUS + dp2px(14),
+                    (getHeight() >> 1) - dp2px(2), mPaint);
             canvas.restore();
         }
     }

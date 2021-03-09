@@ -71,6 +71,7 @@ class ThreadActivity : BaseActivity<ActivityThreadBinding>() {
 
             //四、ThreadLocal
             R.id.thread_btn_thread_local -> threadLocalTest.threadLocalTest()
+            R.id.thread_btn_thread_local_inner -> threadLocalTest.threadLocalInnerTest()
             R.id.thread_btn_inheritable_thread_local -> threadLocalTest.inheritableThreadLocalTest()
         }
     }

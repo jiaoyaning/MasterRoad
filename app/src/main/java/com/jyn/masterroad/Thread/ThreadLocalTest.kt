@@ -45,6 +45,19 @@ class ThreadLocalTest {
         LogUtils.tag("main").i("threadLocalMain 改后 ${threadLocal.get()}")
     }
 
+    /*
+     * Thread对象维护了一个key为ThreadLocal的Map
+     * 该方法可证明，每个Thread的是ThreadLocal对象唯一，而不是只能声明一个ThreadLocal对象
+     */
+    fun threadLocalInnerTest() {
+        Thread {
+            val threadLocal1: ThreadLocal<String> = ThreadLocal()
+            val threadLocal2: ThreadLocal<String> = ThreadLocal()
+            threadLocal1.set("我是ThreadLocal1的value")
+            threadLocal2.set("我是ThreadLocal2的value")
+            LogUtils.tag("main").i("threadLocal1:${threadLocal1.get()} ; threadLocal2:${threadLocal2.get()}")
+        }.start()
+    }
 
     /**
      * 可以把父线程变量传递到子线程的ThreadLocal，不可逆向传递(子传父)

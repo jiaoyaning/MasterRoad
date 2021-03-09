@@ -193,9 +193,19 @@
             android:layout_marginTop="8dp"
             android:onClick="@{onClick}"
             android:text="ThreadLocal"
-            app:layout_constraintEnd_toStartOf="@id/thread_btn_inheritable_thread_local"
+            app:layout_constraintEnd_toStartOf="@id/thread_btn_thread_local_inner"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/textView22" />
+
+        <Button
+            android:id="@+id/thread_btn_thread_local_inner"
+            style="@style/tv2"
+            android:layout_marginStart="8dp"
+            android:onClick="@{onClick}"
+            android:text="ThreadLocal内部"
+            app:layout_constraintEnd_toStartOf="@id/thread_btn_inheritable_thread_local"
+            app:layout_constraintStart_toEndOf="@id/thread_btn_thread_local"
+            app:layout_constraintTop_toTopOf="@+id/thread_btn_thread_local" />
 
         <Button
             android:id="@+id/thread_btn_inheritable_thread_local"
@@ -203,7 +213,7 @@
             android:onClick="@{onClick}"
             android:text="InheritableThreadLocal"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@id/thread_btn_thread_local"
+            app:layout_constraintStart_toEndOf="@id/thread_btn_thread_local_inner"
             app:layout_constraintTop_toTopOf="@id/thread_btn_thread_local" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>

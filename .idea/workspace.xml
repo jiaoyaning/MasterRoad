@@ -22,16 +22,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="811fa430-3f0f-4b4e-b9cf-238b5b9fc086" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/TODO.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/jyn/masterroad/Thread/CountDownLatchTest.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/jyn/masterroad/Thread/Java Thread&amp;Synchronized&amp;Volitale.md" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/jyn/masterroad/Thread/Thread相关 &amp; Synchronized &amp; Volatile.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/jyn/masterroad/Thread/ThreadActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/jyn/masterroad/Thread/ThreadActivity.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/jyn/masterroad/Thread/ThreadCreate.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/jyn/masterroad/Thread/ThreadCreate.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/jyn/masterroad/Thread/ThreadLocalTest.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/jyn/masterroad/Thread/ThreadLocalTest.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/jyn/masterroad/Thread/ThreadWaitNotifyTest.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/jyn/masterroad/Thread/ThreadWaitNotifyTest.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_thread.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_thread.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/jyn/masterroad/Thread/SyncAndLockTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/jyn/masterroad/Thread/锁相关.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/jyn/masterroad/Thread/CountDownLatchTest.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/jyn/masterroad/Thread/CountDownLatchTest.kt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -115,8 +109,8 @@
         <option value="Kotlin Script" />
         <option value="Kotlin File" />
         <option value="Kotlin Object" />
-        <option value="Class" />
         <option value="Kotlin Class" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -703,11 +697,11 @@
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="523" y="249" key="git4idea.merge.GitPullDialog/249.1080.1440.900/0.0.1920.1080@0.0.1920.1080" timestamp="1614906742721" />
-    <state x="457" y="0" width="1032" height="188" key="search.everywhere.popup" timestamp="1615366605121">
+    <state x="457" y="0" width="1032" height="188" key="search.everywhere.popup" timestamp="1615377917222">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="343" y="0" width="1005" height="900" key="search.everywhere.popup/0.0.1440.900@0.0.1440.900" timestamp="1608804262765" />
-    <state x="457" y="0" width="1032" height="188" key="search.everywhere.popup/249.1080.1440.900/0.0.1920.1080@0.0.1920.1080" timestamp="1615366605121" />
+    <state x="457" y="0" width="1032" height="188" key="search.everywhere.popup/249.1080.1440.900/0.0.1920.1080@0.0.1920.1080" timestamp="1615377917222" />
     <state x="457" y="23" width="1005" height="188" key="search.everywhere.popup/249.1103.1440.877/68.23.1852.1057@68.23.1852.1057" timestamp="1612592623297" />
     <state x="457" y="0" width="1005" height="1080" key="search.everywhere.popup/521.1080.1440.900/0.0.1920.1080@0.0.1920.1080" timestamp="1608621199223" />
   </component>

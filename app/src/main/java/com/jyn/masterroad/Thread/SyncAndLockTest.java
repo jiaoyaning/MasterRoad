@@ -1,0 +1,29 @@
+package com.jyn.masterroad.Thread;
+
+/*
+ * 万字超强图文讲解AQS以及ReentrantLock应用 TODO
+ * https://mp.weixin.qq.com/s/ASFv-H9OqfMMMwOkv5dDzA
+ */
+public class SyncAndLockTest {
+    /*
+     * Synchronized三种锁方式
+     * 1. 锁方法
+     * 2. 锁静态方法
+     * 3. 锁对象
+     */
+    private static final Object object = new Object();
+
+    public synchronized void normalSyncMethod() {
+        //临界区
+    }
+
+    public static synchronized void staticSyncMethod() {
+        //临界区
+    }
+
+    public void syncBlockMethod() {
+        synchronized (object) {
+            //临界区
+        }
+    }
+}

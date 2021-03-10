@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="Gradle: MasterRoad.Leetcode.Leetcode">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/Leetcode/build/libs/Leetcode.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

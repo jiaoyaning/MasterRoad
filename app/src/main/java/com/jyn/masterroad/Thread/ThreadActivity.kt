@@ -32,6 +32,9 @@ import com.jyn.masterroad.databinding.ActivityThreadBinding
  *
  * 【236期】面试官：线程池中多余的线程是如何回收的？
  * https://mp.weixin.qq.com/s/HlHps1T-8MqE458IDxAkQg
+ *
+ * 我会手动创建线程，为什么让我使用线程池？
+ * https://mp.weixin.qq.com/s/oYkeQSjEtonjzjTA1hR07w
  */
 @Route(path = RoutePath.Thread.path)
 class ThreadActivity : BaseActivity<ActivityThreadBinding>() {
@@ -40,8 +43,9 @@ class ThreadActivity : BaseActivity<ActivityThreadBinding>() {
 
     private val threadCreate: ThreadCreate by lazy { ThreadCreate() }       //线程创建
     private val executorsTest: ExecutorsTest by lazy { ExecutorsTest() }    //线程池
-    private val threadWaitNotifyTest: ThreadWaitNotifyTest by lazy { ThreadWaitNotifyTest() }
+    private val threadWaitNotifyTest: ThreadWaitNotifyTest by lazy { ThreadWaitNotifyTest() } //死锁 & 生产者消费者
     private val threadLocalTest: ThreadLocalTest by lazy { ThreadLocalTest() }
+    private val countDownLatchTest: CountDownLatchTest by lazy { CountDownLatchTest() }
 
     override fun init() {
         binding.onClick = onClick
@@ -73,6 +77,10 @@ class ThreadActivity : BaseActivity<ActivityThreadBinding>() {
             R.id.thread_btn_thread_local -> threadLocalTest.threadLocalTest()
             R.id.thread_btn_thread_local_inner -> threadLocalTest.threadLocalInnerTest()
             R.id.thread_btn_inheritable_thread_local -> threadLocalTest.inheritableThreadLocalTest()
+
+            //五、CountDownLatch
+            R.id.thread_btn_latch_demo -> countDownLatchTest.demo()
+            R.id.thread_btn_latch_time_out -> countDownLatchTest.awaitTimeOutTest()
         }
     }
 }

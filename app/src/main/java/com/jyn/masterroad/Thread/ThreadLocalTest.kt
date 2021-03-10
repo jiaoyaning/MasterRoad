@@ -19,8 +19,10 @@ class ThreadLocalTest {
      * 当 ThreadLocal 调用 set或get 方法时，ThreadLocalMap 才会被真正创建，并用于存储数据
      *
      * 内存泄漏问题:
-     * ThreadLocalMap中的Entry的key使用的是ThreadLocal对象的弱引用，在没有其他地方对ThreadLocal依赖，ThreadLocalMap中的ThreadLocal对象就会被回收掉，
-     * 但是对应的value不会被回收，这个时候Map中就可能存在key为null但是value不为null的项，这需要实际的时候使用完毕及时调用remove方法避免内存泄漏。
+     * ThreadLocalMap中的Entry的key使用的是ThreadLocal对象的弱引用，
+     * 在没有其他地方对ThreadLocal依赖时，ThreadLocalMap中的ThreadLocal对象就会被回收掉，
+     * 但是对应的value不会被回收，这个时候Map中就可能存在key为null但是value不为null的项，
+     * 这需要实际的时候使用完毕及时调用remove方法避免内存泄漏。
      */
     fun threadLocalTest() {
         Thread {

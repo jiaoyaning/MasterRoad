@@ -48,16 +48,23 @@ class ThreadWaitNotifyTest {
     private var items = 0       //商品数量
     private val maxItems = 5    //仓库最大存量
 
+    fun startProduceAndConsume() {
+        for (i in 0..10) {
+            Thread { produce() }.apply { name = "produce[生产]:${i}" }.start()
+            Thread { consume() }.apply { name = "consume[消费]:${i}" }.start()
+        }
+    }
+
     //生产者
     private fun produce() {
         synchronized(lock) {
             if (items >= maxItems) {
-                LogUtils.tag("main").i("${Thread.currentThread()} wait 库存:$items")
+                LogUtils.tag("main").i("${Thread.currentThread().name} wait 库存:$items")
                 lock.wait() //库存慢了，暂停生产者
             }
-            Thread.sleep(800)
+            Thread.sleep(100)
             items++ //生产一个
-            LogUtils.tag("main").i("produce 生产一个商品 库存:$items")
+            LogUtils.tag("main").i("${Thread.currentThread().name} produce[生产] --> 库存:$items")
             lock.notifyAll()
         }
     }
@@ -66,33 +73,14 @@ class ThreadWaitNotifyTest {
     private fun consume() {
         synchronized(lock) {
             if (items <= 0) {
-                LogUtils.tag("main").i("${Thread.currentThread()} wait 库存:$items")
+                LogUtils.tag("main").i("${Thread.currentThread().name} wait 库存:$items")
                 lock.wait() //没商品了，暂停消费者
             }
-            Thread.sleep(1000)
+            Thread.sleep(100)
             items-- //消费一个
-            LogUtils.tag("main").i("consume 消费一个商品 库存:$items")
+            LogUtils.tag("main").i("${Thread.currentThread().name} consume[消费] --> 库存:$items")
             lock.notifyAll()
         }
-    }
-
-    /**
-     * 有两种方式
-     * 1、生产者消费者只有一个独立线程
-     * 2、每个生产者和消费者都是一个独立线程
-     */
-    fun startProduceAndConsume() {
-        Thread {
-            for (i in 0..10) {
-                produce()
-            }
-        }.apply { name = "生产者线程" }.start()
-
-        Thread {
-            for (i in 0..10) {
-                consume()
-            }
-        }.apply { name = "消费者线程" }.start()
     }
     // endregion
 

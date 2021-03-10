@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/MasterRoad.iml" filepath="$PROJECT_DIR$/.idea/MasterRoad.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/Leetcode/MasterRoad.Leetcode.iml" filepath="$PROJECT_DIR$/.idea/modules/Leetcode/MasterRoad.Leetcode.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/Plugin/MasterRoad.Plugin.iml" filepath="$PROJECT_DIR$/.idea/modules/Plugin/MasterRoad.Plugin.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/Plugin/PluginHelloWorld/MasterRoad.Plugin.PluginHelloWorld.iml" filepath="$PROJECT_DIR$/.idea/modules/Plugin/PluginHelloWorld/MasterRoad.Plugin.PluginHelloWorld.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/MasterRoad.app.iml" filepath="$PROJECT_DIR$/.idea/modules/app/MasterRoad.app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/common/MasterRoad.common.iml" filepath="$PROJECT_DIR$/.idea/modules/common/MasterRoad.common.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/ipc/MasterRoad.ipc.iml" filepath="$PROJECT_DIR$/.idea/modules/ipc/MasterRoad.ipc.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/java_kotlin/MasterRoad.java_kotlin.iml" filepath="$PROJECT_DIR$/.idea/modules/java_kotlin/MasterRoad.java_kotlin.iml" />
+    </modules>
+  </component>
+</project>

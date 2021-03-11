@@ -3,6 +3,12 @@ package com.jyn.masterroad.Thread;
 /*
  * 万字超强图文讲解AQS以及ReentrantLock应用 TODO
  * https://mp.weixin.qq.com/s/ASFv-H9OqfMMMwOkv5dDzA
+ *
+ * 老板让只懂Java基本语法的我，基于AQS实现一个锁 TODO
+ * https://mp.weixin.qq.com/s/1Nq_izUkOGmtvkIQ9c0QRQ
+ *
+ * 一行一行源码分析清楚AbstractQueuedSynchronizer TODO
+ * https://javadoop.com/post/AbstractQueuedSynchronizer
  */
 public class SyncAndLockTest {
     /*

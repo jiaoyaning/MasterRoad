@@ -12,7 +12,7 @@
 
         <ImageView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="300dp"
             android:adjustViewBounds="true"
             android:scaleType="centerCrop"
             android:src="@mipmap/icon_master_road2" />

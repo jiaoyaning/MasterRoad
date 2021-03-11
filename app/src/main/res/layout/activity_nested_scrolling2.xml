@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+    </data>
+
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".NestedScrolling.NestedScrolling2Activity">
+
+        <com.google.android.material.appbar.AppBarLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#00FFFFFF">
+
+            <com.google.android.material.appbar.CollapsingToolbarLayout
+                android:id="@+id/nested_scrolling_collapsing"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:collapsedTitleGravity="center_horizontal"
+                app:layout_scrollFlags="scroll|exitUntilCollapsed">
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="300dp"
+                    android:adjustViewBounds="true"
+                    android:scaleType="centerCrop"
+                    android:src="@mipmap/icon_master_road2" />
+
+                <androidx.appcompat.widget.Toolbar
+                    android:id="@+id/nested_scrolling_tool_bar"
+                    android:layout_width="match_parent"
+                    android:layout_height="?attr/actionBarSize"
+                    app:contentInsetStart="0dp"
+                    app:layout_collapseMode="pin">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal">
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:src="@drawable/abc_vector_test" />
+
+                        <TextView
+                            android:id="@+id/tool_bar_title"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerInParent="true"
+                            android:text="我是顶部标题"
+                            android:textColor="#FFFFFF"
+                            android:textSize="20sp" />
+                    </RelativeLayout>
+                </androidx.appcompat.widget.Toolbar>
+
+            </com.google.android.material.appbar.CollapsingToolbarLayout>
+
+            <TextView
+                android:id="@+id/nested_scrolling_tv"
+                style="@style/tv"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:gravity="center"
+                android:text="我是一个可滑动的吸顶标题"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/nested_scrolling_tv2"
+                style="@style/tv2"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:gravity="center"
+                android:text="我是一个可滑动的吸顶标题2"
+                android:textSize="20sp" />
+        </com.google.android.material.appbar.AppBarLayout>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recycler_view_content"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#90FFFFFF"
+            app:layoutManager="LinearLayoutManager"
+            app:layout_behavior="com.jyn.masterroad.NestedScrolling.Behavior.CeilingGoneBehavior"
+            tools:itemCount="30" />
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+</layout>

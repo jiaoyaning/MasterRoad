@@ -13,19 +13,38 @@
     </shared>
   </component>
   <component name="AndroidLogFilters">
-    <option name="TOOL_WINDOW_CUSTOM_FILTER" value="main" />
+    <option name="TOOL_WINDOW_CUSTOM_FILTER" value="NestedScrolling" />
     <option name="TOOL_WINDOW_LOG_LEVEL" value="verbose" />
-    <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="No Filters" />
+    <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="Show only selected application" />
   </component>
   <component name="AutoImportSettings">
     <option name="autoReloadType" value="ALL" />
   </component>
   <component name="ChangeListManager">
     <list default="true" id="811fa430-3f0f-4b4e-b9cf-238b5b9fc086" name="Default Changelist" comment="">
+<<<<<<< HEAD
       <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_databinding_databinding_common_4_1_2.xml" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_databinding_viewbinding_4_1_2_aar.xml" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/.idea/modules/plugin/PluginHellowWorld/MasterRoad.Plugin.PluginHelloWorld.iml" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/MasterRoad.iml" afterDir="false" />
+=======
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/jyn/masterroad/NestedScrolling/Behavior/CeilingGoneBehavior.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/jyn/masterroad/NestedScrolling/NestedScrolling2Activity.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_nested_scrolling2.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/java_kotlin/src/main/java/com/jyn/java_kotlin/Java基础.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/6.1.1/executionHistory/executionHistory.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/6.1.1/executionHistory/executionHistory.lock" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/6.1.1/fileChanges/last-build.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/6.1.1/fileContent/fileContent.lock" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/6.1.1/fileHashes/fileHashes.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/6.1.1/fileHashes/fileHashes.lock" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/6.1.1/fileHashes/resourceHashesCache.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/6.1.1/gc.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/6.1.1/javaCompile/classAnalysis.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/6.1.1/javaCompile/jarAnalysis.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/6.1.1/javaCompile/javaCompile.lock" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/6.1.1/javaCompile/taskHistory.bin" beforeDir="false" />
+>>>>>>> dbfc90599931c0dcba1b69342d3e52273ab88a27
       <change beforePath="$PROJECT_DIR$/.gradle/6.5/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.5/executionHistory/executionHistory.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/6.5/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.5/executionHistory/executionHistory.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/6.5/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.5/fileHashes/fileHashes.bin" afterDir="false" />
@@ -38,6 +57,7 @@
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/checksums/checksums.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/checksums/checksums.lock" afterDir="false" />
+<<<<<<< HEAD
       <change beforePath="$PROJECT_DIR$/.gradle/checksums/md5-checksums.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/checksums/md5-checksums.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/checksums/sha1-checksums.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/checksums/sha1-checksums.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" afterDir="false" />
@@ -138,6 +158,19 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/local.properties" beforeDir="false" afterPath="$PROJECT_DIR$/local.properties" afterDir="false" />
+=======
+      <change beforePath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/app/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/jyn/masterroad/Thread/SyncAndLockTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/jyn/masterroad/Thread/SyncAndLockTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/jyn/masterroad/Thread/锁相关.md" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/jyn/masterroad/Thread/锁相关.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_nested_scrolling1.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_nested_scrolling1.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/common/src/main/java/com/jyn/common/ARouter/RoutePath.kt" beforeDir="false" afterPath="$PROJECT_DIR$/common/src/main/java/com/jyn/common/ARouter/RoutePath.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/common/src/main/java/com/jyn/common/CustomView/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/common/src/main/java/com/jyn/common/CustomView/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/java_kotlin/src/main/java/com/jyn/java_kotlin/JavaClassInit/类的初始化 &amp; 对象的初始化.md" beforeDir="false" afterPath="$PROJECT_DIR$/java_kotlin/src/main/java/com/jyn/java_kotlin/JavaClassInit/类的初始化 &amp; 对象的初始化.md" afterDir="false" />
+>>>>>>> dbfc90599931c0dcba1b69342d3e52273ab88a27
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -244,7 +277,7 @@
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
-    <property name="DEBUGGABLE_DEVICE" value="huawei-tas_al00-88Y5T19C26010044" />
+    <property name="DEBUGGABLE_DEVICE" value="huawei-clt_al01-172.30.8.135:5555" />
     <property name="DEBUGGABLE_PROCESS" value="com.jyn.masterroad" />
     <property name="DEBUGGER_ID" value="Auto" />
     <property name="DeviceAndSnapshotComboBoxAction.selectedDevice" value="Pixel_3a_API_30_x86" />
@@ -253,12 +286,22 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="SHOW_ALL_PROCESSES" value="false" />
+    <property name="android-custom-view/Users/gengmeimac/.gradle/caches/modules-2/files-2.1/androidx.appcompat/appcompat/1.2.0/13e8ff89631c2e101eb6bddd12c2fb4bbd74b15d/appcompat-1.2.0-sources.jar!/androidx/appcompat/widget/Toolbar.java_SELECTED" value="Toolbar" />
+    <property name="android-custom-view/Users/gengmeimac/.gradle/caches/modules-2/files-2.1/androidx.coordinatorlayout/coordinatorlayout/1.1.0/a15529ac349d76a872ae5ef42b84c320c456cd7f/coordinatorlayout-1.1.0-sources.jar!/androidx/coordinatorlayout/widget/CoordinatorLayout.java_SELECTED" value="CoordinatorLayout" />
+    <property name="android-custom-view/Users/gengmeimac/.gradle/caches/modules-2/files-2.1/com.google.android.material/material/1.2.1/37d55d5141066b3d118d24232fa7025b65eb3a74/material-1.2.1-sources.jar!/com/google/android/material/appbar/AppBarLayout.java_SELECTED" value="AppBarLayout" />
+    <property name="android-custom-view/Users/gengmeimac/.gradle/caches/modules-2/files-2.1/com.google.android.material/material/1.2.1/37d55d5141066b3d118d24232fa7025b65eb3a74/material-1.2.1-sources.jar!/com/google/android/material/appbar/CollapsingToolbarLayout.java_SELECTED" value="CollapsingToolbarLayout" />
+    <property name="android-custom-view/Users/gengmeimac/.gradle/caches/modules-2/files-2.1/com.google.android.material/material/1.2.1/37d55d5141066b3d118d24232fa7025b65eb3a74/material-1.2.1-sources.jar!/com/google/android/material/bottomappbar/BottomAppBar.java_SELECTED" value="BottomAppBar" />
     <property name="android-custom-view/Users/gengmeimac/Library/Android/sdk/sources/android-29/android/view/View.java_SELECTED" value="View" />
     <property name="android-custom-view/Users/gengmeimac/workspace/MasterRoad/common/src/main/java/com/jyn/common/CustomView/DashboardView.java_SELECTED" value="DashboardView" />
     <property name="dart.analysis.tool.window.visible" value="false" />
     <property name="full.screen.before.presentation.mode" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="memory.settings.postsync.last.time.stamp" value="1614738872280" />
+    <property name="multi-representation-preview/Users/gengmeimac/.gradle/caches/modules-2/files-2.1/androidx.appcompat/appcompat/1.2.0/13e8ff89631c2e101eb6bddd12c2fb4bbd74b15d/appcompat-1.2.0-sources.jar!/androidx/appcompat/widget/Toolbar.java_selected" value="Custom views" />
+    <property name="multi-representation-preview/Users/gengmeimac/.gradle/caches/modules-2/files-2.1/androidx.coordinatorlayout/coordinatorlayout/1.1.0/a15529ac349d76a872ae5ef42b84c320c456cd7f/coordinatorlayout-1.1.0-sources.jar!/androidx/coordinatorlayout/widget/CoordinatorLayout.java_selected" value="Custom views" />
+    <property name="multi-representation-preview/Users/gengmeimac/.gradle/caches/modules-2/files-2.1/com.google.android.material/material/1.2.1/37d55d5141066b3d118d24232fa7025b65eb3a74/material-1.2.1-sources.jar!/com/google/android/material/appbar/AppBarLayout.java_selected" value="Custom views" />
+    <property name="multi-representation-preview/Users/gengmeimac/.gradle/caches/modules-2/files-2.1/com.google.android.material/material/1.2.1/37d55d5141066b3d118d24232fa7025b65eb3a74/material-1.2.1-sources.jar!/com/google/android/material/appbar/CollapsingToolbarLayout.java_selected" value="Custom views" />
+    <property name="multi-representation-preview/Users/gengmeimac/.gradle/caches/modules-2/files-2.1/com.google.android.material/material/1.2.1/37d55d5141066b3d118d24232fa7025b65eb3a74/material-1.2.1-sources.jar!/com/google/android/material/bottomappbar/BottomAppBar.java_selected" value="Custom views" />
     <property name="multi-representation-preview/Users/gengmeimac/Library/Android/sdk/sources/android-29/android/view/View.java_selected" value="Custom views" />
     <property name="multi-representation-preview/Users/gengmeimac/workspace/MasterRoad/common/src/main/java/com/jyn/common/CustomView/DashboardView.java_selected" value="Custom views" />
     <property name="project.structure.last.edited" value="Build Variants" />
@@ -277,6 +320,9 @@
     <key name="MoveKotlinTopLevelDeclarationsDialog.RECENTS_KEY">
       <recent name="com.jyn.masterroad.NestedScrolling.scrollview" />
       <recent name="com.jyn.masterroad" />
+    </key>
+    <key name="android.template.-1333304663">
+      <recent name="com.jyn.masterroad.NestedScrolling" />
     </key>
     <key name="CreateKotlinClassDialog.RecentsKey">
       <recent name="Deploy" />
@@ -313,63 +359,6 @@
     <configuration default="true" type="AndroidJUnit" factoryName="Android JUnit">
       <option name="TEST_OBJECT" value="class" />
       <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
-      <method v="2">
-        <option name="Android.Gradle.BeforeRunTask" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="MasterRoad-ipc" type="AndroidRunConfigurationType" factoryName="Android App">
-      <module name="MasterRoad-ipc" />
-      <option name="DEPLOY" value="true" />
-      <option name="DEPLOY_APK_FROM_BUNDLE" value="false" />
-      <option name="DEPLOY_AS_INSTANT" value="false" />
-      <option name="ARTIFACT_NAME" value="" />
-      <option name="PM_INSTALL_OPTIONS" value="" />
-      <option name="ALL_USERS" value="false" />
-      <option name="DYNAMIC_FEATURES_DISABLED_LIST" value="" />
-      <option name="ACTIVITY_EXTRA_FLAGS" value="" />
-      <option name="MODE" value="default_activity" />
-      <option name="CLEAR_LOGCAT" value="false" />
-      <option name="SHOW_LOGCAT_AUTOMATICALLY" value="false" />
-      <option name="SKIP_NOOP_APK_INSTALLATIONS" value="true" />
-      <option name="FORCE_STOP_RUNNING_APP" value="true" />
-      <option name="TARGET_SELECTION_MODE" value="DEVICE_AND_SNAPSHOT_COMBO_BOX" />
-      <option name="SELECTED_CLOUD_MATRIX_CONFIGURATION_ID" value="-1" />
-      <option name="SELECTED_CLOUD_MATRIX_PROJECT_ID" value="" />
-      <option name="DEBUGGER_TYPE" value="Auto" />
-      <Auto>
-        <option name="USE_JAVA_AWARE_DEBUGGER" value="false" />
-        <option name="SHOW_STATIC_VARS" value="true" />
-        <option name="WORKING_DIR" value="" />
-        <option name="TARGET_LOGGING_CHANNELS" value="lldb process:gdb-remote packets" />
-        <option name="SHOW_OPTIMIZED_WARNING" value="true" />
-      </Auto>
-      <Hybrid>
-        <option name="USE_JAVA_AWARE_DEBUGGER" value="false" />
-        <option name="SHOW_STATIC_VARS" value="true" />
-        <option name="WORKING_DIR" value="" />
-        <option name="TARGET_LOGGING_CHANNELS" value="lldb process:gdb-remote packets" />
-        <option name="SHOW_OPTIMIZED_WARNING" value="true" />
-      </Hybrid>
-      <Java />
-      <Native>
-        <option name="USE_JAVA_AWARE_DEBUGGER" value="false" />
-        <option name="SHOW_STATIC_VARS" value="true" />
-        <option name="WORKING_DIR" value="" />
-        <option name="TARGET_LOGGING_CHANNELS" value="lldb process:gdb-remote packets" />
-        <option name="SHOW_OPTIMIZED_WARNING" value="true" />
-      </Native>
-      <Profilers>
-        <option name="ADVANCED_PROFILING_ENABLED" value="false" />
-        <option name="STARTUP_PROFILING_ENABLED" value="false" />
-        <option name="STARTUP_CPU_PROFILING_ENABLED" value="false" />
-        <option name="STARTUP_CPU_PROFILING_CONFIGURATION_NAME" value="Sample Java Methods" />
-        <option name="STARTUP_NATIVE_MEMORY_PROFILING_ENABLED" value="false" />
-        <option name="NATIVE_MEMORY_SAMPLE_RATE_BYTES" value="2048" />
-      </Profilers>
-      <option name="DEEP_LINK" value="" />
-      <option name="ACTIVITY_CLASS" value="" />
-      <option name="SEARCH_ACTIVITY_IN_GLOBAL_SCOPE" value="false" />
-      <option name="SKIP_ACTIVITY_VALIDATION" value="false" />
       <method v="2">
         <option name="Android.Gradle.BeforeRunTask" enabled="true" />
       </method>
@@ -574,7 +563,6 @@
     </configuration>
     <list>
       <item itemvalue="Android App.app" />
-      <item itemvalue="Android App.MasterRoad-ipc" />
       <item itemvalue="Android App.ipc" />
       <item itemvalue="Application.ReflectTest" />
       <item itemvalue="Application.StreamTest" />
@@ -631,11 +619,11 @@
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="360" y="43" key="#Notifications/249.1080.1440.900/0.0.1920.1080@0.0.1920.1080" timestamp="1612852286191" />
-    <state x="20" y="154" key="#PSD" timestamp="1615259497136">
+    <state x="20" y="154" key="#PSD" timestamp="1615444997113">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="15" y="128" key="#PSD/0.0.1440.900@0.0.1440.900" timestamp="1609851090930" />
-    <state x="20" y="154" key="#PSD/249.1080.1440.900/0.0.1920.1080@0.0.1920.1080" timestamp="1615259497136" />
+    <state x="20" y="154" key="#PSD/249.1080.1440.900/0.0.1920.1080@0.0.1920.1080" timestamp="1615444997113" />
     <state x="247" y="154" key="#PSD/521.1080.1440.900/0.0.1920.1080@0.0.1920.1080" timestamp="1608622825084" />
     <state x="360" y="33" key="#Plugins" timestamp="1614762777117">
       <screen x="0" y="0" width="1920" height="1080" />
@@ -645,18 +633,18 @@
       <screen x="68" y="23" width="1852" height="1057" />
     </state>
     <state x="595" y="137" key="#Project_Structure/249.1103.1440.877/68.23.1852.1057@68.23.1852.1057" timestamp="1614738545033" />
-    <state x="424" y="94" width="1310" height="986" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1614767213926">
+    <state x="424" y="94" width="1310" height="986" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1615427130004">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state x="424" y="94" width="1310" height="986" key="#com.intellij.execution.impl.EditConfigurationsDialog/249.1080.1440.900/0.0.1920.1080@0.0.1920.1080" timestamp="1614767213926" />
+    <state x="424" y="94" width="1310" height="986" key="#com.intellij.execution.impl.EditConfigurationsDialog/249.1080.1440.900/0.0.1920.1080@0.0.1920.1080" timestamp="1615427130004" />
     <state x="593" y="319" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1615367615179">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="593" y="319" key="#com.intellij.fileTypes.FileTypeChooser/249.1080.1440.900/0.0.1920.1080@0.0.1920.1080" timestamp="1615367615179" />
-    <state x="685" y="127" key="#com.intellij.ide.util.MemberChooser" timestamp="1615366043251">
+    <state x="685" y="127" key="#com.intellij.ide.util.MemberChooser" timestamp="1615458249185">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state x="685" y="127" key="#com.intellij.ide.util.MemberChooser/249.1080.1440.900/0.0.1920.1080@0.0.1920.1080" timestamp="1615366043251" />
+    <state x="685" y="127" key="#com.intellij.ide.util.MemberChooser/249.1080.1440.900/0.0.1920.1080@0.0.1920.1080" timestamp="1615458249184" />
     <state x="685" y="127" key="#com.intellij.ide.util.MemberChooser/521.1080.1440.900/0.0.1920.1080@0.0.1920.1080" timestamp="1608533987820" />
     <state x="648" y="267" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog" timestamp="1614735651574">
       <screen x="0" y="0" width="1920" height="1080" />
@@ -695,10 +683,10 @@
     </state>
     <state x="780" y="336" key="AndroidCreateXmlResourceDialog/249.1080.1440.900/0.0.1920.1080@0.0.1920.1080" timestamp="1612419528017" />
     <state x="780" y="336" key="AndroidCreateXmlResourceDialog/521.1080.1440.900/0.0.1920.1080@0.0.1920.1080" timestamp="1608110461859" />
-    <state x="785" y="287" key="AndroidProcessChooserDialog" timestamp="1614768127849">
+    <state x="785" y="287" key="AndroidProcessChooserDialog" timestamp="1615462263359">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state x="785" y="287" key="AndroidProcessChooserDialog/249.1080.1440.900/0.0.1920.1080@0.0.1920.1080" timestamp="1614768127849" />
+    <state x="785" y="287" key="AndroidProcessChooserDialog/249.1080.1440.900/0.0.1920.1080@0.0.1920.1080" timestamp="1615462263359" />
     <state x="348" y="116" key="AndroidThemeDialog" timestamp="1611915755526">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
@@ -716,58 +704,58 @@
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="648" y="173" key="FileChooserDialogImpl/249.1080.1440.900/0.0.1920.1080@0.0.1920.1080" timestamp="1610954458136" />
-    <state width="1858" height="267" key="GridCell.Tab.0.bottom" timestamp="1615366176346">
+    <state width="1858" height="327" key="GridCell.Tab.0.bottom" timestamp="1615462719904">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="1858" height="267" key="GridCell.Tab.0.bottom/249.1080.1440.900/0.0.1920.1080@0.0.1920.1080" timestamp="1615366176346" />
+    <state width="1858" height="327" key="GridCell.Tab.0.bottom/249.1080.1440.900/0.0.1920.1080@0.0.1920.1080" timestamp="1615462719904" />
     <state width="1856" height="373" key="GridCell.Tab.0.bottom/249.1103.1440.877/0.0.1920.1080@0.0.1920.1080" timestamp="1612268879812" />
     <state width="1856" height="539" key="GridCell.Tab.0.bottom/249.1103.1440.877/68.0.1852.1080@68.0.1852.1080" timestamp="1613803702375" />
     <state width="1856" height="390" key="GridCell.Tab.0.bottom/249.1103.1440.877/68.23.1852.1057@68.23.1852.1057" timestamp="1613714754648" />
     <state width="1856" height="332" key="GridCell.Tab.0.bottom/521.1080.1440.900/0.0.1920.1080@0.0.1920.1080" timestamp="1608777963945" />
     <state width="1856" height="321" key="GridCell.Tab.0.bottom/521.1103.1440.877/68.23.1852.1057@68.23.1852.1057" timestamp="1608273555184" />
-    <state width="1858" height="267" key="GridCell.Tab.0.center" timestamp="1615366176344">
+    <state width="1858" height="327" key="GridCell.Tab.0.center" timestamp="1615462719902">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="1858" height="267" key="GridCell.Tab.0.center/249.1080.1440.900/0.0.1920.1080@0.0.1920.1080" timestamp="1615366176344" />
+    <state width="1858" height="327" key="GridCell.Tab.0.center/249.1080.1440.900/0.0.1920.1080@0.0.1920.1080" timestamp="1615462719902" />
     <state width="1856" height="373" key="GridCell.Tab.0.center/249.1103.1440.877/0.0.1920.1080@0.0.1920.1080" timestamp="1612268879810" />
     <state width="1856" height="539" key="GridCell.Tab.0.center/249.1103.1440.877/68.0.1852.1080@68.0.1852.1080" timestamp="1613803702371" />
     <state width="1856" height="390" key="GridCell.Tab.0.center/249.1103.1440.877/68.23.1852.1057@68.23.1852.1057" timestamp="1613714754647" />
     <state width="1856" height="332" key="GridCell.Tab.0.center/521.1080.1440.900/0.0.1920.1080@0.0.1920.1080" timestamp="1608777963943" />
     <state width="1856" height="321" key="GridCell.Tab.0.center/521.1103.1440.877/68.23.1852.1057@68.23.1852.1057" timestamp="1608273555183" />
-    <state width="1858" height="267" key="GridCell.Tab.0.left" timestamp="1615366176343">
+    <state width="1858" height="327" key="GridCell.Tab.0.left" timestamp="1615462719901">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="1858" height="267" key="GridCell.Tab.0.left/249.1080.1440.900/0.0.1920.1080@0.0.1920.1080" timestamp="1615366176343" />
+    <state width="1858" height="327" key="GridCell.Tab.0.left/249.1080.1440.900/0.0.1920.1080@0.0.1920.1080" timestamp="1615462719901" />
     <state width="1856" height="373" key="GridCell.Tab.0.left/249.1103.1440.877/0.0.1920.1080@0.0.1920.1080" timestamp="1612268879810" />
     <state width="1856" height="539" key="GridCell.Tab.0.left/249.1103.1440.877/68.0.1852.1080@68.0.1852.1080" timestamp="1613803702368" />
     <state width="1856" height="390" key="GridCell.Tab.0.left/249.1103.1440.877/68.23.1852.1057@68.23.1852.1057" timestamp="1613714754646" />
     <state width="1856" height="332" key="GridCell.Tab.0.left/521.1080.1440.900/0.0.1920.1080@0.0.1920.1080" timestamp="1608777963942" />
     <state width="1856" height="321" key="GridCell.Tab.0.left/521.1103.1440.877/68.23.1852.1057@68.23.1852.1057" timestamp="1608273555182" />
-    <state width="1858" height="267" key="GridCell.Tab.0.right" timestamp="1615366176345">
+    <state width="1858" height="327" key="GridCell.Tab.0.right" timestamp="1615462719903">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="1858" height="267" key="GridCell.Tab.0.right/249.1080.1440.900/0.0.1920.1080@0.0.1920.1080" timestamp="1615366176345" />
+    <state width="1858" height="327" key="GridCell.Tab.0.right/249.1080.1440.900/0.0.1920.1080@0.0.1920.1080" timestamp="1615462719903" />
     <state width="1856" height="373" key="GridCell.Tab.0.right/249.1103.1440.877/0.0.1920.1080@0.0.1920.1080" timestamp="1612268879811" />
     <state width="1856" height="539" key="GridCell.Tab.0.right/249.1103.1440.877/68.0.1852.1080@68.0.1852.1080" timestamp="1613803702373" />
     <state width="1856" height="390" key="GridCell.Tab.0.right/249.1103.1440.877/68.23.1852.1057@68.23.1852.1057" timestamp="1613714754647" />
     <state width="1856" height="332" key="GridCell.Tab.0.right/521.1080.1440.900/0.0.1920.1080@0.0.1920.1080" timestamp="1608777963944" />
     <state width="1856" height="321" key="GridCell.Tab.0.right/521.1103.1440.877/68.23.1852.1057@68.23.1852.1057" timestamp="1608273555184" />
-    <state width="1858" height="267" key="GridCell.Tab.1.bottom" timestamp="1614768168553">
+    <state width="1858" height="267" key="GridCell.Tab.1.bottom" timestamp="1615462295296">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="1858" height="267" key="GridCell.Tab.1.bottom/249.1080.1440.900/0.0.1920.1080@0.0.1920.1080" timestamp="1614768168553" />
-    <state width="1858" height="267" key="GridCell.Tab.1.center" timestamp="1614768168551">
+    <state width="1858" height="267" key="GridCell.Tab.1.bottom/249.1080.1440.900/0.0.1920.1080@0.0.1920.1080" timestamp="1615462295296" />
+    <state width="1858" height="267" key="GridCell.Tab.1.center" timestamp="1615462295294">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="1858" height="267" key="GridCell.Tab.1.center/249.1080.1440.900/0.0.1920.1080@0.0.1920.1080" timestamp="1614768168551" />
-    <state width="1858" height="267" key="GridCell.Tab.1.left" timestamp="1614768168550">
+    <state width="1858" height="267" key="GridCell.Tab.1.center/249.1080.1440.900/0.0.1920.1080@0.0.1920.1080" timestamp="1615462295294" />
+    <state width="1858" height="267" key="GridCell.Tab.1.left" timestamp="1615462295293">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="1858" height="267" key="GridCell.Tab.1.left/249.1080.1440.900/0.0.1920.1080@0.0.1920.1080" timestamp="1614768168550" />
-    <state width="1858" height="267" key="GridCell.Tab.1.right" timestamp="1614768168552">
+    <state width="1858" height="267" key="GridCell.Tab.1.left/249.1080.1440.900/0.0.1920.1080@0.0.1920.1080" timestamp="1615462295293" />
+    <state width="1858" height="267" key="GridCell.Tab.1.right" timestamp="1615462295295">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="1858" height="267" key="GridCell.Tab.1.right/249.1080.1440.900/0.0.1920.1080@0.0.1920.1080" timestamp="1614768168552" />
+    <state width="1858" height="267" key="GridCell.Tab.1.right/249.1080.1440.900/0.0.1920.1080@0.0.1920.1080" timestamp="1615462295295" />
     <state x="392" y="356" key="Performance.Activity.Monitor" timestamp="1614852683740">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
@@ -777,17 +765,18 @@
     </state>
     <state x="432" y="33" key="RollbackChangesDialog/0.0.1440.900@0.0.1440.900" timestamp="1609855839338" />
     <state x="576" y="40" key="RollbackChangesDialog/249.1080.1440.900/0.0.1920.1080@0.0.1920.1080" timestamp="1615366168478" />
-    <state x="72" y="8" width="1581" height="1072" key="SettingsEditor" timestamp="1615358452916">
-      <screen x="0" y="0" width="1920" height="1080" />
+    <state x="72" y="8" width="1581" height="1072" key="SettingsEditor" timestamp="1615445081181">
+      <screen x="72" y="0" width="1848" height="1080" />
     </state>
     <state x="0" y="0" key="SettingsEditor/0.0.1440.900@0.0.1440.900" timestamp="1610003188484" />
-    <state x="72" y="8" width="1581" height="1072" key="SettingsEditor/249.1080.1440.900/0.0.1920.1080@0.0.1920.1080" timestamp="1615358452916" />
+    <state x="72" y="8" width="1581" height="1072" key="SettingsEditor/249.1080.1440.900/0.0.1920.1080@0.0.1920.1080" timestamp="1615445002050" />
     <state x="134" y="23" width="1446" height="1057" key="SettingsEditor/249.1103.1440.877/68.23.1852.1057@68.23.1852.1057" timestamp="1613635024084" />
+    <state x="72" y="8" key="SettingsEditor/249.1103.1440.877/72.0.1848.1080@72.0.1848.1080" timestamp="1615445081181" />
     <state x="237" y="8" key="SettingsEditor/521.1080.1440.900/0.0.1920.1080@0.0.1920.1080" timestamp="1608544622239" />
-    <state x="555" y="165" width="810" height="786" key="StructurePopup" timestamp="1615374003547">
+    <state x="555" y="165" width="810" height="786" key="StructurePopup" timestamp="1615458796441">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state x="555" y="165" width="810" height="786" key="StructurePopup/249.1080.1440.900/0.0.1920.1080@0.0.1920.1080" timestamp="1615374003547" />
+    <state x="555" y="165" width="810" height="786" key="StructurePopup/249.1080.1440.900/0.0.1920.1080@0.0.1920.1080" timestamp="1615458796441" />
     <state x="555" y="165" width="810" height="786" key="StructurePopup/521.1080.1440.900/0.0.1920.1080@0.0.1920.1080" timestamp="1608274887036" />
     <state width="750" height="761" key="SwitcherDM" timestamp="1612424965882">
       <screen x="0" y="0" width="1920" height="1080" />
@@ -810,11 +799,11 @@
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="523" y="249" key="git4idea.merge.GitPullDialog/249.1080.1440.900/0.0.1920.1080@0.0.1920.1080" timestamp="1614906742721" />
-    <state x="457" y="0" width="1032" height="188" key="search.everywhere.popup" timestamp="1615377917222">
+    <state x="457" y="0" width="1032" height="188" key="search.everywhere.popup" timestamp="1615449706813">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="343" y="0" width="1005" height="900" key="search.everywhere.popup/0.0.1440.900@0.0.1440.900" timestamp="1608804262765" />
-    <state x="457" y="0" width="1032" height="188" key="search.everywhere.popup/249.1080.1440.900/0.0.1920.1080@0.0.1920.1080" timestamp="1615377917222" />
+    <state x="457" y="0" width="1032" height="188" key="search.everywhere.popup/249.1080.1440.900/0.0.1920.1080@0.0.1920.1080" timestamp="1615449706813" />
     <state x="457" y="23" width="1005" height="188" key="search.everywhere.popup/249.1103.1440.877/68.23.1852.1057@68.23.1852.1057" timestamp="1612592623297" />
     <state x="457" y="0" width="1005" height="1080" key="search.everywhere.popup/521.1080.1440.900/0.0.1920.1080@0.0.1920.1080" timestamp="1608621199223" />
   </component>
@@ -843,6 +832,11 @@
             <option name="lambda-ordinal" value="-1" />
           </properties>
           <option name="timeStamp" value="16" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="java-line">
+          <url>jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.google.android.material/material/1.2.1/37d55d5141066b3d118d24232fa7025b65eb3a74/material-1.2.1-sources.jar!/com/google/android/material/appbar/AppBarLayout.java</url>
+          <line>2038</line>
+          <option name="timeStamp" value="18" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

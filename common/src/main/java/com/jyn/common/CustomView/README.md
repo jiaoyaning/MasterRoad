@@ -7,4 +7,5 @@ https://mp.weixin.qq.com/s/p2nGt1g1doT1O8NwRqRW_Q
 玩转自定义 View，你必须搞清楚这些：Style，Theme，Attr，Styleable，TypedArray
 https://www.jianshu.com/p/067500c4b634
 
-
+在Android中如何使用clipPath()方法实现简单的裁剪圆形图片
+https://blog.csdn.net/xingxingchance/article/details/77750546

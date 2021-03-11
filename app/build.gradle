@@ -85,6 +85,7 @@ dependencies {
     implementation project(path: ':java_kotlin')
     implementation project(path: ':Leetcode')
     implementation project(path: ':common')
+    implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
 
     testImplementation 'junit:junit:4.12'
     androidTestImplementation rootProject.ext.androidx["androidx.test.ext-junit"]

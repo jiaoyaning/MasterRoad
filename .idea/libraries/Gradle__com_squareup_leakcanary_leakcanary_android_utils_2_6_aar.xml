@@ -5,6 +5,10 @@
       <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/59b870c84a5c451a5dbab40516a0b62b/jetified-leakcanary-android-utils-2.6/res" />
       <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/59b870c84a5c451a5dbab40516a0b62b/jetified-leakcanary-android-utils-2.6/AndroidManifest.xml" />
       <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/59b870c84a5c451a5dbab40516a0b62b/jetified-leakcanary-android-utils-2.6/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/4053d227d2d486d8e5d6d9de6a83a214/jetified-leakcanary-android-utils-2.6/res" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/072244806090ffe4aa8a5a9ef63d22b7/jetified-leakcanary-android-utils-2.6/AndroidManifest.xml" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/072244806090ffe4aa8a5a9ef63d22b7/jetified-leakcanary-android-utils-2.6/res" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/072244806090ffe4aa8a5a9ef63d22b7/jetified-leakcanary-android-utils-2.6/jars/classes.jar!/" />
     </CLASSES>
     <JAVADOC>
       <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.squareup.leakcanary/leakcanary-android-utils/2.6/79ede440a9096d56747bfd0ef77b7e1cee00a33b/leakcanary-android-utils-2.6-javadoc.jar!/" />

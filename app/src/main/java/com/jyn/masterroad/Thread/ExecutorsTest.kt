@@ -60,7 +60,7 @@ class ExecutorsTest {
     fun awaitTermination() {
         LogUtils.tag("main").i("Executors.awaitTermination() 开始等待……")
         executor.shutdown() //shutdown之后线程池才能被termination。
-        val awaitTermination = executor.awaitTermination(3, TimeUnit.SECONDS)
+        val awaitTermination: Boolean = executor.awaitTermination(3, TimeUnit.SECONDS)
         LogUtils.tag("main").i("Executors.awaitTermination() 等待结束！！")
         LogUtils.tag("main").i("Executors.awaitTermination() 返回结果:${awaitTermination}")
     }

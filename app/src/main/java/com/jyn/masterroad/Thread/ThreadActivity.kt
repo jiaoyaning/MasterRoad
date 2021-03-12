@@ -47,7 +47,7 @@ class ThreadActivity : BaseActivity<ActivityThreadBinding>() {
     private val threadLocalTest: ThreadLocalTest by lazy { ThreadLocalTest() }
     private val countDownLatchTest: CountDownLatchTest by lazy { CountDownLatchTest() }
 
-    override fun init() {
+    override fun initView() {
         binding.onClick = onClick
     }
 

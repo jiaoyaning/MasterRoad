@@ -61,7 +61,7 @@ class ThreadLocalTest {
         }.start()
     }
 
-    /**
+    /*
      * 可以把父线程变量传递到子线程的ThreadLocal，不可逆向传递(子传父)
      * 父线程创建子线程的时候，ThreadLocalMap中的构造函数会将父线程的inheritableThreadLocals中的变量复制一份到子线程的inheritableThreadLocals变量中。
      */

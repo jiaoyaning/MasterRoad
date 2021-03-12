@@ -8,7 +8,7 @@ import com.jyn.masterroad.databinding.ActivityKotlinCoroutinesBinding
 
 /*
  * Kotlin协程场景化学习
- * https://mp.weixin.qq.com/s/zQ7fFKp9CCW6h3TVVE6X5g
+ * TODO https://mp.weixin.qq.com/s/zQ7fFKp9CCW6h3TVVE6X5g
  */
 @Route(path = RoutePath.KotlinCoroutines.path)
 class KotlinCoroutinesActivity : BaseActivity<ActivityKotlinCoroutinesBinding>() {

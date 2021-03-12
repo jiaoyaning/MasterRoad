@@ -29,9 +29,10 @@ https://www.jianshu.com/p/6b6f79096256
 ## uiautomator2 Python测试应用
 https://github.com/openatx/uiautomator2
 
-再见SharedPreferences，你好MMKV！
+## 再见SharedPreferences，你好MMKV！
 https://mp.weixin.qq.com/s/XQhUVEKvqn6ZuQQZ6lMlvw
 
-为什么推荐使用for-each而不是for循环遍历元素？
+## 为什么推荐使用for-each而不是for循环遍历元素？
 https://mp.weixin.qq.com/s/IwIJEkJo9WN-MLpG_y0q5Q
-
+## Android Q 深色主题
+https://mp.weixin.qq.com/s/dguR_qCs1KsqdzfHAvfC3Q

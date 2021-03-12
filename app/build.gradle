@@ -8,7 +8,7 @@ apply plugin: 'com.jyn.helloworld'
 
 apply from: '../timer.gradle'
 
-/**
+/*
  * 配置构建 官方文档
  * https://developer.android.com/studio/build?hl=zh-cn
  */
@@ -34,7 +34,7 @@ android {
         }
     }
 
-    /**
+    /*
      * R8编译器官方文档
      * https://developer.android.google.cn/studio/build/shrink-code
      */
@@ -61,7 +61,7 @@ android {
         targetCompatibility JavaVersion.VERSION_1_8
     }
 }
-/**
+/*
  *
  * https://www.jianshu.com/p/cc98a6b4f52e
  * gradle 高级用法
@@ -137,7 +137,7 @@ dependencies {
     implementation "androidx.datastore:datastore-core:1.0.0-alpha06"
 
 
-    /**
+    /*
      * Kotlin 的依赖注入框架
      * https://insert-koin.io/docs/quickstart/kotlin
      */

@@ -17,7 +17,7 @@ import javassist.util.proxy.ProxyFactory;
 /*
  * 代理模式
  *
- *  一个对象本身不做实际的操作，而是通过其他对象来得到自己想要的结果。
+ * 一个对象本身不做实际的操作，而是通过其他对象来得到自己想要的结果。
  * 这样做的好处是可以在目标对象实现的基础上，增强额外的功能操作，即扩展目标对象的功能。
  * 代理模式具有无侵入性的优点
  * 我们增加新功能的时候，可以直接新增代理类，进行功能扩展，避免了修改源码。
@@ -25,7 +25,11 @@ import javassist.util.proxy.ProxyFactory;
  * 动态代理竟然如此简单
  * https://mp.weixin.qq.com/s/TMH-EIwdM_nWYs8zy1aJUA
  *
+ * 问：JDK 动态代理调用接口方法时是怎么做到先调用 invoke 方法的？
  * https://mp.weixin.qq.com/s/78Fwo3uJ6wDnNE6To_nC6g
+ *
+ * 问：为什么 JDK 的动态代理只能使用接口？
+ * https://mp.weixin.qq.com/s/MbIkz0KLYFl0ET99B7rPew
  *
  * https://mp.weixin.qq.com/s?__biz=MzkwMDE1MzkwNQ==&mid=2247495842&idx=1&sn=e04e448d3e193912bf4702125028451f&source=41#wechat_redirect
  */

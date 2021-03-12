@@ -90,5 +90,13 @@ class MyApp : Application() {
     override fun onConfigurationChanged(newConfig: Configuration) {
         super.onConfigurationChanged(newConfig)
         LogUtils.tag("MasterRoad").i("onConfigurationChanged")
+        when (newConfig.uiMode and Configuration.UI_MODE_NIGHT_MASK) {
+            Configuration.UI_MODE_NIGHT_NO -> {
+                LogUtils.tag("MasterRoad").i(" ——> 亮色主题")
+            }
+            Configuration.UI_MODE_NIGHT_YES -> {
+                LogUtils.tag("MasterRoad").i(" ——> 深色主题")
+            }
+        }
     }
 }

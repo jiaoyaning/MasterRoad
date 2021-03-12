@@ -10,8 +10,9 @@ import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
 
-/**
- * Created by jiao on 2020/8/11.
+/*
+ * 从设计模式看OkHttp源码 TODO
+ * https://mp.weixin.qq.com/s/eHLXxjvMgII6c_FVRwwdjg
  */
 public class OkHttpDemo {
     public void test() throws IOException {

@@ -5,73 +5,49 @@ package com.jyn.common.ARouter
  */
 object RoutePath {
 
-    /**
-     * 主activity
-     * [com.jyn.masterroad.MainActivity].
-     */
+    // 主activity
     object Main {
         const val name = "MainActivity"
         const val path = "/app/MainActivity"
     }
 
-    /**
-     * handler测试
-     * [com.jyn.masterroad.handler.HandlerActivity]
-     */
+    // handler测试
     object Handle {
         const val name = "HandlerActivity"
         const val path = "/app/HandlerActivity"
     }
 
-    /**
-     * LiveData测试
-     * [com.jyn.masterroad.jetpack.livedata.LiveDataActivity]
-     */
+    // LiveData测试
     object LiveData {
         const val name = "LiveDataActivity"
         const val path = "/app/LiveDataActivity"
     }
 
-    /**
-     * RxJava 测试
-     * [com.jyn.masterroad.RxJava.RxJavaActivity]
-     */
+    // RxJava 测试
     object RxJava {
         const val name = "RxJavaActivity"
         const val path = "/app/RxJavaActivity"
     }
 
-    /**
-     * BindingCollection 双向绑定 recyclerview
-     * [com.jyn.masterroad.jetpack.bindingcollection.BindingCollectionActivity]
-     */
+    // BindingCollection 双向绑定 recyclerview
     object BindingCollection {
         const val name = "BindingCollectionAdapter"
         const val path = "/app/BindingCollectionActivity"
     }
 
-    /**
-     * ConstraintLayout 约束布局
-     * [com.jyn.masterroad.ConstraintLayout.ConstraintLayoutActivity]
-     */
+    // ConstraintLayout 约束布局
     object ConstraintLayout {
         const val name = "ConstraintLayout"
         const val path = "/app/ConstraintLayout"
     }
 
-    /**
-     * MotionLayout 动画
-     * [com.jyn.masterroad.ConstraintLayout.MotionLayoutActivity]
-     */
+    // MotionLayout 动画
     object MotionLayout {
         const val name = " MotionLayout"
         const val path = "/app/ MotionLayout"
     }
 
-    /**
-     * NestedScrolling 嵌套联动布局
-     * [com.jyn.masterroad.NestedScrolling.NestedScrolling1Activity]
-     */
+    // NestedScrolling 嵌套联动布局
     object NestedScrolling {
         const val name = " NestedScrolling1"
         const val path = "/app/ NestedScrolling1"
@@ -82,17 +58,13 @@ object RoutePath {
         const val path = "/app/ NestedScrolling2"
     }
 
-    /**
-     * Thread 线程
-     */
+    // Thread 线程
     object Thread {
         const val name = "Thread"
         const val path = "/app/Thread"
     }
 
-    /**
-     * Kotlin Coroutines协程
-     */
+    // Kotlin Coroutines协程
     object KotlinCoroutines {
         const val name = "KotlinCoroutines"
         const val path = "/app/KotlinCoroutines"

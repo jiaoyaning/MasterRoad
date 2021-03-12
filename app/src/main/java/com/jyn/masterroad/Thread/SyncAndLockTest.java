@@ -9,6 +9,9 @@ package com.jyn.masterroad.Thread;
  *
  * 一行一行源码分析清楚AbstractQueuedSynchronizer TODO
  * https://javadoop.com/post/AbstractQueuedSynchronizer
+ *
+ * 响应中断测试
+ * https://blog.csdn.net/zengmingen/article/details/53260650
  */
 public class SyncAndLockTest {
     /*

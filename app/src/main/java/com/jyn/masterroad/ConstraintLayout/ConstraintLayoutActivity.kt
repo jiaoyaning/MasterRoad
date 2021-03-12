@@ -36,7 +36,7 @@ class ConstraintLayoutActivity : BaseActivity<ActivityConstraintlayoutBinding>()
 
     override fun getLayoutId() = R.layout.activity_constraintlayout
 
-    override fun init() {
+    override fun initView() {
         binding.onClick = click
         binding.onProgressChanged = onProgressChanged
     }

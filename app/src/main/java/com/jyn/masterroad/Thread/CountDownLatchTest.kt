@@ -8,6 +8,9 @@ import java.util.concurrent.TimeUnit
  * CountDownLatch和CyclicBarrier 傻傻的分不清？超长精美图文又来了 TODO
  * https://mp.weixin.qq.com/s/Naui2R2hRxC_teAWt4Rk8g
  *
+ * 面试官：说说CountDownLatch，CyclicBarrier，Semaphore的原理？
+ * https://mp.weixin.qq.com/s/LDNQMCBXuUfv5ePG0PQUFw
+ *
  * CountDownLatch主要作用是使一个线程等待其他线程各自执行完毕后再执行
  */
 class CountDownLatchTest {

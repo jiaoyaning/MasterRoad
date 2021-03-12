@@ -37,7 +37,7 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
 
     override fun getLayoutId() = R.layout.activity_main
 
-    override fun init() {
+    override fun initView() {
 //        binding = ActivityMainBinding.inflate(layoutInflater) //第二种实现方式
         binding.mainRecycle.adapter = MainAdapter(routerList, this)
     }

@@ -12,7 +12,7 @@ import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.Disposable
 import io.reactivex.schedulers.Schedulers
 
-/**
+/*
  * RxJava中Observable、Flowable、Single、Maybe 有何区别?
  * [https://www.wanandroid.com/wenda/show/16634]
  *
@@ -24,6 +24,13 @@ import io.reactivex.schedulers.Schedulers
  *
  * RxJava源码解析(三)
  * https://yutiantina.github.io/2019/03/05/RxJava%E6%BA%90%E7%A0%81%E8%A7%A3%E6%9E%90(%E4%B8%89)-%E8%83%8C%E5%8E%8B/
+ *
+ * RxJava So Easy! 带你从0手撸一个RxJava TODO
+ * https://mp.weixin.qq.com/s/TsyB7oXgQSCPyUP7r7SuKg
+ *
+ * 这一次，就彻底了解OkHttp与Retrofit吧！TODO
+ * https://mp.weixin.qq.com/s/DsWoCXd-qrucW5I1Oxxdlg
+ *
  */
 @Route(path = RoutePath.RxJava.path)
 class RxJavaActivity : AppCompatActivity() {

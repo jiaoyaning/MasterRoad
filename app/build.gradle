@@ -95,8 +95,7 @@ dependencies {
 
     implementation 'com.github.bumptech.glide:glide:4.11.0'
 
-    implementation 'com.squareup.okio:okio:2.2.2'
-    implementation 'com.squareup.okhttp3:okhttp:3.14.7'
+    implementation 'com.squareup.okio:okio:2.8.0'
 
     implementation 'com.squareup.retrofit2:retrofit:2.8.1'
     implementation 'com.squareup.retrofit2:converter-scalars:2.3.0'
@@ -143,8 +142,16 @@ dependencies {
      */
     implementation "org.koin:koin-core:$koin_version"   // Koin for Kotlin apps
 
+    /*
+     * 协程
+     */
     implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.4.1'
 
+    /*
+     * 一款方便的设置状态栏和导航栏的各种效果的框架
+     * https://github.com/Zackratos/UltimateBarX
+     */
+    implementation 'com.zackratos.ultimatebarx:ultimatebarx:0.5.1'
 
 //    /**
 //     * https://mp.weixin.qq.com/s/vNf9rDt3RxDPVacR9-e7Yw
@@ -154,4 +161,12 @@ dependencies {
 //    implementation "androidx.fragment:fragment:$fragment_version"
 //    // Kotlin
 //    implementation "androidx.fragment:fragment-ktx:$fragment_version"
+
+    /*
+     * 网络请求框架
+     * https://github.com/liujingxing/okhttp-RxHttp
+     */
+    implementation 'com.ljx.rxhttp:rxhttp:2.5.6'
+    implementation 'com.squareup.okhttp3:okhttp:4.9.1'
+    kapt 'com.ljx.rxhttp:rxhttp-compiler:2.5.6' //Use the annotationProcessor instead of kapt, if you use Java
 }

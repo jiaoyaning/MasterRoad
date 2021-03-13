@@ -75,5 +75,5 @@ dependencies {
     annotationProcessor("com.google.dagger:dagger-android-processor:2.15")
 
     implementation("com.alibaba:arouter-api:1.5.0")
-    implementation("com.apkfuns.logutils:library:1.7.5")
+    api("com.apkfuns.logutils:library:1.7.5")
 }

@@ -52,7 +52,7 @@ dependencies {
     implementation 'androidx.annotation:annotation:1.1.0'
     implementation 'com.apkfuns.logutils:library:1.7.5'
     implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
-    testImplementation 'junit:junit:4.12'
-    androidTestImplementation rootProject.ext.androidx["androidx.test.ext-junit"]
-    androidTestImplementation rootProject.ext.androidx["androidx.test.espresso:espresso-core"]
+    testImplementation rootProject.ext.androidx["junit"]
+    androidTestImplementation rootProject.ext.androidx["ext-junit"]
+    androidTestImplementation rootProject.ext.androidx["espresso-core"]
 }

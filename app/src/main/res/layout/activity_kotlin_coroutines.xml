@@ -5,12 +5,22 @@
 
     <data>
 
+        <variable
+            name="coroutines"
+            type="com.jyn.masterroad.kotlin.coroutines.KotlinCoroutinesTest" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".Kotlin.Coroutines.KotlinCoroutinesActivity">
+        tools:context=".kotlin.coroutines.KotlinCoroutinesActivity">
 
+        <Button
+            android:id="@+id/button2"
+            style="@style/tv"
+            android:onClick="@{coroutines::simpleTest}"
+            android:text="协程"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

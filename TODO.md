@@ -36,3 +36,6 @@ https://mp.weixin.qq.com/s/XQhUVEKvqn6ZuQQZ6lMlvw
 https://mp.weixin.qq.com/s/IwIJEkJo9WN-MLpG_y0q5Q
 ## Android Q 深色主题
 https://mp.weixin.qq.com/s/dguR_qCs1KsqdzfHAvfC3Q
+
+## 利用Kotin + ViewBinding 替换自定义View的引入
+https://mp.weixin.qq.com/s/Lnhmfh1EhermoFj4_BEEDA

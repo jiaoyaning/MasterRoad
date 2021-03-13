@@ -104,15 +104,15 @@ dependencies {
     implementation http["rxhttp"]
     kapt http["rxhttp-compiler"]
 
+    implementation utils["glide-integration"]
+    implementation utils["ultimatebarx"]
     implementation utils["eventbus"]
+    implementation utils["glide"]
+    annotationProcessor utils["glide-compiler"]
+    debugImplementation utils["leakcanary"]
     implementation utils["arouter"]
     annotationProcessor utils["arouter-compiler"]
     kapt utils["arouter-compiler"]
-    implementation utils["glide"]
-    annotationProcessor utils["glide-compiler"]
-    implementation utils["glide-integration"]
-    debugImplementation utils["leakcanary"]
-    implementation utils["ultimatebarx"]
 
     //https://github.com/evant/binding-collection-adapter
     implementation 'me.tatarka.bindingcollectionadapter2:bindingcollectionadapter:4.0.0'

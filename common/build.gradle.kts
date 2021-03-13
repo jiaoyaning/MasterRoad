@@ -1,6 +1,6 @@
 import org.jetbrains.kotlin.config.KotlinCompilerVersion
 
-/**
+/*
  * Gradle Kotlin DSL
  * https://mp.weixin.qq.com/s/MTbTecDYcYpRkoqc6pC_2w
  *
@@ -57,7 +57,7 @@ android {
     }
 }
 
-/**
+/*
  * https://docs.gradle.org/current/userguide/organizing_gradle_projects.html#sec:build_sources
  */
 dependencies {
@@ -70,6 +70,7 @@ dependencies {
     androidTestImplementation("androidx.test.espresso:espresso-core:3.2.0")
 
     implementation("androidx.lifecycle:lifecycle-extensions:2.2.0")
+    implementation("androidx.activity:activity-ktx:1.2.0")
 
     implementation("com.google.dagger:dagger-android:2.15")
     annotationProcessor("com.google.dagger:dagger-android-processor:2.15")

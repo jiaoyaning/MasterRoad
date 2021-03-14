@@ -7,13 +7,11 @@ import androidx.databinding.ViewDataBinding
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 
-abstract class BaseActivity<dataBinding : ViewDataBinding> : AppCompatActivity() {
+abstract class BaseActivity<dataBinding : ViewDataBinding>(var id: Int = 0) : AppCompatActivity() {
 
     val binding: dataBinding by lazy {
-        DataBindingUtil.setContentView<dataBinding>(this, getLayoutId())
+        DataBindingUtil.setContentView<dataBinding>(this, id)
     }
-
-    abstract fun getLayoutId(): Int
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -25,10 +23,14 @@ abstract class BaseActivity<dataBinding : ViewDataBinding> : AppCompatActivity()
     open fun initData() {}
     open fun initView() {}
 
-    /**
+    /*
      * 获取ViewModel实例
+     *
+     * reified : 由于java泛型是伪泛型,为了兼容java1.5以前的版本,java运行时,会泛型擦除 会擦除为泛型上界,
+     * 如果没有泛型上界会擦除为Object,所以jvm在程序运行时是不知道泛型的真实类型,
+     * reified 能保证运行时依然能拿到泛型的具体类型.(当前只限制支持内联函数可用)
      */
-    inline fun <reified T : ViewModel> getVM(): T {
+    inline fun < reified T : ViewModel> createVM(): T {
         return ViewModelProvider(this).get(T::class.java)
     }
 }

@@ -11,13 +11,12 @@ import com.jyn.masterroad.databinding.ActivityBindingCollectionBinding
  * https://github.com/evant/binding-collection-adapter
  */
 @Route(path = RoutePath.BindingCollection.path)
-class BindingCollectionActivity : BaseActivity<ActivityBindingCollectionBinding>() {
-    override fun getLayoutId(): Int = R.layout.activity_binding_collection
+class BindingCollectionActivity : BaseActivity<ActivityBindingCollectionBinding>(R.layout.activity_binding_collection) {
 
     lateinit var viewmodel: BindingCollectionModel
 
     override fun initData() {
-        viewmodel = getVM()
+        viewmodel = createVM()
         viewmodel.recyclerView = binding.bindingCollectionRecycler
         binding.viewModel = viewmodel
     }

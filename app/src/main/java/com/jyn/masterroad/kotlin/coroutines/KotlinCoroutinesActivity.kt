@@ -1,6 +1,5 @@
 package com.jyn.masterroad.kotlin.coroutines
 
-import android.view.View
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.jyn.common.ARouter.RoutePath
 import com.jyn.masterroad.R
@@ -21,9 +20,7 @@ import com.jyn.masterroad.databinding.ActivityKotlinCoroutinesBinding
  * https://mp.weixin.qq.com/s/84fSUYQt3T_Fa5B5s5ihvA
  */
 @Route(path = RoutePath.KotlinCoroutines.path)
-class KotlinCoroutinesActivity : BaseActivity<ActivityKotlinCoroutinesBinding>() {
-
-    override fun getLayoutId() = R.layout.activity_kotlin_coroutines
+class KotlinCoroutinesActivity : BaseActivity<ActivityKotlinCoroutinesBinding>(R.layout.activity_kotlin_coroutines) {
 
     override fun initView() {
         binding.coroutines = KotlinCoroutinesTest()

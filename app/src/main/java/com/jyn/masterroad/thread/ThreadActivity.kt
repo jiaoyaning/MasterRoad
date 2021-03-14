@@ -36,9 +36,7 @@ import com.jyn.masterroad.databinding.ActivityThreadBinding
  * https://mp.weixin.qq.com/s/oYkeQSjEtonjzjTA1hR07w
  */
 @Route(path = RoutePath.Thread.path)
-class ThreadActivity : BaseActivity<ActivityThreadBinding>() {
-
-    override fun getLayoutId() = R.layout.activity_thread
+class ThreadActivity : BaseActivity<ActivityThreadBinding>(R.layout.activity_thread) {
 
     override fun initView() {
         binding.threadCreate = ThreadCreate()

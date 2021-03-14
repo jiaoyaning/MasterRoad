@@ -31,9 +31,7 @@ import com.jyn.masterroad.databinding.ActivityConstraintlayoutBinding
  */
 @SuppressLint("SetTextI18n")
 @Route(path = RoutePath.ConstraintLayout.path)
-class ConstraintLayoutActivity : BaseActivity<ActivityConstraintlayoutBinding>() {
-
-    override fun getLayoutId() = R.layout.activity_constraintlayout
+class ConstraintLayoutActivity : BaseActivity<ActivityConstraintlayoutBinding>(R.layout.activity_constraintlayout) {
 
     override fun initView() {
         binding.onClick = click

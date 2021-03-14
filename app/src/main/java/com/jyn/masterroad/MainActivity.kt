@@ -31,11 +31,9 @@ import kotlinx.android.synthetic.main.activity_main.*
  * https://www.jianshu.com/p/c69b0e4e18f1
  */
 @Route(path = RoutePath.Main.path)
-class MainActivity : BaseActivity<ActivityMainBinding>() {
+class MainActivity : BaseActivity<ActivityMainBinding>(R.layout.activity_main) {
 
     private var routerList: ArrayList<MainViewModel> = MainViewModel.getRouterList()
-
-    override fun getLayoutId() = R.layout.activity_main
 
     override fun initView() {
 //        binding = ActivityMainBinding.inflate(layoutInflater) //第二种实现方式

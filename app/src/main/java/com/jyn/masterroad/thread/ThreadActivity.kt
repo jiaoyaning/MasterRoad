@@ -1,6 +1,5 @@
 package com.jyn.masterroad.thread
 
-import android.view.View
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.jyn.common.ARouter.RoutePath
 import com.jyn.masterroad.R
@@ -41,26 +40,11 @@ class ThreadActivity : BaseActivity<ActivityThreadBinding>() {
 
     override fun getLayoutId() = R.layout.activity_thread
 
-    private val threadLocalTest: ThreadLocalTest by lazy { ThreadLocalTest() }
-    private val countDownLatchTest: CountDownLatchTest by lazy { CountDownLatchTest() }
-
     override fun initView() {
-        binding.onClick = onClick
         binding.threadCreate = ThreadCreate()
-        binding.executorsTest = ExecutorsTest()
-        binding.threadWaitNotifyTest = ThreadWaitNotifyTest()
-    }
-
-    val onClick = View.OnClickListener {
-        when (it.id) {
-            //四、ThreadLocal
-            R.id.thread_btn_thread_local -> threadLocalTest.threadLocalTest()
-            R.id.thread_btn_thread_local_inner -> threadLocalTest.threadLocalInnerTest()
-            R.id.thread_btn_inheritable_thread_local -> threadLocalTest.inheritableThreadLocalTest()
-
-            //五、CountDownLatch
-            R.id.thread_btn_latch_demo -> countDownLatchTest.demo()
-            R.id.thread_btn_latch_time_out -> countDownLatchTest.awaitTimeOutTest()
-        }
+        binding.executors = ExecutorsTest()
+        binding.threadWaitNotify = ThreadWaitNotifyTest()
+        binding.threadLocal = ThreadLocalTest()
+        binding.countDownLatch = CountDownLatchTest()
     }
 }

@@ -9,17 +9,30 @@
             name="onClick"
             type="android.view.View.OnClickListener" />
 
+        <!-- 线程的四种创建方式 -->
         <variable
             name="threadCreate"
             type="com.jyn.masterroad.thread.ThreadCreate" />
 
+        <!-- 线程池 -->
         <variable
-            name="executorsTest"
+            name="executors"
             type="com.jyn.masterroad.thread.ExecutorsTest" />
 
+        <!-- Wait 和 Notify-->
         <variable
-            name="threadWaitNotifyTest"
+            name="threadWaitNotify"
             type="com.jyn.masterroad.thread.ThreadWaitNotifyTest" />
+
+        <!-- ThreadLocal -->
+        <variable
+            name="threadLocal"
+            type="com.jyn.masterroad.thread.ThreadLocalTest" />
+
+        <!-- CountDownLatch -->
+        <variable
+            name="countDownLatch"
+            type="com.jyn.masterroad.thread.CountDownLatchTest" />
 
     </data>
 
@@ -90,7 +103,7 @@
             android:id="@+id/thread_btn_start_executors"
             style="@style/tv2"
             android:layout_marginTop="8dp"
-            android:onClick="@{executorsTest::startExecutors}"
+            android:onClick="@{executors::startExecutors}"
             android:text="启动线程池"
             app:layout_constraintEnd_toStartOf="@id/thread_btn_shutdown"
             app:layout_constraintStart_toStartOf="parent"
@@ -99,7 +112,7 @@
         <Button
             android:id="@+id/thread_btn_shutdown"
             style="@style/tv"
-            android:onClick="@{executorsTest::shutdown}"
+            android:onClick="@{executors::shutdown}"
             android:text="shutdown"
             app:layout_constraintEnd_toStartOf="@id/thread_btn_shutdown_new"
             app:layout_constraintStart_toEndOf="@id/thread_btn_start_executors"
@@ -108,7 +121,7 @@
         <Button
             android:id="@+id/thread_btn_shutdown_new"
             style="@style/tv2"
-            android:onClick="@{executorsTest::shutdownNow}"
+            android:onClick="@{executors::shutdownNow}"
             android:text="shutdownNow"
             app:layout_constraintEnd_toStartOf="@id/thread_btn_awaitTermination"
             app:layout_constraintStart_toEndOf="@id/thread_btn_shutdown"
@@ -117,7 +130,7 @@
         <Button
             android:id="@+id/thread_btn_awaitTermination"
             style="@style/tv"
-            android:onClick="@{executorsTest::awaitTermination}"
+            android:onClick="@{executors::awaitTermination}"
             android:text="awaitTermination"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@id/thread_btn_shutdown_new"
@@ -137,7 +150,7 @@
             android:id="@+id/thread_btn_start"
             style="@style/tv"
             android:layout_marginTop="8dp"
-            android:onClick="@{threadWaitNotifyTest::startThread}"
+            android:onClick="@{threadWaitNotify::startThread}"
             android:text="启动线程循环"
             app:layout_constraintEnd_toStartOf="@id/thread_btn_wait"
             app:layout_constraintStart_toStartOf="parent"
@@ -146,7 +159,7 @@
         <Button
             android:id="@+id/thread_btn_wait"
             style="@style/tv2"
-            android:onClick="@{threadWaitNotifyTest::waitThread}"
+            android:onClick="@{threadWaitNotify::waitThread}"
             android:text="wait()"
             app:layout_constraintEnd_toStartOf="@id/thread_btn_notify"
             app:layout_constraintStart_toEndOf="@id/thread_btn_start"
@@ -155,7 +168,7 @@
         <Button
             android:id="@+id/thread_btn_notify"
             style="@style/tv"
-            android:onClick="@{threadWaitNotifyTest::notifyThread}"
+            android:onClick="@{threadWaitNotify::notifyThread}"
             android:text="notify()"
             app:layout_constraintEnd_toStartOf="@id/thread_btn_producer_and_customer"
             app:layout_constraintStart_toEndOf="@id/thread_btn_wait"
@@ -164,7 +177,7 @@
         <Button
             android:id="@+id/thread_btn_producer_and_customer"
             style="@style/tv2"
-            android:onClick="@{threadWaitNotifyTest::startProduceAndConsume}"
+            android:onClick="@{threadWaitNotify::startProduceAndConsume}"
             android:text="生产者-\n消费者模式"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@id/thread_btn_notify"
@@ -174,7 +187,7 @@
             android:id="@+id/thread_btn_deadlock"
             style="@style/tv"
             android:layout_marginTop="32dp"
-            android:onClick="@{threadWaitNotifyTest::startDeadlock}"
+            android:onClick="@{threadWaitNotify::startDeadlock}"
             android:text="死锁"
             app:layout_constraintEnd_toStartOf="@id/thread_btn_printABC"
             app:layout_constraintStart_toStartOf="parent"
@@ -183,7 +196,7 @@
         <Button
             android:id="@+id/thread_btn_printABC"
             style="@style/tv2"
-            android:onClick="@{threadWaitNotifyTest::startPrintABC}"
+            android:onClick="@{threadWaitNotify::startPrintABC}"
             android:text="轮流打印ABC"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@id/thread_btn_deadlock"
@@ -204,7 +217,7 @@
             style="@style/tv2"
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
-            android:onClick="@{onClick}"
+            android:onClick="@{threadLocal::threadLocalTest}"
             android:text="ThreadLocal"
             app:layout_constraintEnd_toStartOf="@id/thread_btn_thread_local_inner"
             app:layout_constraintStart_toStartOf="parent"
@@ -214,7 +227,7 @@
             android:id="@+id/thread_btn_thread_local_inner"
             style="@style/tv2"
             android:layout_marginStart="8dp"
-            android:onClick="@{onClick}"
+            android:onClick="@{threadLocal::threadLocalInnerTest}"
             android:text="ThreadLocal内部"
             app:layout_constraintEnd_toStartOf="@id/thread_btn_inheritable_thread_local"
             app:layout_constraintStart_toEndOf="@id/thread_btn_thread_local"
@@ -223,7 +236,7 @@
         <Button
             android:id="@+id/thread_btn_inheritable_thread_local"
             style="@style/tv"
-            android:onClick="@{onClick}"
+            android:onClick="@{threadLocal::inheritableThreadLocalTest}"
             android:text="InheritableThreadLocal"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@id/thread_btn_thread_local_inner"
@@ -242,7 +255,7 @@
             android:id="@+id/thread_btn_latch_demo"
             style="@style/tv"
             android:layout_marginTop="8dp"
-            android:onClick="@{onClick}"
+            android:onClick="@{countDownLatch::demo}"
             android:text="Demo"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/textView23" />
@@ -250,7 +263,7 @@
         <Button
             android:id="@+id/thread_btn_latch_time_out"
             style="@style/tv2"
-            android:onClick="@{onClick}"
+            android:onClick="@{countDownLatch::awaitTimeOutTest}"
             android:text="AwaitTimeOut"
             app:layout_constraintStart_toEndOf="@id/thread_btn_latch_demo"
             app:layout_constraintTop_toTopOf="@id/thread_btn_latch_demo" />

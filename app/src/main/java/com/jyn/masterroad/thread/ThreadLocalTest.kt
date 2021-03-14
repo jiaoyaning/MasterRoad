@@ -1,5 +1,6 @@
 package com.jyn.masterroad.thread
 
+import android.view.View
 import com.apkfuns.logutils.LogUtils
 
 /*
@@ -24,7 +25,7 @@ class ThreadLocalTest {
      * 但是对应的value不会被回收，这个时候Map中就可能存在key为null但是value不为null的项，
      * 这需要实际的时候使用完毕及时调用remove方法避免内存泄漏。
      */
-    fun threadLocalTest() {
+    fun threadLocalTest(v: View) {
         Thread {
             LogUtils.tag("main").i("threadLocal A线程 改前 ${threadLocal.get()}")
             threadLocal.set("threadLocal A线程 改成 A")
@@ -51,7 +52,7 @@ class ThreadLocalTest {
      * Thread对象维护了一个key为ThreadLocal的Map
      * 该方法可证明，每个Thread的是ThreadLocal对象唯一，而不是只能声明一个ThreadLocal对象
      */
-    fun threadLocalInnerTest() {
+    fun threadLocalInnerTest(v: View) {
         Thread {
             val threadLocal1: ThreadLocal<String> = ThreadLocal()
             val threadLocal2: ThreadLocal<String> = ThreadLocal()
@@ -71,7 +72,7 @@ class ThreadLocalTest {
         }
     }
 
-    fun inheritableThreadLocalTest() {
+    fun inheritableThreadLocalTest(v: View) {
         LogUtils.tag("main").i("主线程 ${inheritableThreadLocal.get()}")
         Thread {
             LogUtils.tag("main").i("子线程 获取父线程 ${inheritableThreadLocal.get()}")

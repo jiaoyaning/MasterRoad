@@ -1,5 +1,6 @@
 package com.jyn.masterroad.thread
 
+import android.view.View
 import com.apkfuns.logutils.LogUtils
 import java.util.concurrent.CountDownLatch
 import java.util.concurrent.TimeUnit
@@ -18,7 +19,7 @@ class CountDownLatchTest {
     /*
      * await可阻塞当前线程，只有等CountDownLatch.countDown()结束后才会继续执行
      */
-    fun demo() {
+    fun demo(v: View) {
         val latch = CountDownLatch(2)
         Thread {
             LogUtils.tag("main").i("ThreadA 启动")
@@ -42,7 +43,7 @@ class CountDownLatchTest {
     /*
      * timeout结束后会中断阻塞，继续执行
      */
-    fun awaitTimeOutTest() {
+    fun awaitTimeOutTest(v: View) {
         val latch = CountDownLatch(2)
         Thread {
             LogUtils.tag("main").i("ThreadA 启动")

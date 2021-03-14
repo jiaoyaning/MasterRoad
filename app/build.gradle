@@ -4,7 +4,7 @@ apply plugin: 'kotlin-android-extensions'
 apply plugin: 'dagger.hilt.android.plugin'
 apply plugin: 'kotlin-kapt'
 apply plugin: 'com.jyn.helloworld'
-apply from: '../timer.gradle'
+apply from: '../Plugin/timer.gradle'
 
 /*
  * 配置构建 官方文档

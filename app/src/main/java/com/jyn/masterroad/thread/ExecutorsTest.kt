@@ -1,5 +1,6 @@
-package com.jyn.masterroad.Thread
+package com.jyn.masterroad.thread
 
+import android.view.View
 import com.apkfuns.logutils.LogUtils
 import java.util.concurrent.ExecutorService
 import java.util.concurrent.Executors
@@ -17,13 +18,10 @@ class ExecutorsTest {
         Executors.newFixedThreadPool(2)         //创建一个定长线程池，可控制线程最大并发数，超出的线程会在队列中等待。
     }
 
-    private var threadName = 1
-
-    fun startExecutors() {
+    fun startExecutors(v:View) {
         executor.submit {
-            val position = threadName++
             for (i in 1..10) {
-                LogUtils.tag("main").i("Executors 创建的线程 线程名:$position 次数:$i")
+                LogUtils.tag("main").i("Executors 创建的线程  次数:$i")
                 Thread.sleep(1000)
             }
         }
@@ -35,7 +33,7 @@ class ExecutorsTest {
      * 2.不会立即停止线程池，会继续执行尚未结束的任务 & 任务队列中的任务，直到全部执行完毕
      * 3.不再接受新的任务，强行添加会报错(submit 和 execute 方式都一样) --RejectedExecutionException
      */
-    fun shutdown() {
+    fun shutdown(v:View) {
         executor.shutdown()
     }
 
@@ -43,7 +41,7 @@ class ExecutorsTest {
      * 1.将线程池的状态设置为 STOP
      * 2.正在执行的任务会被尝试 interrupt()中断，没被执行的任务则被返回，不包含正在执行的任务。
      */
-    fun shutdownNow() {
+    fun shutdownNow(v:View) {
         val shutdownNow = executor.shutdownNow()
         LogUtils.tag("main").i("Executors.shutdownNow() 还未被执行的线程数量:${shutdownNow.size}")
     }
@@ -57,7 +55,7 @@ class ExecutorsTest {
      * 2.线程池行为和shutdown()相同，只是阻塞时间内不可继续添加线程（强行添加不会抛异常），过了阻塞期后可以继续添加
      * 3.返回结果 = 阻塞结束时线程池是否已被销毁 (shutdown和shutdownNow方法能销毁线程池)
      */
-    fun awaitTermination() {
+    fun awaitTermination(v: View) {
         LogUtils.tag("main").i("Executors.awaitTermination() 开始等待……")
         executor.shutdown() //shutdown之后线程池才能被termination。
         val awaitTermination: Boolean = executor.awaitTermination(3, TimeUnit.SECONDS)

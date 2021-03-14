@@ -1,4 +1,4 @@
-package com.jyn.masterroad.Thread;
+package com.jyn.masterroad.thread;
 
 /*
  * 万字超强图文讲解AQS以及ReentrantLock应用 TODO

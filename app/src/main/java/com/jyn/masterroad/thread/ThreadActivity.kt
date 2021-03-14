@@ -1,4 +1,4 @@
-package com.jyn.masterroad.Thread
+package com.jyn.masterroad.thread
 
 import android.view.View
 import com.alibaba.android.arouter.facade.annotation.Route
@@ -41,38 +41,18 @@ class ThreadActivity : BaseActivity<ActivityThreadBinding>() {
 
     override fun getLayoutId() = R.layout.activity_thread
 
-    private val threadCreate: ThreadCreate by lazy { ThreadCreate() }       //线程创建
-    private val executorsTest: ExecutorsTest by lazy { ExecutorsTest() }    //线程池
-    private val threadWaitNotifyTest: ThreadWaitNotifyTest by lazy { ThreadWaitNotifyTest() } //死锁 & 生产者消费者
     private val threadLocalTest: ThreadLocalTest by lazy { ThreadLocalTest() }
     private val countDownLatchTest: CountDownLatchTest by lazy { CountDownLatchTest() }
 
     override fun initView() {
         binding.onClick = onClick
+        binding.threadCreate = ThreadCreate()
+        binding.executorsTest = ExecutorsTest()
+        binding.threadWaitNotifyTest = ThreadWaitNotifyTest()
     }
 
     val onClick = View.OnClickListener {
         when (it.id) {
-            //一、创建线程的四种方式
-            R.id.thread_btn_thread -> threadCreate.threadTest()
-            R.id.thread_btn_runnable -> threadCreate.runnableThreadTest()
-            R.id.thread_btn_future_task -> threadCreate.futureTaskTest()
-            R.id.thread_btn_executors -> threadCreate.executorsTest()
-
-            //二、线程池的关闭方式
-            R.id.thread_btn_start_executors -> executorsTest.startExecutors()
-            R.id.thread_btn_shutdown -> executorsTest.shutdown()
-            R.id.thread_btn_shutdown_new -> executorsTest.shutdownNow()
-            R.id.thread_btn_awaitTermination -> executorsTest.awaitTermination()
-
-            //三、wait 和 notify
-            R.id.thread_btn_start -> threadWaitNotifyTest.startThread()
-            R.id.thread_btn_wait -> threadWaitNotifyTest.waitThread()
-            R.id.thread_btn_notify -> threadWaitNotifyTest.notifyThread()
-            R.id.thread_btn_producer_and_customer -> threadWaitNotifyTest.startProduceAndConsume()
-            R.id.thread_btn_deadlock -> threadWaitNotifyTest.startDeadlock()
-            R.id.thread_btn_printABC -> threadWaitNotifyTest.startPrintABC()
-
             //四、ThreadLocal
             R.id.thread_btn_thread_local -> threadLocalTest.threadLocalTest()
             R.id.thread_btn_thread_local_inner -> threadLocalTest.threadLocalInnerTest()

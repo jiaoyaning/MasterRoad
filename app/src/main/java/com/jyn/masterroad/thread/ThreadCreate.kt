@@ -1,5 +1,6 @@
-package com.jyn.masterroad.Thread
+package com.jyn.masterroad.thread
 
+import android.view.View
 import com.apkfuns.logutils.LogUtils
 import java.util.concurrent.Callable
 import java.util.concurrent.Executors
@@ -11,7 +12,7 @@ import java.util.concurrent.FutureTask
 class ThreadCreate {
 
     //region 1.继承Thread类
-    fun threadTest() {
+    fun threadTest(v: View?) {
         val threadTest = ThreadTest()
         threadTest.start()
     }
@@ -25,7 +26,7 @@ class ThreadCreate {
     //endregion
 
     //region 2.实现Runnable接口，可避免Java单继承问题，仍需要Thread类
-    fun runnableThreadTest() {
+    fun runnableThreadTest(v: View?) {
         val runnableTest = RunnableTest()
         // 多线程情况下可共享变量，但并不能保证线程安全，只加volatile不行，同时需要Synchronized
         val runnableThreadTest1 = Thread(runnableTest)
@@ -48,8 +49,8 @@ class ThreadCreate {
     //endregion
 
     //region 3.FutureTask类 + Callable接口，可携带返回值，需要Thread类或者Executors
-    fun futureTaskTest() {
-        val callableTest: Callable<String> = ThreadCreate.CallableTest()
+    fun futureTaskTest(v: View?) {
+        val callableTest: Callable<String> = CallableTest()
         val futureTaskTest: FutureTask<String> = FutureTask<String>(callableTest)
 
         //第一种futureTask方式 使用线程池
@@ -72,7 +73,7 @@ class ThreadCreate {
     //endregion
 
     //region 4.借助Executors(线程池)
-    fun executorsTest() {
+    fun executorsTest(v: View?) {
         val es = Executors.newCachedThreadPool()
         es.execute { LogUtils.tag("main").i("使用 Executors 创建的线程") }
     }

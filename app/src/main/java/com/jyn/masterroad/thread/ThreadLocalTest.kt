@@ -1,4 +1,4 @@
-package com.jyn.masterroad.Thread
+package com.jyn.masterroad.thread
 
 import com.apkfuns.logutils.LogUtils
 

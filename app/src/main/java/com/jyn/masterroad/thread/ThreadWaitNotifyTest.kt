@@ -1,5 +1,6 @@
-package com.jyn.masterroad.Thread
+package com.jyn.masterroad.thread
 
+import android.view.View
 import com.apkfuns.logutils.LogUtils
 
 class ThreadWaitNotifyTest {
@@ -22,11 +23,11 @@ class ThreadWaitNotifyTest {
         }
     }
 
-    fun startThread() {
+    fun startThread(v:View) {
         thread.start()
     }
 
-    fun waitThread() {
+    fun waitThread(v: View) {
         isWait = true
     }
 
@@ -34,7 +35,7 @@ class ThreadWaitNotifyTest {
      * notify()         仅仅通知一个线程，并且我们不知道哪个线程会收到通知
      * notifyAll()      会通知所有等待中的线程
      */
-    fun notifyThread() {
+    fun notifyThread(v: View) {
         synchronized(lock) {
             lock.notifyAll()
             LogUtils.tag("main").i("Thread 被 notify!")
@@ -48,7 +49,7 @@ class ThreadWaitNotifyTest {
     private var items = 0       //商品数量
     private val maxItems = 5    //仓库最大存量
 
-    fun startProduceAndConsume() {
+    fun startProduceAndConsume(v: View) {
         for (i in 0..10) {
             Thread { produce() }.apply { name = "produce[生产]:${i}" }.start()
             Thread { consume() }.apply { name = "consume[消费]:${i}" }.start()
@@ -116,7 +117,7 @@ class ThreadWaitNotifyTest {
         }
     }
 
-    fun startDeadlock() {
+    fun startDeadlock(v: View) {
         Thread { deadlockATest() }.apply { name = "线程A" }.start()
         Thread { deadlockBTest() }.apply { name = "线程B" }.start()
     }
@@ -128,7 +129,7 @@ class ThreadWaitNotifyTest {
 
     @Volatile
     var state = 0 // 0对应A，1对应B，2对应C
-    fun startPrintABC() {
+    fun startPrintABC(v: View) {
         for (i in 1..10) {
             Thread { printA() }.apply { name = "打印A的线程" }.start()
             Thread { printB() }.apply { name = "打印B的线程" }.start()

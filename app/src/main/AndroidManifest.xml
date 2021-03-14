@@ -27,7 +27,7 @@
         <activity android:name=".handler.HandlerActivity" />
         <activity android:name=".eventbus.EventBusActivity" />
         <activity android:name=".jetpack.hilt.HiltDaggerActivity" />
-        <activity android:name=".Thread.ThreadActivity" />
+        <activity android:name=".thread.ThreadActivity" />
         <activity android:name=".RxJava.RxJavaActivity" />
 
         <activity android:name=".MainActivity">

@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     app:layoutDescription="@xml/activity_motion_layout_scene"
     app:motionDebug="SHOW_PATH"
-    tools:context=".ConstraintLayout.MotionLayoutActivity">
+    tools:context=".constraintLayout.MotionLayoutActivity">
 
     <ImageView
         android:id="@+id/ball"

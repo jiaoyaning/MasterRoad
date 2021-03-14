@@ -18,8 +18,8 @@
         <activity android:name=".RecyclerView.RecyclerViewActivity" />
         <activity android:name=".NestedScrolling.NestedScrolling1Activity" />
         <activity android:name=".NestedScrolling.ScrollView.ScrollViewActivity" /> <!-- startup初始化 -->
-        <activity android:name=".ConstraintLayout.MotionLayoutActivity" />
-        <activity android:name=".ConstraintLayout.ConstraintLayoutActivity" />
+        <activity android:name=".constraintLayout.MotionLayoutActivity" />
+        <activity android:name=".constraintLayout.ConstraintLayoutActivity" />
         <activity
             android:name=".jetpack.bindingcollection.BindingCollectionActivity"
             android:label="BindingCollectionAdapter" />

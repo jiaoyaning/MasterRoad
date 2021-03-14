@@ -39,7 +39,8 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".thread.ThreadActivity">
+        tools:context=".thread.ThreadActivity"
+        tools:ignore="HardcodedText">
 
         <TextView
             android:id="@+id/textView14"
@@ -231,7 +232,7 @@
             android:text="ThreadLocal内部"
             app:layout_constraintEnd_toStartOf="@id/thread_btn_inheritable_thread_local"
             app:layout_constraintStart_toEndOf="@id/thread_btn_thread_local"
-            app:layout_constraintTop_toTopOf="@+id/thread_btn_thread_local" />
+            app:layout_constraintTop_toTopOf="@id/thread_btn_thread_local" />
 
         <Button
             android:id="@+id/thread_btn_inheritable_thread_local"

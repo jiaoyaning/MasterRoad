@@ -1,8 +1,7 @@
-package com.jyn.masterroad.ConstraintLayout
+package com.jyn.masterroad.constraintLayout
 
 import android.annotation.SuppressLint
 import android.view.View
-import androidx.constraintlayout.core.widgets.Flow
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.databinding.adapters.SeekBarBindingAdapter
 import com.alibaba.android.arouter.facade.annotation.Route

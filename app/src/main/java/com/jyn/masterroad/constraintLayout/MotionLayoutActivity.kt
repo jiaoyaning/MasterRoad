@@ -1,4 +1,4 @@
-package com.jyn.masterroad.ConstraintLayout
+package com.jyn.masterroad.constraintLayout
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -7,7 +7,7 @@ import com.jyn.common.ARouter.RoutePath
 import com.jyn.masterroad.R
 import kotlinx.android.synthetic.main.activity_motion_layout.*
 
-/**
+/*
  * 官方文档：
  * https://developer.android.google.cn/training/constraint-layout/motionlayout?hl=zh_cn
  *

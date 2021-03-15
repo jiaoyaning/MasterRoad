@@ -1,5 +1,6 @@
 package com.jyn.masterroad.kotlin.coroutines
 
+import androidx.lifecycle.lifecycleScope
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.jyn.common.ARouter.RoutePath
 import com.jyn.masterroad.R
@@ -7,9 +8,6 @@ import com.jyn.masterroad.base.BaseActivity
 import com.jyn.masterroad.databinding.ActivityKotlinCoroutinesBinding
 
 /*
- * Kotlin协程场景化学习 TODO
- * https://mp.weixin.qq.com/s/zQ7fFKp9CCW6h3TVVE6X5g
- *
  * 硬核万字解读——Kotlin协程原理解析 TODO
  * https://mp.weixin.qq.com/s/N9BiufCWTRuoh6J-QERlWQ
  *
@@ -23,6 +21,6 @@ import com.jyn.masterroad.databinding.ActivityKotlinCoroutinesBinding
 class KotlinCoroutinesActivity : BaseActivity<ActivityKotlinCoroutinesBinding>(R.layout.activity_kotlin_coroutines) {
 
     override fun initView() {
-        binding.coroutines = KotlinCoroutinesTest()
+        binding.coroutines = KotlinCoroutinesTest(lifecycleScope)
     }
 }

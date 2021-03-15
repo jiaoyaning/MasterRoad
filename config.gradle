@@ -2,6 +2,7 @@ ext {
     compileSdkVersion = 29
     buildToolsVersion = "29.0.3"
     applicationId = "com.jyn.masterroad"
+    applicationId_ipc = "com.jyn.masterroad_ipc"
     minSdkVersion = 21
     targetSdkVersion = 29
     versionCode = 1

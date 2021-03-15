@@ -13,7 +13,7 @@ import com.jyn.masterroad.databinding.ActivityMainBinding
 import com.jyn.masterroad.databinding.ItemMainBinding
 import kotlinx.android.synthetic.main.activity_main.*
 
-/**
+/*
  * https://www.jianshu.com/p/2ee3672efb1f
  *
  * RecycleView列表绑定

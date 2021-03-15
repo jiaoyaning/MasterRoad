@@ -85,7 +85,8 @@ dependencies {
     implementation androidx["recyclerview"]
     implementation androidx["constraintlayout"]
     implementation androidx["lifecycle"]
-    implementation androidx["activity-ktx"]
+    implementation androidx["activity-ktx"] //协程用得到
+    implementation androidx["fragment-ktx"]
     implementation androidx["hilt"]
     kapt androidx["hilt-compiler"]
 

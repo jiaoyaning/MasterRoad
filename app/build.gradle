@@ -65,6 +65,7 @@ android {
  * gradle 高级用法
  */
 dependencies {
+
     def androidx = app.androidx
     def kotlin = app.kotlin
     def http = app.http
@@ -84,6 +85,8 @@ dependencies {
     implementation androidx["startup"]
     implementation androidx["recyclerview"]
     implementation androidx["constraintlayout"]
+    implementation androidx["lifecycle"]
+    implementation androidx["lifecycle-process"]
     implementation androidx["viewmodel"]
     implementation androidx["livedata"]
     implementation androidx["activity-ktx"] //协程用得到

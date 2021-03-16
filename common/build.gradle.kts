@@ -44,7 +44,7 @@ android {
     }
 
     @Suppress("UnstableApiUsage")
-    buildFeatures{
+    buildFeatures {
         dataBinding = true
         viewBinding = true
     }
@@ -71,6 +71,8 @@ dependencies {
 
     implementation("androidx.lifecycle:lifecycle-viewmodel:2.3.0")
     implementation("androidx.lifecycle:lifecycle-livedata:2.3.0")
+    implementation("androidx.lifecycle:lifecycle-runtime:2.3.0")
+    implementation("androidx.lifecycle:lifecycle-process:2.3.0")
     implementation("androidx.activity:activity-ktx:1.2.0")
 
     implementation("com.google.dagger:dagger-android:2.15")

@@ -21,6 +21,9 @@ ext {
              * https://mp.weixin.qq.com/s/TmI0O4OsvdD6DHkLm9EiiQ
              * https://developer.android.google.cn/jetpack/androidx/releases/lifecycle
              */
+            "lifecycle-compiler" : "androidx.lifecycle:lifecycle-compiler:2.3.0",
+            "lifecycle-process"  : "'androidx.lifecycle:lifecycle-process:2.3.0'",
+            "lifecycle"          : "androidx.lifecycle:lifecycle-runtime:2.3.0",
             "viewmodel"          : "androidx.lifecycle:lifecycle-viewmodel:2.3.0",
             "livedata"           : "androidx.lifecycle:lifecycle-livedata:2.3.0",
             "startup"            : "androidx.startup:startup-runtime:1.0.0",

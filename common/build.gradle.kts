@@ -69,7 +69,8 @@ dependencies {
     androidTestImplementation("androidx.test.ext:junit:1.1.1")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.2.0")
 
-    implementation("androidx.lifecycle:lifecycle-extensions:2.2.0")
+    implementation("androidx.lifecycle:lifecycle-viewmodel:2.3.0")
+    implementation("androidx.lifecycle:lifecycle-livedata:2.3.0")
     implementation("androidx.activity:activity-ktx:1.2.0")
 
     implementation("com.google.dagger:dagger-android:2.15")

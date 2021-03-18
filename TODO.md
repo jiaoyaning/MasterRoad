@@ -39,3 +39,9 @@ https://mp.weixin.qq.com/s/dguR_qCs1KsqdzfHAvfC3Q
 
 ## 利用Kotin + ViewBinding 替换自定义View的引入
 https://mp.weixin.qq.com/s/Lnhmfh1EhermoFj4_BEEDA
+
+深入理解 ProtoBuf 原理与工程实践（概述）
+https://mp.weixin.qq.com/s/fKzZ49YmKawsudGUlbOL3g
+
+Android 启动优化（二） - 拓扑排序的原理以及解题思路
+https://mp.weixin.qq.com/s/ShfxD_Z7M_NuWYNodn-vqA

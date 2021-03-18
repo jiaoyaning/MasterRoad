@@ -5,6 +5,7 @@ import com.jyn.common.ARouter.RoutePath
 import com.jyn.masterroad.R
 import com.jyn.masterroad.base.BaseActivity
 import com.jyn.masterroad.databinding.ActivityThreadBinding
+import com.jyn.masterroad.thread.lock.SyncAndLockTest
 
 /*
  * JDK线程池源码分析之ThreadPoolExecutor
@@ -44,5 +45,6 @@ class ThreadActivity : BaseActivity<ActivityThreadBinding>(R.layout.activity_thr
         binding.threadWaitNotify = ThreadWaitNotifyTest()
         binding.threadLocal = ThreadLocalTest()
         binding.countDownLatch = CountDownLatchTest()
+        binding.syncAndLockTest = SyncAndLockTest()
     }
 }

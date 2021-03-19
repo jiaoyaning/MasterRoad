@@ -35,6 +35,9 @@ import com.jyn.masterroad.thread.lock.SyncAndLockTest
  *
  * 我会手动创建线程，为什么让我使用线程池？
  * https://mp.weixin.qq.com/s/oYkeQSjEtonjzjTA1hR07w
+ *
+ * 深入分析 java 8 编程语言规范：Threads and Locks //TODO
+ * https://javadoop.com/post/Threads-And-Locks-md
  */
 @Route(path = RoutePath.Thread.path)
 class ThreadActivity : BaseActivity<ActivityThreadBinding>(R.layout.activity_thread) {

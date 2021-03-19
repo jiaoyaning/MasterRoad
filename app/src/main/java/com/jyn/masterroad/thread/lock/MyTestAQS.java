@@ -4,6 +4,7 @@ import java.util.concurrent.locks.AbstractQueuedSynchronizer;
 
 /*
  * 用AQS实现简单锁功能
+ * https://mp.weixin.qq.com/s/1Nq_izUkOGmtvkIQ9c0QRQ
  */
 public class MyTestAQS {
 

@@ -1,6 +1,10 @@
 package com.jyn.masterroad.okhttp;
 
+import android.os.Handler;
+import android.os.Message;
 import android.util.Log;
+
+import androidx.annotation.NonNull;
 
 import java.io.IOException;
 
@@ -13,6 +17,9 @@ import okhttp3.Response;
 /*
  * 从设计模式看OkHttp源码 TODO
  * https://mp.weixin.qq.com/s/eHLXxjvMgII6c_FVRwwdjg
+ *
+ * OKHttp源码解析(一)--初阶
+ * https://www.jianshu.com/p/82f74db14a18?utm_campaign=haruki&utm_content=note&utm_medium=reader_share&utm_source=weixin
  */
 public class OkHttpDemo {
     public void test() throws IOException {

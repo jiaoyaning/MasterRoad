@@ -3,6 +3,9 @@ package com.jyn.java_kotlin.KotlinLearn
 /*
  * inline、noinline、crossinline傻傻分不清楚
  * https://mp.weixin.qq.com/s/qpxdSoyFB2vFs6iZpXPsHg
+ *
+ * Kotlin源码里成吨的noinline和crossinline是干嘛的
+ * https://zhuanlan.zhihu.com/p/224965169
  */
 class InlineTest {
     companion object {

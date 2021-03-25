@@ -45,3 +45,6 @@ https://mp.weixin.qq.com/s/fKzZ49YmKawsudGUlbOL3g
 
 Android 启动优化（二） - 拓扑排序的原理以及解题思路
 https://mp.weixin.qq.com/s/ShfxD_Z7M_NuWYNodn-vqA
+
+Android图片加载框架最全解析（三），深入探究Glide的缓存机制
+https://juejin.cn/post/6914213320182464526

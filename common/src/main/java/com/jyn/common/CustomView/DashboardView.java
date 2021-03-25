@@ -23,9 +23,9 @@ public class DashboardView extends View {
     float RADIUS = 300;
     Path arcPath = new Path(); //弧线路径
     Path calibration = new Path(); //刻度路径
-    private int mAngle = 90;
+    private final int mAngle = 90;
 
-    private int mNum = 5;
+    private final int mNum = 5;
 
     public DashboardView(Context context) {
         this(context, null);

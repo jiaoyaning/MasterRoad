@@ -88,5 +88,6 @@ ext {
              * https://github.com/Zackratos/UltimateBarX
              */
             "ultimatebarx"     : "com.zackratos.ultimatebarx:ultimatebarx:0.5.1",
+            "mmkv"             : "com.tencent:mmkv-static:1.2.7"
     ]
 }

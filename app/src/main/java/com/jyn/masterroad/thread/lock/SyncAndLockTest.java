@@ -16,6 +16,9 @@ import com.apkfuns.logutils.LogUtils;
  *
  * 响应中断测试
  * https://blog.csdn.net/zengmingen/article/details/53260650
+ *
+ * 由浅入深CAS，小白也能与BAT面试官对线 TODO
+ * https://mp.weixin.qq.com/s/WKZYa0_srnquQqMCyV8cEQ
  */
 public class SyncAndLockTest {
     private static final String TAG = "lock";

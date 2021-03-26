@@ -66,7 +66,7 @@ object RoutePath {
 
     // Kotlin Coroutines协程
     object KotlinCoroutines {
-        const val name = "KotlinCoroutines"
+        const val name = "Kotlin_Coroutines"
         const val path = "/app/KotlinCoroutines"
     }
 }

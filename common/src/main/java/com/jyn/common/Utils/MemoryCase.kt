@@ -36,6 +36,7 @@ object MemoryCase {
         return Runtime.getRuntime().freeMemory() / 1024 / 1024
     }
 
+    @JvmStatic
     fun getMemoryCase() {
         LogUtils.tag("main").i("maxMemory : ${getMaxMemory()} MB -- 应用程序最大可用内存")
         LogUtils.tag("main").i("totalMemory : ${getTotalMemory()} MB -- 应用程序已被分配的内存")

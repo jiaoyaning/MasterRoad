@@ -1,6 +1,5 @@
 package com.jyn.common.Utils
 
-import android.os.Parcelable
 import com.tencent.mmkv.MMKV
 import kotlin.properties.ReadWriteProperty
 import kotlin.reflect.KProperty
@@ -19,7 +18,6 @@ import kotlin.reflect.KProperty
  * private var string by mmkv.string(key = "string")
  * private var stringSet by mmkv.stringSet(key = "stringSet")
  * private var parcelable by mmkv.parcelable<UserData>("parcelable")
- *
  */
 private inline fun <T> MMKV.delegate(
         key: String? = null, defaultValue: T,

@@ -21,9 +21,25 @@
             style="@style/tv"
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
-            android:onClick="@{coroutines::simpleTest}"
+            android:onClick="@{coroutines::globalScopeTest}"
             android:text="GlobalScope"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
+
+        <Button
+            android:id="@+id/button4"
+            style="@style/tv"
+            android:onClick="@{coroutines::globalScopeThreadTest}"
+            android:text="GlobalScope 各线程"
+            app:layout_constraintStart_toEndOf="@+id/button2"
+            app:layout_constraintTop_toTopOf="@+id/button2" />
+
+        <Button
+            android:id="@+id/button3"
+            style="@style/tv2"
+            android:onClick="@{coroutines::lifecycleCoroutineScopeTest}"
+            android:text="LifecycleCoroutineScope"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/button2" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

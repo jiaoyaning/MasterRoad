@@ -37,7 +37,7 @@ class KotlinCoroutinesTest(private val lifecycleScope: LifecycleCoroutineScope) 
         //3. 一个执行一半取消的协程🌰
         val job = GlobalScope.launch(Dispatchers.IO) {
             for (i in 0..10000) {
-                delay(100)
+                delay(1000)
                 LogUtils.tag(TAG).i("协程3 IO线程 循环 count = $i in ${Thread.currentThread().name}")
             }
         }
@@ -55,9 +55,14 @@ class KotlinCoroutinesTest(private val lifecycleScope: LifecycleCoroutineScope) 
         }.start()
     }
 
+    //4.生命周期结束自动取消协程的🌰
     fun lifecycleCoroutineScopeTest(v: View) {
+        /*
+         * 1. lifecycleScope.launch() 默认就是在主线程启动协程；
+         * 2. lifecycleScope 内的协程在 Lifecycle 为 destroyed 状态时会自动取消。
+         * 3. lifecycleScope还有一些其他的扩展方法，如launchWhenCreated、launchWhenStarted、launchWhenResumed等，用法从方法名上看很明显
+         */
 
-        //4.生命周期结束自动取消协程的🌰
         lifecycleScope.launch { //默认主线程，Lifecycle为destroyed状态时会自动取消。
             // 切换到IO线程
             withContext(Dispatchers.IO) {

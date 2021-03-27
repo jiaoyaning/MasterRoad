@@ -59,6 +59,8 @@ android {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
+
+    kotlinOptions.useIR = true
 }
 /*
  * https://www.jianshu.com/p/cc98a6b4f52e

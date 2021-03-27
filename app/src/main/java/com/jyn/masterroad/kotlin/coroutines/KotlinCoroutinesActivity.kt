@@ -6,6 +6,7 @@ import com.jyn.common.ARouter.RoutePath
 import com.jyn.masterroad.R
 import com.jyn.masterroad.base.BaseActivity
 import com.jyn.masterroad.databinding.ActivityKotlinCoroutinesBinding
+import kotlinx.coroutines.CoroutineScope
 
 /*
  * 硬核万字解读——Kotlin协程原理解析 TODO
@@ -18,9 +19,16 @@ import com.jyn.masterroad.databinding.ActivityKotlinCoroutinesBinding
  * https://mp.weixin.qq.com/s/84fSUYQt3T_Fa5B5s5ihvA
  */
 @Route(path = RoutePath.KotlinCoroutines.path)
-class KotlinCoroutinesActivity : BaseActivity<ActivityKotlinCoroutinesBinding>(R.layout.activity_kotlin_coroutines) {
+class KotlinCoroutinesActivity : BaseActivity<ActivityKotlinCoroutinesBinding>
+(R.layout.activity_kotlin_coroutines) {
+
+    private val kotlinCoroutinesTest: KotlinCoroutinesTest by lazy {
+        createVM<KotlinCoroutinesTest>().apply {
+            lifecycleScope = this@KotlinCoroutinesActivity.lifecycleScope
+        }
+    }
 
     override fun initView() {
-        binding.coroutines = KotlinCoroutinesTest(lifecycleScope)
+        binding.coroutines = kotlinCoroutinesTest
     }
 }

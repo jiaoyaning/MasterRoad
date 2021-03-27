@@ -28,18 +28,28 @@
 
         <Button
             android:id="@+id/button4"
-            style="@style/tv"
-            android:onClick="@{coroutines::globalScopeThreadTest}"
-            android:text="GlobalScope 各线程"
+            style="@style/tv2"
+            android:onClick="@{coroutines::runBlockingTest}"
+            android:text="runBlocking\n子线程"
             app:layout_constraintStart_toEndOf="@+id/button2"
             app:layout_constraintTop_toTopOf="@+id/button2" />
 
         <Button
             android:id="@+id/button3"
             style="@style/tv2"
-            android:onClick="@{coroutines::lifecycleCoroutineScopeTest}"
-            android:text="LifecycleCoroutineScope"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:onClick="@{coroutines::lifecycleScopeTest}"
+            android:text="LifecycleScope\n生命周期绑定"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/button2" />
+
+        <Button
+            android:id="@+id/button5"
+            style="@style/tv"
+            android:onClick="@{coroutines::viewModelScope}"
+            android:text="ViewModelScope\nViewModel绑定"
+            app:layout_constraintStart_toEndOf="@+id/button3"
+            app:layout_constraintTop_toTopOf="@+id/button3" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

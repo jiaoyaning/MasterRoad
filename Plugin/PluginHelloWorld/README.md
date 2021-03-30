@@ -25,3 +25,6 @@ https://blog.csdn.net/ryo1060732496/article/details/103655505
 
 手把手教大家用Transform API和ASM实现一个防快速点击案例 （贼好）
 https://mp.weixin.qq.com/s/xcgKPK7RFUkujNYY5nxu3A
+
+Transform和Task之间有关？| Gradle
+https://juejin.cn/post/6875141808825991181

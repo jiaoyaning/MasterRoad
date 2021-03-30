@@ -43,15 +43,25 @@ android {
         targetCompatibility JavaVersion.VERSION_1_8
     }
 }
+
+def app = rootProject.ext
+
+
 dependencies {
+    def androidx = app.androidx
+    def kotlin = app.kotlin
+
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 
-    implementation 'androidx.appcompat:appcompat:1.2.0'
-    implementation 'androidx.constraintlayout:constraintlayout:2.0.4'
-    implementation 'com.google.android.material:material:1.2.1'
-    implementation 'androidx.annotation:annotation:1.1.0'
+    implementation androidx["appcompat"]
+    implementation androidx["annotation"]
+    implementation androidx["constraintlayout"]
+    implementation androidx["material"]
+    implementation androidx["lifecycle"]
+    implementation androidx["activity-ktx"]
+    implementation kotlin["kotlin"]
+
     implementation 'com.apkfuns.logutils:library:1.7.5'
-    implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
     testImplementation rootProject.ext.androidx["junit"]
     androidTestImplementation rootProject.ext.androidx["ext-junit"]
     androidTestImplementation rootProject.ext.androidx["espresso-core"]

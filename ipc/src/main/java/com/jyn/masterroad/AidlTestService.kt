@@ -3,6 +3,7 @@ package com.jyn.masterroad
 import android.app.Service
 import android.content.Intent
 import android.os.IBinder
+import android.os.Parcel
 import com.apkfuns.logutils.LogUtils
 
 class AidlTestService : Service() {
@@ -29,6 +30,14 @@ class AidlTestService : Service() {
             it.x = 0
             it.y = 0
             it.name = "AidlTestService 初始值"
+        }
+
+        override fun onTransact(code: Int, data: Parcel, reply: Parcel?, flags: Int): Boolean {
+            //可用来判断发送方的身份
+            val callingPid = getCallingPid()
+            val callingUid = getCallingUid()
+            LogUtils.tag(TAG).i("AidlTestService 安全性保证 callingPid: $callingPid ; callingUid $callingUid")
+            return super.onTransact(code, data, reply, flags)
         }
 
         override fun setTest(test: String) {

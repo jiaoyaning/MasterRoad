@@ -1,4 +1,4 @@
-package com.jyn.masterroad
+    package com.jyn.masterroad
 
 import android.annotation.SuppressLint
 import android.content.ComponentName
@@ -15,8 +15,6 @@ import kotlinx.android.synthetic.main.activity_main.*
  *
  * https://github.com/leavesC/IPCSamples/blob/master/note/AndroidIPC%E6%9C%BA%E5%88%B6%EF%BC%883%EF%BC%89-AIDL.md
  */
-const val TAG = "AIDLTest"
-
 class MainActivity : AppCompatActivity() {
     private lateinit var aidlTestInterface: AidlTestInterface
     private lateinit var serverMessenger: Messenger

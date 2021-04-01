@@ -34,17 +34,21 @@ https://mp.weixin.qq.com/s/XQhUVEKvqn6ZuQQZ6lMlvw
 
 ## 为什么推荐使用for-each而不是for循环遍历元素？
 https://mp.weixin.qq.com/s/IwIJEkJo9WN-MLpG_y0q5Q
+
 ## Android Q 深色主题
 https://mp.weixin.qq.com/s/dguR_qCs1KsqdzfHAvfC3Q
 
 ## 利用Kotin + ViewBinding 替换自定义View的引入
 https://mp.weixin.qq.com/s/Lnhmfh1EhermoFj4_BEEDA
 
-深入理解 ProtoBuf 原理与工程实践（概述）
+## 深入理解 ProtoBuf 原理与工程实践（概述）
 https://mp.weixin.qq.com/s/fKzZ49YmKawsudGUlbOL3g
 
-Android 启动优化（二） - 拓扑排序的原理以及解题思路
+## Android 启动优化（二） - 拓扑排序的原理以及解题思路
 https://mp.weixin.qq.com/s/ShfxD_Z7M_NuWYNodn-vqA
 
-Android图片加载框架最全解析（三），深入探究Glide的缓存机制
+## Android图片加载框架最全解析（三），深入探究Glide的缓存机制
 https://juejin.cn/post/6914213320182464526
+
+## 看看，我如何在面试官前吹牛P
+https://mp.weixin.qq.com/s/n3T0xTcduqTwLAhfwFWr7A

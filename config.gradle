@@ -88,6 +88,16 @@ ext {
              * https://github.com/Zackratos/UltimateBarX
              */
             "ultimatebarx"     : "com.zackratos.ultimatebarx:ultimatebarx:0.5.1",
-            "mmkv"             : "com.tencent:mmkv-static:1.2.7"
+            "mmkv"             : "com.tencent:mmkv-static:1.2.7",
+            /*
+             * Coil是一个Android图片加载库，通过Kotlin协程的方式加载图片 TODO
+             * https://github.com/coil-kt/coil/
+             */
+            "coil"             : "io.coil-kt:coil:1.1.1",
+
+            /*
+             * https://github.com/square/moshi
+             */
+            "moshi"            : "com.squareup.moshi:moshi-kotlin:1.11.0",
     ]
 }

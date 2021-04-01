@@ -101,6 +101,7 @@ dependencies {
     implementation kotlin["koin"]
     implementation kotlin["reflect"]
 
+
     implementation http["okio"]
     implementation http["okhttp3"]
     implementation http["retrofit2"]
@@ -115,6 +116,7 @@ dependencies {
     implementation utils["ultimatebarx"]
     implementation utils["eventbus"]
     implementation utils["glide"]
+    implementation utils["coil"]
     annotationProcessor utils["glide-compiler"]
     debugImplementation utils["leakcanary"]
     implementation utils["arouter"]

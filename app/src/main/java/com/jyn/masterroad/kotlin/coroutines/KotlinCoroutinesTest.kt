@@ -13,12 +13,10 @@ import java.util.concurrent.Executors
  * Kotlin协程场景化学习 TODO
  * https://mp.weixin.qq.com/s/zQ7fFKp9CCW6h3TVVE6X5g
  *
- * 协程的参数 TODO
- * https://blog.csdn.net/qq_34589749/article/details/103711621
- *
  * Kotlin协程核心库分析-1 Dispatchers
  * https://blog.csdn.net/qfanmingyiq/article/details/105184822
  */
+@ExperimentalCoroutinesApi
 class KotlinCoroutinesTest(application: Application) : AndroidViewModel(application) {
     companion object {
         private const val TAG = "Coroutines"
@@ -41,12 +39,12 @@ class KotlinCoroutinesTest(application: Application) : AndroidViewModel(applicat
         GlobalScope.launch(Dispatchers.Main) {
             LogUtils.tag(TAG).i("2 Dispatchers.Main in ${Thread.currentThread().name}")
         }
-        //同上 等价于 Dispatchers.Main
+        // 等价于 同上的Dispatchers.Main
         MainScope().launch {
             LogUtils.tag(TAG).i("2 MainScope in ${Thread.currentThread().name}")
         }
 
-        //切换线程
+        //切换线程测试
         GlobalScope.launch(Dispatchers.Main) {
             LogUtils.tag(TAG).i("3 切换线程前 in ${Thread.currentThread().name}")
             withContext(Dispatchers.IO) {   // 切换到IO线程
@@ -54,24 +52,36 @@ class KotlinCoroutinesTest(application: Application) : AndroidViewModel(applicat
             }
         }
 
-        //自定义线程池版
-        GlobalScope.launch(Executors.newCachedThreadPool().asCoroutineDispatcher()) {
+        //自定义线程池测试
+        val newCachedThreadPool = Executors.newCachedThreadPool()
+        GlobalScope.launch(newCachedThreadPool.asCoroutineDispatcher()) {
             LogUtils.tag(TAG).i("自定义线程池版 delay前 in ${Thread.currentThread().name}")
             delay(1)
             LogUtils.tag(TAG).i("自定义线程池版 delay后 in ${Thread.currentThread().name}")
+            newCachedThreadPool.shutdown() //不用的时候要关闭
         }
 
-        //cancel测试
+        //cancel测试测试
         val job = GlobalScope.launch(Dispatchers.IO) {
             for (i in 0..10000) {
                 delay(100)
                 LogUtils.tag(TAG).i("协程cancel测试 count = $i in ${Thread.currentThread().name}")
             }
         }
-
         Thread.sleep(300)
         job.cancel()
         LogUtils.tag(TAG).i("协程3 cancel后 in ${Thread.currentThread().name}")
+
+        /**
+         * async 和 launch 函数的区别就是， async 执行的代码块有返回值，
+         * 通过 Deferred 对象可以获取到这个代码块异步执行后的结果。
+         */
+        val async = GlobalScope.async(Dispatchers.IO) {
+            delay(30)
+            LogUtils.tag(TAG).i("协程4 async 添加返回值")
+            return@async "[async测试返回值]"
+        }
+        LogUtils.tag(TAG).i("协程4 async 返回值 : ${async.getCompleted()}")
     }
 
     //阻塞线程的协程
@@ -85,28 +95,66 @@ class KotlinCoroutinesTest(application: Application) : AndroidViewModel(applicat
                     delay(50)
                     LogUtils.tag(TAG).i("Dispatchers.Main delay后 in ${Thread.currentThread().name}")
                 }
+
                 delay(100)
                 launch(Dispatchers.Default) {
                     LogUtils.tag(TAG).i("Dispatchers.Default delay前 in ${Thread.currentThread().name}")
                     delay(50)
                     LogUtils.tag(TAG).i("Dispatchers.Default delay后 in ${Thread.currentThread().name}")
                 }
+
                 delay(100)
                 launch(Dispatchers.IO) {
                     LogUtils.tag(TAG).i("Dispatchers.IO delay前 in ${Thread.currentThread().name}")
                     delay(50)
                     LogUtils.tag(TAG).i("Dispatchers.IO delay后 in ${Thread.currentThread().name}")
                 }
+
                 delay(100)
                 launch(Dispatchers.Unconfined) {
                     LogUtils.tag(TAG).i("Dispatchers.Unconfined delay前 in ${Thread.currentThread().name}")
                     delay(50)
                     LogUtils.tag(TAG).i("Dispatchers.Unconfined delay后 in${Thread.currentThread().name}")
                 }
-
             }
             LogUtils.tag(TAG).i("子线程 结束 ————> in ${Thread.currentThread().name}")
         }.apply { name = "子线程" }.start()
+    }
+
+    fun coroutineStartTest(v: View) {
+        // 根据其上下文立即安排协程执行，调用cancel()函数后，无法执行
+        val default = GlobalScope.launch(start = CoroutineStart.DEFAULT) {
+            LogUtils.tag(TAG).i("DEFAULT delay in ${Thread.currentThread().name}")
+            delay(50)
+            LogUtils.tag(TAG).i("DEFAULT cancel是否完成？ in ${Thread.currentThread().name}")
+        }
+        Thread.sleep(30)
+        LogUtils.tag(TAG).i("DEFAULT cancel()后，DEFAULT协程会被中断")
+        default.cancel()
+
+        //仅在需要时才延迟启动，创建之后，不会立即执行，只在调用了它的start()或者join()方法的时候，才会执行。
+        val lazy = GlobalScope.launch(start = CoroutineStart.LAZY) {
+            LogUtils.tag(TAG).i("LAZY delay前 in ${Thread.currentThread().name}")
+            delay(50)
+            LogUtils.tag(TAG).i("LAZY delay后 in ${Thread.currentThread().name}")
+        }
+        Thread.sleep(20)
+        lazy.start()
+        LogUtils.tag(TAG).i("LAZY 只有在调用start()或者join()后，LAZY协程才会执行")
+        Thread.sleep(60)
+
+
+        //原子地（以不可取消的方式）根据协程的上下文来调度协程以使其执行；这类似于[DEFAULT]，但协程不能在开始执行之前被取消。
+        val atomic = GlobalScope.launch(start = CoroutineStart.ATOMIC) {
+            LogUtils.tag(TAG).i("ATOMIC delay前 in ${Thread.currentThread().name}")
+            delay(50)
+            LogUtils.tag(TAG).i("ATOMIC delay后 in ${Thread.currentThread().name}")
+        }
+        LogUtils.tag(TAG).i("ATOMIC cancel()也不能取消ATOMIC协程")
+        atomic.cancel()
+        Thread.sleep(60)
+
+
     }
 
     /*

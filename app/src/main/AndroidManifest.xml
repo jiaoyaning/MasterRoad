@@ -12,6 +12,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="AllowBackup">
+        <activity android:name=".jetpack.workmanager.WorkManagerActivity" />
         <activity android:name=".base.BaseActivity" />
         <activity android:name=".NestedScrolling.NestedScrolling2Activity" />
         <activity android:name=".kotlin.coroutines.KotlinCoroutinesActivity" />
@@ -29,7 +30,6 @@
         <activity android:name=".jetpack.hilt.HiltDaggerActivity" />
         <activity android:name=".thread.ThreadActivity" />
         <activity android:name=".RxJava.RxJavaActivity" />
-
         <activity android:name=".MainActivity">
 
             <!-- android:excludeFromRecents="true"> -->

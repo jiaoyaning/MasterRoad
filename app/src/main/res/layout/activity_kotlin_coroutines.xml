@@ -30,8 +30,16 @@
             android:id="@+id/button4"
             style="@style/tv2"
             android:onClick="@{coroutines::runBlockingTest}"
-            android:text="runBlocking\n子线程"
+            android:text="runBlocking\n阻塞版协程"
             app:layout_constraintStart_toEndOf="@+id/button2"
+            app:layout_constraintTop_toTopOf="@+id/button2" />
+
+        <Button
+            android:id="@+id/button6"
+            style="@style/tv"
+            android:text="CoroutineStart\n 协程子参数"
+            android:onClick="@{coroutines::coroutineStartTest}"
+            app:layout_constraintStart_toEndOf="@+id/button4"
             app:layout_constraintTop_toTopOf="@+id/button2" />
 
         <Button
@@ -51,5 +59,7 @@
             android:text="ViewModelScope\nViewModel绑定"
             app:layout_constraintStart_toEndOf="@+id/button3"
             app:layout_constraintTop_toTopOf="@+id/button3" />
+
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

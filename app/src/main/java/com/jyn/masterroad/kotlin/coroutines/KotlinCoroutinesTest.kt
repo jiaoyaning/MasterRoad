@@ -7,6 +7,10 @@ import androidx.lifecycle.LifecycleCoroutineScope
 import androidx.lifecycle.viewModelScope
 import com.apkfuns.logutils.LogUtils
 import kotlinx.coroutines.*
+import kotlinx.coroutines.channels.consume
+import kotlinx.coroutines.channels.consumeEach
+import kotlinx.coroutines.channels.consumeEachIndexed
+import kotlinx.coroutines.channels.produce
 import java.util.concurrent.Executors
 
 /*
@@ -15,6 +19,11 @@ import java.util.concurrent.Executors
  *
  * Kotlin协程核心库分析-1 Dispatchers
  * https://blog.csdn.net/qfanmingyiq/article/details/105184822
+ *
+ * http://blog.chengyunfeng.com/?p=1086
+ *
+ * 官方文档
+ * https://www.kotlincn.net/docs/reference/coroutines/basics.html
  */
 @ExperimentalCoroutinesApi
 class KotlinCoroutinesTest(application: Application) : AndroidViewModel(application) {
@@ -71,17 +80,37 @@ class KotlinCoroutinesTest(application: Application) : AndroidViewModel(applicat
         Thread.sleep(300)
         job.cancel()
         LogUtils.tag(TAG).i("协程3 cancel后 in ${Thread.currentThread().name}")
+    }
 
-        /**
-         * async 和 launch 函数的区别就是， async 执行的代码块有返回值，
-         * 通过 Deferred 对象可以获取到这个代码块异步执行后的结果。
-         */
-        val async = GlobalScope.async(Dispatchers.IO) {
-            delay(30)
-            LogUtils.tag(TAG).i("协程4 async 添加返回值")
-            return@async "[async测试返回值]"
+    /**
+     * suspend是提醒这是一个挂起函数，协程运行到该函数的时候，会挂起。
+     * 当然suspend不是实现挂起的作用。只是用来提醒，真正实现挂起的是suspend修饰的函数中的代码。
+     * suspend函数因为是用来提醒挂起协程的，所以suspend修饰的函数只能运行在协程体内，或者运行在suspend修饰的函数内。
+     */
+    fun asyncAndProduceTest(v: View) {
+        runBlocking {
+            /**
+             * async 和 launch 函数的区别就是， async 执行的代码块有返回值，
+             * 通过 Deferred 对象可以获取到这个代码块异步执行后的结果。
+             */
+            val async = GlobalScope.async(Dispatchers.IO) {
+                delay(30)
+                LogUtils.tag(TAG).i("async 添加返回值")
+                return@async "[async测试返回值]"
+            }
+            async.await() //await会阻塞主线程
+            LogUtils.tag(TAG).i("async 返回值 : ${async.getCompleted()}")
+
+            val produce = GlobalScope.produce {
+                for (i in 0..10) {
+                    delay(10)
+                    send("produce 发送 $i")
+                }
+            }
+            produce.consumeEach {
+                LogUtils.tag(TAG).i("produce 接受 $it")
+            }
         }
-        LogUtils.tag(TAG).i("协程4 async 返回值 : ${async.getCompleted()}")
     }
 
     //阻塞线程的协程
@@ -153,8 +182,6 @@ class KotlinCoroutinesTest(application: Application) : AndroidViewModel(applicat
         LogUtils.tag(TAG).i("ATOMIC cancel()也不能取消ATOMIC协程")
         atomic.cancel()
         Thread.sleep(60)
-
-
     }
 
     /*

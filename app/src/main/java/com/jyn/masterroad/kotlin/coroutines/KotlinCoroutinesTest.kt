@@ -17,9 +17,6 @@ import java.util.concurrent.Executors
  * Kotlin协程场景化学习 TODO
  * https://mp.weixin.qq.com/s/zQ7fFKp9CCW6h3TVVE6X5g
  *
- * Kotlin协程核心库分析-1 Dispatchers
- * https://blog.csdn.net/qfanmingyiq/article/details/105184822
- *
  * http://blog.chengyunfeng.com/?p=1086
  *
  * 官方文档

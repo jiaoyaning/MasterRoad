@@ -7,7 +7,8 @@ import com.apkfuns.logutils.LogUtils
  * ThreadLocal详解
  * https://mp.weixin.qq.com/s/lHntG7C_nBa_a59gMdfx1Q
  *
- *
+ * 保姆级教学，22张图揭开ThreadLocal TODO
+ * https://mp.weixin.qq.com/s/qMep17llDFWHq_S0IWh6ZA
  */
 class ThreadLocalTest {
     private val threadLocal: ThreadLocal<String> by lazy {

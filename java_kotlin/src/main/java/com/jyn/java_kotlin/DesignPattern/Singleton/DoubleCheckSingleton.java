@@ -16,10 +16,16 @@ public class DoubleCheckSingleton implements Serializable {
     }
 
     public static DoubleCheckSingleton getInstance() {
-        // 第一次判断，如果这里为空，不进入抢锁阶段，直接返回实例
+        /*
+         * 第一个判断，是为了性能。当这个singleton已经实例化之后，我们再取值其实是不需要再进入加锁阶段的，
+         * 所以第一个判断就是为了减少加锁。把加锁只控制在第一次实例化这个过程中，后续就可以直接获取单例即可。
+         */
         if (instance == null) {
             synchronized (DoubleCheckSingleton.class) {
-                // 抢到锁之后再次判断是否为空
+                /*
+                 * 防止重复创建对象。当两个线程同时走到synchronized这里，线程A获得锁，进入创建对象。
+                 * 创建完对象后释放锁，然后线程B获得锁，如果这时候没有判断单例是否为空，那么就会再次创建对象作。
+                 */
                 if (instance == null) {
                     instance = new DoubleCheckSingleton();
                 }

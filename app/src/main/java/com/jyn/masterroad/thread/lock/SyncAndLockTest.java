@@ -19,6 +19,9 @@ import com.apkfuns.logutils.LogUtils;
  *
  * 由浅入深CAS，小白也能与BAT面试官对线 TODO
  * https://mp.weixin.qq.com/s/WKZYa0_srnquQqMCyV8cEQ
+ *
+ * Java并发编程之锁机制之 ReentrantReadWriteLock（读写锁）
+ * https://www.jianshu.com/p/416e16eea7da
  */
 public class SyncAndLockTest {
     private static final String TAG = "lock";

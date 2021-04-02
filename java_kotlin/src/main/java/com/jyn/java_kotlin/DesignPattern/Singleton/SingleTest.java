@@ -37,6 +37,10 @@ public class SingleTest {
         doubleCheckSingleton2.doSomething();
 
         System.out.println("是否攻击单例模式成功:" + (doubleCheckSingleton == doubleCheckSingleton2));
+
+        KotlinSingleton1.get();
+        KotlinSingleton2.getInstance();
+        KotlinSingleton3.getInstance("带参数版本的kotlin 单例");
     }
 
     //序列化

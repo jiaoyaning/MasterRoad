@@ -7,6 +7,7 @@ import com.jyn.masterroad.R
 import com.jyn.masterroad.base.BaseActivity
 import com.jyn.masterroad.databinding.ActivityKotlinCoroutinesBinding
 import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.ExperimentalCoroutinesApi
 
 /*
  * 硬核万字解读——Kotlin协程原理解析 TODO
@@ -22,6 +23,7 @@ import kotlinx.coroutines.CoroutineScope
 class KotlinCoroutinesActivity : BaseActivity<ActivityKotlinCoroutinesBinding>
 (R.layout.activity_kotlin_coroutines) {
 
+    @ExperimentalCoroutinesApi
     private val kotlinCoroutinesTest: KotlinCoroutinesTest by lazy {
         createVM<KotlinCoroutinesTest>().apply {
             lifecycleScope = this@KotlinCoroutinesActivity.lifecycleScope

@@ -13,7 +13,12 @@ ext {
             "junit"              : "junit:junit:4.12",
             "ext-junit"          : "androidx.test.ext:junit:1.1.0",
             "espresso-core"      : "androidx.test.espresso:espresso-core:3.1.1",
-            "material"           : "com.google.android.material:material:1.0.0",
+            /*
+             * Material Components之旅
+             * https://mp.weixin.qq.com/mp/appmsgalbum?__biz=MzAxNzMxNzk5OQ==&action=getalbum&album_id=1567168071180566530&scene=173&subscene=93&sessionid=1617694420&enterid=1617696172&from_msgid=2649487491&from_itemidx=1&count=3&nolastread=1#wechat_redirect
+             * https://github.com/material-components/material-components-android
+             */
+            "material"           : "com.google.android.material:material:1.4.0",
             "appcompat"          : "androidx.appcompat:appcompat:1.2.0",
             "annotation"         : "androidx.annotation:annotation:1.1.0",
             /*
@@ -26,6 +31,21 @@ ext {
             "lifecycle"          : "androidx.lifecycle:lifecycle-runtime:2.3.0",
             "viewmodel"          : "androidx.lifecycle:lifecycle-viewmodel:2.3.0",
             "livedata"           : "androidx.lifecycle:lifecycle-livedata:2.3.0",
+            /*
+             * 将 Kotlin 协程与架构组件一起使用
+             * https://developer.android.google.cn/topic/libraries/architecture/coroutines
+             *
+             * https://developer.android.google.cn/kotlin/ktx
+             *
+             * 官方新出的 Kotlin 扩展库 KTX，到底帮你干了什么？
+             * https://www.cnblogs.com/plokmju/p/8426176.html
+             */
+            "viewmodel-ktx"      : "androidx.lifecycle:lifecycle-viewmodel-ktx:2.3.0",
+            "runtime-ktx"        : "androidx.lifecycle:lifecycle-runtime-ktx:2.3.0",
+            "livedata-ktx"       : "androidx.lifecycle:lifecycle-livedata-ktx:2.3.0",
+            "activity-ktx"       : "androidx.activity:activity-ktx:1.2.0",
+            "fragment-ktx"       : "androidx.fragment:fragment-ktx:1.3.0",
+
             "startup"            : "androidx.startup:startup-runtime:1.0.0",
             "recyclerview"       : "androidx.recyclerview:recyclerview:1.1.0",
             "constraintlayout"   : "androidx.constraintlayout:constraintlayout:2.1.0-alpha2",
@@ -36,12 +56,11 @@ ext {
             "datastore"          : "androidx.datastore:datastore-core:1.0.0-alpha06",
             // 全新的 Fragment: 使用新的状态管理器 : https://mp.weixin.qq.com/s/vNf9rDt3RxDPVacR9-e7Yw
             "fragment"           : "androidx.fragment:fragment:1.3.0", //Java
-            "fragment-ktx"       : "androidx.fragment:fragment-ktx:1.3.0", //kotlin
             "activity"           : "androidx.activity:activity:1.3.0", //Java
-            "activity-ktx"       : "androidx.activity:activity-ktx:1.2.0", //kotlin
             "hilt"               : "com.google.dagger:hilt-android:2.28-alpha",
             "hilt-compiler"      : "com.google.dagger:hilt-android-compiler:2.28-alpha"
     ]
+
 
     kotlin = [
             "kotlin"    : "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version",
@@ -90,7 +109,7 @@ ext {
             "ultimatebarx"     : "com.zackratos.ultimatebarx:ultimatebarx:0.5.1",
             "mmkv"             : "com.tencent:mmkv-static:1.2.7",
             /*
-             * Coil是一个Android图片加载库，通过Kotlin协程的方式加载图片 TODO
+             * Coil是一个Android图片加载库，通过Kotlin协程的方式加载图片
              * https://github.com/coil-kt/coil/
              */
             "coil"             : "io.coil-kt:coil:1.1.1",

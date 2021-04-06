@@ -7,17 +7,13 @@ import androidx.lifecycle.LifecycleCoroutineScope
 import androidx.lifecycle.viewModelScope
 import com.apkfuns.logutils.LogUtils
 import kotlinx.coroutines.*
-import kotlinx.coroutines.channels.consume
 import kotlinx.coroutines.channels.consumeEach
-import kotlinx.coroutines.channels.consumeEachIndexed
 import kotlinx.coroutines.channels.produce
 import java.util.concurrent.Executors
 
 /*
  * Kotlin协程场景化学习 TODO
  * https://mp.weixin.qq.com/s/zQ7fFKp9CCW6h3TVVE6X5g
- *
- * http://blog.chengyunfeng.com/?p=1086
  *
  * 官方文档
  * https://www.kotlincn.net/docs/reference/coroutines/basics.html

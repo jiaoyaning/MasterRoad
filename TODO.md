@@ -52,3 +52,9 @@ https://juejin.cn/post/6914213320182464526
 
 ## 看看，我如何在面试官前吹牛P
 https://mp.weixin.qq.com/s/n3T0xTcduqTwLAhfwFWr7A
+
+## 三思系列：重新认识Drawable
+https://juejin.cn/user/2066737589654327/posts
+
+## View体系认知(一)，内容是如何正确被展现出来的--视觉呈现概览
+https://juejin.cn/post/6931630027553374221

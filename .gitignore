@@ -16,3 +16,5 @@
 MasterRoad.iml
 build/
 local.properties
+libs/
+src/main/java/

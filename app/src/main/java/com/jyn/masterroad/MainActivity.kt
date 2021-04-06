@@ -41,7 +41,7 @@ class MainActivity : BaseActivity<ActivityMainBinding>
         binding.mainRecycle.adapter = MainAdapter(routerList, this)
     }
 
-    /**
+    /*
      * 第一版参考
      * https://www.jianshu.com/p/379a8f5347de
      */

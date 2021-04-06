@@ -19,11 +19,12 @@ import kotlinx.coroutines.ExperimentalCoroutinesApi
  * 使用协程，让网络世界更加美好
  * https://mp.weixin.qq.com/s/84fSUYQt3T_Fa5B5s5ihvA
  */
+@ExperimentalCoroutinesApi
 @Route(path = RoutePath.KotlinCoroutines.path)
 class KotlinCoroutinesActivity : BaseActivity<ActivityKotlinCoroutinesBinding>
 (R.layout.activity_kotlin_coroutines) {
 
-    @ExperimentalCoroutinesApi
+
     private val kotlinCoroutinesTest: KotlinCoroutinesTest by lazy {
         createVM<KotlinCoroutinesTest>().apply {
             lifecycleScope = this@KotlinCoroutinesActivity.lifecycleScope

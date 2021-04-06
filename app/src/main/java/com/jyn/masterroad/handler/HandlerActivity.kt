@@ -32,6 +32,9 @@ import java.lang.reflect.Method
  * 返回false，那么就会移除它，返回true就会在下次message处理完了的时候继续回调。
  *
  * 享元模式 TODO
+ *
+ * Android的消息机制，一文吃透
+ * https://juejin.cn/post/6939425097069363230
  */
 @Route(path = RoutePath.Handle.path)
 @SuppressLint("NewApi", "DiscouragedPrivateApi")

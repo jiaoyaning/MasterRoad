@@ -22,7 +22,7 @@ import java.lang.reflect.Method
  * 3、继承Handler重写handleMessage()方法
  *
  * 当这3种实现方式同时存在的时候，遵循优先级：
- * Message.callback > Callback.handleMessage > handleMessage：
+ * Message.callback > Callback.handleMessage > handleMessage
  *
  * 面试官：“看你简历上写熟悉 Handler 机制，那聊聊 IdleHandler 吧？”
  * https://mp.weixin.qq.com/s/mR7XIVbaKsB4q-Rxe1ip2g

@@ -6,7 +6,6 @@ import com.jyn.common.ARouter.RoutePath
 import com.jyn.masterroad.R
 import com.jyn.masterroad.base.BaseActivity
 import com.jyn.masterroad.databinding.ActivityKotlinCoroutinesBinding
-import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 
 /*
@@ -23,7 +22,6 @@ import kotlinx.coroutines.ExperimentalCoroutinesApi
 @Route(path = RoutePath.KotlinCoroutines.path)
 class KotlinCoroutinesActivity : BaseActivity<ActivityKotlinCoroutinesBinding>
 (R.layout.activity_kotlin_coroutines) {
-
 
     private val kotlinCoroutinesTest: KotlinCoroutinesTest by lazy {
         createVM<KotlinCoroutinesTest>().apply {

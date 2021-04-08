@@ -40,103 +40,52 @@ import com.jyn.masterroad.handler.HandlerTest.Companion.TAG
  * https://mp.weixin.qq.com/s/3H-aQd_jsqTBWslqX_BfLA
  */
 @Route(path = RoutePath.Handle.path)
-@SuppressLint("NewApi", "DiscouragedPrivateApi")
-class HandlerActivity : BaseActivity<ActivityHandlerBinding>(R.layout.activity_handler) {
+@SuppressLint("NewApi", "DiscouragedPrivateApi", "HandlerLeak")
+class HandlerActivity : BaseActivity<ActivityHandlerBinding>
+(R.layout.activity_handler) {
 
-    val handlerTest: HandlerTest by lazy {
+    private val handlerTest: HandlerTest by lazy {
         HandlerTest().apply { handler = this@HandlerActivity.handler }
     }
 
-    @SuppressLint("HandlerLeak")
     var handler: Handler = object : Handler(Callback {
-        LogUtils.tag(TAG).i("这是 Handler 的 Callback 形参。")
-        return@Callback true
+        LogUtils.tag(TAG).i("这是Handler的Callback形参 obj:${it.obj}")
+        return@Callback false //返回true的时候，不会再执行Handler的handleMessage方法
     }) {
         override fun handleMessage(msg: Message) {
-            LogUtils.tag(TAG).i("这是重写了 Handler 的 handleMessage 方法。")
             super.handleMessage(msg)
+            LogUtils.tag(TAG).i("这是重写了Handler的handleMessage方法 obj:${msg.obj}")
         }
     }
 
-    private var token: Int = 0
-
-    //1. 一个平平无奇的handler
-    private val normalHandler = Handler(Looper.getMainLooper())
-
-    //2. 重写handleMessage的handler
-    @SuppressLint("HandlerLeak")
-    var handleMessage: Handler = object : Handler() {
-        override fun handleMessage(msg: Message) {
-            super.handleMessage(msg)
-            LogUtils.tag("Handler").i("这是一个重写了handleMessage的Handler")
-        }
+    override fun initView() {
+        binding.handler = handlerTest
     }
 
-    //3. 自带callback的handler ，如果返回true则不会再走handleMessage方法回调
-    var handlerCallback: Handler = Handler(Handler.Callback {
-        LogUtils.tag("Handler").i("这是一个重写了Callback的Handler")
-        return@Callback true
-    })
-
-    override fun initData() {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-            sendMassage()
-        }
-    }
-
-    //向Message添加Callback
-
-    private fun sendMassage() {
-        //一个自带callback的message
-        val message = Message.obtain(normalHandler) {
-            LogUtils.tag("Handler").i("这是一个重写了Runnable的Message")
-        }
-
-        //1. 带callback的Message优先级最高
-        normalHandler.sendMessageDelayed(message, 5000)
-        //2. 重写handlerMessage方法的Handler优先级第三
-        handleMessage.sendEmptyMessageDelayed(10, 5000)
-        //3. 带callback的Handler优先级第二
-        handlerCallback.sendEmptyMessageDelayed(10, 5000)
-
-        /**
-         * 就算是返回了true也不是一直运行，而是在MessageQueue.next的时候执行
-         * 一次next只执行一次，等下一次next的时候如果还返回true就会再执行一遍。
-         *
-         * false:只执行一遍
-         */
-        normalHandler.looper.queue.addIdleHandler(object : MessageQueue.IdleHandler {
-            override fun queueIdle(): Boolean {
-                LogUtils.tag("Handler").i("这是一个IdleHandler")
-                return false
-            }
-        })
-    }
-
-
-    /**
-     * 添加内存屏障
-     */
-    private fun sendSyncBarrier() {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-            val queue = normalHandler.looper.queue
-            val method: Method = MessageQueue::class.java.getDeclaredMethod("postSyncBarrier")
-            method.isAccessible = true
-            token = method.invoke(queue) as Int
-        }
-    }
-
-    /**
-     * 移除同步屏障
-     */
-    private fun removeSyncBarrier() {
-        val queue = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-            normalHandler.looper.queue
-        } else {
-            null
-        }
-        val method: Method = MessageQueue::class.java.getDeclaredMethod("removeSyncBarrier", Int::class.javaPrimitiveType)
-        method.isAccessible = true
-        token = method.invoke(queue) as Int
-    }
+//    private var token: Int = 0
+//    /**
+//     * 添加内存屏障
+//     */
+//    private fun sendSyncBarrier() {
+//        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+//            val queue = normalHandler.looper.queue
+//            val method: Method = MessageQueue::class.java.getDeclaredMethod("postSyncBarrier")
+//            method.isAccessible = true
+//            token = method.invoke(queue) as Int
+//        }
+//    }
+//
+//    /**
+//     * 移除同步屏障
+//     */
+//    private fun removeSyncBarrier() {
+//        val queue = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+//            normalHandler.looper.queue
+//        } else {
+//            null
+//        }
+//        val method: Method = MessageQueue::class.java.getDeclaredMethod("removeSyncBarrier", Int::class.javaPrimitiveType)
+//        method.isAccessible = true
+//        token = method.invoke(queue) as Int
+//    }
 }

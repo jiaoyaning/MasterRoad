@@ -58,6 +58,7 @@ public void dispatchMessage(@NonNull Message msg) {
     }
 }
 ```
+**总结一下** :`Handler`其实就是一个发送器/接收器，用来将`Message`发送到`MessageQueue`中，当消息被处理之后会通过`Message.target`回调至`Handler`中进行处理。
 
 
 # MessageQueue

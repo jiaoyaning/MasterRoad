@@ -13,23 +13,29 @@ fun dp2px(dpVal: Float): Int {
             dpVal, context?.resources?.displayMetrics).toInt()
 }
 
-fun px2dp(pxVal: Float): Float {
-    val scale = context?.resources?.displayMetrics?.density
+fun Context.dp2px(dpVal: Float): Int {
+    return TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP,
+            dpVal, resources?.displayMetrics).toInt()
+}
+
+
+fun Context.px2dp(pxVal: Float): Float {
+    val scale = resources?.displayMetrics?.density
     return if (scale != null) pxVal / scale else pxVal
 }
 
-fun sp2px(spVal: Float): Int {
+fun Context.sp2px(spVal: Float): Int {
     return TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_SP,
-            spVal, context?.resources?.displayMetrics).toInt()
+            spVal,  resources?.displayMetrics).toInt()
 }
 
-fun px2sp(pxVal: Float): Float {
-    val scale = context?.resources?.displayMetrics?.scaledDensity;
+fun Context.px2sp(pxVal: Float): Float {
+    val scale = resources?.displayMetrics?.scaledDensity;
     return if (scale != null) pxVal / scale else pxVal
 }
 
 /*
  * 获取屏幕宽高
  */
-fun getScreenWidth(): Int? = context?.resources?.displayMetrics?.widthPixels
-fun getScreenHeight(): Int? = context?.resources?.displayMetrics?.heightPixels
+fun Context.getScreenWidth(): Int? = resources?.displayMetrics?.widthPixels
+fun Context.getScreenHeight(): Int? = resources?.displayMetrics?.heightPixels

@@ -30,11 +30,11 @@
         <Button
             android:id="@+id/button10"
             style="@style/tv"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="8dp"
             android:onClick="@{handler::messageWithCallback}"
             android:text="message\n带callback"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toBottomOf="@+id/textView25" />
 
         <Button
             android:id="@+id/button11"

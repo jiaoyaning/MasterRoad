@@ -1,4 +1,4 @@
-package com.jyn.masterroad.NestedScrolling.ScrollView
+package com.jyn.masterroad.nestedscrolling.scrollview
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle

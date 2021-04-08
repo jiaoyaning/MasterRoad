@@ -33,10 +33,31 @@
     };
    ```
 
-**问：三种`Message`的优先级**
-&emsp;&emsp;`Message.callback` > `Handler.Callback.handleMessage` > `Handler.handleMessage`
+**问：三种`Message`的优先级**  
+&emsp;&emsp;**答：**`Message.callback` > `Handler.Callback.handleMessage` > `Handler.handleMessage`
+&emsp;&emsp;**总结：** 消息`callback` > 形参`callback` > `Handler`本身
 
 **问：`Handler.Callback.handleMessage`的返回值有什么影响**
+&emsp;&emsp;答：返回`true`的时候，不再执行`handle`本身的`handleMessage`分发方法。
+
+```
+public void dispatchMessage(@NonNull Message msg) {
+    // 如果msg有callback则直接处理msg的callback
+    if (msg.callback != null) {
+        handleCallback(msg);
+    } else {
+        // 如果已通过构造函数设置mCallback则只处理该callback
+        if (mCallback != null) {
+            // mCallback处理成功直接返回
+            if (mCallback.handleMessage(msg)) {
+                return;
+            }
+        }
+        // 最后才通过Handler自己的回调处理Message
+        handleMessage(msg);
+    }
+}
+```
 
 
 # MessageQueue

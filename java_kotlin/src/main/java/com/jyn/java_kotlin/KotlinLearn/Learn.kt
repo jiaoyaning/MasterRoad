@@ -25,6 +25,7 @@ fun main() {
     val learn: Learn? by lazy {
         Learn()
     }
+    println(learn.toString())
 }
 
 fun intFun(int: Int) {

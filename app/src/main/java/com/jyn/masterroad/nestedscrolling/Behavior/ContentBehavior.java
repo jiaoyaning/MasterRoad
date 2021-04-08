@@ -1,4 +1,4 @@
-package com.jyn.masterroad.NestedScrolling.Behavior;
+package com.jyn.masterroad.nestedscrolling.Behavior;
 
 import android.content.Context;
 import android.util.AttributeSet;
@@ -8,7 +8,6 @@ import android.widget.OverScroller;
 
 import androidx.annotation.NonNull;
 import androidx.coordinatorlayout.widget.CoordinatorLayout;
-import androidx.core.view.ViewCompat;
 import androidx.core.widget.NestedScrollView;
 import androidx.recyclerview.widget.RecyclerView;
 

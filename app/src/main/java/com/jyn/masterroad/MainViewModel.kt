@@ -15,7 +15,7 @@ import com.jyn.common.ARouter.RoutePath
  *
  * componentN() //数据类自带解构方法
  */
-data class MainViewModel(var name: ObservableField<String>, var path: ObservableField<String>) : ViewModel() {
+data class MainViewModel(var name: ObservableField<String>, var path: ObservableField<String>, var span: Int = 1) : ViewModel() {
 
     companion object {
         /**
@@ -27,7 +27,8 @@ data class MainViewModel(var name: ObservableField<String>, var path: Observable
             for (i in classes.indices) {
                 val name: String = classes[i].getField("name")[this] as String
                 val path: String = classes[i].getField("path")[this] as String
-                routerList.add(MainViewModel(ObservableField(name), ObservableField(path)))
+                val span: Int = classes[i].getField("span")[this] as Int
+                routerList.add(MainViewModel(ObservableField(name), ObservableField(path), span))
             }
             return routerList
         }

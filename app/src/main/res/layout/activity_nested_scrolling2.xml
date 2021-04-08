@@ -10,7 +10,7 @@
     <androidx.coordinatorlayout.widget.CoordinatorLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".NestedScrolling.NestedScrolling2Activity">
+        tools:context=".nestedscrolling.NestedScrolling2Activity">
 
         <com.google.android.material.appbar.AppBarLayout
             android:layout_width="match_parent"
@@ -88,7 +88,7 @@
             android:layout_height="match_parent"
             android:background="#90FFFFFF"
             app:layoutManager="LinearLayoutManager"
-            app:layout_behavior="com.jyn.masterroad.NestedScrolling.Behavior.CeilingGoneBehavior"
+            app:layout_behavior="com.jyn.masterroad.nestedscrolling.Behavior.CeilingGoneBehavior"
             tools:itemCount="30" />
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
 </layout>

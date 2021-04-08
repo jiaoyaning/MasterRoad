@@ -1,4 +1,4 @@
-package com.jyn.masterroad.NestedScrolling.Behavior;
+package com.jyn.masterroad.nestedscrolling.Behavior;
 
 import android.content.Context;
 import android.util.AttributeSet;
@@ -6,7 +6,6 @@ import android.view.View;
 
 import androidx.annotation.NonNull;
 import androidx.coordinatorlayout.widget.CoordinatorLayout;
-import androidx.recyclerview.widget.RecyclerView;
 
 import com.apkfuns.logutils.LogUtils;
 import com.google.android.material.appbar.AppBarLayout;

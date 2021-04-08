@@ -1,11 +1,11 @@
-package com.jyn.masterroad.RxJava
+package com.jyn.masterroad.rxjava
 
-import android.os.Bundle
-import androidx.appcompat.app.AppCompatActivity
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.apkfuns.logutils.LogUtils
 import com.jyn.common.ARouter.RoutePath
 import com.jyn.masterroad.R
+import com.jyn.masterroad.base.BaseActivity
+import com.jyn.masterroad.databinding.ActivityRxjavaBinding
 import io.reactivex.Observable
 import io.reactivex.Observer
 import io.reactivex.android.schedulers.AndroidSchedulers
@@ -33,11 +33,11 @@ import io.reactivex.schedulers.Schedulers
  *
  */
 @Route(path = RoutePath.RxJava.path)
-class RxJavaActivity : AppCompatActivity() {
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_rxjava)
+class RxJavaActivity : BaseActivity<ActivityRxjavaBinding>(R.layout.activity_rxjava) {
+
+    override fun initView() {
         simpleRxJava()
+
     }
 
     private fun simpleRxJava() {

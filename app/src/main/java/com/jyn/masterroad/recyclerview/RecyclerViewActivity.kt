@@ -1,8 +1,8 @@
-package com.jyn.masterroad.RecyclerView
+package com.jyn.masterroad.recyclerview
 
-import androidx.appcompat.app.AppCompatActivity
-import android.os.Bundle
 import com.jyn.masterroad.R
+import com.jyn.masterroad.base.BaseActivity
+import com.jyn.masterroad.databinding.ActivityRecyclerViewBinding
 
 /**
  * 抽丝剥茧RecyclerView - 化整为零
@@ -23,9 +23,6 @@ import com.jyn.masterroad.R
  * 你了解RecyclerView的布局过程吗？
  * https://mp.weixin.qq.com/s/OSuJTbFvn2RQMLVlzYgDDw
  */
-class RecyclerViewActivity : AppCompatActivity() {
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_recycler_view)
-    }
+class RecyclerViewActivity : BaseActivity<ActivityRecyclerViewBinding>(R.layout.activity_recycler_view) {
+
 }

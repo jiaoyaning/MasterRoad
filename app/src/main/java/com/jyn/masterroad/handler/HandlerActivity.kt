@@ -2,8 +2,7 @@ package com.jyn.masterroad.handler
 
 import android.annotation.SuppressLint
 import android.os.*
-import androidx.annotation.RequiresApi
-import androidx.appcompat.app.AppCompatActivity
+import android.os.Handler.Callback
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.apkfuns.logutils.LogUtils
 import com.jyn.common.ARouter.RoutePath
@@ -11,6 +10,7 @@ import com.jyn.masterroad.R
 import com.jyn.masterroad.base.BaseActivity
 import com.jyn.masterroad.databinding.ActivityHandlerBinding
 import java.lang.reflect.Method
+import com.jyn.masterroad.handler.HandlerTest.Companion.TAG
 
 /*
  * 万字总结-保姆级Handler机制解读
@@ -35,10 +35,28 @@ import java.lang.reflect.Method
  *
  * Android的消息机制，一文吃透
  * https://juejin.cn/post/6939425097069363230
+ *
+ * Handler同步屏障
+ * https://mp.weixin.qq.com/s/3H-aQd_jsqTBWslqX_BfLA
  */
 @Route(path = RoutePath.Handle.path)
 @SuppressLint("NewApi", "DiscouragedPrivateApi")
 class HandlerActivity : BaseActivity<ActivityHandlerBinding>(R.layout.activity_handler) {
+
+    val handlerTest: HandlerTest by lazy {
+        HandlerTest().apply { handler = this@HandlerActivity.handler }
+    }
+
+    @SuppressLint("HandlerLeak")
+    var handler: Handler = object : Handler(Callback {
+        LogUtils.tag(TAG).i("这是 Handler 的 Callback 形参。")
+        return@Callback true
+    }) {
+        override fun handleMessage(msg: Message) {
+            LogUtils.tag(TAG).i("这是重写了 Handler 的 handleMessage 方法。")
+            super.handleMessage(msg)
+        }
+    }
 
     private var token: Int = 0
 

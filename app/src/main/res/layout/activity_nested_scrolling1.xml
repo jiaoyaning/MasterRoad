@@ -1,80 +1,87 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".NestedScrolling.NestedScrolling1Activity">
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <FrameLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+    <data>
 
-        <ImageView
-            android:layout_width="match_parent"
-            android:layout_height="300dp"
-            android:adjustViewBounds="true"
-            android:scaleType="centerCrop"
-            android:src="@mipmap/icon_master_road2" />
+    </data>
 
-    </FrameLayout>
-
-    <!-- 吸顶-->
-    <androidx.appcompat.widget.Toolbar
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/top_bar_height"
-        app:layout_behavior=".NestedScrolling.Behavior.ToolbarBehavior"
-        tools:ignore="PrivateResource">
-
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/abc_vector_test" />
-
-        <TextView
-            android:id="@+id/tool_bar_title"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:text="我是顶部标题"
-            android:textColor="#FFFFFF"
-            android:textSize="20sp" />
-
-    </androidx.appcompat.widget.Toolbar>
-
-    <!-- 滑动的标题-->
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/nested_scrolling_title_bar"
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/top_bar_height"
-        app:layout_behavior=".NestedScrolling.Behavior.TitleBarBehavior"
-        tools:visibility="visible">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:text="我是一个可滑动的吸顶标题"
-            android:textColor="#FFFFFF"
-            android:textSize="20sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
-
-    <!-- 滑动的内容
-         app:layout_behavior=".NestedScrolling.Behavior.ContentBehavior"
-         @string/appbar_scrolling_view_behavior
-    -->
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recycler_view_content"
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#90FFFFFF"
-        android:translationY="@dimen/nested_scrolling_content_translation_y"
-        app:layout_behavior=".NestedScrolling.Behavior.ContentBehavior"
-        tools:itemCount="30" />
+        tools:context=".nestedscrolling.NestedScrolling1Activity">
 
-</androidx.coordinatorlayout.widget.CoordinatorLayout>
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="300dp"
+                android:adjustViewBounds="true"
+                android:scaleType="centerCrop"
+                android:src="@mipmap/icon_master_road2" />
+
+        </FrameLayout>
+
+        <!-- 吸顶-->
+        <androidx.appcompat.widget.Toolbar
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/top_bar_height"
+            app:layout_behavior=".nestedscrolling.Behavior.ToolbarBehavior"
+            tools:ignore="PrivateResource">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/abc_vector_test" />
+
+            <TextView
+                android:id="@+id/tool_bar_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="我是顶部标题"
+                android:textColor="#FFFFFF"
+                android:textSize="20sp" />
+
+        </androidx.appcompat.widget.Toolbar>
+
+        <!-- 滑动的标题-->
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/nested_scrolling_title_bar"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/top_bar_height"
+            app:layout_behavior=".nestedscrolling.Behavior.TitleBarBehavior"
+            tools:visibility="visible">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="我是一个可滑动的吸顶标题"
+                android:textColor="#FFFFFF"
+                android:textSize="20sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <!-- 滑动的内容
+             app:layout_behavior=".NestedScrolling.Behavior.ContentBehavior"
+             @string/appbar_scrolling_view_behavior
+        -->
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recycler_view_content"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#90FFFFFF"
+            android:translationY="@dimen/nested_scrolling_content_translation_y"
+            app:layout_behavior=".nestedscrolling.Behavior.ContentBehavior"
+            tools:itemCount="30" />
+
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+</layout>

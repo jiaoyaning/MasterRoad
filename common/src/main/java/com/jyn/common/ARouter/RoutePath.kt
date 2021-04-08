@@ -9,64 +9,75 @@ object RoutePath {
     object Main {
         const val name = "MainActivity"
         const val path = "/app/MainActivity"
+        const val span = 1
     }
 
     // handler测试
     object Handle {
         const val name = "HandlerActivity"
         const val path = "/app/HandlerActivity"
+        const val span = 1
     }
 
     // LiveData测试
     object LiveData {
         const val name = "LiveDataActivity"
         const val path = "/app/LiveDataActivity"
+        const val span = 1
     }
 
     // RxJava 测试
     object RxJava {
         const val name = "RxJavaActivity"
         const val path = "/app/RxJavaActivity"
+        const val span = 1
     }
 
     // BindingCollection 双向绑定 recyclerview
     object BindingCollection {
         const val name = "BindingCollectionAdapter"
         const val path = "/app/BindingCollectionActivity"
+        const val span = 1
     }
 
     // ConstraintLayout 约束布局
     object ConstraintLayout {
         const val name = "ConstraintLayout"
         const val path = "/app/ConstraintLayout"
+        const val span = 2
     }
 
     // MotionLayout 动画
     object MotionLayout {
         const val name = " MotionLayout"
         const val path = "/app/ MotionLayout"
+        const val span = 2
     }
 
     // NestedScrolling 嵌套联动布局
     object NestedScrolling {
         const val name = " NestedScrolling1"
         const val path = "/app/ NestedScrolling1"
+        const val span = 2
     }
 
     object NestedScrolling2 {
         const val name = " NestedScrolling2"
         const val path = "/app/ NestedScrolling2"
+        const val span = 2
     }
 
     // Thread 线程
     object Thread {
         const val name = "Thread"
         const val path = "/app/Thread"
+        const val span = 1
     }
 
     // Kotlin Coroutines协程
     object KotlinCoroutines {
         const val name = "Kotlin_Coroutines"
         const val path = "/app/KotlinCoroutines"
+        const val span = 1
     }
 }

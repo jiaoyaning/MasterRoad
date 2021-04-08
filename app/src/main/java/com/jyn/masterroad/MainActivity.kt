@@ -3,6 +3,7 @@ package com.jyn.masterroad
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.Adapter
 import com.alibaba.android.arouter.facade.annotation.Route
@@ -38,7 +39,15 @@ class MainActivity : BaseActivity<ActivityMainBinding>
 
     override fun initView() {
 //        binding = ActivityMainBinding.inflate(layoutInflater) //第二种实现方式
-        binding.mainRecycle.adapter = MainAdapter(routerList, this)
+        val mainAdapter = MainAdapter(routerList, this)
+        binding.mainRecycle.adapter = mainAdapter
+        val gridLayoutManager = GridLayoutManager(this, 2)
+        binding.mainRecycle.layoutManager = gridLayoutManager
+        gridLayoutManager.spanSizeLookup = object : GridLayoutManager.SpanSizeLookup() {
+            override fun getSpanSize(position: Int): Int {
+                return mainAdapter.getItemViewType(position)
+            }
+        }
     }
 
     /*
@@ -64,5 +73,13 @@ class MainActivity : BaseActivity<ActivityMainBinding>
         }
 
         override fun getItemCount(): Int = routerList.size
+
+        override fun getItemViewType(position: Int): Int {
+            if (routerList[position].span == 1)
+                return 2
+            else if (routerList[position].span == 2)
+                return 1
+            return 2
+        }
     }
 }

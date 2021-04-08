@@ -5,18 +5,43 @@
 
     <data>
 
+        <variable
+            name="handler"
+            type="com.jyn.masterroad.handler.HandlerTest" />
+
     </data>
 
-    <ScrollView
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".handler.HandlerActivity">
+        tools:context=".handler.HandlerActivity"
+        tools:ignore="HardcodedText">
 
-        <LinearLayout
-            android:orientation="vertical"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
+        <TextView
+            android:id="@+id/textView25"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:text="handler三种创建方式"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-        </LinearLayout>
-    </ScrollView>
+        <Button
+            android:id="@+id/button10"
+            style="@style/tv"
+            android:layout_marginTop="16dp"
+            android:onClick="@{handler::messageWithCallback}"
+            android:text="message\n带callback"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Button
+            android:id="@+id/button11"
+            style="@style/tv2"
+            android:onClick="@{handler::messageNotCallback}"
+            android:text="message\n不带callback"
+            app:layout_constraintStart_toEndOf="@+id/button10"
+            app:layout_constraintTop_toTopOf="@+id/button10" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

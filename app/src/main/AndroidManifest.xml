@@ -14,11 +14,11 @@
         tools:ignore="AllowBackup">
         <activity android:name=".jetpack.workmanager.WorkManagerActivity" />
         <activity android:name=".base.BaseActivity" />
-        <activity android:name=".NestedScrolling.NestedScrolling2Activity" />
+        <activity android:name=".nestedscrolling.NestedScrolling2Activity" />
         <activity android:name=".kotlin.coroutines.KotlinCoroutinesActivity" />
-        <activity android:name=".RecyclerView.RecyclerViewActivity" />
-        <activity android:name=".NestedScrolling.NestedScrolling1Activity" />
-        <activity android:name=".NestedScrolling.ScrollView.ScrollViewActivity" /> <!-- startup初始化 -->
+        <activity android:name=".recyclerview.RecyclerViewActivity" />
+        <activity android:name=".nestedscrolling.NestedScrolling1Activity" />
+        <activity android:name=".nestedscrolling.scrollview.ScrollViewActivity" /> <!-- startup初始化 -->
         <activity android:name=".constraintLayout.MotionLayoutActivity" />
         <activity android:name=".constraintLayout.ConstraintLayoutActivity" />
         <activity
@@ -29,7 +29,7 @@
         <activity android:name=".eventbus.EventBusActivity" />
         <activity android:name=".jetpack.hilt.HiltDaggerActivity" />
         <activity android:name=".thread.ThreadActivity" />
-        <activity android:name=".RxJava.RxJavaActivity" />
+        <activity android:name=".rxjava.RxJavaActivity" />
         <activity android:name=".MainActivity">
 
             <!-- android:excludeFromRecents="true"> -->

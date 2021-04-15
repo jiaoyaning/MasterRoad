@@ -18,3 +18,5 @@ build/
 local.properties
 libs/
 src/main/java/
+.gradle/workspace-id.txt
+.gradle/workspace-id.txt.lock

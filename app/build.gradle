@@ -67,7 +67,7 @@ android {
  * gradle 高级用法
  */
 dependencies {
-
+    def test = app.test
     def androidx = app.androidx
     def kotlin = app.kotlin
     def http = app.http
@@ -78,9 +78,10 @@ dependencies {
     implementation project(path: ':Leetcode')
     implementation project(path: ':common')
 
-    testImplementation androidx["junit"]
-    androidTestImplementation androidx["ext-junit"]
-    androidTestImplementation androidx["espresso-core"]
+    testImplementation test["junit"]
+    androidTestImplementation test["ext-junit"]
+    androidTestImplementation test["espresso-core"]
+    
     implementation androidx["material"]
     implementation androidx["appcompat"]
     implementation androidx["annotation"]

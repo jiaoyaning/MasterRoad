@@ -34,5 +34,6 @@
       <option name="myAdditionalJavadocTags" value="date,Rentention,Retention,Target,Documented,Interited,Inherited" />
     </inspection_tool>
     <inspection_tool class="MarkdownUnresolvedFileReference" enabled="true" level="WARNING" enabled_by_default="true" />
+    <inspection_tool class="NonAsciiCharacters" enabled="false" level="WARNING" enabled_by_default="false" />
   </profile>
 </component>

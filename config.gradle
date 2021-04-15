@@ -105,6 +105,7 @@ ext {
             /*
              * 一款方便的设置状态栏和导航栏的各种效果的框架
              * https://github.com/Zackratos/UltimateBarX
+             * https://juejin.cn/post/6903165109485436935
              */
             "ultimatebarx"     : "com.zackratos.ultimatebarx:ultimatebarx:0.5.1",
             "mmkv"             : "com.tencent:mmkv-static:1.2.7",

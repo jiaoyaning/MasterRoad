@@ -58,3 +58,9 @@ https://juejin.cn/user/2066737589654327/posts
 
 ## View体系认知(一)，内容是如何正确被展现出来的--视觉呈现概览
 https://juejin.cn/post/6931630027553374221
+
+## Span有多强大？玩转各种文字特效
+https://mp.weixin.qq.com/s/ji9MRaMhpVM711lDYL0LFw
+
+## Android 点九图机制讲解 - 带你一起踩踩聊天气泡中的坑
+https://mp.weixin.qq.com/s/2jqJRKJ-LUhoecuMeOB8uw

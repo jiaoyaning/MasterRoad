@@ -1,3 +1,6 @@
+ByteX是一个基于gradle transform api和ASM的字节码插件平台
+https://github.com/bytedance/ByteX/blob/master/README_zh.md
+
 Transform详解 -- Reading
 https://www.jianshu.com/p/37a5e058830a 
 

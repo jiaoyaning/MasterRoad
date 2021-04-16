@@ -13,15 +13,6 @@ import static org.junit.Assert.*;
 
 /**
  * @see <a href="http://d.android.com/tools/testing">Testing documentation</a>
- *
- * 官方文档
- * https://developer.android.com/training/testing#UIAutomator
- *
- * 测试单个应用的界面
- * https://developer.android.com/training/testing/ui-testing/espresso-testing
- *
- * Espresso
- * https://developer.android.com/training/testing/espresso
  */
 @RunWith(AndroidJUnit4.class)
 @LargeTest

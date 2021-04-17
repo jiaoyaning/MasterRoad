@@ -64,3 +64,6 @@ https://mp.weixin.qq.com/s/ji9MRaMhpVM711lDYL0LFw
 
 ## Android 点九图机制讲解 - 带你一起踩踩聊天气泡中的坑
 https://mp.weixin.qq.com/s/2jqJRKJ-LUhoecuMeOB8uw
+
+## Kotlin专题「二十四」：注解
+https://blog.csdn.net/m0_37796683/article/details/108646530

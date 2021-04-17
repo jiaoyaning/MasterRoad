@@ -3,7 +3,7 @@ apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'dagger.hilt.android.plugin'
 apply plugin: 'kotlin-kapt'
-apply plugin: 'com.jyn.helloworld'
+//apply plugin: 'com.jyn.helloworld'
 apply from: '../Plugin/timer.gradle'
 
 /*
@@ -81,7 +81,9 @@ dependencies {
     testImplementation test["junit"]
     androidTestImplementation test["ext-junit"]
     androidTestImplementation test["espresso-core"]
-    
+    androidTestImplementation test["test-rules"]
+    androidTestImplementation test["test-runner"]
+
     implementation androidx["material"]
     implementation androidx["appcompat"]
     implementation androidx["annotation"]

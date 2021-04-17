@@ -25,8 +25,6 @@ ext {
 
     //androidx支持库配置
     androidx = [
-
-
             /*
              * Material Components之旅
              * https://mp.weixin.qq.com/mp/appmsgalbum?__biz=MzAxNzMxNzk5OQ==&action=getalbum&album_id=1567168071180566530&scene=173&subscene=93&sessionid=1617694420&enterid=1617696172&from_msgid=2649487491&from_itemidx=1&count=3&nolastread=1#wechat_redirect

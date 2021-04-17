@@ -17,7 +17,7 @@ class MyApp : Application() {
 
     override fun onCreate() {
         super.onCreate()
-        setUncaughtException()
+//        setUncaughtException()
         //第一种可检测activity生命周期的方式
 //        ProcessLifecycleOwner.get().lifecycle.addObserver(LifecycleChecker())
         //第二种可检测activity生命周期的方式

@@ -8,6 +8,8 @@ import androidx.lifecycle.ViewModelProvider
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.apkfuns.logutils.LogUtils
 import com.jyn.common.ARouter.RoutePath
+import com.jyn.masterroad.R
+import com.jyn.masterroad.base.BaseActivity
 import com.jyn.masterroad.databinding.ActivityLiveDataBinding
 import kotlinx.android.synthetic.main.activity_live_data.*
 
@@ -28,26 +30,18 @@ import kotlinx.android.synthetic.main.activity_live_data.*
  * https://mp.weixin.qq.com/s/ir3DBkGt5mna3RDjTpRFOQ
  */
 @Route(path = RoutePath.LiveData.path)
-class LiveDataActivity : AppCompatActivity() {
+class LiveDataActivity : BaseActivity<ActivityLiveDataBinding>(R.layout.activity_live_data) {
 
-    lateinit var dataBinding: ActivityLiveDataBinding;
     lateinit var viewModel: LiveDataTestViewModel
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        //获取dataBinding对象
-        dataBinding = ActivityLiveDataBinding.inflate(layoutInflater)
-        setContentView(dataBinding.root)
-        dataBinding.lifecycleOwner = this
-
-        //获取viewModel对象
-        viewModel = ViewModelProvider(this).get(LiveDataTestViewModel::class.java)
-        dataBinding.model = viewModel
+    override fun initData() {
+        viewModel = createVM()
+        binding.model = viewModel
 
         /**
          * 点击方法设置之，在xml中绑定OnClickListener接口
          */
-        dataBinding.onClick = View.OnClickListener {
+        binding.onClick = View.OnClickListener {
             viewModel.subtract()
         }
 

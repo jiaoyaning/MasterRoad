@@ -3,6 +3,7 @@ package com.jyn.masterroad
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.Adapter
@@ -47,6 +48,9 @@ class MainActivity : BaseActivity<ActivityMainBinding>
             override fun getSpanSize(position: Int): Int {
                 return mainAdapter.getItemViewType(position)
             }
+        }
+        binding.mainFab.setOnClickListener {
+            Toast.makeText(this, "被点击", Toast.LENGTH_LONG).show()
         }
     }
 

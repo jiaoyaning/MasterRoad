@@ -1,8 +1,11 @@
 package com.jyn.java_kotlin.KotlinLearn.Collection
 
-/**
+/*
  * kotlin集合基本API
  * https://blog.csdn.net/xuyankuanrong/article/details/77477976
+ *
+ * Kotlin——高级篇（五）：集合之常用操作符汇总
+ * https://blog.csdn.net/u013212407/article/details/80909970
  */
 fun main() {
     val lists = mutableListOf<Int>(1, 2, 3, 4)

@@ -31,6 +31,8 @@ import io.reactivex.schedulers.Schedulers
  * 这一次，就彻底了解OkHttp与Retrofit吧！TODO
  * https://mp.weixin.qq.com/s/DsWoCXd-qrucW5I1Oxxdlg
  *
+ * RxjavaPlugins
+ * https://blog.csdn.net/weixin_43724742/article/details/103394113
  */
 @Route(path = RoutePath.RxJava.path)
 class RxJavaActivity : BaseActivity<ActivityRxjavaBinding>(R.layout.activity_rxjava) {

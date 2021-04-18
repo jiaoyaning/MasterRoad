@@ -1,10 +1,6 @@
 package com.jyn.masterroad.okhttp;
 
-import android.os.Handler;
-import android.os.Message;
 import android.util.Log;
-
-import androidx.annotation.NonNull;
 
 import java.io.IOException;
 
@@ -20,6 +16,9 @@ import okhttp3.Response;
  *
  * OKHttp源码解析(一)--初阶
  * https://www.jianshu.com/p/82f74db14a18?utm_campaign=haruki&utm_content=note&utm_medium=reader_share&utm_source=weixin
+ *
+ * OKHttp3--Dispatcher分发器实现同步异步请求源码解析【三】
+ * https://blog.csdn.net/qq_30993595/article/details/86681210
  */
 public class OkHttpDemo {
     public void test() throws IOException {

@@ -18,9 +18,15 @@ ext {
             "junit"           : "junit:junit:4.12",
             "ext-junit"       : "androidx.test.ext:junit:1.1.0",
             "espresso-core"   : "androidx.test.espresso:espresso-core:3.1.1",
-            "espresso-intents": "androidx.test.espresso:espresso-intents:3.1.0",
+            "espresso-contrib": "androidx.test.espresso:espresso-contrib:3.1.1",
+            "espresso-intents": "androidx.test.espresso:espresso-intents:3.1.1",
             "test-runner"     : "androidx.test:runner:1.1.0",
             "test-rules"      : "androidx.test:rules:1.1.0",
+            /*
+             * An Espresso IdlingResource for OkHttp.
+             * https://github.com/JakeWharton/okhttp-idling-resource
+             */
+            "okhttp3-idling"  : "com.jakewharton.espresso:okhttp3-idling-resource:1.0.0"
     ]
 
     //androidx支持库配置

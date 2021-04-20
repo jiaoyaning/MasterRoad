@@ -1,5 +1,7 @@
 package com.jyn.masterroad;
 
+import android.content.ComponentName;
+
 import androidx.test.espresso.IdlingRegistry;
 import androidx.test.ext.junit.runners.AndroidJUnit4;
 import androidx.test.filters.LargeTest;
@@ -9,9 +11,12 @@ import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
+import static androidx.test.core.app.ApplicationProvider.getApplicationContext;
 import static androidx.test.espresso.Espresso.onView;
 import static androidx.test.espresso.action.ViewActions.click;
 import static androidx.test.espresso.assertion.ViewAssertions.matches;
+import static androidx.test.espresso.intent.Intents.intended;
+import static androidx.test.espresso.intent.matcher.IntentMatchers.hasComponent;
 import static androidx.test.espresso.matcher.RootMatchers.withDecorView;
 import static androidx.test.espresso.matcher.ViewMatchers.isDisplayed;
 import static androidx.test.espresso.matcher.ViewMatchers.withClassName;
@@ -47,7 +52,7 @@ public class MainActivityTest {
 //        IdlingPolicies.setIdlingResourceTimeout(10, TimeUnit.SECONDS);
 //    }
     @Test
-    public void flow_btn_click_test() throws InterruptedException {
+    public void flow_btn_click_test() {
         onView(withId(R.id.main_fab))   //创建一个ViewMatcher
                 .perform(click());  //进行一个Action操作
 
@@ -58,5 +63,11 @@ public class MainActivityTest {
                         .getWindow()
                         .getDecorView())))
                 .check(matches(isDisplayed()));
+
+        /*
+         * 跳转断言
+         * https://blog.csdn.net/yjp19871013/article/details/71597469
+         */
+//        intended(hasComponent(new ComponentName(getApplicationContext(), MainActivity.class)));
     }
 }

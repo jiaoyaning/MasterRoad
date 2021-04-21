@@ -57,6 +57,9 @@ ext {
              *
              * 官方新出的 Kotlin 扩展库 KTX，到底帮你干了什么？
              * https://www.cnblogs.com/plokmju/p/8426176.html
+             *
+             * KTX 扩展程序列表
+             * https://developer.android.google.cn/kotlin/ktx/extensions-list
              */
             "viewmodel-ktx"      : "androidx.lifecycle:lifecycle-viewmodel-ktx:2.3.0",
             "runtime-ktx"        : "androidx.lifecycle:lifecycle-runtime-ktx:2.3.0",

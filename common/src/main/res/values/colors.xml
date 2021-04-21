@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#0a0b1d</color>
+    <color name="colorPrimaryDark">#0a0b1d</color>
+    <color name="colorAccent">#0a0b1d</color>
+
+    <color name="white">#FFFFFF</color>
+    <color name="whiteAA">#aaFFFFFF</color>
+    <color name="black">#000000</color>
+
+    <color name="textColor">#333333</color>
+    <color name="textColorHint">#A0A0A0</color>
+    <color name="textColorVice">#6C6C6C</color>
+    <color name="viewLineColor">#F0F0F0</color>
+
+    <color name="pageBg">#fafafa</color>
+
+    <color name="lineColor">#f3f3f3</color>
+    <color name="tips">#888888</color>
+    <color name="textColor33">#333333</color>
+
+    <color name="themeColor0">#2FAAFD</color>
+    <color name="themeColor1">#009788</color>
+    <color name="themeColor2">#008374</color>
+
+    <color name="themeColor">@color/themeColor1</color>
+
+    <color name="BlackAaa">#aa000000</color>
+
+    <color name="backgroundGrayColor">#F5F6FA</color>
+    <color name="backgroundBlack33Color">#333333</color>
+    <color name="backgroundBlackColor">#101010</color>
+
+    <color name="textBlackColor">#333333</color>
+    <color name="textGrayColor">#666666</color>
+    <color name="textWhiteColor">#eeeff4</color>
+
+    <color name="descIconColor">#c7c7cd</color>
+
+    <color name="lineGrayColor2">@color/textGrayColor</color>
+    <color name="lineGrayColor">#c7c7cc</color>
+    <color name="vipTextColor">#ff971c</color>
+
+    <color name="tipBgGrayColor">#99000000</color>
+
+    <color name="transparent">#00000000</color>
+
+    <color name="useRed">#fe5b44</color>
+
+    <color name="activityTopColor">#10d1a9</color>
+
+    <color name="indexBottomMenuSelect">#1E2A39</color>
+    <color name="indexBottomMenuNormal">#5000</color>
+
+    <!--   引用上面的  -->
+    <color name="selectTextColor">@color/themeColor</color>
+    <color name="selectTextColor_a8">@color/themeColor</color>
+    <color name="bottomMenuGrayColor">@color/textGrayColor</color>
+    <color name="cropLineColor">@color/themeColor</color>
+
+    <color name="cancleColor">#FF4081</color>
+    <color name="colorTransparent_15">#D9ffffff</color>
+
+    <color name="pdfColor">#eb5042</color>
+    <color name="background_w">#FaFaFa</color>
+    <color name="CADADADe0">#ADADADe0</color>
+
+
+    <!-- AppItem 的颜色 -->
+    <color name="app_pdf">#eb5042</color>
+    <color name="app_excel">#1b8b51</color>
+    <color name="app_typeset">#1b60cb</color>
+    <color name="app_translate">#24c4a4</color>
+    <color name="app_scan">#3377ff</color>
+    <color name="app_sign">#ef5734</color>
+    <color name="app_textocr">#2faafd</color>
+    <color name="app_cardocr">#29a1f7</color>
+    <color name="app_img2long">#24c4a4</color>
+    <color name="app_highocr">#fa6c8d</color>
+
+
+    <color name="defaultTextColor">#FFFFFF</color>
+    <color name="errorColor">#D50000</color>
+    <color name="infoColor">#3F51B5</color>
+    <color name="successColor">#388E3C</color>
+    <color name="warningColor">#FFA900</color>
+    <color name="normalColor">#353A3E</color>
+
+
+</resources>

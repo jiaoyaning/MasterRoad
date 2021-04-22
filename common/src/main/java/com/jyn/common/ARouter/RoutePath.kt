@@ -30,7 +30,13 @@ object RoutePath {
     object RxJava {
         const val name = "RxJavaActivity"
         const val path = "/app/RxJavaActivity"
-        const val span = 1
+        const val span = 2
+    }
+    // RxJava 测试
+    object Okhttp {
+        const val name = "OkhttpActivity"
+        const val path = "/app/OkhttpActivity"
+        const val span = 2
     }
 
     // BindingCollection 双向绑定 recyclerview

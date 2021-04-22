@@ -58,9 +58,9 @@ class MainActivity : BaseActivity<ActivityMainBinding>
      * 第一版参考
      * https://www.jianshu.com/p/379a8f5347de
      */
-    inner class MainAdapter(var routerList: ArrayList<MainViewModel>, var context: Context) : Adapter<MainAdapter.MainViewHolder>() {
+    open inner class MainAdapter(var routerList: ArrayList<MainViewModel>, var context: Context) : Adapter<MainAdapter.MainViewHolder>() {
 
-        inner class MainViewHolder(var binding: ItemMainBinding) : RecyclerView.ViewHolder(binding.root)
+        open inner class MainViewHolder(var binding: ItemMainBinding) : RecyclerView.ViewHolder(binding.root)
 
         override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MainViewHolder {
             val binding = ItemMainBinding.inflate(LayoutInflater.from(parent.context), parent, false)

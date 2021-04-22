@@ -81,6 +81,7 @@ dependencies {
     testImplementation test["junit"]
     androidTestImplementation test["ext-junit"]
     androidTestImplementation test["espresso-core"]
+    androidTestImplementation test["espresso-contrib"]
     androidTestImplementation test["espresso-intents"]
     androidTestImplementation test["test-rules"]
     androidTestImplementation test["test-runner"]

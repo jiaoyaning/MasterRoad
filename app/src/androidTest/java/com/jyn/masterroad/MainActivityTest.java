@@ -3,9 +3,11 @@ package com.jyn.masterroad;
 import android.content.ComponentName;
 
 import androidx.test.espresso.IdlingRegistry;
-import androidx.test.ext.junit.runners.AndroidJUnit4;
+import androidx.test.espresso.action.ViewActions;
+import androidx.test.espresso.contrib.RecyclerViewActions;
 import androidx.test.filters.LargeTest;
 import androidx.test.rule.ActivityTestRule;
+import androidx.test.ext.junit.runners.AndroidJUnit4;
 
 import org.junit.Rule;
 import org.junit.Test;
@@ -57,8 +59,8 @@ public class MainActivityTest {
                 .perform(click());  //进行一个Action操作
 
         //toast最后显示在界面上的是一个AppCompatTextView
-        onView(withClassName(endsWith("AppCompatTextView"))).
-                inRoot(withDecorView(not(activityScenarioRule
+        onView(withClassName(endsWith("AppCompatTextView")))
+                .inRoot(withDecorView(not(activityScenarioRule
                         .getActivity()
                         .getWindow()
                         .getDecorView())))
@@ -69,5 +71,15 @@ public class MainActivityTest {
          * https://blog.csdn.net/yjp19871013/article/details/71597469
          */
 //        intended(hasComponent(new ComponentName(getApplicationContext(), MainActivity.class)));
+    }
+
+    /**
+     * RecyclerView item点击测试
+     */
+    @Test
+    public void recycler_view_click_test() {
+        onView(withId(R.id.main_recycle))
+                .perform(RecyclerViewActions
+                        .actionOnItemAtPosition(1, click()));
     }
 }

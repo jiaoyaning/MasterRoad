@@ -22,6 +22,9 @@ import com.jyn.masterroad.databinding.ActivityRecyclerViewBinding
  *
  * 你了解RecyclerView的布局过程吗？
  * https://mp.weixin.qq.com/s/OSuJTbFvn2RQMLVlzYgDDw
+ *
+ * View的有效曝光监控（上）｜RecyclerView 篇
+ * https://juejin.cn/post/6844904190041407501
  */
 class RecyclerViewActivity : BaseActivity<ActivityRecyclerViewBinding>(R.layout.activity_recycler_view) {
 

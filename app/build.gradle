@@ -85,6 +85,8 @@ dependencies {
     androidTestImplementation test["espresso-intents"]
     androidTestImplementation test["test-rules"]
     androidTestImplementation test["test-runner"]
+    androidTestImplementation test["test:core"]
+    androidTestImplementation test["test:core-ktx"]
 
     implementation androidx["material"]
     implementation androidx["appcompat"]

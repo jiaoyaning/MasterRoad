@@ -67,3 +67,15 @@ https://mp.weixin.qq.com/s/2jqJRKJ-LUhoecuMeOB8uw
 
 ## Kotlin专题「二十四」：注解
 https://blog.csdn.net/m0_37796683/article/details/108646530
+
+测试
+https://www.jianshu.com/u/363840decb4c
+
+Android自动化测试框架Espresso（三）——View Action的使用
+https://blog.csdn.net/yjp19871013/article/details/71123464
+Android自动化测试框架Espresso（四）——intent测试
+https://blog.csdn.net/yjp19871013/article/details/71597469
+@PrepareForTest的使用场景
+https://blog.csdn.net/qaz296490709/article/details/72880370
+
+

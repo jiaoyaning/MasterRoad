@@ -3,6 +3,9 @@
 [Espresso官方Demo](https://github.com/android/testing-samples/tree/master/ui/espresso/BasicSample)  
 [官方文档：测试单个应用的界面](https://developer.android.com/training/testing/ui-testing/espresso-testing)  
 [官方文档：Espresso](https://developer.android.com/training/testing/espresso)  
+[测试应用的 Activity](https://developer.android.com/guide/components/activities/testing)
+[测试 Fragment](https://developer.android.com/guide/fragments/test)
+
 
 ### Espresso 的主要组件包括：
 * **Espresso** - 用于与视图交互（通过 onView() 和 onData()）的入口点。此外，还公开不一定与任何视图相关联的 API，如 pressBack()。

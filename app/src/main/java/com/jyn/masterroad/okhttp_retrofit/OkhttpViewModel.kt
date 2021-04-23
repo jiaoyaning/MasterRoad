@@ -18,7 +18,7 @@ class OkhttpViewModel(application: Application) : AndroidViewModel(application) 
     }
 
     // 或者
-    val client: OkHttpClient by lazy {
+    private val client: OkHttpClient by lazy {
         OkHttpClient
                 .Builder()
                 .addInterceptor(LoggingInterceptor())

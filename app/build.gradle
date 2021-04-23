@@ -60,6 +60,10 @@ android {
         targetCompatibility JavaVersion.VERSION_1_8
     }
 
+    kotlinOptions {
+        jvmTarget = JavaVersion.VERSION_1_8.toString()
+    }
+
     kotlinOptions.useIR = true
 }
 /*
@@ -87,6 +91,7 @@ dependencies {
     androidTestImplementation test["test-runner"]
     androidTestImplementation test["test:core"]
     androidTestImplementation test["test:core-ktx"]
+    androidTestImplementation test["test.ext:truth"]
 
     implementation androidx["material"]
     implementation androidx["appcompat"]

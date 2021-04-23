@@ -44,6 +44,14 @@
 
 
 
+# 问题
+### 错误: java.lang.AssertionError: Activity never becomes requested state "[RESUMED]" (last lifecycle transition = "PRE_ON_CREATE")
+>Android 的仪器测试 (Instrumented Test) 都会构建一个独立的名字叫 `APP.test.apk`的APP 并自动安装和运行。
+而国产的手机系统对于应用自启动的管理非常激进（例如华为），如果没有对 `APP.test.apk` 设置白名单，于是系统就一直禁止 `APP包名.test.apk` 的启动，导致测试失败。  
+
+**解决：** 在华为的手机应用管家中为 `APP.test.apk` 设置白名单，测试就可以通过了。
+
+
 #博客
 **单元测试之JUnit4** TODO
 https://www.jianshu.com/p/e7147839c452
@@ -77,3 +85,6 @@ https://qaseven.github.io/2016/11/30/expresso/
 
 **Android自动化测试**
 https://www.cnblogs.com/by-dream/tag/Android%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95/
+
+**AndroidX 测试坑点详解（一）**
+https://wafer.li/Android/android-%E6%B5%8B%E8%AF%95%E5%9D%91%E7%82%B9%E8%AF%A6%E8%A7%A3%EF%BC%88%E4%B8%80%EF%BC%89/

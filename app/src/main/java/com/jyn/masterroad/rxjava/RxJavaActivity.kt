@@ -33,6 +33,9 @@ import io.reactivex.schedulers.Schedulers
  *
  * RxjavaPlugins
  * https://blog.csdn.net/weixin_43724742/article/details/103394113
+ *
+ * Cold Observable 和 Hot Observable
+ * https://www.jianshu.com/p/12fb42bcf9fd
  */
 @Route(path = RoutePath.RxJava.path)
 class RxJavaActivity : BaseActivity<ActivityRxjavaBinding>(R.layout.activity_rxjava) {

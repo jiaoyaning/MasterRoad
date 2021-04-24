@@ -13,5 +13,4 @@ import org.junit.runners.MethodSorters
 class RecycleViewTest {
 
 
-
 }

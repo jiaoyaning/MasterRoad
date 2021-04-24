@@ -45,12 +45,13 @@
 [官方文档：测试多个应用的界面](https://developer.android.com/training/testing/ui-testing/uiautomator-testing)  
 [官方文档：UI Automator](https://developer.android.com/training/testing/ui-automator)  
 
-
+## mockito
+[mockito 官网](https://github.com/mockito/mockito)
 
 #博客
 **单元测试之JUnit4** TODO
 https://www.jianshu.com/p/e7147839c452
-
+ 
 **[译]Android测试: 单元测试（Part 1）**
 https://zhuanlan.zhihu.com/p/45203314
 
@@ -80,3 +81,9 @@ https://qaseven.github.io/2016/11/30/expresso/
 
 **Android自动化测试**
 https://www.cnblogs.com/by-dream/tag/Android%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95/
+
+Fragment
+https://www.5axxw.com/questions/content/k6poiz
+
+Android Espresso：如何在测试失败时添加自己的日志输出？
+http://www.voidcn.com/article/p-hinchjer-bwh.html

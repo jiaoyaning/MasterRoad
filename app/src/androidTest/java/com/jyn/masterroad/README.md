@@ -3,6 +3,9 @@
 [Espresso官方Demo](https://github.com/android/testing-samples/tree/master/ui/espresso/BasicSample)  
 [官方文档：测试单个应用的界面](https://developer.android.com/training/testing/ui-testing/espresso-testing)  
 [官方文档：Espresso](https://developer.android.com/training/testing/espresso)  
+[测试应用的 Activity](https://developer.android.com/guide/components/activities/testing)
+[测试 Fragment](https://developer.android.com/guide/fragments/test)
+
 
 ### Espresso 的主要组件包括：
 * **Espresso** - 用于与视图交互（通过 onView() 和 onData()）的入口点。此外，还公开不一定与任何视图相关联的 API，如 pressBack()。
@@ -42,7 +45,8 @@
 [官方文档：测试多个应用的界面](https://developer.android.com/training/testing/ui-testing/uiautomator-testing)  
 [官方文档：UI Automator](https://developer.android.com/training/testing/ui-automator)  
 
-
+## mockito
+[mockito 官网](https://github.com/mockito/mockito)
 
 # 问题
 ### 错误: java.lang.AssertionError: Activity never becomes requested state "[RESUMED]" (last lifecycle transition = "PRE_ON_CREATE")
@@ -55,7 +59,7 @@
 #博客
 **单元测试之JUnit4** TODO
 https://www.jianshu.com/p/e7147839c452
-
+ 
 **[译]Android测试: 单元测试（Part 1）**
 https://zhuanlan.zhihu.com/p/45203314
 
@@ -88,3 +92,8 @@ https://www.cnblogs.com/by-dream/tag/Android%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B
 
 **AndroidX 测试坑点详解（一）**
 https://wafer.li/Android/android-%E6%B5%8B%E8%AF%95%E5%9D%91%E7%82%B9%E8%AF%A6%E8%A7%A3%EF%BC%88%E4%B8%80%EF%BC%89/
+Fragment
+https://www.5axxw.com/questions/content/k6poiz
+
+Android Espresso：如何在测试失败时添加自己的日志输出？
+http://www.voidcn.com/article/p-hinchjer-bwh.html

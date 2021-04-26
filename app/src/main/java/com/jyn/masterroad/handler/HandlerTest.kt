@@ -7,12 +7,10 @@ import androidx.lifecycle.ViewModel
 import com.apkfuns.logutils.LogUtils
 import javax.security.auth.callback.Callback
 
-class HandlerTest : ViewModel() {
+class HandlerTest(var handler: Handler) : ViewModel() {
     companion object {
         const val TAG = "Handler"
     }
-
-    var handler: Handler? = null
 
     //带callback的message
     fun messageWithCallback(v: View) {

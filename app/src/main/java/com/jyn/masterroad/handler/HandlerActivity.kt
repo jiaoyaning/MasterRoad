@@ -13,17 +13,6 @@ import java.lang.reflect.Method
 import com.jyn.masterroad.handler.HandlerTest.Companion.TAG
 
 /*
- * 万字总结-保姆级Handler机制解读
- * https://mp.weixin.qq.com/s/7S9NITBi3sXsqrzxNfMa8Q
- *
- * 想要发送Message共有3种用法：
- * 1、实例化默认Handler并向Message添加Runnable
- * 2、实例化默认Handler并通过构造函数传入接口Handler.Callback实例
- * 3、继承Handler重写handleMessage()方法
- *
- * 当这3种实现方式同时存在的时候，遵循优先级：
- * Message.callback > Callback.handleMessage > handleMessage
- *
  * 面试官：“看你简历上写熟悉 Handler 机制，那聊聊 IdleHandler 吧？”
  * https://mp.weixin.qq.com/s/mR7XIVbaKsB4q-Rxe1ip2g
  *
@@ -33,22 +22,32 @@ import com.jyn.masterroad.handler.HandlerTest.Companion.TAG
  *
  * 享元模式 TODO
  *
+ * 万字总结-保姆级Handler机制解读
+ * https://mp.weixin.qq.com/s/7S9NITBi3sXsqrzxNfMa8Q
+ *
  * Android的消息机制，一文吃透
  * https://juejin.cn/post/6939425097069363230
  *
  * Handler同步屏障
  * https://mp.weixin.qq.com/s/3H-aQd_jsqTBWslqX_BfLA
+ *
+ * 万字图文，带你学懂Handler和内存屏障
+ * https://mp.weixin.qq.com/s/tbvzs7K5OXIiAKL_DYr20A
+ *
+ * Android 消息屏障与异步消息
+ * https://mp.weixin.qq.com/s/F9c9q0IO4FvnXVvCntL0Iw
+ *
+ * 介绍一下 Android Handler 中的 epoll 机制？
+ * https://mp.weixin.qq.com/s/ClTE15s9qUaNsInIIwX57w
  */
 @Route(path = RoutePath.Handle.path)
 @SuppressLint("NewApi", "DiscouragedPrivateApi", "HandlerLeak")
 class HandlerActivity : BaseActivity<ActivityHandlerBinding>
 (R.layout.activity_handler) {
 
-    private val handlerTest: HandlerTest by lazy {
-        HandlerTest().apply { handler = this@HandlerActivity.handler }
-    }
+    private val handlerTest: HandlerTest by lazy { HandlerTest(handler) }
 
-    var handler: Handler = object : Handler(Callback {
+    var handler: Handler = object : Handler(Looper.getMainLooper(), Callback {
         LogUtils.tag(TAG).i("这是Handler的Callback形参 obj:${it.obj}")
         return@Callback false //返回true的时候，不会再执行Handler的handleMessage方法
     }) {

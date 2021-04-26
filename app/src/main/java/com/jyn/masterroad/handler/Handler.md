@@ -34,7 +34,7 @@
    ```
 
 **问：三种`Message`的优先级**  
-&emsp;&emsp;**答：**`Message.callback` > `Handler.Callback.handleMessage` > `Handler.handleMessage`
+&emsp;&emsp; **答：**`Message.callback` > `Handler.Callback.handleMessage` > `Handler.handleMessage`
 &emsp;&emsp;**总结：** 消息`callback` > 形参`callback` > `Handler`本身
 
 **问：`Handler.Callback.handleMessage`的返回值有什么影响**
@@ -58,13 +58,19 @@ public void dispatchMessage(@NonNull Message msg) {
     }
 }
 ```
-**总结一下** :`Handler`其实就是一个发送器/接收器，用来将`Message`发送到`MessageQueue`中，当消息被处理之后会通过`Message.target`回调至`Handler`中进行处理。
+**总结** :`Handler`其实就是一个发送器/接收器，用来将`Message`发送到`MessageQueue`中，当消息被处理之后会通过`Message.target`回调至`Handler`中进行处理。
+1. `Handler`对`Message`设置`delay`，同时将自己`(Handler.this)`设置为`Message`的`target`，并将其添加至`MessageQueue`中。
+2. `Looper`不断循环从`MessageQueue`中取出`Message`，并根据前面提到的优先级决定是否回调`Message.target`对应的`Handler`。
+3. 若回调至`Handler`则由`Handler`的`Callback`或`handleMessage(Message)`方法进行处理。
+
+## Message
+1. 可以携带`Runnable`回调，被优先处理并拦截`Handler`的处理方法
+2. `target`属性持有了`Handler`引用，可在`message`分发时回调到特定的`Handler`
 
 
-# MessageQueue
-
-# Looper
+# 消息屏障与异步消息
 
 # epoll原理 
 
-延时消息
+# IdleHandler
+

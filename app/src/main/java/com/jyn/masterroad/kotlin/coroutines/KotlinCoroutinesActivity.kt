@@ -7,6 +7,7 @@ import com.jyn.masterroad.R
 import com.jyn.masterroad.base.BaseActivity
 import com.jyn.masterroad.databinding.ActivityKotlinCoroutinesBinding
 import kotlinx.coroutines.ExperimentalCoroutinesApi
+import kotlinx.coroutines.GlobalScope
 
 /*
  * 硬核万字解读——Kotlin协程原理解析 TODO
@@ -17,6 +18,9 @@ import kotlinx.coroutines.ExperimentalCoroutinesApi
  *
  * 使用协程，让网络世界更加美好
  * https://mp.weixin.qq.com/s/84fSUYQt3T_Fa5B5s5ihvA
+ *
+ * Kotlin协程是个什么东西？
+ * https://mp.weixin.qq.com/s/ROU5rjS2aLBgOORDlZo47A
  */
 @ExperimentalCoroutinesApi
 @Route(path = RoutePath.KotlinCoroutines.path)

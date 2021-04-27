@@ -78,4 +78,7 @@ https://blog.csdn.net/yjp19871013/article/details/71597469
 @PrepareForTest的使用场景
 https://blog.csdn.net/qaz296490709/article/details/72880370
 
+## 如何理解虚拟内存
+https://zhuanlan.zhihu.com/p/96098896
 
+Surface、SurfaceFlinger和Canvas的关系?

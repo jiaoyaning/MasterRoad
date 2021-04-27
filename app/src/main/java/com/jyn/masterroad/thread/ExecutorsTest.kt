@@ -6,8 +6,11 @@ import java.util.concurrent.ExecutorService
 import java.util.concurrent.Executors
 import java.util.concurrent.TimeUnit
 
-/**
+/*
  * 线程池关闭的几种方式
+ *
+ * Java线程池是如何保证核心线程不被销毁的
+ * https://blog.csdn.net/smile_from_2015/article/details/105259789
  */
 class ExecutorsTest {
 

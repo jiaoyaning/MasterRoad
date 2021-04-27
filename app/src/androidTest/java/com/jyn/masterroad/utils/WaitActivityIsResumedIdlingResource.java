@@ -9,7 +9,8 @@ import androidx.test.runner.lifecycle.Stage;
 
 import java.util.Collection;
 
-/**
+/*
+ * 等待Activity打开
  * https://stackoverflow.com/questions/36544360/espresso-does-no-record-any-intent-if-there-are-no-buttons
  */
 class WaitActivityIsResumedIdlingResource implements IdlingResource {
@@ -31,7 +32,7 @@ class WaitActivityIsResumedIdlingResource implements IdlingResource {
     @Override
     public boolean isIdleNow() {
         resumed = isActivityLaunched();
-        if(resumed && resourceCallback != null) {
+        if (resumed && resourceCallback != null) {
             resourceCallback.onTransitionToIdle();
         }
 
@@ -41,7 +42,7 @@ class WaitActivityIsResumedIdlingResource implements IdlingResource {
     private boolean isActivityLaunched() {
         Collection<Activity> activitiesInStage = instance.getActivitiesInStage(Stage.RESUMED);
         for (Activity activity : activitiesInStage) {
-            if(activity.getClass().getName().equals(activityToWaitClassName)){
+            if (activity.getClass().getName().equals(activityToWaitClassName)) {
                 return true;
             }
         }

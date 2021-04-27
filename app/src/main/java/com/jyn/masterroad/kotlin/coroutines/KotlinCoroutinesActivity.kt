@@ -7,7 +7,6 @@ import com.jyn.masterroad.R
 import com.jyn.masterroad.base.BaseActivity
 import com.jyn.masterroad.databinding.ActivityKotlinCoroutinesBinding
 import kotlinx.coroutines.ExperimentalCoroutinesApi
-import kotlinx.coroutines.GlobalScope
 
 /*
  * 硬核万字解读——Kotlin协程原理解析 TODO
@@ -27,6 +26,10 @@ import kotlinx.coroutines.GlobalScope
 class KotlinCoroutinesActivity : BaseActivity<ActivityKotlinCoroutinesBinding>
 (R.layout.activity_kotlin_coroutines) {
 
+    private val kotlinCoroutinesCreate: KotlinCoroutinesCreate by lazy {
+        createVM<KotlinCoroutinesCreate>()
+    }
+
     private val kotlinCoroutinesTest: KotlinCoroutinesTest by lazy {
         createVM<KotlinCoroutinesTest>().apply {
             lifecycleScope = this@KotlinCoroutinesActivity.lifecycleScope
@@ -35,5 +38,6 @@ class KotlinCoroutinesActivity : BaseActivity<ActivityKotlinCoroutinesBinding>
 
     override fun initView() {
         binding.coroutines = kotlinCoroutinesTest
+        binding.create = kotlinCoroutinesCreate
     }
 }

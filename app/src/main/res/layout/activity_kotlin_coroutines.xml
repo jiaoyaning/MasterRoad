@@ -6,6 +6,10 @@
     <data>
 
         <variable
+            name="create"
+            type="com.jyn.masterroad.kotlin.coroutines.KotlinCoroutinesCreate" />
+
+        <variable
             name="coroutines"
             type="com.jyn.masterroad.kotlin.coroutines.KotlinCoroutinesTest" />
     </data>
@@ -17,10 +21,44 @@
         tools:ignore="HardcodedText">
 
         <Button
+            android:id="@+id/textView26"
+            style="@style/tv2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:onClick="@{()->create.runBlockingTest()}"
+            android:text="runBlocking"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+        <Button
+            android:id="@+id/button12"
+            style="@style/tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="@{()->create.globalScopeTest()}"
+            android:text="GlobalScope"
+            app:layout_constraintStart_toEndOf="@+id/textView26"
+            app:layout_constraintTop_toTopOf="@+id/textView26" />
+
+        <Button
+            style="@style/tv2"
+            android:id="@+id/button13"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="CoroutineScope"
+            android:onClick="@{()->create.coroutineScope()}"
+            app:layout_constraintStart_toEndOf="@+id/button12"
+            app:layout_constraintTop_toTopOf="@+id/textView26" />
+
+
+        <Button
             android:id="@+id/button2"
             style="@style/tv"
             android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="180dp"
             android:onClick="@{coroutines::globalScopeTest}"
             android:text="GlobalScope"
             app:layout_constraintStart_toStartOf="parent"
@@ -67,7 +105,6 @@
             android:text="ViewModelScope\nViewModel绑定"
             app:layout_constraintStart_toEndOf="@+id/button3"
             app:layout_constraintTop_toTopOf="@+id/button3" />
-
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

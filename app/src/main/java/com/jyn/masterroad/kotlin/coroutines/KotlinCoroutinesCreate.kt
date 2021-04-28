@@ -15,7 +15,7 @@ class KotlinCoroutinesCreate(application: Application) : AndroidViewModel(applic
         private const val TAG = "Coroutines"
     }
 
-    //region 协程的三种创建方式 runBlocking & GlobalScope & CoroutineScope
+    //region 一. 协程的三种创建方式
 
     //region 1. runBlocking 阻塞线程
     fun runBlockingTest() {
@@ -113,7 +113,7 @@ class KotlinCoroutinesCreate(application: Application) : AndroidViewModel(applic
 
     // ===================分割线========================
 
-    //region 协程的两种启动方式 launch & async
+    //region 二. 协程的两种启动方式
 
     //region 1. launch
     fun launch() {
@@ -131,19 +131,29 @@ class KotlinCoroutinesCreate(application: Application) : AndroidViewModel(applic
     //endregion
 
     //region 2. async
-    suspend fun async() {
-        val one = GlobalScope.async { doSomethingUsefulOne() }
-        val two = GlobalScope.async { doSomethingUsefulTwo() }
-        println("The answer is ${one.await() + two.await()}")
+    fun async() {
+        runBlocking {
+            LogUtils.tag(TAG).i("async 开始")
+            val oneDeferred = GlobalScope.async { doSomethingUsefulOne() }
+            val twoDeferred = GlobalScope.async { doSomethingUsefulTwo() }
+            sleep(300)
+            LogUtils.tag(TAG).i("async 结束 one:${oneDeferred.await()}; two:${twoDeferred.await()}")
+        }
     }
 
-    suspend fun doSomethingUsefulOne(): Int {
-        delay(1000L) // 假设我们在这里做了些有用的事
+    /*
+     * suspend关键字只用于提醒这是一个挂起函数，协程运行到该函数的时候会挂起，其本身并没有实际功能。
+     * 由suspend修饰的函数只能运行在协程体内，或者运行在suspend修饰的函数内。
+     */
+    private suspend fun doSomethingUsefulOne(): Int {
+        delay(500L)
+        LogUtils.tag(TAG).i("async one 运行结束")
         return 13
     }
 
-    suspend fun doSomethingUsefulTwo(): Int {
-        delay(1000L) // 假设我们在这里也做了些有用的事
+    private suspend fun doSomethingUsefulTwo(): Int {
+        delay(1000L)
+        LogUtils.tag(TAG).i("async two 运行结束")
         return 29
     }
 

@@ -15,7 +15,9 @@ class KotlinCoroutinesCreate(application: Application) : AndroidViewModel(applic
         private const val TAG = "Coroutines"
     }
 
-    //1. runBlocking 阻塞线程
+    //region 协程的三种创建方式 runBlocking & GlobalScope & CoroutineScope
+
+    //region 1. runBlocking 阻塞线程
     fun runBlockingTest() {
         Thread {
             LogUtils.tag(TAG).i("线程 开始 ————> in ${Thread.currentThread().name}")
@@ -54,8 +56,9 @@ class KotlinCoroutinesCreate(application: Application) : AndroidViewModel(applic
             LogUtils.tag(TAG).i("线程 结束 ————> in ${Thread.currentThread().name}")
         }.start()
     }
+    //endregion
 
-    //2. GlobalScope 全局生命周期
+    //region 2. GlobalScope 全局生命周期
     fun globalScopeTest() {
         // 完全体协程
         GlobalScope.launch(
@@ -91,8 +94,9 @@ class KotlinCoroutinesCreate(application: Application) : AndroidViewModel(applic
             newCachedThreadPool.shutdown() //不用的时候要关闭
         }
     }
+    //endregion
 
-    //3. CoroutineScope 可控生命周期
+    //region 3. CoroutineScope 可控生命周期
     fun coroutineScope() {
         val coroutineScope = CoroutineScope(SupervisorJob())
         coroutineScope.launch {
@@ -103,4 +107,47 @@ class KotlinCoroutinesCreate(application: Application) : AndroidViewModel(applic
         sleep(50)
         coroutineScope.cancel()
     }
+    //endregion
+
+    //endregion
+
+    // ===================分割线========================
+
+    //region 协程的两种启动方式 launch & async
+
+    //region 1. launch
+    fun launch() {
+        LogUtils.tag(TAG).i("launch 开始 in ${Thread.currentThread().name}")
+        val job = GlobalScope.launch(Dispatchers.Main) {
+            for (i in 0..10000) {
+                delay(100)
+                LogUtils.tag(TAG).i("launch cancel测试 count = $i in ${Thread.currentThread().name}")
+            }
+        }
+        sleep(300)
+        job.cancel()
+        LogUtils.tag(TAG).i("launch cancel后 in ${Thread.currentThread().name}")
+    }
+    //endregion
+
+    //region 2. async
+    suspend fun async() {
+        val one = GlobalScope.async { doSomethingUsefulOne() }
+        val two = GlobalScope.async { doSomethingUsefulTwo() }
+        println("The answer is ${one.await() + two.await()}")
+    }
+
+    suspend fun doSomethingUsefulOne(): Int {
+        delay(1000L) // 假设我们在这里做了些有用的事
+        return 13
+    }
+
+    suspend fun doSomethingUsefulTwo(): Int {
+        delay(1000L) // 假设我们在这里也做了些有用的事
+        return 29
+    }
+
+    //endregion
+
+    //endregion
 }

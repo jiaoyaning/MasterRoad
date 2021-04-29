@@ -7,6 +7,10 @@ import com.jyn.masterroad.base.BaseActivity
 import com.jyn.masterroad.databinding.ActivityNestedScrolling2Binding
 import kotlinx.android.synthetic.main.activity_nested_scrolling1.*
 
+/*
+ * AppBarLayout v26+抖动BugFix
+ * https://www.jianshu.com/p/2924f32e8c22
+ */
 @Route(path = RoutePath.NestedScrolling2.path)
 class NestedScrolling2Activity : BaseActivity<ActivityNestedScrolling2Binding>
 (R.layout.activity_nested_scrolling2) {

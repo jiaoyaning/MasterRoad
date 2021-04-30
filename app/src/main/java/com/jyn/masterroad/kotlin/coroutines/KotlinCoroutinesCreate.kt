@@ -7,8 +7,9 @@ import kotlinx.coroutines.*
 import java.lang.Thread.sleep
 import java.util.concurrent.Executors
 
-/**
- * Created by jiaoyaning on 2021/4/27.
+/*
+ * https://juejin.cn/post/6926695962354122765
+ * 揭秘kotlin协程中的CoroutineContext
  */
 class KotlinCoroutinesCreate(application: Application) : AndroidViewModel(application) {
     companion object {
@@ -131,6 +132,10 @@ class KotlinCoroutinesCreate(application: Application) : AndroidViewModel(applic
     //endregion
 
     //region 2. async
+    /**
+     * async 同 launch 唯一的区别就是 async 是有返回值
+     * async 并不会阻塞线程，只是阻塞所调用的协程
+     */
     fun async() {
         runBlocking {
             LogUtils.tag(TAG).i("async 开始")
@@ -158,6 +163,31 @@ class KotlinCoroutinesCreate(application: Application) : AndroidViewModel(applic
     }
 
     //endregion
+
+    //endregion
+
+    //region 三. 线程切换
+
+    fun withContext() {
+        GlobalScope.launch(Dispatchers.Main) {
+            LogUtils.tag(TAG).i("launch 开始 in ${Thread.currentThread().name}")
+
+            //withContext 并不创建新的协程，只是指定协程上运行代码块
+            withContext(Dispatchers.IO) {
+                delay(1000)
+                LogUtils.tag(TAG).i("launch 切换IO in ${Thread.currentThread().name}")
+            }
+
+            default()
+
+            LogUtils.tag(TAG).i("launch withContext IO后 in ${Thread.currentThread().name}")
+        }
+    }
+
+    private suspend fun default() = withContext(Dispatchers.Default) {
+        delay(1000)
+        LogUtils.tag(TAG).i("launch 切换Default in ${Thread.currentThread().name}")
+    }
 
     //endregion
 }

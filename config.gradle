@@ -141,6 +141,9 @@ ext {
             /*
              * Coil是一个Android图片加载库，通过Kotlin协程的方式加载图片
              * https://github.com/coil-kt/coil/
+             *
+             * Coil：为Kotlin而生的图片加载框架
+             * https://mp.weixin.qq.com/s/qUYqylh8ceiFtKaKm02j4Q
              */
             "coil"             : "io.coil-kt:coil:1.1.1",
 

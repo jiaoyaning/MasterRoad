@@ -5,22 +5,45 @@
 
     <data>
 
+        <variable
+            name="rxJavaCreate"
+            type="com.jyn.masterroad.rxjava.RxJavaCreate" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".rxjava.RxJavaActivity">
+        tools:context=".rxjava.RxJavaActivity"
+        tools:ignore="HardcodedText">
 
-        <FrameLayout
-            android:id="@+id/fragment"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            app:layout_constraintBottom_toBottomOf="parent"
+        <TextView
+            android:id="@+id/textView29"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:text="RxJava Create"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+            app:layout_constraintTop_toTopOf="parent" />
 
-        </FrameLayout>
+        <Button
+            android:id="@+id/button17"
+            style="@style/tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:onClick="@{() -> rxJavaCreate.simple()}"
+            android:text="分开 Create"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView29" />
+
+        <Button
+            android:id="@+id/button18"
+            style="@style/tv2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="链式 Create"
+            app:layout_constraintStart_toEndOf="@+id/button17"
+            app:layout_constraintTop_toTopOf="@+id/button17" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

@@ -9,6 +9,9 @@ import com.apkfuns.logutils.LogUtils
  *
  * 保姆级教学，22张图揭开ThreadLocal
  * https://mp.weixin.qq.com/s/qMep17llDFWHq_S0IWh6ZA
+ *
+ * 一个ThreadLocal和面试官大战30个回合
+ * https://mp.weixin.qq.com/s/JUb2GR4CmokO0SklFeNmwg
  */
 class ThreadLocalTest {
     private val threadLocal: ThreadLocal<String> by lazy {

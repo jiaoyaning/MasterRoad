@@ -38,61 +38,12 @@ import io.reactivex.schedulers.Schedulers
  * https://www.jianshu.com/p/12fb42bcf9fd
  */
 @Route(path = RoutePath.RxJava.path)
-class RxJavaActivity : BaseActivity<ActivityRxjavaBinding>(R.layout.activity_rxjava) {
+class RxJavaActivity : BaseActivity<ActivityRxjavaBinding>
+(R.layout.activity_rxjava) {
+
+    private val rxJavaCreate: RxJavaCreate by lazy { RxJavaCreate() }
 
     override fun initView() {
-        simpleRxJava()
-
-    }
-
-    private fun simpleRxJava() {
-        //步骤1. 创建被观察者(Observable),定义要发送的事件。
-
-        val observable = Observable.just("第 1 条数据", "第 2 条数据",
-                "第 3 条数据", "第 4 条数据")
-
-        // region Observable.create()所创建的 observable 对象
-//        val observable = Observable.create<String> {
-//            object : ObservableOnSubscribe<String> {
-//                override fun subscribe(emitter: ObservableEmitter<String>) {
-//                    emitter.onNext("文章1")
-//                    emitter.onNext("文章2")
-//                    emitter.onNext("文章3")
-//                    emitter.onComplete()
-//                }
-//            }
-//        }.map<String>(object : Function<String?, String?> {
-//            @Throws(Exception::class)
-//
-//            override fun apply(t: String): String? {
-//                return t
-//            }
-//        })
-        // endregion
-
-        //步骤2. 创建观察者(Observer)，接受事件并做出响应操作。
-        val observer: Observer<String> = object : Observer<String> {
-            override fun onSubscribe(d: Disposable) {
-                LogUtils.tag("main").i("onSubscribe")
-            }
-
-            override fun onNext(s: String) {
-                LogUtils.tag("main").i("onNext : $s")
-            }
-
-            override fun onError(e: Throwable) {
-                LogUtils.tag("main").i("onError : $e")
-            }
-
-            override fun onComplete() {
-                LogUtils.tag("main").i("onComplete")
-            }
-        }
-
-        //步骤3. 观察者通过订阅（subscribe）被观察者把它们连接到一起。
-        observable
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(observer)
+        binding.rxJavaCreate = rxJavaCreate
     }
 }

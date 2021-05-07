@@ -14,27 +14,27 @@ object RoutePath {
 
     // handler测试
     object Handle {
-        const val name = "HandlerActivity"
+        const val name = "Handler"
         const val path = "/app/HandlerActivity"
         const val span = 1
     }
 
     // LiveData测试
     object LiveData {
-        const val name = "LiveDataActivity"
+        const val name = "LiveData"
         const val path = "/app/LiveDataActivity"
         const val span = 1
     }
 
     // RxJava 测试
     object RxJava {
-        const val name = "RxJavaActivity"
+        const val name = "RxJava"
         const val path = "/app/RxJavaActivity"
         const val span = 2
     }
     // RxJava 测试
     object Okhttp {
-        const val name = "OkhttpActivity"
+        const val name = "OkHttp"
         const val path = "/app/OkhttpActivity"
         const val span = 2
     }
@@ -82,7 +82,7 @@ object RoutePath {
 
     // Kotlin Coroutines协程
     object KotlinCoroutines {
-        const val name = "Kotlin_Coroutines"
+        const val name = "Kotlin -> Coroutines"
         const val path = "/app/KotlinCoroutines"
         const val span = 1
     }

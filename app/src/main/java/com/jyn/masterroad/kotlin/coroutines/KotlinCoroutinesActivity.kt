@@ -17,6 +17,9 @@ import kotlinx.coroutines.ExperimentalCoroutinesApi
  *
  * 使用协程，让网络世界更加美好
  * https://mp.weixin.qq.com/s/84fSUYQt3T_Fa5B5s5ihvA
+ *
+ * 史上最详Android版kotlin协程入门进阶实战(一) TODO
+ * https://juejin.cn/post/6953441828100112392
  */
 @ExperimentalCoroutinesApi
 @Route(path = RoutePath.KotlinCoroutines.path)

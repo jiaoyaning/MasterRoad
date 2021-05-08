@@ -33,7 +33,7 @@ object RoutePath {
         const val span = 2
     }
     // RxJava 测试
-    object Okhttp {
+    object OkHttp {
         const val name = "OkHttp"
         const val path = "/app/OkhttpActivity"
         const val span = 2

@@ -8,8 +8,8 @@ import java.lang.Thread.sleep
 import java.util.concurrent.Executors
 
 /*
- * https://juejin.cn/post/6926695962354122765
  * 揭秘kotlin协程中的CoroutineContext
+ * https://juejin.cn/post/6926695962354122765
  */
 class KotlinCoroutinesCreate(application: Application) : AndroidViewModel(application) {
     companion object {

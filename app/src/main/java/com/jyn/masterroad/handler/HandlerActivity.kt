@@ -13,14 +13,10 @@ import java.lang.reflect.Method
 import com.jyn.masterroad.handler.HandlerTest.Companion.TAG
 
 /*
+ * 享元模式 TODO
+ *
  * 面试官：“看你简历上写熟悉 Handler 机制，那聊聊 IdleHandler 吧？”
  * https://mp.weixin.qq.com/s/mR7XIVbaKsB4q-Rxe1ip2g
- *
- * IdleHandler是一个回调接口，可以通过MessageQueue的addIdleHandler添加实现类。
- * 当MessageQueue中的任务暂时处理完了（没有新任务或者下一个任务延时在之后），这个时候会回调这个接口.
- * 返回false，那么就会移除它，返回true就会在下次message处理完了的时候继续回调。
- *
- * 享元模式 TODO
  *
  * 万字总结-保姆级Handler机制解读
  * https://mp.weixin.qq.com/s/7S9NITBi3sXsqrzxNfMa8Q
@@ -39,6 +35,9 @@ import com.jyn.masterroad.handler.HandlerTest.Companion.TAG
  *
  * 介绍一下 Android Handler 中的 epoll 机制？
  * https://mp.weixin.qq.com/s/ClTE15s9qUaNsInIIwX57w
+ *
+ * 面试必备：异步 Handler 十大必问！
+ * https://mp.weixin.qq.com/s/RVgGEPw7srV_uwBtlHEGXA
  */
 @Route(path = RoutePath.Handle.path)
 @SuppressLint("NewApi", "DiscouragedPrivateApi", "HandlerLeak")

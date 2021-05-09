@@ -73,4 +73,6 @@ public void dispatchMessage(@NonNull Message msg) {
 # epoll原理 
 
 # IdleHandler
-
+> IdleHandler是一个回调接口，可以通过MessageQueue的addIdleHandler添加实现类。
+  当MessageQueue中的任务暂时处理完了（没有新任务或者下一个任务延时在之后），这个时候会回调这个接口.
+  返回false，那么就会移除它，返回true就会在下次message处理完了的时候继续回调。

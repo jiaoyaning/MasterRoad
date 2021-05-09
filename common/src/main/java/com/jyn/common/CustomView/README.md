@@ -12,3 +12,6 @@ https://blog.csdn.net/xingxingchance/article/details/77750546
 
 ## Android中Canvas绘图之PorterDuffXfermode使用及工作原理详解
 https://blog.csdn.net/iispring/article/details/50472485
+
+## 玩转自定义 View，你必须搞清楚这些：Style，Theme，Attr，Styleable，TypedArray
+https://mp.weixin.qq.com/s/IEf2TCmKDRd3MNcGvqV32Q

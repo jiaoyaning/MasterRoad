@@ -1,8 +1,3 @@
-# MasterRoad
-good good study，day day up
-
-./gradlew clean build
-
 ## DataBinding实现原理探析  
 https://www.jianshu.com/p/de4d50b88437
 
@@ -68,17 +63,14 @@ https://mp.weixin.qq.com/s/2jqJRKJ-LUhoecuMeOB8uw
 ## Kotlin专题「二十四」：注解
 https://blog.csdn.net/m0_37796683/article/details/108646530
 
-测试
-https://www.jianshu.com/u/363840decb4c
-
-Android自动化测试框架Espresso（三）——View Action的使用
-https://blog.csdn.net/yjp19871013/article/details/71123464
-Android自动化测试框架Espresso（四）——intent测试
-https://blog.csdn.net/yjp19871013/article/details/71597469
-@PrepareForTest的使用场景
-https://blog.csdn.net/qaz296490709/article/details/72880370
-
 ## 如何理解虚拟内存
 https://zhuanlan.zhihu.com/p/96098896
 
 Surface、SurfaceFlinger和Canvas的关系?
+
+
+## Android ANR：原理分析及解决办法
+https://www.jianshu.com/p/388166988cef
+
+## 锁屏后，调用View.requestLayout()方法后会不会postSyncBarrier？
+https://mp.weixin.qq.com/s/BeYCM6AUsJ9qzhb5_XAweQ

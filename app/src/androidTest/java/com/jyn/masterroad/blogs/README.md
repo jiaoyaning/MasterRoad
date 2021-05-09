@@ -97,3 +97,13 @@ https://www.5axxw.com/questions/content/k6poiz
 
 Android Espresso：如何在测试失败时添加自己的日志输出？
 http://www.voidcn.com/article/p-hinchjer-bwh.html
+
+测试
+https://www.jianshu.com/u/363840decb4c
+
+Android自动化测试框架Espresso（三）——View Action的使用
+https://blog.csdn.net/yjp19871013/article/details/71123464
+Android自动化测试框架Espresso（四）——intent测试
+https://blog.csdn.net/yjp19871013/article/details/71597469
+@PrepareForTest的使用场景
+https://blog.csdn.net/qaz296490709/article/details/72880370

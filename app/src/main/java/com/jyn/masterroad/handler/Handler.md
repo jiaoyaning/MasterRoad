@@ -69,6 +69,27 @@ public void dispatchMessage(@NonNull Message msg) {
 1. 可以携带`Runnable`回调，被优先处理并拦截`Handler`的处理方法
 2. `target`属性持有了`Handler`引用，可在`message`分发时回调到特定的`Handler`
 
+ **有三种case可以直接想链表头添加一个Message**
+ 1. 当前消息队列中没有消息
+ 2. 新的Message延迟时间为0
+ 3. 新的Message延迟时间小于当前第一个Message的延迟时间
+ ```
+ boolean enqueueMessage(Message msg, long when) {
+    ...
+    if (p == null || when == 0 || when < p.when) {
+        msg.next = p;
+        mMessages = msg;
+        needWake = mBlocked;
+    }else {
+
+    }
+    ...
+ }
+ ```
+
+**问：Message为什么要用链表结构**
+1. Message在系统中数量很多，如果用array实现的话会占用大量连续内存空间
+2. Message虽然数量很多但是处理的也很快，而且数量不定，也就是说如果用数组实现的话为了避免空间浪费，则需要对数组不停的进行扩容和减容，非常影响效率，而且会造成内存抖动
 
 # 消息屏障与异步消息
 

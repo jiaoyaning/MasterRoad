@@ -18,9 +18,6 @@ import com.jyn.masterroad.handler.HandlerTest.Companion.TAG
  * 万字总结-保姆级Handler机制解读
  * https://mp.weixin.qq.com/s/7S9NITBi3sXsqrzxNfMa8Q
  *
- * Android的消息机制，一文吃透
- * https://juejin.cn/post/6939425097069363230
- *
  * Handler同步屏障
  * https://mp.weixin.qq.com/s/3H-aQd_jsqTBWslqX_BfLA
  *

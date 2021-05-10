@@ -74,3 +74,6 @@ https://www.jianshu.com/p/388166988cef
 
 ## 锁屏后，调用View.requestLayout()方法后会不会postSyncBarrier？
 https://mp.weixin.qq.com/s/BeYCM6AUsJ9qzhb5_XAweQ
+
+## onSaveInstanceState 的数据存在哪里？为什么限制了大小？
+https://zhuanlan.zhihu.com/p/150935875

@@ -16,6 +16,7 @@ dependencies {
      * 反射优化库
      */
     implementation 'com.esotericsoftware:reflectasm:1.11.9'
+    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.4.1'
 }
 
 sourceCompatibility = JavaVersion.VERSION_1_8

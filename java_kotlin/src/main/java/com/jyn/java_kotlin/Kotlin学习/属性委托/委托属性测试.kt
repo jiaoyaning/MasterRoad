@@ -22,7 +22,7 @@ fun main(args: Array<String>) {
     test()
 }
 
-//region 1. 自定义委托
+//region 1. 自定义委托测试
 fun propertyTest() {
     // 1.测试自定义的属性委托
     var prop: String by Delegate()

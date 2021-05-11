@@ -17,7 +17,7 @@ class HandlerTest : ViewModel() {
     var handler: Handler = object : Handler(Looper.getMainLooper(), Callback {
         LogUtils.tag(TAG).i("这是Handler的Callback形参 obj:${it.obj}")
         //返回true的时候，不会再执行Handler的handleMessage方法
-        return@Callback false
+        false
     }) {
         override fun handleMessage(msg: Message) {
             super.handleMessage(msg)

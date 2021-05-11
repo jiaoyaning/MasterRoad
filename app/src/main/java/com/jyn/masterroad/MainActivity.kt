@@ -35,7 +35,7 @@ import kotlinx.android.synthetic.main.activity_main.*
  */
 @Route(path = RoutePath.Main.path)
 class MainActivity : BaseActivity<ActivityMainBinding>
-(R.layout.activity_main) {
+    (R.layout.activity_main) {
 
     private var routerList: ArrayList<MainViewModel> = MainViewModel.getRouterList()
 
@@ -59,12 +59,15 @@ class MainActivity : BaseActivity<ActivityMainBinding>
      * 第一版参考
      * https://www.jianshu.com/p/379a8f5347de
      */
-    open inner class MainAdapter(var routerList: ArrayList<MainViewModel>, var context: Context) : Adapter<MainAdapter.MainViewHolder>() {
+    open inner class MainAdapter(var routerList: ArrayList<MainViewModel>, var context: Context) :
+        Adapter<MainAdapter.MainViewHolder>() {
 
-        open inner class MainViewHolder(var binding: ItemMainBinding) : RecyclerView.ViewHolder(binding.root)
+        open inner class MainViewHolder(var binding: ItemMainBinding) :
+            RecyclerView.ViewHolder(binding.root)
 
         override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MainViewHolder {
-            val binding = ItemMainBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+            val binding =
+                ItemMainBinding.inflate(LayoutInflater.from(parent.context), parent, false)
             return MainViewHolder(binding)
         }
 

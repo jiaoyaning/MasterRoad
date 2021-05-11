@@ -13,6 +13,9 @@ import java.lang.reflect.ParameterizedType
 /*
  * 封装DataBinding-新写法
  * https://mp.weixin.qq.com/s/2os4z9lhuahYPbB-UtPmcg
+ *
+ * Google挖坑后人埋-ViewBinding(下)
+ * https://mp.weixin.qq.com/s/aUr3EV-Vizc-fnpBRYg8Hg
  */
 abstract class BaseActivity<dataBinding : ViewDataBinding>(var id: Int = 0) : AppCompatActivity() {
 

@@ -3,6 +3,8 @@
 1. 在Android系统中需要一个切换线程的工具。
 2. 同时需要在某些情况下进行delay操作。
 
+****
+
 **问：`handle`的三种使用方式？**
 1. 给`Message`里添加一个`callback`参数。
    ```
@@ -35,16 +37,18 @@
 
 **总结** :`Handler`其实就是一个发送器/接收器，用来将`Message`发送到`MessageQueue`中，当消息被处理之后会通过`Message.target`回调至`Handler`中进行处理。
 1. `Handler`对`Message`设置`delay`，同时将自己`(Handler.this)`设置为`Message`的`target`，并将其添加至`MessageQueue`中。
-2. `Looper`不断循环从`MessageQueue`中取出`Message`，并根据前面提到的优先级决定是否回调`Message.target`对应的`Handler`。
-3. 若回调至`Handler`则由`Handler`的`Callback`或`handleMessage(Message)`方法进行处理。
+2. `Looper`不断循环从`MessageQueue`中取出`Message`，并根据前面提到的优先级决定在什么情况下回调`Message.target`对应的`Handler`。
 
+****
 
 **问：三种`Message`的优先级**  
-&emsp;&emsp; **答：**`Message.callback` > `Handler.Callback.handleMessage` > `Handler.handleMessage`
-&emsp;&emsp;**总结：** 消息`callback` > 形参`callback` > `Handler`本身
+>`Message.callback` > `Handler.Callback.handleMessage` > `Handler.handleMessage`
+总结：消息`callback` > 形参`callback` > `Handler`方法
+
+****
 
 **问：`Handler.Callback.handleMessage`的返回值有什么影响**
-&emsp;&emsp;答：返回`true`的时候，不再执行`handle`本身的`handleMessage`分发方法。
+>返回`true`的时候，不再执行`handle`本身的`handleMessage`分发方法。
 
 ```
 public void dispatchMessage(@NonNull Message msg) {
@@ -87,9 +91,34 @@ public void dispatchMessage(@NonNull Message msg) {
  }
  ```
 
-**问：Message为什么要用链表结构**
-1. Message在系统中数量很多，如果用array实现的话会占用大量连续内存空间
-2. Message虽然数量很多但是处理的也很快，而且数量不定，也就是说如果用数组实现的话为了避免空间浪费，则需要对数组不停的进行扩容和减容，非常影响效率，而且会造成内存抖动
+ ## MessageQueue
+**`next()`方法的工作**
+>1. 处理可以立即执行的消息
+>2. 如果有同步屏障则优先处理异步消息
+>3. 如果没有可以立即处理的消息就将队列阻塞起来
+>4. 阻塞的时候根据情况决定是否回调IdleHandler
+
+****
+
+**`quit(boolean safe)`方法的工作**
+由`Looper`调用
+>**问：`safe`与`!safe`的区别?**
+>1. `safe`的情况下会触发`removeAllFutureMessagesLocked()`方法，只移除现在还不能处理`(when > now)`的`Message`
+>2. `!safe`的情况下触发`removeAllMessagesLocked()`，将消息队列全部清空
+
+****
+
+**问：为什么要用`for(;;)`而不是`while(1)`?**
+>1. `for(;;)`死循环里的两个`;;`代表两个空语句，编译器一般会优化掉它们，直接进入循环体。
+>2. `while(1)`死循环里的1被看成表达式，每循环一次都要判断常量1是不是等于零。   
+> 
+>显然`for(;;)`指令少，不占用寄存器，而且没有判断、跳转，比`while(1)`好。
+
+****
+
+**问：`MessageQueue`为什么要用链表结构?**
+>1. `Message`在系统中数量很多，如果用`array`实现的话会占用大量连续内存空间
+>2. `Message`虽然数量很多但是处理的也很快，而且数量不定，也就是说如果用数组实现的话为了避免空间浪费，则需要对数组不停的进行扩容和减容，非常影响效率，而且会造成内存抖动
 
 # 消息屏障与异步消息
 

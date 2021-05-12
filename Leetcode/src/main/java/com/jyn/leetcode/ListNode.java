@@ -18,6 +18,7 @@ public class ListNode {
         ListNode node3 = new ListNode(3);
         ListNode node4 = new ListNode(4);
         ListNode node5 = new ListNode(5);
+        ListNode node6 = new ListNode(6);
 
         node1.next = node2;
         node2.first = node1;
@@ -27,14 +28,17 @@ public class ListNode {
         node4.first = node3;
         node4.next = node5;
         node5.first = node4;
-        node5.next = null;
+        node5.next = node6;
+        node6.first = node5;
+        node6.next = null;
         return node1;
     }
 
     public static void print(ListNode head) {
         while (head != null) {
-            System.out.println(head.val);
+            System.out.print(head.val+" -> ");
             head = head.next;
         }
+        System.out.println("null");
     }
 }

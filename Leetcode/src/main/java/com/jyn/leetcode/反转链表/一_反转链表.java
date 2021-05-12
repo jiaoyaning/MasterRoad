@@ -6,14 +6,16 @@ import com.jyn.leetcode.ListNode;
  * 反转链表
  * https://labuladong.gitbook.io/algo/mu-lu-ye-1/mu-lu-ye/di-gui-fan-zhuan-lian-biao-de-yi-bu-fen
  */
-public class 反转链表 {
+public class 一_反转链表 {
     public static void main(String[] args) {
-        ListNode.print(ListNode.getListNodeTest());
-        ListNode listNode = reverseList(ListNode.getListNodeTest());
+        ListNode listNode = ListNode.getListNodeTest();
+
         ListNode.print(listNode);
+//        ListNode.print(reverseList2(listNode));
+//        ListNode.print(reverseSegment(listNode, listNode.next.next));
     }
 
-    //region 左右指针法
+    //region 一(1)、左右指针反转链表
     public static ListNode reverseList(ListNode head) {
         ListNode left = null;
         ListNode right = head;
@@ -26,9 +28,23 @@ public class 反转链表 {
 
         return left;
     }
+
+    //反转范围内链表
+    public static ListNode reverseList(ListNode head, ListNode end) {
+        ListNode left = null;
+        ListNode right = head;
+        while (right != end) {
+            ListNode tmp = right.next;
+            right.next = left;
+            left = right;
+            right = tmp;
+        }
+
+        return left;
+    }
     //endregion
 
-    //region 一、递归反转整个链表
+    //region 一(2)、递归反转整个链表
     /*
      * 原始链表： 1 -> 2 -> 3 -> null
      * 第一遍

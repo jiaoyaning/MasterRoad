@@ -5,10 +5,6 @@
       <module name="java_kotlin" target="1.7" />
       <module name="Leetcode" target="1.8" />
       <module name="MasterRoad.animation" target="1.8" />
-      <module name="MasterRoad.app" target="11" />
-      <module name="MasterRoad.common" target="11" />
-      <module name="MasterRoad.compose" target="11" />
-      <module name="MasterRoad.ipc" target="11" />
     </bytecodeTargetLevel>
   </component>
 </project>

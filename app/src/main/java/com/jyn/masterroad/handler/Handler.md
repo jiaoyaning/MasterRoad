@@ -12,7 +12,7 @@
     Message.obtain(handler, new Runnable() {
         @Override
         public void run() {
-                
+
         }
     });
    ```
@@ -100,11 +100,14 @@ public void dispatchMessage(@NonNull Message msg) {
 
 ****
 
-**`quit(boolean safe)`方法的工作**
-由`Looper`调用
+**`quit(boolean safe)`方法**
+由`Looper`调用，`Looper`调用时并不是立刻真正退出，而是将类成员`mQuitting`设置为`true`。
+在`Looper`通过`MessageQueue.next()`方法对消息队列进行遍历的时候，如果遇到`mQuitting == true`再去执行真正的退出。
+这样的好处就是，一切行为都由`Looper`去触发，`MessageQueue`只负责维护`Message`以及记录状态。
+
 >**问：`safe`与`!safe`的区别?**
->1. `safe`的情况下会触发`removeAllFutureMessagesLocked()`方法，只移除现在还不能处理`(when > now)`的`Message`
->2. `!safe`的情况下触发`removeAllMessagesLocked()`，将消息队列全部清空
+>>1. `safe`的情况下会触发`removeAllFutureMessagesLocked()`方法，只移除现在还不能处理`(when > now)`的`Message`
+>>2. `!safe`的情况下触发`removeAllMessagesLocked()`，将消息队列全部清空
 
 ****
 
@@ -119,6 +122,15 @@ public void dispatchMessage(@NonNull Message msg) {
 **问：`MessageQueue`为什么要用链表结构?**
 >1. `Message`在系统中数量很多，如果用`array`实现的话会占用大量连续内存空间
 >2. `Message`虽然数量很多但是处理的也很快，而且数量不定，也就是说如果用数组实现的话为了避免空间浪费，则需要对数组不停的进行扩容和减容，非常影响效率，而且会造成内存抖动
+
+# Looper
+**问：Looper.loop()启动了一个死循环，为什么没有阻塞主线程？**
+>死循环不会阻塞主线程的原因是，死循环本身就是这个线程的主要任务！ 
+再来想一想`Looper`是干嘛的？`Looper`是从`MessageQueue`里面取出消息并回调`Handler`处理的。
+>当队列没有消息的时候证明主线程也不再需要刷新任何UI，也不需要处理任何数据，所以为了不让`Looper`空转导致资源浪费才有了`MessageQueue`的`阻塞机制`。  
+>
+>**另外一个问题，整个线程处于死循环中，那么外部的事件是如何进入到`MessageQueue`中的呢？**  
+>> 其实这个问题也很容易理解，我们知道`Activity`全是由`AMS`统一维护的，`Activity`在启动的时候就和`AMS`建立了联系，如果有外部事件（触摸等）需要被处理的话，会由`AMS`通过`App`中的其他线程将`Message`抛到主线程的`MessageQueue`中。
 
 # 消息屏障与异步消息
 

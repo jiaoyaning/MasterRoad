@@ -4,7 +4,7 @@ import com.jyn.masterroad.R
 import com.jyn.masterroad.base.BaseActivity
 import com.jyn.masterroad.databinding.ActivityRecyclerViewBinding
 
-/**
+/*
  * 抽丝剥茧RecyclerView - 化整为零
  * https://www.jianshu.com/p/1ae2f2fcff2c
  *
@@ -25,6 +25,13 @@ import com.jyn.masterroad.databinding.ActivityRecyclerViewBinding
  *
  * View的有效曝光监控（上）｜RecyclerView 篇
  * https://juejin.cn/post/6844904190041407501
+ *
+ * 面试官：RecyclerView布局动画原理了解吗？
+ * https://mp.weixin.qq.com/s/SQbgostu3_A966KygyOcTw
+ *
+ * 老大爷都能看懂的RecyclerView动画原理
+ * https://mp.weixin.qq.com/s/Vz6GZOcxxiBi4M4Z8SDEpw
+ * https://mp.weixin.qq.com/s/GN4OiZVTpGWSvdVas7LfkQ
  */
 class RecyclerViewActivity : BaseActivity<ActivityRecyclerViewBinding>(R.layout.activity_recycler_view) {
 

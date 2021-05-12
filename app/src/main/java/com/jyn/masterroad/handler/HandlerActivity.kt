@@ -18,9 +18,6 @@ import com.jyn.masterroad.handler.HandlerTest.Companion.TAG
  * 万字总结-保姆级Handler机制解读
  * https://mp.weixin.qq.com/s/7S9NITBi3sXsqrzxNfMa8Q
  *
- * Handler同步屏障
- * https://mp.weixin.qq.com/s/3H-aQd_jsqTBWslqX_BfLA
- *
  * 万字图文，带你学懂Handler和内存屏障
  * https://mp.weixin.qq.com/s/tbvzs7K5OXIiAKL_DYr20A
  *

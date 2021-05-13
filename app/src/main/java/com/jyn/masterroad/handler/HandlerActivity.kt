@@ -27,6 +27,9 @@ import com.jyn.masterroad.handler.HandlerTest.Companion.TAG
  * 介绍一下 Android Handler 中的 epoll 机制？
  * https://mp.weixin.qq.com/s/ClTE15s9qUaNsInIIwX57w
  *
+ * Linux IO模式及 select、poll、epoll详解
+ * https://segmentfault.com/a/1190000003063859
+ *
  * 面试必备：异步 Handler 十大必问！
  * https://mp.weixin.qq.com/s/RVgGEPw7srV_uwBtlHEGXA
  *

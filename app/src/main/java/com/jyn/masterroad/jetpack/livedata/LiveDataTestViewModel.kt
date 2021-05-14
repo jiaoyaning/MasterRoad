@@ -7,6 +7,9 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.apkfuns.logutils.LogUtils
 
+/**
+ * https://github.com/android/architecture-components-samples/tree/main/LiveDataSample
+ */
 class LiveDataTestViewModel : ViewModel() {
 
     var numString: MutableLiveData<String>? = null //千万不能直接初始化一个默认值，否则get时就会永远获取默认值

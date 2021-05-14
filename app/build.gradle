@@ -103,6 +103,7 @@ dependencies {
 //    implementation androidx["lifecycle-process"]
     implementation androidx["viewmodel"]
     implementation androidx["livedata"]
+    implementation androidx["livedata-ktx"]
     implementation androidx["activity-ktx"] //协程用得到
     implementation androidx["fragment-ktx"]
     implementation androidx["hilt"]

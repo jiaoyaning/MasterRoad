@@ -5,11 +5,12 @@ import com.apkfuns.logutils.LogUtils
 import java.util.concurrent.Callable
 import java.util.concurrent.Executors
 import java.util.concurrent.FutureTask
+import javax.inject.Inject
 
 /**
  * 线程创建的四种方式
  */
-class ThreadCreate {
+class ThreadCreate @Inject constructor() {
 
     //region 1.继承Thread类
     fun threadTest(v: View?) {

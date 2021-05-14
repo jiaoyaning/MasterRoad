@@ -5,6 +5,7 @@ import com.apkfuns.logutils.LogUtils
 import java.util.concurrent.ExecutorService
 import java.util.concurrent.Executors
 import java.util.concurrent.TimeUnit
+import javax.inject.Inject
 
 /*
  * 线程池关闭的几种方式
@@ -12,7 +13,7 @@ import java.util.concurrent.TimeUnit
  * Java线程池是如何保证核心线程不被销毁的
  * https://blog.csdn.net/smile_from_2015/article/details/105259789
  */
-class ExecutorsTest {
+class ExecutorsTest @Inject constructor() {
 
     private val executor: ExecutorService by lazy {
         Executors.newCachedThreadPool()                 //创建一个可缓存线程池，如果线程池长度超过处理需要，可灵活回收空闲线程，若无可回收，则新建线程。

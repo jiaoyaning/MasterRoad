@@ -68,7 +68,6 @@ https://zhuanlan.zhihu.com/p/96098896
 
 Surface、SurfaceFlinger和Canvas的关系?
 
-
 ## Android ANR：原理分析及解决办法
 https://www.jianshu.com/p/388166988cef
 

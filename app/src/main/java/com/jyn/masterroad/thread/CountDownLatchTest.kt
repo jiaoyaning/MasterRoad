@@ -4,6 +4,7 @@ import android.view.View
 import com.apkfuns.logutils.LogUtils
 import java.util.concurrent.CountDownLatch
 import java.util.concurrent.TimeUnit
+import javax.inject.Inject
 
 /*
  * CountDownLatch和CyclicBarrier 傻傻的分不清？超长精美图文又来了 TODO
@@ -14,7 +15,7 @@ import java.util.concurrent.TimeUnit
  *
  * CountDownLatch主要作用是使一个线程等待其他线程各自执行完毕后再执行
  */
-class CountDownLatchTest {
+class CountDownLatchTest @Inject constructor(){
 
     /*
      * await可阻塞当前线程，只有等CountDownLatch.countDown()结束后才会继续执行

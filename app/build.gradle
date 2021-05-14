@@ -107,6 +107,8 @@ dependencies {
     implementation androidx["fragment-ktx"]
     implementation androidx["hilt"]
     kapt androidx["hilt-compiler"]
+    implementation androidx["hilt-viewmodel"]
+    kapt androidx["hilt-compiler2"]
 
     implementation kotlin["kotlin"]
     implementation kotlin["coroutines"]

@@ -11,6 +11,8 @@ import com.jyn.masterroad.base.BaseActivity
 import com.jyn.masterroad.databinding.ActivityHandlerBinding
 import java.lang.reflect.Method
 import com.jyn.masterroad.handler.HandlerTest.Companion.TAG
+import dagger.hilt.android.AndroidEntryPoint
+import javax.inject.Inject
 
 /*
  * 享元模式 TODO

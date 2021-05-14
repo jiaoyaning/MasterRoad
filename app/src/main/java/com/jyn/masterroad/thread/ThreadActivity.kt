@@ -6,6 +6,8 @@ import com.jyn.masterroad.R
 import com.jyn.masterroad.base.BaseActivity
 import com.jyn.masterroad.databinding.ActivityThreadBinding
 import com.jyn.masterroad.thread.lock.SyncAndLockTest
+import dagger.hilt.android.AndroidEntryPoint
+import javax.inject.Inject
 
 /*
  * JDK线程池源码分析之ThreadPoolExecutor
@@ -39,15 +41,32 @@ import com.jyn.masterroad.thread.lock.SyncAndLockTest
  * 深入分析 java 8 编程语言规范：Threads and Locks //TODO
  * https://javadoop.com/post/Threads-And-Locks-md
  */
+@AndroidEntryPoint
 @Route(path = RoutePath.Thread.path)
-class ThreadActivity : BaseActivity<ActivityThreadBinding>(R.layout.activity_thread) {
+class ThreadActivity : BaseActivity<ActivityThreadBinding>
+    (R.layout.activity_thread) {
+
+    @Inject
+    lateinit var threadCreate: ThreadCreate
+
+    @Inject
+    lateinit var executorsTest: ExecutorsTest
+
+    @Inject
+    lateinit var threadWaitNotifyTest: ThreadWaitNotifyTest
+
+    @Inject
+    lateinit var threadLocalTest: ThreadLocalTest
+
+    @Inject
+    lateinit var countDownLatchTest: CountDownLatchTest
 
     override fun initView() {
-        binding.threadCreate = ThreadCreate()
-        binding.executors = ExecutorsTest()
-        binding.threadWaitNotify = ThreadWaitNotifyTest()
-        binding.threadLocal = ThreadLocalTest()
-        binding.countDownLatch = CountDownLatchTest()
+        binding.threadCreate = threadCreate
+        binding.executors = executorsTest
+        binding.threadWaitNotify = threadWaitNotifyTest
+        binding.threadLocal = threadLocalTest
+        binding.countDownLatch = countDownLatchTest
         binding.syncAndLockTest = SyncAndLockTest()
     }
 }

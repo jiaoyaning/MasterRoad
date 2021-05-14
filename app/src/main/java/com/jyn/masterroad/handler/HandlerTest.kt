@@ -1,9 +1,14 @@
 package com.jyn.masterroad.handler
 
+import android.app.Application
 import android.os.Handler
 import android.os.Handler.Callback
 import android.os.Looper
 import android.os.Message
+import android.view.View
+import androidx.hilt.Assisted
+import androidx.hilt.lifecycle.ViewModelInject
+import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import com.apkfuns.logutils.LogUtils
 
@@ -25,7 +30,7 @@ class HandlerTest : ViewModel() {
     }
 
     //2. 带callback的message
-    fun messageWithCallback() {
+    fun messageWithCallback(v: View) {
         LogUtils.tag(TAG).i("--> 带callback的message")
         val message = Message.obtain(handler) {
             LogUtils.tag(TAG).i("这是重写了 Runnable 的 Message ")
@@ -35,7 +40,7 @@ class HandlerTest : ViewModel() {
     }
 
     //3. 不带callback的message
-    fun messageNotCallback() {
+    fun messageNotCallback(v: View) {
         LogUtils.tag(TAG).i("--> 不带callback的message")
         val obtainMessage = handler.obtainMessage()
         obtainMessage.let {
@@ -44,7 +49,6 @@ class HandlerTest : ViewModel() {
         }
     }
     //endregion
-
 
 
 }

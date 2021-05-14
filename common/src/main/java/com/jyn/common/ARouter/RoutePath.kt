@@ -23,7 +23,13 @@ object RoutePath {
     object LiveData {
         const val name = "LiveData"
         const val path = "/app/LiveDataActivity"
-        const val span = 1
+        const val span = 2
+    }
+    // Hilt测试
+    object Hilt {
+        const val name = "Hilt"
+        const val path = "/app/Hilt"
+        const val span = 2
     }
 
     // RxJava 测试

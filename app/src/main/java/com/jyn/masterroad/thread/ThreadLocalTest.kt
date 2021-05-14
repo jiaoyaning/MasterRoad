@@ -2,6 +2,7 @@ package com.jyn.masterroad.thread
 
 import android.view.View
 import com.apkfuns.logutils.LogUtils
+import javax.inject.Inject
 
 /*
  * ThreadLocal详解
@@ -13,7 +14,7 @@ import com.apkfuns.logutils.LogUtils
  * 一个ThreadLocal和面试官大战30个回合
  * https://mp.weixin.qq.com/s/JUb2GR4CmokO0SklFeNmwg
  */
-class ThreadLocalTest {
+class ThreadLocalTest @Inject constructor(){
     private val threadLocal: ThreadLocal<String> by lazy {
         ThreadLocal<String>().apply {
             set("threadLocal 父线程 value")

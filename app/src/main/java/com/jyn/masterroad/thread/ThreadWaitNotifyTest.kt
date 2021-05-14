@@ -2,8 +2,9 @@ package com.jyn.masterroad.thread
 
 import android.view.View
 import com.apkfuns.logutils.LogUtils
+import javax.inject.Inject
 
-class ThreadWaitNotifyTest {
+class ThreadWaitNotifyTest @Inject constructor() {
     private val lock = Object() //设置一个锁对象
 
     // region 1. wait 和 notify
@@ -23,7 +24,7 @@ class ThreadWaitNotifyTest {
         }
     }
 
-    fun startThread(v:View) {
+    fun startThread(v: View) {
         thread.start()
     }
 

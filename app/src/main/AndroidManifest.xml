@@ -12,23 +12,14 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="AllowBackup">
-        <activity android:name=".kotlin.koin.KoinActivity"></activity>
-        <activity android:name=".MainActivity">
-
-            <!-- android:excludeFromRecents="true"> -->
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
+        <activity android:name=".kotlin.koin.KoinActivity" />
         <activity android:name=".kotlin.flow.FlowActivity" />
         <activity android:name=".okhttp_retrofit.OkhttpActivity" />
         <activity android:name=".jetpack.workmanager.WorkManagerActivity" />
         <activity android:name=".base.BaseActivity" />
         <activity android:name=".nestedscrolling.NestedScrolling2Activity" />
         <activity android:name=".kotlin.coroutines.KotlinCoroutinesActivity" />
-        <activity android:name=".recyclerview.RecyclerViewActivity" />
+        <activity android:name="com.jyn.masterroad.nestedscrolling.recyclerview.RecyclerViewActivity" />
         <activity android:name=".nestedscrolling.NestedScrolling1Activity" />
         <activity android:name=".nestedscrolling.scrollview.ScrollViewActivity" /> <!-- startup初始化 -->
         <activity android:name=".constraintLayout.MotionLayoutActivity" />
@@ -42,6 +33,17 @@
         <activity android:name=".jetpack.hilt.HiltDaggerActivity" />
         <activity android:name=".thread.ThreadActivity" />
         <activity android:name=".rxjava.RxJavaActivity" />
+        <activity
+            android:name=".MainActivity"
+            android:configChanges="orientation|screenSize|keyboardHidden">
+
+            <!-- android:excludeFromRecents="true"> -->
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
 
         <provider
             android:name="androidx.startup.InitializationProvider"
@@ -49,7 +51,7 @@
             android:exported="false"
             tools:node="merge">
             <meta-data
-                android:name="com.jyn.masterroad.jetpack.startup.LitePalInitializer"
+                android:name="com.jyn.masterroad.jetpack.startup.ARouterInitializer"
                 android:value="androidx.startup" />
             <meta-data
                 android:name="com.jyn.masterroad.jetpack.startup.KoinInitializer"

@@ -25,24 +25,36 @@
             style="@style/tv"
             android:layout_marginTop="8dp"
             android:onClick="@{click}"
-            android:text="data测试"
+            android:text="类测试"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView31" />
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/textView31"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:layout_height="20dp"
+            android:layout_marginTop="8dp"
+            android:gravity="center"
             android:text="@{koinVM.num.toString()}"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.498"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toBottomOf="@+id/koin_btn_data_test" />
 
         <Button
             android:id="@+id/button20"
             style="@style/tv"
+            android:layout_marginTop="8dp"
             android:onClick="@{() -> koinVM.add()}"
             android:text="viewmodel ++"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView31" />
+
+        <Button
+            android:id="@+id/koin_btn_named_test"
+            style="@style/tv2"
+            android:onClick="@{click}"
+            android:text="打印"
             app:layout_constraintStart_toEndOf="@+id/koin_btn_data_test"
             app:layout_constraintTop_toTopOf="@+id/koin_btn_data_test" />
     </androidx.constraintlayout.widget.ConstraintLayout>

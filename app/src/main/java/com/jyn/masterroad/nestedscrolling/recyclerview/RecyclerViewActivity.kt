@@ -1,4 +1,4 @@
-package com.jyn.masterroad.recyclerview
+package com.jyn.masterroad.nestedscrolling.recyclerview
 
 import com.jyn.masterroad.R
 import com.jyn.masterroad.base.BaseActivity

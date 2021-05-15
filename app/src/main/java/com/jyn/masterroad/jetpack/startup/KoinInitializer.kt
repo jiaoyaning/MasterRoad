@@ -10,9 +10,13 @@ import org.koin.core.logger.Level
 
 class KoinInitializer : Initializer<Unit> {
     override fun create(context: Context) {
+        //注意: startKoin只能执行一次，如果多次执行会抛出"A KoinContext is already started
         startKoin {
+            //使用Koin Android Logger
             androidLogger(Level.INFO)
+            //声明Android上下文
             androidContext(context)
+            //声明要使用的模块
             modules(appKoinModule)
         }
     }

@@ -18,7 +18,7 @@ import com.jyn.masterroad.BuildConfig
  * 使用 Jetpack App Startup 库减少应用启动时间
  * https://mp.weixin.qq.com/s/Pw0QgVwHntWwoLD0ChQihg
  */
-class LitePalInitializer : Initializer<Unit> {
+class ARouterInitializer : Initializer<Unit> {
     override fun create(context: Context) {
         if (BuildConfig.DEBUG) {
             ARouter.openLog()

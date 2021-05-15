@@ -6,3 +6,8 @@ https://mp.weixin.qq.com/s/NaCFDOGuoHkfQZZjvY66Jg
 
 ## 面试官问为什么新生代不用标记清除算法
 https://mp.weixin.qq.com/s/qGL36Q1npiYKKTOG5SVv1A
+
+## 图文详解Java对象内存布局
+https://mp.weixin.qq.com/s/qELVigGAxHCXvQ36XIFQUQ
+
+

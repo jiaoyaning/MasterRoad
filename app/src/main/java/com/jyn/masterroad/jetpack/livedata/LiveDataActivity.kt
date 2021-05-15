@@ -30,7 +30,8 @@ import kotlinx.android.synthetic.main.activity_live_data.*
  * https://mp.weixin.qq.com/s/ir3DBkGt5mna3RDjTpRFOQ
  */
 @Route(path = RoutePath.LiveData.path)
-class LiveDataActivity : BaseActivity<ActivityLiveDataBinding>(R.layout.activity_live_data) {
+class LiveDataActivity : BaseActivity<ActivityLiveDataBinding>
+    (R.layout.activity_live_data) {
 
     lateinit var viewModel: LiveDataTestViewModel
 

@@ -90,6 +90,12 @@ object RoutePath {
     object KotlinCoroutines {
         const val name = "Kotlin -> Coroutines"
         const val path = "/app/KotlinCoroutines"
-        const val span = 1
+        const val span = 2
+    }
+    // Kotlin Coroutines协程
+    object KotlinKoin {
+        const val name = "Kotlin -> Koin"
+        const val path = "/app/Koin"
+        const val span = 2
     }
 }

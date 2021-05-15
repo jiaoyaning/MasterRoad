@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="click"
+            type="android.view.View.OnClickListener" />
+
+        <variable
+            name="koinVM"
+            type="com.jyn.masterroad.kotlin.koin.data.KoinViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".kotlin.koin.KoinActivity"
+        tools:ignore="HardcodedText">
+
+        <Button
+            android:id="@+id/koin_btn_data_test"
+            style="@style/tv"
+            android:layout_marginTop="8dp"
+            android:onClick="@{click}"
+            android:text="data测试"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView31" />
+
+        <TextView
+            android:id="@+id/textView31"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{koinVM.num.toString()}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Button
+            android:id="@+id/button20"
+            style="@style/tv"
+            android:onClick="@{() -> koinVM.add()}"
+            android:text="viewmodel ++"
+            app:layout_constraintStart_toEndOf="@+id/koin_btn_data_test"
+            app:layout_constraintTop_toTopOf="@+id/koin_btn_data_test" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

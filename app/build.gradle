@@ -114,8 +114,10 @@ dependencies {
     implementation kotlin["kotlin"]
     implementation kotlin["coroutines"]
     implementation kotlin["koin"]
+    implementation kotlin["koin-android"]
+    implementation kotlin["koin-android-ext"]
     implementation kotlin["reflect"]
-
+    implementation kotlin["coil"]
 
     implementation http["okio"]
     implementation http["okhttp3"]
@@ -131,7 +133,6 @@ dependencies {
     implementation utils["ultimatebarx"]
     implementation utils["eventbus"]
     implementation utils["glide"]
-    implementation utils["coil"]
     annotationProcessor utils["glide-compiler"]
     debugImplementation utils["leakcanary"]
     implementation utils["arouter"]

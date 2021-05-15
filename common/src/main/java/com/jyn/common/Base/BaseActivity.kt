@@ -26,6 +26,7 @@ abstract class BaseActivity<dataBinding : ViewDataBinding>(var id: Int = 0) : Ap
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
+        binding.lifecycleOwner = this //不添加这句，视图可能会不刷新
         initData()
         initView()
     }

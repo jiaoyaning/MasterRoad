@@ -4,8 +4,9 @@ import androidx.hilt.Assisted
 import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.*
 
-/**
- * Created by jiaoyaning on 2021/5/14.
+/*
+ * Android-Jetpack笔记-ViewModelSavedState
+ * https://zhuanlan.zhihu.com/p/143115298
  */
 class HiltViewModelSaved @ViewModelInject constructor(
     @Assisted private val savedStateHandle: SavedStateHandle//SavedStateHandle 用于进程被终止时，存储和恢复数据

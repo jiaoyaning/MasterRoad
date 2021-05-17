@@ -14,7 +14,7 @@ import java.util.concurrent.locks.Lock;
  *
  * 自定义互斥锁
  */
-class MyTestLock implements Lock {
+public class MyTestLock implements Lock {
 
     MyTestSync sync = new MyTestSync();
 

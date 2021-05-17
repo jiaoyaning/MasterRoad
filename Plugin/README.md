@@ -31,3 +31,6 @@ https://mp.weixin.qq.com/s/xcgKPK7RFUkujNYY5nxu3A
 
 Transform和Task之间有关？| Gradle
 https://juejin.cn/post/6875141808825991181
+
+## 自动化埋点
+https://mp.weixin.qq.com/s/jmQAzwoiTH_TBU0-KI989A

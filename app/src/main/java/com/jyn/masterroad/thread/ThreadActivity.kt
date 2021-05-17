@@ -5,7 +5,6 @@ import com.jyn.common.ARouter.RoutePath
 import com.jyn.masterroad.R
 import com.jyn.masterroad.base.BaseActivity
 import com.jyn.masterroad.databinding.ActivityThreadBinding
-import com.jyn.masterroad.thread.lock.SyncAndLockTest
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 

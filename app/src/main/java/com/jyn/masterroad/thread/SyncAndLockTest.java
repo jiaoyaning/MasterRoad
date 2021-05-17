@@ -1,8 +1,10 @@
-package com.jyn.masterroad.thread.lock;
+package com.jyn.masterroad.thread;
 
 import android.view.View;
 
 import com.apkfuns.logutils.LogUtils;
+import com.jyn.masterroad.thread.lock.MyTestAQS;
+import com.jyn.masterroad.thread.lock.MyTestLock;
 
 /*
  * 万字超强图文讲解AQS以及ReentrantLock应用
@@ -22,6 +24,9 @@ import com.apkfuns.logutils.LogUtils;
  *
  * Java并发编程之锁机制之 ReentrantReadWriteLock（读写锁）
  * https://www.jianshu.com/p/416e16eea7da
+ *
+ * 面试侃集合 | ArrayBlockingQueue篇
+ * https://mp.weixin.qq.com/s/6hOBvfTitQpz8w53Hs0ymA
  */
 public class SyncAndLockTest {
     private static final String TAG = "lock";

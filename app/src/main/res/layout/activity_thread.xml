@@ -37,7 +37,7 @@
         <!-- SyncAndLock -->
         <variable
             name="syncAndLockTest"
-            type="com.jyn.masterroad.thread.lock.SyncAndLockTest" />
+            type="com.jyn.masterroad.thread.SyncAndLockTest" />
 
     </data>
 

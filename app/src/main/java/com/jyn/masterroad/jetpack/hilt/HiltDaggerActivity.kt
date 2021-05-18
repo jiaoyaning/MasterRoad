@@ -1,9 +1,7 @@
 package com.jyn.masterroad.jetpack.hilt;
 
 import androidx.activity.viewModels
-import androidx.lifecycle.Observer
 import com.alibaba.android.arouter.facade.annotation.Route
-import com.apkfuns.logutils.LogUtils
 import com.jyn.common.ARouter.RoutePath
 import com.jyn.masterroad.R
 import com.jyn.masterroad.base.BaseActivity
@@ -30,12 +28,14 @@ class HiltDaggerActivity : BaseActivity<ActivityHiltDaggerBinding>
     (R.layout.activity_hilt_dagger) {
 
     @Inject
-    lateinit var hiltInjectData: HiltInjectData
+    lateinit var hiltData: HiltData
 
     private val hitViewModule: HiltViewModel by viewModels()
+    private val hitViewModuleSaved: HiltViewModelSaved by viewModels()
 
     override fun initView() {
-        binding.hiltInject = hiltInjectData
+        binding.hiltInject = hiltData
         binding.hiltViewModel = hitViewModule
+        hitViewModuleSaved.insert()
     }
 }

@@ -28,6 +28,9 @@ import kotlinx.android.synthetic.main.activity_live_data.*
  *
  * Android 架构组件 LiveData 的实现
  * https://mp.weixin.qq.com/s/ir3DBkGt5mna3RDjTpRFOQ
+ *
+ * 面试官：请你仔细说说 Jetpack LiveData 的粘性事件？
+ * https://www.jianshu.com/p/e5455038aba3
  */
 @Route(path = RoutePath.LiveData.path)
 class LiveDataActivity : BaseActivity<ActivityLiveDataBinding>

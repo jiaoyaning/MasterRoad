@@ -7,7 +7,7 @@ import javax.inject.Inject
 /**
  * 一个最基本的Inject Data
  */
-class HiltInjectData @Inject constructor() {
+class HiltData @Inject constructor() {
     companion object {
         const val TAG = "Hilt"
     }

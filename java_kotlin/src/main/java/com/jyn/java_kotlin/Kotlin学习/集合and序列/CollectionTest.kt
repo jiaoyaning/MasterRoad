@@ -1,4 +1,4 @@
-package com.jyn.java_kotlin.Kotlin学习.集合
+package com.jyn.java_kotlin.Kotlin学习.集合and序列
 
 /*
  * Kotlin——高级篇（五）：集合之常用操作符汇总

@@ -32,15 +32,10 @@ class HiltDaggerActivity : BaseActivity<ActivityHiltDaggerBinding>
     @Inject
     lateinit var hiltInjectData: HiltInjectData
 
-    private val mHitViewModule: HiltViewModel by viewModels()
+    private val hitViewModule: HiltViewModel by viewModels()
 
     override fun initView() {
         binding.hiltInject = hiltInjectData
-    }
-
-    override fun initData() {
-        mHitViewModule.liveData.observe(this, Observer {
-            LogUtils.tag(HiltInjectData.TAG).i("viewModels 如果打印出数据就算成功 --> $it")
-        })
+        binding.hiltViewModel = hitViewModule
     }
 }

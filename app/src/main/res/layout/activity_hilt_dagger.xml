@@ -8,6 +8,10 @@
         <variable
             name="hiltInject"
             type="com.jyn.masterroad.jetpack.hilt.HiltInjectData" />
+
+        <variable
+            name="hiltViewModel"
+            type="com.jyn.masterroad.jetpack.hilt.HiltViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -31,7 +35,48 @@
             style="@style/tv"
             android:onClick="@{hiltInject.print}"
             android:text="测试"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView30" />
+
+        <TextView
+            android:id="@+id/textView33"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:text="ViewModel注入"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/button" />
+
+        <TextView
+            android:id="@+id/textView32"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{`ViewModel:`+hiltViewModel.num.toString()}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView33"
+            tools:text="测试值" />
+
+        <Button
+            android:id="@+id/button18"
+            style="@style/tv2"
+            android:onClick="@{() -> hiltViewModel.add()}"
+            android:text="+1"
+            app:layout_constraintEnd_toStartOf="@+id/button21"
+            app:layout_constraintHorizontal_chainStyle="spread"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView32" />
+
+        <Button
+            android:id="@+id/button21"
+            style="@style/tv2"
+            android:onClick="@{() -> hiltViewModel.subtract()}"
+            android:text="-1"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/button18"
+            app:layout_constraintTop_toTopOf="@+id/button18" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

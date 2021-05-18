@@ -76,3 +76,6 @@ https://mp.weixin.qq.com/s/BeYCM6AUsJ9qzhb5_XAweQ
 
 ## onSaveInstanceState 的数据存在哪里？为什么限制了大小？
 https://zhuanlan.zhihu.com/p/150935875
+
+## Glide 是如何管理生命周期的
+https://mp.weixin.qq.com/s/Lu5xXQsshVDFCPhY1YcoMg

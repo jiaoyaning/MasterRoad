@@ -10,7 +10,7 @@ import org.koin.core.context.GlobalContext
 /*
  * 当我们其他类中使用时需要实现 KoinComponent 接口或者直接 GlobalContext 类获取
  */
-class KoinViewModel(var repo: HelloRepository) : ViewModel(), KoinComponent {
+class KoinViewModel(repo: HelloRepository) : ViewModel(), KoinComponent {
     companion object {
         const val TAG = "Koin"
     }
@@ -21,7 +21,8 @@ class KoinViewModel(var repo: HelloRepository) : ViewModel(), KoinComponent {
     var num: MutableLiveData<Int> = MutableLiveData(0)
 
     init {
-        LogUtils.tag(TAG).i("KoinTestData ——> 初始化 $parameterData1 ; $parameterData2")
+        LogUtils.tag(TAG)
+            .i("KoinTestData ——> 初始化 ${repo.getData()} ; $parameterData1 ; $parameterData2")
     }
 
     fun add() {

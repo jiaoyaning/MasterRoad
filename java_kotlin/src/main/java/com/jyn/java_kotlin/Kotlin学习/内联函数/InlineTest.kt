@@ -1,4 +1,4 @@
-package com.jyn.java_kotlin.Kotlin学习
+package com.jyn.java_kotlin.Kotlin学习.内联函数
 
 /*
  * inline、noinline、crossinline傻傻分不清楚

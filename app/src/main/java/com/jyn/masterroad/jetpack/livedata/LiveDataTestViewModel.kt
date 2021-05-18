@@ -5,6 +5,7 @@ import androidx.databinding.Observable
 import androidx.databinding.ObservableInt
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.liveData
 import com.apkfuns.logutils.LogUtils
 
 /**
@@ -21,6 +22,10 @@ class LiveDataTestViewModel : ViewModel() {
         }
 
     var num: MutableLiveData<Int> = MutableLiveData(0)
+
+    val liveData = liveData {
+        emit(" i am a ViewModelInject")
+    }
 
     /*
      * ObservableField只有在数据发生改变时UI才会收到通知，而LiveData不同，

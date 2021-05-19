@@ -12,6 +12,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="AllowBackup">
+        <activity android:name=".jetpack.viewmodel.ViewModelActivity"></activity>
         <activity android:name=".kotlin.koin.KoinActivity" />
         <activity android:name=".kotlin.flow.FlowActivity" />
         <activity android:name=".okhttp_retrofit.OkhttpActivity" />
@@ -19,7 +20,7 @@
         <activity android:name=".base.BaseActivity" />
         <activity android:name=".nestedscrolling.NestedScrolling2Activity" />
         <activity android:name=".kotlin.coroutines.KotlinCoroutinesActivity" />
-        <activity android:name="com.jyn.masterroad.nestedscrolling.recyclerview.RecyclerViewActivity" />
+        <activity android:name=".nestedscrolling.recyclerview.RecyclerViewActivity" />
         <activity android:name=".nestedscrolling.NestedScrolling1Activity" />
         <activity android:name=".nestedscrolling.scrollview.ScrollViewActivity" /> <!-- startup初始化 -->
         <activity android:name=".constraintLayout.MotionLayoutActivity" />

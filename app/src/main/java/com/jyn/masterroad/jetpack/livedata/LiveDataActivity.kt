@@ -11,6 +11,7 @@ import com.jyn.common.ARouter.RoutePath
 import com.jyn.masterroad.R
 import com.jyn.masterroad.base.BaseActivity
 import com.jyn.masterroad.databinding.ActivityLiveDataBinding
+import com.jyn.masterroad.jetpack.livedata.LiveDataTestViewModel.Companion.TAG
 import kotlinx.android.synthetic.main.activity_live_data.*
 
 /*
@@ -50,12 +51,12 @@ class LiveDataActivity : BaseActivity<ActivityLiveDataBinding>
         }
 
         viewModel.num.observe(this, Observer {
-            LogUtils.tag("main").i("Observer -> num改变了$it")
+            LogUtils.tag(TAG).i("Observer -> num改变了$it")
             tv_num.text = it.toString()
         })
 
         viewModel.numString?.observe(this, Observer {
-            LogUtils.tag("main").i("Observer -> numString改变了$it")
+            LogUtils.tag(TAG).i("Observer -> numString改变了$it")
         })
     }
 }

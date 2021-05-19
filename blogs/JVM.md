@@ -10,4 +10,6 @@ https://mp.weixin.qq.com/s/qGL36Q1npiYKKTOG5SVv1A
 ## 图文详解Java对象内存布局
 https://mp.weixin.qq.com/s/qELVigGAxHCXvQ36XIFQUQ
 
+## Java历史上有三次破坏双亲委派模型，是哪三次？
+https://mp.weixin.qq.com/s/nC7yo8Cdsnlzc58UEwxs8g
 

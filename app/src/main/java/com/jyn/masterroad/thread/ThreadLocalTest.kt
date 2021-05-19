@@ -13,6 +13,15 @@ import javax.inject.Inject
  *
  * 一个ThreadLocal和面试官大战30个回合
  * https://mp.weixin.qq.com/s/JUb2GR4CmokO0SklFeNmwg
+ *
+ * 自信，这是最好的ThreadLocal分析
+ * https://mp.weixin.qq.com/s/8qfx7sD_vS0iT6wnZCIMtQ
+ *
+ * ThreadLocal的奇思妙想（优秀）
+ * https://mp.weixin.qq.com/s/ucxzyP3GlOdjCRlQgOiy9g
+ *
+ * 弱引用什么时候被回收_面试官：ThreadLocal为什么会发生内存泄漏？
+ * https://blog.csdn.net/weixin_39948210/article/details/110902604
  */
 class ThreadLocalTest @Inject constructor(){
     private val threadLocal: ThreadLocal<String> by lazy {

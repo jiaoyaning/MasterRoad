@@ -21,6 +21,9 @@ import javax.inject.Inject
  *
  * 全方面分析 Hilt 和 Koin 性能
  * https://mp.weixin.qq.com/s/PsiCIOiV8FWVQ9HF8EvJ8w
+ *
+ * Jetpack Hilt有哪些改善又有哪些限制？
+ * https://mp.weixin.qq.com/s/8rsHr3Khqud_vO5doKCg0Q
  */
 @AndroidEntryPoint
 @Route(path = RoutePath.Hilt.path)

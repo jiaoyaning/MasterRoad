@@ -37,6 +37,9 @@ import javax.inject.Inject
  *
  * 面试官：如何提高Message的优先级
  * https://mp.weixin.qq.com/s/nOcI2J6yUW-vTNy-VuZufQ
+ *
+ * 同步屏障与异步消息，从入门到放弃
+ * https://mp.weixin.qq.com/s/f7oJfh5fArN6yPVQmJw-xA
  */
 @Route(path = RoutePath.Handle.path)
 @SuppressLint("NewApi", "DiscouragedPrivateApi", "HandlerLeak")

@@ -29,7 +29,7 @@
         <androidx.appcompat.widget.Toolbar
             android:layout_width="match_parent"
             android:layout_height="@dimen/top_bar_height"
-            app:layout_behavior=".nestedscrolling.Behavior.ToolbarBehavior"
+            app:layout_behavior=".nestedscrolling.behavior.ToolbarBehavior"
             tools:ignore="PrivateResource">
 
             <ImageView
@@ -53,7 +53,7 @@
             android:id="@+id/nested_scrolling_title_bar"
             android:layout_width="match_parent"
             android:layout_height="@dimen/top_bar_height"
-            app:layout_behavior=".nestedscrolling.Behavior.TitleBarBehavior"
+            app:layout_behavior=".nestedscrolling.behavior.TitleBarBehavior"
             tools:visibility="visible">
 
             <TextView
@@ -80,7 +80,7 @@
             android:layout_height="match_parent"
             android:background="#90FFFFFF"
             android:translationY="@dimen/nested_scrolling_content_translation_y"
-            app:layout_behavior=".nestedscrolling.Behavior.ContentBehavior"
+            app:layout_behavior=".nestedscrolling.behavior.ContentBehavior"
             tools:itemCount="30" />
 
     </androidx.coordinatorlayout.widget.CoordinatorLayout>

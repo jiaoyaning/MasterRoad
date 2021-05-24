@@ -10,7 +10,7 @@
 
 # Android
 [Handler](app/src/main/java/com/jyn/masterroad/handler/Handler.md)
-
+[事件分发机制](app/src/main/java/com/jyn/masterroad/touch/事件分发机制.md)
 # 测试
 [Junit](app/src/androidTest/java/com/jyn/masterroad/Junit.md)
 [Espresso & UiAutomator & mockito](app/src/androidTest/java/com/jyn/masterroad/README.md)

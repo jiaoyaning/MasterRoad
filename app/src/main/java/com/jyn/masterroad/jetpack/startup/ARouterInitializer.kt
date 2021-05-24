@@ -15,7 +15,7 @@ import com.jyn.masterroad.BuildConfig
  * 第三方startup框架
  * https://blog.csdn.net/fan757709373/article/details/108526626
  *
- * 使用 Jetpack App Startup 库减少应用启动时间
+ * 使用 Jetpack.md App Startup 库减少应用启动时间
  * https://mp.weixin.qq.com/s/Pw0QgVwHntWwoLD0ChQihg
  */
 class ARouterInitializer : Initializer<Unit> {

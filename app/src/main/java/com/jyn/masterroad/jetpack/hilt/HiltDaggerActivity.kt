@@ -13,16 +13,16 @@ import javax.inject.Inject
  * 官网
  * https://developer.android.google.cn/training/dependency-injection?hl=zh_cn
  *
- * Jetpack 成员 Hilt 实践（一）启程过坑记
+ * Jetpack.md 成员 Hilt 实践（一）启程过坑记
  * https://mp.weixin.qq.com/s/6yqsc6P4aUn5alvzf9PPVg
  *
- * Jetpack 成员 Hilt 结合 App Startup（二）进阶篇
+ * Jetpack.md 成员 Hilt 结合 App Startup（二）进阶篇
  * https://mp.weixin.qq.com/s/-B7pCNFncGaBW3AJEy8zWA
  *
  * 全方面分析 Hilt 和 Koin 性能
  * https://mp.weixin.qq.com/s/PsiCIOiV8FWVQ9HF8EvJ8w
  *
- * Jetpack Hilt有哪些改善又有哪些限制？
+ * Jetpack.md Hilt有哪些改善又有哪些限制？
  * https://mp.weixin.qq.com/s/8rsHr3Khqud_vO5doKCg0Q
  */
 @AndroidEntryPoint

@@ -4,14 +4,18 @@ import android.view.View
 import androidx.databinding.Observable
 import androidx.databinding.ObservableInt
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
 import androidx.lifecycle.liveData
 import com.apkfuns.logutils.LogUtils
+import com.jyn.common.Base.BaseVM
 
 /**
  * https://github.com/android/architecture-components-samples/tree/main/LiveDataSample
  */
-class LiveDataTestViewModel : ViewModel() {
+class LiveDataTestViewModel : BaseVM() {
+
+    companion object {
+        const val TAG = "LiveData"
+    }
 
     var numString: MutableLiveData<String>? = null //千万不能直接初始化一个默认值，否则get时就会永远获取默认值
         get() {

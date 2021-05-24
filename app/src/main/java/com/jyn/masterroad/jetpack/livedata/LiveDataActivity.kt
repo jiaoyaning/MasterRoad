@@ -1,10 +1,7 @@
 package com.jyn.masterroad.jetpack.livedata
 
-import android.os.Bundle
 import android.view.View
-import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProvider
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.apkfuns.logutils.LogUtils
 import com.jyn.common.ARouter.RoutePath
@@ -32,6 +29,9 @@ import kotlinx.android.synthetic.main.activity_live_data.*
  *
  * 面试官：请你仔细说说 Jetpack.md LiveData 的粘性事件？
  * https://www.jianshu.com/p/e5455038aba3
+ *
+ * Jetpack 这么讲就懂了，LiveData原理、粘性事件掌握！
+ * https://mp.weixin.qq.com/s/zW6X1CTnjdb3NX-d7nr6cw
  */
 @Route(path = RoutePath.LiveData.path)
 class LiveDataActivity : BaseActivity<ActivityLiveDataBinding>

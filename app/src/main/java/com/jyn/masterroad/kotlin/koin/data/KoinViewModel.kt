@@ -8,7 +8,7 @@ import org.koin.core.component.get
 import org.koin.core.context.GlobalContext
 
 /*
- * 当我们其他类中使用时需要实现 KoinComponent 接口或者直接 GlobalContext 类获取
+ * 当我们其他类中使用时，需要实现 KoinComponent 接口或者直接 GlobalContext 类获取
  */
 class KoinViewModel(repo: HelloRepository) : ViewModel(), KoinComponent {
     companion object {

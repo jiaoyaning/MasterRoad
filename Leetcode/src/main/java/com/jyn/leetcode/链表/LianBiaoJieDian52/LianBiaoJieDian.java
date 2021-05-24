@@ -1,9 +1,8 @@
-package com.jyn.leetcode.LianBiaoJieDian52;
+package com.jyn.leetcode.链表.LianBiaoJieDian52;
 
 import com.jyn.leetcode.ListNode;
 
 /**
- * Created by jiao on 2020/9/16.
  * 剑指 Offer 52. 两个链表的第一个公共节点
  * https://leetcode-cn.com/problems/liang-ge-lian-biao-de-di-yi-ge-gong-gong-jie-dian-lcof/
  */

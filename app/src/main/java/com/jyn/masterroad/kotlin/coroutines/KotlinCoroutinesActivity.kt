@@ -24,11 +24,9 @@ import kotlinx.coroutines.ExperimentalCoroutinesApi
 @ExperimentalCoroutinesApi
 @Route(path = RoutePath.KotlinCoroutines.path)
 class KotlinCoroutinesActivity : BaseActivity<ActivityKotlinCoroutinesBinding>
-(R.layout.activity_kotlin_coroutines) {
+    (R.layout.activity_kotlin_coroutines) {
 
-    private val kotlinCoroutinesCreate: KotlinCoroutinesCreate by lazy {
-        createVM<KotlinCoroutinesCreate>()
-    }
+    private val kotlinCoroutinesCreate: KotlinCoroutinesCreate by lazy { createVM() }
 
     private val kotlinCoroutinesTest: KotlinCoroutinesTest by lazy {
         createVM<KotlinCoroutinesTest>().apply {

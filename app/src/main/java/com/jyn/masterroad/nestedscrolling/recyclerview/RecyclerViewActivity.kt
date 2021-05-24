@@ -32,6 +32,12 @@ import com.jyn.masterroad.databinding.ActivityRecyclerViewBinding
  * 老大爷都能看懂的RecyclerView动画原理
  * https://mp.weixin.qq.com/s/Vz6GZOcxxiBi4M4Z8SDEpw
  * https://mp.weixin.qq.com/s/GN4OiZVTpGWSvdVas7LfkQ
+ *
+ * 聊聊RecyclerView新出的ConcatAdapter如何使用
+ * https://mp.weixin.qq.com/s/wK9z0_bIDcu0np-034f2gg
+ *
+ * 在 RecyclerView 中使用 ListAdapter
+ * https://mp.weixin.qq.com/s/WZi3cemT4bfrKfDIpjFdbg
  */
 class RecyclerViewActivity : BaseActivity<ActivityRecyclerViewBinding>(R.layout.activity_recycler_view) {
 

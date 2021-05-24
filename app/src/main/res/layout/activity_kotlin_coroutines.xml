@@ -125,7 +125,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:onClick="@{()->create.async()}"
-            android:text="async"
+            android:text="async\n(有返回值，阻塞协程)"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/button14"
             app:layout_constraintTop_toTopOf="@+id/button14" />
@@ -155,7 +155,7 @@
             style="@style/tv2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="withContext"
+            android:text="withContext\n(线程切换)"
             android:onClick="@{()->create.withContext()}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

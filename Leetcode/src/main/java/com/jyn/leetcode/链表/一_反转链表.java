@@ -1,4 +1,4 @@
-package com.jyn.leetcode.反转链表;
+package com.jyn.leetcode.链表;
 
 import com.jyn.leetcode.ListNode;
 

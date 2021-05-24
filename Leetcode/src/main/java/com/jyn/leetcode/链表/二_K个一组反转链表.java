@@ -1,4 +1,4 @@
-package com.jyn.leetcode.反转链表;
+package com.jyn.leetcode.链表;
 
 import com.jyn.leetcode.ListNode;
 
@@ -17,7 +17,7 @@ public class 二_K个一组反转链表 {
      */
     public static ListNode reverseSegment(ListNode head, ListNode end) {
         if (head.next == end)
-            return head;
+            return head; //此处返回的新的链表头
         ListNode last = reverseSegment(head.next, end);
         head.next.next = head;
         head.next = null;
@@ -25,7 +25,7 @@ public class 二_K个一组反转链表 {
     }
 
     public static ListNode reverseKGroup(ListNode head, int k) {
-        if (head == null) {
+        if (head == null) { //因为这次返回的是结尾，结尾是需要为null的
             return null;
         }
         ListNode right = head; //需要反转的右节点
@@ -35,7 +35,7 @@ public class 二_K个一组反转链表 {
         }
         ListNode left = head; //记录开始的位置，被反转后就变成了末尾，再由其指向下一个反转列表
         ListNode newHead = reverseSegment(left, right); //反转后，返回新的头结点
-        left.next = reverseKGroup(right, k);//
+        left.next = reverseKGroup(right, k);//上一段反转成功后，其末尾指向下一段需要反转的链表
         return newHead;
     }
 }

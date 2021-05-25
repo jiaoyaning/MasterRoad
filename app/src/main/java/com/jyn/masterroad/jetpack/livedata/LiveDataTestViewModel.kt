@@ -53,7 +53,7 @@ class LiveDataTestViewModel : BaseVM() {
      * 点击方法设置之，直接在xml中绑定
      */
     fun add(v: View) {
-        num.value = num.value?.plus(1);
+        num.value = num.value?.plus(1)
         numString?.value = num.value.toString()
     }
 

@@ -6,8 +6,12 @@
     <data>
 
         <variable
-            name="handler"
-            type="com.jyn.masterroad.handler.HandlerTest" />
+            name="handlerCreate"
+            type="com.jyn.masterroad.handler.HandlerCreateTest" />
+
+        <variable
+            name="handlerSyncBarrier"
+            type="com.jyn.masterroad.handler.HandlerSyncBarrier" />
 
     </data>
 
@@ -31,17 +35,58 @@
             android:id="@+id/button10"
             style="@style/tv"
             android:layout_marginTop="8dp"
-            android:onClick="@{handler.messageWithCallback}"
+            android:onClick="@{() -> handlerCreate.messageWithCallback()}"
             android:text="message\n带callback"
+            app:layout_constraintEnd_toStartOf="@id/button11"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView25" />
+            app:layout_constraintTop_toBottomOf="@id/textView25" />
 
         <Button
             android:id="@+id/button11"
             style="@style/tv2"
-            android:onClick="@{handler.messageNotCallback}"
+            android:onClick="@{() -> handlerCreate.messageNotCallback()}"
             android:text="message\n不带callback"
-            app:layout_constraintStart_toEndOf="@+id/button10"
-            app:layout_constraintTop_toTopOf="@+id/button10" />
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/button10"
+            app:layout_constraintTop_toTopOf="@id/button10" />
+
+        <TextView
+            android:id="@+id/textView34"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:text="消息屏障 &amp; 异步消息"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/button10" />
+
+        <Button
+            android:id="@+id/button22"
+            style="@style/tv2"
+            android:layout_marginTop="8dp"
+            android:onClick="@{() -> handlerSyncBarrier.postDelayed()}"
+            android:text="同步消息"
+            app:layout_constraintEnd_toStartOf="@id/button23"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/textView34" />
+
+        <Button
+            android:id="@+id/button23"
+            style="@style/tv"
+            android:layout_width="wrap_content"
+            android:onClick="@{()-> handlerSyncBarrier.syncMessage()}"
+            android:text="异步消息"
+            app:layout_constraintEnd_toStartOf="@id/button24"
+            app:layout_constraintStart_toEndOf="@id/button22"
+            app:layout_constraintTop_toTopOf="@id/button22" />
+
+        <Button
+            android:id="@+id/button24"
+            style="@style/tv2"
+            android:onClick="@{() -> handlerSyncBarrier.sendSyncBarrier()}"
+            android:text="发送消息屏障"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/button23"
+            app:layout_constraintTop_toTopOf="@id/button22" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

@@ -1,7 +1,6 @@
 package com.jyn.masterroad.jetpack.livedata
 
 import android.view.View
-import androidx.lifecycle.Observer
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.apkfuns.logutils.LogUtils
 import com.jyn.common.ARouter.RoutePath
@@ -32,6 +31,9 @@ import kotlinx.android.synthetic.main.activity_live_data.*
  *
  * Jetpack 这么讲就懂了，LiveData原理、粘性事件掌握！
  * https://mp.weixin.qq.com/s/zW6X1CTnjdb3NX-d7nr6cw
+ *
+ * LiveData取代EventBus？LiveData的通信原理和粘性事件刨析
+ * https://mp.weixin.qq.com/s/SyHlop4gLDbrbp8S5urMAA
  */
 @Route(path = RoutePath.LiveData.path)
 class LiveDataActivity : BaseActivity<ActivityLiveDataBinding>
@@ -50,12 +52,12 @@ class LiveDataActivity : BaseActivity<ActivityLiveDataBinding>
             viewModel.subtract()
         }
 
-        viewModel.num.observe(this, Observer {
+        viewModel.num.observe(this, {
             LogUtils.tag(TAG).i("Observer -> num改变了$it")
             tv_num.text = it.toString()
         })
 
-        viewModel.numString?.observe(this, Observer {
+        viewModel.numString?.observe(this, {
             LogUtils.tag(TAG).i("Observer -> numString改变了$it")
         })
     }

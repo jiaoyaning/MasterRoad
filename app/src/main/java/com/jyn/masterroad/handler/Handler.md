@@ -92,6 +92,13 @@ public void dispatchMessage(@NonNull Message msg) {
  ```
 
  ## MessageQueue
+ **Handler的Message种类分为3种：**
+>1. 普通消息
+>2. 屏障消息
+>3. 异步消息
+ 
+****
+ 
 **`next()`方法的工作**
 >1. 处理可以立即执行的消息
 >2. 如果有同步屏障则优先处理异步消息

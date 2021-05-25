@@ -33,6 +33,9 @@ import com.jyn.masterroad.databinding.ActivityRecyclerViewBinding
  * https://mp.weixin.qq.com/s/Vz6GZOcxxiBi4M4Z8SDEpw
  * https://mp.weixin.qq.com/s/GN4OiZVTpGWSvdVas7LfkQ
  *
+ * RecyclerView 刷新列表数据的 notifyDataSetChanged() 为什么是昂贵的?
+ * https://mp.weixin.qq.com/s/dS51WxN9RkAGgdFV9_Q1Tg
+ *
  * 聊聊RecyclerView新出的ConcatAdapter如何使用
  * https://mp.weixin.qq.com/s/wK9z0_bIDcu0np-034f2gg
  *

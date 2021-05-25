@@ -27,6 +27,15 @@ import com.jyn.masterroad.thread.lock.MyTestLock;
  *
  * 面试侃集合 | ArrayBlockingQueue篇
  * https://mp.weixin.qq.com/s/6hOBvfTitQpz8w53Hs0ymA
+ *
+ * 图文并茂的聊聊ReentrantReadWriteLock的位运算
+ * https://mp.weixin.qq.com/s/NvNWmqZzpbKGRLhBJq9GuA
+ *
+ * 通俗易懂的ReentrantLock，不懂你来砍我
+ * https://mp.weixin.qq.com/s/ks1-_tsTdWm1FEux42rgZw
+ *
+ * 由浅入深C A S，小白也能与BAT面试官对线
+ * https://mp.weixin.qq.com/s/GR7lLGp9JH4bsAgQB3uLrw
  */
 public class SyncAndLockTest {
     private static final String TAG = "lock";

@@ -3,6 +3,9 @@ package com.jyn.java_kotlin.Kotlin学习.集合and序列
 /*
  * Kotlin——高级篇（五）：集合之常用操作符汇总
  * https://blog.csdn.net/u013212407/article/details/80909970
+ *
+ * Kotlin Collection VS Kotlin Sequence VS Java Stream
+ * https://www.imooc.com/article/311591
  */
 fun main() {
     val lists = mutableListOf<Int>(1, 2, 3, 4)

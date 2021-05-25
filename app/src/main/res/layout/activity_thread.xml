@@ -37,273 +37,283 @@
         <!-- SyncAndLock -->
         <variable
             name="syncAndLockTest"
-            type="com.jyn.masterroad.thread.SyncAndLockTest" />
+            type="com.jyn.masterroad.thread.lock.SyncAndLockTest" />
 
     </data>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".thread.ThreadActivity"
-        tools:ignore="HardcodedText">
+        android:fillViewport="true"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
-        <TextView
-            android:id="@+id/textView14"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="8dp"
-            android:text="线程创建的四种方式"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            tools:context=".thread.ThreadActivity"
+            tools:ignore="HardcodedText">
 
-        <Button
-            android:id="@+id/thread_btn_thread"
-            style="@style/tv"
-            android:layout_marginTop="8dp"
-            android:onClick="@{threadCreate::threadTest}"
-            android:text="Thread"
-            app:layout_constraintEnd_toStartOf="@id/thread_btn_runnable"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/textView14" />
+            <TextView
+                android:id="@+id/textView14"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="8dp"
+                android:text="线程创建的四种方式"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
-        <Button
-            android:id="@+id/thread_btn_runnable"
-            style="@style/tv2"
-            android:onClick="@{threadCreate::runnableThreadTest}"
-            android:text="Runnable"
-            app:layout_constraintEnd_toStartOf="@id/thread_btn_future_task"
-            app:layout_constraintStart_toEndOf="@id/thread_btn_thread"
-            app:layout_constraintTop_toTopOf="@id/thread_btn_thread" />
+            <Button
+                android:id="@+id/thread_btn_thread"
+                style="@style/tv"
+                android:layout_marginTop="8dp"
+                android:onClick="@{threadCreate::threadTest}"
+                android:text="Thread"
+                app:layout_constraintEnd_toStartOf="@id/thread_btn_runnable"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/textView14" />
 
-        <Button
-            android:id="@+id/thread_btn_future_task"
-            style="@style/tv"
-            android:onClick="@{threadCreate::futureTaskTest}"
-            android:text="FutureTask +\nCallable"
-            app:layout_constraintEnd_toStartOf="@id/thread_btn_executors"
-            app:layout_constraintStart_toEndOf="@id/thread_btn_runnable"
-            app:layout_constraintTop_toTopOf="@id/thread_btn_thread" />
+            <Button
+                android:id="@+id/thread_btn_runnable"
+                style="@style/tv2"
+                android:onClick="@{threadCreate::runnableThreadTest}"
+                android:text="Runnable"
+                app:layout_constraintEnd_toStartOf="@id/thread_btn_future_task"
+                app:layout_constraintStart_toEndOf="@id/thread_btn_thread"
+                app:layout_constraintTop_toTopOf="@id/thread_btn_thread" />
 
-        <Button
-            android:id="@+id/thread_btn_executors"
-            style="@style/tv2"
-            android:onClick="@{threadCreate::executorsTest}"
-            android:text="Executors"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@id/thread_btn_future_task"
-            app:layout_constraintTop_toTopOf="@id/thread_btn_thread" />
+            <Button
+                android:id="@+id/thread_btn_future_task"
+                style="@style/tv"
+                android:onClick="@{threadCreate::futureTaskTest}"
+                android:text="FutureTask +\nCallable"
+                app:layout_constraintEnd_toStartOf="@id/thread_btn_executors"
+                app:layout_constraintStart_toEndOf="@id/thread_btn_runnable"
+                app:layout_constraintTop_toTopOf="@id/thread_btn_thread" />
+
+            <Button
+                android:id="@+id/thread_btn_executors"
+                style="@style/tv2"
+                android:onClick="@{threadCreate::executorsTest}"
+                android:text="Executors"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/thread_btn_future_task"
+                app:layout_constraintTop_toTopOf="@id/thread_btn_thread" />
 
 
-        <TextView
-            android:id="@+id/textView21"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="8dp"
-            android:text="Executors的三种关闭方式"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/thread_btn_thread" />
+            <TextView
+                android:id="@+id/textView21"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="8dp"
+                android:text="Executors的三种关闭方式"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/thread_btn_thread" />
 
-        <Button
-            android:id="@+id/thread_btn_start_executors"
-            style="@style/tv2"
-            android:layout_marginTop="8dp"
-            android:onClick="@{executors::startExecutors}"
-            android:text="启动线程池"
-            app:layout_constraintEnd_toStartOf="@id/thread_btn_shutdown"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/textView21" />
+            <Button
+                android:id="@+id/thread_btn_start_executors"
+                style="@style/tv2"
+                android:layout_marginTop="8dp"
+                android:onClick="@{executors::startExecutors}"
+                android:text="启动线程池"
+                app:layout_constraintEnd_toStartOf="@id/thread_btn_shutdown"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/textView21" />
 
-        <Button
-            android:id="@+id/thread_btn_shutdown"
-            style="@style/tv"
-            android:onClick="@{executors::shutdown}"
-            android:text="shutdown"
-            app:layout_constraintEnd_toStartOf="@id/thread_btn_shutdown_new"
-            app:layout_constraintStart_toEndOf="@id/thread_btn_start_executors"
-            app:layout_constraintTop_toTopOf="@id/thread_btn_start_executors" />
+            <Button
+                android:id="@+id/thread_btn_shutdown"
+                style="@style/tv"
+                android:onClick="@{executors::shutdown}"
+                android:text="shutdown"
+                app:layout_constraintEnd_toStartOf="@id/thread_btn_shutdown_new"
+                app:layout_constraintStart_toEndOf="@id/thread_btn_start_executors"
+                app:layout_constraintTop_toTopOf="@id/thread_btn_start_executors" />
 
-        <Button
-            android:id="@+id/thread_btn_shutdown_new"
-            style="@style/tv2"
-            android:onClick="@{executors::shutdownNow}"
-            android:text="shutdownNow"
-            app:layout_constraintEnd_toStartOf="@id/thread_btn_awaitTermination"
-            app:layout_constraintStart_toEndOf="@id/thread_btn_shutdown"
-            app:layout_constraintTop_toTopOf="@id/thread_btn_start_executors" />
+            <Button
+                android:id="@+id/thread_btn_shutdown_new"
+                style="@style/tv2"
+                android:onClick="@{executors::shutdownNow}"
+                android:text="shutdownNow"
+                app:layout_constraintEnd_toStartOf="@id/thread_btn_awaitTermination"
+                app:layout_constraintStart_toEndOf="@id/thread_btn_shutdown"
+                app:layout_constraintTop_toTopOf="@id/thread_btn_start_executors" />
 
-        <Button
-            android:id="@+id/thread_btn_awaitTermination"
-            style="@style/tv"
-            android:onClick="@{executors::awaitTermination}"
-            android:text="awaitTermination"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@id/thread_btn_shutdown_new"
-            app:layout_constraintTop_toTopOf="@id/thread_btn_start_executors" />
+            <Button
+                android:id="@+id/thread_btn_awaitTermination"
+                style="@style/tv"
+                android:onClick="@{executors::awaitTermination}"
+                android:text="awaitTermination"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/thread_btn_shutdown_new"
+                app:layout_constraintTop_toTopOf="@id/thread_btn_start_executors" />
 
-        <TextView
-            android:id="@+id/textView17"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="8dp"
-            android:text="object中的wait()和notify()"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/thread_btn_start_executors" />
+            <TextView
+                android:id="@+id/textView17"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="8dp"
+                android:text="object中的wait()和notify()"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/thread_btn_start_executors" />
 
-        <Button
-            android:id="@+id/thread_btn_start"
-            style="@style/tv"
-            android:layout_marginTop="8dp"
-            android:onClick="@{threadWaitNotify::startThread}"
-            android:text="启动线程循环"
-            app:layout_constraintEnd_toStartOf="@id/thread_btn_wait"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/textView17" />
+            <Button
+                android:id="@+id/thread_btn_start"
+                style="@style/tv"
+                android:layout_marginTop="8dp"
+                android:onClick="@{threadWaitNotify::startThread}"
+                android:text="启动线程循环"
+                app:layout_constraintEnd_toStartOf="@id/thread_btn_wait"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/textView17" />
 
-        <Button
-            android:id="@+id/thread_btn_wait"
-            style="@style/tv2"
-            android:onClick="@{threadWaitNotify::waitThread}"
-            android:text="wait()"
-            app:layout_constraintEnd_toStartOf="@id/thread_btn_notify"
-            app:layout_constraintStart_toEndOf="@id/thread_btn_start"
-            app:layout_constraintTop_toTopOf="@id/thread_btn_start" />
+            <Button
+                android:id="@+id/thread_btn_wait"
+                style="@style/tv2"
+                android:onClick="@{threadWaitNotify::waitThread}"
+                android:text="wait()"
+                app:layout_constraintEnd_toStartOf="@id/thread_btn_notify"
+                app:layout_constraintStart_toEndOf="@id/thread_btn_start"
+                app:layout_constraintTop_toTopOf="@id/thread_btn_start" />
 
-        <Button
-            android:id="@+id/thread_btn_notify"
-            style="@style/tv"
-            android:onClick="@{threadWaitNotify::notifyThread}"
-            android:text="notify()"
-            app:layout_constraintEnd_toStartOf="@id/thread_btn_producer_and_customer"
-            app:layout_constraintStart_toEndOf="@id/thread_btn_wait"
-            app:layout_constraintTop_toTopOf="@id/thread_btn_start" />
+            <Button
+                android:id="@+id/thread_btn_notify"
+                style="@style/tv"
+                android:onClick="@{threadWaitNotify::notifyThread}"
+                android:text="notify()"
+                app:layout_constraintEnd_toStartOf="@id/thread_btn_producer_and_customer"
+                app:layout_constraintStart_toEndOf="@id/thread_btn_wait"
+                app:layout_constraintTop_toTopOf="@id/thread_btn_start" />
 
-        <Button
-            android:id="@+id/thread_btn_producer_and_customer"
-            style="@style/tv2"
-            android:onClick="@{threadWaitNotify::startProduceAndConsume}"
-            android:text="生产者-\n消费者模式"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@id/thread_btn_notify"
-            app:layout_constraintTop_toTopOf="@id/thread_btn_start" />
+            <Button
+                android:id="@+id/thread_btn_producer_and_customer"
+                style="@style/tv2"
+                android:onClick="@{threadWaitNotify::startProduceAndConsume}"
+                android:text="生产者-\n消费者模式"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/thread_btn_notify"
+                app:layout_constraintTop_toTopOf="@id/thread_btn_start" />
 
-        <Button
-            android:id="@+id/thread_btn_deadlock"
-            style="@style/tv"
-            android:layout_marginTop="32dp"
-            android:onClick="@{threadWaitNotify::startDeadlock}"
-            android:text="死锁"
-            app:layout_constraintEnd_toStartOf="@id/thread_btn_printABC"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/thread_btn_start" />
+            <Button
+                android:id="@+id/thread_btn_deadlock"
+                style="@style/tv"
+                android:layout_marginTop="8dp"
+                android:onClick="@{threadWaitNotify::startDeadlock}"
+                android:text="死锁"
+                app:layout_constraintEnd_toStartOf="@id/thread_btn_printABC"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/thread_btn_start" />
 
-        <Button
-            android:id="@+id/thread_btn_printABC"
-            style="@style/tv2"
-            android:onClick="@{threadWaitNotify::startPrintABC}"
-            android:text="轮流打印ABC"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@id/thread_btn_deadlock"
-            app:layout_constraintTop_toTopOf="@id/thread_btn_deadlock" />
+            <Button
+                android:id="@+id/thread_btn_printABC"
+                style="@style/tv2"
+                android:onClick="@{threadWaitNotify::startPrintABC}"
+                android:text="轮流打印ABC"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/thread_btn_deadlock"
+                app:layout_constraintTop_toTopOf="@id/thread_btn_deadlock" />
 
-        <TextView
-            android:id="@+id/textView22"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="8dp"
-            android:text="ThreadLocal"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/thread_btn_deadlock" />
+            <TextView
+                android:id="@+id/textView22"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="8dp"
+                android:text="ThreadLocal"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/thread_btn_deadlock" />
 
-        <Button
-            android:id="@+id/thread_btn_thread_local"
-            style="@style/tv2"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
-            android:onClick="@{threadLocal::threadLocalTest}"
-            android:text="ThreadLocal"
-            app:layout_constraintEnd_toStartOf="@id/thread_btn_thread_local_inner"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/textView22" />
+            <Button
+                android:id="@+id/thread_btn_thread_local"
+                style="@style/tv2"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:onClick="@{threadLocal::threadLocalTest}"
+                android:text="ThreadLocal"
+                app:layout_constraintEnd_toStartOf="@id/thread_btn_thread_local_inner"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/textView22" />
 
-        <Button
-            android:id="@+id/thread_btn_thread_local_inner"
-            style="@style/tv2"
-            android:layout_marginStart="8dp"
-            android:onClick="@{threadLocal::threadLocalInnerTest}"
-            android:text="ThreadLocal内部"
-            app:layout_constraintEnd_toStartOf="@id/thread_btn_inheritable_thread_local"
-            app:layout_constraintStart_toEndOf="@id/thread_btn_thread_local"
-            app:layout_constraintTop_toTopOf="@id/thread_btn_thread_local" />
+            <Button
+                android:id="@+id/thread_btn_thread_local_inner"
+                style="@style/tv2"
+                android:layout_marginStart="8dp"
+                android:onClick="@{threadLocal::threadLocalInnerTest}"
+                android:text="ThreadLocal内部"
+                app:layout_constraintEnd_toStartOf="@id/thread_btn_inheritable_thread_local"
+                app:layout_constraintStart_toEndOf="@id/thread_btn_thread_local"
+                app:layout_constraintTop_toTopOf="@id/thread_btn_thread_local" />
 
-        <Button
-            android:id="@+id/thread_btn_inheritable_thread_local"
-            style="@style/tv"
-            android:onClick="@{threadLocal::inheritableThreadLocalTest}"
-            android:text="InheritableThreadLocal"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@id/thread_btn_thread_local_inner"
-            app:layout_constraintTop_toTopOf="@id/thread_btn_thread_local" />
+            <Button
+                android:id="@+id/thread_btn_inheritable_thread_local"
+                style="@style/tv"
+                android:onClick="@{threadLocal::inheritableThreadLocalTest}"
+                android:text="InheritableThreadLocal"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/thread_btn_thread_local_inner"
+                app:layout_constraintTop_toTopOf="@id/thread_btn_thread_local" />
 
-        <TextView
-            android:id="@+id/textView23"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="8dp"
-            android:text="CountDownLatch"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/thread_btn_inheritable_thread_local" />
+            <TextView
+                android:id="@+id/textView23"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="8dp"
+                android:text="CountDownLatch"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/thread_btn_inheritable_thread_local" />
 
-        <Button
-            android:id="@+id/thread_btn_latch_demo"
-            style="@style/tv"
-            android:layout_marginTop="8dp"
-            android:onClick="@{countDownLatch::demo}"
-            android:text="Demo"
-            app:layout_constraintEnd_toStartOf="@id/thread_btn_latch_time_out"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/textView23" />
+            <Button
+                android:id="@+id/thread_btn_latch_demo"
+                style="@style/tv"
+                android:layout_marginTop="8dp"
+                android:onClick="@{countDownLatch::demo}"
+                android:text="Demo"
+                app:layout_constraintEnd_toStartOf="@id/thread_btn_latch_time_out"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/textView23" />
 
-        <Button
-            android:id="@+id/thread_btn_latch_time_out"
-            style="@style/tv2"
-            android:onClick="@{countDownLatch::awaitTimeOutTest}"
-            android:text="AwaitTimeOut"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@id/thread_btn_latch_demo"
-            app:layout_constraintTop_toTopOf="@id/thread_btn_latch_demo" />
+            <Button
+                android:id="@+id/thread_btn_latch_time_out"
+                style="@style/tv2"
+                android:onClick="@{countDownLatch::awaitTimeOutTest}"
+                android:text="AwaitTimeOut"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/thread_btn_latch_demo"
+                app:layout_constraintTop_toTopOf="@id/thread_btn_latch_demo" />
 
-        <TextView
-            android:id="@+id/textView24"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="8dp"
-            android:text="Sync &amp; Lock &amp; AQS"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/thread_btn_latch_demo" />
+            <TextView
+                android:id="@+id/textView24"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="8dp"
+                android:text="Sync &amp; Lock &amp; AQS"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/thread_btn_latch_demo" />
 
-        <Button
-            android:id="@+id/button3"
-            style="@style/tv2"
-            android:layout_marginTop="8dp"
-            android:onClick="@{syncAndLockTest::myTestAQS}"
-            android:text="AQSTest"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView24" />
+            <Button
+                android:id="@+id/button3"
+                style="@style/tv2"
+                android:layout_marginTop="8dp"
+                android:onClick="@{syncAndLockTest::myTestAQS}"
+                android:text="AQSTest"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView24" />
 
-        <Button
-            android:id="@+id/button4"
-            style="@style/tv"
-            android:layout_marginStart="23dp"
-            android:text="MyTestLock"
-            android:onClick="@{syncAndLockTest::myTestLock}"
-            app:layout_constraintStart_toEndOf="@+id/button3"
-            app:layout_constraintTop_toTopOf="@+id/button3" />
+            <Button
+                android:id="@+id/button4"
+                style="@style/tv"
+                android:layout_marginStart="23dp"
+                android:onClick="@{syncAndLockTest::myTestLock}"
+                android:text="MyTestLock"
+                app:layout_constraintStart_toEndOf="@+id/button3"
+                app:layout_constraintTop_toTopOf="@+id/button3" />
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.core.widget.NestedScrollView>
 </layout>

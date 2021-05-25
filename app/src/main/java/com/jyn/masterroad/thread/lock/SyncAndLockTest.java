@@ -1,4 +1,4 @@
-package com.jyn.masterroad.thread;
+package com.jyn.masterroad.thread.lock;
 
 import android.view.View;
 
@@ -56,6 +56,7 @@ public class SyncAndLockTest {
             //临界区
         }
     }
+
     //endregion
 
     //region 自定义 AQS
@@ -66,7 +67,7 @@ public class SyncAndLockTest {
         new Thread(() -> aqsTest(2)).start();
     }
 
-    public void aqsTest(int i) {
+    private void aqsTest(int i) {
         myTestAQS.lock();
         LogUtils.tag(TAG).i("MyTestAQS lock i:" + i);
         try {
@@ -87,7 +88,7 @@ public class SyncAndLockTest {
         new Thread(() -> lockTest(2)).start();
     }
 
-    public void lockTest(int i) {
+    private void lockTest(int i) {
         myTestLock.lock();
         LogUtils.tag(TAG).i("MyTestLock lock i:" + i);
         try {

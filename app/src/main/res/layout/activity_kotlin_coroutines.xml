@@ -153,11 +153,8 @@
         <Button
             android:id="@+id/button16"
             style="@style/tv2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
             android:text="withContext\n(线程切换)"
             android:onClick="@{()->create.withContext()}"
-            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView28" />
 
@@ -170,6 +167,22 @@
             android:text="线程切换"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/button14" />
+
+        <Button
+            android:id="@+id/button25"
+            style="@style/tv"
+            android:text="并发执行"
+            android:onClick="@{()->create.parallel()}"
+            app:layout_constraintStart_toEndOf="@+id/button16"
+            app:layout_constraintTop_toTopOf="@+id/button16" />
+
+        <Button
+            android:id="@+id/button26"
+            style="@style/tv2"
+            android:text="同步执行"
+            android:onClick="@{()->create.serial()}"
+            app:layout_constraintStart_toEndOf="@+id/button25"
+            app:layout_constraintTop_toTopOf="@+id/button16" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

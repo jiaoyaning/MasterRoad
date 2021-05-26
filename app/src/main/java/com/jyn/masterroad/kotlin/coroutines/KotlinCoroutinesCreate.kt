@@ -22,7 +22,7 @@ class KotlinCoroutinesCreate(application: Application) : AndroidViewModel(applic
     fun runBlockingTest() {
         Thread {
             LogUtils.tag(TAG).i("线程 开始 ————> in ${Thread.currentThread().name}")
-            runBlocking {
+            val runBlocking = runBlocking {
                 LogUtils.tag(TAG).i("runBlocking 开始 ————> in ${Thread.currentThread().name}")
                 launch(Dispatchers.Main) {
                     LogUtils.tag(TAG).i("Dispatchers.Main delay前 in ${Thread.currentThread().name}")
@@ -32,9 +32,11 @@ class KotlinCoroutinesCreate(application: Application) : AndroidViewModel(applic
 
                 delay(100)
                 launch(Dispatchers.Default) {
-                    LogUtils.tag(TAG).i("Dispatchers.Default delay前 in ${Thread.currentThread().name}")
+                    LogUtils.tag(TAG)
+                        .i("Dispatchers.Default delay前 in ${Thread.currentThread().name}")
                     delay(50)
-                    LogUtils.tag(TAG).i("Dispatchers.Default delay后 in ${Thread.currentThread().name}")
+                    LogUtils.tag(TAG)
+                        .i("Dispatchers.Default delay后 in ${Thread.currentThread().name}")
                 }
 
                 delay(100)
@@ -46,52 +48,56 @@ class KotlinCoroutinesCreate(application: Application) : AndroidViewModel(applic
 
                 delay(100)
                 launch(Dispatchers.Unconfined) {
-                    LogUtils.tag(TAG).i("Dispatchers.Unconfined delay前 in ${Thread.currentThread().name}")
+                    LogUtils.tag(TAG)
+                        .i("Dispatchers.Unconfined delay前 in ${Thread.currentThread().name}")
                     delay(50)
-                    LogUtils.tag(TAG).i("Dispatchers.Unconfined delay后 in${Thread.currentThread().name}")
+                    LogUtils.tag(TAG)
+                        .i("Dispatchers.Unconfined delay后 in${Thread.currentThread().name}")
                 }
 
                 delay(100)
                 LogUtils.tag(TAG).i("runBlocking 结束 ————> in ${Thread.currentThread().name}")
+                "我是runBlocking的返回值，如果不添加该返回值则返回runBlocking的状态"
             }
-            LogUtils.tag(TAG).i("线程 结束 ————> in ${Thread.currentThread().name}")
+            LogUtils.tag(TAG)
+                .i("线程 结束 ————> in ${Thread.currentThread().name} ;runBlocking: $runBlocking")
         }.start()
     }
     //endregion
 
     //region 2. GlobalScope 全局生命周期
     fun globalScopeTest() {
-        // 完全体协程
+        // 1. 完全体协程
         GlobalScope.launch(
-                context = Dispatchers.Unconfined,
-                start = CoroutineStart.DEFAULT,
-                block = { LogUtils.tag(TAG).i("完全体参数 in ${Thread.currentThread().name}") })
+            context = Dispatchers.Unconfined,
+            start = CoroutineStart.DEFAULT,
+            block = { LogUtils.tag(TAG).i("1. 完全体参数 in ${Thread.currentThread().name}") })
 
-        // Main线程
+        // 2. Main线程
         sleep(100)
         GlobalScope.launch(Dispatchers.Main) {
-            LogUtils.tag(TAG).i("Dispatchers.Main in ${Thread.currentThread().name}")
+            LogUtils.tag(TAG).i("2. Main线程 Dispatchers.Main in ${Thread.currentThread().name}")
         }
         MainScope().launch {
-            LogUtils.tag(TAG).i("MainScope 测试 in ${Thread.currentThread().name}")
+            LogUtils.tag(TAG).i("2. Main线程 MainScope in ${Thread.currentThread().name}")
         }
 
-        // 切换线程测试
+        // 3. 切换线程测试
         sleep(100)
         GlobalScope.launch(Dispatchers.Main) {
-            LogUtils.tag(TAG).i("切换线程 切换前 in ${Thread.currentThread().name}")
+            LogUtils.tag(TAG).i("3. 切换线程 切换前 in ${Thread.currentThread().name}")
             withContext(Dispatchers.IO) {   // 切换到IO线程
-                LogUtils.tag(TAG).i("切换线程 切换IO线程后 in ${Thread.currentThread().name}")
+                LogUtils.tag(TAG).i("3. 切换线程 切换IO线程后 in ${Thread.currentThread().name}")
             }
         }
 
-        // 自定义线程池测试
+        // 4. 自定义线程池测试
         sleep(100)
         val newCachedThreadPool = Executors.newCachedThreadPool()
         GlobalScope.launch(newCachedThreadPool.asCoroutineDispatcher()) {
-            LogUtils.tag(TAG).i("自定义线程池版 delay前 in ${Thread.currentThread().name}")
+            LogUtils.tag(TAG).i("4. 自定义线程池版 delay前 in ${Thread.currentThread().name}")
             delay(1)
-            LogUtils.tag(TAG).i("自定义线程池版 delay后 in ${Thread.currentThread().name}")
+            LogUtils.tag(TAG).i("4. 自定义线程池版 delay后 in ${Thread.currentThread().name}")
             newCachedThreadPool.shutdown() //不用的时候要关闭
         }
     }
@@ -139,10 +145,12 @@ class KotlinCoroutinesCreate(application: Application) : AndroidViewModel(applic
     fun async() {
         runBlocking {
             LogUtils.tag(TAG).i("async 开始")
-            val oneDeferred = GlobalScope.async { doSomethingUsefulOne() }
-            val twoDeferred = GlobalScope.async { doSomethingUsefulTwo() }
+            val deferred1 = GlobalScope.async { doSomethingUsefulOne() }
+            val deferred2 = GlobalScope.async { doSomethingUsefulTwo() }
             sleep(300)
-            LogUtils.tag(TAG).i("async 结束 one:${oneDeferred.await()}; two:${twoDeferred.await()}")
+            LogUtils.tag(TAG).i("async 结束前状态 one:${deferred1}; two:${deferred2}")
+            LogUtils.tag(TAG).i("async 结束 one:${deferred1.await()}; two:${deferred2.await()}")
+            LogUtils.tag(TAG).i("async 结束后状态 one:${deferred1}; two:${deferred2}")
         }
     }
 
@@ -168,8 +176,9 @@ class KotlinCoroutinesCreate(application: Application) : AndroidViewModel(applic
 
     // ===================分割线========================
 
-    //region 三. 线程切换
+    //region 三. 线程相关
 
+    //region 1.线程切换
     fun withContext() {
         GlobalScope.launch(Dispatchers.Main) {
             LogUtils.tag(TAG).i("launch 开始 in ${Thread.currentThread().name}")
@@ -190,6 +199,38 @@ class KotlinCoroutinesCreate(application: Application) : AndroidViewModel(applic
         delay(1000)
         LogUtils.tag(TAG).i("launch 切换Default in ${Thread.currentThread().name}")
     }
+    //endregion
+
+    //region 2.并发执行
+    fun parallel() {
+        GlobalScope.launch {
+            for (index in 1..10) {
+                launch {
+                    delay(1000)
+                    LogUtils.tag(TAG).i("并发执行 launch:$index")
+                }
+            }
+        }
+    }
+    //endregion
+
+    //region 2.同步执行
+    fun serial() {
+        /**
+         * 协程满足以下几点时，可以是同步执行的
+         *  1.父协程的协程调度器是处于Dispatchers.Main情况下启动。
+         *  2. 同时子协程在不修改协程调度器下的情况下启动。
+         */
+        GlobalScope.launch(Dispatchers.Main) {
+            for (index in 1..10) {
+                launch {
+                    delay(1000)
+                    LogUtils.tag(TAG).i("并发执行 launch:$index")
+                }
+            }
+        }
+    }
+    //endregion
 
     //endregion
 }

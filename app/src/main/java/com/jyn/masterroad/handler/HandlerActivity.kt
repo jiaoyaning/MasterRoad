@@ -24,6 +24,9 @@ import com.jyn.masterroad.databinding.ActivityHandlerBinding
  * Linux IO模式及 select、poll、epoll详解
  * https://segmentfault.com/a/1190000003063859
  *
+ * select、poll、epoll之间的区别(搜狗面试)
+ * https://www.cnblogs.com/aspirant/p/9166944.html
+ *
  * 面试必备：异步 Handler 十大必问！
  * https://mp.weixin.qq.com/s/RVgGEPw7srV_uwBtlHEGXA
  *

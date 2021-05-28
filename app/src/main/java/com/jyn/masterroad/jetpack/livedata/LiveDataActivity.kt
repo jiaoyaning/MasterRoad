@@ -34,6 +34,9 @@ import kotlinx.android.synthetic.main.activity_live_data.*
  *
  * LiveData取代EventBus？LiveData的通信原理和粘性事件刨析
  * https://mp.weixin.qq.com/s/SyHlop4gLDbrbp8S5urMAA
+ *
+ * LiveData数据倒灌的解决方案之一
+ * https://blog.csdn.net/ljcITworld/article/details/112849126
  */
 @Route(path = RoutePath.LiveData.path)
 class LiveDataActivity : BaseActivity<ActivityLiveDataBinding>

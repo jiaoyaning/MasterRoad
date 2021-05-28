@@ -71,7 +71,9 @@ class KotlinCoroutinesCreate(application: Application) : AndroidViewModel(applic
         GlobalScope.launch(
             context = Dispatchers.Unconfined,
             start = CoroutineStart.DEFAULT,
-            block = { LogUtils.tag(TAG).i("1. 完全体参数 in ${Thread.currentThread().name}") })
+            block = {
+                LogUtils.tag(TAG).i("1. 完全体参数 in ${Thread.currentThread().name}")
+            })
 
         // 2. Main线程
         sleep(100)
@@ -180,29 +182,31 @@ class KotlinCoroutinesCreate(application: Application) : AndroidViewModel(applic
 
     //region 1.线程切换
     fun withContext() {
-        GlobalScope.launch(Dispatchers.Main) {
+        GlobalScope.launch(Dispatchers.Main) { //main是同步执行的
             LogUtils.tag(TAG).i("launch 开始 in ${Thread.currentThread().name}")
 
-            //withContext 并不创建新的协程，只是指定协程上运行代码块
-            withContext(Dispatchers.IO) {
-                delay(1000)
+            //withContext 并不创建新的协程，只是指定协程上运行代码块，且可携带返回值
+            val withContext = withContext(Dispatchers.IO) {
+                delay(100)
                 LogUtils.tag(TAG).i("launch 切换IO in ${Thread.currentThread().name}")
+                "withContext返回值"
             }
-
             default()
-
-            LogUtils.tag(TAG).i("launch withContext IO后 in ${Thread.currentThread().name}")
+            LogUtils.tag(TAG).i("launch withContext IO后 in ${Thread.currentThread().name} ; withContext:$withContext")
         }
     }
 
     private suspend fun default() = withContext(Dispatchers.Default) {
-        delay(1000)
+        delay(100)
         LogUtils.tag(TAG).i("launch 切换Default in ${Thread.currentThread().name}")
     }
     //endregion
 
     //region 2.并发执行
     fun parallel() {
+        /**
+         * 协程内部本身是并发的
+         */
         GlobalScope.launch {
             for (index in 1..10) {
                 launch {
@@ -214,7 +218,7 @@ class KotlinCoroutinesCreate(application: Application) : AndroidViewModel(applic
     }
     //endregion
 
-    //region 2.同步执行
+    //region 3.同步执行
     fun serial() {
         /**
          * 协程满足以下几点时，可以是同步执行的

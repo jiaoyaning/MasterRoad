@@ -1,10 +1,10 @@
 package com.jyn.masterroad.constraintLayout
 
-import androidx.appcompat.app.AppCompatActivity
-import android.os.Bundle
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.jyn.common.ARouter.RoutePath
 import com.jyn.masterroad.R
+import com.jyn.masterroad.base.BaseActivity
+import com.jyn.masterroad.databinding.ActivityMotionLayoutBinding
 import kotlinx.android.synthetic.main.activity_motion_layout.*
 
 /*
@@ -17,13 +17,16 @@ import kotlinx.android.synthetic.main.activity_motion_layout.*
  * https://juejin.cn/post/6854573206653812743
  *
  * https://juejin.cn/post/6844903918598635534
+ *
+ * ConstraintLayout2.0一篇写不完之MotionEffect
+ * https://mp.weixin.qq.com/s/Ne298l-oqCjLjqaHv0_nRA
  */
 @Route(path = RoutePath.MotionLayout.path)
-class MotionLayoutActivity : AppCompatActivity() {
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_motion_layout)
-        val constraintSet = motionLayout.getConstraintSet(R.id.end)
+class MotionLayoutActivity : BaseActivity<ActivityMotionLayoutBinding>
+    (R.layout.activity_motion_layout) {
+
+    override fun initView() {
+        val constraintSet = binding.motionLayout.getConstraintSet(R.id.end)
         constraintSet.setRotation(R.id.ball, 180f)
         motionLayout.updateState(R.id.end, constraintSet)
     }

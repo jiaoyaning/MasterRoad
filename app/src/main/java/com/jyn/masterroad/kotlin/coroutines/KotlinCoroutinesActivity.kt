@@ -9,6 +9,9 @@ import com.jyn.masterroad.databinding.ActivityKotlinCoroutinesBinding
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 
 /*
+ * Kotlin 协程 系列教程
+ * http://mp.weixin.qq.com/mp/homepage?__biz=MzIzMTYzOTYzNA==&hid=4&sn=eb02d1dc6f5d92096f214688c6f87196&scene=18#wechat_redirect
+ *
  * 硬核万字解读——Kotlin协程原理解析 TODO
  * https://mp.weixin.qq.com/s/N9BiufCWTRuoh6J-QERlWQ
  *

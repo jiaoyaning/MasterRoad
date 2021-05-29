@@ -32,11 +32,11 @@ class KotlinCoroutinesTest(application: Application) : AndroidViewModel(applicat
 
         //完全体协程
         GlobalScope.launch(
-                context = Dispatchers.Unconfined,
-                start = CoroutineStart.DEFAULT,
-                block = {
-                    LogUtils.tag(TAG).i("1 完全参数版 in ${Thread.currentThread().name}")
-                })
+            context = Dispatchers.Unconfined,
+            start = CoroutineStart.DEFAULT,
+            block = {
+                LogUtils.tag(TAG).i("1 完全参数版 in ${Thread.currentThread().name}")
+            })
 
         GlobalScope.launch(Dispatchers.Main) {
             LogUtils.tag(TAG).i("2 Dispatchers.Main in ${Thread.currentThread().name}")
@@ -120,9 +120,11 @@ class KotlinCoroutinesTest(application: Application) : AndroidViewModel(applicat
 
                 delay(100)
                 launch(Dispatchers.Default) {
-                    LogUtils.tag(TAG).i("Dispatchers.Default delay前 in ${Thread.currentThread().name}")
+                    LogUtils.tag(TAG)
+                        .i("Dispatchers.Default delay前 in ${Thread.currentThread().name}")
                     delay(50)
-                    LogUtils.tag(TAG).i("Dispatchers.Default delay后 in ${Thread.currentThread().name}")
+                    LogUtils.tag(TAG)
+                        .i("Dispatchers.Default delay后 in ${Thread.currentThread().name}")
                 }
 
                 delay(100)
@@ -134,9 +136,11 @@ class KotlinCoroutinesTest(application: Application) : AndroidViewModel(applicat
 
                 delay(100)
                 launch(Dispatchers.Unconfined) {
-                    LogUtils.tag(TAG).i("Dispatchers.Unconfined delay前 in ${Thread.currentThread().name}")
+                    LogUtils.tag(TAG)
+                        .i("Dispatchers.Unconfined delay前 in ${Thread.currentThread().name}")
                     delay(50)
-                    LogUtils.tag(TAG).i("Dispatchers.Unconfined delay后 in${Thread.currentThread().name}")
+                    LogUtils.tag(TAG)
+                        .i("Dispatchers.Unconfined delay后 in${Thread.currentThread().name}")
                 }
             }
             LogUtils.tag(TAG).i("子线程 结束 ————> in ${Thread.currentThread().name}")
@@ -193,15 +197,18 @@ class KotlinCoroutinesTest(application: Application) : AndroidViewModel(applicat
         }
         //至少处于OnCreated状态时，才会执行
         lifecycleScope?.launchWhenCreated {
-            LogUtils.tag(TAG).i("lifecycleScope launchWhenCreated in ${Thread.currentThread().name}")
+            LogUtils.tag(TAG)
+                .i("lifecycleScope launchWhenCreated in ${Thread.currentThread().name}")
         }
         //至少处于OnResumed状态时，才会执行
         lifecycleScope?.launchWhenResumed {
-            LogUtils.tag(TAG).i("lifecycleScope launchWhenResumed in ${Thread.currentThread().name}")
+            LogUtils.tag(TAG)
+                .i("lifecycleScope launchWhenResumed in ${Thread.currentThread().name}")
         }
         //至少处于OnStarted状态时，才会执行
         lifecycleScope?.launchWhenStarted {
-            LogUtils.tag(TAG).i("lifecycleScope launchWhenStarted in ${Thread.currentThread().name}")
+            LogUtils.tag(TAG)
+                .i("lifecycleScope launchWhenStarted in ${Thread.currentThread().name}")
         }
     }
 

@@ -11,12 +11,13 @@ import java.util.concurrent.Executors
  * 揭秘kotlin协程中的CoroutineContext
  * https://juejin.cn/post/6926695962354122765
  */
+@ExperimentalCoroutinesApi
 class KotlinCoroutinesCreate(application: Application) : AndroidViewModel(application) {
     companion object {
         private const val TAG = "Coroutines"
     }
 
-    //region 一. 协程的三种创建方式
+//region 一. 协程的三种创建方式
 
     //region 1. runBlocking 阻塞线程
     fun runBlockingTest() {
@@ -118,11 +119,9 @@ class KotlinCoroutinesCreate(application: Application) : AndroidViewModel(applic
     }
     //endregion
 
-    //endregion
-
-    // ===================分割线========================
-
-    //region 二. 协程的两种启动方式
+//endregion
+// ===================分割线========================
+//region 二. 协程的两种启动方式
 
     //region 1. launch
     fun launch() {
@@ -174,31 +173,30 @@ class KotlinCoroutinesCreate(application: Application) : AndroidViewModel(applic
 
     //endregion
 
-    //endregion
-
-    // ===================分割线========================
-
-    //region 三. 线程相关
+//endregion
+// ===================分割线========================
+//region 三. 线程切换 & 并行串行
 
     //region 1.线程切换
     fun withContext() {
         GlobalScope.launch(Dispatchers.Main) { //main是同步执行的
-            LogUtils.tag(TAG).i("launch 开始 in ${Thread.currentThread().name}")
+            LogUtils.tag(TAG).i("1 launch 开始 in ${Thread.currentThread().name}")
 
             //withContext 并不创建新的协程，只是指定协程上运行代码块，且可携带返回值
             val withContext = withContext(Dispatchers.IO) {
                 delay(100)
-                LogUtils.tag(TAG).i("launch 切换IO in ${Thread.currentThread().name}")
+                LogUtils.tag(TAG).i("2 launch 切换IO in ${Thread.currentThread().name}")
                 "withContext返回值"
             }
             default()
-            LogUtils.tag(TAG).i("launch withContext IO后 in ${Thread.currentThread().name} ; withContext:$withContext")
+            LogUtils.tag(TAG)
+                .i("4 launch withContext IO后 in ${Thread.currentThread().name} ; withContext:$withContext")
         }
     }
 
     private suspend fun default() = withContext(Dispatchers.Default) {
         delay(100)
-        LogUtils.tag(TAG).i("launch 切换Default in ${Thread.currentThread().name}")
+        LogUtils.tag(TAG).i("3 launch 切换Default in ${Thread.currentThread().name}")
     }
     //endregion
 
@@ -236,5 +234,72 @@ class KotlinCoroutinesCreate(application: Application) : AndroidViewModel(applic
     }
     //endregion
 
+//endregion
+// ===================分割线========================
+//region 四. 四种调度器(Dispatchers)
+
+
+//endregion
+// ===================分割线========================
+//region 五. 四种启动模式(CoroutineStart)
+
+    //region 1. DEFAULT 默认
+    fun startDefault() {
+        /*
+         * DEFAULT 是饿汉式启动，创建后立即开始调度，但是并不是立即执行，有可能在执行前被取消掉
+         */
+        LogUtils.tag(TAG).i("startDefault ——> 开始 ")
+        val defaultJob = GlobalScope.launch {
+            LogUtils.tag(TAG).i("——> DEFAULT ")
+        }
+        defaultJob.cancel()
+        LogUtils.tag(TAG).i("startDefault ——> 结束 ")
+    }
     //endregion
+
+    //region 2. LAZY 懒汉式
+    fun startLazy() {
+        /**
+         * 启动后并不会有任何调度行为，直到我们需要它执行的时候才会产生调度
+         */
+        LogUtils.tag(TAG).i("startLazy ——> 开始 ")
+        val lazyJob = GlobalScope.launch(start = CoroutineStart.LAZY) {
+            LogUtils.tag(TAG).i("——> LAZY")
+        }
+        sleep(100)
+        lazyJob.start()
+        LogUtils.tag(TAG).i("startLazy ——> 结束 ")
+    }
+    //endregion
+
+    //region 3. ATOMIC
+    fun startAtomic() {
+        /*
+         * 立即执行协程体，但在开始运行之前无法取消
+         */
+        val atomicJob = GlobalScope.launch(start = CoroutineStart.ATOMIC) {
+            LogUtils.tag(TAG).i("——> ATOMIC挂起前")
+            delay(100)
+            LogUtils.tag(TAG).i("——> ATOMIC挂起后")
+        }
+        atomicJob.cancel()
+    }
+    //endregion
+
+    //region 4. UNDISPATCHED
+    fun startUnDispatched() {
+        /*
+         * 会直接开始在当前线程下执行，直到运行到第一个挂起点(suspend)。
+         */
+        val unDispatchedJob = GlobalScope.launch(start = CoroutineStart.UNDISPATCHED){
+            LogUtils.tag(TAG).i("——> UNDISPATCHED挂起前")
+            delay(100) //delay也是一个suspend方法
+            LogUtils.tag(TAG).i("——> UNDISPATCHED挂起后")
+        }
+        unDispatchedJob.cancel()
+    }
+
+    //endregion
+
+//endregion
 }

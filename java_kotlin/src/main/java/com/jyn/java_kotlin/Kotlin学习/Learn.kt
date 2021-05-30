@@ -1,6 +1,8 @@
 package com.jyn.java_kotlin.Kotlin学习
 
 /**
+ * Kotlin编译调校之WarningsAsErrors 压制警告
+ * https://droidyue.com/blog/2019/08/03/kotlinc-config-warnings-as-errors/
  */
 fun main() {
     println("============扩展特性=============")

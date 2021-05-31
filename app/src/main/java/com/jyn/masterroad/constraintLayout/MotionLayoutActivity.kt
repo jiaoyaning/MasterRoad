@@ -20,6 +20,9 @@ import kotlinx.android.synthetic.main.activity_motion_layout.*
  *
  * ConstraintLayout2.0一篇写不完之MotionEffect
  * https://mp.weixin.qq.com/s/Ne298l-oqCjLjqaHv0_nRA
+ *
+ * ConstraintLayout2.0一篇写不完之MotionLabel
+ * https://mp.weixin.qq.com/s/3xoms9zu77UFCJmNOF9ZUw
  */
 @Route(path = RoutePath.MotionLayout.path)
 class MotionLayoutActivity : BaseActivity<ActivityMotionLayoutBinding>

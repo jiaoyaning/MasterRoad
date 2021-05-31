@@ -398,7 +398,7 @@ class KotlinCoroutinesCreate(application: Application) : AndroidViewModel(applic
     //region 嵌套但非父子关系
     fun notFatherAndSon() {
         /**
-         * job执行完后，会主动销毁自己，导致sonJob也跟着销毁
+         * job1执行完后，会主动销毁自己，导致job2也跟着销毁
          */
         runBlocking(context = CoroutineName(name = "协程1")) {
             LogUtils.tag(TAG).i("—> 协程1 开启 ")

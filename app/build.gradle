@@ -106,7 +106,7 @@ dependencies {
     implementation androidx["recyclerview"]
     implementation androidx["constraintlayout"]
     implementation androidx["lifecycle"]
-//    implementation androidx["lifecycle-process"]
+    implementation androidx["lifecycle-process"]
     implementation androidx["viewmodel"]
     implementation androidx["livedata"]
     implementation androidx["livedata-ktx"]

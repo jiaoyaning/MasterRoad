@@ -12,6 +12,7 @@ import java.util.concurrent.Executors
  * https://juejin.cn/post/6926695962354122765
  */
 @ExperimentalCoroutinesApi
+@Suppress("UNUSED_VARIABLE")
 class KotlinCoroutinesCreate(application: Application) : AndroidViewModel(application) {
     companion object {
         private const val TAG = "Coroutines"
@@ -57,6 +58,11 @@ class KotlinCoroutinesCreate(application: Application) : AndroidViewModel(applic
                 }
 
                 delay(100)
+                GlobalScope.launch {
+                    delay(5000)
+                    LogUtils.tag(TAG)
+                        .i("GlobalScope.launch 未被执行，证明其并不属于runBlocking的子协程 in${Thread.currentThread().name}")
+                }
                 LogUtils.tag(TAG).i("runBlocking 结束 ————> in ${Thread.currentThread().name}")
                 "我是runBlocking的返回值，如果不添加该返回值则返回runBlocking的状态"
             }
@@ -85,11 +91,11 @@ class KotlinCoroutinesCreate(application: Application) : AndroidViewModel(applic
             LogUtils.tag(TAG).i("2. Main线程 MainScope in ${Thread.currentThread().name}")
         }
 
-        // 3. 切换线程测试
+        // 3. IO线程
         sleep(100)
-        GlobalScope.launch(Dispatchers.Main) {
+        GlobalScope.launch(Dispatchers.IO) {
             LogUtils.tag(TAG).i("3. 切换线程 切换前 in ${Thread.currentThread().name}")
-            withContext(Dispatchers.IO) {   // 切换到IO线程
+            withContext(Dispatchers.Unconfined) {   // 切换到IO线程
                 LogUtils.tag(TAG).i("3. 切换线程 切换IO线程后 in ${Thread.currentThread().name}")
             }
         }
@@ -120,7 +126,9 @@ class KotlinCoroutinesCreate(application: Application) : AndroidViewModel(applic
     //endregion
 
 //endregion
+
 // ===================分割线========================
+
 //region 二. 协程的两种启动方式
 
     //region 1. launch
@@ -174,7 +182,9 @@ class KotlinCoroutinesCreate(application: Application) : AndroidViewModel(applic
     //endregion
 
 //endregion
+
 // ===================分割线========================
+
 //region 三. 线程切换 & 并行串行
 
     //region 1.线程切换
@@ -235,12 +245,16 @@ class KotlinCoroutinesCreate(application: Application) : AndroidViewModel(applic
     //endregion
 
 //endregion
+
 // ===================分割线========================
+
 //region 四. 四种调度器(Dispatchers)
 
 
 //endregion
+
 // ===================分割线========================
+
 //region 五. 四种启动模式(CoroutineStart)
 
     //region 1. DEFAULT 默认
@@ -261,14 +275,29 @@ class KotlinCoroutinesCreate(application: Application) : AndroidViewModel(applic
     fun startLazy() {
         /**
          * 启动后并不会有任何调度行为，直到我们需要它执行的时候才会产生调度
+         * start不是挂起的，join是挂起的，可以阻塞线程并执行join方法
          */
-        LogUtils.tag(TAG).i("startLazy ——> 开始 ")
+
+        runBlocking {
+            LogUtils.tag(TAG).i("1 startLazy ——> 开始 ")
+            val lazyJob = GlobalScope.launch(start = CoroutineStart.LAZY) {
+                delay(100)
+                LogUtils.tag(TAG).i("1 ——> LAZY")
+            }
+//            lazyJob.join()
+            lazyJob.start() //如果用start()，会导致lazyJob还未执行完runBlocking就已经结束了
+            LogUtils.tag(TAG).i("1 startLazy ——> 结束 ")
+        }
+
+        LogUtils.tag(TAG).i("2 startLazy ——> 开始 ")
         val lazyJob = GlobalScope.launch(start = CoroutineStart.LAZY) {
-            LogUtils.tag(TAG).i("——> LAZY")
+            LogUtils.tag(TAG).i("2 ——> LAZY")
         }
         sleep(100)
         lazyJob.start()
-        LogUtils.tag(TAG).i("startLazy ——> 结束 ")
+        LogUtils.tag(TAG).i("2 startLazy ——> 结束 ")
+
+
     }
     //endregion
 
@@ -331,5 +360,67 @@ class KotlinCoroutinesCreate(application: Application) : AndroidViewModel(applic
     }
     //endregion
 
+//endregion
+
+// ===================分割线========================
+
+//region 六. 作用域 & 父子关系
+
+    //region 正常父子关系
+    fun fatherAndSon() {
+        /*
+         * 父协程死时，子协程也会死
+         */
+        runBlocking(context = CoroutineName("父协程")) {
+            LogUtils.tag(TAG).i("父协程 开启 $coroutineContext")
+            val son = launch {
+                LogUtils.tag(TAG).i("父协程 -> 子协程 开启")
+                delay(200)
+                LogUtils.tag(TAG).i("父协程 -> 子协程 结束")
+            }
+
+            launch(context = son) {
+                LogUtils.tag(TAG).i("父协程 -> 子协程 -> 子协程 开启")
+                delay(400)
+                //这一句执行不到，因为在delay时父协程已被销毁
+                LogUtils.tag(TAG).i("父协程 -> 子协程 -> 子协程 结束")
+            }
+
+            delay(300)
+
+            son.cancel()
+
+            LogUtils.tag(TAG).i("父协程 结束")
+        }
+    }
+    //endregion
+
+    //region 嵌套但非父子关系
+    fun notFatherAndSon() {
+        /**
+         * job执行完后，会主动销毁自己，导致sonJob也跟着销毁
+         */
+        runBlocking(context = CoroutineName(name = "协程1")) {
+            LogUtils.tag(TAG).i("—> 协程1 开启 ")
+
+            val job1 = GlobalScope.launch(CoroutineName("协程2")) {
+                LogUtils.tag(TAG).i("—> 协程2 开启 ")
+                delay(400)
+
+                //job2执行完之后，runBlocking就结束销毁，job没有机会执行下面log
+                LogUtils.tag(TAG).i("—> 协程2 结束 ")
+            }
+
+            val job2 = launch {
+                LogUtils.tag(TAG).i("—> 协程1 -> 子协程 开启 ")
+                delay(300)
+                LogUtils.tag(TAG).i("—> 协程1 -> 子协程 结束 ")
+            }
+
+            delay(100)
+            LogUtils.tag(TAG).i("—> 协程1 结束 $coroutineContext")
+        }
+    }
+    //endregion
 //endregion
 }

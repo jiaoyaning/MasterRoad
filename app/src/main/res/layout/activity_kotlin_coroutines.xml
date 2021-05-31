@@ -54,59 +54,6 @@
             app:layout_constraintStart_toEndOf="@id/button12"
             app:layout_constraintTop_toTopOf="@id/button11" />
 
-
-        <Button
-            android:id="@+id/button2"
-            style="@style/tv"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="380dp"
-            android:onClick="@{coroutines::globalScopeTest}"
-            android:text="GlobalScope"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <Button
-            android:id="@+id/button7"
-            style="@style/tv"
-            android:onClick="@{coroutines::asyncAndProduceTest}"
-            android:text="GlobalScope"
-            app:layout_constraintStart_toEndOf="@id/button2"
-            app:layout_constraintTop_toTopOf="@id/button2" />
-
-        <Button
-            android:id="@+id/button4"
-            style="@style/tv2"
-            android:onClick="@{coroutines::runBlockingTest}"
-            android:text="runBlocking\n阻塞版协程"
-            app:layout_constraintStart_toEndOf="@id/button7"
-            app:layout_constraintTop_toTopOf="@id/button7" />
-
-        <Button
-            android:id="@+id/button6"
-            style="@style/tv"
-            android:onClick="@{coroutines::coroutineStartTest}"
-            android:text="CoroutineStart\n 协程子参数"
-            app:layout_constraintStart_toEndOf="@id/button4"
-            app:layout_constraintTop_toTopOf="@id/button2" />
-
-        <Button
-            android:id="@+id/button3"
-            style="@style/tv2"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
-            android:onClick="@{coroutines::lifecycleScopeTest}"
-            android:text="LifecycleScope\n生命周期绑定"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/button2" />
-
-        <Button
-            android:id="@+id/button5"
-            style="@style/tv"
-            android:onClick="@{coroutines::viewModelScope}"
-            android:text="ViewModelScope\nViewModel绑定"
-            app:layout_constraintStart_toEndOf="@id/button3"
-            app:layout_constraintTop_toTopOf="@id/button3" />
-
         <Button
             android:id="@+id/button14"
             style="@style/tv"
@@ -201,6 +148,7 @@
         <Button
             android:id="@+id/button27"
             style="@style/tv"
+            android:layout_marginTop="8dp"
             android:onClick="@{()->create.startDefault()}"
             android:text="DEFAULT\n饿汉式"
             app:layout_constraintEnd_toStartOf="@id/button28"
@@ -233,6 +181,33 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@id/button29"
             app:layout_constraintTop_toTopOf="@id/button27" />
+
+        <TextView
+            android:id="@+id/textView36"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:text="作用域 &amp; 父子关系"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/button27" />
+
+        <Button
+            android:id="@+id/button2"
+            style="@style/tv2"
+            android:layout_marginTop="8dp"
+            android:text="正常父子"
+            android:onClick="@{()->create.fatherAndSon()}"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView36" />
+
+        <Button
+            android:id="@+id/button5"
+            style="@style/tv"
+            android:text="包含但非父子"
+            android:onClick="@{()->create.notFatherAndSon()}"
+            app:layout_constraintStart_toEndOf="@+id/button2"
+            app:layout_constraintTop_toTopOf="@+id/button2" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

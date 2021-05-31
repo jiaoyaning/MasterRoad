@@ -288,32 +288,45 @@ class KotlinCoroutinesCreate(application: Application) : AndroidViewModel(applic
 
     //region 4. UNDISPATCHED
     fun startUnDispatched() {
-        /*
-         * 会直接开始在当前线程下执行，直到运行到第一个挂起点(suspend)。
-         */
-        GlobalScope.launch(start = CoroutineStart.UNDISPATCHED) {
-            LogUtils.tag(TAG).i("1 ——> UNDISPATCHED挂起前 in ${Thread.currentThread().name}")
-            delay(100) //delay也是一个suspend方法
-            LogUtils.tag(TAG).i("1 ——> UNDISPATCHED挂起后 in ${Thread.currentThread().name}")
-        }
-        LogUtils.tag(TAG).i("1 ——> 分割线==============\n\n\n")
-        sleep(1000)
-        /*
-         * 挂起前在main线程和挂起后在worker-1线程，这是因为当以UNDISPATCHED启动时,
-         * 协程在这种模式下会直接开始在当前线程下执行，直到第一个挂起点。
-         * 遇到挂起点之后的执行，将取决于挂起点本身的逻辑和协程上下文中的调度器，
-         * 即join处恢复执行时，因为所在的协程有调度器，所以后面的执行将会在调度器对应的线程上执行。
-         */
         GlobalScope.launch(Dispatchers.Main) {
+            /*
+             * 会直接开始在当前线程下执行，直到运行到第一个挂起点(suspend)。
+             */
+            launch(start = CoroutineStart.UNDISPATCHED) {
+                LogUtils.tag(TAG).i("1 ——> UNDISPATCHED挂起前 in ${Thread.currentThread().name}")
+                delay(100) //delay也是一个suspend方法
+                LogUtils.tag(TAG).i("1 ——> UNDISPATCHED挂起后 in ${Thread.currentThread().name}")
+            }
+            LogUtils.tag(TAG).i("2 ——> 分割线==============\n\n\n")
+            delay(1000)
+            /*
+             * 挂起前在main线程和挂起后在worker-1线程，这是因为当以UNDISPATCHED启动时,
+             * 协程在这种模式下会直接开始在当前线程下执行，直到第一个挂起点。
+             * 遇到挂起点之后的执行，将取决于挂起点本身的逻辑和协程上下文中的调度器，
+             * 即join处恢复执行时，因为所在的协程有调度器，所以后面的执行将会在调度器对应的线程上执行。
+             */
             //下面虽然指定了IO线程，但是还是会运行在当前线程内，直到第一次挂起后的join才会被重新调度
-            val unDispatchedJob2 = launch(Dispatchers.IO, start = CoroutineStart.UNDISPATCHED) {
+            val unDispatchedJob = launch(Dispatchers.IO, start = CoroutineStart.UNDISPATCHED) {
                 LogUtils.tag(TAG).i("2 ——> UNDISPATCHED挂起前 in ${Thread.currentThread().name}")
                 delay(100) //delay也是一个suspend方法
                 LogUtils.tag(TAG).i("2 ——> UNDISPATCHED挂起后 in ${Thread.currentThread().name}")
             }
             LogUtils.tag(TAG).i("2 ——> join前 in ${Thread.currentThread().name}")
-            unDispatchedJob2.join()
+            unDispatchedJob.join()
             LogUtils.tag(TAG).i("2 ——> join后 in ${Thread.currentThread().name}")
+
+            LogUtils.tag(TAG).i("3 ——> 分割线==============\n\n\n")
+            delay(1000)
+
+            //去掉Dispatchers.IO 后
+            val unDispatchedJob3 = launch(start = CoroutineStart.UNDISPATCHED) {
+                LogUtils.tag(TAG).i("3 ——> UNDISPATCHED挂起前 in ${Thread.currentThread().name}")
+                delay(100) //delay也是一个suspend方法
+                LogUtils.tag(TAG).i("3 ——> UNDISPATCHED挂起后 in ${Thread.currentThread().name}")
+            }
+            LogUtils.tag(TAG).i("3 ——> join前 in ${Thread.currentThread().name}")
+            unDispatchedJob3.join()
+            LogUtils.tag(TAG).i("3 ——> join后 in ${Thread.currentThread().name}")
         }
     }
     //endregion

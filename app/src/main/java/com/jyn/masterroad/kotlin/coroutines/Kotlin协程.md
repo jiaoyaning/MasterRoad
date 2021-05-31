@@ -72,7 +72,7 @@ coroutineScope.launch {
   * **UNDISPATCHED**
     > 立即在当前线程执行协程体，直到第一个 suspend 调用
     > 协程在这种模式下会直接开始在当前线程下执行，直到运行到第一个挂起点。这听起来有点像 `ATOMIC`，不同之处在于`UNDISPATCHED`是不经过任何调度器就开始执行的。当然遇到挂起点之后的执行，将取决于挂起点本身的逻辑和协程上下文中的调度器。
-
+    >
 ## 3.CoroutineScope 作用域
 ## 4.Suspend 挂起函数
 

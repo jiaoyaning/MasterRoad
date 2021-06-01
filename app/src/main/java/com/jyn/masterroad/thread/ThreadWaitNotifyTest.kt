@@ -128,6 +128,10 @@ class ThreadWaitNotifyTest @Inject constructor() {
 
     //region 4.轮流打印ABC
 
+    /*
+     * 面试官：请用五种方法来实现多线程交替打印问题
+     * https://mp.weixin.qq.com/s/5yM3zIwa67ydnVCehK2yFg
+     */
     @Volatile
     var state = 0 // 0对应A，1对应B，2对应C
     fun startPrintABC(v: View) {

@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="10dp"
+        tools:context=".utils.material.ShapeableImageViewActivity">
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/shapeableImageView"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            app:layout_constraintEnd_toStartOf="@id/shapeableImageView2"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:shapeAppearance="@style/RoundedStyle"
+            app:srcCompat="@mipmap/icon_master_road2" />
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/shapeableImageView2"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            app:layout_constraintEnd_toStartOf="@id/shapeableImageView3"
+            app:layout_constraintStart_toEndOf="@id/shapeableImageView"
+            app:layout_constraintTop_toTopOf="parent"
+            app:shapeAppearance="@style/CircleStyle"
+            app:srcCompat="@mipmap/icon_master_road2" />
+
+        <!--  注意： padding 是 strokeWidth的一半   -->
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/shapeableImageView3"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:padding="2dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/shapeableImageView2"
+            app:layout_constraintTop_toTopOf="parent"
+            app:shapeAppearance="@style/SectorStyle"
+            app:srcCompat="@mipmap/icon_master_road2"
+            app:strokeColor="@color/errorColor"
+            app:strokeWidth="4dp" />
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/shapeableImageView4"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_marginTop="8dp"
+            app:layout_constraintEnd_toStartOf="@+id/shapeableImageView5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/shapeableImageView"
+            app:shapeAppearance="@style/CutStyle"
+            app:srcCompat="@mipmap/icon_master_road2" />
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/shapeableImageView5"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:padding="2dp"
+            app:layout_constraintEnd_toStartOf="@+id/shapeableImageView6"
+            app:layout_constraintStart_toEndOf="@+id/shapeableImageView4"
+            app:layout_constraintTop_toTopOf="@+id/shapeableImageView4"
+            app:shapeAppearance="@style/RhombusStyle"
+            app:srcCompat="@mipmap/icon_master_road2"
+            app:strokeColor="@color/errorColor"
+            app:strokeWidth="4dp" />
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/shapeableImageView6"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/shapeableImageView5"
+            app:layout_constraintTop_toTopOf="@+id/shapeableImageView4"
+            app:shapeAppearance="@style/LeafStyle"
+            app:srcCompat="@mipmap/icon_master_road2" />
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/shapeableImageView7"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_marginTop="8dp"
+            android:padding="2dp"
+            app:layout_constraintEnd_toStartOf="@id/shapeableImageView8"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/shapeableImageView4"
+            app:shapeAppearance="@style/SemicircleStyle"
+            app:srcCompat="@mipmap/icon_master_road2"
+            app:strokeColor="@color/errorColor"
+            app:strokeWidth="4dp" />
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/shapeableImageView8"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:scaleType="centerCrop"
+            app:layout_constraintBottom_toBottomOf="@+id/shapeableImageView7"
+            app:layout_constraintEnd_toStartOf="@id/shapeableImageView9"
+            app:layout_constraintStart_toEndOf="@+id/shapeableImageView7"
+            app:layout_constraintTop_toTopOf="@+id/shapeableImageView7"
+            app:shapeAppearance="@style/RaindropStyle"
+            app:srcCompat="@mipmap/icon_master_road2" />
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/shapeableImageView9"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/shapeableImageView8"
+            app:layout_constraintTop_toTopOf="@+id/shapeableImageView7"
+            app:shapeAppearance="@style/WaterImageStyle"
+            app:srcCompat="@mipmap/icon_master_road2" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

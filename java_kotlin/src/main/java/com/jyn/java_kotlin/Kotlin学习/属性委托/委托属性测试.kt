@@ -9,6 +9,9 @@ import kotlin.reflect.KProperty
 /**
  * 一文彻底搞懂Kotlin中的委托
  * https://mp.weixin.qq.com/s/dYBYuBAnYRgSiKQrU-ZGpg
+ *
+ * Kotlin 基础 | 委托及其应用
+ * https://mp.weixin.qq.com/s/Oi4zX3AExZLp8D5WnWvlZg
  */
 fun main(args: Array<String>) {
     propertyTest()

@@ -25,6 +25,7 @@ object RoutePath {
         const val path = "/app/LiveDataActivity"
         const val span = 2
     }
+
     // Hilt测试
     object Hilt {
         const val name = "Hilt"
@@ -38,6 +39,7 @@ object RoutePath {
         const val path = "/app/RxJavaActivity"
         const val span = 2
     }
+
     // RxJava 测试
     object OkHttp {
         const val name = "OkHttp"
@@ -92,10 +94,17 @@ object RoutePath {
         const val path = "/app/KotlinCoroutines"
         const val span = 2
     }
+
     // Kotlin Coroutines协程
     object KotlinKoin {
         const val name = "Kotlin -> Koin"
         const val path = "/app/Koin"
         const val span = 2
+    }
+
+    object ShapeableImageView {
+        const val name = "ShapeableImageView"
+        const val path = "/app/ShapeableImageView"
+        const val span = 1
     }
 }

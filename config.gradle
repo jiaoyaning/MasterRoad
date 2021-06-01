@@ -27,11 +27,11 @@ ext {
             "espresso-core"   : "androidx.test.espresso:espresso-core:3.3.0",
             "espresso-contrib": "androidx.test.espresso:espresso-contrib:3.3.0",
             "espresso-intents": "androidx.test.espresso:espresso-intents:3.3.0",
-            "test-runner"     : "androidx.test:runner:$rootProject.ext.test",
-            "test-rules"      : "androidx.test:rules:$rootProject.ext.test",
-            "test:core"       : "androidx.test:core:$rootProject.ext.test",
-            "test:core-ktx"   : "androidx.test:core-ktx:$rootProject.ext.test",
-            "test.ext:truth"  : "androidx.test.ext:truth:$rootProject.ext.test",
+            "test-runner"     : "androidx.test:runner:$test",
+            "test-rules"      : "androidx.test:rules:$test",
+            "test:core"       : "androidx.test:core:$test",
+            "test:core-ktx"   : "androidx.test:core-ktx:$test",
+            "test.ext:truth"  : "androidx.test.ext:truth:$test",
             /*
              * An Espresso IdlingResource for OkHttp.
              * https://github.com/JakeWharton/okhttp-idling-resource
@@ -46,7 +46,7 @@ ext {
              * https://mp.weixin.qq.com/mp/appmsgalbum?__biz=MzAxNzMxNzk5OQ==&action=getalbum&album_id=1567168071180566530&scene=173&subscene=93&sessionid=1617694420&enterid=1617696172&from_msgid=2649487491&from_itemidx=1&count=3&nolastread=1#wechat_redirect
              * https://github.com/material-components/material-components-android
              */
-            "material"           : "com.google.android.material:material:1.1.0",
+            "material"           : "com.google.android.material:material:1.4.0-beta01",
             "appcompat"          : "androidx.appcompat:appcompat:1.2.0",
             "annotation"         : "androidx.annotation:annotation:1.1.0",
             /*
@@ -54,11 +54,11 @@ ext {
              * https://mp.weixin.qq.com/s/TmI0O4OsvdD6DHkLm9EiiQ
              * https://developer.android.google.cn/jetpack/androidx/releases/lifecycle
              */
-            "lifecycle-compiler" : "androidx.lifecycle:lifecycle-compiler:2.3.0",
-            "lifecycle-process"  : "androidx.lifecycle:lifecycle-process:2.3.0",
-            "lifecycle"          : "androidx.lifecycle:lifecycle-runtime:2.3.0",
-            "viewmodel"          : "androidx.lifecycle:lifecycle-viewmodel:2.3.0",
-            "livedata"           : "androidx.lifecycle:lifecycle-livedata:2.3.0",
+            "lifecycle-compiler" : "androidx.lifecycle:lifecycle-compiler:$lifecycle",
+            "lifecycle-process"  : "androidx.lifecycle:lifecycle-process:$lifecycle",
+            "lifecycle"          : "androidx.lifecycle:lifecycle-runtime:$lifecycle",
+            "viewmodel"          : "androidx.lifecycle:lifecycle-viewmodel:$lifecycle",
+            "livedata"           : "androidx.lifecycle:lifecycle-livedata:$lifecycle",
             /*
              * 将 Kotlin 协程与架构组件一起使用
              * https://developer.android.google.cn/topic/libraries/architecture/coroutines
@@ -71,9 +71,9 @@ ext {
              * KTX 扩展程序列表
              * https://developer.android.google.cn/kotlin/ktx/extensions-list
              */
-            "viewmodel-ktx"      : "androidx.lifecycle:lifecycle-viewmodel-ktx:2.3.0",
-            "runtime-ktx"        : "androidx.lifecycle:lifecycle-runtime-ktx:2.3.0",
-            "livedata-ktx"       : "androidx.lifecycle:lifecycle-livedata-ktx:2.3.0",
+            "viewmodel-ktx"      : "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycle",
+            "runtime-ktx"        : "androidx.lifecycle:lifecycle-runtime-ktx:$lifecycle",
+            "livedata-ktx"       : "androidx.lifecycle:lifecycle-livedata-ktx:$lifecycle",
             "activity-ktx"       : "androidx.activity:activity-ktx:1.2.0",
             "fragment-ktx"       : "androidx.fragment:fragment-ktx:1.3.0",
 
@@ -106,10 +106,10 @@ ext {
              * Kotlin 的依赖注入框架
              * https://insert-koin.io/docs/quickstart/kotlin
              */
-            "koin"            : "io.insert-koin:koin-core:$rootProject.ext.koin",
+            "koin"            : "io.insert-koin:koin-core:$ext.koin",
             // Koin main features for Android (Scope,ViewModel ...)
-            "koin-android"    : "io.insert-koin:koin-android:$rootProject.ext.koin",
-            "koin-android-ext": "io.insert-koin:koin-android-ext:$rootProject.ext.koin",
+            "koin-android"    : "io.insert-koin:koin-android:$ext.koin",
+            "koin-android-ext": "io.insert-koin:koin-android-ext:$ext.koin",
             /*
              * kotlin 反射 官网
              * http://www.kotlincn.net/docs/reference/reflection.html

@@ -7,13 +7,13 @@
 
         <variable
             name="rxJavaCreate"
-            type="com.jyn.masterroad.rxjava.RxJavaCreate" />
+            type="com.jyn.masterroad.utils.rxjava.RxJavaCreate" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".rxjava.RxJavaActivity"
+        tools:context=".utils.rxjava.RxJavaActivity"
         tools:ignore="HardcodedText">
 
         <TextView

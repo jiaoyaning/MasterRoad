@@ -7,11 +7,11 @@
 
         <variable
             name="hiltInject"
-            type="com.jyn.masterroad.jetpack.hilt.HiltData" />
+            type="com.jyn.masterroad.jetpack.hilt.data.HiltData" />
 
         <variable
             name="hiltViewModel"
-            type="com.jyn.masterroad.jetpack.hilt.HiltViewModel" />
+            type="com.jyn.masterroad.jetpack.hilt.data.HiltViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

@@ -41,6 +41,9 @@ import com.jyn.masterroad.databinding.ActivityRecyclerViewBinding
  *
  * 在 RecyclerView 中使用 ListAdapter
  * https://mp.weixin.qq.com/s/WZi3cemT4bfrKfDIpjFdbg
+ *
+ * RecyclerView 刷新列表数据的 notifyDataSetChanged() 为什么是昂贵的?
+ * https://mp.weixin.qq.com/s/dS51WxN9RkAGgdFV9_Q1Tg
  */
 class RecyclerViewActivity : BaseActivity<ActivityRecyclerViewBinding>(R.layout.activity_recycler_view) {
 

@@ -12,10 +12,12 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="AllowBackup">
-        <activity android:name=".jetpack.viewmodel.ViewModelActivity"></activity>
+        <activity android:name=".utils.material.MaterialButtonActivity"></activity>
+        <activity android:name=".utils.material.ShapeableImageViewActivity" />
+        <activity android:name=".jetpack.viewmodel.ViewModelActivity" />
         <activity android:name=".kotlin.koin.KoinActivity" />
         <activity android:name=".kotlin.flow.FlowActivity" />
-        <activity android:name=".okhttp_retrofit.OkhttpActivity" />
+        <activity android:name=".utils.okhttp_retrofit.OkhttpActivity" />
         <activity android:name=".jetpack.workmanager.WorkManagerActivity" />
         <activity android:name=".base.BaseActivity" />
         <activity android:name=".nestedscrolling.NestedScrolling2Activity" />
@@ -30,10 +32,10 @@
             android:label="BindingCollectionAdapter" />
         <activity android:name=".jetpack.livedata.LiveDataActivity" />
         <activity android:name=".handler.HandlerActivity" />
-        <activity android:name=".eventbus.EventBusActivity" />
+        <activity android:name=".utils.eventbus.EventBusActivity" />
         <activity android:name=".jetpack.hilt.HiltDaggerActivity" />
         <activity android:name=".thread.ThreadActivity" />
-        <activity android:name=".rxjava.RxJavaActivity" />
+        <activity android:name=".utils.rxjava.RxJavaActivity" />
         <activity
             android:name=".MainActivity"
             android:configChanges="orientation|screenSize|keyboardHidden">

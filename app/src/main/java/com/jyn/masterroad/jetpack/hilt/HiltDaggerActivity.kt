@@ -6,6 +6,9 @@ import com.jyn.common.ARouter.RoutePath
 import com.jyn.masterroad.R
 import com.jyn.masterroad.base.BaseActivity
 import com.jyn.masterroad.databinding.ActivityHiltDaggerBinding
+import com.jyn.masterroad.jetpack.hilt.data.HiltData
+import com.jyn.masterroad.jetpack.hilt.data.HiltViewModel
+import com.jyn.masterroad.jetpack.hilt.data.HiltViewModelSaved
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 

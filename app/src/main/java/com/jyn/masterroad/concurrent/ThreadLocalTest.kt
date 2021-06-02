@@ -1,4 +1,4 @@
-package com.jyn.masterroad.thread
+package com.jyn.masterroad.concurrent
 
 import android.view.View
 import com.apkfuns.logutils.LogUtils

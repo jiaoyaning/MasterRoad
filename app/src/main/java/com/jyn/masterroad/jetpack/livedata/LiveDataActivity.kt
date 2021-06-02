@@ -37,6 +37,9 @@ import kotlinx.android.synthetic.main.activity_live_data.*
  *
  * LiveData数据倒灌的解决方案之一
  * https://blog.csdn.net/ljcITworld/article/details/112849126
+ *
+ * 三方库源码笔记（8）-Retrofit 与 LiveData 的结合使用
+ * https://mp.weixin.qq.com/s/jeJB2I0uV6LIRDwLqkMgEg
  */
 @Route(path = RoutePath.LiveData.path)
 class LiveDataActivity : BaseActivity<ActivityLiveDataBinding>

@@ -1,4 +1,4 @@
-package com.jyn.masterroad.thread
+package com.jyn.masterroad.concurrent
 
 import android.view.View
 import com.apkfuns.logutils.LogUtils
@@ -15,7 +15,7 @@ import javax.inject.Inject
  *
  * CountDownLatch主要作用是使一个线程等待其他线程各自执行完毕后再执行
  */
-class CountDownLatchTest @Inject constructor(){
+class CountDownLatchTest @Inject constructor() {
 
     /*
      * await可阻塞当前线程，只有等CountDownLatch.countDown()结束后才会继续执行

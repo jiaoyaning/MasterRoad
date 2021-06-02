@@ -1,4 +1,4 @@
-package com.jyn.masterroad.thread
+package com.jyn.masterroad.concurrent
 
 import android.view.View
 import com.apkfuns.logutils.LogUtils
@@ -8,10 +8,23 @@ import java.util.concurrent.TimeUnit
 import javax.inject.Inject
 
 /*
- * 线程池关闭的几种方式
+ * 【剑指Offer】JDK 线程池如何保证核心线程不被销毁
+ * https://mp.weixin.qq.com/s/ZQ_ahk526N3rErxVt2-HNA
  *
- * Java线程池是如何保证核心线程不被销毁的
- * https://blog.csdn.net/smile_from_2015/article/details/105259789
+ *【236期】面试官：线程池中多余的线程是如何回收的？
+ * https://mp.weixin.qq.com/s/HlHps1T-8MqE458IDxAkQg
+ *
+ * 10问10答：你真的了解线程池吗？
+ * https://mp.weixin.qq.com/s/oKCJmQt9egsy5RCMgf9xpw
+ *
+ * 2w字长文带你深入理解线程池
+ * https://mp.weixin.qq.com/s/c4A4ow-TDaG6COArX1rXmg
+ *
+ * JDK线程池源码分析之ThreadPoolExecutor
+ * https://www.jianshu.com/p/072703367564
+ *
+ * 面试老爱问的线程池，一把梭哈！
+ * https://mp.weixin.qq.com/s/b2PUpprFFWGthZyGDd8g-g（思路强）
  */
 class ExecutorsTest @Inject constructor() {
 

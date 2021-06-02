@@ -1,10 +1,10 @@
-package com.jyn.masterroad.thread
+package com.jyn.masterroad.concurrent
 
 import android.view.View
 import com.apkfuns.logutils.LogUtils
 import javax.inject.Inject
 
-class ThreadWaitNotifyTest @Inject constructor() {
+class WaitAndNotifyTest @Inject constructor() {
     private val lock = Object() //设置一个锁对象
 
     // region 1. wait 和 notify

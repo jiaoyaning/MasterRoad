@@ -1,4 +1,4 @@
-package com.jyn.masterroad.thread.lock;
+package com.jyn.masterroad.concurrent.lock;
 
 import java.util.concurrent.locks.AbstractQueuedSynchronizer;
 

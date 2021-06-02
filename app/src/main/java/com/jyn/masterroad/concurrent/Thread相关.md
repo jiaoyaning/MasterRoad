@@ -1,19 +1,19 @@
 [TOC]
 # 线程
 ## 线程的创建
-大致可分为四种
+**大致可分为四种**
 1. 继承`Thread`类
 2. 实现`Runnable`接口
 3. `FutureTask`类 + `Callable`接口
 4. 借助`Executors`
 
-问: `new Thread()` 和 `new Object()` 有什么差别
-- `new Object()` 的过程  
+**问: `new Thread()` 和 `new Object()` 有什么差别？**
+- **`new Object()` 的过程**  
   1. 分配一块内存 M
   2. 在内存 M 上初始化该对象
   3. 将内存 M 的地址赋值给引用变量 obj  
 
-- `new Thread()` 的过程
+- **`new Thread()` 的过程**
   1. 它为一个线程栈分配内存，该栈为每个线程方法调用保存一个栈帧
   2. 每一栈帧由一个局部变量数组、返回值、操作数堆栈和常量池组成
   3. 一些支持本机方法的 jvm 也会分配一个本机堆栈
@@ -22,37 +22,6 @@
   6. 将与线程相关的描述符添加到JVM内部数据结构中
   7. 线程共享堆和方法区域
 
-
-
-## 线程池```submit()``` 和 ```execute()``` 区别
-> submit:提交
-> execute:执行
-1. 接收的参数不一样;
-    `submit()`入参可以为 `Callable<T>`，也可以为 `Runnable`，而且方法可以有返回值 `Future<T>`;  
-    `execute()` 入参只有一个 `Runnable`
-2. `submit()`有返回值，而 `execute()`没有;  
-    例如，有个 `validation`的 `task`，希望该`task`执行完后告诉我它的执行结果，是成功还是失败，然后继续下面的操作。
-3. `submit()`可以进行`Exception`处理;
-    例如，如果`task`里会抛出`checked`或者`unchecked exception`，而你又希望外面的调用者能够感知这些`exception`并做出及时的处理，那么就需要用到`submit`，通过对`Future.get()`进行抛出异常的捕获，然后对其进行处理。
-## `shutdown()` 和 `shutdownNow()` 和 `awaitTermination()` 区别
-> `shutdown()` 和 `shutdownNow()`作用于关闭线程池。  
-> `awaitTermination()`作用为阻塞主线程 & 判断阻塞结束时线程池是否已被销毁    
-### shutdown()
-1. 将线程池的状态设置为 SHUTDOWN
-2. 不会立即停止线程池，会继续执行尚未结束的任务 & 任务队列中的任务，直到全部执行完毕  
-3. 不再接受新的任务，强行添加会报错(submit 和 execute 方式都一样) --RejectedExecutionException  
-
-### shutdownNow()  
-1. 将线程池的状态设置为 STOP
-2. 正在执行的任务会被尝试 interrupt()中断
-3. 没被执行的任务则被返回(不包含正在执行的任务)
-
-### awaitTermination()
-1. awaitTermination()方法所在线程会陷入阻塞状态，阻塞时间就是所设置时间（阻塞时间可以设置超过线程池本身所需的执行时间），  
-阻塞地点就是awaitTermination()方法。
-2. 线程池行为和shutdown()基本相同，只是阻塞时间内继续添加线程并不会抛出异常，过了阻塞期后可以继续添加
-3. 返回结果 = 阻塞结束时线程池是否已被销毁 (shutdown 和 shutdownNow方法可以销毁线程池，因此经常会和awaitTermination连用)
-
 ## sleep() 和 wait() 的区别
 1. sleep是Thread类的方法,wait是Object类中定义的方法
 2. Thread.sleep不会导致锁行为的改变，如果当前线程是拥有锁的，那么Thread.sleep不会让线程释放锁。
@@ -60,7 +29,7 @@
 OS会将执行时间分配给其它线程。区别是，调用wait后，需要别的线程执行notify/notifyAll才能够重新获得CPU执行时间。
 
 # java 中的 wait 和 notify
-参考:  java中wait和notify : [https://www.cnblogs.com/jerryshao2015/p/4419638.html](https://www.cnblogs.com/jerryshao2015/p/4419638.html)
+参考: [java中wait和notify](https://www.cnblogs.com/jerryshao2015/p/4419638.html)
   
 JAVA的 synchronized()方法类似于操作系统概念中的互斥内存块。  
 

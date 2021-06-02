@@ -1,10 +1,8 @@
-package com.jyn.masterroad.thread.lock;
+package com.jyn.masterroad.concurrent.lock;
 
 import android.view.View;
 
 import com.apkfuns.logutils.LogUtils;
-import com.jyn.masterroad.thread.lock.MyTestAQS;
-import com.jyn.masterroad.thread.lock.MyTestLock;
 
 /*
  * 万字超强图文讲解AQS以及ReentrantLock应用

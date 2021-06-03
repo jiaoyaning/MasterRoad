@@ -164,5 +164,10 @@ ext {
              * https://github.com/square/moshi
              */
             "moshi"            : "com.squareup.moshi:moshi-kotlin:1.11.0",
+
+            /**
+             * 简单的 API 实现 DataBinding 和 ViewBinding
+             * https://github.com/hi-dhl/Binding
+             */
     ]
 }

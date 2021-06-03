@@ -12,7 +12,7 @@ import kotlinx.coroutines.channels.produce
 import java.util.concurrent.Executors
 
 /*
- * Kotlin协程场景化学习 TODO
+ * Kotlin协程场景化学习
  * https://mp.weixin.qq.com/s/zQ7fFKp9CCW6h3TVVE6X5g
  *
  * 官方文档

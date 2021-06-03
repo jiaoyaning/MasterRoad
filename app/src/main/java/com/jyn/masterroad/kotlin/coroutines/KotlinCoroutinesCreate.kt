@@ -10,6 +10,12 @@ import java.util.concurrent.Executors
 /*
  * 揭秘kotlin协程中的CoroutineContext
  * https://juejin.cn/post/6926695962354122765
+ *
+ * 深入浅出协程、线程和并发问题 TODO
+ * https://juejin.cn/post/696940850569438823
+ *
+ * 枯燥的Kotlin协程三部曲(中)——应用实战篇
+ * https://juejin.cn/post/6860464281272451080
  */
 @ExperimentalCoroutinesApi
 @Suppress("UNUSED_VARIABLE")

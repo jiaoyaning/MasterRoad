@@ -50,7 +50,6 @@ class LiveDataActivity : BaseActivity<ActivityLiveDataBinding>
     override fun initData() {
         viewModel = createVM()
         binding.model = viewModel
-
         /**
          * 点击方法设置之，在xml中绑定OnClickListener接口
          */
@@ -65,6 +64,10 @@ class LiveDataActivity : BaseActivity<ActivityLiveDataBinding>
 
         viewModel.numString?.observe(this, {
             LogUtils.tag(TAG).i("Observer -> numString改变了$it")
+        })
+
+        viewModel.select.observe(this, {
+            LogUtils.tag(TAG).i("Observer -> select:$it")
         })
     }
 }

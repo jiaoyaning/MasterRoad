@@ -1,8 +1,10 @@
 package com.jyn.masterroad.jetpack.livedata
 
+import android.app.Application
 import android.view.View
 import androidx.databinding.Observable
 import androidx.databinding.ObservableInt
+import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.liveData
 import com.apkfuns.logutils.LogUtils
@@ -11,13 +13,13 @@ import com.jyn.common.Base.BaseVM
 /**
  * https://github.com/android/architecture-components-samples/tree/main/LiveDataSample
  */
-class LiveDataTestViewModel : BaseVM() {
+class LiveDataTestViewModel(application: Application) : AndroidViewModel(application) {
 
     companion object {
         const val TAG = "LiveData"
     }
 
-    var numString: MutableLiveData<String>? = null //千万不能直接初始化一个默认值，否则get时就会永远获取默认值
+    var numString: MutableLiveData<String>? = null
         get() {
             if (field == null) {
                 numString = MutableLiveData("0")
@@ -25,11 +27,15 @@ class LiveDataTestViewModel : BaseVM() {
             return field
         }
 
-    var num: MutableLiveData<Int> = MutableLiveData(0)
+    var num: MutableLiveData<Int> = MutableLiveData(10)
 
     val liveData = liveData {
         emit(" i am a ViewModelInject")
     }
+
+    var entries: SingleLiveEvent<List<String>> =
+        SingleLiveEvent(mutableListOf("测试1", "测试2", "测试3", "测试4"))
+    var select: SingleLiveEvent<String> = SingleLiveEvent("测试3")
 
     /*
      * ObservableField只有在数据发生改变时UI才会收到通知，而LiveData不同，

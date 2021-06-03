@@ -5,6 +5,7 @@ import android.content.res.Configuration
 import android.os.Handler
 import android.os.Looper
 import android.widget.Toast
+import androidx.lifecycle.ProcessLifecycleOwner
 
 import com.apkfuns.logutils.LogUtils
 import com.jyn.common.Utils.MemoryCase
@@ -19,7 +20,7 @@ class MyApp : Application() {
         super.onCreate()
 //        setUncaughtException()
         //第一种可检测activity生命周期的方式
-//        ProcessLifecycleOwner.get().lifecycle.addObserver(LifecycleChecker())
+        ProcessLifecycleOwner.get().lifecycle.addObserver(LifecycleChecker())
         //第二种可检测activity生命周期的方式
         this.registerActivityLifecycleCallbacks(ActivityLifecycle())
         //第三种可检测activity生命周期的方式 - 在BaseActivity中

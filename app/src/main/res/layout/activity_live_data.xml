@@ -38,6 +38,8 @@
             tools:ignore="RtlSymmetry"
             tools:text="0" />
 
+
+        <!--    TextViewBindingAdapter  -->
         <TextView
             android:id="@+id/tv_num2"
             android:layout_width="match_parent"
@@ -101,5 +103,18 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@+id/tv_num2"
             tools:ignore="HardcodedText" />
+
+        <!-- AbsSpinnerBindingAdapter -->
+        <Spinner
+            android:id="@+id/spinner"
+            android:layout_width="300dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="16dp"
+            android:entries="@{model.entries}"
+            android:select="@={model.select}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/btn_livedata_add" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

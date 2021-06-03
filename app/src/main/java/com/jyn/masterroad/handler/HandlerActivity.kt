@@ -32,6 +32,9 @@ import com.jyn.masterroad.databinding.ActivityHandlerBinding
  *
  * 面试官：如何提高Message的优先级
  * https://mp.weixin.qq.com/s/nOcI2J6yUW-vTNy-VuZufQ
+ *
+ * 图解：epoll怎么实现的
+ * https://mp.weixin.qq.com/s/nTuTJuWVZmhpiEfckmZ1Gg
  */
 @Route(path = RoutePath.Handle.path)
 @SuppressLint("NewApi", "DiscouragedPrivateApi", "HandlerLeak")

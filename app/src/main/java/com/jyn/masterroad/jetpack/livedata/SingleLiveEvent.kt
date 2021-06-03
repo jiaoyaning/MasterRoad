@@ -12,7 +12,7 @@ import java.util.concurrent.atomic.AtomicBoolean
  * LiveData和Fragment的奇妙"BUG"
  * https://www.jianshu.com/p/8446fecc571f
  */
-class SingleEventLiveData<T> : MutableLiveData<T>() {
+class SingleLiveEvent<T>(value: T) : MutableLiveData<T>(value) {
     private val mPending = AtomicBoolean(false)
 
     @MainThread

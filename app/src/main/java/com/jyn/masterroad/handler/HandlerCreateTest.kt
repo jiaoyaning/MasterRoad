@@ -12,7 +12,7 @@ class HandlerCreateTest : ViewModel() {
         const val TAG = "Handler"
     }
 
-    //region 一、handler三种使用方式
+//region 一、handler的三种使用方式
 
     //region 1. 自带callback，并且重写了handleMessage方法
     val callback = Callback {
@@ -47,6 +47,5 @@ class HandlerCreateTest : ViewModel() {
         }
     }
     //endregion
-
-    //endregion
+//endregion
 }

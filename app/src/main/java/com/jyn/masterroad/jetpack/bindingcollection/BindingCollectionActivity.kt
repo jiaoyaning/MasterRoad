@@ -11,7 +11,8 @@ import com.jyn.masterroad.databinding.ActivityBindingCollectionBinding
  * https://github.com/evant/binding-collection-adapter
  */
 @Route(path = RoutePath.BindingCollection.path)
-class BindingCollectionActivity : BaseActivity<ActivityBindingCollectionBinding>(R.layout.activity_binding_collection) {
+class BindingCollectionActivity : BaseActivity<ActivityBindingCollectionBinding>
+    (R.layout.activity_binding_collection) {
 
     lateinit var viewmodel: BindingCollectionModel
 

@@ -1,13 +1,14 @@
+[TOC]
 # Handle
-**问：`handle`的作用？**
+####**问：`handle`的作用？**
 1. 在Android系统中需要一个切换线程的工具。
 2. 同时需要在某些情况下进行delay操作。
 
 ****
 
-**问：`handle`的三种使用方式？**
+####**问：`handle`的三种使用方式？**
 1. 给`Message`里添加一个`callback`参数。
-   ```
+   ```java
     Handler handler = new Handler();
     Message.obtain(handler, new Runnable() {
         @Override
@@ -17,7 +18,7 @@
     });
    ```
 2. 初始化`Handler`的时候带上一个`Callback`参数。
-   ```
+   ```java
     Handler handler = new Handler(new Handler.Callback() {
         @Override
         public boolean handleMessage(@NonNull Message msg) {
@@ -26,7 +27,7 @@
     });
    ```
 3. 重写`Handler`的`handleMessage()`方法。
-   ```
+   ```java
     Handler handler = new Handler(){
         @Override
         public void handleMessage(@NonNull Message msg) {
@@ -41,16 +42,16 @@
 
 ****
 
-**问：三种`Message`的优先级**  
+####**问：三种`Message`的优先级**  
 >`Message.callback` > `Handler.Callback.handleMessage` > `Handler.handleMessage`
 总结：消息`callback` > 形参`callback` > `Handler`方法
 
 ****
 
-**问：`Handler.Callback.handleMessage`的返回值有什么影响**
+####**问：`Handler.Callback.handleMessage`的返回值有什么影响**
 >返回`true`的时候，不再执行`handle`本身的`handleMessage`分发方法。
 
-```
+```java
 public void dispatchMessage(@NonNull Message msg) {
     // 如果msg有callback则直接处理msg的callback
     if (msg.callback != null) {
@@ -69,7 +70,46 @@ public void dispatchMessage(@NonNull Message msg) {
 }
 ```
 
-## Message
+***
+
+####**问：`Handler`内存泄漏问题?**
+[参考](https://juejin.cn/post/6909362503898595342)
+>答："内部类持有了外部类的引用，也就是Hanlder持有了Activity的引用，从而导致无法被回收呗。"
+ 其实这样回答是错误的，或者说没回答到点子上。
+ 我们必须找到那个最终的引用者，不会被回收的引用者，其实就是主线程，这条完整引用链应该是这样：
+> > **`主线程` —> `threadlocal` —> `Looper` —> `MessageQueue` —> `Message` —> `Handler` —> `Activity`**
+>
+##### **延伸问题1：内部类为什么会持有外部类的引用?**
+> 因为内部类虽然和外部类写在同一个文件中，但是编译后还是会生成不同的class文件，其中内部类的构造函数中会传入外部类的实例，然后就可以通过this$0访问外部类的成员。
+>``` java
+> //原代码
+>class InnerClassOutClass{
+>    class InnerUser {
+>       private int age = 20;
+>    }
+>}
+>
+>//class代码
+>class InnerClassOutClass$InnerUser {
+>    private int age;
+>    InnerClassOutClass$InnerUser(InnerClassOutClass var1) {
+>        this.this$0 = var1;
+>        this.age = 20;
+>     }
+>}
+>```
+
+##### **延伸问题2：`kotlin`中的内部类与`Java`有什么不一样吗?**
+>1. `在Kotlin中`，匿名内部类如果没有使用到外部类的对象引用时候，是不会持有外部类的对象引用的，此时的匿名内部类其实就是个`静态匿名内部类`，也就不会发生内存泄漏。
+>2. `在Kotlin中`，匿名内部类如果使用了对外部类的引用，这时候就会持有外部类的引用了，就会需要考虑内存泄漏的问题。
+>
+>同样`kotlin`中对于内部类也是和`Java`有区别的。
+>1. `Kotlin`中所有的内部类都是默认静态的，也就都是静态内部类。
+>2. 如果需要调用外部的对象方法，就需要用`inner`修饰，改成和`Java`一样的内部类，并且会持有外部类的引用，需要考虑内存泄漏问题。
+
+***
+
+# Message
 1. 可以携带`Runnable`回调，被优先处理并拦截`Handler`的处理方法
 2. `target`属性持有了`Handler`引用，可在`message`分发时回调到特定的`Handler`
 
@@ -77,7 +117,7 @@ public void dispatchMessage(@NonNull Message msg) {
  1. 当前消息队列中没有消息
  2. 新的Message延迟时间为0
  3. 新的Message延迟时间小于当前第一个Message的延迟时间
- ```
+ ```java
  boolean enqueueMessage(Message msg, long when) {
     ...
     if (p == null || when == 0 || when < p.when) {
@@ -91,7 +131,8 @@ public void dispatchMessage(@NonNull Message msg) {
  }
  ```
 
- ## MessageQueue
+ ## MessageQueue  
+
  **Handler的Message种类分为3种：**
 >1. 普通消息
 >2. 屏障消息
@@ -118,7 +159,7 @@ public void dispatchMessage(@NonNull Message msg) {
 
 ****
 
-**问：为什么要用`for(;;)`而不是`while(1)`?**
+####**问：为什么要用`for(;;)`而不是`while(1)`?**
 >1. `for(;;)`死循环里的两个`;;`代表两个空语句，编译器一般会优化掉它们，直接进入循环体。
 >2. `while(1)`死循环里的1被看成表达式，每循环一次都要判断常量1是不是等于零。   
 > 
@@ -126,12 +167,12 @@ public void dispatchMessage(@NonNull Message msg) {
 
 ****
 
-**问：`MessageQueue`为什么要用链表结构?**
+####**问：`MessageQueue`为什么要用链表结构?**
 >1. `Message`在系统中数量很多，如果用`array`实现的话会占用大量连续内存空间
 >2. `Message`虽然数量很多但是处理的也很快，而且数量不定，也就是说如果用数组实现的话为了避免空间浪费，则需要对数组不停的进行扩容和减容，非常影响效率，而且会造成内存抖动
 
 # Looper
-**问：Looper.loop()启动了一个死循环，为什么没有阻塞主线程？**
+####**问：Looper.loop()启动了一个死循环，为什么没有阻塞主线程？**
 >死循环不会阻塞主线程的原因是，死循环本身就是这个线程的主要任务！ 
 再来想一想`Looper`是干嘛的？`Looper`是从`MessageQueue`里面取出消息并回调`Handler`处理的。
 >当队列没有消息的时候证明主线程也不再需要刷新任何UI，也不需要处理任何数据，所以为了不让`Looper`空转导致资源浪费才有了`MessageQueue`的`阻塞机制`。  

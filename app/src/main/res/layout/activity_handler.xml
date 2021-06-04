@@ -88,5 +88,32 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@id/button23"
             app:layout_constraintTop_toTopOf="@id/button22" />
+
+        <TextView
+            android:id="@+id/textView37"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:text="内存泄漏测试"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/button22" />
+
+        <Button
+            android:id="@+id/handler_leak_btn_delay"
+            style="@style/tv"
+            android:layout_marginTop="8dp"
+            android:text="延时消息"
+            app:layout_constraintEnd_toStartOf="@+id/handler_leak_btn_thread"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView37" />
+
+        <Button
+            android:id="@+id/handler_leak_btn_thread"
+            style="@style/tv2"
+            android:text="子线程"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/handler_leak_btn_delay"
+            app:layout_constraintTop_toTopOf="@+id/handler_leak_btn_delay" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

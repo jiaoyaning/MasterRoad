@@ -74,10 +74,16 @@ dependencies {
     implementation("androidx.lifecycle:lifecycle-runtime:2.3.0")
     implementation("androidx.activity:activity-ktx:1.2.0")
 
-    implementation("com.google.dagger:dagger-android:2.15")
+    implementation("com.google.dagger:dagger-android:2.35.1")
     annotationProcessor("com.google.dagger:dagger-android-processor:2.15")
 
     implementation("com.alibaba:arouter-api:1.5.0")
     implementation("com.tencent:mmkv-static:1.2.7")
     api("com.apkfuns.logutils:library:1.7.5")
+
+    //hilt
+    implementation("com.google.dagger:hilt-android:2.28-alpha")
+    implementation("androidx.hilt:hilt-lifecycle-viewmodel:1.0.0-alpha01")
+    kapt("com.google.dagger:hilt-android-compiler:2.28-alpha")
+    kapt("androidx.hilt:hilt-compiler:1.0.0-alpha01")
 }

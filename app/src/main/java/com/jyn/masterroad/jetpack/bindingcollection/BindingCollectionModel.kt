@@ -1,9 +1,9 @@
 package com.jyn.masterroad.jetpack.bindingcollection
 
+import android.annotation.SuppressLint
 import android.view.View
 import androidx.databinding.ObservableArrayList
 import androidx.databinding.ObservableList
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.recyclerview.widget.RecyclerView
 import com.jyn.masterroad.BR
@@ -14,6 +14,7 @@ class BindingCollectionModel : ViewModel() {
 
     var items: ObservableList<String> = ObservableArrayList()
 
+    @SuppressLint("StaticFieldLeak")
     var recyclerView: RecyclerView? = null
 
     var itemBinding: ItemBinding<String> = ItemBinding

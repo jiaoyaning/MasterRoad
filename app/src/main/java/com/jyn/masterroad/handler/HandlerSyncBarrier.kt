@@ -22,6 +22,7 @@ class HandlerSyncBarrier {
      * 为了提升优先级
      *  1. MessageQueue.next()时，发现Message的target变量为null时，触发同步屏障，阻止后续的同步消息执行。
      *  2. 判断Message的isAsynchronous()方法，true时为异步消息优先处理，false时为同步消息。
+     *
      *  PS: 这里同步和异步仅仅为一个标识，并不是类似并发的概念
      */
     var handler: Handler = Handler(Looper.getMainLooper())

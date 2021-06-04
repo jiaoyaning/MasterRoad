@@ -1,11 +1,18 @@
 package com.jyn.masterroad.handler
 
 import android.annotation.SuppressLint
+import android.os.Handler
+import android.os.Looper
+import android.widget.Button
+import androidx.activity.viewModels
 import com.alibaba.android.arouter.facade.annotation.Route
+import com.apkfuns.logutils.LogUtils
 import com.jyn.common.ARouter.RoutePath
+import com.jyn.masterroad.BR
 import com.jyn.masterroad.R
 import com.jyn.masterroad.base.BaseActivity
 import com.jyn.masterroad.databinding.ActivityHandlerBinding
+import kotlin.concurrent.thread
 
 /**
  * 享元模式
@@ -35,6 +42,12 @@ import com.jyn.masterroad.databinding.ActivityHandlerBinding
  *
  * 图解：epoll怎么实现的
  * https://mp.weixin.qq.com/s/nTuTJuWVZmhpiEfckmZ1Gg
+ *
+ * Handler 27问
+ * https://juejin.cn/post/6943048240291905549
+ *
+ * 小题大做 | 内存泄漏简单问，你能答对吗
+ * https://juejin.cn/post/6909362503898595342
  */
 @Route(path = RoutePath.Handle.path)
 @SuppressLint("NewApi", "DiscouragedPrivateApi", "HandlerLeak")
@@ -44,8 +57,39 @@ class HandlerActivity : BaseActivity<ActivityHandlerBinding>
     private val handlerCreateTest: HandlerCreateTest by lazy { HandlerCreateTest() }
     private val handlerSyncBarrier: HandlerSyncBarrier by lazy { HandlerSyncBarrier() }
 
+    lateinit var button: Button
+
+    private var handler = Handler(Looper.getMainLooper())
+
+    private val runnable = {
+        button.text = "我有没有内存泄漏"
+        LogUtils.tag("Handler").i(button.text)
+    }
+
     override fun initView() {
+        button = findViewById(R.id.handler_leak_btn_delay)
         binding.handlerCreate = handlerCreateTest
         binding.handlerSyncBarrier = handlerSyncBarrier
+        binding.handlerLeakBtnDelay.setOnClickListener { postDelayed() }
+        binding.handlerLeakBtnThread.setOnClickListener { newThread() }
+    }
+
+    /*
+     * 1、发送延迟消息
+     */
+    private fun postDelayed() {
+        handler.postDelayed(runnable, 5000)
+        finish()
+    }
+
+    /*
+     * 2、子线程运行没结束
+     */
+    private fun newThread() {
+        thread {
+            Thread.sleep(5000)
+            handler.post(runnable)
+        }
+        finish()
     }
 }

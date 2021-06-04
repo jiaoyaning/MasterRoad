@@ -34,6 +34,10 @@ abstract class BaseActivity<dataBinding : ViewDataBinding>(var id: Int = 0) : Ap
     open fun initData() {}
     open fun initView() {}
 
+    open fun bindVM(viewModelId: Int, viewModel: ViewModel) {
+        binding.setVariable(viewModelId, viewModel)
+    }
+
     /*
      * 获取ViewModel实例
      *

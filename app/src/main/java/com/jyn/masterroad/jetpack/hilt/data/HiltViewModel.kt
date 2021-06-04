@@ -1,16 +1,14 @@
 package com.jyn.masterroad.jetpack.hilt.data
 
+import android.app.Application
 import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.liveData
-import com.apkfuns.logutils.LogUtils
-import com.jyn.masterroad.kotlin.koin.data.KoinViewModel
+import com.jyn.common.Base.BaseVM
 
 /**
  * Created by jiaoyaning on 2021/5/14.
  */
-class HiltViewModel @ViewModelInject constructor() : ViewModel() {
+class HiltViewModel @ViewModelInject constructor(application: Application) : BaseVM(application) {
     var num: MutableLiveData<Int> = MutableLiveData(0)
 
     fun add() {

@@ -8,5 +8,10 @@ package com.jyn.java_kotlin.Kotlin学习.集合and序列
  *
  */
 fun main() {
-
+    val ints = sequence {
+        (1..3).forEach {
+            yield(it)
+        }
+    }
+    println(ints)
 }

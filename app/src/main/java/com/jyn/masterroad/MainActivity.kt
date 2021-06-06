@@ -17,20 +17,6 @@ import com.jyn.masterroad.databinding.ItemMainBinding
 import kotlinx.android.synthetic.main.activity_main.*
 
 /*
- * https://www.jianshu.com/p/2ee3672efb1f
- *
- * RecycleView列表绑定
- * https://blog.csdn.net/yu75567218/article/details/87860020
- *
- * item 直接绑定方式
- * http://www.voidcn.com/article/p-zannxayh-brz.html
- *
- * DataBinding 教程
- * https://blog.csdn.net/guiying712/article/details/80206037
- *
- * 自定义databinding双向绑定
- * https://www.jianshu.com/p/4a2ae008bae5
- *
  * https://www.jianshu.com/p/c69b0e4e18f1
  */
 @Route(path = RoutePath.Main.path)

@@ -138,7 +138,7 @@ class KotlinCoroutinesCreate(application: Application) : AndroidViewModel(applic
 //region 二. 协程的两种启动方式
 
     //region 1. launch
-    fun launch() {
+    fun launchTest() {
         LogUtils.tag(TAG).i("launch 开始 in ${Thread.currentThread().name}")
         val job = GlobalScope.launch(Dispatchers.Main) {
             for (i in 0..10000) {

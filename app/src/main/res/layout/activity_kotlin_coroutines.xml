@@ -60,7 +60,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
-            android:onClick="@{()->create.launch()}"
+            android:onClick="@{()->create.launchTest()}"
             android:text="launch"
             app:layout_constraintEnd_toStartOf="@id/button15"
             app:layout_constraintStart_toStartOf="parent"

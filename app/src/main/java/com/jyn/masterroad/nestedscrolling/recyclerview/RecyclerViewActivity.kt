@@ -1,8 +1,13 @@
 package com.jyn.masterroad.nestedscrolling.recyclerview
 
+import androidx.recyclerview.widget.ConcatAdapter
+import com.alibaba.android.arouter.facade.annotation.Route
+import com.jyn.common.ARouter.RoutePath
 import com.jyn.masterroad.R
 import com.jyn.masterroad.base.BaseActivity
 import com.jyn.masterroad.databinding.ActivityRecyclerViewBinding
+import com.jyn.masterroad.nestedscrolling.recyclerview.adapter.HeaderAdapter
+import com.jyn.masterroad.nestedscrolling.recyclerview.adapter.RecyclerAdapter
 
 /*
  * 抽丝剥茧RecyclerView - 化整为零
@@ -36,15 +41,18 @@ import com.jyn.masterroad.databinding.ActivityRecyclerViewBinding
  * RecyclerView 刷新列表数据的 notifyDataSetChanged() 为什么是昂贵的?
  * https://mp.weixin.qq.com/s/dS51WxN9RkAGgdFV9_Q1Tg
  *
- * 聊聊RecyclerView新出的ConcatAdapter如何使用
- * https://mp.weixin.qq.com/s/wK9z0_bIDcu0np-034f2gg
- *
  * 在 RecyclerView 中使用 ListAdapter
  * https://mp.weixin.qq.com/s/WZi3cemT4bfrKfDIpjFdbg
  *
  * RecyclerView 刷新列表数据的 notifyDataSetChanged() 为什么是昂贵的?
  * https://mp.weixin.qq.com/s/dS51WxN9RkAGgdFV9_Q1Tg
  */
-class RecyclerViewActivity : BaseActivity<ActivityRecyclerViewBinding>(R.layout.activity_recycler_view) {
-
+@Route(path = RoutePath.RecyclerView.path)
+class RecyclerViewActivity : BaseActivity<ActivityRecyclerViewBinding>
+    (R.layout.activity_recycler_view) {
+    override fun initView() {
+        val recyclerAdapter = RecyclerAdapter()
+        val headerAdapter = HeaderAdapter()
+        binding.recycler.adapter = ConcatAdapter(headerAdapter, recyclerAdapter)
+    }
 }

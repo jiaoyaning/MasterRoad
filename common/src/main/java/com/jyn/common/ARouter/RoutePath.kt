@@ -81,6 +81,12 @@ object RoutePath {
         const val span = 2
     }
 
+    object RecyclerView {
+        const val name = " RecyclerView"
+        const val path = "/app/ RecyclerView"
+        const val span = 1
+    }
+
     // Thread 线程
     object Thread {
         const val name = "Thread"

@@ -370,9 +370,9 @@ class KotlinCoroutinesCreate(application: Application) : AndroidViewModel(applic
 
 // ===================分割线========================
 
-//region 六. 作用域 & 父子关系
+//region 六. 作用域
 
-    //region 正常父子关系
+    //region 1. 正常父子关系
     fun fatherAndSon() {
         /*
          * 父协程死时，子协程也会死
@@ -401,32 +401,46 @@ class KotlinCoroutinesCreate(application: Application) : AndroidViewModel(applic
     }
     //endregion
 
-    //region 嵌套但非父子关系
+    //region 2. 嵌套但非父子关系
     fun notFatherAndSon() {
-        /**
-         * job1执行完后，会主动销毁自己，导致job2也跟着销毁
-         */
-        runBlocking(context = CoroutineName(name = "协程1")) {
-            LogUtils.tag(TAG).i("—> 协程1 开启 ")
-
-            val job1 = GlobalScope.launch(CoroutineName("协程2")) {
-                LogUtils.tag(TAG).i("—> 协程2 开启 ")
-                delay(400)
+        val father = GlobalScope.launch() {
+            LogUtils.tag(TAG).i("协程1 开启 ")
+            val job1 = GlobalScope.launch(CoroutineName("job1")) {
+                LogUtils.tag(TAG).i("job1  开启 ")
+                delay(1000)
 
                 //job2执行完之后，runBlocking就结束销毁，job没有机会执行下面log
-                LogUtils.tag(TAG).i("—> 协程2 结束 ")
+                LogUtils.tag(TAG).i("job1 结束 ")
             }
 
             val job2 = launch {
-                LogUtils.tag(TAG).i("—> 协程1 -> 子协程 开启 ")
-                delay(300)
-                LogUtils.tag(TAG).i("—> 协程1 -> 子协程 结束 ")
+                LogUtils.tag(TAG).i("协程1 -> job2 开启 ")
+                delay(3000)
+                LogUtils.tag(TAG).i("协程1 -> job2 结束 ")
             }
-
             delay(100)
-            LogUtils.tag(TAG).i("—> 协程1 结束 $coroutineContext")
+            LogUtils.tag(TAG).i("协程1 结束")
         }
+
+        sleep(200)
+        father.cancel()
     }
     //endregion
+
+    val exceptionHandler = CoroutineExceptionHandler { coroutineContext, throwable ->
+        LogUtils.tag(TAG).i("${coroutineContext[CoroutineName]} $throwable")
+    }
+
+    //region 3. 协同作用域
+    fun exceptionTest() {
+        /**
+         * 在协程中启动一个协程，新协程为所在协程的子协程。子协程所在的作用域默认为 [协同作用域]。
+         * 此时子协程抛出未捕获的异常时，会将异常传递给父协程处理，如果父协程被取消，则所有子协程同时也会被取消。
+         */
+
+
+    }
+    //endregion
+
 //endregion
 }

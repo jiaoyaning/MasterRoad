@@ -12,13 +12,13 @@ import java.util.concurrent.Executors
  * https://juejin.cn/post/6926695962354122765
  *
  * 深入浅出协程、线程和并发问题 TODO
- * https://juejin.cn/post/696940850569438823
+ * https://juejin.cn/post/6969408505694388237
  *
  * 枯燥的Kotlin协程三部曲(中)——应用实战篇
  * https://juejin.cn/post/6860464281272451080
  */
 @ExperimentalCoroutinesApi
-@Suppress("UNUSED_VARIABLE")
+@Suppress("UNUSED_VARIABLE", "UNREACHABLE_CODE")
 class KotlinCoroutinesCreate(application: Application) : AndroidViewModel(application) {
     companion object {
         private const val TAG = "Coroutines"
@@ -427,7 +427,7 @@ class KotlinCoroutinesCreate(application: Application) : AndroidViewModel(applic
     }
     //endregion
 
-    val exceptionHandler = CoroutineExceptionHandler { coroutineContext, throwable ->
+    private val exceptionHandler = CoroutineExceptionHandler { coroutineContext, throwable ->
         LogUtils.tag(TAG).i("${coroutineContext[CoroutineName]} $throwable")
     }
 
@@ -436,8 +436,73 @@ class KotlinCoroutinesCreate(application: Application) : AndroidViewModel(applic
         /**
          * 在协程中启动一个协程，新协程为所在协程的子协程。子协程所在的作用域默认为 [协同作用域]。
          * 此时子协程抛出未捕获的异常时，会将异常传递给父协程处理，如果父协程被取消，则所有子协程同时也会被取消。
+         *
+         * scope2抛出异常传递给scope1处理，scope1被取消，同时取消了scope3
          */
+        GlobalScope.launch(Dispatchers.Main + CoroutineName("scope1") + exceptionHandler) {
+            LogUtils.tag(TAG).i("scope ------> 1")
+            launch(CoroutineName("scope2") + exceptionHandler) {
+                LogUtils.tag(TAG).i("scope ------> 2")
+                throw  NullPointerException("空指针")
+                LogUtils.tag(TAG).i("scope ------> 3")
+            }
+            val scope3 = launch(CoroutineName("scope3") + exceptionHandler) {
+                LogUtils.tag(TAG).i("scope ------> 4")
+                delay(2000)
+                LogUtils.tag(TAG).i("scope ------> 5")
+            }
+            scope3.join()
+            LogUtils.tag(TAG).i("scope ------> 6")
+        }
 
+    }
+    //endregion
+
+    //region 4. 主从(监督)作用域
+    fun supervisorScopeTest() {
+        /**
+         * 主从(监督)作用域与协同作用域一致，区别在于该作用域下的协程取消操作的单向传播性，子协程的异常不会导致其它子协程取消。
+         */
+        GlobalScope.launch(Dispatchers.Main + CoroutineName("scope1") + exceptionHandler) {
+            supervisorScope { //相比 协同作用域 只加了这一行代码
+                LogUtils.tag(TAG).i("scope ------> 1")
+                launch(CoroutineName("scope2") + exceptionHandler) {
+                    LogUtils.tag(TAG).i("scope ------> 2")
+                    throw  NullPointerException("空指针")
+                    LogUtils.tag(TAG).i("scope ------> 3")
+                }
+                val scope3 = launch(CoroutineName("scope3") + exceptionHandler) {
+                    LogUtils.tag(TAG).i("scope ------> 4")
+                    delay(2000)
+                    LogUtils.tag(TAG).i("scope ------> 5")
+                }
+                scope3.join()
+                LogUtils.tag(TAG).i("scope ------> 6")
+            }
+        }
+    }
+
+    //SupervisorJob的实现方式
+    fun supervisorJobTest() {
+        val coroutineScope = CoroutineScope(SupervisorJob() + CoroutineName("coroutineScope"))
+        GlobalScope.launch(Dispatchers.Main + CoroutineName("scope1") + exceptionHandler) {
+            with(coroutineScope) { //相比 协同作用域 只加了这一行代码
+                LogUtils.tag(TAG).i("scope ------> 1")
+                val scope2 = launch(CoroutineName("scope2") + exceptionHandler) {
+                    LogUtils.tag(TAG).i("scope ------> 2 ${coroutineContext[CoroutineName]}")
+                    throw  NullPointerException("空指针")
+                    LogUtils.tag(TAG).i("scope ------> 3 ${coroutineContext[CoroutineName]}")
+                }
+                val scope3 = launch(CoroutineName("scope3") + exceptionHandler) {
+                    LogUtils.tag(TAG).i("scope ------> 4 ${coroutineContext[CoroutineName]}")
+                    delay(2000)
+                    LogUtils.tag(TAG).i("scope ------> 5 ${coroutineContext[CoroutineName]}")
+                }
+                coroutineScope.cancel() //手动取消，导致345都没有执行
+                scope3.join()
+                LogUtils.tag(TAG).i("scope ------> 6 ${coroutineContext[CoroutineName]}")
+            }
+        }
 
     }
     //endregion

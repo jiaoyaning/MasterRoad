@@ -207,25 +207,37 @@
             style="@style/tv"
             android:onClick="@{()->create.notFatherAndSon()}"
             android:text="包含但非父子"
-            app:layout_constraintEnd_toStartOf="@id/button6"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@id/button2"
             app:layout_constraintTop_toTopOf="@id/button2" />
 
         <Button
             android:id="@+id/button6"
-            style="@style/tv2"
+            style="@style/tv"
+            android:layout_marginTop="8dp"
+            android:onClick="@{()->create.exceptionTest()}"
             android:text="协同作用域"
             app:layout_constraintEnd_toStartOf="@id/button31"
-            app:layout_constraintStart_toEndOf="@id/button5"
-            app:layout_constraintTop_toTopOf="@id/button2" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/button2" />
 
         <Button
             android:id="@+id/button31"
-            style="@style/tv"
-            android:text="主从作用域\n(监督作用域)"
-            app:layout_constraintEnd_toEndOf="parent"
+            style="@style/tv2"
+            android:onClick="@{()->create.supervisorScopeTest()}"
+            android:text="主从(监督)作用域\n(supervisorScope)"
+            app:layout_constraintEnd_toStartOf="@id/button32"
             app:layout_constraintStart_toEndOf="@id/button6"
-            app:layout_constraintTop_toTopOf="@id/button2" />
+            app:layout_constraintTop_toTopOf="@+id/button6" />
+
+        <Button
+            android:id="@+id/button32"
+            style="@style/tv"
+            android:onClick="@{()->create.supervisorJobTest()}"
+            android:text="主从(监督)作用域\n(SupervisorJob)"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/button31"
+            app:layout_constraintTop_toTopOf="@+id/button6" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

@@ -1,3 +1,5 @@
+## “声明式UI“和“命令式UI“，你的理解可能是错的
+https://blog.csdn.net/a774057695/article/details/114437463
 
 ## Jetpack Compose 教程 (Jetpack Compose Tutorial)
 https://github.com/compose-museum/jetpack-compose-tutorial

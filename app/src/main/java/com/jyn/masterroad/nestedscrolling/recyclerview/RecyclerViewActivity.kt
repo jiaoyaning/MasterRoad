@@ -46,6 +46,9 @@ import com.jyn.masterroad.nestedscrolling.recyclerview.adapter.RecyclerAdapter
  *
  * RecyclerView 刷新列表数据的 notifyDataSetChanged() 为什么是昂贵的?
  * https://mp.weixin.qq.com/s/dS51WxN9RkAGgdFV9_Q1Tg
+ *
+ * 【Android】自定义无限循环的LayoutManager
+ * https://juejin.cn/post/6909363022980972552
  */
 @Route(path = RoutePath.RecyclerView.path)
 class RecyclerViewActivity : BaseActivity<ActivityRecyclerViewBinding>

@@ -11,8 +11,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
-        tools:ignore="AllowBackup">
-        <activity android:name=".utils.material.MaterialButtonActivity"></activity>
+        android:usesCleartextTraffic="true"
+        tools:ignore="AllowBackup"
+        tools:targetApi="m">
+        <activity android:name=".utils.material.MaterialButtonActivity" />
         <activity android:name=".utils.material.ShapeableImageViewActivity" />
         <activity android:name=".jetpack.viewmodel.ViewModelActivity" />
         <activity android:name=".kotlin.koin.KoinActivity" />
@@ -27,9 +29,7 @@
         <activity android:name=".nestedscrolling.scrollview.ScrollViewActivity" /> <!-- startup初始化 -->
         <activity android:name=".constraintLayout.MotionLayoutActivity" />
         <activity android:name=".constraintLayout.ConstraintLayoutActivity" />
-        <activity
-            android:name=".jetpack.bindingcollection.BindingCollectionActivity"
-            android:label="BindingCollectionAdapter" />
+        <activity android:name=".jetpack.bindingcollection.BindingCollectionActivity" />
         <activity android:name=".jetpack.livedata.LiveDataActivity" />
         <activity android:name=".handler.HandlerActivity" />
         <activity android:name=".utils.eventbus.EventBusActivity" />
@@ -39,11 +39,9 @@
         <activity
             android:name=".MainActivity"
             android:configChanges="orientation|screenSize|keyboardHidden">
-
             <!-- android:excludeFromRecents="true"> -->
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>

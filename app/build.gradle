@@ -48,6 +48,9 @@ android {
     /*
      * R8编译器官方文档
      * https://developer.android.google.cn/studio/build/shrink-code
+     *
+     * Android 混淆，新引入的D8、R8改变了什么？
+     * https://mp.weixin.qq.com/s/PxrW7LSDuAAeqlXFxnIInA
      */
     buildTypes {
         release {

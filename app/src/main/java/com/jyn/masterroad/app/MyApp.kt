@@ -1,17 +1,14 @@
-package com.jyn.masterroad.app;
+package com.jyn.masterroad.app
 
-import android.app.Application;
+import android.app.Application
 import android.content.res.Configuration
 import android.os.Handler
 import android.os.Looper
 import android.widget.Toast
 import androidx.lifecycle.ProcessLifecycleOwner
-
 import com.apkfuns.logutils.LogUtils
 import com.jyn.common.Utils.MemoryCase
-import com.jyn.common.Utils.context
-
-import dagger.hilt.android.HiltAndroidApp;
+import dagger.hilt.android.HiltAndroidApp
 
 @HiltAndroidApp
 class MyApp : Application() {
@@ -42,11 +39,11 @@ class MyApp : Application() {
                 try {
                     Looper.loop()
                 } catch (e: Throwable) {
-                    e.printStackTrace();
+                    e.printStackTrace()
                     LogUtils.tag("MasterRoad").e("程序遇到错误:" + e.message)
                     if (e.message?.startsWith("Unable to start activity") == true) {
                         Toast.makeText(this, "程序遇到错误:" + e.message, Toast.LENGTH_LONG).show()
-                        android.os.Process.killProcess(android.os.Process.myPid());
+                        android.os.Process.killProcess(android.os.Process.myPid())
                         break
                     }
                 }

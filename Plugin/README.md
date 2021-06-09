@@ -1,3 +1,6 @@
+Android Java8 Lambda 脱糖（ASM Hook 埋点)
+https://juejin.cn/post/6855129007248769038
+
 ByteX是一个基于gradle transform api和ASM的字节码插件平台
 https://github.com/bytedance/ByteX/blob/master/README_zh.md
 

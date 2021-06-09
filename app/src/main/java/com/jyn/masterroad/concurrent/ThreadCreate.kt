@@ -8,9 +8,11 @@ import java.util.concurrent.FutureTask
 import javax.inject.Inject
 
 /**
- * 线程创建的四种方式
+ *
  */
 class ThreadCreate @Inject constructor() {
+
+//region 一、线程创建的四种方式
 
     //region 1.继承Thread类
     fun threadTest(v: View?) {
@@ -79,4 +81,22 @@ class ThreadCreate @Inject constructor() {
         es.execute { LogUtils.tag("main").i("使用 Executors 创建的线程") }
     }
     //endregion
+
+//endregion
+
+//region 二、提高线程优先级的两种方式
+
+    fun setPrioriy() {
+        Thread {
+            Thread.currentThread().priority = 1
+        }.start()
+    }
+
+    fun setThreadPriority() {
+        Thread {
+            android.os.Process.setThreadPriority(0)
+        }.start()
+    }
+
+//endregion
 }

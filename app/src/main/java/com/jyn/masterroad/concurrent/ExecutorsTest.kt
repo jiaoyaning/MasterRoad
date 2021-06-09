@@ -25,6 +25,9 @@ import javax.inject.Inject
  *
  * 面试老爱问的线程池，一把梭哈！
  * https://mp.weixin.qq.com/s/b2PUpprFFWGthZyGDd8g-g（思路强）
+ *
+ * 阿里为何不推荐使用Executors来创建线程池
+ * https://blog.csdn.net/weixin_43831204/article/details/109852365
  */
 class ExecutorsTest @Inject constructor() {
 

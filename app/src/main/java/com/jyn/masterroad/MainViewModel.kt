@@ -2,7 +2,6 @@ package com.jyn.masterroad
 
 import androidx.databinding.ObservableField
 import androidx.lifecycle.ViewModel
-import com.apkfuns.logutils.LogUtils
 import com.jyn.common.ARouter.RoutePath
 
 /**

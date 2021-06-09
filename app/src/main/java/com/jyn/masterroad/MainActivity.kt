@@ -4,7 +4,6 @@ import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.Toast
-import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.Adapter
@@ -14,7 +13,6 @@ import com.jyn.common.ARouter.goto
 import com.jyn.masterroad.base.BaseActivity
 import com.jyn.masterroad.databinding.ActivityMainBinding
 import com.jyn.masterroad.databinding.ItemMainBinding
-import kotlinx.android.synthetic.main.activity_main.*
 
 /*
  * https://www.jianshu.com/p/c69b0e4e18f1
@@ -45,7 +43,10 @@ class MainActivity : BaseActivity<ActivityMainBinding>
      * 第一版参考
      * https://www.jianshu.com/p/379a8f5347de
      */
-    open inner class MainAdapter(var routerList: ArrayList<MainViewModel>, var context: Context) :
+    open inner class MainAdapter(
+        private var routerList: ArrayList<MainViewModel>,
+        var context: Context
+    ) :
         Adapter<MainAdapter.MainViewHolder>() {
 
         open inner class MainViewHolder(var binding: ItemMainBinding) :

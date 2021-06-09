@@ -93,7 +93,7 @@ public class 一_反转链表 {
 
     //region 三、反转链表的一部分
     public static ListNode reverseBetween(ListNode head, int m, int n) {
-        if (n == 1) { //N 等于 1 的时候，相当于反转前 n 个元素
+        if (m == 1) { //m 等于 1 的时候，相当于反转前 n 个元素
             return reverseN(head, n);
         }
         head.next = reverseBetween(head, m - 1, n - 1); //找出需要反转的位置，并把箭头指向它的反转结果

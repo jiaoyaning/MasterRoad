@@ -15,7 +15,7 @@ class 最长回文子串 {
             String s1 = palindrome(s, i, i);
             String s2 = palindrome(s, i, i + 1);
             result = result.length() > s1.length() ? result : s1;
-            result = result.length() > s2.length() ? result : s2;=====
+            result = result.length() > s2.length() ? result : s2;
         }
         return result;
     }

@@ -5,6 +5,10 @@ import com.apkfuns.logutils.LogUtils
 import javax.inject.Inject
 
 class WaitAndNotifyTest @Inject constructor() {
+    companion object {
+        var TAG = "WaitAndNotify"
+    }
+
     private val lock = Object() //设置一个锁对象
 
     // region 1. wait 和 notify
@@ -15,10 +19,10 @@ class WaitAndNotifyTest @Inject constructor() {
             while (count-- > 0) {
                 if (isWait) {   //之所以这里，是因为wait只能wait当前线程
                     isWait = false
-                    LogUtils.tag("main").i("Thread 被 wait!")
+                    LogUtils.tag(TAG).i("Thread 被 wait!")
                     lock.wait()
                 }
-                LogUtils.tag("main").i("Thread 循环次数 :${count}")
+                LogUtils.tag(TAG).i("Thread 循环次数 :${count}")
                 Thread.sleep(1000)
             }
         }
@@ -39,7 +43,7 @@ class WaitAndNotifyTest @Inject constructor() {
     fun notifyThread(v: View) {
         synchronized(lock) {
             lock.notifyAll()
-            LogUtils.tag("main").i("Thread 被 notify!")
+            LogUtils.tag(TAG).i("Thread 被 notify!")
         }
     }
     // endregion
@@ -61,12 +65,12 @@ class WaitAndNotifyTest @Inject constructor() {
     private fun produce() {
         synchronized(lock) {
             if (items >= maxItems) {
-                LogUtils.tag("main").i("${Thread.currentThread().name} wait 库存:$items")
+                LogUtils.tag(TAG).i("${Thread.currentThread().name} wait 库存:$items")
                 lock.wait() //库存慢了，暂停生产者
             }
             Thread.sleep(100)
             items++ //生产一个
-            LogUtils.tag("main").i("${Thread.currentThread().name} produce[生产] --> 库存:$items")
+            LogUtils.tag(TAG).i("${Thread.currentThread().name} produce[生产] --> 库存:$items")
             lock.notifyAll()
         }
     }
@@ -75,12 +79,12 @@ class WaitAndNotifyTest @Inject constructor() {
     private fun consume() {
         synchronized(lock) {
             if (items <= 0) {
-                LogUtils.tag("main").i("${Thread.currentThread().name} wait 库存:$items")
+                LogUtils.tag(TAG).i("${Thread.currentThread().name} wait 库存:$items")
                 lock.wait() //没商品了，暂停消费者
             }
             Thread.sleep(100)
             items-- //消费一个
-            LogUtils.tag("main").i("${Thread.currentThread().name} consume[消费] --> 库存:$items")
+            LogUtils.tag(TAG).i("${Thread.currentThread().name} consume[消费] --> 库存:$items")
             lock.notifyAll()
         }
     }
@@ -95,12 +99,13 @@ class WaitAndNotifyTest @Inject constructor() {
     private fun deadlockATest() {
         while (true) {
             synchronized(lockA) {
-                LogUtils.tag("main").i("${Thread.currentThread()} 已获得锁 lockA 等待获得 lockB")
+                LogUtils.tag(TAG).i("${Thread.currentThread()} 已获得锁 lockA 等待获得 lockB")
                 Thread.sleep(3000)
                 synchronized(lockB) {
-                    LogUtils.tag("main").i("${Thread.currentThread()} 已获得锁 lockA 和 lockB")
+                    LogUtils.tag(TAG).i("${Thread.currentThread()} 已获得锁 lockA 和 lockB")
                     Thread.sleep(30000)
                 }
+                LogUtils.tag(TAG).i("deadlockATest --> 我能不能被执行到")
             }
         }
     }
@@ -108,12 +113,13 @@ class WaitAndNotifyTest @Inject constructor() {
     private fun deadlockBTest() {
         while (true) {
             synchronized(lockB) {
-                LogUtils.tag("main").i("${Thread.currentThread()} 已获得锁 lockB 等待获得 lockA")
+                LogUtils.tag(TAG).i("${Thread.currentThread()} 已获得锁 lockB 等待获得 lockA")
                 Thread.sleep(3000)
-                synchronized(lockA) {
-                    LogUtils.tag("main").i("${Thread.currentThread()} 已获得锁 lockB 和 lockA")
+                synchronized(lockA) { //此处被阻塞
+                    LogUtils.tag(TAG).i("${Thread.currentThread()} 已获得锁 lockB 和 lockA")
                     Thread.sleep(30000)
                 }
+                LogUtils.tag(TAG).i("deadlockBTest --> 我能不能被执行到")
             }
         }
     }
@@ -147,7 +153,7 @@ class WaitAndNotifyTest @Inject constructor() {
             while (state != 0) { //开始打印A
                 lock.wait() //先保证自己不该打印的时候，处于暂停状态
             }
-            LogUtils.tag("main").i("A -->${Thread.currentThread()}")
+            LogUtils.tag(TAG).i("A -->${Thread.currentThread()}")
             state = 1 //打印完改变状态
             lock.notifyAll() //通知对应线程可以继续打印
         }
@@ -158,7 +164,7 @@ class WaitAndNotifyTest @Inject constructor() {
             while (state != 1) { //开始打印B
                 lock.wait()
             }
-            LogUtils.tag("main").i("B -->${Thread.currentThread()}")
+            LogUtils.tag(TAG).i("B -->${Thread.currentThread()}")
             state = 2
             lock.notifyAll()
         }
@@ -169,7 +175,7 @@ class WaitAndNotifyTest @Inject constructor() {
             while (state != 2) { //开始打印C
                 lock.wait()
             }
-            LogUtils.tag("main").i("C -->${Thread.currentThread()}")
+            LogUtils.tag(TAG).i("C -->${Thread.currentThread()}")
             state = 0
             lock.notifyAll()
         }

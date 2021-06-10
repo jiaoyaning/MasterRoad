@@ -55,6 +55,7 @@ ext {
             "material"           : "com.google.android.material:material:1.4.0-beta01",
             "appcompat"          : "androidx.appcompat:appcompat:1.2.0",
             "annotation"         : "androidx.annotation:annotation:1.1.0",
+            "core-ktx"           : "androidx.core:core-ktx:1.3.2",
             /*
              * 一文带你了解Lifecycle（使用篇）
              * https://mp.weixin.qq.com/s/TmI0O4OsvdD6DHkLm9EiiQ

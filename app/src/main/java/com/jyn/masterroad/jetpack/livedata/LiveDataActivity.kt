@@ -69,5 +69,9 @@ class LiveDataActivity : BaseActivity<ActivityLiveDataBinding>
         viewModel.select.observe(this, {
             LogUtils.tag(TAG).i("Observer -> select:$it")
         })
+
+        viewModel.postValueNum.observe(this, {
+            LogUtils.tag(TAG).i("Observer -> postValueNum:$it")
+        })
     }
 }

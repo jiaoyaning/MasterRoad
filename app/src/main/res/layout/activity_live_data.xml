@@ -58,8 +58,7 @@
 
         <Button
             android:id="@+id/btn_livedata_add"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            style="@style/tv"
             android:layout_marginTop="30dp"
             android:onClick="@{model::add}"
             android:text="+1"
@@ -71,8 +70,7 @@
 
         <Button
             android:id="@+id/btn_livedata_subtract"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            style="@style/tv2"
             android:onClick="@{onClick}"
             android:text="-1"
             app:layout_constraintEnd_toEndOf="parent"
@@ -115,6 +113,17 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/btn_livedata_add" />
+
+        <Button
+            android:id="@+id/button33"
+            style="@style/tv2"
+            android:layout_marginTop="8dp"
+            android:onClick="@{() ->model.postValueTest()}"
+            android:text="连续 postValue"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/spinner"
+            tools:ignore="HardcodedText" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

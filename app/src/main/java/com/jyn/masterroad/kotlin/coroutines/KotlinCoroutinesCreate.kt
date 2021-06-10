@@ -403,7 +403,7 @@ class KotlinCoroutinesCreate(application: Application) : AndroidViewModel(applic
 
     //region 2. 嵌套但非父子关系
     fun notFatherAndSon() {
-        val father = GlobalScope.launch() {
+        val father = GlobalScope.launch {
             LogUtils.tag(TAG).i("协程1 开启 ")
             val job1 = GlobalScope.launch(CoroutineName("job1")) {
                 LogUtils.tag(TAG).i("job1  开启 ")
@@ -434,7 +434,7 @@ class KotlinCoroutinesCreate(application: Application) : AndroidViewModel(applic
     //region 3. 协同作用域
     fun exceptionTest() {
         /**
-         * 在协程中启动一个协程，新协程为所在协程的子协程。子协程所在的作用域默认为 [协同作用域]。
+         * 在协程中启动一个协程，新协程为所在协程的子协程。子协程所在的作用域默认为 `协同作用域`
          * 此时子协程抛出未捕获的异常时，会将异常传递给父协程处理，如果父协程被取消，则所有子协程同时也会被取消。
          *
          * scope2抛出异常传递给scope1处理，scope1被取消，同时取消了scope3

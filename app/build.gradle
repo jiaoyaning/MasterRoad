@@ -4,7 +4,6 @@ apply plugin: 'kotlin-android-extensions'
 apply plugin: 'dagger.hilt.android.plugin'
 apply plugin: 'kotlin-kapt'
 //apply plugin: 'com.jyn.helloworld'
-apply from: '../Plugin/timer.gradle'
 /*
  * 一款支持自动将图片转换成WebP格式的Android构建插件
  * https://github.com/zh8637688/AndroidWebP-GradlePlugin

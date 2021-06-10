@@ -1,6 +1,6 @@
 <resources>
 
-    <style name="Theme.MasterRoad.NoActionBar">
+    <style name="Theme.MasterRoad.NoActionBar" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
     </style>

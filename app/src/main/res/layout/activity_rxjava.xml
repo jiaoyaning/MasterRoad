@@ -22,7 +22,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:layout_marginEnd="8dp"
-            android:text="RxJava Create"
+            android:text="五种观察者模式的创建"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -31,7 +31,7 @@
             style="@style/tv"
             android:layout_marginTop="8dp"
             android:onClick="@{() -> rxJavaCreate.observerSimple()}"
-            android:text="Observer"
+            android:text="Observable\n(Observer)"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView29" />
 
@@ -39,7 +39,7 @@
             android:id="@+id/button19"
             style="@style/tv2"
             android:onClick="@{() -> rxJavaCreate.consumerSimple()}"
-            android:text="Consumer"
+            android:text="Observable\n(Consumer)"
             app:layout_constraintStart_toEndOf="@+id/button17"
             app:layout_constraintTop_toTopOf="@+id/button17" />
 

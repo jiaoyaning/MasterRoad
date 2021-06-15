@@ -32,6 +32,9 @@ import javax.inject.Inject
  *
  * Java线程池实现原理及其在美团业务中的实践
  * https://mp.weixin.qq.com/s/baYuX8aCwQ9PP6k7TDl2Ww
+ *
+ * 漫话：如何给女朋友解释为什么Java线程没有Running状态？(优质)
+ * https://mp.weixin.qq.com/s/JrpIVgXq1Jqg0weO4E1mzQ
  */
 @AndroidEntryPoint
 @Route(path = RoutePath.Thread.path)

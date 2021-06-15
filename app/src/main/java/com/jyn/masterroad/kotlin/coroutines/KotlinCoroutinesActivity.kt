@@ -26,6 +26,9 @@ import kotlinx.coroutines.ExperimentalCoroutinesApi
  *
  * Android 补给站
  * https://mp.weixin.qq.com/mp/appmsgalbum?__biz=MzIzNTc5NDY4Nw==&action=getalbum&album_id=1528448460574752768&scene=173&from_msgid=2247484696&from_itemidx=1&count=3&nolastread=1#wechat_redirect
+ *
+ * 最全面的Kotlin协程: Coroutine/Channel/Flow 以及实际应用
+ * https://juejin.cn/post/6844904037586829320
  */
 @ExperimentalCoroutinesApi
 @Route(path = RoutePath.KotlinCoroutines.path)

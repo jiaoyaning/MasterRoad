@@ -1,4 +1,4 @@
-package com.jyn.masterroad.jetpack.hilt;
+package com.jyn.masterroad.jetpack.hilt
 
 import androidx.activity.viewModels
 import com.alibaba.android.arouter.facade.annotation.Route
@@ -27,6 +27,9 @@ import javax.inject.Inject
  *
  * Jetpack.md Hilt有哪些改善又有哪些限制？
  * https://mp.weixin.qq.com/s/8rsHr3Khqud_vO5doKCg0Q
+ *
+ * Jetpack新成员，一篇文章带你玩转Hilt和依赖注入
+ * https://juejin.cn/post/6902009428633698312
  */
 @AndroidEntryPoint
 @Route(path = RoutePath.Hilt.path)

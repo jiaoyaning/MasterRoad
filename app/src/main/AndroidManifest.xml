@@ -14,6 +14,7 @@
         android:usesCleartextTraffic="true"
         tools:ignore="AllowBackup"
         tools:targetApi="m">
+        <activity android:name=".accessibility.AccessibilityActivity"></activity>
         <activity android:name=".utils.material.MaterialButtonActivity" />
         <activity android:name=".utils.material.ShapeableImageViewActivity" />
         <activity android:name=".jetpack.viewmodel.ViewModelActivity" />
@@ -39,9 +40,11 @@
         <activity
             android:name=".MainActivity"
             android:configChanges="orientation|screenSize|keyboardHidden">
+
             <!-- android:excludeFromRecents="true"> -->
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>

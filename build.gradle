@@ -4,6 +4,10 @@ apply plugin: 'com.alibaba.arouter'
 /*
  * 最大程度提升你的Android Studio 中Gradle编译速度完全攻略
  * https://crazymo.blog.csdn.net/article/details/105188273
+ *
+ * 读书笔记--Android Gradle权威指南
+ * https://www.cnblogs.com/dasusu/p/9085174.html
+ * https://www.cnblogs.com/dasusu/p/9095738.html
  */
 buildscript {
 

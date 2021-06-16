@@ -1,4 +1,4 @@
-package com.jyn.java_kotlin.Kotlin学习.解构方法
+package com.jyn.java_kotlin.Kotlin学习.component解构方法
 
 /**
  * Component 解构高级用法

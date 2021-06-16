@@ -1,3 +1,5 @@
+[Kotlin编译调校之WarningsAsErrors 压制警告](https://droidyue.com/blog/2019/08/03/kotlinc-config-warnings-as-errors/)
+
 # 作用域函数 let & with & run & apply & also
 ## let
 ```java
@@ -126,7 +128,7 @@ println("even: $evenOrNull, odd: $oddOrNull")
 | apply  | this指代当前对象，可省略 | this   | 能用run的地方就能用apply，多用于初始化对象 |
 | also   | it指代当前对象           | this   | 能用let就能用also，可用于函数链式调用      |
 
-![kotlin作用域函数](../experience/kotlin作用域函数.png)
+![kotlin作用域函数](../../../../../../../../experience/kotlin作用域函数.png)
 
  # 属性委托 by
  

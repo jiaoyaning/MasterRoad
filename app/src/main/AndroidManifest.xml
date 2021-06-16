@@ -14,7 +14,8 @@
         android:usesCleartextTraffic="true"
         tools:ignore="AllowBackup"
         tools:targetApi="m">
-        <activity android:name=".accessibility.AccessibilityActivity"></activity>
+        <activity android:name=".view.draw.OnDrawActivity"></activity>
+        <activity android:name=".accessibility.AccessibilityActivity" />
         <activity android:name=".utils.material.MaterialButtonActivity" />
         <activity android:name=".utils.material.ShapeableImageViewActivity" />
         <activity android:name=".jetpack.viewmodel.ViewModelActivity" />

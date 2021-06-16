@@ -1,3 +1,6 @@
+## 自定义View之弹性滑动的LockView
+https://mp.weixin.qq.com/s/m3Evd1MDEzwwOu_KNwIUJg
+
 ## Android高级自定义，手势滑动缩放/渐变填充/曲线折线图表
 https://mp.weixin.qq.com/s/wgXpDD9O73MYqKViLKq0yQ
 

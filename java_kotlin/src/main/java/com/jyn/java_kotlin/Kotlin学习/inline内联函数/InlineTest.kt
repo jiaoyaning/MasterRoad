@@ -1,4 +1,4 @@
-package com.jyn.java_kotlin.Kotlin学习.内联函数
+package com.jyn.java_kotlin.Kotlin学习.inline内联函数
 
 /*
  * inline、noinline、crossinline傻傻分不清楚
@@ -6,6 +6,12 @@ package com.jyn.java_kotlin.Kotlin学习.内联函数
  *
  * Kotlin源码里成吨的noinline和crossinline是干嘛的
  * https://zhuanlan.zhihu.com/p/224965169
+ *
+ * inline 修饰的高阶函数中的 Lambda 才可以使用 return
+ * https://mp.weixin.qq.com/s/LM5ihyo0OCzBk-AgWXVuUQ
+ *
+ * 重学 Kotlin —— inline，包治百病的性能良药？
+ * https://mp.weixin.qq.com/s/3TQQrl01F6jamMXWjK3f7w
  */
 class InlineTest {
     companion object {

@@ -8,7 +8,7 @@
 [Java就是值传递](java_kotlin/src/main/java/com/jyn/java_kotlin/Java学习/值传递/Java就是值传递.md)
 
 # Kotlin
-[Kotlin](blogs/Kotlin.md)
+[Kotlin](app/src/main/java/com/jyn/masterroad/kotlin/Kotlin.md)
 [Kotlin协程](app/src/main/java/com/jyn/masterroad/kotlin/coroutines/Kotlin协程.md)
 
 # Android

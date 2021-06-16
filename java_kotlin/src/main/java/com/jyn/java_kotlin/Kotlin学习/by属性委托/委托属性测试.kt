@@ -1,4 +1,4 @@
-package com.jyn.java_kotlin.Kotlin学习.属性委托
+package com.jyn.java_kotlin.Kotlin学习.by属性委托
 
 import java.lang.Thread.sleep
 import kotlin.properties.Delegates

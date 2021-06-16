@@ -15,6 +15,7 @@ import java.util.function.UnaryOperator;
  * Lambda表达式更像是一个方法的抽象，(输入的参数) -> (输出的参数)
  */
 public class JavaLambdaTest {
+    @SuppressWarnings("NewApi")
     public static void main(String[] args) {
         //判断真假 返回类型:boolean
         Predicate<String> predicate = x -> x.length() > 3;

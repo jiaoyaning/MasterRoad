@@ -17,11 +17,8 @@ package com.jyn.java_kotlin.GCRoots;
  * 5、JNI中的全局对象
  * 6、正在被用于同步的各种锁对象
  * 7、JVM自身持有的对象，比如系统类加载器等。
+ * https://www.jianshu.com/p/dcfe84c50811
  *
- * 作者：董成鹏
- * 链接：https://www.jianshu.com/p/dcfe84c50811
- * 来源：简书
- * 著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
  * 虚拟机栈中局部变量（也叫局部变量表）中引用的对象
  * 方法区中类的静态变量、常量引用的对象
  * 本地方法栈中 JNI (Native方法)引用的对象

@@ -14,6 +14,7 @@ ext {
 
     test = "1.3.0"
     koin = "3.0.1"
+    glide = "4.12.0"
     lifecycle = "2.3.1"
     recyclerview = "1.2.0-alpha04"
 
@@ -160,11 +161,13 @@ ext {
             "arouter-compiler" : "com.alibaba:arouter-compiler:1.2.2",
 
             /**
-             * https://muyangmin.github.io/glide-docs-cn/
+             * 官网：https://github.com/bumptech/glide
+             * 文档：https://muyangmin.github.io/glide-docs-cn/
              */
-            "glide"            : "com.github.bumptech.glide:glide:4.12.0",
-            "glide-compiler"   : "com.github.bumptech.glide:compiler:4.11.0",
-            "glide-integration": "com.github.bumptech.glide:okhttp3-integration:4.12.0",
+            "glide"            : "com.github.bumptech.glide:glide:$glide",
+            "glide-compiler"   : "com.github.bumptech.glide:compiler:$glide",
+            "glide-integration": "com.github.bumptech.glide:okhttp3-integration:$glide",
+
             "leakcanary"       : "com.squareup.leakcanary:leakcanary-android:2.6",
             /*
              * 一款方便的设置状态栏和导航栏的各种效果的框架

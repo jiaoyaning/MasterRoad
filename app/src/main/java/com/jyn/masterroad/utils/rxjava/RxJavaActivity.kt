@@ -33,7 +33,7 @@ import com.jyn.masterroad.databinding.ActivityRxjavaBinding
  */
 @Route(path = RoutePath.RxJava.path)
 class RxJavaActivity : BaseActivity<ActivityRxjavaBinding>
-(R.layout.activity_rxjava) {
+    (R.layout.activity_rxjava) {
 
     private val rxJavaCreate: RxJavaCreate by lazy { RxJavaCreate() }
 

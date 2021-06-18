@@ -31,7 +31,7 @@
             style="@style/tv"
             android:layout_marginTop="8dp"
             android:onClick="@{() -> rxJavaCreate.observerSimple()}"
-            android:text="Observable\n(Observer)"
+            android:text="Observable\n(Observer观察者)"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView29" />
 
@@ -39,7 +39,7 @@
             android:id="@+id/button19"
             style="@style/tv2"
             android:onClick="@{() -> rxJavaCreate.consumerSimple()}"
-            android:text="Observable\n(Consumer)"
+            android:text="Observable\n(Consumer消费者)"
             app:layout_constraintStart_toEndOf="@+id/button17"
             app:layout_constraintTop_toTopOf="@+id/button17" />
 

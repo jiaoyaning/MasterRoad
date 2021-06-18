@@ -8,7 +8,7 @@ import io.reactivex.rxjava3.disposables.Disposable
 import io.reactivex.rxjava3.functions.Consumer
 import java.lang.Thread.sleep
 
-/**
+/*
  * 五种观察者模式的创建
  * https://blog.csdn.net/IT_fighter/article/details/103777107
  *

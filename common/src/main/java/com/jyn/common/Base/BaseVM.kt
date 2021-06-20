@@ -9,6 +9,8 @@ import com.apkfuns.logutils.LogUtils
 /*
  * 从源码看 Jetpack（6）-ViewModel 源码详解
  * https://www.jianshu.com/p/4dc2b3fcac08
+ *
+ *
  */
 abstract class BaseVM(application: Application) : AndroidViewModel(application), LifecycleObserver {
 

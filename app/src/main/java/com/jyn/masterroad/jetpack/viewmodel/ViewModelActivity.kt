@@ -10,6 +10,8 @@ import com.jyn.masterroad.databinding.ActivityViewModelBinding
  *
  * ViewModel源码详解
  * https://www.jianshu.com/p/4dc2b3fcac08
+ *
+ * https://mp.weixin.qq.com/s/dWdcHGTqMlMIuLHeCojhoQ
  */
 class ViewModelActivity : BaseActivity<ActivityViewModelBinding>
     (R.layout.activity_view_model) {

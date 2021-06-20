@@ -3,15 +3,14 @@ package com.jyn.masterroad.jetpack.livedata
 import android.app.Application
 import android.view.View
 import androidx.databinding.ObservableInt
-import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.liveData
 import com.apkfuns.logutils.LogUtils
 import com.jyn.common.Base.BaseVM
-import io.reactivex.Observable
-import io.reactivex.android.schedulers.AndroidSchedulers
-import io.reactivex.disposables.Disposable
+import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
+import io.reactivex.rxjava3.core.Observable
+import io.reactivex.rxjava3.disposables.Disposable
 
 /*
  * https://github.com/android/architecture-components-samples/tree/main/LiveDataSample
@@ -19,7 +18,7 @@ import io.reactivex.disposables.Disposable
  * 面试官：你了解 LiveData 的 postValue 吗？
  * https://mp.weixin.qq.com/s/yMO1oDSUAGmPJ4w4hqSWPw
  */
-class LiveDataTestViewModel(application: Application) : AndroidViewModel(application) {
+class LiveDataTestViewModel(application: Application) : BaseVM(application) {
 
     companion object {
         const val TAG = "LiveData"

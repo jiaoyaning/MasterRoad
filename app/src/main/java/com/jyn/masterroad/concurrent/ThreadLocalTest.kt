@@ -22,6 +22,9 @@ import javax.inject.Inject
  *
  * 弱引用什么时候被回收_面试官：ThreadLocal为什么会发生内存泄漏？
  * https://blog.csdn.net/weixin_39948210/article/details/110902604
+ *
+ * 细数ThreadLocal三大坑，内存泄露仅是小儿科
+ * https://mp.weixin.qq.com/s/eWgTmP283kD_M2VxSxvYag
  */
 class ThreadLocalTest @Inject constructor(){
     private val threadLocal: ThreadLocal<String> by lazy {

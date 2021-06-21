@@ -5,13 +5,13 @@
 
     <data>
 
-        <import type="com.jyn.masterroad.jetpack.livedata.LiveDataTestViewModel" />
+        <import type="com.jyn.masterroad.jetpack.livedata.LiveDataTestVM" />
 
         <import type="android.view.View.OnClickListener" />
 
         <variable
             name="model"
-            type="LiveDataTestViewModel" />
+            type="LiveDataTestVM" />
 
         <variable
             name="onClick"

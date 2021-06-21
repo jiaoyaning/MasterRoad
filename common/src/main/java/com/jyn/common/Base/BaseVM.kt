@@ -12,13 +12,13 @@ import com.apkfuns.logutils.LogUtils
  *
  *
  */
+@SuppressLint("StaticFieldLeak")
 abstract class BaseVM(application: Application) : AndroidViewModel(application), LifecycleObserver {
 
     companion object {
         const val TAG = "ViewModel"
     }
 
-    @SuppressLint("StaticFieldLeak")
     var context: Context = application.baseContext
 
     // 应用进入后台

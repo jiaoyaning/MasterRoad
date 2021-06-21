@@ -18,7 +18,7 @@ import io.reactivex.rxjava3.disposables.Disposable
  * 面试官：你了解 LiveData 的 postValue 吗？
  * https://mp.weixin.qq.com/s/yMO1oDSUAGmPJ4w4hqSWPw
  */
-class LiveDataTestViewModel(application: Application) : BaseVM(application) {
+class LiveDataTestVM(application: Application) : BaseVM(application) {
 
     companion object {
         const val TAG = "LiveData"
@@ -50,6 +50,7 @@ class LiveDataTestViewModel(application: Application) : BaseVM(application) {
         SingleLiveEvent(mutableListOf("测试1", "测试2", "测试3", "测试4"))
     var select: SingleLiveEvent<String> = SingleLiveEvent("测试3")
 
+    //region Observable
     private var numObservable = ObservableInt(0)
 
     init {
@@ -62,11 +63,16 @@ class LiveDataTestViewModel(application: Application) : BaseVM(application) {
                 LogUtils.tag("main").i("我改变了$propertyId")
             }
         })
-    }
 
-    /**
-     * 点击方法设置之，直接在xml中绑定
-     */
+        numString?.observeForever {
+            LogUtils.tag(TAG).i("Observer -> numString改变了$it")
+        }
+        select.observeForever {
+            LogUtils.tag(TAG).i("Observer -> select:$it")
+        }
+    }
+    //endregion
+
     fun add(v: View) {
         num.value = num.value?.plus(1)
         numString?.value = num.value.toString()
@@ -114,6 +120,5 @@ class LiveDataTestViewModel(application: Application) : BaseVM(application) {
             disposable?.dispose()
         }
     }
-
     //endregion
 }

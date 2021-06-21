@@ -1,14 +1,16 @@
 package com.jyn.masterroad.jetpack.livedata
 
 import android.view.View
+import androidx.activity.viewModels
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.apkfuns.logutils.LogUtils
 import com.jyn.common.ARouter.RoutePath
 import com.jyn.masterroad.R
 import com.jyn.masterroad.base.BaseActivity
 import com.jyn.masterroad.databinding.ActivityLiveDataBinding
-import com.jyn.masterroad.jetpack.livedata.LiveDataTestViewModel.Companion.TAG
+import com.jyn.masterroad.jetpack.livedata.LiveDataTestVM.Companion.TAG
 import kotlinx.android.synthetic.main.activity_live_data.*
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 /*
  * 【带着问题学】关于LiveData你应该知道的知识点 TODO
@@ -40,15 +42,17 @@ import kotlinx.android.synthetic.main.activity_live_data.*
  *
  * 三方库源码笔记（8）-Retrofit 与 LiveData 的结合使用
  * https://mp.weixin.qq.com/s/jeJB2I0uV6LIRDwLqkMgEg
+ *
+ * android Livedata最详尽的使用场景分析，让你爱上Livedata
+ * https://mp.weixin.qq.com/s/8y5PPOOBiX4jeKL1Ilp42Q
  */
 @Route(path = RoutePath.LiveData.path)
 class LiveDataActivity : BaseActivity<ActivityLiveDataBinding>
     (R.layout.activity_live_data) {
 
-    lateinit var viewModel: LiveDataTestViewModel
+    val viewModel: LiveDataTestVM by viewModels()
 
     override fun initData() {
-        viewModel = createVM()
         binding.model = viewModel
         /**
          * 点击方法设置之，在xml中绑定OnClickListener接口
@@ -60,18 +64,6 @@ class LiveDataActivity : BaseActivity<ActivityLiveDataBinding>
         viewModel.num.observe(this, {
             LogUtils.tag(TAG).i("Observer -> num改变了$it")
             tv_num.text = it.toString()
-        })
-
-        viewModel.numString?.observe(this, {
-            LogUtils.tag(TAG).i("Observer -> numString改变了$it")
-        })
-
-        viewModel.select.observe(this, {
-            LogUtils.tag(TAG).i("Observer -> select:$it")
-        })
-
-        viewModel.postValueNum.observe(this, {
-            LogUtils.tag(TAG).i("Observer -> postValueNum:$it")
         })
     }
 }

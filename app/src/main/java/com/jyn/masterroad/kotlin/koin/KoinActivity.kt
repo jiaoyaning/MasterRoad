@@ -1,14 +1,12 @@
 package com.jyn.masterroad.kotlin.koin
 
 import android.view.View
-import androidx.lifecycle.Observer
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.apkfuns.logutils.LogUtils
 import com.jyn.common.ARouter.RoutePath
 import com.jyn.masterroad.R
 import com.jyn.masterroad.base.BaseActivity
 import com.jyn.masterroad.databinding.ActivityKoinBinding
-import com.jyn.masterroad.kotlin.koin.data.HelloRepositoryImpl
 import com.jyn.masterroad.kotlin.koin.data.KoinTestData
 import com.jyn.masterroad.kotlin.koin.data.KoinViewModel
 import com.jyn.masterroad.kotlin.koin.data.ParameterData

@@ -18,30 +18,33 @@ class TransformationsVM(application: Application) : BaseVM(application) {
         const val TAG = "Transformations"
     }
 
-    var liveData: MutableLiveData<Int> = MutableLiveData(0)
+    private var liveData1: MutableLiveData<Int> = MutableLiveData(0)
+    private var liveData2: MutableLiveData<Int> = MutableLiveData(0)
 
     /**
      * map可以转换类型
      * 🌰：把int类型的LiveData 转换为string类型
      */
-    var mapLiveData: LiveData<String> = Transformations.map(liveData) {
+    var mapLiveData: LiveData<String> = Transformations.map(liveData1) {
         "转换成字符串$it"
     }
 
-    var switchMapLiveData = Transformations.switchMap(liveData) {
+    var switchMapLiveData = Transformations.switchMap(liveData2) {
         MutableLiveData("全新的LiveData$it")
     }
 
     fun onClickMapLivedata() {
-        liveData.postValue(liveData.value?.plus(1))
+        liveData1.postValue(liveData1.value?.plus(1))
     }
 
     fun onClickSwitchMapLivedata() {
-        liveData.postValue(liveData.value?.plus(1))
+        liveData2.postValue(liveData2.value?.plus(1))
     }
 
     init {
-        liveData.observeForever { LogUtils.tag(TAG).i("liveData $it") }
+        liveData1.observeForever { LogUtils.tag(TAG).i("liveData $it") }
+        liveData2.observeForever { LogUtils.tag(TAG).i("liveData $it") }
         mapLiveData.observeForever { LogUtils.tag(TAG).i("mapLiveData $it") }
+        switchMapLiveData.observeForever { LogUtils.tag(TAG).i("switchMapLiveData $it") }
     }
 }

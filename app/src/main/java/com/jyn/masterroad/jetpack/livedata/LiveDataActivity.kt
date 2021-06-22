@@ -50,11 +50,13 @@ class LiveDataActivity : BaseActivity<ActivityLiveDataBinding>
     (R.layout.activity_live_data) {
 
     private val liveDataTestVM: LiveDataTestVM by viewModels()
-    val mediatorLiveDataVM: MediatorLiveDataVM by viewModels()
+    private val mediatorLiveDataVM: MediatorLiveDataVM by viewModels()
+    private val transformationsVM: TransformationsVM by viewModels()
 
     override fun initData() {
         binding.model = liveDataTestVM
         binding.mediatorLiveData = mediatorLiveDataVM
+        binding.transformationsVM = transformationsVM
         /**
          * 点击方法设置之，在xml中绑定OnClickListener接口
          */

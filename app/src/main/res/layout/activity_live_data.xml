@@ -20,6 +20,10 @@
         <variable
             name="mediatorLiveData"
             type="com.jyn.masterroad.jetpack.livedata.MediatorLiveDataVM" />
+
+        <variable
+            name="transformationsVM"
+            type="com.jyn.masterroad.jetpack.livedata.TransformationsVM" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -32,17 +36,15 @@
             android:id="@+id/tv_num"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
             android:gravity="center"
-            android:minHeight="40dp"
-            android:paddingStart="10dp"
             android:text="@{model.num.toString()}"
-            android:textSize="22sp"
+            android:textSize="20sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             tools:ignore="RtlSymmetry"
             tools:text="0" />
-
 
         <!--    TextViewBindingAdapter  -->
         <TextView
@@ -51,10 +53,8 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:gravity="center"
-            android:minHeight="40dp"
-            android:paddingStart="10dp"
             android:text="@={model.numString}"
-            android:textSize="22sp"
+            android:textSize="20sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tv_num"
@@ -160,33 +160,90 @@
         <TextView
             android:id="@+id/textView41"
             android:layout_width="wrap_content"
-            android:layout_height="40dp"
-            android:layout_marginTop="8dp"
+            android:layout_height="0dp"
             android:gravity="center_vertical"
             android:paddingStart="10dp"
             android:paddingEnd="10dp"
-            android:text="0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/button33" />
+            android:text="@{`合并后 = `+mediatorLiveData.liveDataMerger}"
+            app:layout_constraintBottom_toBottomOf="@+id/button34"
+            app:layout_constraintEnd_toStartOf="@+id/button35"
+            app:layout_constraintStart_toEndOf="@+id/button34"
+            app:layout_constraintTop_toTopOf="@+id/button34"
+            tools:text="合并数据源:" />
 
         <Button
             android:id="@+id/button34"
             style="@style/tv"
             android:layout_marginTop="8dp"
             android:onClick="@{() -> mediatorLiveData.onClickLiveData1()}"
-            android:text="@{`数据源1:`+mediatorLiveData.livedata1}"
+            android:text="@{`修改数据源1 = `+mediatorLiveData.livedata1}"
+            app:layout_constraintEnd_toStartOf="@+id/textView41"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView41"
+            app:layout_constraintTop_toBottomOf="@+id/textView38"
             tools:text="数据源1" />
 
         <Button
             android:id="@+id/button35"
             style="@style/tv2"
             android:onClick="@{() -> mediatorLiveData.onClickLiveData2()}"
-            android:text="@{`数据源2:`+mediatorLiveData.livedata2}"
-            app:layout_constraintStart_toEndOf="@+id/button34"
+            android:text="@{`修改数据源2 = `+mediatorLiveData.livedata2}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/textView41"
             app:layout_constraintTop_toTopOf="@+id/button34"
             tools:text="数据源2" />
+
+        <TextView
+            android:id="@+id/textView42"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="Transformations —> map &amp; switchMap"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/button34" />
+
+        <TextView
+            android:id="@+id/textView43"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:gravity="center"
+            android:paddingStart="10dp"
+            android:paddingEnd="10dp"
+            android:text="@{transformationsVM.mapLiveData}"
+            app:layout_constraintEnd_toEndOf="@+id/button36"
+            app:layout_constraintStart_toStartOf="@+id/button36"
+            app:layout_constraintTop_toBottomOf="@+id/textView42" />
+
+        <TextView
+            android:id="@+id/textView44"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:gravity="center"
+            android:paddingStart="10dp"
+            android:paddingEnd="10dp"
+            android:text="TextView"
+            app:layout_constraintEnd_toEndOf="@+id/button37"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="@+id/button37"
+            app:layout_constraintTop_toBottomOf="@+id/textView42" />
+
+        <Button
+            android:id="@+id/button36"
+            style="@style/tv2"
+            android:onClick="@{() -> transformationsVM.onClickMapLivedata()}"
+            android:text="map转换"
+            app:layout_constraintEnd_toStartOf="@+id/button37"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView43" />
+
+        <Button
+            android:id="@+id/button37"
+            style="@style/tv"
+            android:text="Button"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/button36"
+            app:layout_constraintTop_toTopOf="@+id/button36" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

@@ -10,6 +10,9 @@ import kotlinx.android.synthetic.main.activity_nested_scrolling1.*
 /*
  * AppBarLayout v26+抖动BugFix
  * https://www.jianshu.com/p/2924f32e8c22
+ *
+ * 实现二次吸顶效果
+ * https://mp.weixin.qq.com/s/dBmpQe09F2yvTl0Xz-50uA
  */
 @Route(path = RoutePath.NestedScrolling2.path)
 class NestedScrolling2Activity : BaseActivity<ActivityNestedScrolling2Binding>

@@ -5,6 +5,9 @@ import java.util.Optional;
 /**
  * 1.8版本Optional
  * https://www.cnblogs.com/zhangboyu/p/7580262.html
+ *
+ * Java 8 Optional 最佳指南
+ * https://mp.weixin.qq.com/s/PqK0KNVHyoEtZDtp5odocA
  */
 @SuppressWarnings("NewApi")
 public class OptionalTest {

@@ -20,6 +20,9 @@ import com.jyn.masterroad.databinding.ActivityNestedScrolling1Binding
  *
  * Android CoordinatorLayout之自定义Behavior
  * https://www.jianshu.com/p/b987fad8fcb4
+ *
+ * AppBarLayout v26+抖动BugFix
+ * https://www.jianshu.com/p/2924f32e8c22
  */
 @Route(path = RoutePath.NestedScrolling.path)
 class NestedScrolling1Activity : BaseActivity<ActivityNestedScrolling1Binding>

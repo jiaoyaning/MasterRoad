@@ -46,10 +46,12 @@ class LiveDataTestVM(application: Application) : BaseVM(application) {
         emit(" i am a ViewModelInject")
     }
 
-    var entries: SingleLiveEvent<List<String>> =
-        SingleLiveEvent(mutableListOf("测试1", "测试2", "测试3", "测试4"))
-    var select: SingleLiveEvent<String> = SingleLiveEvent("测试3")
-
+    private var postValueNum = object : MutableLiveData<Int>(0) {
+        override fun setValue(value: Int?) {
+            super.setValue(value)
+            LogUtils.tag(TAG).i("setValue : $value")
+        }
+    }
     //region Observable
     private var numObservable = ObservableInt(0)
 
@@ -67,8 +69,9 @@ class LiveDataTestVM(application: Application) : BaseVM(application) {
         numString?.observeForever {
             LogUtils.tag(TAG).i("Observer -> numString改变了$it")
         }
-        select.observeForever {
-            LogUtils.tag(TAG).i("Observer -> select:$it")
+
+        postValueNum.observeForever {
+            LogUtils.tag(TAG).i("LiveData -> postValueNum改变了$it")
         }
     }
     //endregion
@@ -84,13 +87,6 @@ class LiveDataTestVM(application: Application) : BaseVM(application) {
     }
 
     //region 连续postValue测试
-    var postValueNum = object : MutableLiveData<Int>(0) {
-        override fun setValue(value: Int?) {
-            super.setValue(value)
-            LogUtils.tag(TAG).i("setValue : $value")
-        }
-    }
-
     fun postValueTest() {
         /**
          * 只会收到最后一次post
@@ -121,4 +117,8 @@ class LiveDataTestVM(application: Application) : BaseVM(application) {
         }
     }
     //endregion
+
+    var entries: SingleLiveEvent<List<String>> =
+        SingleLiveEvent(mutableListOf("测试1", "测试2", "测试3", "测试4"))
+    var select: SingleLiveEvent<String> = SingleLiveEvent("测试3")
 }

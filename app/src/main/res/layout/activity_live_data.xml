@@ -5,30 +5,35 @@
 
     <data>
 
+        <import type="android.view.View.OnClickListener" />
+
         <import type="com.jyn.masterroad.jetpack.livedata.LiveDataTestVM" />
 
-        <import type="android.view.View.OnClickListener" />
+        <variable
+            name="onClick"
+            type="OnClickListener" />
 
         <variable
             name="model"
             type="LiveDataTestVM" />
 
         <variable
-            name="onClick"
-            type="OnClickListener" />
+            name="mediatorLiveData"
+            type="com.jyn.masterroad.jetpack.livedata.MediatorLiveDataVM" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".jetpack.livedata.LiveDataActivity">
+        tools:context=".jetpack.livedata.LiveDataActivity"
+        tools:ignore="HardcodedText">
 
         <TextView
             android:id="@+id/tv_num"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:minHeight="50dp"
+            android:minHeight="40dp"
             android:paddingStart="10dp"
             android:text="@{model.num.toString()}"
             android:textSize="22sp"
@@ -46,9 +51,9 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:gravity="center"
-            android:minHeight="50dp"
+            android:minHeight="40dp"
             android:paddingStart="10dp"
-            android:text="@{model.numString}"
+            android:text="@={model.numString}"
             android:textSize="22sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -59,7 +64,7 @@
         <Button
             android:id="@+id/btn_livedata_add"
             style="@style/tv"
-            android:layout_marginTop="30dp"
+            android:layout_marginTop="8dp"
             android:onClick="@{model::add}"
             android:text="+1"
             app:layout_constraintEnd_toStartOf="@+id/btn_livedata_subtract"
@@ -82,11 +87,10 @@
             android:id="@+id/textView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="10dp"
-            android:text="单向绑定："
-            android:textSize="20sp"
+            android:layout_marginEnd="8dp"
+            android:text="单向绑定"
             app:layout_constraintBottom_toBottomOf="@+id/tv_num"
-            app:layout_constraintStart_toStartOf="@+id/tv_num"
+            app:layout_constraintEnd_toEndOf="@+id/tv_num"
             app:layout_constraintTop_toTopOf="@+id/tv_num"
             tools:ignore="HardcodedText" />
 
@@ -94,25 +98,44 @@
             android:id="@+id/textView2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="10dp"
-            android:text="双向绑定："
-            android:textSize="20sp"
+            android:layout_marginEnd="8dp"
+            android:text="双向绑定"
             app:layout_constraintBottom_toBottomOf="@+id/tv_num2"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="@+id/tv_num2"
             tools:ignore="HardcodedText" />
+
+        <TextView
+            android:id="@+id/textView39"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:text="spinner 自定义BindingAdapter"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/btn_livedata_add" />
 
         <!-- AbsSpinnerBindingAdapter -->
         <Spinner
             android:id="@+id/spinner"
             android:layout_width="300dp"
-            android:layout_height="40dp"
-            android:layout_marginTop="16dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
             android:entries="@{model.entries}"
             android:select="@={model.select}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/btn_livedata_add" />
+            app:layout_constraintTop_toBottomOf="@+id/textView39" />
+
+        <TextView
+            android:id="@+id/textView40"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:text="postValue &amp; 数据倒灌(粘性事件)"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/spinner" />
 
         <Button
             android:id="@+id/button33"
@@ -120,10 +143,50 @@
             android:layout_marginTop="8dp"
             android:onClick="@{() ->model.postValueTest()}"
             android:text="连续 postValue"
-            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/spinner"
+            app:layout_constraintTop_toBottomOf="@+id/textView40"
             tools:ignore="HardcodedText" />
+
+        <TextView
+            android:id="@+id/textView38"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:text="MediatorLiveData 合并数据源"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/button33" />
+
+        <TextView
+            android:id="@+id/textView41"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:layout_marginTop="8dp"
+            android:gravity="center_vertical"
+            android:paddingStart="10dp"
+            android:paddingEnd="10dp"
+            android:text="0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/button33" />
+
+        <Button
+            android:id="@+id/button34"
+            style="@style/tv"
+            android:layout_marginTop="8dp"
+            android:onClick="@{() -> mediatorLiveData.onClickLiveData1()}"
+            android:text="@{`数据源1:`+mediatorLiveData.livedata1}"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView41"
+            tools:text="数据源1" />
+
+        <Button
+            android:id="@+id/button35"
+            style="@style/tv2"
+            android:onClick="@{() -> mediatorLiveData.onClickLiveData2()}"
+            android:text="@{`数据源2:`+mediatorLiveData.livedata2}"
+            app:layout_constraintStart_toEndOf="@+id/button34"
+            app:layout_constraintTop_toTopOf="@+id/button34"
+            tools:text="数据源2" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

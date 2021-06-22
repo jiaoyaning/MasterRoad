@@ -10,7 +10,6 @@ import com.jyn.masterroad.base.BaseActivity
 import com.jyn.masterroad.databinding.ActivityLiveDataBinding
 import com.jyn.masterroad.jetpack.livedata.LiveDataTestVM.Companion.TAG
 import kotlinx.android.synthetic.main.activity_live_data.*
-import org.koin.androidx.viewmodel.ext.android.viewModel
 
 /*
  * 【带着问题学】关于LiveData你应该知道的知识点 TODO
@@ -50,18 +49,20 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 class LiveDataActivity : BaseActivity<ActivityLiveDataBinding>
     (R.layout.activity_live_data) {
 
-    val viewModel: LiveDataTestVM by viewModels()
+    private val liveDataTestVM: LiveDataTestVM by viewModels()
+    val mediatorLiveDataVM: MediatorLiveDataVM by viewModels()
 
     override fun initData() {
-        binding.model = viewModel
+        binding.model = liveDataTestVM
+        binding.mediatorLiveData = mediatorLiveDataVM
         /**
          * 点击方法设置之，在xml中绑定OnClickListener接口
          */
         binding.onClick = View.OnClickListener {
-            viewModel.subtract()
+            liveDataTestVM.subtract()
         }
 
-        viewModel.num.observe(this, {
+        liveDataTestVM.num.observe(this, {
             LogUtils.tag(TAG).i("Observer -> num改变了$it")
             tv_num.text = it.toString()
         })

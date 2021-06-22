@@ -1,12 +1,13 @@
 package com.jyn.masterroad.jetpack.livedata
 
 import android.app.Application
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Transformations
 import com.apkfuns.logutils.LogUtils
 import com.jyn.common.Base.BaseVM
 
-/**
+/*
  * 怎么使用Transformations
  * https://stackoverflow.com/questions/47610676/how-and-where-to-use-transformations-switchmap
  *
@@ -18,9 +19,24 @@ class TransformationsVM(application: Application) : BaseVM(application) {
     }
 
     var liveData: MutableLiveData<Int> = MutableLiveData(0)
-    var mapLiveData = Transformations.map(liveData) { "转换成字符串$it" }//可以把int型的liveData转换成别的类型
+
+    /**
+     * map可以转换类型
+     * 🌰：把int类型的LiveData 转换为string类型
+     */
+    var mapLiveData: LiveData<String> = Transformations.map(liveData) {
+        "转换成字符串$it"
+    }
+
+    var switchMapLiveData = Transformations.switchMap(liveData) {
+        MutableLiveData("全新的LiveData$it")
+    }
 
     fun onClickMapLivedata() {
+        liveData.postValue(liveData.value?.plus(1))
+    }
+
+    fun onClickSwitchMapLivedata() {
         liveData.postValue(liveData.value?.plus(1))
     }
 

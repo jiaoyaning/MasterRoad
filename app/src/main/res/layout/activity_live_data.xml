@@ -203,7 +203,7 @@
 
         <TextView
             android:id="@+id/textView43"
-            android:layout_width="0dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:gravity="center"
@@ -212,21 +212,21 @@
             android:text="@{transformationsVM.mapLiveData}"
             app:layout_constraintEnd_toEndOf="@+id/button36"
             app:layout_constraintStart_toStartOf="@+id/button36"
-            app:layout_constraintTop_toBottomOf="@+id/textView42" />
+            app:layout_constraintTop_toBottomOf="@+id/textView42"
+            tools:text="转换成字符串" />
 
         <TextView
             android:id="@+id/textView44"
-            android:layout_width="0dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
             android:gravity="center"
             android:paddingStart="10dp"
             android:paddingEnd="10dp"
-            android:text="TextView"
+            android:text="@{transformationsVM.switchMapLiveData}"
             app:layout_constraintEnd_toEndOf="@+id/button37"
-            app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="@+id/button37"
-            app:layout_constraintTop_toBottomOf="@+id/textView42" />
+            app:layout_constraintTop_toTopOf="@+id/textView43"
+            tools:text="全新的LiveData" />
 
         <Button
             android:id="@+id/button36"
@@ -240,6 +240,7 @@
         <Button
             android:id="@+id/button37"
             style="@style/tv"
+            android:onClick="@{() -> transformationsVM.onClickSwitchMapLivedata()}"
             android:text="Button"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/button36"

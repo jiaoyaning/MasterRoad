@@ -45,10 +45,18 @@
 
         <Button
             android:id="@+id/button38"
-            style="@style/tv"
-            android:onClick="@{() -> rxJavaCreate.flowableSimple()}"
-            android:text="Flowable"
+            style="@style/tv2"
+            android:onClick="@{() -> rxJavaCreate.flowableSubscriberSimple()}"
+            android:text="Flowable\nSubscriber"
             app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/button17" />
+
+        <Button
+            android:id="@+id/button39"
+            style="@style/tv"
+            android:onClick="@{() -> rxJavaCreate.flowableConsumerTest()}"
+            android:text="Flowable\nSubscriber"
+            app:layout_constraintStart_toEndOf="@+id/button38"
             app:layout_constraintTop_toBottomOf="@+id/button17" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>

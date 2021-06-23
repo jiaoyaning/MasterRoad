@@ -16,6 +16,15 @@ import java.lang.Thread.sleep
  * https://blog.csdn.net/IT_fighter/article/details/103777107
  *
  * CompositeDisposable
+ *
+ * RxJava 2.0（五） Flowable和Subscriber
+ * https://my.oschina.net/carbenson/blog/1002466
+ *
+ * RxJava2 Flowable blocking系列
+ * https://blog.csdn.net/weixin_36709064/article/details/82936507
+ *
+ *【Android】Rxjava2 Flowable详解与背压那些事
+ * https://www.jianshu.com/p/bc8fe9fa0ba1
  */
 class RxJavaCreate {
     companion object {
@@ -88,20 +97,19 @@ class RxJavaCreate {
     //endregion
 //endregion ================================================
 
-//region 2. Flowable + Subscriber   背压
+    //region 2. Flowable + Subscriber   背压
     /*
      * 能够发射0或n个数据，并以成功或错误事件终止。 支持背压(下游处理速度比上游发送速度要慢)，可以控制数据源发射的速度。
      *
      *
      */
-    fun flowableSimple() {
+    fun flowableSubscriberSimple() {
         val flowable = Flowable.just(
             "第 1 条数据",
             "第 2 条数据",
             "第 3 条数据",
             "第 4 条数据"
         )
-
         flowable.subscribe(object : Subscriber<String> {
             override fun onSubscribe(s: Subscription?) {
                 LogUtils.tag(TAG).i("Subscriber -> onSubscribe $s")
@@ -119,10 +127,17 @@ class RxJavaCreate {
                 LogUtils.tag(TAG).i("Subscriber -> onComplete")
             }
         })
+    }
 
-//        flowable.subscribe {
-//            LogUtils.tag(TAG).i("Consumer -> onNext $it")
-//        }
+    fun flowableConsumerTest() {
+        Flowable.just(
+            "第 1 条数据",
+            "第 2 条数据",
+            "第 3 条数据",
+            "第 4 条数据"
+        ).subscribe {
+            LogUtils.tag(TAG).i("Consumer -> onNext $it")
+        }
     }
 
 //endregion ================================================

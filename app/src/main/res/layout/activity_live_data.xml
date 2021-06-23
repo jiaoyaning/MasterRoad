@@ -241,7 +241,7 @@
             android:id="@+id/button37"
             style="@style/tv"
             android:onClick="@{() -> transformationsVM.onClickSwitchMapLivedata()}"
-            android:text="Button"
+            android:text="SwitchMap"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/button36"
             app:layout_constraintTop_toTopOf="@+id/button36" />

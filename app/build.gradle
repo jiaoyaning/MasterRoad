@@ -139,23 +139,23 @@ dependencies {
     implementation http["retrofit2"]
     implementation http["retrofit2-scalars"]
     implementation http["retrofit2-gson"]
-    implementation http["rxjava"]
-    implementation http["rxandroid"]
+    implementation http["rxjava3"]
+    implementation http["rxandroid3"]
     implementation http["rxhttp"]
     kapt http["rxhttp-compiler"]
 
+    implementation utils["glide"]
     implementation utils["glide-integration"]
+    annotationProcessor utils["glide-compiler"]
     implementation utils["ultimatebarx"]
     implementation utils["eventbus"]
-    implementation utils["glide"]
-    annotationProcessor utils["glide-compiler"]
     debugImplementation utils["leakcanary"]
     implementation utils["arouter"]
     annotationProcessor utils["arouter-compiler"]
     kapt utils["arouter-compiler"]
 
     //https://github.com/evant/binding-collection-adapter
-    implementation 'me.tatarka.bindingcollectionadapter2:bindingcollectionadapter:4.0.0'
-    implementation 'me.tatarka.bindingcollectionadapter2:bindingcollectionadapter-recyclerview:4.0.0'
-    implementation 'me.tatarka.bindingcollectionadapter2:bindingcollectionadapter-viewpager2:4.0.0'
+    implementation utils["bindingcollectionadapter"]
+    implementation utils["bindingcollectionadapter-recyclerview"]
+    implementation utils["bindingcollectionadapter-viewpager2"]
 }

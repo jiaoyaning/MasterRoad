@@ -44,6 +44,13 @@
             app:layout_constraintTop_toTopOf="@+id/button17" />
 
         <Button
+            android:id="@+id/button40"
+            style="@style/tv"
+            android:text="Observable\n背压测试"
+            app:layout_constraintStart_toEndOf="@+id/button19"
+            app:layout_constraintTop_toTopOf="@+id/button19" />
+
+        <Button
             android:id="@+id/button38"
             style="@style/tv2"
             android:onClick="@{() -> rxJavaCreate.flowableSubscriberSimple()}"
@@ -54,10 +61,18 @@
         <Button
             android:id="@+id/button39"
             style="@style/tv"
-            android:onClick="@{() -> rxJavaCreate.flowableConsumerTest()}"
-            android:text="Flowable\nSubscriber"
-            app:layout_constraintStart_toEndOf="@+id/button38"
-            app:layout_constraintTop_toBottomOf="@+id/button17" />
+            android:onClick="@{() -> rxJavaCreate.singleTest()}"
+            android:text="Single\nConsumer"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/button38" />
+
+        <Button
+            android:id="@+id/button41"
+            style="@style/tv2"
+            android:onClick="@{() -> rxJavaCreate.completableTest()}"
+            android:text="Completable\nCompletableObserver"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/button39" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

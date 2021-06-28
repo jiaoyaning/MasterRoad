@@ -22,6 +22,9 @@ import org.koin.core.qualifier.named
  *
  * koin2在android中使用及源码分析
  * https://juejin.cn/post/6844904082994364430
+ *
+ * kotlin 协程官方文档（5）-异步流（Asynchronous Flow）
+ * https://juejin.cn/post/6844904101801639949
  */
 @Route(path = RoutePath.KotlinKoin.path)
 class KoinActivity : BaseActivity<ActivityKoinBinding>

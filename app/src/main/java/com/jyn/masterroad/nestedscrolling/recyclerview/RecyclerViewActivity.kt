@@ -49,6 +49,9 @@ import com.jyn.masterroad.nestedscrolling.recyclerview.adapter.RecyclerAdapter
  *
  * 【Android】自定义无限循环的LayoutManager
  * https://juejin.cn/post/6909363022980972552
+ *
+ * RecyclerView高级进阶之优雅地解决瀑布流的两个神坑
+ * https://mp.weixin.qq.com/s/0frJ3kJd25jNipoa0wi-Kg
  */
 @Route(path = RoutePath.RecyclerView.path)
 class RecyclerViewActivity : BaseActivity<ActivityRecyclerViewBinding>

@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:bind="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="rxJavaCreate"
+            type="com.jyn.masterroad.utils.rxjava.RxJavaCreate" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:context=".utils.rxjava.RxJavaActivity"
+        tools:ignore="HardcodedText">
+
+        <TextView
+            android:id="@+id/textView29"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:text="五种观察者模式的创建"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Button
+            android:id="@+id/button17"
+            style="@style/tv"
+            android:layout_marginTop="8dp"
+            android:onClick="@{() -> rxJavaCreate.observerSimple()}"
+            android:text="Observable\n(Observer观察者)"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/textView29" />
+
+        <Button
+            android:id="@+id/button19"
+            style="@style/tv2"
+            android:onClick="@{() -> rxJavaCreate.consumerSimple()}"
+            android:text="Observable\n(Consumer消费者)"
+            app:layout_constraintStart_toEndOf="@id/button17"
+            app:layout_constraintTop_toTopOf="@id/button17" />
+
+        <Button
+            android:id="@+id/button40"
+            style="@style/tv"
+            android:text="Observable\n背压测试"
+            app:layout_constraintStart_toEndOf="@id/button19"
+            app:layout_constraintTop_toTopOf="@id/button19" />
+
+        <Button
+            android:id="@+id/button38"
+            style="@style/tv2"
+            android:onClick="@{() -> rxJavaCreate.flowableSubscriberSimple()}"
+            android:text="Flowable\nSubscriber"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/button17" />
+
+        <Button
+            android:id="@+id/button39"
+            style="@style/tv"
+            android:onClick="@{() -> rxJavaCreate.singleTest()}"
+            android:text="Single\nConsumer"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/button38" />
+
+        <Button
+            android:id="@+id/button41"
+            style="@style/tv2"
+            android:onClick="@{() -> rxJavaCreate.completableTest()}"
+            android:text="Completable\nCompletableObserver"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/button39" />
+
+        <Button
+            android:id="@+id/button42"
+            style="@style/tv"
+            android:onClick="@{() -> rxJavaCreate.maybeTest()}"
+            android:text="Maybe\nConsumer"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/button41" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

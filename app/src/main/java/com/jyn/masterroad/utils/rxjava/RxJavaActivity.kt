@@ -27,17 +27,14 @@ import com.jyn.masterroad.databinding.ActivityRxjavaBinding
  *
  * RxjavaPlugins
  * https://blog.csdn.net/weixin_43724742/article/details/103394113
- *
- * Cold Observable 和 Hot Observable
- * https://www.jianshu.com/p/12fb42bcf9fd
  */
 @Route(path = RoutePath.RxJava.path)
 class RxJavaActivity : BaseActivity<ActivityRxjavaBinding>
     (R.layout.activity_rxjava) {
 
-    private val rxJavaCreate: RxJavaCreate by lazy { RxJavaCreate() }
-
     override fun initView() {
-        binding.rxJavaCreate = rxJavaCreate
+        binding.rxJavaCreate = RxJavaCreate()
+        binding.coldAndHotObservable = ColdAndHotObservable()
+        binding.subjectAndProcessorTest = SubjectAndProcessorTest()
     }
 }

@@ -193,8 +193,8 @@ class RxJavaCreate {
     fun maybeTest() {
         Maybe.create<String> {
             it.onSuccess("这是一个onSuccess")
-            it.onError(Throwable("这是一条onError数据"))
-            it.onComplete()
+//            it.onError(Throwable("这是一条onError数据"))
+//            it.onComplete()
         }.subscribe({
             LogUtils.tag(TAG).i("Maybe -> onSuccess")
         }, {

@@ -18,3 +18,9 @@ https://blog.csdn.net/iispring/article/details/50472485
 
 ## 玩转自定义 View，你必须搞清楚这些：Style，Theme，Attr，Styleable，TypedArray
 https://mp.weixin.qq.com/s/IEf2TCmKDRd3MNcGvqV32Q
+
+## 手把手绘制股票曲线
+https://mp.weixin.qq.com/s/SfO_twmn3x63E1_L7VXsug
+
+## 自定义View之弹性滑动的LockView
+https://juejin.im/post/5d465e18518825219c280e5c

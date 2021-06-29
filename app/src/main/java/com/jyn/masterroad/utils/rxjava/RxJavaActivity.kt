@@ -25,8 +25,15 @@ import com.jyn.masterroad.databinding.ActivityRxjavaBinding
  * 这一次，就彻底了解OkHttp与Retrofit吧！TODO
  * https://mp.weixin.qq.com/s/DsWoCXd-qrucW5I1Oxxdlg
  *
- * RxjavaPlugins
- * https://blog.csdn.net/weixin_43724742/article/details/103394113
+ * 你是否了解 RxJava 的 Disposable ？
+ * https://juejin.cn/post/6978673625344049166
+ *
+ * rxjava3.0 入门到精通系列（二） 基础源码分析
+ * https://juejin.cn/post/6844903935329697800
+ *
+ * 中文文档
+ * https://github.com/mcxiaoke/RxDocs
+ * https://github.com/zhaimi/RxJavaAwesome
  */
 @Route(path = RoutePath.RxJava.path)
 class RxJavaActivity : BaseActivity<ActivityRxjavaBinding>

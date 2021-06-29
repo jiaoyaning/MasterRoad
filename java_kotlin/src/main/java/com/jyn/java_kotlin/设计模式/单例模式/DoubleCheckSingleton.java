@@ -1,4 +1,4 @@
-package com.jyn.java_kotlin.设计模式.Singleton;
+package com.jyn.java_kotlin.设计模式.单例模式;
 
 import java.io.Serializable;
 

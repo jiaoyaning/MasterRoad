@@ -1,10 +1,10 @@
-package com.jyn.java_kotlin.设计模式.Proxy;
+package com.jyn.java_kotlin.设计模式.代理模式;
 
-import com.jyn.java_kotlin.设计模式.Proxy.JVMProxyBean.ActionDao;
-import com.jyn.java_kotlin.设计模式.Proxy.JVMProxyBean.ActionInvocationHandler;
-import com.jyn.java_kotlin.设计模式.Proxy.JVMProxyBean.ActionProxy;
-import com.jyn.java_kotlin.设计模式.Proxy.JavassistBuild.JavassistBuildClass;
-import com.jyn.java_kotlin.设计模式.Proxy.JVMProxyBean.ActionDaoImpl;
+import com.jyn.java_kotlin.设计模式.代理模式.JVMProxyBean.ActionDao;
+import com.jyn.java_kotlin.设计模式.代理模式.JVMProxyBean.ActionInvocationHandler;
+import com.jyn.java_kotlin.设计模式.代理模式.JVMProxyBean.ActionProxy;
+import com.jyn.java_kotlin.设计模式.代理模式.JavassistBuild.JavassistBuildClass;
+import com.jyn.java_kotlin.设计模式.代理模式.JVMProxyBean.ActionDaoImpl;
 
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Proxy;

@@ -1,4 +1,4 @@
-package com.jyn.java_kotlin.设计模式.Proxy.JVMProxyBean;
+package com.jyn.java_kotlin.设计模式.代理模式.JVMProxyBean;
 
 /**
  * Created by jiaoyaning on 2021/1/16.

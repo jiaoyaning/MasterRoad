@@ -1,4 +1,4 @@
-package com.jyn.java_kotlin.设计模式.Proxy.JVMProxyBean;
+package com.jyn.java_kotlin.设计模式.代理模式.JVMProxyBean;
 
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Method;

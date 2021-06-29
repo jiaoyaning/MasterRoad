@@ -20,6 +20,10 @@ import java.lang.reflect.Method;
  * 不够安全。由于可以执行一些私有的属性和方法，所以可能会带来安全问题。
  * 不易读写。当然这一点也有解决方案，比如jOOR库，但是不适用于Android定义为final的字段。
  *
+ * private修饰的方法可以通过反射访问，那么private意义何在？
+ *  1. private并不是解决安全问题的，如果想让解决代码的安全问题，请用别的办法。
+ *  2. private的意义是OOP（面向对象编程）的封装概念。
+ *
  * ReflectASM
  * https://github.com/EsotericSoftware/reflectasm
  * 通过代码生成来提供高性能的反射处理，自动为 get/set 字段提供访问类，访问类使用字节码操作而不是 Java 的反射技术，因此非常快。

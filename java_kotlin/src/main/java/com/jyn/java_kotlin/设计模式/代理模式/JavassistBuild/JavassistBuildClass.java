@@ -1,4 +1,4 @@
-package com.jyn.java_kotlin.设计模式.Proxy.JavassistBuild;
+package com.jyn.java_kotlin.设计模式.代理模式.JavassistBuild;
 
 import javassist.ClassPool;
 import javassist.CtClass;

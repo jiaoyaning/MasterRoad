@@ -111,6 +111,12 @@ object RoutePath {
     object ShapeableImageView {
         const val name = "ShapeableImageView"
         const val path = "/app/ShapeableImageView"
-        const val span = 1
+        const val span = 2
+    }
+
+    object MaterialButton {
+        const val name = "MaterialButton"
+        const val path = "/app/MaterialButton"
+        const val span = 2
     }
 }

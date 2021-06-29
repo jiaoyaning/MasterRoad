@@ -1,4 +1,4 @@
-package com.jyn.java_kotlin.设计模式.Singleton;
+package com.jyn.java_kotlin.设计模式.单例模式;
 
 /**
  * 枚举单例是唯一一种不会被外部破坏的单例

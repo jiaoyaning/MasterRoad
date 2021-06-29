@@ -44,8 +44,8 @@ class ColdAndHotObservable {
             }).observeOn(Schedulers.newThread())
 
         observable.subscribe(subscriber1)
-        //subscriber2可以随时接收到
-        observable.subscribe(subscriber2)
+        sleep(30)
+        observable.subscribe(subscriber2) //subscriber2随时订阅，随时可以接收
     }
     //endregion
 

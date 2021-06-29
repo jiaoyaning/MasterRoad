@@ -47,6 +47,7 @@ class RxJavaCreate {
         //2. 创建观察者(Observer)，接受事件并做出响应操作
         val observer: Observer<String> = object : Observer<String> {
             override fun onSubscribe(d: Disposable) {
+//                onSubscribe 方法中可以取消订阅
                 LogUtils.tag(TAG).i("Observer -> onSubscribe $d")
             }
 

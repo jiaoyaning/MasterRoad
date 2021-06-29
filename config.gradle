@@ -154,7 +154,14 @@ ext {
              * https://github.com/liujingxing/okhttp-RxHttp
              */
             "rxhttp"           : "com.ljx.rxhttp:rxhttp:2.5.6",
-            "rxhttp-compiler"  : "com.ljx.rxhttp:rxhttp-compiler:2.5.6"
+            "rxhttp-compiler"  : "com.ljx.rxhttp:rxhttp-compiler:2.5.6",
+
+            /*
+             * ktor kotlin官方请求框架
+             * https://ktor.io/docs/getting-started-ktor-client.html
+             */
+            "ktor-core"        : "io.ktor:ktor-client-core:1.6.0",
+            "ktor-cio"         : "io.ktor:ktor-client-cio:1.6.0"
     ]
 
     utils = [

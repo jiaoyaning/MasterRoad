@@ -28,8 +28,8 @@ import com.jyn.masterroad.databinding.ActivityRxjavaBinding
  * 你是否了解 RxJava 的 Disposable ？
  * https://juejin.cn/post/6978673625344049166
  *
- * rxjava3.0 入门到精通系列（二） 基础源码分析
- * https://juejin.cn/post/6844903935329697800
+ * 闲鱼是如何利用RxJava提升异步编程能力的
+ * https://juejin.cn/post/6966869287122239501
  *
  * 中文文档
  * https://github.com/mcxiaoke/RxDocs

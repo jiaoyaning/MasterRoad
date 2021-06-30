@@ -28,6 +28,9 @@ import javax.inject.Inject
  *
  * 阿里为何不推荐使用Executors来创建线程池
  * https://blog.csdn.net/weixin_43831204/article/details/109852365
+ *
+ * 关于多线程中抛异常的这个面试题我再说最后一次！
+ * https://www.cnblogs.com/thisiswhy/p/13704940.html
  */
 class ExecutorsTest @Inject constructor() {
 

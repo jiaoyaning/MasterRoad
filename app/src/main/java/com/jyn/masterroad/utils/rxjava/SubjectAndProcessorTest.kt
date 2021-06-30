@@ -21,6 +21,14 @@ class SubjectAndProcessorTest {
         private const val TAG = "RxJava"
     }
 
+    /*
+     * Subject 将观察者和被观察者结合为一体，是观察者和被观察者的代理。
+     *  1. Subject 是属于Hot Observable的。使用不当，例如sleep()方法，可能导致订阅者错过响应事件。
+     *  2. Subject 不是线程安全的，SerializedSubject 是线程安全的
+     *
+     * Processor 支持背压
+     */
+    
     private val observer = object : Observer<String> {
         override fun onSubscribe(d: Disposable?) {
             LogUtils.tag(TAG).i("--- Observer -> onSubscribe $d --- ")
@@ -39,17 +47,8 @@ class SubjectAndProcessorTest {
         }
     }
 
-    /*
-     * Subject 将观察者和被观察者结合为一体，是观察者和被观察者的代理。
-     *  1. Subject 是属于Hot Observable的。使用不当，例如sleep()方法，可能导致订阅者错过响应事件。
-     *  2. Subject 不是线程安全的，SerializedSubject 是线程安全的
-     *
-     * Processor 支持背压
-     */
-
     //region AsyncSubject
-    fun asyncSubjectTest() {
-        /*
+    fun asyncSubjectTest() {/*
          * 观察者/订阅者只会接受到onComplete之前的最后一个数据（无论在订阅前发射还是在订阅后发射）。
          */
         LogUtils.tag(TAG).i("AsyncSubject: 只会接受到onComplete之前的最后一个数据")
@@ -61,12 +60,10 @@ class SubjectAndProcessorTest {
         asyncSubject.onNext("subscribe后的 --> 第0条数据")
         asyncSubject.onNext("subscribe后的 --> 第1条数据")
         asyncSubject.onComplete()
-    }
-    //endregion ================================================
+    } //endregion ================================================
 
     //region BehaviorSubject
-    fun behaviorSubjectTest() {
-        /*
+    fun behaviorSubjectTest() {/*
          * BehaviorSubject 只会接收到订阅前最后一条发射的数据以及订阅之后所有的数据。
          */
         LogUtils.tag(TAG).i("BehaviorSubject: 只会接收到订阅前最后一条发射的数据以及订阅之后所有的数据")
@@ -77,12 +74,10 @@ class SubjectAndProcessorTest {
         behaviorSubject.onNext("subscribe后的 --> 第0条数据")
         behaviorSubject.onNext("subscribe后的 --> 第1条数据")
         behaviorSubject.onComplete()
-    }
-    //endregion ================================================
+    } //endregion ================================================
 
     //region ReplaySubject
-    fun replaySubjectTest() {
-        /*
+    fun replaySubjectTest() {/*
          * ReplaySubject会接收到全部数据
          * ReplaySubject可以限制缓存的大小，也可以限制缓存的时间
          *  ReplaySubject.createWithSize(1);
@@ -98,12 +93,10 @@ class SubjectAndProcessorTest {
         replaySubject.onNext("subscribe后的 --> 第0条数据")
         replaySubject.onNext("subscribe后的 --> 第1条数据")
         replaySubject.onComplete()
-    }
-    //endregion ================================================
+    } //endregion ================================================
 
     //region PublishSubject
-    fun publishSubjectTest() {
-        /*
+    fun publishSubjectTest() {/*
          * PublishSubject只会接收到订阅之后的所有数据。
          */
 
@@ -115,6 +108,5 @@ class SubjectAndProcessorTest {
         publishSubject.onNext("subscribe后的 --> 第0条数据")
         publishSubject.onNext("subscribe后的 --> 第1条数据")
         publishSubject.onComplete()
-    }
-    //endregion ================================================
+    } //endregion ================================================
 }

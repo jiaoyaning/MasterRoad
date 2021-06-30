@@ -44,6 +44,9 @@ import kotlinx.android.synthetic.main.activity_live_data.*
  *
  * android Livedata最详尽的使用场景分析，让你爱上Livedata
  * https://mp.weixin.qq.com/s/8y5PPOOBiX4jeKL1Ilp42Q
+ *
+ * 【带着问题学】关于LiveData你应该知道的知识点
+ * https://juejin.cn/post/6892704779781275662
  */
 @Route(path = RoutePath.LiveData.path)
 class LiveDataActivity : BaseActivity<ActivityLiveDataBinding>

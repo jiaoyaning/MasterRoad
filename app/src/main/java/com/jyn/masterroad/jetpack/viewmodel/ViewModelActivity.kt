@@ -12,7 +12,10 @@ import com.jyn.masterroad.databinding.ActivityViewModelBinding
  * https://www.jianshu.com/p/4dc2b3fcac08
  *
  * https://mp.weixin.qq.com/s/dWdcHGTqMlMIuLHeCojhoQ
+ *
+ * 一道面试题：ViewModel为什么横竖屏切换时不销毁？（优秀）
+ * https://juejin.cn/post/6951244272553181197
  */
-class ViewModelActivity : BaseActivity<ActivityViewModelBinding>
-    (R.layout.activity_view_model) {
+class ViewModelActivity : BaseActivity<ActivityViewModelBinding>(R.layout.activity_view_model) {
+
 }

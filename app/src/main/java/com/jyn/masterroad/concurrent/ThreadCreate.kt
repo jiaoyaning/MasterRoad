@@ -7,12 +7,9 @@ import java.util.concurrent.Executors
 import java.util.concurrent.FutureTask
 import javax.inject.Inject
 
-/**
- *
- */
 class ThreadCreate @Inject constructor() {
 
-//region 一、线程创建的四种方式
+    //region 一、线程创建的四种方式
 
     //region 1.继承Thread类
     fun threadTest(v: View?) {
@@ -25,13 +22,11 @@ class ThreadCreate @Inject constructor() {
             super.run()
             LogUtils.tag("main").i("继承 Thread 后创建的线程")
         }
-    }
-    //endregion
+    } //endregion
 
     //region 2.实现Runnable接口，可避免Java单继承问题，仍需要Thread类
     fun runnableThreadTest(v: View?) {
-        val runnableTest = RunnableTest()
-        // 多线程情况下可共享变量，但并不能保证线程安全，只加volatile不行，同时需要Synchronized
+        val runnableTest = RunnableTest() // 多线程情况下可共享变量，但并不能保证线程安全，只加volatile不行，同时需要Synchronized
         val runnableThreadTest1 = Thread(runnableTest)
         val runnableThreadTest2 = Thread(runnableTest)
         runnableThreadTest1.start()
@@ -48,8 +43,7 @@ class ThreadCreate @Inject constructor() {
                 LogUtils.tag("main").i("实现 Runnable 后创建的线程 countDown:$countDown")
             }
         }
-    }
-    //endregion
+    } //endregion
 
     //region 3.FutureTask类 + Callable接口，可携带返回值，需要Thread类或者Executors
     fun futureTaskTest(v: View?) {
@@ -72,19 +66,17 @@ class ThreadCreate @Inject constructor() {
             LogUtils.tag("main").i("实现 Callable 后创建的线程，可以携带返回值")
             return "这是一个实现了Callable接口的线程"
         }
-    }
-    //endregion
+    } //endregion
 
     //region 4.借助Executors(线程池)
     fun executorsTest(v: View?) {
         val es = Executors.newCachedThreadPool()
         es.execute { LogUtils.tag("main").i("使用 Executors 创建的线程") }
-    }
+    } //endregion
+
     //endregion
 
-//endregion
-
-//region 二、提高线程优先级的两种方式
+    //region 二、提高线程优先级的两种方式
 
     fun setPrioriy() {
         Thread {
@@ -98,5 +90,5 @@ class ThreadCreate @Inject constructor() {
         }.start()
     }
 
-//endregion
+    //endregion
 }

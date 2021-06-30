@@ -20,9 +20,6 @@ import com.apkfuns.logutils.LogUtils;
  * 由浅入深CAS，小白也能与BAT面试官对线 TODO
  * https://mp.weixin.qq.com/s/WKZYa0_srnquQqMCyV8cEQ
  *
- * Java并发编程之锁机制之 ReentrantReadWriteLock（读写锁）
- * https://www.jianshu.com/p/416e16eea7da
- *
  * 面试侃集合 | ArrayBlockingQueue篇
  * https://mp.weixin.qq.com/s/6hOBvfTitQpz8w53Hs0ymA
  *

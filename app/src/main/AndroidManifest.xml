@@ -14,7 +14,8 @@
         android:usesCleartextTraffic="true"
         tools:ignore="AllowBackup"
         tools:targetApi="m">
-        <activity android:name=".utils.glide.GlideActivity"></activity>
+        <activity android:name=".view.touch.TouchActivity"></activity>
+        <activity android:name=".utils.glide.GlideActivity" />
         <activity android:name=".view.draw.OnDrawActivity" />
         <activity android:name=".accessibility.AccessibilityActivity" />
         <activity android:name=".utils.material.MaterialButtonActivity" />

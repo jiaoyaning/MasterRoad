@@ -23,6 +23,9 @@ import kotlinx.android.synthetic.main.activity_motion_layout.*
  *
  * ConstraintLayout2.0一篇写不完之MotionLabel
  * https://mp.weixin.qq.com/s/3xoms9zu77UFCJmNOF9ZUw
+ *
+ * 利用MotionLayout实现RecyclerView折叠展开动画
+ * https://juejin.cn/post/6908327119055650824
  */
 @Route(path = RoutePath.MotionLayout.path)
 class MotionLayoutActivity : BaseActivity<ActivityMotionLayoutBinding>

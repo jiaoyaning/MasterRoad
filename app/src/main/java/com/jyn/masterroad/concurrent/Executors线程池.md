@@ -34,15 +34,15 @@
 
 #问题
 #### 问：线程池```submit()``` 和 ```execute()``` 区别？
-> submit:提交
-> execute:执行
+> submit:提交(可以提交多种行为Callable、Runnable、Future)
+> execute:执行(只能执行Runnable)
 
 >1. 接收的参数不一样;
     `submit()`入参可以为 `Callable<T>`，也可以为 `Runnable`，而且方法可以有返回值 `Future<T>`;  
     `execute()` 入参只有一个 `Runnable`
 >2. `submit()`有返回值，而 `execute()`没有;  
     例如，有个 `validation`的 `task`，希望该`task`执行完后告诉我它的执行结果，是成功还是失败，然后继续下面的操作。
->3. `submit()`可以进行`Exception`处理;
+>3. `submit()`可以捕获`Exception`;
     例如，如果`task`里会抛出`checked`或者`unchecked exception`，而你又希望外面的调用者能够感知这些`exception`并做出及时的处理，那么就需要用到`submit`，通过对`Future.get()`进行抛出异常的捕获，然后对其进行处理。  
 
 ***

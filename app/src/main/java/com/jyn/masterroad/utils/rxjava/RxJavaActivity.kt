@@ -7,12 +7,6 @@ import com.jyn.masterroad.base.BaseActivity
 import com.jyn.masterroad.databinding.ActivityRxjavaBinding
 
 /*
- * RxJava中Observable、Flowable、Single、Maybe 有何区别?
- * [https://www.wanandroid.com/wenda/show/16634]
- *
- * RxJava 沉思录（一）：你认为 RxJava 真的好用吗？
- * https://juejin.cn/post/6844903670203547656
- *
  * 不要打破链式调用！一个极低成本的RxJava全局Error处理方案
  * https://juejin.cn/post/6844903711416778765
  *

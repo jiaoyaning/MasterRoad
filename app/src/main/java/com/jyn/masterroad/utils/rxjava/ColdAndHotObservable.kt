@@ -12,6 +12,9 @@ import java.util.concurrent.TimeUnit
 /*
  * Cold Observable 和 Hot Observable
  * https://www.jianshu.com/p/12fb42bcf9fd
+ *
+ * 【译】RxJava中的事件广播
+ * https://www.jianshu.com/p/19c946e32596
  */
 class ColdAndHotObservable {
     companion object {

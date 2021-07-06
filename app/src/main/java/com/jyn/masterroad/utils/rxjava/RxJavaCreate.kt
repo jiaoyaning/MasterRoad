@@ -80,6 +80,8 @@ class RxJavaCreate {
             sleep(100)
             it.onNext("第 3 条数据")
             sleep(100)
+            it.onComplete()
+            sleep(100)
             it.onNext("第 4 条数据")
         })
 

@@ -25,6 +25,9 @@ import com.jyn.masterroad.databinding.ActivityRxjavaBinding
  * 闲鱼是如何利用RxJava提升异步编程能力的
  * https://juejin.cn/post/6966869287122239501
  *
+ * 大佬们，一波RxJava 3.0来袭，请做好准备~
+ * https://juejin.cn/post/6844903885245513741
+ *
  * 中文文档
  * https://github.com/mcxiaoke/RxDocs
  * https://github.com/zhaimi/RxJavaAwesome

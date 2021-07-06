@@ -37,5 +37,6 @@ class RxJavaActivity : BaseActivity<ActivityRxjavaBinding>
         binding.rxJavaCreate = RxJavaCreate()
         binding.coldAndHotObservable = ColdAndHotObservable()
         binding.subjectAndProcessorTest = SubjectAndProcessorTest()
+        binding.useCombat = UseCombat()
     }
 }

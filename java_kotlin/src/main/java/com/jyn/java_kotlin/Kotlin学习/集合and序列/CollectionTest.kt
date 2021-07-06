@@ -6,6 +6,9 @@ package com.jyn.java_kotlin.Kotlin学习.集合and序列
  *
  * Kotlin Collection VS Kotlin Sequence VS Java Stream
  * https://www.imooc.com/article/311591
+ *
+ * Kotlin 集合函数速查
+ * https://mp.weixin.qq.com/s/xRTiSQZ3v_u0DQTwG0H04A
  */
 fun main() {
     val lists = mutableListOf<Int>(1, 2, 3, 4)

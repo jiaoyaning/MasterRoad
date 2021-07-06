@@ -119,4 +119,10 @@ object RoutePath {
         const val path = "/app/MaterialButton"
         const val span = 2
     }
+
+    object LeakCanary {
+        const val name = "LeakCanary"
+        const val path = "/app/LeakCanary"
+        const val span = 2
+    }
 }

@@ -12,232 +12,281 @@
         <variable
             name="coroutines"
             type="com.jyn.masterroad.kotlin.coroutines.KotlinCoroutinesTest" />
+
+        <variable
+            name="channel"
+            type="com.jyn.masterroad.kotlin.coroutines.ChannelTest" />
     </data>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:fillViewport="true"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
         tools:context=".kotlin.coroutines.KotlinCoroutinesActivity"
         tools:ignore="HardcodedText">
 
-        <Button
-            android:id="@+id/button11"
-            style="@style/tv2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:onClick="@{()->create.runBlockingTest()}"
-            android:text="runBlocking"
-            app:layout_constraintEnd_toStartOf="@id/button12"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/textView26" />
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
 
-        <Button
-            android:id="@+id/button12"
-            style="@style/tv"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:onClick="@{()->create.globalScopeTest()}"
-            android:text="GlobalScope"
-            app:layout_constraintEnd_toStartOf="@id/button13"
-            app:layout_constraintStart_toEndOf="@id/button11"
-            app:layout_constraintTop_toTopOf="@id/button11" />
+            <Button
+                android:id="@+id/button11"
+                style="@style/tv2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:onClick="@{()->create.runBlockingTest()}"
+                android:text="runBlocking"
+                app:layout_constraintEnd_toStartOf="@id/button12"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/textView26" />
 
-        <Button
-            android:id="@+id/button13"
-            style="@style/tv2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:onClick="@{()->create.coroutineScope()}"
-            android:text="CoroutineScope"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@id/button12"
-            app:layout_constraintTop_toTopOf="@id/button11" />
+            <Button
+                android:id="@+id/button12"
+                style="@style/tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="@{()->create.globalScopeTest()}"
+                android:text="GlobalScope"
+                app:layout_constraintEnd_toStartOf="@id/button13"
+                app:layout_constraintStart_toEndOf="@id/button11"
+                app:layout_constraintTop_toTopOf="@id/button11" />
 
-        <Button
-            android:id="@+id/button14"
-            style="@style/tv"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:onClick="@{()->create.launchTest()}"
-            android:text="launch"
-            app:layout_constraintEnd_toStartOf="@id/button15"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/textView27" />
+            <Button
+                android:id="@+id/button13"
+                style="@style/tv2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="@{()->create.coroutineScope()}"
+                android:text="CoroutineScope"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/button12"
+                app:layout_constraintTop_toTopOf="@id/button11" />
 
-        <Button
-            android:id="@+id/button15"
-            style="@style/tv2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:onClick="@{()->create.async()}"
-            android:text="async\n(有返回值，阻塞协程)"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@id/button14"
-            app:layout_constraintTop_toTopOf="@id/button14" />
+            <Button
+                android:id="@+id/button14"
+                style="@style/tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:onClick="@{()->create.launchTest()}"
+                android:text="launch"
+                app:layout_constraintEnd_toStartOf="@id/button15"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/textView27" />
 
-        <TextView
-            android:id="@+id/textView26"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="8dp"
-            android:text="协程的三种创建方式"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            <Button
+                android:id="@+id/button15"
+                style="@style/tv2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="@{()->create.async()}"
+                android:text="async\n(有返回值，阻塞协程)"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/button14"
+                app:layout_constraintTop_toTopOf="@id/button14" />
 
-        <TextView
-            android:id="@+id/textView27"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="8dp"
-            android:text="协程的三种启动方式"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/button11" />
+            <TextView
+                android:id="@+id/textView26"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="8dp"
+                android:text="协程的三种创建方式"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
-        <Button
-            android:id="@+id/button16"
-            style="@style/tv2"
-            android:layout_marginTop="8dp"
-            android:onClick="@{()->create.withContext()}"
-            android:text="withContext\n(线程切换)"
-            app:layout_constraintEnd_toStartOf="@id/button25"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/textView28" />
+            <TextView
+                android:id="@+id/textView27"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="8dp"
+                android:text="协程的三种启动方式"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/button11" />
 
-        <TextView
-            android:id="@+id/textView28"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="8dp"
-            android:text="线程切换"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/button14" />
+            <Button
+                android:id="@+id/button16"
+                style="@style/tv2"
+                android:layout_marginTop="8dp"
+                android:onClick="@{()->create.withContext()}"
+                android:text="withContext\n(线程切换)"
+                app:layout_constraintEnd_toStartOf="@id/button25"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/textView28" />
 
-        <Button
-            android:id="@+id/button25"
-            style="@style/tv"
-            android:onClick="@{()->create.parallel()}"
-            android:text="并发执行"
-            app:layout_constraintEnd_toStartOf="@id/button26"
-            app:layout_constraintStart_toEndOf="@id/button16"
-            app:layout_constraintTop_toTopOf="@id/button16" />
+            <TextView
+                android:id="@+id/textView28"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="8dp"
+                android:text="线程切换"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/button14" />
 
-        <Button
-            android:id="@+id/button26"
-            style="@style/tv2"
-            android:onClick="@{()->create.serial()}"
-            android:text="同步执行"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@id/button25"
-            app:layout_constraintTop_toTopOf="@id/button16" />
+            <Button
+                android:id="@+id/button25"
+                style="@style/tv"
+                android:onClick="@{()->create.parallel()}"
+                android:text="并发执行"
+                app:layout_constraintEnd_toStartOf="@id/button26"
+                app:layout_constraintStart_toEndOf="@id/button16"
+                app:layout_constraintTop_toTopOf="@id/button16" />
 
-        <TextView
-            android:id="@+id/textView35"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="8dp"
-            android:text="四种启动模式(CoroutineStart)"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/button16" />
+            <Button
+                android:id="@+id/button26"
+                style="@style/tv2"
+                android:onClick="@{()->create.serial()}"
+                android:text="同步执行"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/button25"
+                app:layout_constraintTop_toTopOf="@id/button16" />
 
-        <Button
-            android:id="@+id/button27"
-            style="@style/tv"
-            android:layout_marginTop="8dp"
-            android:onClick="@{()->create.startDefault()}"
-            android:text="DEFAULT\n饿汉式"
-            app:layout_constraintEnd_toStartOf="@id/button28"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/textView35" />
+            <TextView
+                android:id="@+id/textView35"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="8dp"
+                android:text="四种启动模式(CoroutineStart)"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/button16" />
 
-        <Button
-            android:id="@+id/button28"
-            style="@style/tv2"
-            android:onClick="@{()->create.startLazy()}"
-            android:text="LAZY\n懒汉式"
-            app:layout_constraintEnd_toStartOf="@id/button29"
-            app:layout_constraintStart_toEndOf="@id/button27"
-            app:layout_constraintTop_toTopOf="@id/button27" />
+            <Button
+                android:id="@+id/button27"
+                style="@style/tv"
+                android:layout_marginTop="8dp"
+                android:onClick="@{()->create.startDefault()}"
+                android:text="DEFAULT\n饿汉式"
+                app:layout_constraintEnd_toStartOf="@id/button28"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/textView35" />
 
-        <Button
-            android:id="@+id/button29"
-            style="@style/tv"
-            android:onClick="@{()->create.startAtomic()}"
-            android:text="ATOMIC\n原子的"
-            app:layout_constraintEnd_toStartOf="@id/button30"
-            app:layout_constraintStart_toEndOf="@id/button28"
-            app:layout_constraintTop_toTopOf="@id/button27" />
+            <Button
+                android:id="@+id/button28"
+                style="@style/tv2"
+                android:onClick="@{()->create.startLazy()}"
+                android:text="LAZY\n懒汉式"
+                app:layout_constraintEnd_toStartOf="@id/button29"
+                app:layout_constraintStart_toEndOf="@id/button27"
+                app:layout_constraintTop_toTopOf="@id/button27" />
 
-        <Button
-            android:id="@+id/button30"
-            style="@style/tv2"
-            android:onClick="@{()->create.startUnDispatched()}"
-            android:text="UNDISPATCHED\n"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@id/button29"
-            app:layout_constraintTop_toTopOf="@id/button27" />
+            <Button
+                android:id="@+id/button29"
+                style="@style/tv"
+                android:onClick="@{()->create.startAtomic()}"
+                android:text="ATOMIC\n原子的"
+                app:layout_constraintEnd_toStartOf="@id/button30"
+                app:layout_constraintStart_toEndOf="@id/button28"
+                app:layout_constraintTop_toTopOf="@id/button27" />
 
-        <TextView
-            android:id="@+id/textView36"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="8dp"
-            android:text="作用域"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/button27" />
+            <Button
+                android:id="@+id/button30"
+                style="@style/tv2"
+                android:onClick="@{()->create.startUnDispatched()}"
+                android:text="UNDISPATCHED\n"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/button29"
+                app:layout_constraintTop_toTopOf="@id/button27" />
 
-        <Button
-            android:id="@+id/button2"
-            style="@style/tv2"
-            android:layout_marginTop="8dp"
-            android:onClick="@{()->create.fatherAndSon()}"
-            android:text="正常父子"
-            app:layout_constraintEnd_toStartOf="@id/button5"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/textView36" />
+            <TextView
+                android:id="@+id/textView36"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="8dp"
+                android:text="作用域"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/button27" />
 
-        <Button
-            android:id="@+id/button5"
-            style="@style/tv"
-            android:onClick="@{()->create.notFatherAndSon()}"
-            android:text="包含但非父子"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@id/button2"
-            app:layout_constraintTop_toTopOf="@id/button2" />
+            <Button
+                android:id="@+id/button2"
+                style="@style/tv2"
+                android:layout_marginTop="8dp"
+                android:onClick="@{()->create.fatherAndSon()}"
+                android:text="正常父子"
+                app:layout_constraintEnd_toStartOf="@id/button5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/textView36" />
 
-        <Button
-            android:id="@+id/button6"
-            style="@style/tv"
-            android:layout_marginTop="8dp"
-            android:onClick="@{()->create.exceptionTest()}"
-            android:text="协同作用域"
-            app:layout_constraintEnd_toStartOf="@id/button31"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/button2" />
+            <Button
+                android:id="@+id/button5"
+                style="@style/tv"
+                android:onClick="@{()->create.notFatherAndSon()}"
+                android:text="包含但非父子"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/button2"
+                app:layout_constraintTop_toTopOf="@id/button2" />
 
-        <Button
-            android:id="@+id/button31"
-            style="@style/tv2"
-            android:onClick="@{()->create.supervisorScopeTest()}"
-            android:text="主从(监督)作用域\n(supervisorScope)"
-            app:layout_constraintEnd_toStartOf="@id/button32"
-            app:layout_constraintStart_toEndOf="@id/button6"
-            app:layout_constraintTop_toTopOf="@+id/button6" />
+            <Button
+                android:id="@+id/button6"
+                style="@style/tv"
+                android:layout_marginTop="8dp"
+                android:onClick="@{()->create.exceptionTest()}"
+                android:text="协同作用域"
+                app:layout_constraintEnd_toStartOf="@id/button31"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/button2" />
 
-        <Button
-            android:id="@+id/button32"
-            style="@style/tv"
-            android:onClick="@{()->create.supervisorJobTest()}"
-            android:text="主从(监督)作用域\n(SupervisorJob)"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/button31"
-            app:layout_constraintTop_toTopOf="@+id/button6" />
+            <Button
+                android:id="@+id/button31"
+                style="@style/tv2"
+                android:onClick="@{()->create.supervisorScopeTest()}"
+                android:text="主从(监督)作用域\n(supervisorScope)"
+                app:layout_constraintEnd_toStartOf="@id/button32"
+                app:layout_constraintStart_toEndOf="@id/button6"
+                app:layout_constraintTop_toTopOf="@+id/button6" />
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+            <Button
+                android:id="@+id/button32"
+                style="@style/tv"
+                android:onClick="@{()->create.supervisorJobTest()}"
+                android:text="主从(监督)作用域\n(SupervisorJob)"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/button31"
+                app:layout_constraintTop_toTopOf="@+id/button6" />
+
+            <TextView
+                android:id="@+id/textView48"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="8dp"
+                android:text="Channel"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/button6" />
+
+            <Button
+                android:id="@+id/button50"
+                style="@style/tv2"
+                android:onClick="@{() -> channel.simple()}"
+                android:text="实例\n生产者消费者"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView48" />
+
+            <Button
+                android:id="@+id/button51"
+                style="@style/tv"
+                android:onClick="@{() -> channel.iterator()}"
+                android:text="迭代器"
+                app:layout_constraintStart_toEndOf="@+id/button50"
+                app:layout_constraintTop_toTopOf="@+id/button50" />
+
+            <Button
+                android:id="@+id/button52"
+                style="@style/tv2"
+                android:text="produce/actor"
+                android:onClick="@{() -> channel.produceAndActor()}"
+                app:layout_constraintStart_toEndOf="@+id/button51"
+                app:layout_constraintTop_toTopOf="@+id/button50" />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.core.widget.NestedScrollView>
 </layout>

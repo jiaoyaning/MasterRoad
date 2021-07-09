@@ -1,5 +1,6 @@
 package com.jyn.masterroad.jetpack.viewmodel
 
+import androidx.activity.viewModels
 import com.jyn.masterroad.R
 import com.jyn.masterroad.base.BaseActivity
 import com.jyn.masterroad.databinding.ActivityViewModelBinding
@@ -17,5 +18,5 @@ import com.jyn.masterroad.databinding.ActivityViewModelBinding
  * https://juejin.cn/post/6951244272553181197
  */
 class ViewModelActivity : BaseActivity<ActivityViewModelBinding>(R.layout.activity_view_model) {
-
+    val viewModelTest:ViewModelTest by viewModels()
 }

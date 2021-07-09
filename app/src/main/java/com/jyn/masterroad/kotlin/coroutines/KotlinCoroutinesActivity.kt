@@ -6,7 +6,10 @@ import com.jyn.common.ARouter.RoutePath
 import com.jyn.masterroad.R
 import com.jyn.masterroad.base.BaseActivity
 import com.jyn.masterroad.databinding.ActivityKotlinCoroutinesBinding
+import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.ExperimentalCoroutinesApi
+import kotlinx.coroutines.MainScope
+import kotlinx.coroutines.cancel
 
 /*
  * Kotlin 协程 系列教程
@@ -32,8 +35,9 @@ import kotlinx.coroutines.ExperimentalCoroutinesApi
  */
 @ExperimentalCoroutinesApi
 @Route(path = RoutePath.KotlinCoroutines.path)
-class KotlinCoroutinesActivity : BaseActivity<ActivityKotlinCoroutinesBinding>
-    (R.layout.activity_kotlin_coroutines) {
+class KotlinCoroutinesActivity :
+    BaseActivity<ActivityKotlinCoroutinesBinding>(R.layout.activity_kotlin_coroutines),
+    CoroutineScope by MainScope() {
 
     private val kotlinCoroutinesCreate: KotlinCoroutinesCreate by lazy { createVM() }
 
@@ -46,5 +50,11 @@ class KotlinCoroutinesActivity : BaseActivity<ActivityKotlinCoroutinesBinding>
     override fun initView() {
         binding.coroutines = kotlinCoroutinesTest
         binding.create = kotlinCoroutinesCreate
+        binding.channel = ChannelTest()
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        cancel()
     }
 }

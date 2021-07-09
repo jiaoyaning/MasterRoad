@@ -13,6 +13,9 @@ import dagger.hilt.android.HiltAndroidApp
 /**
  * 【从入门到实用】android启动优化深入解析
  * https://juejin.cn/post/6955858287040561166
+ *
+ * 原创|教你一分钟之内定位App冷启动卡顿
+ * https://mp.weixin.qq.com/s/L9KWV0IviifLnGMPSpUmOA
  */
 @HiltAndroidApp
 class MyApp : Application() {

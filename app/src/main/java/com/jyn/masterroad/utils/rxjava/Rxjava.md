@@ -34,3 +34,5 @@
           //执行在主线程
           .subscribe(mSubscriber);
 ```
+## CompositeDisposable
+一个disposable的容器，可以容纳多个disposable，如果这个CompositeDisposable容器已经是处于dispose的状态，那么所有加进来的disposable都会被自动切断

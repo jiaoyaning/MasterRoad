@@ -1,5 +1,11 @@
 [Kotlin编译调校之WarningsAsErrors 压制警告](https://droidyue.com/blog/2019/08/03/kotlinc-config-warnings-as-errors/)
 
+# 类和接口
+private —— 意味着只在这个类内部（包含其所有成员）可见；
+protected —— 和 private一样 + 在子类中可见。
+internal —— 能见到类声明的 本模块内 的任何客户端都可见其 internal 成员；
+public —— 能见到类声明的任何客户端都可见其 public 成员。
+
 # 作用域函数 let & with & run & apply & also
 ## let
 ```java

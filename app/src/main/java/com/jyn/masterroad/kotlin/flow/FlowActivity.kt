@@ -1,6 +1,8 @@
 package com.jyn.masterroad.kotlin.flow
 
 import androidx.activity.viewModels
+import com.alibaba.android.arouter.facade.annotation.Route
+import com.jyn.common.ARouter.RoutePath
 import com.jyn.masterroad.R
 import com.jyn.masterroad.base.BaseActivity
 import com.jyn.masterroad.databinding.ActivityFlowBinding
@@ -24,9 +26,14 @@ import kotlinx.coroutines.cancel
  * 从 LiveData 迁移到 Kotlin 数据流（Android 开发者）
  * https://mp.weixin.qq.com/s/o61NDIptP94X4HspKwiR2w
  */
+@Route(path = RoutePath.Flow.path)
 class FlowActivity : BaseActivity<ActivityFlowBinding>(R.layout.activity_flow),
     CoroutineScope by MainScope() {
     val flowTest: FlowTest by viewModels()
+
+    override fun initData() {
+        binding.flow = flowTest
+    }
 
     override fun onDestroy() {
         super.onDestroy()

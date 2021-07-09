@@ -40,10 +40,15 @@ object RoutePath {
         const val span = 2
     }
 
-    // RxJava 测试
     object OkHttp {
         const val name = "OkHttp"
         const val path = "/app/OkhttpActivity"
+        const val span = 2
+    }
+
+    object Retrofit {
+        const val name = "Retrofit"
+        const val path = "/app/Retrofit"
         const val span = 2
     }
 
@@ -101,7 +106,12 @@ object RoutePath {
         const val span = 2
     }
 
-    // Kotlin Coroutines协程
+    object Flow {
+        const val name = "Kotlin -> Flow"
+        const val path = "/app/Flow"
+        const val span = 2
+    }
+
     object KotlinKoin {
         const val name = "Kotlin -> Koin"
         const val path = "/app/Koin"

@@ -1,4 +1,4 @@
-package com.jyn.masterroad.utils.okhttp_retrofit;
+package com.jyn.masterroad.utils.okhttp;
 
 import android.util.Log;
 

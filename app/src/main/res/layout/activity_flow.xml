@@ -5,12 +5,47 @@
 
     <data>
 
+        <variable
+            name="flow"
+            type="com.jyn.masterroad.kotlin.flow.FlowTest" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".kotlin.flow.FlowActivity">
+        tools:context=".kotlin.flow.FlowActivity"
+        tools:ignore="HardcodedText">
 
+        <Button
+            android:id="@+id/button53"
+            style="@style/tv"
+            android:onClick="@{() -> flow.flowTest()}"
+            android:text="flow"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Button
+            android:id="@+id/button54"
+            style="@style/tv2"
+            android:onClick="@{() -> flow.channelFlowTest()}"
+            android:text="channelFlow"
+            app:layout_constraintStart_toEndOf="@+id/button53"
+            app:layout_constraintTop_toTopOf="@+id/button53" />
+
+        <Button
+            android:id="@+id/button55"
+            style="@style/tv"
+            android:onClick="@{() -> flow.collectionTest()}"
+            android:text="collection"
+            app:layout_constraintStart_toEndOf="@+id/button54"
+            app:layout_constraintTop_toTopOf="@+id/button53" />
+
+        <Button
+            android:id="@+id/button56"
+            style="@style/tv2"
+            android:onClick="@{() -> flow.backPressure()}"
+            android:text="背压"
+            app:layout_constraintStart_toEndOf="@+id/button55"
+            app:layout_constraintTop_toTopOf="@+id/button53" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

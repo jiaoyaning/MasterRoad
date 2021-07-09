@@ -39,7 +39,8 @@ class RxJavaCreate {
     //region 1.1 观察者 Observable.subscribe(observer)
     fun observerSimple() { //1. 创建被观察者(Observable)，定义要发送的事件
         val observable = Observable.just(
-                "第 1 条数据", "第 2 条数据", "第 3 条数据", "第 4 条数据")
+            "第 1 条数据", "第 2 条数据", "第 3 条数据", "第 4 条数据"
+        )
 
         //2. 创建观察者(Observer)，接受事件并做出响应操作
         val observer: Observer<String> = object : Observer<String> {
@@ -83,7 +84,10 @@ class RxJavaCreate {
             it.onComplete()
             sleep(100)
             it.onNext("第 4 条数据")
-        })
+        }).onErrorReturn { //可以直接捕获错误
+            LogUtils.tag(TAG).i("Observable onErrorReturn: $it")
+            "这是一个错误"
+        }
 
         //创建消费者(Consumer)，接受并消费事件
         val consumer: Consumer<String> = Consumer { t ->
@@ -141,7 +145,8 @@ class RxJavaCreate {
 
     fun flowableConsumerTest() {
         Flowable.just(
-                "第 1 条数据", "第 2 条数据", "第 3 条数据", "第 4 条数据").subscribeOn(Schedulers.newThread())
+            "第 1 条数据", "第 2 条数据", "第 3 条数据", "第 4 条数据"
+        ).subscribeOn(Schedulers.newThread())
             .observeOn(AndroidSchedulers.mainThread()).subscribe {
                 LogUtils.tag(TAG).i("Consumer -> onNext $it")
             }

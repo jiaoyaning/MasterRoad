@@ -18,6 +18,9 @@ import com.jyn.masterroad.databinding.ItemMainBinding
  *
  * 一个 Android MVVM 组件化架构框架
  * https://juejin.cn/post/6866628586414997512
+ *
+ * 几个场景下Activity的生命周期变化
+ * https://mp.weixin.qq.com/s/yrxYcK42QaE0sGgo7oEGjA
  */
 @Route(path = RoutePath.Main.path)
 class MainActivity : BaseActivity<ActivityMainBinding>

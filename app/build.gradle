@@ -127,7 +127,8 @@ dependencies {
     kapt androidx["hilt-compiler2"]
 
     implementation kotlin["kotlin"]
-    implementation kotlin["coroutines"]
+    implementation kotlin["coroutines-core"]
+    implementation kotlin["coroutines-android"]
     implementation kotlin["koin"]
     implementation kotlin["koin-android"]
     implementation kotlin["koin-android-ext"]
@@ -136,6 +137,7 @@ dependencies {
 
     implementation http["okio"]
     implementation http["okhttp3"]
+    implementation http["okhttp3-logging"]
     implementation http["retrofit2"]
     implementation http["retrofit2-scalars"]
     implementation http["retrofit2-gson"]

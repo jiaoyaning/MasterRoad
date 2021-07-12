@@ -1,5 +1,7 @@
 package com.jyn.masterroad.utils.okhttp;
 
+import org.jetbrains.annotations.NotNull;
+
 import java.io.IOException;
 
 import okhttp3.Interceptor;
@@ -10,6 +12,7 @@ import okhttp3.Response;
  * Created by jiao on 2020/8/11.
  */
 public class LoggingInterceptor implements Interceptor {
+    @NotNull
     @Override
     public Response intercept(Chain chain) throws IOException {
         //第一步，获得chain内的request，这个Request,就是我自己new 的 Request 对象

@@ -45,8 +45,7 @@ class FlowTest(application: Application) : BaseVM(application) {
          * 末端操作符，大体分为两类：
          *
          */
-        flow
-            .flowOn(Dispatchers.IO)
+        flow.flowOn(Dispatchers.IO)
             .collect(object : FlowCollector<Int> {
                 override suspend fun emit(value: Int) {
                     LogUtils.tag(TAG).i("flow -> collect 1：$value ； ${Thread.currentThread()}")
@@ -82,7 +81,7 @@ class FlowTest(application: Application) : BaseVM(application) {
 
     @InternalCoroutinesApi
     fun collectionTest() = MainScope().launch {
-        val listOf = listOf(1, 2, 3, 4).asFlow()
+        val listOf = listOf(1, 2, 3, 4).asFlow().flowOn(Dispatchers.Main)
         listOf.collect(object : FlowCollector<Int> {
             override suspend fun emit(value: Int) {
                 LogUtils.tag(TAG).i("listOf -> collect：$value ； ${Thread.currentThread()}")

@@ -25,6 +25,9 @@ import kotlinx.coroutines.cancel
  *
  * 从 LiveData 迁移到 Kotlin 数据流（Android 开发者）
  * https://mp.weixin.qq.com/s/o61NDIptP94X4HspKwiR2w
+ *
+ * 协程进阶技巧 - StateFlow和SharedFlow
+ * https://juejin.cn/post/6937138168474894343
  */
 @Route(path = RoutePath.Flow.path)
 class FlowActivity : BaseActivity<ActivityFlowBinding>(R.layout.activity_flow),

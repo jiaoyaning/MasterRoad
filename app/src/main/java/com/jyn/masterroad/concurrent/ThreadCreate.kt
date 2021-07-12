@@ -1,18 +1,21 @@
 package com.jyn.masterroad.concurrent
 
-import android.view.View
 import com.apkfuns.logutils.LogUtils
 import java.util.concurrent.Callable
 import java.util.concurrent.Executors
 import java.util.concurrent.FutureTask
 import javax.inject.Inject
 
+/*
+ * 腾讯面试官：如何停止一个正在运行的线程？我蒙了
+ * https://mp.weixin.qq.com/s/EZJNIP45D1alLq1VNx8q_g
+ */
 class ThreadCreate @Inject constructor() {
 
     //region 一、线程创建的四种方式
 
     //region 1.继承Thread类
-    fun threadTest(v: View?) {
+    fun threadTest() {
         val threadTest = ThreadTest()
         threadTest.start()
     }
@@ -22,10 +25,11 @@ class ThreadCreate @Inject constructor() {
             super.run()
             LogUtils.tag("main").i("继承 Thread 后创建的线程")
         }
-    } //endregion
+    }
+    //endregion
 
     //region 2.实现Runnable接口，可避免Java单继承问题，仍需要Thread类
-    fun runnableThreadTest(v: View?) {
+    fun runnableThreadTest() {
         val runnableTest = RunnableTest() // 多线程情况下可共享变量，但并不能保证线程安全，只加volatile不行，同时需要Synchronized
         val runnableThreadTest1 = Thread(runnableTest)
         val runnableThreadTest2 = Thread(runnableTest)
@@ -43,12 +47,13 @@ class ThreadCreate @Inject constructor() {
                 LogUtils.tag("main").i("实现 Runnable 后创建的线程 countDown:$countDown")
             }
         }
-    } //endregion
+    }
+    //endregion
 
     //region 3.FutureTask类 + Callable接口，可携带返回值，需要Thread类或者Executors
-    fun futureTaskTest(v: View?) {
+    fun futureTaskTest() {
         val callableTest: Callable<String> = CallableTest()
-        val futureTaskTest: FutureTask<String> = FutureTask<String>(callableTest)
+        val futureTaskTest: FutureTask<String> = FutureTask(callableTest)
 
         //第一种futureTask方式 使用线程池
         val executor = Executors.newCachedThreadPool()
@@ -66,29 +71,39 @@ class ThreadCreate @Inject constructor() {
             LogUtils.tag("main").i("实现 Callable 后创建的线程，可以携带返回值")
             return "这是一个实现了Callable接口的线程"
         }
-    } //endregion
+    }
+    //endregion
 
     //region 4.借助Executors(线程池)
-    fun executorsTest(v: View?) {
+    fun executorsTest() {
         val es = Executors.newCachedThreadPool()
         es.execute { LogUtils.tag("main").i("使用 Executors 创建的线程") }
-    } //endregion
+    }
+    //endregion
 
     //endregion
 
     //region 二、提高线程优先级的两种方式
 
+    //region 1.JDK提供的方法
     fun setPrioriy() {
         Thread {
             Thread.currentThread().priority = 1
         }.start()
     }
+    //endregion
 
+    //region 2.OS提供的方法
     fun setThreadPriority() {
         Thread {
             android.os.Process.setThreadPriority(0)
         }.start()
     }
+    //endregion
+
+    //endregion
+
+    //region 三、停止线程的几种方式
 
     //endregion
 }

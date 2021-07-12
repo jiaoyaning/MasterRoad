@@ -71,7 +71,7 @@ coroutineScope.launch {
     非受限的调度器非常适用于执行不消耗 CPU 时间的任务，以及不更新局限于特定线程的任何共享数据（如UI）的协程。
 
 ## 2. CoroutineStart 四种启动模式
-参考：[协程启动篇](https://mp.weixin.qq.com/s/nE2fW5ZBkbX2z_JeQmqkrA)  
+[协程启动篇](https://mp.weixin.qq.com/s/nE2fW5ZBkbX2z_JeQmqkrA)  
   * **DEFAULT**
     > 立即执行协程体
     > 默认启动模式，我们可以称之为饿汉启动模式，因为协程创建后立即开始调度，虽然是立即调度，单不是立即执行，有可能在执行前被取消。

@@ -12,18 +12,22 @@ class UseCombat {
     }
 
     fun delayTest() {
-        Observable.create(ObservableOnSubscribe<Int> {
-            val nextInt = Random().nextInt(10)
-            LogUtils.tag("Rxjava").i("Observable nextInt: $nextInt")
-            it.onNext(nextInt)
-        }).flatMap {
-            LogUtils.tag("Rxjava").i("Observable flatMap: $it")
-            Observable.timer(it.toLong(), TimeUnit.SECONDS)
-        }.flatMap {
-            LogUtils.tag("Rxjava").i("Observable flatMap 第二次转换 $it")
-            Observable.just("这是第二次转换")
-        }.subscribe {
-            LogUtils.tag("Rxjava").i("subscribe onNext: $it")
-        }
+        Observable
+            .create(ObservableOnSubscribe<Int> {
+                val nextInt = Random().nextInt(10)
+                LogUtils.tag("Rxjava").i("Observable nextInt: $nextInt")
+                it.onNext(nextInt)
+            })
+            .flatMap {
+                LogUtils.tag("Rxjava").i("Observable flatMap: $it")
+                Observable.timer(it.toLong(), TimeUnit.SECONDS)
+            }
+            .flatMap {
+                LogUtils.tag("Rxjava").i("Observable flatMap 第二次转换 $it")
+                Observable.just("这是第二次转换")
+            }
+            .subscribe {
+                LogUtils.tag("Rxjava").i("subscribe onNext: $it")
+            }
     }
 }

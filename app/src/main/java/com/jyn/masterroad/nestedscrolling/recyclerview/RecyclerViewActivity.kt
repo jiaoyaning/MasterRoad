@@ -52,6 +52,9 @@ import com.jyn.masterroad.nestedscrolling.recyclerview.adapter.RecyclerAdapter
  *
  * RecyclerView高级进阶之优雅地解决瀑布流的两个神坑
  * https://mp.weixin.qq.com/s/0frJ3kJd25jNipoa0wi-Kg
+ *
+ * GridLayoutManager这么用，你可能还真没尝试过
+ * https://juejin.cn/post/6844903930002948110
  */
 @Route(path = RoutePath.RecyclerView.path)
 class RecyclerViewActivity : BaseActivity<ActivityRecyclerViewBinding>

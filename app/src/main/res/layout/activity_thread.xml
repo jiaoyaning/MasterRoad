@@ -70,7 +70,7 @@
                 android:id="@+id/thread_btn_thread"
                 style="@style/tv"
                 android:layout_marginTop="8dp"
-                android:onClick="@{threadCreate::threadTest}"
+                android:onClick="@{() -> threadCreate.threadTest()}"
                 android:text="Thread"
                 app:layout_constraintEnd_toStartOf="@id/thread_btn_runnable"
                 app:layout_constraintStart_toStartOf="parent"
@@ -79,7 +79,7 @@
             <Button
                 android:id="@+id/thread_btn_runnable"
                 style="@style/tv2"
-                android:onClick="@{threadCreate::runnableThreadTest}"
+                android:onClick="@{() -> threadCreate.runnableThreadTest()}"
                 android:text="Runnable"
                 app:layout_constraintEnd_toStartOf="@id/thread_btn_future_task"
                 app:layout_constraintStart_toEndOf="@id/thread_btn_thread"
@@ -88,7 +88,7 @@
             <Button
                 android:id="@+id/thread_btn_future_task"
                 style="@style/tv"
-                android:onClick="@{threadCreate::futureTaskTest}"
+                android:onClick="@{() -> threadCreate.futureTaskTest()}"
                 android:text="FutureTask +\nCallable"
                 app:layout_constraintEnd_toStartOf="@id/thread_btn_executors"
                 app:layout_constraintStart_toEndOf="@id/thread_btn_runnable"
@@ -97,7 +97,7 @@
             <Button
                 android:id="@+id/thread_btn_executors"
                 style="@style/tv2"
-                android:onClick="@{threadCreate::executorsTest}"
+                android:onClick="@{() -> threadCreate.executorsTest()}"
                 android:text="Executors"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@id/thread_btn_future_task"

@@ -12,6 +12,13 @@ object RoutePath {
         const val span = 1
     }
 
+    // 主activity
+    object Fragment {
+        const val name = "Fragment"
+        const val path = "/app/Fragment"
+        const val span = 1
+    }
+
     // handler测试
     object Handle {
         const val name = "Handler"

@@ -1,24 +1,27 @@
 package com.jyn.masterroad.kotlin.flow
 
 import android.app.Application
-import androidx.lifecycle.asLiveData
 import com.apkfuns.logutils.LogUtils
 import com.jyn.common.Base.BaseVM
 import kotlinx.coroutines.InternalCoroutinesApi
-import kotlinx.coroutines.MainScope
 import kotlinx.coroutines.channels.BufferOverflow
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.*
 import kotlinx.coroutines.launch
 
+/*
+ * 协程进阶技巧 - StateFlow和SharedFlow
+ * https://juejin.cn/post/6937138168474894343
+ */
 class StateAndSharedFlow(application: Application) : BaseVM(application) {
     companion object {
         const val TAG = "Flow"
     }
 
     /*
-     * StateFlow 和 SharedFlow 是热流，在垃圾回收之前，都是存在内存之中，并且处于活跃状态的。
-     * 可以将已发送过的数据发送给新的订阅者
+     * StateFlow 和 SharedFlow 是热流，在垃圾回收之前，都是存在内存之中，并且处于活跃状态的。可以将已发送过的数据发送给新的订阅者
+     * StateFlow 和 SharedFlow 提供了在 Flow 中使用 LiveData 式更新数据的能力，但是如果要在 UI 层使用，需要注意生命周期的问题。
+     * StateFlow 和 SharedFlow 相比，StateFlow 需要提供初始值，SharedFlow 配置灵活，可提供旧数据同步和缓存配置的功能。
      */
 
     //region 一、StateFlow
@@ -71,11 +74,12 @@ class StateAndSharedFlow(application: Application) : BaseVM(application) {
      *     2. tryEmit 方法：tryEmit 会返回一个 Boolean 值，true 代表传递成功，false 代表会产生一个回调，让这次数据发射挂起，直到有新的缓存空间。
      */
 
-    //调用
+    // emit
     fun sharedFlowTry() = mainScope.launch {
         List(10) { sharedFlow.emit(it) }
     }
 
+    // tryEmit
     fun sharedFlowTryEmit() = mainScope.launch {
         List(10) {
             val tryEmit = sharedFlow.tryEmit(it)
@@ -83,5 +87,27 @@ class StateAndSharedFlow(application: Application) : BaseVM(application) {
         }
     }
 
+    // 扩展方法 shareIn
+    fun flowShareIn() = mainScope.launch {
+
+        /*
+         * SharingStarted.WhileSubscribed() 存在订阅者时，将使上游提供方保持活跃状态。
+         * SharingStarted.Eagerly           立即启动提供方。
+         * SharingStarted.Lazily            在第一个订阅者出现后开始共享数据，并使数据流永远保持活跃状态。
+         */
+
+        flow {
+            (1..10).forEach {
+                emit(it)
+                delay(100)
+            }
+        }.shareIn(
+                this,
+                replay = 1,
+                started = SharingStarted.WhileSubscribed() // 启动政策
+        ).collect {
+            LogUtils.tag(TAG).i("shareIn -> collect：$it")
+        }
+    }
     //endregion
 }

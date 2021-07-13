@@ -5,6 +5,7 @@ import android.app.Application
 import android.content.Context
 import androidx.lifecycle.*
 import com.apkfuns.logutils.LogUtils
+import kotlinx.coroutines.MainScope
 
 /*
  * 从源码看 Jetpack（6）-ViewModel 源码详解
@@ -19,6 +20,7 @@ abstract class BaseVM(application: Application) : AndroidViewModel(application),
         const val TAG = "ViewModel"
     }
 
+    var mainScope = MainScope()
     var context: Context = application.baseContext
 
     // 应用进入后台
@@ -53,10 +55,5 @@ abstract class BaseVM(application: Application) : AndroidViewModel(application),
 
     @OnLifecycleEvent(Lifecycle.Event.ON_DESTROY)
     open fun onDestroy() {
-    }
-
-    override fun onCleared() {
-        super.onCleared()
-        LogUtils.tag(TAG).i("ViewModel ——> onCleared！")
     }
 }

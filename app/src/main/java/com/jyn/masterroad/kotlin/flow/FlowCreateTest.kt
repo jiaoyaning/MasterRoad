@@ -6,12 +6,17 @@ import com.jyn.common.Base.BaseVM
 import kotlinx.coroutines.*
 import kotlinx.coroutines.flow.*
 
-/**
+/*
  * 破解 Kotlin 协程(11) - Flow 篇
  * https://mp.weixin.qq.com/s/EkVdbbjbVVCMWjeL6XbfbA
+ *
+ * 抽丝剥茧Kotlin - 协程中绕不过的Flow
+ * https://juejin.cn/post/6914802148614242312
+ *
+ * Kotlin Coroutines Flow 系列(五) 其他的操作符
+ * https://www.jianshu.com/p/d672744ad3e0
  */
-
-class FlowTest(application: Application) : BaseVM(application) {
+class FlowCreateTest(application: Application) : BaseVM(application) {
     companion object {
         const val TAG = "Flow"
     }
@@ -43,7 +48,8 @@ class FlowTest(application: Application) : BaseVM(application) {
         /**
          * collect可消费 Flow 的数据，是最基本的末端操作符，功能与 RxJava 的 subscribe 类似。
          * 末端操作符，大体分为两类：
-         *
+         *    1. 集合类型转换操作，包括 toList、toSet 等。
+         *    2. 聚合操作，包括将 Flow 规约到单值的 reduce、fold 等操作，以及获得单个元素的操作包括 single、singleOrNull、first 等。
          */
         flow.flowOn(Dispatchers.IO)
             .collect(object : FlowCollector<Int> {

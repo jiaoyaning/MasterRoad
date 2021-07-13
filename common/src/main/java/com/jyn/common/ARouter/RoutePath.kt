@@ -59,11 +59,11 @@ object RoutePath {
         const val span = 2
     }
 
-    // BindingCollection 双向绑定 recyclerview
-    object BindingCollection {
-        const val name = "BindingCollectionAdapter"
-        const val path = "/app/BindingCollectionActivity"
-        const val span = 1
+    // BindingAdapter 双向绑定 recyclerview
+    object BindingAdapter {
+        const val name = "BindingAdapter"
+        const val path = "/app/BindingAdapterActivity"
+        const val span = 2
     }
 
     // ConstraintLayout 约束布局

@@ -1,6 +1,8 @@
 apply plugin: 'java-library'
 apply plugin: 'kotlin'
 
+def kotlin = rootProject.ext.kotlin
+
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlin_version"
@@ -16,7 +18,8 @@ dependencies {
      * 反射优化库
      */
     implementation 'com.esotericsoftware:reflectasm:1.11.9'
-    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.4.1'
+    implementation kotlin["coroutines-core"]
+    implementation kotlin["coroutines-android"]
 }
 
 sourceCompatibility = JavaVersion.VERSION_1_8

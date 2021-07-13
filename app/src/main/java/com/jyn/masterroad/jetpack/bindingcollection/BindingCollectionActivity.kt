@@ -1,7 +1,6 @@
 package com.jyn.masterroad.jetpack.bindingcollection
 
 import com.alibaba.android.arouter.facade.annotation.Route
-import com.apkfuns.logutils.LogUtils
 import com.jyn.common.ARouter.RoutePath
 import com.jyn.masterroad.R
 import com.jyn.masterroad.base.BaseActivity
@@ -11,7 +10,7 @@ import com.jyn.masterroad.databinding.ActivityBindingCollectionBinding
  * 库位置:
  * https://github.com/evant/binding-collection-adapter
  */
-@Route(path = RoutePath.BindingCollection.path)
+@Route(path = RoutePath.BindingAdapter.path)
 class BindingCollectionActivity : BaseActivity<ActivityBindingCollectionBinding>
     (R.layout.activity_binding_collection) {
 

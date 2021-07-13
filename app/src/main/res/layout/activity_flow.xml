@@ -6,8 +6,12 @@
     <data>
 
         <variable
-            name="flow"
-            type="com.jyn.masterroad.kotlin.flow.FlowTest" />
+            name="flowCreate"
+            type="com.jyn.masterroad.kotlin.flow.FlowCreateTest" />
+
+        <variable
+            name="stateAndSharedFlow"
+            type="com.jyn.masterroad.kotlin.flow.StateAndSharedFlow" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -16,36 +20,112 @@
         tools:context=".kotlin.flow.FlowActivity"
         tools:ignore="HardcodedText">
 
+        <TextView
+            android:id="@+id/textView49"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:text="Flow测试"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
         <Button
             android:id="@+id/button53"
             style="@style/tv"
-            android:onClick="@{() -> flow.flowTest()}"
+            android:layout_marginTop="8dp"
+            android:onClick="@{() -> flowCreate.flowTest()}"
             android:text="flow"
+            app:layout_constraintEnd_toStartOf="@id/button54"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toBottomOf="@id/textView49" />
 
         <Button
             android:id="@+id/button54"
             style="@style/tv2"
-            android:onClick="@{() -> flow.channelFlowTest()}"
+            android:onClick="@{() -> flowCreate.channelFlowTest()}"
             android:text="channelFlow"
-            app:layout_constraintStart_toEndOf="@+id/button53"
-            app:layout_constraintTop_toTopOf="@+id/button53" />
+            app:layout_constraintEnd_toStartOf="@id/button55"
+            app:layout_constraintStart_toEndOf="@id/button53"
+            app:layout_constraintTop_toTopOf="@id/button53" />
 
         <Button
             android:id="@+id/button55"
             style="@style/tv"
-            android:onClick="@{() -> flow.collectionTest()}"
+            android:onClick="@{() -> flowCreate.collectionTest()}"
             android:text="collection"
-            app:layout_constraintStart_toEndOf="@+id/button54"
-            app:layout_constraintTop_toTopOf="@+id/button53" />
+            app:layout_constraintEnd_toStartOf="@id/button56"
+            app:layout_constraintStart_toEndOf="@id/button54"
+            app:layout_constraintTop_toTopOf="@id/button53" />
 
         <Button
             android:id="@+id/button56"
             style="@style/tv2"
-            android:onClick="@{() -> flow.backPressure()}"
+            android:onClick="@{() -> flowCreate.backPressure()}"
             android:text="背压"
-            app:layout_constraintStart_toEndOf="@+id/button55"
-            app:layout_constraintTop_toTopOf="@+id/button53" />
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/button55"
+            app:layout_constraintTop_toTopOf="@id/button53" />
+
+        <TextView
+            android:id="@+id/textView50"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:text="StateFlow"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/button53" />
+
+        <Button
+            android:id="@+id/button57"
+            style="@style/tv2"
+            android:onClick="@{() -> stateAndSharedFlow.stateFlowCollect()}"
+            android:text="StateFlow\n collect"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView50" />
+
+        <Button
+            android:id="@+id/button58"
+            style="@style/tv"
+            android:onClick="@{() -> stateAndSharedFlow.stateFlowTest()}"
+            android:text="StateFlow\n emit"
+            app:layout_constraintStart_toEndOf="@+id/button57"
+            app:layout_constraintTop_toTopOf="@+id/button57" />
+
+        <TextView
+            android:id="@+id/textView51"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:text="SharedFlow"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/button57" />
+
+        <Button
+            android:id="@+id/button59"
+            style="@style/tv"
+            android:layout_marginTop="8dp"
+            android:onClick="@{() -> stateAndSharedFlow.sharedFlowCollect()}"
+            android:text="SharedFlow\n collect"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView51" />
+
+        <Button
+            android:id="@+id/button60"
+            style="@style/tv2"
+            android:onClick="@{() -> stateAndSharedFlow.sharedFlowTry()}"
+            android:text="SharedFlow\n emit"
+            app:layout_constraintStart_toEndOf="@+id/button59"
+            app:layout_constraintTop_toTopOf="@+id/button59" />
+
+        <Button
+            android:id="@+id/button61"
+            style="@style/tv"
+            android:onClick="@{() -> stateAndSharedFlow.sharedFlowTryEmit()}"
+            android:text="SharedFlow\n tryEmit"
+            app:layout_constraintStart_toEndOf="@+id/button60"
+            app:layout_constraintTop_toTopOf="@+id/button59" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

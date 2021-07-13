@@ -55,8 +55,8 @@ public class MainActivityTest {
 //    }
     @Test
     public void flow_btn_click_test() {
-        onView(withId(R.id.main_fab))   //创建一个ViewMatcher
-                .perform(click());  //进行一个Action操作
+//        onView(withId(R.id.main_fab))   //创建一个ViewMatcher
+//                .perform(click());  //进行一个Action操作
 
         //toast最后显示在界面上的是一个AppCompatTextView
         onView(withClassName(endsWith("AppCompatTextView")))

@@ -32,10 +32,12 @@ import kotlinx.coroutines.cancel
 @Route(path = RoutePath.Flow.path)
 class FlowActivity : BaseActivity<ActivityFlowBinding>(R.layout.activity_flow),
     CoroutineScope by MainScope() {
-    val flowTest: FlowTest by viewModels()
+    private val flowCreateTest: FlowCreateTest by viewModels()
+    private val stateAndSharedFlow: StateAndSharedFlow by viewModels()
 
     override fun initData() {
-        binding.flow = flowTest
+        binding.flowCreate = flowCreateTest
+        binding.stateAndSharedFlow = stateAndSharedFlow
     }
 
     override fun onDestroy() {

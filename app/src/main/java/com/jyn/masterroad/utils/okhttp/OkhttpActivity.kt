@@ -14,7 +14,6 @@ import com.jyn.masterroad.databinding.ActivityOkhttpBinding
  * https://mp.weixin.qq.com/s/LsYw4bg5q7jtMP4M0yWmzQ
  */
 @Route(path = RoutePath.OkHttp.path)
-class OkhttpActivity : BaseActivity<ActivityOkhttpBinding>
-(R.layout.activity_okhttp) {
+class OkhttpActivity : BaseActivity<ActivityOkhttpBinding>(R.layout.activity_okhttp) {
 
 }

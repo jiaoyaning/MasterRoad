@@ -31,8 +31,8 @@ class MainActivityTestKt {
 
     @Test
     fun myTest() {
-        onView(withId(R.id.main_fab)) //创建一个ViewMatcher
-                .perform(ViewActions.click())
+//        onView(withId(R.id.main_fab)) //创建一个ViewMatcher
+//                .perform(ViewActions.click())
     }
 
     @Test

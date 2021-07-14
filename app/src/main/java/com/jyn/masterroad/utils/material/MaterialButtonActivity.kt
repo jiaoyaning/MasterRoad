@@ -12,4 +12,6 @@ import com.jyn.masterroad.databinding.ActivityMaterialButtonBinding
  */
 @Route(path = RoutePath.MaterialButton.path)
 class MaterialButtonActivity : BaseActivity<ActivityMaterialButtonBinding>
-    (R.layout.activity_material_button)
+(R.layout.activity_material_button) {
+
+}

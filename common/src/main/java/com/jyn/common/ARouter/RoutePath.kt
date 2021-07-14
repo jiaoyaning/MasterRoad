@@ -52,6 +52,11 @@ object RoutePath {
         const val path = "/app/OkhttpActivity"
         const val span = 2
     }
+    object Okio {
+        const val name = "Okio"
+        const val path = "/app/OkioActivity"
+        const val span = 2
+    }
 
     object Retrofit {
         const val name = "Retrofit"

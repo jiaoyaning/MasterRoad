@@ -37,8 +37,7 @@ import com.jyn.masterroad.databinding.ActivityRxjavaBinding
  * 如果这个CompositeDisposable容器已经是处于dispose的状态，那么所有加进来的disposable都会被自动切断
  */
 @Route(path = RoutePath.RxJava.path)
-class RxJavaActivity : BaseActivity<ActivityRxjavaBinding>
-    (R.layout.activity_rxjava) {
+class RxJavaActivity : BaseActivity<ActivityRxjavaBinding>(R.layout.activity_rxjava) {
 
     override fun initView() {
         binding.rxJavaCreate = RxJavaCreate()

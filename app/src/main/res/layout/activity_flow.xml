@@ -7,7 +7,7 @@
 
         <variable
             name="flowCreate"
-            type="com.jyn.masterroad.kotlin.flow.FlowCreateTest" />
+            type="com.jyn.masterroad.kotlin.flow.FlowCreate" />
 
         <variable
             name="stateAndSharedFlow"
@@ -93,6 +93,14 @@
             app:layout_constraintStart_toEndOf="@id/button57"
             app:layout_constraintTop_toTopOf="@id/button57" />
 
+        <Button
+            android:id="@+id/button63"
+            style="@style/tv2"
+            android:onClick="@{() -> stateAndSharedFlow.stateFlowStateIn()}"
+            android:text="stateIn\n冷流转换"
+            app:layout_constraintStart_toEndOf="@+id/button58"
+            app:layout_constraintTop_toTopOf="@+id/button57" />
+
         <TextView
             android:id="@+id/textView51"
             android:layout_width="wrap_content"
@@ -139,5 +147,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@id/button61"
             app:layout_constraintTop_toTopOf="@id/button59" />
+
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

@@ -1,12 +1,14 @@
 package com.jyn.masterroad.kotlin.flow
 
 import android.app.Application
+import androidx.lifecycle.viewModelScope
 import com.apkfuns.logutils.LogUtils
 import com.jyn.common.Base.BaseVM
 import kotlinx.coroutines.InternalCoroutinesApi
 import kotlinx.coroutines.channels.BufferOverflow
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.*
+import kotlinx.coroutines.flow.SharingStarted.Companion.WhileSubscribed
 import kotlinx.coroutines.launch
 
 /*
@@ -51,6 +53,22 @@ class StateAndSharedFlow(application: Application) : BaseVM(application) {
             delay(100)
         }
     }
+
+    fun stateFlowStateIn() = mainScope.launch {
+        flow {
+            (1..100).forEach {
+                emit(it)
+                delay(100)
+            }
+        }.stateIn(
+                scope = viewModelScope,
+                started = WhileSubscribed(5000), //由于是一次性操作，也可以使用 Lazily
+                initialValue = 0
+        ).collect {
+            LogUtils.tag(TAG).i("stateIn -> collect：$it")
+        }
+    }
+
     //endregion
 
     //region 二、SharedFlow
@@ -97,14 +115,14 @@ class StateAndSharedFlow(application: Application) : BaseVM(application) {
          */
 
         flow {
-            (1..10).forEach {
+            (1..100).forEach {
                 emit(it)
                 delay(100)
             }
         }.shareIn(
                 this,
-                replay = 1,
-                started = SharingStarted.WhileSubscribed() // 启动政策
+                started = WhileSubscribed(), // 启动政策
+                replay = 1
         ).collect {
             LogUtils.tag(TAG).i("shareIn -> collect：$it")
         }

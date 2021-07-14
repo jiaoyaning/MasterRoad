@@ -16,7 +16,7 @@ import kotlinx.coroutines.flow.*
  * Kotlin Coroutines Flow 系列(五) 其他的操作符
  * https://www.jianshu.com/p/d672744ad3e0
  */
-class FlowCreateTest(application: Application) : BaseVM(application) {
+class FlowCreate(application: Application) : BaseVM(application) {
     companion object {
         const val TAG = "Flow"
     }

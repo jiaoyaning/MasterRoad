@@ -1,5 +1,7 @@
 package com.jyn.masterroad.view.draw
 
+import android.view.Choreographer
+import com.apkfuns.logutils.LogUtils
 import com.jyn.masterroad.R
 import com.jyn.masterroad.base.BaseActivity
 import com.jyn.masterroad.databinding.ActivityOnDrawBinding
@@ -13,4 +15,14 @@ import com.jyn.masterroad.databinding.ActivityOnDrawBinding
  */
 class OnDrawActivity : BaseActivity<ActivityOnDrawBinding>(R.layout.activity_on_draw) {
 
+
+    private fun fpsDetection() {
+        var starTime: Long = System.nanoTime()
+        Choreographer.getInstance().postFrameCallback {
+            LogUtils
+                .tag("FPS")
+                .i("starTime:$starTime ; frameTimeNanos:$it ; frameDueTime:${(it - starTime) / 1000000}")
+            starTime = it
+        }
+    }
 }

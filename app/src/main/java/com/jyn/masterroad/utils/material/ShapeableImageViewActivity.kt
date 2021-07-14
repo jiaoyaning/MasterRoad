@@ -12,4 +12,6 @@ import com.jyn.masterroad.databinding.ActivityShapeableImageViewBinding
  */
 @Route(path = RoutePath.ShapeableImageView.path)
 class ShapeableImageViewActivity : BaseActivity<ActivityShapeableImageViewBinding>
-    (R.layout.activity_shapeable_image_view)
+(R.layout.activity_shapeable_image_view) {
+
+}

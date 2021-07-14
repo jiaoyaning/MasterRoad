@@ -12,7 +12,6 @@ import retrofit2.http.Query
  * 官网 https://square.github.io/retrofit/
  */
 @Route(path = RoutePath.Retrofit.path)
-class RetrofitActivity : BaseActivity<ActivityRetrofitBinding>
-    (R.layout.activity_retrofit) {
+class RetrofitActivity : BaseActivity<ActivityRetrofitBinding>(R.layout.activity_retrofit) {
 
 }

@@ -14,9 +14,6 @@ import kotlinx.coroutines.cancel
  * Kotlin Coroutines Flow 系列(一) Flow 基本使用
  * https://juejin.cn/post/6844904057530908679
  *
- * Android 上的 Kotlin 数据流
- * https://developer.android.com/kotlin/flow?hl=zh-cn
- *
  * Kotlin Flow 场景化学习
  * https://mp.weixin.qq.com/s/XfJ4Gkp_9Ww5Dxx8Di_AVg
  *
@@ -25,18 +22,15 @@ import kotlinx.coroutines.cancel
  *
  * 从 LiveData 迁移到 Kotlin 数据流（Android 开发者）
  * https://mp.weixin.qq.com/s/o61NDIptP94X4HspKwiR2w
- *
- * 协程进阶技巧 - StateFlow和SharedFlow
- * https://juejin.cn/post/6937138168474894343
  */
 @Route(path = RoutePath.Flow.path)
 class FlowActivity : BaseActivity<ActivityFlowBinding>(R.layout.activity_flow),
     CoroutineScope by MainScope() {
-    private val flowCreateTest: FlowCreateTest by viewModels()
+    private val flowCreate: FlowCreate by viewModels()
     private val stateAndSharedFlow: StateAndSharedFlow by viewModels()
 
     override fun initData() {
-        binding.flowCreate = flowCreateTest
+        binding.flowCreate = flowCreate
         binding.stateAndSharedFlow = stateAndSharedFlow
     }
 

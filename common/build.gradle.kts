@@ -71,8 +71,8 @@ dependencies {
     implementation("androidx.lifecycle:lifecycle-viewmodel:2.3.1")
     implementation("androidx.lifecycle:lifecycle-livedata:2.3.1")
     implementation("androidx.lifecycle:lifecycle-runtime:2.3.1")
-    implementation("androidx.activity:activity-ktx:1.2.0")
-    implementation("androidx.core:core-ktx:1.3.0")
+    implementation("androidx.activity:activity-ktx:1.2.2")
+    implementation("androidx.core:core-ktx:1.5.0")
 
     implementation("com.google.dagger:dagger-android:2.35.1")
     annotationProcessor("com.google.dagger:dagger-android-processor:2.15")

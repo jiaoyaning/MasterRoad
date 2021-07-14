@@ -33,6 +33,7 @@
             android:layout_marginTop="8dp"
             android:onClick="@{() -> rxJavaCreate.observerSimple()}"
             android:text="Observable\n(Observer观察者)"
+            app:layout_constraintEnd_toStartOf="@id/button19"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/textView29" />
 
@@ -41,6 +42,7 @@
             style="@style/tv2"
             android:onClick="@{() -> rxJavaCreate.consumerSimple()}"
             android:text="Observable\n(Consumer消费者)"
+            app:layout_constraintEnd_toStartOf="@id/button40"
             app:layout_constraintStart_toEndOf="@id/button17"
             app:layout_constraintTop_toTopOf="@id/button17" />
 
@@ -48,6 +50,7 @@
             android:id="@+id/button40"
             style="@style/tv"
             android:text="Observable\n背压测试"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@id/button19"
             app:layout_constraintTop_toTopOf="@id/button19" />
 

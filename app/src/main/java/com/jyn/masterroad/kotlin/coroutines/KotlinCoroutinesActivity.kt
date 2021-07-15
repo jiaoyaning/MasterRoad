@@ -41,14 +41,7 @@ class KotlinCoroutinesActivity :
 
     private val kotlinCoroutinesCreate: KotlinCoroutinesCreate by lazy { createVM() }
 
-    private val kotlinCoroutinesTest: KotlinCoroutinesTest by lazy {
-        createVM<KotlinCoroutinesTest>().apply {
-            lifecycleScope = this@KotlinCoroutinesActivity.lifecycleScope
-        }
-    }
-
     override fun initView() {
-        binding.coroutines = kotlinCoroutinesTest
         binding.create = kotlinCoroutinesCreate
         binding.channel = ChannelTest()
     }

@@ -10,10 +10,6 @@
             type="com.jyn.masterroad.kotlin.coroutines.KotlinCoroutinesCreate" />
 
         <variable
-            name="coroutines"
-            type="com.jyn.masterroad.kotlin.coroutines.KotlinCoroutinesTest" />
-
-        <variable
             name="channel"
             type="com.jyn.masterroad.kotlin.coroutines.ChannelTest" />
     </data>

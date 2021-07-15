@@ -19,6 +19,8 @@ import okhttp3.Response;
  *
  * OKHttp3--Dispatcher分发器实现同步异步请求源码解析【三】
  * https://blog.csdn.net/qq_30993595/article/details/86681210
+ *
+ * 随机诗词: http://www.alapi.cn/api/view/8
  */
 public class OkHttpDemo {
     public void test() throws IOException {

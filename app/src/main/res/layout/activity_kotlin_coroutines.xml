@@ -12,6 +12,8 @@
         <variable
             name="channel"
             type="com.jyn.masterroad.kotlin.coroutines.ChannelTest" />
+
+
     </data>
 
     <androidx.core.widget.NestedScrollView

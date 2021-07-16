@@ -1,3 +1,6 @@
+## 效果炸了！Android自定义View实现一个炫酷的时钟
+https://mp.weixin.qq.com/s/7L8tycZZnkQwhIOuXkKH9w
+
 ## 多个UI库
 https://github.com/mCyp/Orient-Ui
 

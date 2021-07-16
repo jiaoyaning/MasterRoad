@@ -15,6 +15,12 @@ import java.lang.reflect.Method;
  * Java反射进阶—聊聊反射的几个问题 （final关键字）
  * https://mp.weixin.qq.com/s/oKiIAwVyPjmUGt6M6jyk6w
  *
+ * 深入分析Java方法反射的实现原理
+ * https://mp.weixin.qq.com/s/45mfublTt4mh9EkQCuZ4qA
+ *
+ * Java基础之反射（非常重要）
+ * https://mp.weixin.qq.com/s/oWsx2hmA9burob8zjNm43w
+ *
  * 虽然反射很好用，增加了程序的灵活性，但是也有他的缺点：
  * 性能问题。由于用到动态类型（运行时才检查类型），所以反射的效率比较低。但是对程序的影响比较小，除非对性能要求比较高。所以需要在两者之间平衡。
  * 不够安全。由于可以执行一些私有的属性和方法，所以可能会带来安全问题。

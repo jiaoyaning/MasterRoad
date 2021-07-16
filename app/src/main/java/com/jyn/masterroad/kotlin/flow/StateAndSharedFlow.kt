@@ -14,6 +14,15 @@ import kotlinx.coroutines.launch
 /*
  * 协程进阶技巧 - StateFlow和SharedFlow
  * https://juejin.cn/post/6937138168474894343
+ *
+ * 【译】LiveData的末日？StateFlow简介。
+ * https://juejin.cn/post/6844904168910487560
+ *
+ * （译）从 LiveData 迁移到 Kotlin 的 Flow
+ * https://juejin.cn/post/6979116446013980680
+ *
+ * 打造一个 Kotlin Flow 版的 EventBus
+ * https://mp.weixin.qq.com/s/wDdY_P7oPxDxj4Ij-H9oxQ
  */
 class StateAndSharedFlow(application: Application) : BaseVM(application) {
     companion object {
@@ -24,6 +33,7 @@ class StateAndSharedFlow(application: Application) : BaseVM(application) {
      * StateFlow 和 SharedFlow 是热流，在垃圾回收之前，都是存在内存之中，并且处于活跃状态的。可以将已发送过的数据发送给新的订阅者
      * StateFlow 和 SharedFlow 提供了在 Flow 中使用 LiveData 式更新数据的能力，但是如果要在 UI 层使用，需要注意生命周期的问题。
      * StateFlow 和 SharedFlow 相比，StateFlow 需要提供初始值，SharedFlow 配置灵活，可提供旧数据同步和缓存配置的功能。
+     * sharedFlow 无观察者时会清除事件
      */
 
     //region 一、StateFlow

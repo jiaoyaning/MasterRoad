@@ -22,6 +22,9 @@ import kotlinx.coroutines.cancel
  *
  * 从 LiveData 迁移到 Kotlin 数据流（Android 开发者）
  * https://mp.weixin.qq.com/s/o61NDIptP94X4HspKwiR2w
+ *
+ * 官方推荐 Flow 取代 LiveData,有必要吗？
+ * https://juejin.cn/post/6986265488275800072
  */
 @Route(path = RoutePath.Flow.path)
 class FlowActivity : BaseActivity<ActivityFlowBinding>(R.layout.activity_flow),

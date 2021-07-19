@@ -56,6 +56,9 @@ ext {
              * Material Components之旅
              * https://mp.weixin.qq.com/mp/appmsgalbum?__biz=MzAxNzMxNzk5OQ==&action=getalbum&album_id=1567168071180566530&scene=173&subscene=93&sessionid=1617694420&enterid=1617696172&from_msgid=2649487491&from_itemidx=1&count=3&nolastread=1#wechat_redirect
              * https://github.com/material-components/material-components-android
+             * 官方文档：https://material.io/components
+             * 使用 Material Design 组件实现 Material 动效
+             * https://mp.weixin.qq.com/s/Op-9rXQ9jiyI5I2TLpWKNA
              */
             "material"           : "com.google.android.material:material:1.4.0-beta01",
             "appcompat"          : "androidx.appcompat:appcompat:1.2.0",

@@ -12,9 +12,11 @@ import com.jyn.masterroad.databinding.ActivityOnDrawBinding
  *
  * 【从入门到放弃】android布局优化深入解析
  * https://juejin.cn/post/6950791235413999652
+ *
+ * Android 资源加载源码分析一
+ * https://mp.weixin.qq.com/s/RrMj_LJnHNackrVGOgD3TA
  */
 class OnDrawActivity : BaseActivity<ActivityOnDrawBinding>(R.layout.activity_on_draw) {
-
 
     private fun fpsDetection() {
         var starTime: Long = System.nanoTime()

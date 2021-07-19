@@ -14,6 +14,7 @@
         android:usesCleartextTraffic="true"
         tools:ignore="AllowBackup"
         tools:targetApi="m">
+        <activity android:name=".kotlin.coil.CoilActivity"></activity>
         <activity android:name=".base.jvm.ClassLoaderActivity" />
         <activity android:name=".base.BaseActivity" />
         <activity android:name=".concurrent.ThreadActivity" />

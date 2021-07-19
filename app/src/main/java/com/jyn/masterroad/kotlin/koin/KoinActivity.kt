@@ -25,6 +25,9 @@ import org.koin.core.qualifier.named
  *
  * kotlin 协程官方文档（5）-异步流（Asynchronous Flow）
  * https://juejin.cn/post/6844904101801639949
+ *
+ * FragmentFactory 在 Koin 中的应用
+ * https://mp.weixin.qq.com/s/1_wTioNnj2K3n0SNSPUHwQ
  */
 @Route(path = RoutePath.KotlinKoin.path)
 class KoinActivity : BaseActivity<ActivityKoinBinding>

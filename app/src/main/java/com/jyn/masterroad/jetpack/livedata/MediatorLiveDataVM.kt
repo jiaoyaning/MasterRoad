@@ -16,6 +16,9 @@ class MediatorLiveDataVM(application: Application) : BaseVM(application) {
         const val TAG = "MediatorLiveData"
     }
 
+    /**
+     * MediatorLiveData可以合并数据源
+     */
     var livedata1: MutableLiveData<Int> = MutableLiveData(0)
     var livedata2: MutableLiveData<Int> = MutableLiveData(10)
     var liveDataMerger: MediatorLiveData<Int> = MediatorLiveData()

@@ -25,12 +25,12 @@ class LiveDataTestVM(application: Application) : BaseVM(application) {
     }
 
     /**
-     * ObservableField只有在数据发生改变时UI才会收到通知，而LiveData不同，
+     * Observable只有在数据发生改变时UI才会收到通知，而LiveData不同，
      * 只要你postValue或者setValue，UI都会收到通知，不管数据有无变化
      *
      * LiveData能感知Activity的生命周期，在Activity不活动的时候不会触发(位于start状态之后)，例如一个Activity不在任务栈顶部
      *
-     * ps:ObservableField无法感知生命周期，如果页面已销毁，可能会导致应用崩溃
+     * ps:Observable无法感知生命周期，如果页面已销毁，可能会导致应用崩溃
      */
     var numString: MutableLiveData<String>? = null
         get() {

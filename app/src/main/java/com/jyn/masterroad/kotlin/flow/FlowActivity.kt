@@ -30,11 +30,11 @@ import kotlinx.coroutines.cancel
 class FlowActivity : BaseActivity<ActivityFlowBinding>(R.layout.activity_flow),
     CoroutineScope by MainScope() {
     private val flowCreate: FlowCreate by viewModels()
-    private val stateAndSharedFlow: StateAndSharedFlow by viewModels()
+    private val sharedAndStateFlow: SharedAndStateFlow by viewModels()
 
     override fun initData() {
         binding.flowCreate = flowCreate
-        binding.stateAndSharedFlow = stateAndSharedFlow
+        binding.sharedAndStateFlow = sharedAndStateFlow
     }
 
     override fun onDestroy() {

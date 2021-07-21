@@ -24,13 +24,19 @@ import kotlinx.coroutines.launch
  * 打造一个 Kotlin Flow 版的 EventBus
  * https://mp.weixin.qq.com/s/wDdY_P7oPxDxj4Ij-H9oxQ
  */
-class StateAndSharedFlow(application: Application) : BaseVM(application) {
+class SharedAndStateFlow(application: Application) : BaseVM(application) {
     companion object {
         const val TAG = "Flow"
     }
     /*
-     * StateFlow 和 SharedFlow 相比，StateFlow 需要提供初始值，SharedFlow 配置灵活，可提供旧数据同步和缓存配置的功能。
-     * sharedFlow 无观察者时会清除事件
+     * SharedFlow 和 StateFlow 区别，
+     * 1. StateFlow 需要提供初始值，SharedFlow 配置灵活，可提供旧数据同步和缓存配置的功能。
+     * 2. SharedFlow配置更为灵活，支持配置replay,缓冲区大小等，StateFlow是SharedFlow的特化版本，replay固定为1，缓冲区大小默认为0
+     * 3. StateFlow与LiveData类似，支持通过myFlow.value获取当前状态，如果有这个需求，必须使用StateFlow
+     * 4. SharedFlow支持发出和收集重复值，而StateFlow当value重复时，不会回调collect
+     *    对于新的订阅者，StateFlow只会重播当前最新值，SharedFlow可配置重播元素个数（默认为0，即不重播）
+     *
+     *    sharedFlow 无观察者时会清除事件
      */
 
     //region 一、SharedFlow

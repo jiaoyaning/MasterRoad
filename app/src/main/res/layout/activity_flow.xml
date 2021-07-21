@@ -10,8 +10,8 @@
             type="com.jyn.masterroad.kotlin.flow.FlowCreate" />
 
         <variable
-            name="stateAndSharedFlow"
-            type="com.jyn.masterroad.kotlin.flow.StateAndSharedFlow" />
+            name="sharedAndStateFlow"
+            type="com.jyn.masterroad.kotlin.flow.SharedAndStateFlow" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -80,7 +80,7 @@
         <Button
             android:id="@+id/button57"
             style="@style/tv2"
-            android:onClick="@{() -> stateAndSharedFlow.stateFlowCollect()}"
+            android:onClick="@{() -> sharedAndStateFlow.stateFlowCollect()}"
             android:text="StateFlow\n collect"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/textView50" />
@@ -88,7 +88,7 @@
         <Button
             android:id="@+id/button58"
             style="@style/tv"
-            android:onClick="@{() -> stateAndSharedFlow.stateFlowTest()}"
+            android:onClick="@{() -> sharedAndStateFlow.stateFlowTest()}"
             android:text="StateFlow\n emit"
             app:layout_constraintStart_toEndOf="@id/button57"
             app:layout_constraintTop_toTopOf="@id/button57" />
@@ -96,7 +96,7 @@
         <Button
             android:id="@+id/button63"
             style="@style/tv2"
-            android:onClick="@{() -> stateAndSharedFlow.stateFlowStateIn()}"
+            android:onClick="@{() -> sharedAndStateFlow.stateFlowStateIn()}"
             android:text="stateIn\n冷流转换"
             app:layout_constraintStart_toEndOf="@+id/button58"
             app:layout_constraintTop_toTopOf="@+id/button57" />
@@ -115,7 +115,7 @@
             android:id="@+id/button59"
             style="@style/tv"
             android:layout_marginTop="8dp"
-            android:onClick="@{() -> stateAndSharedFlow.sharedFlowCollect()}"
+            android:onClick="@{() -> sharedAndStateFlow.sharedFlowCollect()}"
             android:text="SharedFlow\n collect"
             app:layout_constraintEnd_toStartOf="@id/button60"
             app:layout_constraintStart_toStartOf="parent"
@@ -124,7 +124,7 @@
         <Button
             android:id="@+id/button60"
             style="@style/tv2"
-            android:onClick="@{() -> stateAndSharedFlow.sharedFlowTry()}"
+            android:onClick="@{() -> sharedAndStateFlow.sharedFlowTry()}"
             android:text="SharedFlow\n emit"
             app:layout_constraintEnd_toStartOf="@id/button61"
             app:layout_constraintStart_toEndOf="@id/button59"
@@ -133,7 +133,7 @@
         <Button
             android:id="@+id/button61"
             style="@style/tv"
-            android:onClick="@{() -> stateAndSharedFlow.sharedFlowTryEmit()}"
+            android:onClick="@{() -> sharedAndStateFlow.sharedFlowTryEmit()}"
             android:text="SharedFlow\n tryEmit"
             app:layout_constraintEnd_toStartOf="@id/button62"
             app:layout_constraintStart_toEndOf="@id/button60"
@@ -142,7 +142,7 @@
         <Button
             android:id="@+id/button62"
             style="@style/tv2"
-            android:onClick="@{() -> stateAndSharedFlow.flowShareIn()}"
+            android:onClick="@{() -> sharedAndStateFlow.flowShareIn()}"
             android:text="shareIn()\n冷流转换"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@id/button61"

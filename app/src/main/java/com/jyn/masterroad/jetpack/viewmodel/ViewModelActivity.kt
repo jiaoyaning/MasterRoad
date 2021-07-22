@@ -16,6 +16,9 @@ import com.jyn.masterroad.databinding.ActivityViewModelBinding
  *
  * 一道面试题：ViewModel为什么横竖屏切换时不销毁？（优秀）
  * https://juejin.cn/post/6951244272553181197
+ *
+ * 聊聊onSaveInstanceState和onRetainNonConfigurationInstance的区别
+ * https://mp.weixin.qq.com/s/s3EUBhW9ovQG7DbZbvV7Bw
  */
 class ViewModelActivity : BaseActivity<ActivityViewModelBinding>(R.layout.activity_view_model) {
     val viewModelTest:ViewModelTest by viewModels()

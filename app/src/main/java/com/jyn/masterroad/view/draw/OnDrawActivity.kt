@@ -6,7 +6,7 @@ import com.jyn.masterroad.R
 import com.jyn.masterroad.base.BaseActivity
 import com.jyn.masterroad.databinding.ActivityOnDrawBinding
 
-/**
+/*
  * 面试官：View.post() 为什么能够获取到 View 的宽高？
  * https://mp.weixin.qq.com/s/GWB--a43N6I8Fl_81-Ltqw
  *
@@ -14,7 +14,10 @@ import com.jyn.masterroad.databinding.ActivityOnDrawBinding
  * https://juejin.cn/post/6950791235413999652
  *
  * Android 资源加载源码分析一
- * https://mp.weixin.qq.com/s/RrMj_LJnHNackrVGOgD3TA
+ * https://mp.weixin.qq.com/s/RrM======j_LJnHNackrVGOgD3TA
+ *
+ * 通俗易懂，Android视图系统的设计与实现
+ * https://mp.weixin.qq.com/s/F_EAB39JkdHfQwnpcxhDsA
  */
 class OnDrawActivity : BaseActivity<ActivityOnDrawBinding>(R.layout.activity_on_draw) {
 

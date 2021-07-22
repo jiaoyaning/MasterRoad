@@ -12,7 +12,7 @@ import com.jyn.masterroad.base.BaseActivity
 import com.jyn.masterroad.databinding.ActivityHandlerBinding
 import kotlin.concurrent.thread
 
-/**
+/*
  * 享元模式
  *
  * 同步屏障与异步消息:[HandlerSyncBarrier]
@@ -21,8 +21,7 @@ import kotlin.concurrent.thread
  * https://mp.weixin.qq.com/s/ClTE15s9qUaNsInIIwX57w
  * 图解：epoll怎么实现的
  * https://mp.weixin.qq.com/s/nTuTJuWVZmhpiEfckmZ1Gg
- * select、poll、epoll之间的区别(搜狗面试)
- * https://www.cnblogs.com/aspirant/p/9166944.html
+ * https://zhuanlan.zhihu.com/p/272891398
  *
  * 万字总结-保姆级Handler机制解读
  * https://mp.weixin.qq.com/s/7S9NITBi3sXsqrzxNfMa8Q

@@ -12,7 +12,12 @@ object RoutePath {
         const val span = 1
     }
 
-    // 主activity
+    object IPC {
+        const val name = "IpcActivity"
+        const val path = "/app/IpcActivity"
+        const val span = 1
+    }
+
     object Fragment {
         const val name = "Fragment"
         const val path = "/app/Fragment"

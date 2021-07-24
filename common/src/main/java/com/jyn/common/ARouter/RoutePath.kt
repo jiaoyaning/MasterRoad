@@ -12,16 +12,22 @@ object RoutePath {
         const val span = 1
     }
 
-    object IPC {
-        const val name = "IpcActivity"
-        const val path = "/app/IpcActivity"
-        const val span = 1
-    }
-
     object Fragment {
         const val name = "Fragment"
         const val path = "/app/Fragment"
         const val span = 1
+    }
+
+    object IpcClient {
+        const val name = "IpcClient"
+        const val path = "/app/IpcClientActivity"
+        const val span = 2
+    }
+
+    object IpcServer {
+        const val name = "IpcServer"
+        const val path = "/app/IpcServerActivity"
+        const val span = 2
     }
 
     // handler测试
@@ -57,6 +63,7 @@ object RoutePath {
         const val path = "/app/OkhttpActivity"
         const val span = 2
     }
+
     object Okio {
         const val name = "Okio"
         const val path = "/app/OkioActivity"

@@ -14,7 +14,6 @@
         android:usesCleartextTraffic="true"
         tools:ignore="AllowBackup"
         tools:targetApi="m">
-        <activity android:name=".ipc.IpcActivity"></activity>
         <activity android:name=".kotlin.coil.CoilActivity" />
         <activity android:name=".base.jvm.ClassLoaderActivity" />
         <activity android:name=".base.BaseActivity" />
@@ -51,10 +50,48 @@
             android:configChanges="orientation|screenSize|keyboardHidden">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <!--
+            android:process 的坑，你懂吗？： http://www.rogerblog.cn/2016/03/17/android-proess/
+
+            在需要使用到新进程时，可以使用 android:process 属性，如果被设置的进程名是以一个冒号开头的，则这个新的进程对于这个应用来说是私有的，
+            如果这个进程的名字是以字符开头，并且符合 android 包名规范(如 com.roger 等)，则这个服务将运行在一个以这个名字命名的全局的进程中，当然前提是它有相应的权限。
+            若以数字开头(如 1Remote.com )，或不符合 android 包名规范（如 Remote），则在编译时将会报错 （ INSTALL_PARSE_FAILED_MANIFEST_MALFORMED ）。
+            新建进程将允许在不同应用中的各种组件可以共享一个进程，从而减少资源的占用。
+
+            PS： android:process 属性将组件运行到另一个进程，因此会再新建一个Application，重新调用onCreate
+
+            ===
+             在近期任务列表显示单个APP的多个Activity:  https://www.jianshu.com/p/7f6f98da691e
+             1. documentLaunchMode(启动模式)：
+                intoExisting：如果之前已经打开过，则会打开之前的(类似于 Activity 的 singleTask)；
+                always：不管之前有没有打开，都新创建一个(类似于 Activity 的 standard)；
+                none：不会在任务列表创建新的窗口，依旧显示单个任务；
+                never：不会在任务列表创建新的窗口，依旧显示单个任务，设置此值会替代 FLAG_ACTIVITY_NEW_DOCUMENT 和 FLAG_ACTIVITY_MULTIPLE_TASK 标志的行为（如果在 Intent 中设置了其中一个标志）。
+                PS: 对于除 none 和 never 以外的值，必须使用 launchMode="standard" 定义 Activity。如果未指定此属性，则使用 documentLaunchMode="none"。
+             2. excludeFromRecents：
+                默认为 false 。
+                设置为 true 时，只要你离开了这个页面，它就会从最近任务列表里移除掉。
+             3. maxRecents：
+                设置为整型值，设置应用能够包括在概览屏幕中的最大任务数。默认值为 16。
+                达到最大任务数后，最近最少使用的任务将从概览屏幕中移除。
+                android:maxRecents 的最大值为 50（内存不足的设备上为 25）；小于 1 的值无效。
+        -->
+        <activity
+            android:name=".ipc.IpcServerActivity"
+            android:documentLaunchMode="intoExisting"
+            android:excludeFromRecents="false"
+            android:maxRecents="3"
+            android:process="com.jyn.masterroad.ipc_server" />
+        <activity
+            android:name=".ipc.IpcClientActivity"
+            android:documentLaunchMode="intoExisting"
+            android:excludeFromRecents="false"
+            android:maxRecents="3"
+            android:process="com.jyn.masterroad.ipc_client" />
 
         <provider
             android:name="androidx.startup.InitializationProvider"

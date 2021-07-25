@@ -5,12 +5,73 @@
 
     <data>
 
+        <variable
+            name="clientVM"
+            type="com.jyn.masterroad.ipc.aidl.AidlClientViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".ipc.IpcClientActivity">
+        tools:context=".ipc.IpcClientActivity"
+        tools:ignore="HardcodedText">
 
+        <TextView
+            android:id="@+id/textView52"
+            android:layout_width="58dp"
+            android:layout_height="16dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:text="1. AIDL"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Button
+            android:id="@+id/ipc_client_start_aidl_server"
+            style="@style/tv"
+            android:layout_width="0dp"
+            android:layout_marginTop="8dp"
+            android:onClick="@{() -> clientVM.bindAidlServer()}"
+            android:text="启动Server"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView52" />
+
+        <Button
+            android:id="@+id/button64"
+            style="@style/tv2"
+            android:layout_marginTop="8dp"
+            android:onClick="@{() -> clientVM.inTest()}"
+            android:text="inTest"
+            app:layout_constraintEnd_toStartOf="@+id/button65"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/ipc_client_start_aidl_server" />
+
+        <Button
+            android:id="@+id/button65"
+            style="@style/tv"
+            android:onClick="@{() -> clientVM.outTest()}"
+            android:text="outTest"
+            app:layout_constraintEnd_toStartOf="@+id/button66"
+            app:layout_constraintStart_toEndOf="@+id/button64"
+            app:layout_constraintTop_toTopOf="@+id/button64" />
+
+        <Button
+            android:id="@+id/button66"
+            style="@style/tv2"
+            android:onClick="@{() -> clientVM.inoutTest()}"
+            android:text="inoutTest"
+            app:layout_constraintEnd_toStartOf="@+id/button67"
+            app:layout_constraintStart_toEndOf="@+id/button65"
+            app:layout_constraintTop_toTopOf="@+id/button64" />
+
+        <Button
+            android:id="@+id/button67"
+            style="@style/tv"
+            android:onClick="@{() -> clientVM.onewayTest()}"
+            android:text="oneway"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/button66"
+            app:layout_constraintTop_toTopOf="@+id/button64" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

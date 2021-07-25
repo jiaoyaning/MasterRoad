@@ -45,15 +45,6 @@
         <activity android:name=".utils.material.ShapeableImageViewActivity" />
         <activity android:name=".view.touch.TouchActivity" />
         <activity android:name=".view.draw.OnDrawActivity" />
-        <activity
-            android:name=".MainActivity"
-            android:configChanges="orientation|screenSize|keyboardHidden">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
-
         <!--
             android:process 的坑，你懂吗？： http://www.rogerblog.cn/2016/03/17/android-proess/
 
@@ -86,12 +77,27 @@
             android:excludeFromRecents="false"
             android:maxRecents="3"
             android:process="com.jyn.masterroad.ipc_server" />
+        <activity android:name=".ipc.IpcClientActivity" />
+
         <activity
-            android:name=".ipc.IpcClientActivity"
-            android:documentLaunchMode="intoExisting"
-            android:excludeFromRecents="false"
-            android:maxRecents="3"
-            android:process="com.jyn.masterroad.ipc_client" />
+            android:name=".MainActivity"
+            android:configChanges="orientation|screenSize|keyboardHidden">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <service
+            android:name=".ipc.aidl.AidlServerService"
+            android:enabled="true"
+            android:exported="false"
+            android:process="com.jyn.masterroad.ipc_server">
+            <!-- Android 5.0 后，隐式绑定 Service 需要设置包名。 -->
+            <intent-filter>
+                <action android:name="com.jyn.masterroad.ipc.AidlServerService.Action" />
+            </intent-filter>
+        </service>
 
         <provider
             android:name="androidx.startup.InitializationProvider"

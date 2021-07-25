@@ -10,7 +10,24 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".ipc.IpcServerActivity">
+        tools:context=".ipc.IpcServerActivity"
+        tools:ignore="HardcodedText">
 
+        <TextView
+            android:id="@+id/textView52"
+            android:layout_width="58dp"
+            android:layout_height="16dp"
+            android:layout_marginTop="80dp"
+            android:layout_marginEnd="8dp"
+            android:text="1. AIDL"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Button
+            android:id="@+id/ipc_server_start_aidl_server"
+            style="@style/tv"
+            android:text="链接Server"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView52" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

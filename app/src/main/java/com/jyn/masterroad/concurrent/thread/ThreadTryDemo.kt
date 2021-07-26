@@ -1,4 +1,4 @@
-package com.jyn.masterroad.concurrent
+package com.jyn.masterroad.concurrent.thread
 
 import java.lang.Thread.sleep
 import java.util.*

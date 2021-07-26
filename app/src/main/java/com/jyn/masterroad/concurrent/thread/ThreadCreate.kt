@@ -1,4 +1,4 @@
-package com.jyn.masterroad.concurrent
+package com.jyn.masterroad.concurrent.thread
 
 import com.apkfuns.logutils.LogUtils
 import java.util.concurrent.Callable

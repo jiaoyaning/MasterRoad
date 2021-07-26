@@ -12,27 +12,27 @@
         <!-- 线程的四种创建方式 -->
         <variable
             name="threadCreate"
-            type="com.jyn.masterroad.concurrent.ThreadCreate" />
+            type="com.jyn.masterroad.concurrent.thread.ThreadCreate" />
 
         <!-- 线程池 -->
         <variable
             name="executors"
-            type="com.jyn.masterroad.concurrent.ExecutorsTest" />
+            type="com.jyn.masterroad.concurrent.thread.ExecutorsTest" />
 
         <!-- Wait 和 Notify-->
         <variable
             name="threadWaitNotify"
-            type="com.jyn.masterroad.concurrent.WaitAndNotifyTest" />
+            type="com.jyn.masterroad.concurrent.thread.WaitAndNotifyTest" />
 
         <!-- ThreadLocal -->
         <variable
             name="threadLocal"
-            type="com.jyn.masterroad.concurrent.ThreadLocalTest" />
+            type="com.jyn.masterroad.concurrent.thread.ThreadLocalTest" />
 
         <!-- CountDownLatch -->
         <variable
             name="countDownLatch"
-            type="com.jyn.masterroad.concurrent.CountDownLatchTest" />
+            type="com.jyn.masterroad.concurrent.thread.CountDownLatchTest" />
 
         <!-- SyncAndLock -->
         <variable

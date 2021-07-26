@@ -1,4 +1,4 @@
-package com.jyn.masterroad.concurrent
+package com.jyn.masterroad.concurrent.thread
 
 /*
  * 太清晰了，动图说明 SynchronousQueue公平模式

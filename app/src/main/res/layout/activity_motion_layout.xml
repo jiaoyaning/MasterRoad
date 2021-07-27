@@ -13,7 +13,7 @@
         android:layout_height="match_parent"
         app:layoutDescription="@xml/activity_motion_layout_scene"
         app:motionDebug="SHOW_PATH"
-        tools:context=".constraintLayout.MotionLayoutActivity">
+        tools:context=".nestedscrolling.constraintLayout.MotionLayoutActivity">
 
         <ImageView
             android:id="@+id/ball"

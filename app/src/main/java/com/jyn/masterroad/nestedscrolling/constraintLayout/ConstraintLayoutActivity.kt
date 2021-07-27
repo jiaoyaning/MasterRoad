@@ -1,4 +1,4 @@
-package com.jyn.masterroad.constraintLayout
+package com.jyn.masterroad.nestedscrolling.constraintLayout
 
 import android.annotation.SuppressLint
 import android.view.View

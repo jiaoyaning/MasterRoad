@@ -14,12 +14,13 @@
         android:usesCleartextTraffic="true"
         tools:ignore="AllowBackup"
         tools:targetApi="m">
+        <activity android:name=".jetpack.navigation.NavigationActivity"></activity>
         <activity android:name=".kotlin.coil.CoilActivity" />
         <activity android:name=".base.jvm.ClassLoaderActivity" />
         <activity android:name=".base.BaseActivity" />
         <activity android:name=".concurrent.ThreadActivity" />
-        <activity android:name=".constraintLayout.MotionLayoutActivity" />
-        <activity android:name=".constraintLayout.ConstraintLayoutActivity" />
+        <activity android:name="com.jyn.masterroad.nestedscrolling.constraintLayout.MotionLayoutActivity" />
+        <activity android:name="com.jyn.masterroad.nestedscrolling.constraintLayout.ConstraintLayoutActivity" />
         <activity android:name=".fragment.FragmentActivity" />
         <activity android:name=".handler.HandlerActivity" />
         <activity android:name=".jetpack.hilt.HiltDaggerActivity" />
@@ -78,12 +79,12 @@
             android:maxRecents="3"
             android:process="com.jyn.masterroad.ipc_server" />
         <activity android:name=".ipc.IpcClientActivity" />
-
         <activity
             android:name=".MainActivity"
             android:configChanges="orientation|screenSize|keyboardHidden">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
@@ -93,6 +94,7 @@
             android:enabled="true"
             android:exported="false"
             android:process="com.jyn.masterroad.ipc_server">
+
             <!-- Android 5.0 后，隐式绑定 Service 需要设置包名。 -->
             <intent-filter>
                 <action android:name="com.jyn.masterroad.ipc.AidlServerService.Action" />

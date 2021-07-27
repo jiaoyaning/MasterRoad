@@ -5,13 +5,6 @@ package com.jyn.common.ARouter
  */
 object RoutePath {
 
-    // 主activity
-    object Main {
-        const val name = "MainActivity"
-        const val path = "/app/MainActivity"
-        const val span = 1
-    }
-
     object Fragment {
         const val name = "Fragment"
         const val path = "/app/Fragment"
@@ -113,7 +106,7 @@ object RoutePath {
     object RecyclerView {
         const val name = " RecyclerView"
         const val path = "/app/ RecyclerView"
-        const val span = 1
+        const val span = 2
     }
 
     // Thread 线程

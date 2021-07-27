@@ -1,4 +1,4 @@
-package com.jyn.masterroad.constraintLayout
+package com.jyn.masterroad.nestedscrolling.constraintLayout
 
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.jyn.common.ARouter.RoutePath
@@ -25,6 +25,9 @@ import kotlinx.android.synthetic.main.activity_motion_layout.*
  *
  * Android转场动画的前世今生
  * https://juejin.cn/post/6976102174627463198
+ *
+ * 玩转 MotionLayout：实战效果展示
+ * https://mp.weixin.qq.com/s/ClkHpaI_zlNw_kH5omVhXg
  */
 @Route(path = RoutePath.MotionLayout.path)
 class MotionLayoutActivity : BaseActivity<ActivityMotionLayoutBinding>

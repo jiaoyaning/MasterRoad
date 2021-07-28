@@ -14,6 +14,7 @@
 # Android
 [Handler](app/src/main/java/com/jyn/masterroad/handler/Handler.md)
 [事件分发机制](app/src/main/java/com/jyn/masterroad/view/touch/事件分发机制.md)
+[编译打包签名](blogs/编译打包签名.md)
 
 # 测试
 [Junit](app/src/androidTest/java/com/jyn/masterroad/blogs/Junit.md)

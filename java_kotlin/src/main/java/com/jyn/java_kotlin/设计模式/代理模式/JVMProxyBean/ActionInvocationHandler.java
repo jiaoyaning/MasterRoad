@@ -6,12 +6,12 @@ import java.lang.reflect.Method;
 /**
  * 动态代理类
  */
-public class ActionInvocationHandler implements InvocationHandler {
+public class ActionInvocationHandler<T> implements InvocationHandler {
 
-    private final ActionDao actionDao;
+    private final T action;
 
-    public ActionInvocationHandler(ActionDao actionDao) {
-        this.actionDao = actionDao;
+    public ActionInvocationHandler(T action) {
+        this.action = action;
     }
 
 
@@ -22,17 +22,9 @@ public class ActionInvocationHandler implements InvocationHandler {
      */
     @Override
     public Object invoke(Object o, Method method, Object[] objects) throws Throwable {
-        actionStart();
-        Object invoke = method.invoke(actionDao, objects);
-        actionDone();
-        return invoke;
-    }
-
-    public void actionStart() {
         System.out.println(" ---- 动态代理开始 ---- ");
-    }
-
-    public void actionDone() {
+        Object invoke = method.invoke(action, objects);
         System.out.println(" ---- 动态代理结束 ---- ");
+        return invoke;
     }
 }

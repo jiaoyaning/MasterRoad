@@ -65,7 +65,7 @@ public class ProxyTest {
          *
          * 目标对象强制需要实现一个接口，否则无法使用 JDK 动态代理
          */
-        InvocationHandler actionInvocationHandler = new ActionInvocationHandler(actionDao);
+        InvocationHandler actionInvocationHandler = new ActionInvocationHandler<>(actionDao);
         ClassLoader classLoader = actionDao.getClass().getClassLoader();
         Class<?>[] interfaces = actionDao.getClass().getInterfaces();
         /*

@@ -21,6 +21,9 @@ import com.jyn.masterroad.databinding.ItemMainBinding
  *
  * 几个场景下Activity的生命周期变化
  * https://mp.weixin.qq.com/s/yrxYcK42QaE0sGgo7oEGjA
+ *
+ * Android 12：全新的App启动动画
+ * https://mp.weixin.qq.com/s/AJZ7eM_GUaqOb9AuaLvrjA
  */
 class MainActivity : BaseActivity<ActivityMainBinding>
     (R.layout.activity_main) {

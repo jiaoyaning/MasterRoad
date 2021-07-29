@@ -35,19 +35,13 @@ import kotlinx.coroutines.cancel
  */
 @ExperimentalCoroutinesApi
 @Route(path = RoutePath.KotlinCoroutines.path)
-class KotlinCoroutinesActivity :
-    BaseActivity<ActivityKotlinCoroutinesBinding>(R.layout.activity_kotlin_coroutines),
-    CoroutineScope by MainScope() {
+class KotlinCoroutinesActivity : BaseActivity<ActivityKotlinCoroutinesBinding>
+    (R.layout.activity_kotlin_coroutines) {
 
     private val kotlinCoroutinesCreate: KotlinCoroutinesCreate by lazy { createVM() }
 
     override fun initView() {
         binding.create = kotlinCoroutinesCreate
         binding.channel = ChannelTest()
-    }
-
-    override fun onDestroy() {
-        super.onDestroy()
-        cancel()
     }
 }

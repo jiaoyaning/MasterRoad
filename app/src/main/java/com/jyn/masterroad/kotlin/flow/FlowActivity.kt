@@ -25,20 +25,18 @@ import kotlinx.coroutines.cancel
  *
  * 官方推荐 Flow 取代 LiveData,有必要吗？
  * https://juejin.cn/post/6986265488275800072
+ *
+ * Kotlin Flow 操作符：篇幅很大 你忍一下
+ * https://mp.weixin.qq.com/s/-G5AsB5iSwL3BoERJPlELw
  */
 @Route(path = RoutePath.Flow.path)
-class FlowActivity : BaseActivity<ActivityFlowBinding>(R.layout.activity_flow),
-    CoroutineScope by MainScope() {
+class FlowActivity : BaseActivity<ActivityFlowBinding>
+    (R.layout.activity_flow) {
     private val flowCreate: FlowCreate by viewModels()
     private val sharedAndStateFlow: SharedAndStateFlow by viewModels()
 
     override fun initData() {
         binding.flowCreate = flowCreate
         binding.sharedAndStateFlow = sharedAndStateFlow
-    }
-
-    override fun onDestroy() {
-        super.onDestroy()
-        cancel()
     }
 }

@@ -8,6 +8,9 @@ import androidx.databinding.ViewDataBinding
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.viewbinding.ViewBinding
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.MainScope
+import kotlinx.coroutines.cancel
 import java.lang.reflect.ParameterizedType
 
 /*
@@ -17,7 +20,8 @@ import java.lang.reflect.ParameterizedType
  * Google挖坑后人埋-ViewBinding(下)
  * https://mp.weixin.qq.com/s/aUr3EV-Vizc-fnpBRYg8Hg
  */
-abstract class BaseActivity<dataBinding : ViewDataBinding>(var id: Int = 0) : AppCompatActivity() {
+abstract class BaseActivity<dataBinding : ViewDataBinding>(var id: Int = 0) : AppCompatActivity(),
+    CoroutineScope by MainScope() {
 
     val binding: dataBinding by lazy {
         DataBindingUtil.setContentView<dataBinding>(this, id)
@@ -47,5 +51,10 @@ abstract class BaseActivity<dataBinding : ViewDataBinding>(var id: Int = 0) : Ap
      */
     inline fun <reified T : ViewModel> createVM(): T {
         return ViewModelProvider(this).get(T::class.java)
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        cancel()
     }
 }

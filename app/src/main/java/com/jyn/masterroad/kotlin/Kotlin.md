@@ -1,5 +1,5 @@
 [Kotlin编译调校之WarningsAsErrors 压制警告](https://droidyue.com/blog/2019/08/03/kotlinc-config-warnings-as-errors/)
-
+[如何区分和使用 run, with, let, also, apply & 单例三种写法](https://mp.weixin.qq.com/s/FNG_R507TFeQg3xXsY-1MQ)
 # 类和接口
 private —— 意味着只在这个类内部（包含其所有成员）可见；
 protected —— 和 private一样 + 在子类中可见。

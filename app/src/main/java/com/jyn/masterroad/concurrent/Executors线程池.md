@@ -1,9 +1,22 @@
-[TOC]
+[TOC]  
+
 ![线程池提交任务与执行任务流程](https://mmbiz.qpic.cn/mmbiz_png/OyweysCSeLVMG2Z2WVksz8x3cqKQO6mnxRHH17cuyJ083gseYlic8snYyIQG523xgWN9x6Ll3Dz5HI8l0OE6FAA/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1)
 # Executors的几种线程创建方式
+**1. `Executors.newCachedThreadPool()`**
+>可缓存的线程池，如果线程池的容量超过了任务数，自动回收空闲线程，任务增加时可以自动添加新线程，线程池的容量不限制
 
+**2. `Executors.newSingleThreadExecutor()`**
+>单线程的线程池，线程异常结束，会创建一个新的线程，能确保任务按提交顺序执行
 
-#线程池参数
+**3. `Executors.newFixedThreadPool(2)`**
+>定长线程池，每当提交一个任务就创建一个线程，直到达到线程池的最大数量，这时线程数量不再变化，当线程发生错误结束时，线程池会补充一个新的线程  
+
+**4. `Executors.newScheduledThreadPool(2)`**
+>定长线程池，可定时及周期性任务执行（轮训）、延迟执行
+
+---
+
+# 线程池参数
 **1. `corePoolSize`核心线程数**
 >如果提交任务后线程还在运行，当线程数小于 `corePoolSize` 值时，无论线程池中的线程是否忙碌，都会创建线程，并把任务交给此新创建的线程进行处理，如果线程数少于等于 `corePoolSize` ，那么这些线程不会回收，除非将 `ThreadPoolExecutor.allowCoreThreadTimeOut()` 设置为 `true`，但一般不这么干，因为频繁地创建销毁线程会极大地增加系统调用的开销。
 
@@ -30,7 +43,7 @@
 **5. `keepAliveTime`线程存活时间**
 >线程存活时间，如果在此时间内超出 `corePoolSize` 大小的线程处于 `idle` 状态，这些线程会被回收
 
-***
+---
 
 #问题
 #### 问：线程池```submit()``` 和 ```execute()``` 区别？
@@ -45,7 +58,19 @@
 >3. `submit()`可以捕获`Exception`;
     例如，如果`task`里会抛出`checked`或者`unchecked exception`，而你又希望外面的调用者能够感知这些`exception`并做出及时的处理，那么就需要用到`submit`，通过对`Future.get()`进行抛出异常的捕获，然后对其进行处理。  
 
-***
+---
+#### 问：`Callable<T>()` 和 `Runnable()` 区别？
+> 相同点：
+> 1. 都是接口
+> 2. 都可以编写多线程程序
+> 3. 都采用`Thread.start()`启动线程
+> 
+> 不同点：
+> 1. `Runnable`没有返回值；`Callable`可以返回执行结果，是个泛型，和`Future、FutureTask`配合可以用来获取异步执行的结果
+> 2. `Callable`接口的`call()`方法允许抛出异常；`Runnable`的`run()`方法异常只能在内部消化，不能往上继续抛  
+> **PS**:`Callalble`接口支持返回执行结果，需要调用`FutureTask.get()`得到，此方法会阻塞主进程的继续往下执行，如果不调用不会阻塞。
+
+---
 
 #### 问： `shutdown()` 和 `shutdownNow()` 和 `awaitTermination()`区别？
 >`shutdown()` 和 `shutdownNow()`作用于关闭线程池。  

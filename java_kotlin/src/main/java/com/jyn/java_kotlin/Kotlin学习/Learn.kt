@@ -1,9 +1,16 @@
 package com.jyn.java_kotlin.Kotlin学习
 
+import kotlin.contracts.ExperimentalContracts
+import kotlin.contracts.contract
+
 /**
  * Kotlin编译调校之WarningsAsErrors 压制警告
  * https://droidyue.com/blog/2019/08/03/kotlinc-config-warnings-as-errors/
+ *
+ * 为数不多的人知道的 Kotlin 技巧及解析(三)
+ * https://mp.weixin.qq.com/s/lcLJB0MFaYX1lQXtJ3M88g
  */
+@ExperimentalContracts
 fun main() {
     println("============扩展特性=============")
     10.sayHollow()
@@ -28,6 +35,26 @@ fun main() {
         Learn()
     }
     println(learn.toString())
+
+    println("============使用 require 或者 check 函数作为条件检查=============")
+    // 传统的做法
+    val age = -1;
+    if (age <= 0) {
+        throw IllegalArgumentException("age must  not be negative")
+    }
+
+    // 使用 require 去检查
+    require(age > 0) { "age must be negative" }
+
+    // 使用 checkNotNull 检查
+    val name: String? = null
+    checkNotNull(name){
+        "name must not be null"
+    }
+
+    println("============Contract 特性=============")
+    //Contract 的作用就是当 Kotlin 编译器没有足够的信息去分析函数的情况的时候，Contracts 可以为函数提供附加信息，帮助 Kotlin 编译器去分析函数的情况
+    testString("测试")
 }
 
 fun intFun(int: Int) {
@@ -72,5 +99,21 @@ class Learn {
 
     fun fun1() {
         println("这是一个无参无返回值的方法")
+    }
+}
+
+@ExperimentalContracts
+fun String?.isNotNullOrEmpty(): Boolean {
+    contract {
+        returns(true) implies (this@isNotNullOrEmpty != null)
+    }
+
+    return this != null && !this.trim().equals("null", true) && this.trim().isNotEmpty()
+}
+
+@ExperimentalContracts
+fun testString(name: String?) {
+    if (name != null && name.isNotNullOrEmpty()) {
+        println(name.length)  // 1
     }
 }

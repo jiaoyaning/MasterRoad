@@ -15,3 +15,7 @@ https://juejin.cn/post/6876968255597051917
 
 ## 2021 Android面经（高级/资深）
 https://www.jianshu.com/p/8f5366216b1b
+
+https://zhuanlan.zhihu.com/p/384845787
+
+https://mp.weixin.qq.com/s/Gp0y6xczk0ooQe0k8mZDeg

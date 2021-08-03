@@ -21,6 +21,9 @@ import com.jyn.masterroad.databinding.ActivityOnDrawBinding
  *
  * Android 的 Window 如何理解？Dialog 到底是不是子窗口？
  * https://mp.weixin.qq.com/s/hJcqsJhoGjsxOjXG_HyZxw
+ *
+ * Android 视图系统的设计与实现 | 通俗易懂
+ * https://mp.weixin.qq.com/s/aFzPl6VcBNXujxw12GkT_w
  */
 class OnDrawActivity : BaseActivity<ActivityOnDrawBinding>(R.layout.activity_on_draw) {
 

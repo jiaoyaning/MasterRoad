@@ -38,17 +38,25 @@ public class SyncAndLockTest {
     //region Synchronized三种锁方式
     private static final Object object = new Object();
 
+    /*
+     * 1.修饰普通方法：锁对象即为当前对象
+     */
     public synchronized void normalSyncMethod() {
-        //临界区
     }
 
+    /*
+     * 2. 修饰静态方法：锁对象为当前Class对象
+     */
     public static synchronized void staticSyncMethod() {
-        //临界区
     }
 
+    /*
+     * 3. 修饰代码块：锁对象为synchronized紧接着的小括号内的对象
+     *   3.1 实例对象：锁对象为当前对象
+     *   3.2 类：锁对象为当前Class对象
+     */
     public void syncBlockMethod() {
         synchronized (object) {
-            //临界区
         }
     }
 

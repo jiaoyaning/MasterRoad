@@ -14,7 +14,12 @@ public class RetrofitProxyTest {
         RetrofitProxyInterface retrofitProxyInterface = new RetrofitProxyInterface() {
             @Override
             public void testFun(String testArgs) {
-                LogUtils.tag(TAG).i("这是一个RetrofitInterface的匿名内部实现类 testArgs：" + testArgs);
+                LogUtils.tag(TAG).i("这是一个RetrofitInterface的匿名内部实现类1 testArgs：" + testArgs);
+            }
+
+            @Override
+            public void testFun2(String testArgument) {
+                LogUtils.tag(TAG).i("这是一个RetrofitInterface的匿名内部实现类2 testArgument：" + testArgument);
             }
         };
 
@@ -32,7 +37,8 @@ public class RetrofitProxyTest {
                     }
                 });
 
-        retrofitProxyInterfaceProxy.testFun("哎，就是玩");
+        retrofitProxyInterfaceProxy.testFun("哎，就是玩 testFun");
+        retrofitProxyInterfaceProxy.testFun2("哎，就是玩 testFun2");
     }
 
 }

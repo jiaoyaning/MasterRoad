@@ -80,6 +80,8 @@ dependencies {
     implementation("com.alibaba:arouter-api:1.5.0")
     implementation("com.tencent:mmkv-static:1.2.7")
     api("com.apkfuns.logutils:library:1.7.5")
+    api("com.squareup.retrofit2:adapter-rxjava3")
+    api("com.squareup.retrofit2:adapter-rxjava2")
 
     //hilt
     implementation("com.google.dagger:hilt-android:2.28-alpha")

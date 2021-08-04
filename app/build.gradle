@@ -149,6 +149,7 @@ dependencies {
     implementation http["retrofit2"]
     implementation http["retrofit2-scalars"]
     implementation http["retrofit2-gson"]
+    implementation http["retrofit2-rxjava3"]
     implementation http["rxjava3"]
     implementation http["rxandroid3"]
     implementation http["rxhttp"]

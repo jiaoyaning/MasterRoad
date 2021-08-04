@@ -150,6 +150,7 @@ ext {
             "retrofit2"        : "com.squareup.retrofit2:retrofit:2.8.1",
             "retrofit2-scalars": "com.squareup.retrofit2:converter-scalars:2.3.0",
             "retrofit2-gson"   : "com.squareup.retrofit2:converter-gson:2.8.1",
+            "retrofit2-rxjava3": "com.squareup.retrofit2:adapter-rxjava3",
             /**
              * https://github.com/ReactiveX/RxJava
              * https://github.com/ReactiveX/RxAndroid

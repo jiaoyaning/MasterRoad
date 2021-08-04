@@ -28,6 +28,9 @@ import kotlinx.android.synthetic.main.activity_motion_layout.*
  *
  * 玩转 MotionLayout：实战效果展示
  * https://mp.weixin.qq.com/s/ClkHpaI_zlNw_kH5omVhXg
+ *
+ * MotionLayout动画从未如此简单！
+ * https://mp.weixin.qq.com/s/3IAPd53rMOrLiIUDT520-w
  */
 @Route(path = RoutePath.MotionLayout.path)
 class MotionLayoutActivity : BaseActivity<ActivityMotionLayoutBinding>

@@ -1,7 +1,5 @@
 package com.jyn.masterroad.utils.retrofit;
 
-import java.util.List;
-
 import retrofit2.Call;
 import retrofit2.http.GET;
 import retrofit2.http.Path;
@@ -12,5 +10,5 @@ import retrofit2.http.Path;
  */
 public interface RetrofitService {
     @GET("article/list/{page}/json")
-    Call<List<String>> getArticleList(@Path("page") int page);
+    Call<Object> getArticleList(@Path("page") int page);
 }

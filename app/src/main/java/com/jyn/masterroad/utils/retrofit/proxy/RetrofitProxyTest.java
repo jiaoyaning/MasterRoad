@@ -26,7 +26,7 @@ public class RetrofitProxyTest {
                     @Override
                     public Object invoke(Object proxy, Method method, Object[] args) throws InvocationTargetException, IllegalAccessException {
                         LogUtils.tag(TAG).i(" ---- 动态代理开始 ---- ");
-                        Object invoke = method.invoke(retrofitProxyInterface, args);
+                        Object invoke = method.invoke(retrofitProxyInterface, args); //指明代理对象
                         LogUtils.tag(TAG).i(" ---- 动态代理结束 ---- ");
                         return invoke;
                     }

@@ -19,9 +19,7 @@ class RetrofitTest {
             .addConverterFactory(GsonConverterFactory.create())
             .build()
 
-        val retrofitService: RetrofitService by lazy {
-            retrofit.create(RetrofitService::class.java)
-        }
+        val retrofitService: RetrofitService by lazy { retrofit.create(RetrofitService::class.java) }
     }
 
     fun getArticleList() {

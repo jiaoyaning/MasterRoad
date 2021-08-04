@@ -9,6 +9,7 @@ import com.jyn.masterroad.utils.retrofit.proxy.RetrofitProxyTest
 
 /*
  * 官网 https://square.github.io/retrofit/
+ *
  */
 @Route(path = RoutePath.Retrofit.path)
 class RetrofitActivity : BaseActivity<ActivityRetrofitBinding>(R.layout.activity_retrofit) {

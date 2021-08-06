@@ -6,8 +6,8 @@
     <data>
 
         <variable
-            name="RetrofitTest"
-            type="com.jyn.masterroad.utils.retrofit.RetrofitTest" />
+            name="RetrofitViewModel"
+            type="com.jyn.masterroad.utils.retrofit.RetrofitViewModel" />
 
         <variable
             name="RetrofitProxyTest"
@@ -34,10 +34,25 @@
             android:id="@+id/button68"
             style="@style/tv"
             android:layout_marginTop="8dp"
-            android:onClick="@{() -> RetrofitTest.getArticleList()}"
-            android:text="Retrofit测试"
+            android:onClick="@{() -> RetrofitViewModel.getArticleList()}"
+            android:text="Retrofit"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView53" />
+
+        <Button
+            android:id="@+id/button70"
+            style="@style/tv2"
+            android:text="Retrofit\nRxjava"
+            app:layout_constraintStart_toEndOf="@+id/button68"
+            app:layout_constraintTop_toTopOf="@+id/button68" />
+
+        <Button
+            android:id="@+id/button71"
+            style="@style/tv"
+            android:onClick="@{() -> RetrofitViewModel.getArticleList3()}"
+            android:text="Retrofit\n协程"
+            app:layout_constraintStart_toEndOf="@+id/button70"
+            app:layout_constraintTop_toTopOf="@+id/button68" />
 
         <TextView
             android:id="@+id/textView54"
@@ -57,5 +72,7 @@
             android:text="动态代理测试"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView54" />
+
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

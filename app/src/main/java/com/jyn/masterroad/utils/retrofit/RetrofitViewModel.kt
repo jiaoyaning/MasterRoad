@@ -36,6 +36,15 @@ class RetrofitViewModel(application: Application) : BaseVM(application) {
             })
     }
 
+    fun getArticleList2() {
+        retrofitService.getArticleList2(0)
+            .subscribe({
+                LogUtils.tag(TAG).i("onNext it:$it")
+            }, {
+                LogUtils.tag(TAG).i("onError it:$it")
+            })
+    }
+
     fun getArticleList3() {
         viewModelScope.launch {
             val articleList3 = try {

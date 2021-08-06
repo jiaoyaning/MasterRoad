@@ -16,6 +16,9 @@ import com.jyn.masterroad.utils.retrofit.proxy.RetrofitProxyTest
  *
  * 三方库源码笔记（7）-Retrofit 源码详解
  * https://mp.weixin.qq.com/s/qWe_tpT65-p1W1zf_AATBg
+ *
+ * 入木三分：从设计者角度看Retrofit原理
+ * https://mp.weixin.qq.com/s/7GuX3ooc9Bo1P9FJyGkZ8g
  */
 @Route(path = RoutePath.Retrofit.path)
 class RetrofitActivity : BaseScopeActivity<ActivityRetrofitBinding>(R.layout.activity_retrofit) {

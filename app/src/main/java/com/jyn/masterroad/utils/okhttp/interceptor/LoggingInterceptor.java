@@ -1,4 +1,4 @@
-package com.jyn.masterroad.utils.okhttp;
+package com.jyn.masterroad.utils.okhttp.interceptor;
 
 import org.jetbrains.annotations.NotNull;
 

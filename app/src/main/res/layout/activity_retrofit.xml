@@ -42,6 +42,7 @@
         <Button
             android:id="@+id/button70"
             style="@style/tv2"
+            android:onClick="@{() -> RetrofitViewModel.getArticleList2()}"
             android:text="Retrofit\nRxjava"
             app:layout_constraintStart_toEndOf="@+id/button68"
             app:layout_constraintTop_toTopOf="@+id/button68" />

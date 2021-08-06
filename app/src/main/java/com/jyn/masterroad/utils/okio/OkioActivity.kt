@@ -12,6 +12,6 @@ import com.jyn.masterroad.databinding.ActivityOkioBinding
  * 用烂OkIO，隔壁产品看不懂了
  * https://mp.weixin.qq.com/s/5EdOHB_iOfJf2lYjOaIiJg
  */
-@Route(path = RoutePath.OkHttp.path)
+@Route(path = RoutePath.Okio.path)
 class OkioActivity : BaseActivity<ActivityOkioBinding>(R.layout.activity_okio) {
 }

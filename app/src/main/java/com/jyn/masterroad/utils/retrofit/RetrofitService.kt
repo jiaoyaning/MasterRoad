@@ -1,5 +1,6 @@
 package com.jyn.masterroad.utils.retrofit
 
+import io.reactivex.rxjava3.core.Observable
 import retrofit2.Call
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava3.RxJava3CallAdapterFactory
@@ -25,6 +26,9 @@ interface RetrofitService {
 
     @GET("article/list/{page}/json")
     fun getArticleList(@Path("page") page: Int): Call<Any>
+
+    @GET("article/list/{page}/json")
+    fun getArticleList2(@Path("page") page: Int): Observable<Any>
 
     @GET("article/list/{page}/json")
     suspend fun getArticleList3(@Path("page") page: Int): Any

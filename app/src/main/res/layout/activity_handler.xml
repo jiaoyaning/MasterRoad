@@ -90,30 +90,38 @@
             app:layout_constraintTop_toTopOf="@id/button22" />
 
         <TextView
-            android:id="@+id/textView37"
+            android:id="@+id/handler_tv_leak"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:layout_marginEnd="8dp"
             android:text="内存泄漏测试"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/button22" />
+            app:layout_constraintTop_toBottomOf="@id/button22" />
 
         <Button
             android:id="@+id/handler_leak_btn_delay"
             style="@style/tv"
             android:layout_marginTop="8dp"
-            android:text="延时消息"
-            app:layout_constraintEnd_toStartOf="@+id/handler_leak_btn_thread"
+            android:text="延时消息\nRunnable"
+            app:layout_constraintEnd_toStartOf="@id/handler_leak_btn_delay_message"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView37" />
+            app:layout_constraintTop_toBottomOf="@id/handler_tv_leak" />
+
+        <Button
+            android:id="@+id/handler_leak_btn_delay_message"
+            style="@style/tv2"
+            android:text="延时消息\nMessage"
+            app:layout_constraintEnd_toStartOf="@id/handler_leak_btn_thread"
+            app:layout_constraintStart_toEndOf="@id/handler_leak_btn_delay"
+            app:layout_constraintTop_toTopOf="@id/handler_leak_btn_delay" />
 
         <Button
             android:id="@+id/handler_leak_btn_thread"
-            style="@style/tv2"
+            style="@style/tv"
             android:text="子线程"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/handler_leak_btn_delay"
-            app:layout_constraintTop_toTopOf="@+id/handler_leak_btn_delay" />
+            app:layout_constraintStart_toEndOf="@id/handler_leak_btn_delay_message"
+            app:layout_constraintTop_toTopOf="@id/handler_leak_btn_delay" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

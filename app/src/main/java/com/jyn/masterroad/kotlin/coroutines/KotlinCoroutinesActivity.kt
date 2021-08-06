@@ -3,6 +3,7 @@ package com.jyn.masterroad.kotlin.coroutines
 import androidx.lifecycle.lifecycleScope
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.jyn.common.ARouter.RoutePath
+import com.jyn.common.Base.BaseScopeActivity
 import com.jyn.masterroad.R
 import com.jyn.masterroad.base.BaseActivity
 import com.jyn.masterroad.databinding.ActivityKotlinCoroutinesBinding
@@ -35,7 +36,7 @@ import kotlinx.coroutines.cancel
  */
 @ExperimentalCoroutinesApi
 @Route(path = RoutePath.KotlinCoroutines.path)
-class KotlinCoroutinesActivity : BaseActivity<ActivityKotlinCoroutinesBinding>
+class KotlinCoroutinesActivity : BaseScopeActivity<ActivityKotlinCoroutinesBinding>
     (R.layout.activity_kotlin_coroutines) {
 
     private val kotlinCoroutinesCreate: KotlinCoroutinesCreate by lazy { createVM() }

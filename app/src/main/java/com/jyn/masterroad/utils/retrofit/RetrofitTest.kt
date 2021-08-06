@@ -8,10 +8,6 @@ import retrofit2.Retrofit
 import retrofit2.adapter.rxjava3.RxJava3CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
 
-/*
- * Retrofit源码解析---addConverterFactory和addCallAdapterFactory区别
- * https://blog.csdn.net/new_abc/article/details/53021387
- */
 class RetrofitTest {
     companion object {
         const val TAG = "Retrofit"

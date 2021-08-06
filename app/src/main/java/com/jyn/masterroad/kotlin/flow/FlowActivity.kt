@@ -3,6 +3,7 @@ package com.jyn.masterroad.kotlin.flow
 import androidx.activity.viewModels
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.jyn.common.ARouter.RoutePath
+import com.jyn.common.Base.BaseScopeActivity
 import com.jyn.masterroad.R
 import com.jyn.masterroad.base.BaseActivity
 import com.jyn.masterroad.databinding.ActivityFlowBinding
@@ -30,8 +31,7 @@ import kotlinx.coroutines.cancel
  * https://mp.weixin.qq.com/s/-G5AsB5iSwL3BoERJPlELw
  */
 @Route(path = RoutePath.Flow.path)
-class FlowActivity : BaseActivity<ActivityFlowBinding>
-    (R.layout.activity_flow) {
+class FlowActivity : BaseScopeActivity<ActivityFlowBinding>(R.layout.activity_flow) {
     private val flowCreate: FlowCreate by viewModels()
     private val sharedAndStateFlow: SharedAndStateFlow by viewModels()
 

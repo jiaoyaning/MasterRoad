@@ -5,6 +5,7 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 import retrofit2.Retrofit
+import retrofit2.adapter.rxjava3.RxJava3CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
 
 /*
@@ -23,7 +24,7 @@ class RetrofitTest {
         var retrofit: Retrofit = Retrofit.Builder()
             .baseUrl("https://www.wanandroid.com/")
             .addConverterFactory(GsonConverterFactory.create())
-//            .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
+            .addCallAdapterFactory(RxJava3CallAdapterFactory.create())
             .build()
 
         val retrofitService: RetrofitService = retrofit.create(RetrofitService::class.java)

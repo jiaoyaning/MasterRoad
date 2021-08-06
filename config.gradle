@@ -147,10 +147,13 @@ ext {
 
     http = [
             "okio"             : "com.squareup.okio:okio:2.8.0",
+            /**
+             * https://square.github.io/retrofit/
+             */
             "retrofit2"        : "com.squareup.retrofit2:retrofit:2.8.1",
             "retrofit2-scalars": "com.squareup.retrofit2:converter-scalars:2.3.0",
             "retrofit2-gson"   : "com.squareup.retrofit2:converter-gson:2.8.1",
-            "retrofit2-rxjava3": "com.squareup.retrofit2:adapter-rxjava3",
+            "retrofit2-rxjava3": "com.squareup.retrofit2:adapter-rxjava3:2.9.0",
             /**
              * https://github.com/ReactiveX/RxJava
              * https://github.com/ReactiveX/RxAndroid

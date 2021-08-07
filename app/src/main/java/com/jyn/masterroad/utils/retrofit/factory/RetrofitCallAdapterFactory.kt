@@ -4,6 +4,10 @@ import retrofit2.CallAdapter
 import retrofit2.Retrofit
 import java.lang.reflect.Type
 
+/*
+ * Retrofit 结合 Lifecycle, 将 Http 生命周期管理到极致
+ * https://mp.weixin.qq.com/s/omCnmMX3XVq-vnKoDnQXTg
+ */
 class RetrofitCallAdapterFactory : CallAdapter.Factory() {
 
     /*

@@ -14,8 +14,7 @@ import retrofit2.Callback
 import retrofit2.Response
 
 /*
- * 使用协程，让网络世界更加美好
- * https://mp.weixin.qq.com/s/84fSUYQt3T_Fa5B5s5ihvA
+
  */
 class RetrofitViewModel(application: Application) : BaseVM(application) {
     companion object {

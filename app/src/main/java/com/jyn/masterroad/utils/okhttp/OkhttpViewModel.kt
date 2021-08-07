@@ -2,7 +2,6 @@ package com.jyn.masterroad.utils.okhttp
 
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
-import androidx.lifecycle.MutableLiveData
 import com.apkfuns.logutils.LogUtils
 import com.jyn.masterroad.utils.okhttp.interceptor.LoggingInterceptor
 import okhttp3.*
@@ -28,6 +27,8 @@ class OkhttpViewModel(application: Application) : AndroidViewModel(application) 
 
         val okHttpClient by lazy {
             OkHttpClient.Builder()
+                //401的时候会走该监听，可用于更新token
+                .authenticator(Authenticator { _, _ -> return@Authenticator null })
                 .addInterceptor(LoggingInterceptor())
                 .build()
         }

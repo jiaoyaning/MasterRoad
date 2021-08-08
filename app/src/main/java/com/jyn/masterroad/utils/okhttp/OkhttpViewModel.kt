@@ -17,6 +17,9 @@ import java.io.IOException
  * OKHttp3--Dispatcher分发器实现同步异步请求源码解析【三】
  * https://blog.csdn.net/qq_30993595/article/details/86681210
  *
+ * facebook网络调节库(此处才需要addNetworkInterceptor)
+ * https://github.com/facebook/stetho/
+ *
  * 随机诗词: http://www.alapi.cn/api/view/8
  */
 class OkhttpViewModel(application: Application) : AndroidViewModel(application) {
@@ -24,6 +27,10 @@ class OkhttpViewModel(application: Application) : AndroidViewModel(application) 
         const val TAG = "Okhttp"
 
         const val WAN_ANDROID = "https://www.wanandroid.com/wxarticle/chapters/json"
+
+        /*
+         * addNetworkInterceptor()一般用于网络调试
+         */
 
         val okHttpClient by lazy {
             OkHttpClient.Builder()
@@ -43,7 +50,8 @@ class OkhttpViewModel(application: Application) : AndroidViewModel(application) 
             .build()
 
         Thread {
-            val response = okHttpClient.newCall(request).execute()
+            val realCall = okHttpClient.newCall(request)
+            val response = realCall.execute()
             LogUtils.tag(TAG).i("同步请求 execute response:$response")
         }.start()
     }
@@ -56,7 +64,8 @@ class OkhttpViewModel(application: Application) : AndroidViewModel(application) 
             .url(WAN_ANDROID)
             .build()
 
-        okHttpClient.newCall(request).enqueue(object : Callback {
+        val realCall = okHttpClient.newCall(request)
+        realCall.enqueue(object : Callback {
             override fun onFailure(call: Call, e: IOException) {
                 LogUtils.tag(TAG).i("异步请求 enqueue onFailure call:$call")
             }

@@ -34,7 +34,7 @@
             android:id="@+id/button68"
             style="@style/tv"
             android:layout_marginTop="8dp"
-            android:onClick="@{() -> RetrofitViewModel.getArticleList()}"
+            android:onClick="@{() -> RetrofitViewModel.callTest()}"
             android:text="Retrofit\n默认"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView53" />
@@ -42,7 +42,7 @@
         <Button
             android:id="@+id/button70"
             style="@style/tv2"
-            android:onClick="@{() -> RetrofitViewModel.getArticleList2()}"
+            android:onClick="@{() -> RetrofitViewModel.rxjavaTest()}"
             android:text="Retrofit\nRxjava"
             app:layout_constraintStart_toEndOf="@+id/button68"
             app:layout_constraintTop_toTopOf="@+id/button68" />
@@ -50,7 +50,7 @@
         <Button
             android:id="@+id/button71"
             style="@style/tv"
-            android:onClick="@{() -> RetrofitViewModel.getArticleList3()}"
+            android:onClick="@{() -> RetrofitViewModel.suspendTest()}"
             android:text="Retrofit\n协程"
             app:layout_constraintStart_toEndOf="@+id/button70"
             app:layout_constraintTop_toTopOf="@+id/button68" />

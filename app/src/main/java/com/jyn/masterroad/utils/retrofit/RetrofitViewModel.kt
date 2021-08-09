@@ -13,15 +13,12 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-/*
-
- */
 class RetrofitViewModel(application: Application) : BaseVM(application) {
     companion object {
         const val TAG = "Retrofit"
     }
 
-    fun getArticleList() {
+    fun callTest() {
         retrofitService
             .getArticleList(0)
             .enqueue(object : Callback<Any> {
@@ -35,7 +32,7 @@ class RetrofitViewModel(application: Application) : BaseVM(application) {
             })
     }
 
-    fun getArticleList2() {
+    fun rxjavaTest() {
         retrofitService.getArticleList2(0)
             .subscribe({
                 LogUtils.tag(TAG).i("onNext it:$it")
@@ -44,7 +41,7 @@ class RetrofitViewModel(application: Application) : BaseVM(application) {
             })
     }
 
-    fun getArticleList3() {
+    fun suspendTest() {
         viewModelScope.launch {
             val articleList3 = try {
                 retrofitService.getArticleList3(0)

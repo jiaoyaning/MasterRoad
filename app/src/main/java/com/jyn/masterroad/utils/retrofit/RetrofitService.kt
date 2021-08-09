@@ -17,8 +17,8 @@ interface RetrofitService {
          */
         var retrofit: Retrofit = Retrofit.Builder()
             .baseUrl("https://www.wanandroid.com/")
-            .addConverterFactory(GsonConverterFactory.create())
             .addCallAdapterFactory(RxJava3CallAdapterFactory.create())
+            .addConverterFactory(GsonConverterFactory.create())
             .build()
 
         val retrofitService: RetrofitService = retrofit.create(RetrofitService::class.java)

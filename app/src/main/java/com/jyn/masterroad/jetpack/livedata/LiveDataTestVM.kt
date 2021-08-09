@@ -51,6 +51,20 @@ class LiveDataTestVM(application: Application) : BaseVM(application) {
             super.setValue(value)
             LogUtils.tag(TAG).i("setValue : $value")
         }
+
+        /**
+         * 当LiveData绑定有活跃状态的observer时就会调用
+         */
+        override fun onActive() {
+            super.onActive()
+        }
+
+        /**
+         * 当LiveData没有任何活跃状态observer绑定时调用
+         */
+        override fun onInactive() {
+            super.onInactive()
+        }
     }
     //region Observable
     private var numObservable = ObservableInt(0)

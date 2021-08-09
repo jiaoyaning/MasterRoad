@@ -28,6 +28,12 @@ import com.jyn.masterroad.databinding.ActivityRxjavaBinding
  * 大佬们，一波RxJava 3.0来袭，请做好准备~
  * https://juejin.cn/post/6844903885245513741
  *
+ * 详解 RxJava 的消息订阅和线程切换原理
+ * https://mp.weixin.qq.com/s/GBGlttLgQA2XrMcRTUUTOw
+ *
+ * 解密 RxJava 的异常处理机制，不是你想的那么简单！
+ * https://mp.weixin.qq.com/s/cvRD1rstDkitm-HflwiFnQ
+ *
  * 中文文档
  * https://github.com/mcxiaoke/RxDocs
  * https://github.com/zhaimi/RxJavaAwesome

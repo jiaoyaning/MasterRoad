@@ -1,5 +1,7 @@
 package com.jyn.masterroad.utils.retrofit
 
+import androidx.lifecycle.LiveData
+import com.jyn.masterroad.utils.retrofit.factory.LiveDataCallAdapterFactory
 import io.reactivex.rxjava3.core.Observable
 import retrofit2.Call
 import retrofit2.Retrofit
@@ -18,6 +20,7 @@ interface RetrofitService {
         var retrofit: Retrofit = Retrofit.Builder()
             .baseUrl("https://www.wanandroid.com/")
             .addCallAdapterFactory(RxJava3CallAdapterFactory.create())
+            .addCallAdapterFactory(LiveDataCallAdapterFactory.create())
             .addConverterFactory(GsonConverterFactory.create())
             .build()
 
@@ -32,4 +35,7 @@ interface RetrofitService {
 
     @GET("article/list/{page}/json")
     suspend fun getArticleList3(@Path("page") page: Int): Any
+
+    @GET("article/list/{page}/json")
+    fun getArticleList4(@Path("page") page: Int): LiveData<Any>
 }

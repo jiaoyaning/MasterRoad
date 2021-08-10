@@ -33,7 +33,8 @@ class RetrofitViewModel(application: Application) : BaseVM(application) {
     }
 
     fun rxjavaTest() {
-        retrofitService.getArticleList2(0)
+        retrofitService
+            .getArticleList2(0)
             .subscribe({
                 LogUtils.tag(TAG).i("onNext it:$it")
             }, {
@@ -51,6 +52,14 @@ class RetrofitViewModel(application: Application) : BaseVM(application) {
             }
             LogUtils.tag(TAG).i("articleList2 success :$articleList3")
         }
+    }
+
+    fun liveDataTest() {
+        retrofitService
+            .getArticleList4(0)
+            .observeForever {
+                LogUtils.tag(TAG).i("observeForever it:$it")
+            }
     }
 
     /**

@@ -36,6 +36,7 @@
             android:layout_marginTop="8dp"
             android:onClick="@{() -> RetrofitViewModel.callTest()}"
             android:text="Retrofit\n默认"
+            app:layout_constraintEnd_toStartOf="@id/button70"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView53" />
 
@@ -44,6 +45,7 @@
             style="@style/tv2"
             android:onClick="@{() -> RetrofitViewModel.rxjavaTest()}"
             android:text="Retrofit\nRxjava"
+            app:layout_constraintEnd_toStartOf="@id/button71"
             app:layout_constraintStart_toEndOf="@+id/button68"
             app:layout_constraintTop_toTopOf="@+id/button68" />
 
@@ -52,7 +54,17 @@
             style="@style/tv"
             android:onClick="@{() -> RetrofitViewModel.suspendTest()}"
             android:text="Retrofit\n协程"
+            app:layout_constraintEnd_toStartOf="@id/button74"
             app:layout_constraintStart_toEndOf="@+id/button70"
+            app:layout_constraintTop_toTopOf="@+id/button68" />
+
+        <Button
+            android:id="@+id/button74"
+            style="@style/tv2"
+            android:onClick="@{() -> RetrofitViewModel.liveDataTest()}"
+            android:text="Retrofit\nLiveData"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/button71"
             app:layout_constraintTop_toTopOf="@+id/button68" />
 
         <TextView
@@ -73,7 +85,5 @@
             android:text="动态代理测试"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView54" />
-
-
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

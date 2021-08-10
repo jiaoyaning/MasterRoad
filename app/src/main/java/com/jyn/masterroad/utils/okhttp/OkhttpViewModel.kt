@@ -30,6 +30,9 @@ class OkhttpViewModel(application: Application) : AndroidViewModel(application) 
 
         /*
          * addNetworkInterceptor()一般用于网络调试
+         *
+         * OkHttp 更新 token 的解决方案
+         * https://juejin.cn/post/6844903455794921486
          */
 
         val okHttpClient by lazy {

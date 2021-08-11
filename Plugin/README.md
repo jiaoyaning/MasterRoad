@@ -1,3 +1,6 @@
+## 使用代码插桩，优化Gson处理后台弱数据类型字段不规范的问题
+https://github.com/vihuela/GsonPlugin
+
 ## Android Java8 Lambda 脱糖（ASM Hook 埋点)
 https://juejin.cn/post/6855129007248769038
 

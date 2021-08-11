@@ -53,3 +53,11 @@ class KotlinSingleton3 private constructor(var pre: String) {
         }
     }
 }
+
+/**
+ * 饿汉式单例
+ */
+object KotlinObjectSingle {
+    fun test() {
+    }
+}

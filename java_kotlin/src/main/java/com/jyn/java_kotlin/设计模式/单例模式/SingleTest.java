@@ -41,6 +41,7 @@ public class SingleTest {
         KotlinSingleton1.get();
         KotlinSingleton2.getInstance();
         KotlinSingleton3.getInstance("带参数版本的kotlin 单例");
+        KotlinObjectSingle.INSTANCE.test();
     }
 
     //序列化

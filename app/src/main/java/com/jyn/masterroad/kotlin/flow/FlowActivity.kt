@@ -29,6 +29,12 @@ import kotlinx.coroutines.cancel
  *
  * Kotlin Flow 操作符：篇幅很大 你忍一下
  * https://mp.weixin.qq.com/s/-G5AsB5iSwL3BoERJPlELw
+ *
+ *【Kotlin Flow】 一眼看全——Flow操作符大全
+ * https://juejin.cn/post/6989536876096913439
+ *
+ * 关于kotlin中的Collections、Sequence、Channel和Flow (二)
+ * https://juejin.cn/post/6979793981928374308
  */
 @Route(path = RoutePath.Flow.path)
 class FlowActivity : BaseScopeActivity<ActivityFlowBinding>(R.layout.activity_flow) {

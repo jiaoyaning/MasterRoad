@@ -28,12 +28,10 @@ class ViewTest @JvmOverloads constructor(
 
     private fun drawCircle(canvas: Canvas) {
         canvas.drawCircle(100f, 150f, 50f, paint)
-
     }
 
-
     private val path = Path()
-    fun pathTest(canvas: Canvas) {
+    private fun pathTest(canvas: Canvas) {
         canvas.drawPath(path, paint)
     }
 
@@ -49,7 +47,6 @@ class ViewTest @JvmOverloads constructor(
          * Path.Direction.CCW: 逆时针
          */
         path.addCircle(250f, 150f, 50f, Path.Direction.CW)
-
         path.addRect(250f, 100f, 350f, 200f, Path.Direction.CW)
 
         /**

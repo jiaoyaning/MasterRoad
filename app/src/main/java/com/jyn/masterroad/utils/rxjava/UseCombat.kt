@@ -1,8 +1,8 @@
 package com.jyn.masterroad.utils.rxjava
 
 import com.apkfuns.logutils.LogUtils
-import io.reactivex.rxjava3.core.Observable
-import io.reactivex.rxjava3.core.ObservableOnSubscribe
+import io.reactivex.rxjava3.core.*
+import io.reactivex.rxjava3.disposables.Disposable
 import java.util.Random
 import java.util.concurrent.TimeUnit
 
@@ -36,5 +36,55 @@ class UseCombat {
             .subscribe {
                 LogUtils.tag("Rxjava").i("subscribe onNext: $it")
             }
+    }
+
+
+    //disposable
+
+    fun test() {
+        //无延迟,无后序
+        Single.just(1)
+            .map { it.toString() }
+            .subscribe(object : SingleObserver<String> {
+                override fun onSubscribe(d: Disposable?) {
+                }
+
+                override fun onSuccess(t: String?) {
+                }
+
+                override fun onError(e: Throwable?) {
+                }
+            })
+
+        //有延迟,无后序
+        Single.just("1")
+            .delay(1, TimeUnit.SECONDS)
+            .subscribe(object : SingleObserver<String> {
+                override fun onSubscribe(d: Disposable?) {
+                }
+
+                override fun onSuccess(t: String?) {
+                }
+
+                override fun onError(e: Throwable?) {
+                }
+            })
+
+        //无延迟，有后续
+        Observable.just(1)
+            .map { it.toString() }
+            .subscribe(object : Observer<String> {
+                override fun onSubscribe(d: Disposable?) {
+                }
+
+                override fun onNext(t: String?) {
+                }
+
+                override fun onError(e: Throwable?) {
+                }
+
+                override fun onComplete() {
+                }
+            })
     }
 }

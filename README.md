@@ -2,7 +2,7 @@
 [Thread相关](app/src/main/java/com/jyn/masterroad/concurrent/Thread相关.md) 
 [线程池](app/src/main/java/com/jyn/masterroad/concurrent/Executors线程池.md) 
 [锁相关-Lock & Synchronized & Volatile & AQS](app/src/main/java/com/jyn/masterroad/concurrent/lock/锁相关.md) 
-[类的初始化&对象的初始化](java_kotlin/src/main/java/com/jyn/java_kotlin/Java学习/Java类初始化和对象实例化/类的初始化&对象的初始化.md)  
+[类的初始化与实例化](java_kotlin/src/main/java/com/jyn/java_kotlin/Java学习/Java类初始化和对象实例化/类的初始化与实例化.md)  
 [java基础](java_kotlin/src/main/java/com/jyn/java_kotlin/Java基础.md)  
 [网络协议相关](blogs/各种网络协议.md)   
 [Java就是值传递](java_kotlin/src/main/java/com/jyn/java_kotlin/Java学习/值传递/Java就是值传递.md)

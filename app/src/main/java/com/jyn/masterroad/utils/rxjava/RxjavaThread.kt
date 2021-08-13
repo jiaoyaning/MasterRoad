@@ -12,7 +12,4 @@ package com.jyn.masterroad.utils.rxjava
  */
 class RxjavaThread {
 
-    /**
-     * onserveOn()//观察者
-     */
 }

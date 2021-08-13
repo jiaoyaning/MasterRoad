@@ -90,7 +90,6 @@ android {
  * gradle 高级用法
  */
 dependencies {
-    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
     def test = app.test
     def androidx = app.androidx
     def kotlin = app.kotlin

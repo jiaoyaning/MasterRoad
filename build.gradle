@@ -12,7 +12,7 @@ apply plugin: 'com.alibaba.arouter'
 buildscript {
 
     ext {
-        kotlin_version = '1.5.21'
+        kotlin_version = '1.4.31'
     }
     /*
      * 华为镜像

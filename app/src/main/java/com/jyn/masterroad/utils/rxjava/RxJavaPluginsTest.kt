@@ -6,9 +6,7 @@ import io.reactivex.rxjava3.plugins.RxJavaPlugins
  * RxjavaPlugins
  * https://blog.csdn.net/weixin_43724742/article/details/103394113
  */
-class RxjavaPluginsTest {
+class RxJavaPluginsTest {
     fun test(){
-
-        RxJavaPlugins.setOnFlowableAssembly {  }
     }
 }

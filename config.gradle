@@ -134,7 +134,7 @@ ext {
              * kotlin 反射 官网
              * http://www.kotlincn.net/docs/reference/reflection.html
              */
-            "reflect"           : "org.jetbrains.kotlin:kotlin-reflect:1.4.20",
+            "reflect"           : "org.jetbrains.kotlin:kotlin-reflect:$kotlin_version",
             /*
             * Coil是一个Android图片加载库，通过Kotlin协程的方式加载图片
             * https://github.com/coil-kt/coil/

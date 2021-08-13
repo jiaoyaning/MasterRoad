@@ -48,8 +48,7 @@ class SubjectAndProcessorTest {
     }
 
     //region AsyncSubject
-    fun asyncSubjectTest() {
-        /*
+    fun asyncSubjectTest() {/*
          * 观察者/订阅者只会接受到onComplete之前的最后一个数据（无论在订阅前发射还是在订阅后发射）。
          */
         LogUtils.tag(TAG).i("AsyncSubject: 只会接受到onComplete之前的最后一个数据")
@@ -61,14 +60,10 @@ class SubjectAndProcessorTest {
         asyncSubject.onNext("subscribe后的 --> 第0条数据")
         asyncSubject.onNext("subscribe后的 --> 第1条数据")
         asyncSubject.onComplete()
-    }
-
-    //endregion ================================================
+    } //endregion ================================================
 
     //region BehaviorSubject
-    fun behaviorSubjectTest() {
-
-        /*
+    fun behaviorSubjectTest() {/*
          * BehaviorSubject 只会接收到订阅前最后一条发射的数据以及订阅之后所有的数据。
          */
         LogUtils.tag(TAG).i("BehaviorSubject: 只会接收到订阅前最后一条发射的数据以及订阅之后所有的数据")
@@ -79,14 +74,10 @@ class SubjectAndProcessorTest {
         behaviorSubject.onNext("subscribe后的 --> 第0条数据")
         behaviorSubject.onNext("subscribe后的 --> 第1条数据")
         behaviorSubject.onComplete()
-    }
-
-    //endregion ================================================
+    } //endregion ================================================
 
     //region ReplaySubject
-    fun replaySubjectTest() {
-
-        /*
+    fun replaySubjectTest() {/*
          * ReplaySubject会接收到全部数据
          * ReplaySubject可以限制缓存的大小，也可以限制缓存的时间
          *  ReplaySubject.createWithSize(1);
@@ -102,14 +93,10 @@ class SubjectAndProcessorTest {
         replaySubject.onNext("subscribe后的 --> 第0条数据")
         replaySubject.onNext("subscribe后的 --> 第1条数据")
         replaySubject.onComplete()
-    }
-
-    //endregion ================================================
+    } //endregion ================================================
 
     //region PublishSubject
-    fun publishSubjectTest() {
-
-        /*
+    fun publishSubjectTest() {/*
          * PublishSubject只会接收到订阅之后的所有数据。
          */
 
@@ -121,7 +108,5 @@ class SubjectAndProcessorTest {
         publishSubject.onNext("subscribe后的 --> 第0条数据")
         publishSubject.onNext("subscribe后的 --> 第1条数据")
         publishSubject.onComplete()
-    }
-
-    //endregion ================================================
+    } //endregion ================================================
 }

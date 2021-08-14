@@ -15,7 +15,7 @@ class UseCombat {
     }
 
     /**
-     * 无延迟,无后序
+     * 无上游 无延迟,无后序
      */
     fun test1() {
         /**
@@ -34,6 +34,21 @@ class UseCombat {
                     override fun onError(e: Throwable?) {
                     }
                 })
+
+        Observable.just(1)
+            .subscribe(object : Observer<Int> {
+                override fun onSubscribe(d: Disposable?) {
+                }
+
+                override fun onNext(t: Int?) {
+                }
+
+                override fun onError(e: Throwable?) {
+                }
+
+                override fun onComplete() {
+                }
+            })
     }
 
     /**
@@ -45,7 +60,7 @@ class UseCombat {
          * map 穿入SingleJust对象，返回 [SingleMap]对象
          */
         Single.just(1) //返回SingleJust对象
-            .map { it.toString() } //返回SingleMap对象
+            .map { it.toString() } //返回SingleMap对象，包含了上一级的singleJust对象
             .subscribe(object : SingleObserver<String> {
                 override fun onSubscribe(d: Disposable?) {
                 }
@@ -59,8 +74,8 @@ class UseCombat {
 
     }
 
+    //有延迟,无后序
     fun test3() {
-        //有延迟,无后序
         Single.just("1")
             .delay(1, TimeUnit.SECONDS)
             .subscribe(object : SingleObserver<String> {
@@ -75,9 +90,24 @@ class UseCombat {
             })
     }
 
+    /**
+     * 有延时，有后序
+     */
     fun test4() {
-        //有延迟有后续
+        Observable.interval(1, TimeUnit.SECONDS)
+            .subscribe(object : Observer<Long> {
+                override fun onSubscribe(d: Disposable?) {
+                }
 
+                override fun onNext(t: Long?) {
+                }
+
+                override fun onError(e: Throwable?) {
+                }
+
+                override fun onComplete() {
+                }
+            })
     }
 
     fun delayTest() {

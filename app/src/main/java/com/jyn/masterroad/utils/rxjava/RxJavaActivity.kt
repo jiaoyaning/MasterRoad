@@ -41,6 +41,8 @@ import com.jyn.masterroad.databinding.ActivityRxjavaBinding
  * CompositeDisposable
  * 一个disposable的容器，可以容纳多个disposable，
  * 如果这个CompositeDisposable容器已经是处于dispose的状态，那么所有加进来的disposable都会被自动切断
+ *
+ * 装饰器模式
  */
 @Route(path = RoutePath.RxJava.path)
 class RxJavaActivity : BaseActivity<ActivityRxjavaBinding>(R.layout.activity_rxjava) {

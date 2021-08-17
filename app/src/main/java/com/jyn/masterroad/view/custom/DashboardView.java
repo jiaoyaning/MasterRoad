@@ -99,9 +99,9 @@ public class DashboardView extends View {
         PathDashPathEffect pathDashPathEffect = new PathDashPathEffect(calibration,
                 advance,
                 0,
-                PathDashPathEffect.Style.ROTATE);
+                PathDashPathEffect.Style.ROTATE); //虚线效果
 
-        mPaint.setPathEffect(pathDashPathEffect);
+        mPaint.setPathEffect(pathDashPathEffect); //设置路径效果
         canvas.drawPath(arcPath, mPaint);
         mPaint.setPathEffect(null);
     }

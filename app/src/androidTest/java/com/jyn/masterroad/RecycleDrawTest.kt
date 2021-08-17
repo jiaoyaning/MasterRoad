@@ -10,7 +10,7 @@ import org.junit.runners.MethodSorters
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 @RunWith(AndroidJUnit4::class)
 @LargeTest
-class RecycleViewTest {
+class RecycleDrawTest {
 
 
 }

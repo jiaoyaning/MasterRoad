@@ -1,7 +1,12 @@
 package com.jyn.masterroad.view.draw
 
 import android.view.Choreographer
+import android.view.View
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import com.alibaba.android.arouter.facade.annotation.Route
 import com.apkfuns.logutils.LogUtils
+import com.jyn.common.ARouter.RoutePath
 import com.jyn.masterroad.R
 import com.jyn.masterroad.base.BaseActivity
 import com.jyn.masterroad.databinding.ActivityOnDrawBinding
@@ -25,12 +30,23 @@ import com.jyn.masterroad.databinding.ActivityOnDrawBinding
  * Android 视图系统的设计与实现 | 通俗易懂
  * https://mp.weixin.qq.com/s/aFzPl6VcBNXujxw12GkT_w
  */
+@Route(path = RoutePath.Draw.path)
 class OnDrawActivity : BaseActivity<ActivityOnDrawBinding>(R.layout.activity_on_draw) {
+
+    override fun initView() {
+        binding.click = onClickListener
+    }
+
+    private val onClickListener = View.OnClickListener {
+
+    }
+
 
     private fun fpsDetection() {
         var starTime: Long = System.nanoTime()
         Choreographer.getInstance().postFrameCallback {
-            LogUtils.tag("FPS").i("starTime:$starTime ; frameTimeNanos:$it ; frameDueTime:${(it - starTime) / 1000000}")
+            LogUtils.tag("FPS")
+                .i("starTime:$starTime ; frameTimeNanos:$it ; frameDueTime:${(it - starTime) / 1000000}")
             starTime = it
         }
     }

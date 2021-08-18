@@ -22,15 +22,14 @@ class DrawTest @JvmOverloads constructor(
     private val paint = Paint(Paint.ANTI_ALIAS_FLAG)
 
     override fun onDraw(canvas: Canvas) {
-        drawLine(canvas)
-        drawCircle(canvas)
-    }
+        /**
+         * 线
+         */
+        canvas.drawLine(50f, 50f, 250f, 50f, paint)
 
-    private fun drawLine(canvas: Canvas) {
-        canvas.drawLine(50f, 50f, 300f, 50f, paint)
-    }
-
-    private fun drawCircle(canvas: Canvas) {
-        canvas.drawCircle(100f, 150f, 50f, paint)
+        /**
+         * 圆
+         */
+        canvas.drawCircle(150f, 200f, 100f, paint)
     }
 }

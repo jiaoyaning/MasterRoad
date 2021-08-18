@@ -152,4 +152,10 @@ object RoutePath {
         const val path = "/app/LeakCanary"
         const val span = 2
     }
+
+    object Draw {
+        const val name = "Draw"
+        const val path = "/app/Draw"
+        const val span = 2
+    }
 }

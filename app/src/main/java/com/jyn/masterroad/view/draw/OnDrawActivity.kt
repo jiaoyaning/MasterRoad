@@ -30,13 +30,8 @@ class OnDrawActivity : BaseActivity<ActivityOnDrawBinding>(R.layout.activity_on_
     private fun fpsDetection() {
         var starTime: Long = System.nanoTime()
         Choreographer.getInstance().postFrameCallback {
-            LogUtils
-                .tag("FPS")
-                .i("starTime:$starTime ; frameTimeNanos:$it ; frameDueTime:${(it - starTime) / 1000000}")
+            LogUtils.tag("FPS").i("starTime:$starTime ; frameTimeNanos:$it ; frameDueTime:${(it - starTime) / 1000000}")
             starTime = it
         }
     }
-
-
-
 }

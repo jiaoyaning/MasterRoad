@@ -4,6 +4,7 @@ import com.apkfuns.logutils.LogUtils
 import java.util.concurrent.Callable
 import java.util.concurrent.Executors
 import java.util.concurrent.FutureTask
+import java.util.concurrent.ThreadFactory
 import javax.inject.Inject
 
 /*
@@ -55,6 +56,10 @@ class ThreadCreate @Inject constructor() {
         val callableTest: Callable<String> = CallableTest()
         val futureTaskTest: FutureTask<String> = FutureTask(callableTest)
 
+        /**
+         * Future.get()会阻塞当前线程
+         * 可以用Future.isDone()来循环判断子线程是否执行结束，再进行get操作
+         */
         //第一种futureTask方式 使用线程池
         val executor = Executors.newCachedThreadPool()
         val submit = executor.submit(callableTest)
@@ -80,6 +85,14 @@ class ThreadCreate @Inject constructor() {
         es.execute { LogUtils.tag("main").i("使用 Executors 创建的线程") }
     }
     //endregion
+
+    // region 5.ThreadFactory
+    fun threadFactory() {
+        val threadFactory: ThreadFactory = ThreadFactory { Thread() }
+        threadFactory.newThread {
+
+        }
+    }
 
     //endregion
 

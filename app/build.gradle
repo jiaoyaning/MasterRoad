@@ -3,6 +3,7 @@ apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'dagger.hilt.android.plugin'
 apply plugin: 'kotlin-kapt'
+apply plugin: 'com.google.protobuf'
 //apply plugin: 'com.jyn.helloworld'
 /*
  * 一款支持自动将图片转换成WebP格式的Android构建插件

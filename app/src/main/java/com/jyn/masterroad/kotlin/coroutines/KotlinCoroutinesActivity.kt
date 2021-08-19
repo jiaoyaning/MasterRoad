@@ -1,18 +1,16 @@
 package com.jyn.masterroad.kotlin.coroutines
 
-import androidx.lifecycle.lifecycleScope
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.jyn.common.ARouter.RoutePath
 import com.jyn.common.Base.BaseScopeActivity
 import com.jyn.masterroad.R
-import com.jyn.masterroad.base.BaseActivity
 import com.jyn.masterroad.databinding.ActivityKotlinCoroutinesBinding
-import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.ExperimentalCoroutinesApi
-import kotlinx.coroutines.MainScope
-import kotlinx.coroutines.cancel
 
 /*
+ * 官方文档
+ * https://developer.android.google.cn/kotlin/coroutines
+ *
  * Kotlin 协程 系列教程
  * http://mp.weixin.qq.com/mp/homepage?__biz=MzIzMTYzOTYzNA==&hid=4&sn=eb02d1dc6f5d92096f214688c6f87196&scene=18#wechat_redirect
  *

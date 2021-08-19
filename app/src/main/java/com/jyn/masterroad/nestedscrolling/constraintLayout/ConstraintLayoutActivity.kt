@@ -11,17 +11,8 @@ import com.jyn.masterroad.base.BaseActivity
 import com.jyn.masterroad.databinding.ActivityConstraintlayoutBinding
 
 /*
- * https://juejin.cn/post/6854573221312725000
- *
- * http://www.flyou.ren/2019/10/10/ConstraintLayout/
- *
- * https://mp.weixin.qq.com/s/7wEr6okR-CAAoNDYB4gHig
- *
- * https://juejin.cn/post/6844903733948579847
- *
- * https://mp.weixin.qq.com/s/Z_TnoyMRYZEQXvlqiKX8Uw
- *
- * https://www.paincker.com/constraint-layout
+ * 官方文档：
+ * https://developer.android.google.cn/training/constraint-layout
  *
  * ConstraintLayout 2.0 新特性详解及实战
  * https://blog.csdn.net/weixin_34677811/article/details/90719945

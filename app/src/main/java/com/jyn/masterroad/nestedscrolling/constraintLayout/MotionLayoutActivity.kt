@@ -31,6 +31,9 @@ import kotlinx.android.synthetic.main.activity_motion_layout.*
  *
  * MotionLayout动画从未如此简单！
  * https://mp.weixin.qq.com/s/3IAPd53rMOrLiIUDT520-w
+ *
+ * ConstraintLayout2.0一篇写不完之ViewTransition
+ * https://mp.weixin.qq.com/s/UUhrMGsAbpgIQNbd-1IOBQ
  */
 @Route(path = RoutePath.MotionLayout.path)
 class MotionLayoutActivity : BaseActivity<ActivityMotionLayoutBinding>

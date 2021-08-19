@@ -5,6 +5,8 @@ import android.util.AttributeSet
 import android.view.View
 
 /*
+ * 路径效果
+ *
  * Android：视图绘制(五) ------Paint进阶之PathEffect
  * https://blog.csdn.net/u010635353/article/details/52701298
  *

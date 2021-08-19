@@ -5,3 +5,7 @@ include ':ipc'
 include ':java_kotlin'
 include ':Leetcode'
 include ':Plugin:PluginHelloWorld'
+
+if (new File("codelocator.gradle").exists()) {
+    apply from: 'codelocator.gradle'
+}

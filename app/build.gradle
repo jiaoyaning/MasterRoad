@@ -40,7 +40,7 @@ android {
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
 
-        multiDexEnabled  true
+        multiDexEnabled true
 
         javaCompileOptions {
             annotationProcessorOptions {
@@ -164,6 +164,7 @@ dependencies {
     implementation utils["arouter"]
     annotationProcessor utils["arouter-compiler"]
     kapt utils["arouter-compiler"]
+    implementation utils["codelocator"]
 
     //https://github.com/evant/binding-collection-adapter
     implementation utils["bindingcollectionadapter"]

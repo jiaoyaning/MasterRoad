@@ -218,5 +218,11 @@ ext {
             "bindingcollectionadapter"             : "me.tatarka.bindingcollectionadapter2:bindingcollectionadapter:$bindingcollectionadapter",
             "bindingcollectionadapter-recyclerview": "me.tatarka.bindingcollectionadapter2:bindingcollectionadapter-recyclerview:$bindingcollectionadapter",
             "bindingcollectionadapter-viewpager2"  : "me.tatarka.bindingcollectionadapter2:bindingcollectionadapter-viewpager2:$bindingcollectionadapter",
+
+            /**
+             * https://github.com/bytedance/CodeLocator/blob/main/README_zh.md
+             */
+            "codelocator"                          : "com.bytedance.tools.codelocator:codelocator-core:1.0.0",
+
     ]
 }

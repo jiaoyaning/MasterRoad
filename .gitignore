@@ -20,3 +20,7 @@ libs/
 src/main/java/
 .gradle/workspace-id.txt
 .gradle/workspace-id.txt.lock
+
+/JustForCodeIndexModuleDebug
+/JustForCodeIndexModuleRelease
+codelocator.gradle

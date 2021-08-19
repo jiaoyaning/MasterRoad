@@ -15,6 +15,7 @@ import io.reactivex.rxjava3.internal.operators.observable.ObservableInterval
 import io.reactivex.rxjava3.internal.operators.observable.ObservableMap
 import io.reactivex.rxjava3.internal.operators.observable.ObservableDelay
 import io.reactivex.rxjava3.schedulers.Schedulers
+import io.reactivex.rxjava3.internal.schedulers.IoScheduler
 
 class UseCombat {
     companion object {
@@ -134,8 +135,9 @@ class UseCombat {
 
     /**
      * 线程切换
-     * subscribeOn = [SingleSubscribeOn] [SingleSubscribeOn.subscribeActual]
-     * observeOn =   [SingleObserveOn] [SingleObserveOn.subscribeActual]
+     * subscribeOn() =      [SingleSubscribeOn] [SingleSubscribeOn.subscribeActual]
+     * Schedulers.io() =    [IoScheduler]
+     * observeOn() =        [SingleObserveOn] [SingleObserveOn.subscribeActual]
      */
     fun switchThread() {
         Single.just(1)

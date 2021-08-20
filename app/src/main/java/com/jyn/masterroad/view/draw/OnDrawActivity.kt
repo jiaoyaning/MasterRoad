@@ -2,14 +2,13 @@ package com.jyn.masterroad.view.draw
 
 import android.view.Choreographer
 import android.view.View
-import android.view.ViewGroup.LayoutParams.MATCH_PARENT
-import android.widget.RelativeLayout
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.apkfuns.logutils.LogUtils
 import com.jyn.common.ARouter.RoutePath
 import com.jyn.masterroad.R
 import com.jyn.masterroad.base.BaseActivity
 import com.jyn.masterroad.databinding.ActivityOnDrawBinding
+import com.jyn.masterroad.view.draw.view.*
 
 /*
  * 面试官：View.post() 为什么能够获取到 View 的宽高？
@@ -31,9 +30,11 @@ import com.jyn.masterroad.databinding.ActivityOnDrawBinding
  * https://mp.weixin.qq.com/s/aFzPl6VcBNXujxw12GkT_w
  */
 @Route(path = RoutePath.Draw.path)
-class OnDrawActivity : BaseActivity<ActivityOnDrawBinding>(R.layout.activity_on_draw) {
+class OnDrawActivity : BaseActivity<ActivityOnDrawBinding>
+    (R.layout.activity_on_draw) {
 
-    private val drawView by lazy { PaintDrawView(this) }
+    private val drawView by lazy { DrawView(this) }
+    private val paintView by lazy { PaintView(this) }
     private val pathView by lazy { PathView(this) }
     private val pathEffectView by lazy { PathEffectView(this) }
     private val xfermodeView by lazy { XfermodeView(this) }
@@ -45,7 +46,8 @@ class OnDrawActivity : BaseActivity<ActivityOnDrawBinding>(R.layout.activity_on_
     private val onClickListener = View.OnClickListener {
         switchView(
             when (it.id) {
-                R.id.btn_paint_draw -> drawView
+                R.id.btn_draw -> drawView
+                R.id.btn_paint -> paintView
                 R.id.btn_path -> pathView
                 R.id.btn_PathEffect -> pathEffectView
                 R.id.btn_xfermode -> xfermodeView

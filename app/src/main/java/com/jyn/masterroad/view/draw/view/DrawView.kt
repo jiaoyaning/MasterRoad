@@ -1,11 +1,11 @@
-package com.jyn.masterroad.view.draw
+package com.jyn.masterroad.view.draw.view
 
 import android.content.Context
 import android.graphics.*
 import android.util.AttributeSet
 import android.view.View
-import com.apkfuns.logutils.LogUtils
 import com.jyn.masterroad.R
+import com.jyn.masterroad.view.draw.px
 
 /*
  * HenCoder Android 开发进阶: 自定义 View 1-1 绘制基础
@@ -17,7 +17,7 @@ import com.jyn.masterroad.R
  * Paint的setStrokeCap、setStrokeJoin、setPathEffect
  * https://blog.csdn.net/lxk_1993/article/details/102936227
  */
-class PaintDrawView @JvmOverloads constructor(
+class DrawView @JvmOverloads constructor(
     context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0
 ) : View(context, attrs, defStyleAttr) {
     companion object {
@@ -74,15 +74,14 @@ class PaintDrawView @JvmOverloads constructor(
          * 点
          * 点坐标(X,Y)
          * 注：点大小 = paint的宽度
-         */
-        canvas.drawPoint(200f, 75f, paint)
-        /**
+         *
          * 点 集合
          * pts:     两个坐标为一组，
          * offset:  跳过前几个
          * count:   一共绘制几个
          */
-        paint.strokeCap = Paint.Cap.SQUARE
+        canvas.drawPoint(200f, 75f, paint)
+        paint.strokeCap = Paint.Cap.SQUARE //端点为平头
         canvas.drawPoints(floatArrayOf(0f, 0f, 150f, 75f, 250f, 75f, 200f, 75f), 2, 4, paint)
 
         /**
@@ -126,8 +125,13 @@ class PaintDrawView @JvmOverloads constructor(
         //不封口的弧形
         canvas.drawArc(400f, 350f, 600f, 600f, -90f, 70f, false, paint)
 
-        paint.strokeWidth = 2f.px
+        /**
+         * 文本
+         */
+        paint.style = Paint.Style.FILL  //填充模式
         canvas.drawText("MasterRoad", 100f, 700f, paint)
+        paint.style = Paint.Style.STROKE //画线模式
+
 
         /**
          * bitmap

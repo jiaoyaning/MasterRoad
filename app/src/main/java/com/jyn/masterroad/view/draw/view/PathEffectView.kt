@@ -1,4 +1,4 @@
-package com.jyn.masterroad.view.draw
+package com.jyn.masterroad.view.draw.view
 
 import android.content.Context
 import android.util.AttributeSet

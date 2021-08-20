@@ -1,4 +1,4 @@
-package com.jyn.masterroad.view.draw
+package com.jyn.masterroad.view.draw.view
 
 import android.content.Context
 import android.graphics.Canvas
@@ -8,6 +8,7 @@ import android.graphics.PathMeasure
 import android.util.AttributeSet
 import android.view.View
 import com.apkfuns.logutils.LogUtils
+import com.jyn.masterroad.view.draw.view.DrawView
 
 /*
  * Android：视图绘制(三) ------Path介绍
@@ -51,7 +52,7 @@ class PathView @JvmOverloads constructor(
          */
         pathMeasure = PathMeasure(path, false)
         val pathLength = pathMeasure.length //计算路径长度
-        LogUtils.tag(PaintDrawView.TAG).i(pathLength)
+        LogUtils.tag(DrawView.TAG).i(pathLength)
 //        pathMeasure.getPosTan() //固定长度地方的切角
 
         /*

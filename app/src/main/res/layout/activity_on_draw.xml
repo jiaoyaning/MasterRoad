@@ -32,10 +32,18 @@
                 android:orientation="horizontal">
 
                 <Button
-                    android:id="@+id/btn_paint_draw"
+                    android:id="@+id/btn_draw"
                     style="@style/tv"
+                    android:layout_marginBottom="5dp"
                     android:onClick="@{click}"
-                    android:text="paint &amp; draw" />
+                    android:text="drawXXX" />
+
+                <Button
+                    android:id="@+id/btn_paint"
+                    style="@style/tv"
+                    android:layout_marginStart="5dp"
+                    android:onClick="@{click}"
+                    android:text="Paint" />
 
                 <Button
                     android:id="@+id/btn_path"
@@ -64,14 +72,14 @@
             android:id="@+id/box_layout"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="5dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/horizontal_scroll_view"
             tools:ignore="UselessLeaf">
 
-            <com.jyn.masterroad.view.draw.PaintDrawView
+            <com.jyn.masterroad.view.draw.view.DrawView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent" />
         </RelativeLayout>

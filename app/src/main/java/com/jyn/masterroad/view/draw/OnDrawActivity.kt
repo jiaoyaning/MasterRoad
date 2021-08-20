@@ -2,7 +2,6 @@ package com.jyn.masterroad.view.draw
 
 import android.view.Choreographer
 import android.view.View
-import android.view.ViewGroup
 import android.view.ViewGroup.LayoutParams.MATCH_PARENT
 import android.widget.RelativeLayout
 import com.alibaba.android.arouter.facade.annotation.Route
@@ -34,7 +33,7 @@ import com.jyn.masterroad.databinding.ActivityOnDrawBinding
 @Route(path = RoutePath.Draw.path)
 class OnDrawActivity : BaseActivity<ActivityOnDrawBinding>(R.layout.activity_on_draw) {
 
-    private val drawView by lazy { DrawView(this) }
+    private val drawView by lazy { PaintDrawView(this) }
     private val pathView by lazy { PathView(this) }
     private val pathEffectView by lazy { PathEffectView(this) }
     private val xfermodeView by lazy { XfermodeView(this) }
@@ -46,7 +45,7 @@ class OnDrawActivity : BaseActivity<ActivityOnDrawBinding>(R.layout.activity_on_
     private val onClickListener = View.OnClickListener {
         switchView(
             when (it.id) {
-                R.id.btn_draw -> drawView
+                R.id.btn_paint_draw -> drawView
                 R.id.btn_path -> pathView
                 R.id.btn_PathEffect -> pathEffectView
                 R.id.btn_xfermode -> xfermodeView
@@ -58,7 +57,6 @@ class OnDrawActivity : BaseActivity<ActivityOnDrawBinding>(R.layout.activity_on_
     private fun switchView(view: View) {
         binding.boxLayout.apply {
             removeAllViews()
-            view.layoutParams = RelativeLayout.LayoutParams(MATCH_PARENT, MATCH_PARENT)
             addView(view)
         }
     }

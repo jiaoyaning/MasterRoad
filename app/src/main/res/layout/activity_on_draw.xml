@@ -32,10 +32,10 @@
                 android:orientation="horizontal">
 
                 <Button
-                    android:id="@+id/btn_draw"
+                    android:id="@+id/btn_paint_draw"
                     style="@style/tv"
                     android:onClick="@{click}"
-                    android:text="draw" />
+                    android:text="paint &amp; draw" />
 
                 <Button
                     android:id="@+id/btn_path"
@@ -71,7 +71,7 @@
             app:layout_constraintTop_toBottomOf="@+id/horizontal_scroll_view"
             tools:ignore="UselessLeaf">
 
-            <com.jyn.masterroad.view.draw.DrawView
+            <com.jyn.masterroad.view.draw.PaintDrawView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent" />
         </RelativeLayout>

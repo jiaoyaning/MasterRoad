@@ -51,7 +51,7 @@ class PathView @JvmOverloads constructor(
          */
         pathMeasure = PathMeasure(path, false)
         val pathLength = pathMeasure.length //计算路径长度
-        LogUtils.tag(DrawView.TAG).i(pathLength)
+        LogUtils.tag(PaintDrawView.TAG).i(pathLength)
 //        pathMeasure.getPosTan() //固定长度地方的切角
 
         /*

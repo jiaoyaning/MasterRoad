@@ -128,11 +128,11 @@ println("even: $evenOrNull, odd: $oddOrNull")
 ## 总结
 | 函数名  | 函数体内使用的对象        | 返回值  | 适用的场景                             |
 | ------ | ---------------------  | ------ | ------------------------------------ |
-| let    | it指代当前对象           | 闭包    | 合并多处判断null的操作                  |
-| with   | this指代当前对象，可省略  | 闭包    | 合并多个方法调用                        |
-| run    | this指代当前对象，可省略  | 闭包    | let和with的结合体                      |
-| apply  | this指代当前对象，可省略  | this   | 能用run的地方就能用apply，多用于初始化对象  |
-| also   | it指代当前对象           | this   | 能用let就能用also，可用于函数链式调用      |
+| let    | it指代当前对象           | 最后一行 | 合并多处判断null的操作                  |
+| with   | this指代当前对象，可省略  | 最后一行 | 合并多个方法调用                        |
+| run    | this指代当前对象，可省略  | 最后一行 | let和with的结合体                      |
+| apply  | this指代当前对象，可省略  | this    | 能用run的地方就能用apply，多用于初始化对象 |
+| also   | it指代当前对象           | this    | 能用let就能用also，可用于函数链式调用     |
 
 ![kotlin作用域函数](../../../../../../../../experience/kotlin作用域函数.png)
 

@@ -13,7 +13,7 @@ import android.view.View
  * Android——详解Paint的setPathEffect(PathEffect effect)
  * https://blog.csdn.net/u012230055/article/details/103148506
  */
-class PathEffectTest @JvmOverloads constructor(
+class PathEffectView @JvmOverloads constructor(
     context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0
 ) : View(context, attrs, defStyleAttr)  {
 }

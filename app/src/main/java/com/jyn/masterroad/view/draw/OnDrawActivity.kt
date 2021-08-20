@@ -2,8 +2,9 @@ package com.jyn.masterroad.view.draw
 
 import android.view.Choreographer
 import android.view.View
-import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
+import android.view.ViewGroup
+import android.view.ViewGroup.LayoutParams.MATCH_PARENT
+import android.widget.RelativeLayout
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.apkfuns.logutils.LogUtils
 import com.jyn.common.ARouter.RoutePath
@@ -33,14 +34,34 @@ import com.jyn.masterroad.databinding.ActivityOnDrawBinding
 @Route(path = RoutePath.Draw.path)
 class OnDrawActivity : BaseActivity<ActivityOnDrawBinding>(R.layout.activity_on_draw) {
 
+    private val drawView by lazy { DrawView(this) }
+    private val pathView by lazy { PathView(this) }
+    private val pathEffectView by lazy { PathEffectView(this) }
+    private val xfermodeView by lazy { XfermodeView(this) }
+
     override fun initView() {
         binding.click = onClickListener
     }
 
     private val onClickListener = View.OnClickListener {
-
+        switchView(
+            when (it.id) {
+                R.id.btn_draw -> drawView
+                R.id.btn_path -> pathView
+                R.id.btn_PathEffect -> pathEffectView
+                R.id.btn_xfermode -> xfermodeView
+                else -> drawView
+            }
+        )
     }
 
+    private fun switchView(view: View) {
+        binding.boxLayout.apply {
+            removeAllViews()
+            view.layoutParams = RelativeLayout.LayoutParams(MATCH_PARENT, MATCH_PARENT)
+            addView(view)
+        }
+    }
 
     private fun fpsDetection() {
         var starTime: Long = System.nanoTime()

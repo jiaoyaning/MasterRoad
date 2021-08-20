@@ -12,7 +12,7 @@ import com.apkfuns.logutils.LogUtils
 /**
  * Created by jiaoyaning on 2021/8/9.
  */
-class DrawTest @JvmOverloads constructor(
+class DrawView @JvmOverloads constructor(
     context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0
 ) : View(context, attrs, defStyleAttr) {
     companion object {

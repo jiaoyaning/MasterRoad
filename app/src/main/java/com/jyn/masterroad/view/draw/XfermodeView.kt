@@ -23,7 +23,7 @@ class XfermodeView @JvmOverloads constructor(
     private val paint = Paint(Paint.ANTI_ALIAS_FLAG)
 
     override fun onDraw(canvas: Canvas) {
-//        circleBitmap(canvas)
+        circleBitmap(canvas)
         testXfermode(canvas)
     }
 
@@ -80,10 +80,10 @@ class XfermodeView @JvmOverloads constructor(
 
 
         //接下来把圆形和方形用Xfermode转换
-        val saveLayer = canvas.saveLayer(150f.px, 50f.px, 300f.px, 200f.px, null)
-        canvas.drawBitmap(circleBitmap, 150f.px, 50f.px, paint)
+        val saveLayer = canvas.saveLayer(50f.px, 250f.px, 200f.px, 400f.px, null)
+        canvas.drawBitmap(circleBitmap, 50f.px, 250f.px, paint)
         paint.xfermode = PorterDuffXfermode(PorterDuff.Mode.SCREEN)
-        canvas.drawBitmap(squareBitmap, 150f.px, 50f.px, paint)
+        canvas.drawBitmap(squareBitmap, 50f.px, 250f.px, paint)
         paint.xfermode = null
         canvas.restoreToCount(saveLayer)
     }

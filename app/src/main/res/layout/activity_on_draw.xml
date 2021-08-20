@@ -21,6 +21,7 @@
             android:id="@+id/horizontal_scroll_view"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:scrollbars="none"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
@@ -31,14 +32,36 @@
                 android:orientation="horizontal">
 
                 <Button
-                    android:id="@+id/btn_XfermodeView"
+                    android:id="@+id/btn_draw"
                     style="@style/tv"
                     android:onClick="@{click}"
                     android:text="draw" />
+
+                <Button
+                    android:id="@+id/btn_path"
+                    style="@style/tv2"
+                    android:layout_marginStart="5dp"
+                    android:onClick="@{click}"
+                    android:text="Path" />
+
+                <Button
+                    android:id="@+id/btn_PathEffect"
+                    style="@style/tv"
+                    android:layout_marginStart="5dp"
+                    android:onClick="@{click}"
+                    android:text="PathEffect" />
+
+                <Button
+                    android:id="@+id/btn_xfermode"
+                    style="@style/tv2"
+                    android:layout_marginStart="5dp"
+                    android:onClick="@{click}"
+                    android:text="Xfermode" />
             </LinearLayout>
         </HorizontalScrollView>
 
         <RelativeLayout
+            android:id="@+id/box_layout"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_marginTop="10dp"
@@ -48,7 +71,7 @@
             app:layout_constraintTop_toBottomOf="@+id/horizontal_scroll_view"
             tools:ignore="UselessLeaf">
 
-            <com.jyn.masterroad.view.draw.XfermodeView
+            <com.jyn.masterroad.view.draw.DrawView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent" />
         </RelativeLayout>

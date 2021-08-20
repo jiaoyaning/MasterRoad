@@ -40,28 +40,28 @@
 
                 <Button
                     android:id="@+id/btn_paint"
-                    style="@style/tv"
+                    style="@style/tv2"
                     android:layout_marginStart="5dp"
                     android:onClick="@{click}"
                     android:text="Paint" />
 
                 <Button
                     android:id="@+id/btn_path"
-                    style="@style/tv2"
+                    style="@style/tv"
                     android:layout_marginStart="5dp"
                     android:onClick="@{click}"
                     android:text="Path" />
 
                 <Button
                     android:id="@+id/btn_PathEffect"
-                    style="@style/tv"
+                    style="@style/tv2"
                     android:layout_marginStart="5dp"
                     android:onClick="@{click}"
                     android:text="PathEffect" />
 
                 <Button
                     android:id="@+id/btn_xfermode"
-                    style="@style/tv2"
+                    style="@style/tv"
                     android:layout_marginStart="5dp"
                     android:onClick="@{click}"
                     android:text="Xfermode" />

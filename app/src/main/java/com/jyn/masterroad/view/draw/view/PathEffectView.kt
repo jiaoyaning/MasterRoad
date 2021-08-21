@@ -63,6 +63,8 @@ class PathEffectView @JvmOverloads constructor(
         discretePathEffect(canvas)
         dashPathEffect(canvas)
         pathDashPathEffect(canvas)
+        sumPathEffect(canvas)
+        composePathEffect(canvas)
     }
 
     /**
@@ -171,11 +173,49 @@ class PathEffectView @JvmOverloads constructor(
     }
 
 
+    /**
+     * SumPathEffect    分别按照两种 PathEffect 分别对目标进行绘制。
+     */
     private fun sumPathEffect(canvas: Canvas) {
+        val paint = getPaint()
+        val path = Path().apply {
+            moveTo(50f, 50f + gap * 6)
+            lineTo(150f, 200f + gap * 6)
+            lineTo(400f, 30f + gap * 6)
+            lineTo(500f, 100f + gap * 6)
+            lineTo(550f, 50f + gap * 6)
+        }
 
+        //虚线
+        val dashEffect = DashPathEffect(floatArrayOf(20f, 10f), 0f)
+        //随机线
+        val discreteEffect = DiscretePathEffect(20f, 5f)
+        val sumPathEffect = SumPathEffect(dashEffect, discreteEffect)
+        paint.pathEffect = sumPathEffect
+        canvas.drawPath(path, paint)
+        canvas.drawText("SumPathEffect", 600f, 100 + gap * 6, textPaint)
     }
 
+    /**
+     * ComposePathEffect    先对目标 Path 使用一个 PathEffect，然后再对这个改变后的 Path 使用另一个 PathEffect。
+     */
     private fun composePathEffect(canvas: Canvas) {
+        val paint = getPaint()
+        val path = Path().apply {
+            moveTo(50f, 50f + gap * 7)
+            lineTo(150f, 200f + gap * 7)
+            lineTo(400f, 30f + gap * 7)
+            lineTo(500f, 100f + gap * 7)
+            lineTo(550f, 50f + gap * 7)
+        }
 
+        //虚线
+        val dashEffect = DashPathEffect(floatArrayOf(20f, 10f), 0f)
+        //随机线
+        val discreteEffect = DiscretePathEffect(20f, 5f)
+        val sumPathEffect = ComposePathEffect(dashEffect, discreteEffect)
+        paint.pathEffect = sumPathEffect
+        canvas.drawPath(path, paint)
+        canvas.drawText("ComposePathEffect", 600f, 100 + gap * 7, textPaint)
     }
 }

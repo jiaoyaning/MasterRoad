@@ -21,6 +21,7 @@ import com.jyn.masterroad.view.draw.px
 class PathEffectView @JvmOverloads constructor(
     context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0
 ) : View(context, attrs, defStyleAttr) {
+    private val gap = 150f
     private val textPaint = Paint(Paint.ANTI_ALIAS_FLAG).apply {
         textSize = 13f.px
     }
@@ -40,8 +41,8 @@ class PathEffectView @JvmOverloads constructor(
      *      DashPathEffect      使用虚线来绘制线条
      *      PathDashPathEffect
      *  组合效果
-     *      SumPathEffect
-     *      ComposePathEffect。
+     *      SumPathEffect       同时叠加两个效果
+     *      ComposePathEffect   先对Path使用一个PathEffect，然后再在改变后的Path上使用另一个PathEffect
      */
 
     override fun onDraw(canvas: Canvas) {
@@ -71,17 +72,16 @@ class PathEffectView @JvmOverloads constructor(
      */
     private fun cornerPathEffect(canvas: Canvas) {
         val paint = getPaint()
-        val cornerPathEffect = CornerPathEffect(40f)
         val path = Path().apply {
-            moveTo(50f, 250f)
-            lineTo(150f, 400f)
-            lineTo(400f, 230f)
-            lineTo(500f, 300f)
-            lineTo(550f, 250f)
+            moveTo(50f, 50f + gap)
+            lineTo(150f, 200f + gap)
+            lineTo(400f, 30f + gap)
+            lineTo(500f, 100f + gap)
+            lineTo(550f, 50f + gap)
         }
-        paint.pathEffect = cornerPathEffect
+        paint.pathEffect = CornerPathEffect(40f)
         canvas.drawPath(path, paint)
-        canvas.drawText("CornerPathEffect", 600f, 300f, textPaint)
+        canvas.drawText("CornerPathEffect", 600f, 100 + gap, textPaint)
     }
 
     /**
@@ -92,17 +92,16 @@ class PathEffectView @JvmOverloads constructor(
      */
     private fun discretePathEffect(canvas: Canvas) {
         val paint = getPaint()
-        val discretePathEffect = DiscretePathEffect(20f, 5f)
         val path = Path().apply {
-            moveTo(50f, 450f)
-            lineTo(150f, 600f)
-            lineTo(400f, 430f)
-            lineTo(500f, 500f)
-            lineTo(550f, 450f)
+            moveTo(50f, 50f + gap * 2)
+            lineTo(150f, 200f + gap * 2)
+            lineTo(400f, 30f + gap * 2)
+            lineTo(500f, 100f + gap * 2)
+            lineTo(550f, 50f + gap * 2)
         }
-        paint.pathEffect = discretePathEffect
+        paint.pathEffect = DiscretePathEffect(20f, 5f)
         canvas.drawPath(path, paint)
-        canvas.drawText("DiscretePathEffect", 600f, 500f, textPaint)
+        canvas.drawText("DiscretePathEffect", 600f, 100 + gap * 2, textPaint)
     }
 
     /**
@@ -113,17 +112,17 @@ class PathEffectView @JvmOverloads constructor(
      */
     private fun dashPathEffect(canvas: Canvas) {
         val paint = getPaint()
-        val dashPathEffect = DashPathEffect(floatArrayOf(20f, 10f, 5f, 10f), 0f)
         val path = Path().apply {
-            moveTo(50f, 650f)
-            lineTo(150f, 800f)
-            lineTo(400f, 630f)
-            lineTo(500f, 700f)
-            lineTo(550f, 650f)
+            moveTo(50f, 50f + gap * 3)
+            lineTo(150f, 200f + gap * 3)
+            lineTo(400f, 30f + gap * 3)
+            lineTo(500f, 100f + gap * 3)
+            lineTo(550f, 50f + gap * 3)
         }
-        paint.pathEffect = dashPathEffect
+
+        paint.pathEffect = DashPathEffect(floatArrayOf(20f, 10f, 5f, 10f), 0f)
         canvas.drawPath(path, paint)
-        canvas.drawText("DashPathEffect", 600f, 700f, textPaint)
+        canvas.drawText("DashPathEffect", 600f, 100 + gap * 3, textPaint)
     }
 
 
@@ -145,18 +144,38 @@ class PathEffectView @JvmOverloads constructor(
             lineTo(0f, 20f)
             lineTo(30f, 20f)
             close()
-        }
-        val pathDashPathEffect =
-            PathDashPathEffect(dashPath, 40f, 0f, PathDashPathEffect.Style.TRANSLATE)
+        } //path形状
+
         val path = Path().apply {
-            moveTo(50f, 850f)
-            lineTo(150f, 1000f)
-            lineTo(400f, 830f)
-            lineTo(500f, 900f)
-            lineTo(550f, 850f)
+            moveTo(50f, 50f + gap * 4)
+            lineTo(150f, 200f + gap * 4)
+            lineTo(400f, 30f + gap * 4)
+            lineTo(500f, 100f + gap * 4)
+            lineTo(550f, 50f + gap * 4)
         }
-        paint.pathEffect = pathDashPathEffect
+
+        paint.pathEffect = PathDashPathEffect(dashPath, 40f, 0f, PathDashPathEffect.Style.TRANSLATE)
         canvas.drawPath(path, paint)
-        canvas.drawText("PathDashPathEffect", 600f, 900f, textPaint)
+        canvas.drawText("PathDashPathEffect TRANSLATE", 600f, 100 + gap * 4, textPaint)
+
+        path.offset(0f, gap / 2)
+        paint.pathEffect = PathDashPathEffect(dashPath, 40f, 0f, PathDashPathEffect.Style.ROTATE)
+        canvas.drawPath(path, paint)
+        canvas.drawText("PathDashPathEffect ROTATE", 600f, 100 + gap * 4.5f, textPaint)
+
+        path.offset(0f, gap / 2)
+        paint.pathEffect = PathDashPathEffect(dashPath, 40f, 0f, PathDashPathEffect.Style.MORPH)
+        canvas.drawPath(path, paint)
+        canvas.drawText("PathDashPathEffect MORPH", 600f, 100 + gap * 5f, textPaint)
+
+    }
+
+
+    private fun sumPathEffect(canvas: Canvas) {
+
+    }
+
+    private fun composePathEffect(canvas: Canvas) {
+
     }
 }

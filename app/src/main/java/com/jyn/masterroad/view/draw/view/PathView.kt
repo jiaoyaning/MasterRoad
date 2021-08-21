@@ -8,7 +8,6 @@ import android.graphics.PathMeasure
 import android.util.AttributeSet
 import android.view.View
 import com.apkfuns.logutils.LogUtils
-import com.jyn.masterroad.view.draw.view.DrawView
 
 /*
  * Android：视图绘制(三) ------Path介绍

@@ -8,7 +8,8 @@ import com.jyn.masterroad.R
 import com.jyn.masterroad.view.draw.px
 
 /**
- * 转换器
+ * 转换器 (Transfer mode)
+ * https://juejin.cn/post/6844903487570968584#heading-17
  *
  * 官方文档
  * https://blog.csdn.net/cquwentao/article/details/51407135
@@ -31,7 +32,14 @@ class XfermodeView @JvmOverloads constructor(
     private fun circleBitmap(canvas: Canvas) {
 
         /*
-         * 需要新建一个图层，因为旧图层上有背景色，会导致Xfermode失败
+         * 需要新建一个图层(离屏缓冲)，因为旧图层上有背景色，会导致Xfermode失败
+         *
+         * 1. Canvas.saveLayer()
+         *
+         *
+         * 2. View.setLayerType() 是直接把整个 View 都绘制在离屏缓冲中。
+         *      setLayerType(LAYER_TYPE_HARDWARE) 是使用 GPU 来缓冲，
+         *      setLayerType(LAYER_TYPE_SOFTWARE) 是直接直接用一个 Bitmap 来缓冲。
          *
          * 注意: saveLayer() 的范围要包含到前后两个图形才可，否则非导致转换失败
          */

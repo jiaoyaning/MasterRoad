@@ -15,7 +15,12 @@ import com.jyn.masterroad.R
 class PaintView @JvmOverloads constructor(
     context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0
 ) : View(context, attrs, defStyleAttr) {
-
+    /**
+     * 画笔的风格
+     *  Paint.Style.FILL    实心
+     *  Paint.Style.STROKE  空心
+     *  Paint.Style.FILL_AND_STROKE   同时实心和空心，该参数在某些场合会带来不可预期的显示效果。
+     */
     override fun onDraw(canvas: Canvas) {
         colorTest(canvas)
         effectTest(canvas)

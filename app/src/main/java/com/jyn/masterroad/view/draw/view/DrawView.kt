@@ -20,9 +20,6 @@ import com.jyn.masterroad.view.draw.px
 class DrawView @JvmOverloads constructor(
     context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0
 ) : View(context, attrs, defStyleAttr) {
-    companion object {
-        const val TAG = "View"
-    }
 
     /**
      * paint 的 Api 基本都是共有信息，比如颜色之类

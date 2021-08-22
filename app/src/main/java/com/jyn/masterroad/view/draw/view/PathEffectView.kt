@@ -17,7 +17,6 @@ import com.jyn.masterroad.view.draw.px
  * Android——详解Paint的setPathEffect(PathEffect effect)
  * https://blog.csdn.net/u012230055/article/details/103148506
  */
-@SuppressLint("DrawAllocation")
 class PathEffectView @JvmOverloads constructor(
     context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0
 ) : View(context, attrs, defStyleAttr) {
@@ -43,8 +42,13 @@ class PathEffectView @JvmOverloads constructor(
      *  组合效果
      *      SumPathEffect       同时叠加两个效果
      *      ComposePathEffect   先对Path使用一个PathEffect，然后再在改变后的Path上使用另一个PathEffect
+     *
+     *  注意：PathEffect 在有些情况下不支持硬件加速，需要关闭硬件加速才能正常使用：
+     *      1. Canvas.drawLine() 和 Canvas.drawLines() 方法画直线时，setPathEffect() 是不支持硬件加速的；
+     *      2. PathDashPathEffect 对硬件加速的支持也有问题，所以当使用 PathDashPathEffect 的时候，最好也把硬件加速关了。
      */
 
+    @SuppressLint("DrawAllocation")
     override fun onDraw(canvas: Canvas) {
         //原图形
         val paint = getPaint()
@@ -83,7 +87,7 @@ class PathEffectView @JvmOverloads constructor(
         }
         paint.pathEffect = CornerPathEffect(40f)
         canvas.drawPath(path, paint)
-        canvas.drawText("CornerPathEffect", 600f, 100 + gap, textPaint)
+        canvas.drawText("Corner 圆角", 600f, 100 + gap, textPaint)
     }
 
     /**
@@ -103,7 +107,7 @@ class PathEffectView @JvmOverloads constructor(
         }
         paint.pathEffect = DiscretePathEffect(20f, 5f)
         canvas.drawPath(path, paint)
-        canvas.drawText("DiscretePathEffect", 600f, 100 + gap * 2, textPaint)
+        canvas.drawText("Discrete 离散", 600f, 100 + gap * 2, textPaint)
     }
 
     /**
@@ -124,7 +128,7 @@ class PathEffectView @JvmOverloads constructor(
 
         paint.pathEffect = DashPathEffect(floatArrayOf(20f, 10f, 5f, 10f), 0f)
         canvas.drawPath(path, paint)
-        canvas.drawText("DashPathEffect", 600f, 100 + gap * 3, textPaint)
+        canvas.drawText("Dash 虚线", 600f, 100 + gap * 3, textPaint)
     }
 
 
@@ -158,17 +162,17 @@ class PathEffectView @JvmOverloads constructor(
 
         paint.pathEffect = PathDashPathEffect(dashPath, 40f, 0f, PathDashPathEffect.Style.TRANSLATE)
         canvas.drawPath(path, paint)
-        canvas.drawText("PathDashPathEffect TRANSLATE", 600f, 100 + gap * 4, textPaint)
+        canvas.drawText("Path TRANSLATE 路径 位移", 600f, 100 + gap * 4, textPaint)
 
         path.offset(0f, gap / 2)
         paint.pathEffect = PathDashPathEffect(dashPath, 40f, 0f, PathDashPathEffect.Style.ROTATE)
         canvas.drawPath(path, paint)
-        canvas.drawText("PathDashPathEffect ROTATE", 600f, 100 + gap * 4.5f, textPaint)
+        canvas.drawText("Path ROTATE 路径 旋转", 600f, 100 + gap * 4.5f, textPaint)
 
         path.offset(0f, gap / 2)
         paint.pathEffect = PathDashPathEffect(dashPath, 40f, 0f, PathDashPathEffect.Style.MORPH)
         canvas.drawPath(path, paint)
-        canvas.drawText("PathDashPathEffect MORPH", 600f, 100 + gap * 5f, textPaint)
+        canvas.drawText("Path MORPH 路径 变体", 600f, 100 + gap * 5f, textPaint)
 
     }
 
@@ -190,14 +194,15 @@ class PathEffectView @JvmOverloads constructor(
         val dashEffect = DashPathEffect(floatArrayOf(20f, 10f), 0f)
         //随机线
         val discreteEffect = DiscretePathEffect(20f, 5f)
-        val sumPathEffect = SumPathEffect(dashEffect, discreteEffect)
-        paint.pathEffect = sumPathEffect
+        paint.pathEffect = SumPathEffect(dashEffect, discreteEffect)
         canvas.drawPath(path, paint)
-        canvas.drawText("SumPathEffect", 600f, 100 + gap * 6, textPaint)
+        canvas.drawText("Sum 叠加", 600f, 100 + gap * 6, textPaint)
     }
 
     /**
      * ComposePathEffect    先对目标 Path 使用一个 PathEffect，然后再对这个改变后的 Path 使用另一个 PathEffect。
+     *  outerpe 是后应用的
+     *  innerpe 是先应用的，
      */
     private fun composePathEffect(canvas: Canvas) {
         val paint = getPaint()
@@ -213,9 +218,8 @@ class PathEffectView @JvmOverloads constructor(
         val dashEffect = DashPathEffect(floatArrayOf(20f, 10f), 0f)
         //随机线
         val discreteEffect = DiscretePathEffect(20f, 5f)
-        val sumPathEffect = ComposePathEffect(dashEffect, discreteEffect)
-        paint.pathEffect = sumPathEffect
+        paint.pathEffect = ComposePathEffect(dashEffect, discreteEffect)
         canvas.drawPath(path, paint)
-        canvas.drawText("ComposePathEffect", 600f, 100 + gap * 7, textPaint)
+        canvas.drawText("Compose 混合", 600f, 100 + gap * 7, textPaint)
     }
 }

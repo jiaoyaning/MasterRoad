@@ -7,7 +7,6 @@ import android.graphics.Path
 import android.graphics.PathMeasure
 import android.util.AttributeSet
 import android.view.View
-import com.apkfuns.logutils.LogUtils
 
 /*
  * Android：视图绘制(三) ------Path介绍
@@ -51,7 +50,6 @@ class PathView @JvmOverloads constructor(
          */
         pathMeasure = PathMeasure(path, false)
         val pathLength = pathMeasure.length //计算路径长度
-        LogUtils.tag(DrawView.TAG).i(pathLength)
 //        pathMeasure.getPosTan() //固定长度地方的切角
 
         /*

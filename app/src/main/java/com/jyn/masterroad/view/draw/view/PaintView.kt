@@ -5,6 +5,7 @@ import android.graphics.*
 import android.util.AttributeSet
 import android.view.View
 import com.jyn.masterroad.R
+import com.jyn.masterroad.view.draw.px
 
 /*
  * HenCoder Android 开发进阶: 自定义 View 1-2 Paint 详解
@@ -15,35 +16,37 @@ import com.jyn.masterroad.R
 class PaintView @JvmOverloads constructor(
     context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0
 ) : View(context, attrs, defStyleAttr) {
-    /**
-     * 画笔的风格
-     *  Paint.Style.FILL    实心
-     *  Paint.Style.STROKE  空心
-     *  Paint.Style.FILL_AND_STROKE   同时实心和空心，该参数在某些场合会带来不可预期的显示效果。
-     */
-    override fun onDraw(canvas: Canvas) {
-        colorTest(canvas)
-        effectTest(canvas)
-        textTest(canvas)
-        initTest(canvas)
-    }
 
     /**
-     * 一. 颜色
-     *  1. Paint.setColor(int color)
-     *  2. Paint.setARGB(int a, int r, int g, int b)
-     *  前两个设置颜色的API太简单了，直接略过
+     * 画笔的风格 Style
+     *      Paint.Style.FILL    实心
+     *      Paint.Style.STROKE  空心
+     *      Paint.Style.FILL_AND_STROKE   同时实心和空心，该参数在某些场合会带来不可预期的显示效果。
      *
-     *  3. setShader(Shader shader) 着色器，具体参数是Shader的子类
+     *  Paint.setStrokeWidth(float width)   //设置宽度
+     *
+     *  Paint.setColor(int color)
+     *  Paint.setARGB(int a, int r, int g, int b)
+     *  前两个设置颜色的API太简单了，直接略过
+     */
+    override fun onDraw(canvas: Canvas) {
+        shader(canvas)      //着色器
+        shadowLayer(canvas) //阴影绘制
+        maskFilter(canvas)  //遮罩绘制
+        getXXXPath(canvas)  //获取绘制的 Path
+    }
+
+    /*
+     * setShader(Shader shader) 着色器，具体参数是Shader的子类
      *      LinearGradient 线性渐变
      *      RadialGradient 辐射渐变
      *      SweepGradient
      *      BitmapShader
      *      ComposeShader
      *
-     *  注意：在设置了 Shader 的情况下， Paint.setColor/ARGB() 所设置的颜色就不再起作用。
+     * 注意：在设置了 Shader 的情况下， Paint.setColor/ARGB() 所设置的颜色就不再起作用。
      */
-    private fun colorTest(canvas: Canvas) {
+    private fun shader(canvas: Canvas) {
         val paint = Paint(Paint.ANTI_ALIAS_FLAG)
 
         /**
@@ -121,21 +124,82 @@ class PaintView @JvmOverloads constructor(
          */
     }
 
-    // 2. 效果
-    private fun effectTest(canvas: Canvas) {
-        var paint = Paint(Paint.ANTI_ALIAS_FLAG)
+    /*
+     * setShadowLayer() 绘制内容下面加一层阴影
+     *    radius      是阴影的模糊范围
+     *    dx dy       是阴影的偏移量
+     *    shadowColor 是阴影的颜色
+     *
+     * clearShadowLayer() 清除阴影
+     *
+     * 注意
+     *    1. 在硬件加速开启的情况下， setShadowLayer() 只支持文字的绘制，
+     *       文字之外的绘制必须关闭硬件加速才能正常绘制阴影。
+     *    2. 如果 shadowColor 是半透明的，阴影的透明度就使用 shadowColor 自己的透明度；
+     *       而如果 shadowColor 是不透明的，阴影的透明度就使用 paint 的透明度。
+     */
+    private fun shadowLayer(canvas: Canvas) {
+        val paint = Paint(Paint.ANTI_ALIAS_FLAG).apply {
+            textSize = 15f.px
+        }
+        paint.setShadowLayer(10f, 0f, 0f, Color.RED)
+        canvas.drawText("加阴影", 0f, 300f, paint)
     }
 
-    // 3. Text相关
-    private fun textTest(canvas: Canvas) {
-        var paint = Paint(Paint.ANTI_ALIAS_FLAG)
+    /**
+     * setMaskFilter()  遮罩
+     * 上一个方法 setShadowLayer() 是设置的在绘制层下方的附加效果；而这个 MaskFilter 和它相反，设置的是在绘制层上方的附加效果。
+     *
+     *      BlurMaskFilter      模糊效果
+     *      EmbossMaskFilter    浮雕效果
+     *
+     * 注意: maskFilter不支持硬件加速
+     */
+    private fun maskFilter(canvas: Canvas) {
+        val paint = Paint(Paint.ANTI_ALIAS_FLAG)
+        val bitmap = getBitmap(R.mipmap.icon_master_road2)
+
+        /**
+         * BlurMaskFilter
+         *
+         * radius  模糊范围
+         * style   模糊的类型
+         *      NORMAL  内外都模糊绘制
+         *      SOLID   内部正常绘制，外部模糊
+         *      INNER   内部模糊，外部不绘制
+         *      OUTER   内部不绘制，外部模糊（什么鬼？）
+         */
+        paint.maskFilter = BlurMaskFilter(10f, BlurMaskFilter.Blur.NORMAL)
+        canvas.drawBitmap(bitmap, 0f, 400f, paint)
     }
 
-    // 4. 初始化
-    private fun initTest(canvas: Canvas) {
-        var paint = Paint(Paint.ANTI_ALIAS_FLAG)
-    }
 
+    /**
+     * getFillPath(Path src, Path dst)  获取实际 Path ，然后把结果保存在 dst 里。
+     *      src：原 Path
+     *      dst：实际 Path
+     */
+    private fun getXXXPath(canvas: Canvas) {
+        val paint = Paint(Paint.ANTI_ALIAS_FLAG).apply {
+            style = Paint.Style.STROKE
+            strokeWidth = 7f.px
+            textSize = 15f.px
+        }
+
+        val srcPath = Path().apply {
+            moveTo(10f, 700f)
+            lineTo(110f, 800f)
+            lineTo(160f, 700f)
+        }
+        canvas.drawPath(srcPath, paint)
+
+        val dstPath = Path()
+        paint.getFillPath(srcPath, dstPath) //获取实际路径
+
+        dstPath.offset(300f, 0f)
+
+        canvas.drawPath(dstPath, Paint(Paint.ANTI_ALIAS_FLAG))
+    }
 
     private fun getBitmap(id: Int): Bitmap {
         val options = BitmapFactory.Options()

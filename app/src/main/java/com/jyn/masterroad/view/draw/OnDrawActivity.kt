@@ -39,6 +39,7 @@ class OnDrawActivity : BaseActivity<ActivityOnDrawBinding>
     private val pathEffectView by lazy { PathEffectView(this) }
     private val xfermodeView by lazy { XfermodeView(this) }
     private val drawTextView by lazy { DrawTextView(this) }
+    private val canvasView by lazy { CanvasView(this) }
 
     override fun initView() {
         binding.click = onClickListener
@@ -53,6 +54,7 @@ class OnDrawActivity : BaseActivity<ActivityOnDrawBinding>
                 R.id.btn_PathEffect -> pathEffectView
                 R.id.btn_xfermode -> xfermodeView
                 R.id.btn_draw_text -> drawTextView
+                R.id.btn_canvas_view -> canvasView
                 else -> drawView
             }
         )

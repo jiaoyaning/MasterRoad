@@ -216,8 +216,15 @@ class DrawTextView @JvmOverloads constructor(
         }
 
         /**
-         * 光标相关
-         * getRunAdvance()
+         * getRunAdvance()  光标相关
+         *
+         *  text 是要测量的文字
+         *  start end 是文字的起始和结束坐标
+         *  contextStart contextEnd 是上下文的起始和结束坐标
+         *  isRtl 是文字方向
+         *  advance 是给出的位置的像素值
+         *
+         *  对应的字符偏移量将作为返回值返回。
          */
         val runAdvanceText = "光标计算 测绘位置        getRunAdvance() \uD83C\uDDE8\uD83C\uDDF3"
         paint.color = Color.BLACK

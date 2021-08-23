@@ -65,6 +65,13 @@
                     android:layout_marginStart="5dp"
                     android:onClick="@{click}"
                     android:text="Xfermode" />
+
+                <Button
+                    android:id="@+id/btn_draw_text"
+                    style="@style/tv"
+                    android:layout_marginStart="5dp"
+                    android:onClick="@{click}"
+                    android:text="DrawText" />
             </LinearLayout>
         </HorizontalScrollView>
 

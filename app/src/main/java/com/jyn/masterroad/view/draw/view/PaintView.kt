@@ -140,9 +140,9 @@ class PaintView @JvmOverloads constructor(
      */
     private fun shadowLayer(canvas: Canvas) {
         val paint = Paint(Paint.ANTI_ALIAS_FLAG).apply {
-            textSize = 15f.px
+            textSize = 20f.px
         }
-        paint.setShadowLayer(10f, 0f, 0f, Color.RED)
+        paint.setShadowLayer(3f, 0f, 0f, Color.RED)
         canvas.drawText("加阴影", 0f, 300f, paint)
     }
 
@@ -160,7 +160,7 @@ class PaintView @JvmOverloads constructor(
         val bitmap = getBitmap(R.mipmap.icon_master_road2)
 
         /**
-         * BlurMaskFilter
+         * BlurMaskFilter   模糊效果
          *
          * radius  模糊范围
          * style   模糊的类型
@@ -169,8 +169,14 @@ class PaintView @JvmOverloads constructor(
          *      INNER   内部模糊，外部不绘制
          *      OUTER   内部不绘制，外部模糊（什么鬼？）
          */
-        paint.maskFilter = BlurMaskFilter(10f, BlurMaskFilter.Blur.NORMAL)
-        canvas.drawBitmap(bitmap, 0f, 400f, paint)
+        paint.maskFilter = BlurMaskFilter(50f, BlurMaskFilter.Blur.NORMAL)
+        canvas.drawBitmap(bitmap, 100f, 400f, paint)
+        paint.maskFilter = BlurMaskFilter(50f, BlurMaskFilter.Blur.SOLID)
+        canvas.drawBitmap(bitmap, 500f, 400f, paint)
+        paint.maskFilter = BlurMaskFilter(50f, BlurMaskFilter.Blur.INNER)
+        canvas.drawBitmap(bitmap, 100f, 700f, paint)
+        paint.maskFilter = BlurMaskFilter(50f, BlurMaskFilter.Blur.OUTER)
+        canvas.drawBitmap(bitmap, 500f, 700f, paint)
     }
 
 
@@ -187,9 +193,9 @@ class PaintView @JvmOverloads constructor(
         }
 
         val srcPath = Path().apply {
-            moveTo(10f, 700f)
-            lineTo(110f, 800f)
-            lineTo(160f, 700f)
+            moveTo(10f, 1000f)
+            lineTo(110f, 1100f)
+            lineTo(160f, 1000f)
         }
         canvas.drawPath(srcPath, paint)
 

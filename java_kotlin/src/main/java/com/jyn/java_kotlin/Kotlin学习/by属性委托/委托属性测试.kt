@@ -6,7 +6,7 @@ import kotlin.properties.ReadOnlyProperty
 import kotlin.properties.ReadWriteProperty
 import kotlin.reflect.KProperty
 
-/**
+/*
  * 一文彻底搞懂Kotlin中的委托
  * https://mp.weixin.qq.com/s/dYBYuBAnYRgSiKQrU-ZGpg
  *

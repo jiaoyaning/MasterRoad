@@ -33,11 +33,11 @@ import com.jyn.masterroad.view.draw.view.*
 class OnDrawActivity : BaseActivity<ActivityOnDrawBinding>
     (R.layout.activity_on_draw) {
 
-    private val drawView by lazy { DrawView(this) }
+    private val drawView by lazy { CanvasDrawXXXView(this) }
     private val paintView by lazy { PaintView(this) }
     private val pathView by lazy { PathView(this) }
-    private val pathEffectView by lazy { PathEffectView(this) }
-    private val xfermodeView by lazy { XfermodeView(this) }
+    private val pathEffectView by lazy { PaintSetPathEffectView(this) }
+    private val paintSetXfermodeView by lazy { PaintSetXfermodeView(this) }
     private val drawTextView by lazy { DrawTextView(this) }
     private val canvasView by lazy { CanvasView(this) }
 
@@ -52,7 +52,7 @@ class OnDrawActivity : BaseActivity<ActivityOnDrawBinding>
                 R.id.btn_paint -> paintView
                 R.id.btn_path -> pathView
                 R.id.btn_PathEffect -> pathEffectView
-                R.id.btn_xfermode -> xfermodeView
+                R.id.btn_xfermode -> paintSetXfermodeView
                 R.id.btn_draw_text -> drawTextView
                 R.id.btn_canvas_view -> canvasView
                 else -> drawView

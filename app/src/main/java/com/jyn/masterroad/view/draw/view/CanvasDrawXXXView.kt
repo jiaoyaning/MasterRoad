@@ -17,7 +17,7 @@ import com.jyn.masterroad.view.draw.px
  * Paint的setStrokeCap、setStrokeJoin、setPathEffect
  * https://blog.csdn.net/lxk_1993/article/details/102936227
  */
-class DrawView @JvmOverloads constructor(
+class CanvasDrawXXXView @JvmOverloads constructor(
     context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0
 ) : View(context, attrs, defStyleAttr) {
 

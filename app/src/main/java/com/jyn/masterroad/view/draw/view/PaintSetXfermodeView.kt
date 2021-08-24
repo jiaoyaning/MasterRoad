@@ -14,13 +14,15 @@ import com.jyn.masterroad.view.draw.px
  * 官方文档
  * https://blog.csdn.net/cquwentao/article/details/51407135
  */
-class XfermodeView @JvmOverloads constructor(
+class PaintSetXfermodeView @JvmOverloads constructor(
     context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0
 ) : View(context, attrs, defStyleAttr) {
     companion object {
         var WIDTH = 150f.px
         var PADDING = 50f.px
     }
+
+    private val bitmap = getBitmap(R.mipmap.icon_master_road2)
 
     private val paint = Paint(Paint.ANTI_ALIAS_FLAG)
 
@@ -47,24 +49,10 @@ class XfermodeView @JvmOverloads constructor(
         //用ovel是因为可以根据方形框来绘制
         canvas.drawOval(PADDING, PADDING, WIDTH + PADDING, WIDTH + PADDING, paint)
         paint.xfermode = PorterDuffXfermode(PorterDuff.Mode.SRC_IN)
-        canvas.drawBitmap(getBitmap(R.mipmap.icon_master_road2), PADDING, PADDING, paint)
+        canvas.drawBitmap(bitmap, PADDING, PADDING, paint)
         paint.xfermode = null
         //把新图层放回到底板上
         canvas.restoreToCount(saveLayer)
-    }
-
-    private fun getBitmap(id: Int): Bitmap {
-        val options = BitmapFactory.Options()
-        /**
-         * options.inJustDecodeBounds = true 表示只读图片，不加载到内存中，就不会给图片分配内存空间，但是可以获取到图片的大小等属性;
-         * 设置为false, 就是要加载这个图片.
-         */
-        options.inJustDecodeBounds = true //只读尺寸
-        BitmapFactory.decodeResource(resources, id, options)
-        options.inJustDecodeBounds = false //根据尺寸读取原图
-        options.inDensity = options.outWidth
-        options.inTargetDensity = WIDTH.toInt()
-        return BitmapFactory.decodeResource(resources, id, options)
     }
 
     private fun testXfermode(canvas: Canvas) {
@@ -96,4 +84,19 @@ class XfermodeView @JvmOverloads constructor(
         paint.xfermode = null
         canvas.restoreToCount(saveLayer)
     }
+
+    private fun getBitmap(id: Int): Bitmap {
+        val options = BitmapFactory.Options()
+        /**
+         * options.inJustDecodeBounds = true 表示只读图片，不加载到内存中，就不会给图片分配内存空间，但是可以获取到图片的大小等属性;
+         * 设置为false, 就是要加载这个图片.
+         */
+        options.inJustDecodeBounds = true //只读尺寸
+        BitmapFactory.decodeResource(resources, id, options)
+        options.inJustDecodeBounds = false //根据尺寸读取原图
+        options.inDensity = options.outWidth
+        options.inTargetDensity = WIDTH.toInt()
+        return BitmapFactory.decodeResource(resources, id, options)
+    }
+
 }

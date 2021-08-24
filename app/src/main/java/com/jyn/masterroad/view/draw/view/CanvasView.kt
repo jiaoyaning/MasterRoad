@@ -33,6 +33,7 @@ class CanvasView @JvmOverloads constructor(
 
     /**
      * 裁切
+     * 会导致毛边
      *
      * clipRect()
      * clipPath() path方向并无作用

@@ -33,9 +33,9 @@ class DrawTextView @JvmOverloads constructor(
     /**
      * 共有三个文字绘制方法
      *
-     *  drawText()
-     *  drawTextRun()
-     *  drawTextOnPath()
+     *  Canvas.drawText()
+     *  Canvas.drawTextRun()
+     *  Canvas.drawTextOnPath()
      *
      * 注意：drawText系列方法不支持换行，\n会被绘制成空格
      */
@@ -129,10 +129,10 @@ class DrawTextView @JvmOverloads constructor(
     /**
      * 文本测量
      *
-     * getFontSpacing() 获取字间距
-     * getTextBounds()  获取文本的显示范围
-     * measureText()    测量文字的宽度
-     * getTextWidths()  获取字符串中每个字符的宽度
+     * Paint.getFontSpacing() 获取字间距
+     * Paint.getTextBounds()  获取文本的显示范围
+     * Paint.measureText()    测量文字的宽度
+     * Paint.getTextWidths()  获取字符串中每个字符的宽度
      */
     private fun measureText(canvas: Canvas) {
         /**

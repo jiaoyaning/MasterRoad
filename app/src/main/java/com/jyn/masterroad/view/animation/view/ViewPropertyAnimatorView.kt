@@ -20,6 +20,10 @@ class ViewPropertyAnimatorView @JvmOverloads constructor(
 
     private fun viewAnimate(view: View) {
         Toast.makeText(view.context, "点击", Toast.LENGTH_SHORT).show()
-        view.animate().translationX(200f.px)
+        view.animate()
+            .scaleX(2f)
+            .scaleY(2f)
+            .translationY(100f.px)
+            .translationX(200f.px)
     }
 }

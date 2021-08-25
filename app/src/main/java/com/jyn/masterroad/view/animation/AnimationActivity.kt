@@ -1,6 +1,8 @@
 package com.jyn.masterroad.view.animation
 
 import android.view.View
+import android.view.ViewGroup
+import android.view.ViewGroup.LayoutParams.MATCH_PARENT
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.jyn.common.ARouter.RoutePath
 import com.jyn.masterroad.R
@@ -38,6 +40,7 @@ class AnimationActivity : BaseActivity<ActivityAnimationBinding>
     private fun switchView(view: View) {
         binding.boxLayout.apply {
             removeAllViews()
+            view.layoutParams = ViewGroup.LayoutParams(MATCH_PARENT,MATCH_PARENT)
             addView(view)
         }
     }

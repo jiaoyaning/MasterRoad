@@ -193,7 +193,6 @@ class CanvasView @JvmOverloads constructor(
     private val camera = Camera()
     private fun camera(canvas: Canvas) {
         canvas.drawText("Camera   三维变换", 50f, 1220f, textPaint)
-        canvas.drawBitmap(bitmap, 50f, 1250f, paint)
 
         /**
          * 中心旋转45度
@@ -201,11 +200,11 @@ class CanvasView @JvmOverloads constructor(
         canvas.save()
         camera.save()                // 保存 Camera 的状态
         camera.rotateX(45f)      // 旋转 Camera 的三维空间
-        canvas.translate(450f, 1350f)  // 旋转之后把投影移动回来
+        canvas.translate(150f, 1350f)  // 旋转之后把投影移动回来
         camera.applyToCanvas(canvas) // 把旋转投影到 Canvas
-        canvas.translate(-450f, -1350f) // 旋转之前把绘制内容移动到轴心（原点）
+        canvas.translate(-150f, -1350f) // 旋转之前把绘制内容移动到轴心（原点）
+        canvas.drawBitmap(bitmap, 50f, 1250f, paint)
         camera.restore()             //恢复 Camera 的状态
-        canvas.drawBitmap(bitmap, 350f, 1250f, paint)
         canvas.restore()
 
 
@@ -214,20 +213,49 @@ class CanvasView @JvmOverloads constructor(
          */
         //上半部分
         canvas.save()
-        canvas.clipRect(650f, 1250f, 850f, 1350f)
-        canvas.drawBitmap(bitmap, 650f, 1250f, paint)
+        canvas.clipRect(350f, 1250f, 550f, 1350f)
+        canvas.drawBitmap(bitmap, 350f, 1250f, paint)
         canvas.restore()
         //下半部分
         canvas.save()
         camera.save()
         camera.rotateX(45f)      // 旋转 Camera 的三维空间
-        canvas.translate(700f, 1350f)  // 旋转之后把投影移动回来
+        canvas.translate(450f, 1350f)  // 旋转之后把投影移动回来
         camera.applyToCanvas(canvas) // 把旋转投影到 Canvas
-        canvas.translate(-700f, -1350f) // 旋转之前把绘制内容移动到轴心（原点）
-        canvas.clipRect(650f, 1350f, 850f, 1450f)
-        canvas.drawBitmap(bitmap, 650f, 1250f, paint)
+        canvas.translate(-450f, -1350f) // 旋转之前把绘制内容移动到轴心（原点）
+        canvas.clipRect(350f, 1350f, 550f, 1450f)
+        canvas.drawBitmap(bitmap, 350f, 1250f, paint)
         camera.restore()
         canvas.restore()
+
+        /**
+         * 斜着切35度
+         */
+        //上半部分
+        canvas.save()
+        canvas.translate(750f, 1350f)
+        canvas.rotate(-35f)
+        canvas.clipRect(-200f, -200f, 200f, 0f)
+        canvas.rotate(35f)
+        canvas.translate(-750f, -1350f)
+        canvas.drawBitmap(bitmap, 650f, 1250f, paint)
+        canvas.restore()
+
+        //下半部分
+        camera.save()
+        camera.rotateX(45f)      // 旋转 Camera 的三维空间
+
+        canvas.save()
+        canvas.translate(750f, 1350f)
+        canvas.rotate(-35f)
+        camera.applyToCanvas(canvas) // 把旋转投影到 Canvas
+        canvas.clipRect(-200f, 0f, 200f, 200f)
+        canvas.rotate(35f)
+        canvas.translate(-750f, -1350f)
+        canvas.drawBitmap(bitmap, 650f, 1250f, paint)
+        canvas.restore()
+
+        camera.restore()
     }
 
     private fun getBitmap(id: Int): Bitmap {

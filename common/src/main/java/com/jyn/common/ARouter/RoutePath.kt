@@ -158,4 +158,10 @@ object RoutePath {
         const val path = "/app/Draw"
         const val span = 2
     }
+
+    object Animation {
+        const val name = "Animation"
+        const val path = "/app/Animation"
+        const val span = 2
+    }
 }

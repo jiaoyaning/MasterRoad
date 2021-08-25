@@ -52,22 +52,20 @@ class OnDrawActivity : BaseActivity<ActivityOnDrawBinding>
     private val canvasView by lazy { CanvasView(this) }
 
     override fun initView() {
-        binding.click = onClickListener
-    }
-
-    private val onClickListener = View.OnClickListener {
-        switchView(
-            when (it.id) {
-                R.id.btn_draw -> drawView
-                R.id.btn_paint -> paintView
-                R.id.btn_path -> pathView
-                R.id.btn_PathEffect -> pathEffectView
-                R.id.btn_xfermode -> paintSetXfermodeView
-                R.id.btn_draw_text -> drawTextView
-                R.id.btn_canvas_view -> canvasView
-                else -> drawView
-            }
-        )
+        binding.click = View.OnClickListener {
+            switchView(
+                when (it.id) {
+                    R.id.btn_draw -> drawView
+                    R.id.btn_paint -> paintView
+                    R.id.btn_path -> pathView
+                    R.id.btn_PathEffect -> pathEffectView
+                    R.id.btn_xfermode -> paintSetXfermodeView
+                    R.id.btn_draw_text -> drawTextView
+                    R.id.btn_canvas_view -> canvasView
+                    else -> drawView
+                }
+            )
+        }
     }
 
     private fun switchView(view: View) {

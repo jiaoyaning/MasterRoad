@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="click"
+            type="android.view.View.OnClickListener" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".view.animation.AnimationActivity"
+        tools:ignore="HardcodedText">
+
+        <HorizontalScrollView
+            android:id="@+id/horizontal_scroll_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:scrollbars="none"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/btn_ViewPropertyAnimator"
+                    style="@style/tv"
+                    android:layout_marginBottom="5dp"
+                    android:onClick="@{click}"
+                    android:text="ViewPropertyAnimator" />
+
+                <Button
+                    android:id="@+id/btn_ObjectAnimator"
+                    style="@style/tv2"
+                    android:layout_marginStart="5dp"
+                    android:onClick="@{click}"
+                    android:text="ObjectAnimator" />
+
+            </LinearLayout>
+        </HorizontalScrollView>
+
+        <RelativeLayout
+            android:id="@+id/box_layout"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginTop="5dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/horizontal_scroll_view"
+            tools:ignore="UselessLeaf">
+
+            <com.jyn.masterroad.view.animation.view.ViewPropertyAnimatorView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+        </RelativeLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

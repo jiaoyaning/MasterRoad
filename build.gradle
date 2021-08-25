@@ -23,6 +23,7 @@ buildscript {
         maven { url 'https://maven.aliyun.com/repository/public' }
         maven { url 'https://maven.aliyun.com/repository/central' }
         maven { url 'https://maven.aliyun.com/repository/google' }
+        maven { url 'https://maven.aliyun.com/repository/gradle-plugin' }
     }
 
     dependencies {
@@ -43,10 +44,10 @@ buildscript {
 allprojects {
     repositories {
         mavenLocal() //本地插件上传仓库
-        maven { url "https://plugins.gradle.org/m2/" }
         maven { url 'https://maven.aliyun.com/repository/public' }
         maven { url 'https://maven.aliyun.com/repository/central' }
         maven { url 'https://maven.aliyun.com/repository/google' }
+        maven { url 'https://maven.aliyun.com/repository/gradle-plugin' }
     }
 }
 

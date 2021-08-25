@@ -36,7 +36,7 @@
                     style="@style/tv"
                     android:layout_marginBottom="5dp"
                     android:onClick="@{click}"
-                    android:text="drawXXX" />
+                    android:text="CanvasDrawXXX" />
 
                 <Button
                     android:id="@+id/btn_paint"
@@ -57,14 +57,14 @@
                     style="@style/tv2"
                     android:layout_marginStart="5dp"
                     android:onClick="@{click}"
-                    android:text="PathEffect" />
+                    android:text="PaintSetPathEffect" />
 
                 <Button
                     android:id="@+id/btn_xfermode"
                     style="@style/tv"
                     android:layout_marginStart="5dp"
                     android:onClick="@{click}"
-                    android:text="Xfermode" />
+                    android:text="PaintSetXfermode" />
 
                 <Button
                     android:id="@+id/btn_draw_text"
@@ -93,7 +93,7 @@
             app:layout_constraintTop_toBottomOf="@+id/horizontal_scroll_view"
             tools:ignore="UselessLeaf">
 
-            <com.jyn.masterroad.view.draw.view.DrawView
+            <com.jyn.masterroad.view.draw.view.CanvasDrawXXXView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent" />
         </RelativeLayout>

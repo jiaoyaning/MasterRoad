@@ -17,7 +17,7 @@ import com.jyn.masterroad.view.draw.px
  * Android——详解Paint的setPathEffect(PathEffect effect)
  * https://blog.csdn.net/u012230055/article/details/103148506
  */
-class PathEffectView @JvmOverloads constructor(
+class PaintSetPathEffectView @JvmOverloads constructor(
     context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0
 ) : View(context, attrs, defStyleAttr) {
     private val gap = 150f

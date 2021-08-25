@@ -16,6 +16,7 @@ import com.jyn.masterroad.view.draw.px
 class PaintView @JvmOverloads constructor(
     context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0
 ) : View(context, attrs, defStyleAttr) {
+    private val bitmap = getBitmap(R.mipmap.icon_master_road2)
 
     /**
      * 画笔的风格 Style
@@ -37,7 +38,7 @@ class PaintView @JvmOverloads constructor(
     }
 
     /*
-     * setShader(Shader shader) 着色器，具体参数是Shader的子类
+     * Paint.setShader(Shader shader) 着色器，具体参数是Shader的子类
      *      LinearGradient 线性渐变
      *      RadialGradient 辐射渐变
      *      SweepGradient
@@ -110,7 +111,6 @@ class PaintView @JvmOverloads constructor(
          * BitmapShader的绘制原理是从视图原点开始绘制第一个Bitmap,然后在按设置的模式先绘制Y轴，然后根据Y轴的绘制，绘制X轴这样去绘制超过Bitmap的部分。
          * 按这样的原理绘制的图形此时并不会显示，只有当canvas调用draw绘制后，才显示canvas绘制的那部分。
          */
-        val bitmap = getBitmap(R.mipmap.icon_master_road2)
 //        val bitmap = BitmapFactory.decodeResource(resources, R.mipmap.icon_master_road2)
         val bitmapShader = BitmapShader(bitmap, Shader.TileMode.REPEAT, Shader.TileMode.REPEAT)
         paint.shader = bitmapShader
@@ -125,7 +125,7 @@ class PaintView @JvmOverloads constructor(
     }
 
     /*
-     * setShadowLayer() 绘制内容下面加一层阴影
+     * Paint.setShadowLayer() 绘制内容下面加一层阴影
      *    radius      是阴影的模糊范围
      *    dx dy       是阴影的偏移量
      *    shadowColor 是阴影的颜色
@@ -147,7 +147,7 @@ class PaintView @JvmOverloads constructor(
     }
 
     /**
-     * setMaskFilter()  遮罩
+     * Paint.setMaskFilter()  遮罩
      * 上一个方法 setShadowLayer() 是设置的在绘制层下方的附加效果；而这个 MaskFilter 和它相反，设置的是在绘制层上方的附加效果。
      *
      *      BlurMaskFilter      模糊效果
@@ -157,7 +157,6 @@ class PaintView @JvmOverloads constructor(
      */
     private fun maskFilter(canvas: Canvas) {
         val paint = Paint(Paint.ANTI_ALIAS_FLAG)
-        val bitmap = getBitmap(R.mipmap.icon_master_road2)
 
         /**
          * BlurMaskFilter   模糊效果
@@ -181,7 +180,7 @@ class PaintView @JvmOverloads constructor(
 
 
     /**
-     * getFillPath(Path src, Path dst)  获取实际 Path ，然后把结果保存在 dst 里。
+     * Paint.getFillPath(Path src, Path dst)  获取实际 Path ，然后把结果保存在 dst 里。
      *      src：原 Path
      *      dst：实际 Path
      */
@@ -204,7 +203,9 @@ class PaintView @JvmOverloads constructor(
 
         dstPath.offset(300f, 0f)
 
-        canvas.drawPath(dstPath, Paint(Paint.ANTI_ALIAS_FLAG))
+        canvas.drawPath(dstPath, Paint(Paint.ANTI_ALIAS_FLAG).apply {
+            style = Paint.Style.STROKE
+        })
     }
 
     private fun getBitmap(id: Int): Bitmap {

@@ -19,6 +19,7 @@ import com.jyn.masterroad.view.animation.view.ViewPropertyAnimatorView
 @Route(path = RoutePath.Animation.path)
 class AnimationActivity : BaseActivity<ActivityAnimationBinding>
     (R.layout.activity_animation) {
+
     private val viewPropertyAnimatorView by lazy { ViewPropertyAnimatorView(this) }
     private val objectAnimatorView by lazy { ObjectAnimatorView(this) }
 

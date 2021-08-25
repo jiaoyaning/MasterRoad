@@ -16,6 +16,9 @@
         android:usesCleartextTraffic="true"
         tools:ignore="AllowBackup"
         tools:targetApi="m">
+        <activity
+            android:name=".view.layout.LayoutActivity"
+            android:exported="true" />
         <activity android:name=".base.jvm.ClassLoaderActivity" />
         <activity android:name=".base.BaseActivity" />
         <activity android:name=".concurrent.ThreadActivity" />

@@ -1,6 +1,9 @@
 ## 2021-3月份面试总结 —— ing 干巴爹
 https://www.yuque.com/mikaelzero/blog/ekudhw
 
+## 大全 (极多)
+http://blog.itpub.net/69983917/
+
 ## 字节和腾讯面试的过程和感想记录(已有offer) (极好)
 https://www.jianshu.com/p/afd94b9bc2e2
 

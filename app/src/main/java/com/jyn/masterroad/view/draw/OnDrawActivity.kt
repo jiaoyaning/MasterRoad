@@ -11,6 +11,9 @@ import com.jyn.masterroad.databinding.ActivityOnDrawBinding
 import com.jyn.masterroad.view.draw.view.*
 
 /*
+ * HenCoder Android 自定义 View 1-5: 绘制顺序
+ * https://juejin.cn/post/6844903491031269383
+ *
  * 面试官：View.post() 为什么能够获取到 View 的宽高？
  * https://mp.weixin.qq.com/s/GWB--a43N6I8Fl_81-Ltqw
  *
@@ -32,7 +35,14 @@ import com.jyn.masterroad.view.draw.view.*
 @Route(path = RoutePath.Draw.path)
 class OnDrawActivity : BaseActivity<ActivityOnDrawBinding>
     (R.layout.activity_on_draw) {
-
+    /**
+     * 一个完整的绘制过程会依次绘制以下几个内容：
+     *      1.背景
+     *      2.主体（onDraw()）
+     *      3.子 View（dispatchDraw()）
+     *      4.滑动边缘渐变和滑动条
+     *      5.前景
+     */
     private val drawView by lazy { DrawView(this) }
     private val paintView by lazy { PaintView(this) }
     private val pathView by lazy { PathView(this) }

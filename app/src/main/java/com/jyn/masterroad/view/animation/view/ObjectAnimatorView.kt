@@ -14,6 +14,12 @@ import com.jyn.masterroad.view.draw.px
 import kotlinx.android.synthetic.main.activity_ipc_server.view.*
 import kotlinx.android.synthetic.main.layout_animator_view_property.view.*
 
+/**
+ * Android动画框架总结
+ * https://cristianoro7.github.io/2017/11/21/Android%E5%8A%A8%E7%94%BB%E6%A1%86%E6%9E%B6%E6%80%BB%E7%BB%93/
+ *
+ * Keyframe
+ */
 @Keep
 class ObjectAnimatorView @JvmOverloads constructor(
     context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0

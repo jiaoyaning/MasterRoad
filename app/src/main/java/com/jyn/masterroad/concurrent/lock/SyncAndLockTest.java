@@ -31,6 +31,9 @@ import com.apkfuns.logutils.LogUtils;
  *
  * 由浅入深C A S，小白也能与BAT面试官对线
  * https://mp.weixin.qq.com/s/GR7lLGp9JH4bsAgQB3uLrw
+ *
+ * synchronized 加锁 this 和 class 的区别！
+ * https://mp.weixin.qq.com/s/3zltm0zGRLkDyNQ6wdOwEw
  */
 public class SyncAndLockTest {
     private static final String TAG = "lock";
@@ -52,8 +55,11 @@ public class SyncAndLockTest {
 
     /*
      * 3. 修饰代码块：锁对象为synchronized紧接着的小括号内的对象
-     *   3.1 实例对象：锁对象为当前对象
-     *   3.2 类：锁对象为当前Class对象
+     *       synchronized(object/this)   锁对象为当前对象
+     *       synchronized(Object.class)  锁对象为当前Class对象
+     *
+     * 使用 synchronized 加锁 class 时，无论共享一个对象还是创建多个对象，它们用的都是同一把锁，
+     * 使用 synchronized 加锁 this 时，只有同一个对象会使用同一把锁，不同对象之间的锁是不同的
      */
     public void syncBlockMethod() {
         synchronized (object) {

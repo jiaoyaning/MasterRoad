@@ -2,8 +2,6 @@ package com.jyn.masterroad.jetpack.bindingcollection
 
 import android.annotation.SuppressLint
 import android.view.View
-import androidx.databinding.ObservableArrayList
-import androidx.databinding.ObservableList
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.recyclerview.widget.RecyclerView

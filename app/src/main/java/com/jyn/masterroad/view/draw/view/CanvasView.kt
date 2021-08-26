@@ -179,7 +179,7 @@ class CanvasView @JvmOverloads constructor(
             350f - 20, 1150 + 10f,  //左下
             550f + 10, 1150 + 50f   //右下
         )
-        matrix.setPolyToPoly(pointsSrc, 0, pointsDst, 0, 4);
+        matrix.setPolyToPoly(pointsSrc, 0, pointsDst, 0, 4)
         canvas.concat(matrix)
         canvas.drawBitmap(bitmap, 350f, 950f, paint)
         canvas.restore()
@@ -244,6 +244,7 @@ class CanvasView @JvmOverloads constructor(
         //下半部分
         camera.save()
         camera.rotateX(45f)      // 旋转 Camera 的三维空间
+        camera.setLocation(0f, 0f, -6 * resources.displayMetrics.density)
 
         canvas.save()
         canvas.translate(750f, 1350f)

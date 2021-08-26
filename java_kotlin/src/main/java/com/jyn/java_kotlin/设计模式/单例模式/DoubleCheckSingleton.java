@@ -40,6 +40,7 @@ public class DoubleCheckSingleton implements Serializable {
 
     /**
      * 当 ObjectInputStream类反序列化时，如果对象存在 readResolve 方法，则会调用该方法返回对象。
+     * @see java.io.ObjectInputStream
      */
     private Object readResolve() {
         return instance;

@@ -5,6 +5,7 @@ import android.graphics.*
 import android.os.Build
 import android.util.AttributeSet
 import android.view.View
+import androidx.core.graphics.withSave
 import com.jyn.masterroad.R
 import com.jyn.masterroad.view.draw.px
 
@@ -246,15 +247,15 @@ class CanvasView @JvmOverloads constructor(
         camera.rotateX(45f)      // 旋转 Camera 的三维空间
         camera.setLocation(0f, 0f, -6 * resources.displayMetrics.density)
 
-        canvas.save()
-        canvas.translate(750f, 1350f)
-        canvas.rotate(-35f)
-        camera.applyToCanvas(canvas) // 把旋转投影到 Canvas
-        canvas.clipRect(-200f, 0f, 200f, 200f)
-        canvas.rotate(35f)
-        canvas.translate(-750f, -1350f)
-        canvas.drawBitmap(bitmap, 650f, 1250f, paint)
-        canvas.restore()
+        canvas.withSave {
+            translate(750f, 1350f)
+            rotate(-35f)
+            camera.applyToCanvas(canvas) // 把旋转投影到 Canvas
+            clipRect(-200f, 0f, 200f, 200f)
+            rotate(35f)
+            translate(-750f, -1350f)
+            drawBitmap(bitmap, 650f, 1250f, paint)
+        }
 
         camera.restore()
     }

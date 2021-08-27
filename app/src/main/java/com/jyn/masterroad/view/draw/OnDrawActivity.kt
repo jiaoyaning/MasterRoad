@@ -50,6 +50,7 @@ class OnDrawActivity : BaseActivity<ActivityOnDrawBinding>
     private val paintSetXfermodeView by lazy { PaintSetXfermodeView(this) }
     private val drawTextView by lazy { DrawTextView(this) }
     private val canvasView by lazy { CanvasView(this) }
+    private val drawableView by lazy { DrawableView(this) }
 
     override fun initView() {
         binding.click = View.OnClickListener {
@@ -62,6 +63,7 @@ class OnDrawActivity : BaseActivity<ActivityOnDrawBinding>
                     R.id.btn_xfermode -> paintSetXfermodeView
                     R.id.btn_draw_text -> drawTextView
                     R.id.btn_canvas_view -> canvasView
+                    R.id.btn_drawable -> drawableView
                     else -> drawView
                 }
             )

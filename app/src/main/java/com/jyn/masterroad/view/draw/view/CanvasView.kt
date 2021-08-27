@@ -14,7 +14,7 @@ import com.jyn.masterroad.view.draw.px
  * https://juejin.cn/post/6844903489789755406
  */
 class CanvasView @JvmOverloads constructor(
-    context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0
+        context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0
 ) : View(context, attrs, defStyleAttr) {
     private val paint = Paint(Paint.ANTI_ALIAS_FLAG).apply {
         style = Paint.Style.STROKE
@@ -31,6 +31,14 @@ class CanvasView @JvmOverloads constructor(
         camera(canvas)
     }
 
+    /**
+     * canvas.saveLayer()       离屏缓存，针对的是每一次绘制
+     *
+     * view.setLayerType()      开启View级别的离屏缓存
+     *      LAYER_TYPE_NONE         关闭离屏缓存
+     *      LAYER_TYPE_SOFTWARE     开启软件实现的离屏缓存
+     *      LAYER_TYPE_HARDWARE     开启硬件实现的离屏缓存
+     */
 
     /**
      * 裁切
@@ -94,10 +102,10 @@ class CanvasView @JvmOverloads constructor(
      */
     private fun canvasConversion(canvas: Canvas) {
         canvas.drawText(
-            "Canvas 二维变换：translate() & rotate() & scale() & skew()",
-            50f,
-            620f,
-            textPaint
+                "Canvas 二维变换：translate() & rotate() & scale() & skew()",
+                50f,
+                620f,
+                textPaint
         )
 
         /**
@@ -169,16 +177,16 @@ class CanvasView @JvmOverloads constructor(
         val matrix = Matrix()
         //左上，右上，左下，右下
         val pointsSrc = floatArrayOf(
-            350f, 950f,     //左上
-            550f, 950f,     //右上
-            350f, 1150f,    //左下
-            550f, 1150f     //右下
+                350f, 950f,     //左上
+                550f, 950f,     //右上
+                350f, 1150f,    //左下
+                550f, 1150f     //右下
         )
         val pointsDst = floatArrayOf(
-            350f - 10, 950f + 10,   //左上
-            550f + 10, 950f - 10,   //右上
-            350f - 20, 1150 + 10f,  //左下
-            550f + 10, 1150 + 50f   //右下
+                350f - 10, 950f + 10,   //左上
+                550f + 10, 950f - 10,   //右上
+                350f - 20, 1150 + 10f,  //左下
+                550f + 10, 1150 + 50f   //右下
         )
         matrix.setPolyToPoly(pointsSrc, 0, pointsDst, 0, 4)
         canvas.concat(matrix)

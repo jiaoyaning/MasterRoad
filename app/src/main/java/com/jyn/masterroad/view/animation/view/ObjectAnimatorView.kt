@@ -6,10 +6,8 @@ import android.content.Context
 import android.graphics.*
 import android.util.AttributeSet
 import android.view.View
-import android.widget.LinearLayout
 import androidx.annotation.Keep
 import androidx.core.graphics.withSave
-import androidx.core.view.marginLeft
 import com.jyn.masterroad.R
 import com.jyn.masterroad.view.draw.px
 import kotlinx.android.synthetic.main.activity_ipc_server.view.*
@@ -19,19 +17,19 @@ import kotlinx.android.synthetic.main.layout_animator_view_property.view.*
  * Android动画框架总结
  * https://cristianoro7.github.io/2017/11/21/Android%E5%8A%A8%E7%94%BB%E6%A1%86%E6%9E%B6%E6%80%BB%E7%BB%93/
  *
- * Keyframe
+ * Keyframe 关键帧
  */
 @Keep
 class ObjectAnimatorView @JvmOverloads constructor(
         context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0
 ) : View(context, attrs, defStyleAttr) {
     //上半部分翻转动画
-    private var topFlipAnimator = ObjectAnimator.ofFloat(this, "topFlip", -30f).apply {
+    private var topFlipAnimator = ObjectAnimator.ofFloat(this, "topFlip", -40f).apply {
         duration = 1000
     }
 
     //下半部分翻转动画
-    private var bottomFlipAnimator = ObjectAnimator.ofFloat(this, "bottomFlip", 30f).apply {
+    private var bottomFlipAnimator = ObjectAnimator.ofFloat(this, "bottomFlip", 40f).apply {
         duration = 1000
     }
 
@@ -53,8 +51,8 @@ class ObjectAnimatorView @JvmOverloads constructor(
         setOnClickListener { animatorSet.start() }
     }
 
-    var padding = 80f.px
-    var size = 200f.px
+    private var padding = 80f.px
+    private var size = 200f.px
 
     private val paint = Paint(Paint.ANTI_ALIAS_FLAG).apply {
         style = Paint.Style.STROKE
@@ -64,23 +62,27 @@ class ObjectAnimatorView @JvmOverloads constructor(
     }
     private val bitmap = getBitmap(R.mipmap.icon_master_road2)
 
-    var topFlip = 0f //上半部分倾斜角度
+    private var topFlip = 0f //上半部分倾斜角度
         set(value) {
             field = value
             invalidate()
         }
-    var bottomFlip = 0f    //下半部分倾斜角度
+    private var bottomFlip = 0f    //下半部分倾斜角度
         set(value) {
             field = value
             invalidate()
         }
-    var flipRotation = 0f   //旋转角度
+    private var flipRotation = 0f   //旋转角度
         set(value) {
             field = value
             invalidate()
         }
 
     override fun onDraw(canvas: Canvas) {
+        cameraAnimator(canvas)
+    }
+
+    private fun cameraAnimator(canvas: Canvas) {
         //上半部分
         canvas.withSave {
             translate(padding + size / 2, padding + size / 2)

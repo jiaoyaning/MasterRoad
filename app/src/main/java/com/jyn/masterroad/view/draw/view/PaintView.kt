@@ -14,7 +14,7 @@ import com.jyn.masterroad.view.draw.px
  *  Paint 官方API： https://developer.android.com/reference/android/graphics/Paint.html
  */
 class PaintView @JvmOverloads constructor(
-    context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0
+        context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0
 ) : View(context, attrs, defStyleAttr) {
     private val bitmap = getBitmap(R.mipmap.icon_master_road2)
 
@@ -61,9 +61,9 @@ class PaintView @JvmOverloads constructor(
          *      REPEAT 重复使用镜像模式的图像来填充多余空间
          */
         val linearGradient = LinearGradient(
-            0f, 0f, 200f, 200f,
-            Color.parseColor("#00FFFF"), Color.parseColor("#FF00FF"),
-            Shader.TileMode.CLAMP
+                0f, 0f, 200f, 200f,
+                Color.parseColor("#00FFFF"), Color.parseColor("#FF00FF"),
+                Shader.TileMode.CLAMP
         )
         paint.shader = linearGradient
         canvas.drawRect(0f, 0f, 200f, 200f, paint)
@@ -79,9 +79,9 @@ class PaintView @JvmOverloads constructor(
          * tileMode     辐射范围之外的着色模式。
          */
         val radialGradient = RadialGradient(
-            350f, 100f, 100f,
-            Color.parseColor("#00FFFF"), Color.parseColor("#FF00FF"),
-            Shader.TileMode.MIRROR //这里需要把半径调小才能看出效果
+                350f, 100f, 100f,
+                Color.parseColor("#00FFFF"), Color.parseColor("#FF00FF"),
+                Shader.TileMode.MIRROR //这里需要把半径调小才能看出效果
         )
         paint.shader = radialGradient
         canvas.drawCircle(350f, 100f, 100f, paint)
@@ -94,8 +94,8 @@ class PaintView @JvmOverloads constructor(
          * color0 color1 两个端点分别的颜色值
          */
         val sweepGradient = SweepGradient(
-            600f, 100f,
-            Color.parseColor("#00FFFF"), Color.parseColor("#FF00FF")
+                600f, 100f,
+                Color.parseColor("#00FFFF"), Color.parseColor("#FF00FF")
         )
         paint.shader = sweepGradient
         canvas.drawCircle(600f, 100f, 100f, paint)
@@ -207,6 +207,13 @@ class PaintView @JvmOverloads constructor(
             style = Paint.Style.STROKE
         })
     }
+
+    /**
+     * setColorFilter(ColorFilter colorFilter) 为绘制设置颜色过滤，ColorFilter 并不直接使用，而是使用它的三个子类
+     *      LightingColorFilter
+     *      PorterDuffColorFilter
+     *      ColorMatrixColorFilter
+     */
 
     private fun getBitmap(id: Int): Bitmap {
         val options = BitmapFactory.Options()

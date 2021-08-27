@@ -79,6 +79,13 @@
                     android:layout_marginStart="5dp"
                     android:onClick="@{click}"
                     android:text="CanvasView" />
+
+                <Button
+                    android:id="@+id/btn_drawable"
+                    style="@style/tv"
+                    android:layout_marginStart="5dp"
+                    android:onClick="@{click}"
+                    android:text="Drawable" />
             </LinearLayout>
         </HorizontalScrollView>
 

@@ -1,5 +1,6 @@
 package com.jyn.masterroad.view.animation.view
 
+import android.animation.AnimatorSet
 import android.animation.ObjectAnimator
 import android.content.Context
 import android.graphics.*
@@ -14,7 +15,7 @@ import com.jyn.masterroad.view.draw.px
 import kotlinx.android.synthetic.main.activity_ipc_server.view.*
 import kotlinx.android.synthetic.main.layout_animator_view_property.view.*
 
-/**
+/*
  * Android动画框架总结
  * https://cristianoro7.github.io/2017/11/21/Android%E5%8A%A8%E7%94%BB%E6%A1%86%E6%9E%B6%E6%80%BB%E7%BB%93/
  *
@@ -22,24 +23,34 @@ import kotlinx.android.synthetic.main.layout_animator_view_property.view.*
  */
 @Keep
 class ObjectAnimatorView @JvmOverloads constructor(
-    context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0
+        context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0
 ) : View(context, attrs, defStyleAttr) {
     //上半部分翻转动画
-    private var topFlipAnimator = ObjectAnimator
-        .ofFloat(this, "topFlip", -30f).apply {
-            startDelay = 1000
-            duration = 1500
-        }
+    private var topFlipAnimator = ObjectAnimator.ofFloat(this, "topFlip", -30f).apply {
+        duration = 1000
+    }
 
-    private var bottomFlipAnimator = ObjectAnimator
-        .ofFloat(this, "bottomFlip", 30f).apply {
-            startDelay = 1000
-            duration = 1500
-        }
+    //下半部分翻转动画
+    private var bottomFlipAnimator = ObjectAnimator.ofFloat(this, "bottomFlip", 30f).apply {
+        duration = 1000
+    }
+
+    //旋转动画
+    private var flipRotationAnimator = ObjectAnimator.ofFloat(this, "flipRotation", 360f).apply {
+        duration = 2000
+        repeatCount = 10
+    }
+
+    //动画集合
+    private var animatorSet = AnimatorSet().apply {
+//        //同时播放
+//        playTogether(topFlipAnimator, bottomFlipAnimator)
+        //按顺序播放
+        playSequentially(bottomFlipAnimator, flipRotationAnimator, topFlipAnimator)
+    }
 
     init {
-        setOnClickListener { bottomFlipAnimator.start() }
-        bottomFlipAnimator.start()
+        setOnClickListener { animatorSet.start() }
     }
 
     var padding = 80f.px
@@ -64,6 +75,10 @@ class ObjectAnimatorView @JvmOverloads constructor(
             invalidate()
         }
     var flipRotation = 0f   //旋转角度
+        set(value) {
+            field = value
+            invalidate()
+        }
 
     override fun onDraw(canvas: Canvas) {
         //上半部分

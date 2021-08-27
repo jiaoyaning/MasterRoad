@@ -107,6 +107,9 @@ class PaintView @JvmOverloads constructor(
          * bitmap：用来做模板的 Bitmap 对象
          * tileX：横向的 TileMode
          * tileY：纵向的 TileMode
+         *      CLAMP 拉伸  基于绘制的第一个完成的bitmap，X轴方向基本bitmap右边最后一个像素拉伸，Y轴方向基于bitmap下方最后一个像                         素拉伸
+         *      REPEAT 重复 基于绘制的第一个完成的bitmap，X轴Y轴方向重复的绘制bitmap
+         *      MIRROR 镜像 基于绘制的第一个完成的bitmap,横向不断翻转重复，纵向不断翻转重复
          *
          * BitmapShader的绘制原理是从视图原点开始绘制第一个Bitmap,然后在按设置的模式先绘制Y轴，然后根据Y轴的绘制，绘制X轴这样去绘制超过Bitmap的部分。
          * 按这样的原理绘制的图形此时并不会显示，只有当canvas调用draw绘制后，才显示canvas绘制的那部分。

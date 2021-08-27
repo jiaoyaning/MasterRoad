@@ -13,6 +13,9 @@ import com.jyn.masterroad.databinding.ActivityGlideBinding
  *
  * Android NDK —— GIFLIB 优化 Glide GIF 的加载
  * https://sharrychoo.github.io/blog/android-source/graphic-choreographer
+ *
+ * Glide源码解析 优秀
+ * https://www.jianshu.com/nb/45157164
  */
 class GlideActivity : BaseActivity<ActivityGlideBinding>(R.layout.activity_glide) {
 }

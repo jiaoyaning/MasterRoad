@@ -26,7 +26,7 @@ class DrawableView @JvmOverloads constructor(
 
     /**
      * Bitmap:位图，像素数据的映射，图片信息的存储
-     * Drawable:绘制工具，可以用的调用canvas
+     * Drawable:绘制工具，可以用的调用canvas，有一个很重要的作用:重用绘制代码
      */
     init {
         //ktx 便捷互转，严苛意义应该是相互生产

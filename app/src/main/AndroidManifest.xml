@@ -17,6 +17,9 @@
         tools:ignore="AllowBackup"
         tools:targetApi="m">
         <activity
+            android:name=".view.viewstub.ViewStubActivity"
+            android:exported="true" />
+        <activity
             android:name=".view.layout.LayoutActivity"
             android:exported="true" />
         <activity android:name=".base.jvm.ClassLoaderActivity" />

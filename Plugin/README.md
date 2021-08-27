@@ -1,3 +1,6 @@
+## Android 中看似高大上的字节码修改，这样学就对了！
+https://mp.weixin.qq.com/s/dQjsxduUiNrMYH2xhhpmQA
+
 ## 使用代码插桩，优化Gson处理后台弱数据类型字段不规范的问题
 https://github.com/vihuela/GsonPlugin
 

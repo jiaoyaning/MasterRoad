@@ -73,12 +73,15 @@ class UseCombat {
      */
     fun test2() {
         /**
-         * Single.just() 返回一个 [SingleJust]对象
-         * map() 传入上游 SingleJust 对象& 自己本身，包装成一个 [SingleMap]对象
+         * [Single.just] 返回一个 [SingleJust] 对象
+         * [map] 传入上游 [SingleJust] 对象 & 自己本身，包装成一个 [SingleMap]对象
          *
          * 而subscribe()方法等同于[SingleMap.subscribeActual]方法，在该方法中
          * [SingleJust] 对象订阅了由 map(Function) 和下游 SingleObserver 组成的[SingleMap.MapSingleObserver]对象
          * 这样，在[SingleJust]发送事件的时候，就可以由 map(Function)方法执行完，再发送给[SingleObserver]对象
+         *
+         * map所创建的[SingleMap]对象中，并不处理[Disposable]，[SingleObserver]所拿到的[Disposable]始终是Map上游也就是[SingleJust]的
+         * 所以当[Disposable]取消订阅的时候，just会停止发送数据，map就接受不到数据了，也没办法再继续处理
          */
         Single.just(1) //返回SingleJust对象
             .map { it.toString() } //把 SingleJust对象 以及自身的 Function 包装成SingleMap对象
@@ -96,7 +99,12 @@ class UseCombat {
 
     /**
      * 有延迟,无后序
-     * [SingleDelay.subscribeActual]
+     * [SingleDelay.subscribeActual] 原理同上 差别在于[Disposable]
+     * 试想，[Single.just]发送完数据后，[Single.delay]正在阻塞的过程中时[SingleObserver]调用[Disposable.dispose]取消了订阅，该当如何
+     *
+     * [Single.delay]后的[Single.subscribe]订阅方法其实对应[SingleDelay.subscribeActual]
+     * 而[SingleDelay]此时创建了一个全新的[Disposable]对象传给下游，而这个全新的[Disposable]对象，会代替上游的[Disposable]
+     * 这样下游持有的就是[SingleDelay]的[Disposable]，所以[Disposable.dispose]的时候，相当于是取消了[SingleDelay]的延迟方法。
      */
     fun test3() {
         Single.just("1")

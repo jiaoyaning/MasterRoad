@@ -10,7 +10,7 @@ import android.view.View
 import androidx.core.graphics.drawable.toBitmap
 import androidx.core.graphics.drawable.toDrawable
 import androidx.core.graphics.toColorInt
-import com.jyn.masterroad.view.draw.px
+import com.jyn.masterroad.view.draw.dp
 
 /**
  * Android Drawable 那些不为人知的高效用法
@@ -50,7 +50,7 @@ class DrawableView @JvmOverloads constructor(
      * 自定义一个网格drawable
      */
     class MeshDrawable : Drawable() {
-        private val interval = 50f.px //网格间隔
+        private val interval = 50f.dp //网格间隔
         val paint = Paint(Paint.ANTI_ALIAS_FLAG).apply {
             color = "#F9A825".toColorInt()
         }

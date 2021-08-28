@@ -5,7 +5,7 @@ import android.graphics.*
 import android.util.AttributeSet
 import android.view.View
 import com.jyn.masterroad.R
-import com.jyn.masterroad.view.draw.px
+import com.jyn.masterroad.view.draw.dp
 
 /**
  * 转换器 (Transfer mode)
@@ -18,8 +18,8 @@ class PaintSetXfermodeView @JvmOverloads constructor(
     context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0
 ) : View(context, attrs, defStyleAttr) {
     companion object {
-        var WIDTH = 150f.px
-        var PADDING = 50f.px
+        var WIDTH = 150f.dp
+        var PADDING = 50f.dp
     }
 
     private val bitmap = getBitmap(R.mipmap.icon_master_road2)
@@ -66,21 +66,21 @@ class PaintSetXfermodeView @JvmOverloads constructor(
         val bitmapCanvas = Canvas(circleBitmap)
         //用Canvas 在circleBitmap上绘制圆形
         paint.color = Color.parseColor("#D81B60")
-        bitmapCanvas.drawOval(50f.px, 0f.px, 150f.px, 100f.px, paint)
+        bitmapCanvas.drawOval(50f.dp, 0f.dp, 150f.dp, 100f.dp, paint)
 
 
         //转换bitmap
         bitmapCanvas.setBitmap(squareBitmap)
         //用Canvas 在circleBitmap上绘制方形
         paint.color = Color.parseColor("#2196F3")
-        bitmapCanvas.drawRect(0f.px, 50f.px, 100f.px, 150f.px, paint)
+        bitmapCanvas.drawRect(0f.dp, 50f.dp, 100f.dp, 150f.dp, paint)
 
 
         //接下来把圆形和方形用Xfermode转换
-        val saveLayer = canvas.saveLayer(50f.px, 250f.px, 200f.px, 400f.px, null)
-        canvas.drawBitmap(circleBitmap, 50f.px, 250f.px, paint)
+        val saveLayer = canvas.saveLayer(50f.dp, 250f.dp, 200f.dp, 400f.dp, null)
+        canvas.drawBitmap(circleBitmap, 50f.dp, 250f.dp, paint)
         paint.xfermode = PorterDuffXfermode(PorterDuff.Mode.SCREEN)
-        canvas.drawBitmap(squareBitmap, 50f.px, 250f.px, paint)
+        canvas.drawBitmap(squareBitmap, 50f.dp, 250f.dp, paint)
         paint.xfermode = null
         canvas.restoreToCount(saveLayer)
     }

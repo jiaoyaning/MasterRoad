@@ -7,7 +7,7 @@ import android.util.AttributeSet
 import android.view.View
 import androidx.core.graphics.withSave
 import com.jyn.masterroad.R
-import com.jyn.masterroad.view.draw.px
+import com.jyn.masterroad.view.draw.dp
 
 /*
  * HenCoder Android 开发进阶：自定义 View 1-4 Canvas 对绘制的辅助
@@ -20,7 +20,7 @@ class CanvasView @JvmOverloads constructor(
         style = Paint.Style.STROKE
     }
     private val textPaint = Paint(Paint.ANTI_ALIAS_FLAG).apply {
-        textSize = 15f.px
+        textSize = 15f.dp
     }
     private val bitmap = getBitmap(R.mipmap.icon_master_road2)
 

@@ -5,7 +5,7 @@ import android.graphics.*
 import android.util.AttributeSet
 import android.view.View
 import com.jyn.masterroad.R
-import com.jyn.masterroad.view.draw.px
+import com.jyn.masterroad.view.draw.dp
 
 /*
  * HenCoder Android 开发进阶: 自定义 View 1-1 绘制基础
@@ -35,8 +35,8 @@ class CanvasDrawXXXView @JvmOverloads constructor(
          */
         style = Paint.Style.STROKE
         color = Color.parseColor("#2196F3") //设置颜色
-        strokeWidth = 4f.px         //设置线条宽度
-        textSize = 25f.px           //设置文字大小
+        strokeWidth = 4f.dp         //设置线条宽度
+        textSize = 25f.dp           //设置文字大小
         isAntiAlias = true          //设置抗锯齿开关
 
         /**

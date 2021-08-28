@@ -9,7 +9,7 @@ import android.view.View
 import androidx.annotation.Keep
 import androidx.core.graphics.withSave
 import com.jyn.masterroad.R
-import com.jyn.masterroad.view.draw.px
+import com.jyn.masterroad.view.draw.dp
 import kotlinx.android.synthetic.main.activity_ipc_server.view.*
 import kotlinx.android.synthetic.main.layout_animator_view_property.view.*
 
@@ -51,8 +51,8 @@ class ObjectAnimatorView @JvmOverloads constructor(
         setOnClickListener { animatorSet.start() }
     }
 
-    private var padding = 80f.px
-    private var size = 200f.px
+    private var padding = 80f.dp
+    private var size = 200f.dp
 
     private val paint = Paint(Paint.ANTI_ALIAS_FLAG).apply {
         style = Paint.Style.STROKE
@@ -126,7 +126,7 @@ class ObjectAnimatorView @JvmOverloads constructor(
         BitmapFactory.decodeResource(resources, id, options)
         options.inJustDecodeBounds = false //根据尺寸读取原图
         options.inDensity = options.outWidth
-        options.inTargetDensity = 200f.px.toInt()
+        options.inTargetDensity = 200f.dp.toInt()
         return BitmapFactory.decodeResource(resources, id, options)
     }
 }

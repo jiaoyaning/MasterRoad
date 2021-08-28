@@ -5,7 +5,7 @@ import android.graphics.*
 import android.util.AttributeSet
 import android.view.View
 import com.jyn.masterroad.R
-import com.jyn.masterroad.view.draw.px
+import com.jyn.masterroad.view.draw.dp
 
 /*
  * HenCoder Android 开发进阶: 自定义 View 1-2 Paint 详解
@@ -143,7 +143,7 @@ class PaintView @JvmOverloads constructor(
      */
     private fun shadowLayer(canvas: Canvas) {
         val paint = Paint(Paint.ANTI_ALIAS_FLAG).apply {
-            textSize = 20f.px
+            textSize = 20f.dp
         }
         paint.setShadowLayer(3f, 0f, 0f, Color.RED)
         canvas.drawText("加阴影", 0f, 300f, paint)
@@ -190,8 +190,8 @@ class PaintView @JvmOverloads constructor(
     private fun getXXXPath(canvas: Canvas) {
         val paint = Paint(Paint.ANTI_ALIAS_FLAG).apply {
             style = Paint.Style.STROKE
-            strokeWidth = 7f.px
-            textSize = 15f.px
+            strokeWidth = 7f.dp
+            textSize = 15f.dp
         }
 
         val srcPath = Path().apply {

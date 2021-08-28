@@ -170,4 +170,10 @@ object RoutePath {
         const val path = "/app/Layout"
         const val span = 2
     }
+
+    object Custom {
+        const val name = "自定义"
+        const val path = "/app/Custom"
+        const val span = 2
+    }
 }

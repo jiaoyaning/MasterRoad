@@ -5,7 +5,7 @@ import android.content.Context
 import android.graphics.*
 import android.util.AttributeSet
 import android.view.View
-import com.jyn.masterroad.view.draw.px
+import com.jyn.masterroad.view.draw.dp
 
 /*
  * 路径效果
@@ -22,7 +22,7 @@ class PaintSetPathEffectView @JvmOverloads constructor(
 ) : View(context, attrs, defStyleAttr) {
     private val gap = 150f
     private val textPaint = Paint(Paint.ANTI_ALIAS_FLAG).apply {
-        textSize = 13f.px
+        textSize = 13f.dp
     }
 
     private fun getPaint(): Paint {

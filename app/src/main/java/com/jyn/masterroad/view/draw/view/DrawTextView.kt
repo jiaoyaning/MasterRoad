@@ -3,13 +3,9 @@ package com.jyn.masterroad.view.draw.view
 import android.content.Context
 import android.graphics.*
 import android.os.Build
-import android.text.Layout
-import android.text.StaticLayout
-import android.text.TextPaint
 import android.util.AttributeSet
 import android.view.View
-import com.apkfuns.logutils.LogUtils
-import com.jyn.masterroad.view.draw.px
+import com.jyn.masterroad.view.draw.dp
 
 /*
  * HenCoder Android 开发进阶：自定义 View 1-3 文字的绘制
@@ -21,7 +17,7 @@ class DrawTextView @JvmOverloads constructor(
     val text = "一蓑烟雨任平生"
 
     private val textPaint = Paint(Paint.ANTI_ALIAS_FLAG).apply {
-        textSize = 15f.px
+        textSize = 15f.dp
     }
 
     override fun onDraw(canvas: Canvas) {
@@ -48,8 +44,8 @@ class DrawTextView @JvmOverloads constructor(
          *
          * 注意：这个坐标并不是文字的左上角，而是一个与左下角比较接近的位置。
          */
-        canvas.drawText(text, 0f, 15f.px, textPaint)
-        canvas.drawText("drawText()", 200f.px, 15f.px, textPaint)
+        canvas.drawText(text, 0f, 15f.dp, textPaint)
+        canvas.drawText("drawText()", 200f.dp, 15f.dp, textPaint)
 
 
         /*
@@ -69,9 +65,9 @@ class DrawTextView @JvmOverloads constructor(
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             canvas.drawTextRun(
                 text, 0, text.length, 0, text.length,
-                0f, 40f.px, true, textPaint
+                0f, 40f.dp, true, textPaint
             )
-            canvas.drawText("drawTextRun()", 200f.px, 40f.px, textPaint)
+            canvas.drawText("drawTextRun()", 200f.dp, 40f.dp, textPaint)
         }
 
 
@@ -91,14 +87,14 @@ class DrawTextView @JvmOverloads constructor(
             strokeWidth = 2f
         }
         val path = Path().apply {
-            moveTo(0f, 65f.px)
-            lineTo(70f.px, 65f.px)
-            lineTo(120f.px, 100f.px)
-            lineTo(170f.px, 70f.px)
+            moveTo(0f, 65f.dp)
+            lineTo(70f.dp, 65f.dp)
+            lineTo(120f.dp, 100f.dp)
+            lineTo(170f.dp, 70f.dp)
         }
         canvas.drawPath(path, paint)
         canvas.drawTextOnPath(text + text, path, 0f, 0f, textPaint)
-        canvas.drawText("drawTextOnPath()", 200f.px, 65f.px, textPaint)
+        canvas.drawText("drawTextOnPath()", 200f.dp, 65f.dp, textPaint)
     }
 
     /**
@@ -139,11 +135,11 @@ class DrawTextView @JvmOverloads constructor(
          * getFontSpacing() 获取字间距
          */
         val paint = Paint(Paint.ANTI_ALIAS_FLAG).apply {
-            textSize = 15f.px
+            textSize = 15f.dp
 
         }
-        canvas.drawText("第一行", 10f, 140f.px, paint)
-        canvas.drawText("第二行    getFontSpacing()", 10f, 140f.px + paint.fontSpacing, paint)
+        canvas.drawText("第一行", 10f, 140f.dp, paint)
+        canvas.drawText("第二行    getFontSpacing()", 10f, 140f.dp + paint.fontSpacing, paint)
 
 
         /*
@@ -155,12 +151,12 @@ class DrawTextView @JvmOverloads constructor(
          */
         val bounds = Rect()
         val textBounds = "获取文字的显示范围     getTextBounds()"
-        canvas.drawText(textBounds, 10f, 190f.px, paint)
+        canvas.drawText(textBounds, 10f, 190f.dp, paint)
         paint.getTextBounds(textBounds, 0, textBounds.length, bounds)
         bounds.left += 10
         bounds.right += 10
-        bounds.top += 190f.px.toInt()
-        bounds.bottom += 190f.px.toInt()
+        bounds.top += 190f.dp.toInt()
+        bounds.bottom += 190f.dp.toInt()
         paint.style = Paint.Style.STROKE
         paint.color = Color.RED
         canvas.drawRect(bounds, paint)
@@ -173,10 +169,10 @@ class DrawTextView @JvmOverloads constructor(
          * measureText()    测量文字的宽度
          */
         val textMeasure = "获取文字的宽度      measureText()"
-        canvas.drawText(textMeasure, 10f, 220f.px, paint)
+        canvas.drawText(textMeasure, 10f, 220f.dp, paint)
         val textWidth = paint.measureText(textMeasure)
         paint.color = Color.RED
-        canvas.drawLine(10f, 220f.px, textWidth + 10f, 220f.px, paint)
+        canvas.drawLine(10f, 220f.dp, textWidth + 10f, 220f.dp, paint)
         paint.color = Color.BLACK
 
         /**
@@ -188,12 +184,12 @@ class DrawTextView @JvmOverloads constructor(
          *  measuredWidth       用于接受数据(测量完成后会把截取的文字宽度赋值给 measuredWidth[0])
          */
         val textBreak = "获取文字的宽度        breakText()"
-        canvas.drawText(textBreak, 10f, 250f.px, paint)
+        canvas.drawText(textBreak, 10f, 250f.dp, paint)
         val measuredWidth = FloatArray(textBreak.length)
-        paint.breakText(textBreak, 0, text.length, true, 70f.px, measuredWidth)
+        paint.breakText(textBreak, 0, text.length, true, 70f.dp, measuredWidth)
         paint.color = Color.RED
-        canvas.drawLine(10f + 70f.px, 235f.px, 10f + 70f.px, 250f.px, paint)    //画出分割线
-        canvas.drawLine(10f, 250f.px, measuredWidth[0] + 10f, 250f.px, paint)   //画出breakText后的宽度
+        canvas.drawLine(10f + 70f.dp, 235f.dp, 10f + 70f.dp, 250f.dp, paint)    //画出分割线
+        canvas.drawLine(10f, 250f.dp, measuredWidth[0] + 10f, 250f.dp, paint)   //画出breakText后的宽度
 
 
         /*
@@ -203,14 +199,14 @@ class DrawTextView @JvmOverloads constructor(
         paint.color = Color.BLACK
         val textWidths = "获取字符串中每个字符的宽度     getTextWidths()"
         val widths = FloatArray(textWidths.length)
-        canvas.drawText(textWidths, 10f, 280f.px, paint)
+        canvas.drawText(textWidths, 10f, 280f.dp, paint)
         paint.getTextWidths(textWidths, widths)
         paint.color = Color.RED
         var start = 10f
         widths.forEachIndexed { index, fl ->
             val end = start + fl
             if (index % 2f == 0f) {
-                canvas.drawLine(start, 280f.px, end, 280f.px, paint)
+                canvas.drawLine(start, 280f.dp, end, 280f.dp, paint)
             }
             start = end
         }
@@ -228,7 +224,7 @@ class DrawTextView @JvmOverloads constructor(
          */
         val runAdvanceText = "光标计算 测绘位置        getRunAdvance() \uD83C\uDDE8\uD83C\uDDF3"
         paint.color = Color.BLACK
-        canvas.drawText(runAdvanceText, 10f, 310f.px, paint)
+        canvas.drawText(runAdvanceText, 10f, 310f.dp, paint)
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             val advance = paint.getRunAdvance(
                 runAdvanceText,
@@ -240,7 +236,7 @@ class DrawTextView @JvmOverloads constructor(
                 runAdvanceText.length - 4
             )
             paint.color = Color.RED
-            canvas.drawLine(advance + 10, 295f.px, advance + 10, 310f.px + 10, paint)
+            canvas.drawLine(advance + 10, 295f.dp, advance + 10, 310f.dp + 10, paint)
         }
     }
 }

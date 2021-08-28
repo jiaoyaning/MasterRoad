@@ -6,7 +6,7 @@ import android.view.View
 import android.widget.LinearLayout
 import android.widget.Toast
 import com.jyn.masterroad.R
-import com.jyn.masterroad.view.draw.px
+import com.jyn.masterroad.view.draw.dp
 import kotlinx.android.synthetic.main.layout_animator_view_property.view.*
 
 class ViewPropertyAnimatorView @JvmOverloads constructor(
@@ -23,7 +23,7 @@ class ViewPropertyAnimatorView @JvmOverloads constructor(
         view.animate()
             .scaleX(2f)
             .scaleY(2f)
-            .translationY(100f.px)
-            .translationX(200f.px)
+            .translationY(100f.dp)
+            .translationX(200f.dp)
     }
 }

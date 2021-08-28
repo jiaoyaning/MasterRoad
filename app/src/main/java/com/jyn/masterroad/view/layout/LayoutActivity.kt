@@ -16,6 +16,6 @@ import com.jyn.masterroad.databinding.ActivityLayoutBinding
  */
 @Route(path = RoutePath.Layout.path)
 class LayoutActivity : BaseActivity<ActivityLayoutBinding>
-(R.layout.activity_layout) {
+    (R.layout.activity_layout) {
 
 }

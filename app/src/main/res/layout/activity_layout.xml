@@ -5,6 +5,9 @@
 
     <data>
 
+        <variable
+            name="click"
+            type="android.view.View.OnClickListener" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -12,5 +15,45 @@
         android:layout_height="match_parent"
         tools:context=".view.layout.LayoutActivity">
 
+        <HorizontalScrollView
+            android:id="@+id/horizontal_scroll_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:scrollbars="none"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/btn_draw"
+                    style="@style/tv"
+                    android:layout_marginBottom="5dp"
+                    android:onClick="@{click}"
+                    android:text="Circle\n圆" />
+
+            </LinearLayout>
+        </HorizontalScrollView>
+
+        <RelativeLayout
+            android:id="@+id/box_layout"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginTop="5dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/horizontal_scroll_view"
+            tools:ignore="UselessLeaf">
+
+            <com.jyn.masterroad.view.layout.view.CircleView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:background="#1b8b51" />
+        </RelativeLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

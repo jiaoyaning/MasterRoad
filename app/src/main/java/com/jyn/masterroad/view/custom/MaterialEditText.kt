@@ -28,7 +28,7 @@ class MaterialEditText constructor(
         }
 
     private var animator = ObjectAnimator
-        .ofFloat(this, "floatingLabelFraction", 0f, 1f)
+        .ofFloat(this, "floatingLabelFraction",  1f)
 
     private val floatPaint = Paint(Paint.ANTI_ALIAS_FLAG).apply {
         textSize = hiltTextSize

@@ -17,5 +17,14 @@ import com.jyn.masterroad.databinding.ActivityLayoutBinding
 @Route(path = RoutePath.Layout.path)
 class LayoutActivity : BaseActivity<ActivityLayoutBinding>
     (R.layout.activity_layout) {
-
+    /**
+     * 自定义layout的步骤
+     *   1.重写onMeasure()
+     *        遍历每个子View，测量子View
+     *           测量完成后，得出子view的实际位置和尺寸，并暂时保存
+     *           有些子view可能需要重新测量
+     *        测量出所有子view的位置和尺寸后，计算出自己的尺寸，并用setMeasuredDimension(width,height)保存
+     *   2.重写onLayout()
+     *     遍历每个子view，调用他们的layout()方法来将位置和尺寸传给它们
+     */
 }

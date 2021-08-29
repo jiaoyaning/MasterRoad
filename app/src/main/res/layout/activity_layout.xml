@@ -39,7 +39,7 @@
             </LinearLayout>
         </HorizontalScrollView>
 
-        <RelativeLayout
+        <com.jyn.masterroad.view.layout.view.TagLayout
             android:id="@+id/box_layout"
             android:layout_width="0dp"
             android:layout_height="0dp"
@@ -50,10 +50,9 @@
             app:layout_constraintTop_toBottomOf="@+id/horizontal_scroll_view"
             tools:ignore="UselessLeaf">
 
-            <com.jyn.masterroad.view.layout.view.CircleView
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:background="#1b8b51" />
-        </RelativeLayout>
+            <TextView
+                style="@style/tv"
+                android:text="子view1" />
+        </com.jyn.masterroad.view.layout.view.TagLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

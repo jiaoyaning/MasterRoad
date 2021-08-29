@@ -24,9 +24,9 @@ class CircleView @JvmOverloads constructor(
 
         /**
          * widthMeasureSpec 其实是两个东西的融合，1.限制类型; 2.限制类型的尺寸
-         *      1.限制上限
-         *      2.精确值
-         *      3.不做限制
+         *      1.AT_MOST       限制上限
+         *      2.EXACTLY       精确值
+         *      3.UNSPECIFIED   不做限制
          */
 
         //获取宽度限制类型

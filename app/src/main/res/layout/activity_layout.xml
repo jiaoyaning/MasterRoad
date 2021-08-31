@@ -32,7 +32,6 @@
                 <Button
                     android:id="@+id/btn_draw"
                     style="@style/tv"
-                    android:visibility=""
                     android:layout_marginBottom="5dp"
                     android:onClick="@{click}"
                     android:text="Circle\n圆" />

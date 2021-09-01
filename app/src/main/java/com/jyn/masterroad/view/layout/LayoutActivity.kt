@@ -1,6 +1,5 @@
 package com.jyn.masterroad.view.layout
 
-import android.os.Bundle
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.jyn.common.ARouter.RoutePath
 import com.jyn.masterroad.R
@@ -35,10 +34,6 @@ class LayoutActivity : BaseActivity<ActivityLayoutBinding>
      *     遍历每个子view，调用他们的layout()方法来将位置和尺寸传给它们
      *
      */
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-    }
 
     override fun initView() {
         binding.boxLayout.viewTreeObserver.addOnGlobalLayoutListener {

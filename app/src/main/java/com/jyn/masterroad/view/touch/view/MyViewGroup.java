@@ -1,4 +1,4 @@
-package com.jyn.masterroad.view.touch;
+package com.jyn.masterroad.view.touch.view;
 
 import android.content.Context;
 import android.util.AttributeSet;

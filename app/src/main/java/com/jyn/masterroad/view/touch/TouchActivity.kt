@@ -14,4 +14,8 @@ import com.jyn.masterroad.databinding.ActivityTouchBinding
  * 反思 | Android 事件分发的“另一面”
  * https://mp.weixin.qq.com/s/27AL_nuIB6SR4lcB5S8B0Q
  */
-class TouchActivity : BaseActivity<ActivityTouchBinding>(R.layout.activity_touch) {}
+class TouchActivity : BaseActivity<ActivityTouchBinding>(R.layout.activity_touch) {
+    override fun initView() {
+
+    }
+}

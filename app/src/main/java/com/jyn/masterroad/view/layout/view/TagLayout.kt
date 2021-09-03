@@ -6,6 +6,7 @@ import android.graphics.Rect
 import android.util.AttributeSet
 import android.view.ViewGroup
 import androidx.core.view.children
+import com.apkfuns.logutils.LogUtils
 import kotlin.math.max
 
 /*
@@ -15,6 +16,9 @@ import kotlin.math.max
 class TagLayout @JvmOverloads constructor(
     context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0
 ) : ViewGroup(context, attrs, defStyleAttr) {
+    companion object{
+        const val TAG = "Layout"
+    }
     /**
      *  1.AT_MOST       限制上限
      *  2.EXACTLY       精确值
@@ -24,6 +28,15 @@ class TagLayout @JvmOverloads constructor(
 
     @SuppressLint("DrawAllocation")
     override fun onMeasure(widthMeasureSpec: Int, heightMeasureSpec: Int) {
+
+        LogUtils.tag(TAG).i("onMeasure measuredWidth:"+this.measuredWidth)
+        this.post {
+            LogUtils.tag(TAG).i("post onMeasure measuredWidth:"+this.measuredWidth)
+            LogUtils.tag(TAG).i("post onMeasure width:"+this.width)
+        }
+        LogUtils.tag(TAG).i("onMeasure width:"+this.width)
+
+
         var widthUsed = 0  //整体已用宽度
         var heightUsed = 0 //整体已用高度
         var lineWidthUsed = 0 //每一行的宽度使用情况

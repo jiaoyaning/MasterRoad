@@ -14,9 +14,6 @@ import com.jyn.masterroad.view.draw.view.*
  * HenCoder Android 自定义 View 1-5: 绘制顺序
  * https://juejin.cn/post/6844903491031269383
  *
- * 面试官：View.post() 为什么能够获取到 View 的宽高？
- * https://mp.weixin.qq.com/s/GWB--a43N6I8Fl_81-Ltqw
- *
  * 【从入门到放弃】android布局优化深入解析
  * https://juejin.cn/post/6950791235413999652
  *

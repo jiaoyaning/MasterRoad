@@ -19,6 +19,9 @@ import com.jyn.masterroad.databinding.ActivityLayoutBinding
  *
  * Dialog、Toast的Window和ViewRootImpl
  * https://blog.csdn.net/stven_king/article/details/78775211
+ *
+ * 面试官：View.post() 为什么能够获取到 View 的宽高？ (优秀)
+ * https://mp.weixin.qq.com/s/GWB--a43N6I8Fl_81-Ltqw
  */
 @Route(path = RoutePath.Layout.path)
 class LayoutActivity : BaseActivity<ActivityLayoutBinding>
@@ -32,7 +35,6 @@ class LayoutActivity : BaseActivity<ActivityLayoutBinding>
      *        测量出所有子view的位置和尺寸后，计算出自己的尺寸，并用setMeasuredDimension(width,height)保存
      *   2.重写onLayout()
      *     遍历每个子view，调用他们的layout()方法来将位置和尺寸传给它们
-     *
      */
 
     override fun initView() {

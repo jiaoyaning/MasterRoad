@@ -92,7 +92,7 @@ class TagLayout @JvmOverloads constructor(
              * 测量子view
              * (越等同于上面一坨)
              *
-             * 不舍限制，让子view完全测绘
+             * 不设限制，让子view完全测绘
              */
             measureChildWithMargins(child, widthMeasureSpec, 0, heightMeasureSpec, heightUsed)
 

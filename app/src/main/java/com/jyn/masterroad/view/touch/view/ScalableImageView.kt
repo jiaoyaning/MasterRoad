@@ -13,7 +13,6 @@ import android.view.MotionEvent
 import android.view.View
 import android.widget.OverScroller
 import androidx.annotation.Keep
-import androidx.core.animation.doOnEnd
 import androidx.core.view.GestureDetectorCompat
 import androidx.core.view.ViewCompat
 import com.apkfuns.logutils.LogUtils
@@ -23,12 +22,20 @@ import kotlin.math.max
 import kotlin.math.min
 
 /**
- * Created by jiaoyaning on 2021/9/3.
+ * GestureDetector      监听: 双击 & Fling & 滑动
+ *  区别:
+ *     GestureDetector              SDK 内置版本(跟随系统)
+ *     GestureDetectorCompat        AndroidX 版本(跟随开发者SDK)
+ *
+ * scaleGestureDetector 监听: 双指放大手势
+ *  区别：注意与上面完全不同
+ *      ScaleGestureDetector        原始版本
+ *      ScaleGestureDetectorCompat  原始版本的帮助类(不是替代关系，是扩充关系)
  */
 @Keep
 class ScalableImageView @JvmOverloads constructor(
     context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0
-) : View(context, attrs, defStyleAttr), Runnable {
+) : View(context, attrs, defStyleAttr) {
     companion object {
         const val TAG = "ScalableImageView"
         var image_size = 300f.dp.toInt()
@@ -38,8 +45,8 @@ class ScalableImageView @JvmOverloads constructor(
     val paint = Paint(Paint.ANTI_ALIAS_FLAG)
     private val bitmap = getBitmap(R.mipmap.icon_master_road2)
 
-    private var originalOffsetX = 0f //初始偏移
-    private var originalOffsetY = 0f //初始偏移
+    private var originalOffsetX = 0f //初始偏移(原始图片居中位置)
+    private var originalOffsetY = 0f
 
     private var offsetX = 0f //滑动偏移
     private var offsetY = 0f
@@ -70,117 +77,128 @@ class ScalableImageView @JvmOverloads constructor(
     private var overScroller = OverScroller(context)
 
     /**
-     * GestureDetector          //SDK 内置版本(跟随系统)
-     * GestureDetectorCompat    //AndroidX 版本(跟随开发者SDK)
+     * GestureDetector 属于一个外挂手势侦测器 ， 需要手动挂到OnTouchEvent()
+     *  此处用来监听，双击，Fling，滑动
      *
-     * GestureDetectorCompat属于一个外挂手势侦测器 ， 需要手动挂到OnTouchEvent()
-     * GestureDetector是一个手势侦测器，用来检测手势
+     * GestureDetector      外挂手势侦测器，需要手动挂到OnTouchEvent()
+     * OnGestureListener    手势侦测后用来手势监听的回调
      */
-    private val gestureDetector = GestureDetectorCompat(context,
-        //object可以同时继承 OnDoubleTapListener 来实现双击事件监听
-        object : GestureDetector.OnGestureListener {
-            /**
-             * 要不要消费该事件序列
-             */
-            override fun onDown(e: MotionEvent): Boolean {
-                return true
-            }
-
-            /**
-             * 是否显示按下状态，比如按下变色等场景
-             */
-            override fun onShowPress(e: MotionEvent?) {
-            }
-
-            /**
-             * 按下抬起事件(不包含长按监听)
-             *      相当于点击监听的替代，因为在覆盖onTouchEvent()方法的时候，把点击事件也给屏蔽掉了
-             *      相比onSingleTapConfirmed()，在不支持双击的情况下比较准确，因为取消了300毫秒的双击延迟等待
-             *
-             * return 是否消费了点击事件(不如onDown()优先级)，
-             *      这个返回值，其实不影响整体流程，主要用于系统做记录，开发者很难用到
-             */
-            override fun onSingleTapUp(e: MotionEvent): Boolean {
-                return true
-            }
-
-            /**
-             * 手指移动时事件，只有手指触屏的时候才会触发
-             *  downEvent:      第一个点击事件
-             *  currentEvent:   触发当前move运动的事件
-             *  distanceX:      旧位置 - 新位置 的X轴值
-             *  distanceY:      旧位置 - 新位置 的Y轴值
-             *
-             *  return : 是否消费该事件(同onSingleTapUp)
-             */
-            override fun onScroll(
-                downEvent: MotionEvent, currentEvent: MotionEvent,
-                distanceX: Float, distanceY: Float
-            ): Boolean {
-                setScroll(distanceX, distanceY)
-                return true
-            }
-
-            /**
-             * 长按事件
-             * 用于代替onTouchEvent()方法所覆盖的长按事件
-             */
-            override fun onLongPress(e: MotionEvent?) {
-            }
-
-            /**
-             * 惯性事件
-             *  downEvent:      第一个点击事件
-             *  currentEvent:   触发当前move运动的事件
-             *  velocityX       X轴速率(单位事件内的X轴的位移)
-             *  velocityY       Y轴速率(单位事件内的Y轴的位移)
-             *
-             *  注意：惯性事件需要自己手动写哦
-             */
-            override fun onFling(
-                downEvent: MotionEvent, currentEvent: MotionEvent?,
-                velocityX: Float, velocityY: Float
-            ): Boolean {
-                LogUtils.tag(TAG).i("onFling -> velocityX:$velocityX ; velocityY:$velocityY")
-                setFling(velocityX, velocityY)
-                return true
-            }
-        })
-        .apply {
-            setIsLongpressEnabled(false) //是否开启长按事件
-            /**
-             * 双击需要用GestureDetectorCompat来实现
-             *
-             * setOnDoubleTapListener()双击事件
-             */
-            setOnDoubleTapListener(object : GestureDetector.OnDoubleTapListener {
+    private val gestureDetector by lazy {
+        GestureDetectorCompat(context,
+            //object可以同时继承 OnDoubleTapListener 来实现双击事件监听
+            object : GestureDetector.OnGestureListener {
                 /**
-                 * 双击事件
-                 * 只有第二次按下的时候收到一个事件
+                 * 要不要消费该事件序列
                  */
-                override fun onDoubleTap(e: MotionEvent): Boolean {
-                    setDoubleTap(e)
+                override fun onDown(e: MotionEvent): Boolean {
                     return true
                 }
 
                 /**
-                 * 单击事件，用来判定该次点击是单纯的SingleTap(单击)而不是DoubleTap(双击)和LongPress(长按)
-                 *
-                 * 支持双击的时候，比较准确，但是会有300毫秒延迟来判断是否是双击
+                 * 是否显示按下状态，比如按下变色等场景
                  */
-                override fun onSingleTapConfirmed(e: MotionEvent): Boolean {
-                    return false
+                override fun onShowPress(e: MotionEvent?) {
                 }
 
                 /**
-                 * 双击事件及后续事件
-                 * 第二次按下 移动 抬起 等多个事件序列
+                 * 按下抬起事件(不包含长按监听)
+                 *      相当于点击监听的替代，因为在覆盖onTouchEvent()方法的时候，把点击事件也给屏蔽掉了
+                 *      相比onSingleTapConfirmed()，在不支持双击的情况下比较准确，因为取消了300毫秒的双击延迟等待
+                 *
+                 * return 是否消费了点击事件(不如onDown()优先级)，
+                 *      这个返回值，其实不影响整体流程，主要用于系统做记录，开发者很难用到
                  */
-                override fun onDoubleTapEvent(e: MotionEvent): Boolean {
-                    return false
+                override fun onSingleTapUp(e: MotionEvent): Boolean {
+                    return true
+                }
+
+                /**
+                 * 手指移动时事件，只有手指触屏的时候才会触发
+                 *  downEvent:      第一个点击事件
+                 *  currentEvent:   触发当前move运动的事件
+                 *  distanceX:      旧位置 - 新位置 的X轴值
+                 *  distanceY:      旧位置 - 新位置 的Y轴值
+                 *
+                 *  return : 是否消费该事件(同onSingleTapUp)
+                 */
+                override fun onScroll(
+                    downEvent: MotionEvent, currentEvent: MotionEvent,
+                    distanceX: Float, distanceY: Float
+                ): Boolean {
+                    setScroll(distanceX, distanceY)
+                    return true
+                }
+
+                /**
+                 * 长按事件
+                 * 用于代替onTouchEvent()方法所覆盖的长按事件
+                 */
+                override fun onLongPress(e: MotionEvent?) {
+                }
+
+                /**
+                 * 惯性事件
+                 *  downEvent:      第一个点击事件
+                 *  currentEvent:   触发当前move运动的事件
+                 *  velocityX       X轴速率(单位事件内的X轴的位移)
+                 *  velocityY       Y轴速率(单位事件内的Y轴的位移)
+                 *
+                 *  注意：惯性事件需要自己手动写哦
+                 */
+                override fun onFling(
+                    downEvent: MotionEvent, currentEvent: MotionEvent?,
+                    velocityX: Float, velocityY: Float
+                ): Boolean {
+                    LogUtils.tag(TAG).i("onFling -> velocityX:$velocityX ; velocityY:$velocityY")
+                    setFling(velocityX, velocityY)
+                    return true
                 }
             })
-        }
+            .apply {
+                setIsLongpressEnabled(false) //是否开启长按事件
+                /**
+                 * 双击需要用GestureDetectorCompat来实现
+                 *
+                 * setOnDoubleTapListener()双击事件
+                 */
+                setOnDoubleTapListener(object : GestureDetector.OnDoubleTapListener {
+                    /**
+                     * 双击事件
+                     * 只有第二次按下的时候收到一个事件
+                     */
+                    override fun onDoubleTap(e: MotionEvent): Boolean {
+                        setDoubleTap(e)
+                        return true
+                    }
+
+                    /**
+                     * 单击事件，用来判定该次点击是单纯的SingleTap(单击)而不是DoubleTap(双击)和LongPress(长按)
+                     *
+                     * 支持双击的时候，比较准确，但是会有300毫秒延迟来判断是否是双击
+                     */
+                    override fun onSingleTapConfirmed(e: MotionEvent): Boolean {
+                        return false
+                    }
+
+                    /**
+                     * 双击事件及后续事件
+                     * 第二次按下 移动 抬起 等多个事件序列
+                     */
+                    override fun onDoubleTapEvent(e: MotionEvent): Boolean {
+                        return false
+                    }
+                })
+            }
+    }
+
+    /**
+     * GestureDetector的实现类，可以方便开发者不用重写所以方法，只挑选自己使用的即可
+     *  约等于上面一坨(gestureDetector)
+     */
+    private val simpleGestureDetector = GestureDetectorCompat(context, SimpleGestureListener())
+
+
+    private val flingRunnable = FlingRunner() //fling后的刷新
 
     /**
      * 双击事件
@@ -209,7 +227,7 @@ class ScalableImageView @JvmOverloads constructor(
     }
 
     /**
-     * 限制手动滑动时的移动以及边界
+     * 滑动事件
      */
     fun setScroll(distanceX: Float, distanceY: Float) {
         LogUtils.tag(TAG).i("onScroll -> offsetX:$offsetX ; offsetY:$offsetY")
@@ -222,23 +240,11 @@ class ScalableImageView @JvmOverloads constructor(
     }
 
     /**
-     * 控制移动边界
-     * 最少不能少于左边界和上边界
-     * 最多不能多余右边界和下边界
-     */
-    private fun fixOffset() {
-        offsetX = min(offsetX, (bitmap.width * bigScale - width) / 2)
-        offsetX = max(offsetX, -(bitmap.width * bigScale - width) / 2)
-        offsetY = min(offsetY, (bitmap.height * bigScale - height) / 2)
-        offsetY = max(offsetY, -(bitmap.height * bigScale - height) / 2)
-    }
-
-
-    /**
-     * Fling事件后，交由overScroller 来计算 fling值
+     * Fling事件
      */
     fun setFling(velocityX: Float, velocityY: Float) {
         if (big) {
+            // 交由overScroller 来计算 fling值
             overScroller.fling(
                 offsetX.toInt(), offsetY.toInt(), //起始坐标
                 velocityX.toInt(), velocityY.toInt(), //起始速度
@@ -255,14 +261,14 @@ class ScalableImageView @JvmOverloads constructor(
              *
              * [ViewCompat.postOnAnimation] 会判断版本，从而选择合适的执行方法
              */
-            ViewCompat.postOnAnimation(this, this)
+            ViewCompat.postOnAnimation(this, flingRunnable)
         }
     }
 
     /**
      * Fling事件后，动态刷新 Fling 动画
      */
-    override fun run() {
+    fun updateFling() {
         /*
          * 让scroll去计算自己当前位置
          * return scroller是否还在运动中
@@ -276,12 +282,25 @@ class ScalableImageView @JvmOverloads constructor(
         LogUtils.tag(TAG).i("overScroller -> offsetX:$offsetX ; offsetY:$offsetY")
 
         invalidate()
-        postOnAnimation(this)
+        ViewCompat.postOnAnimation(this, flingRunnable)
+    }
+
+
+    /**
+     * 控制移动边界
+     * 最少不能少于左边界和上边界
+     * 最多不能多余右边界和下边界
+     */
+    private fun fixOffset() {
+        offsetX = min(offsetX, (bitmap.width * bigScale - width) / 2)
+        offsetX = max(offsetX, -(bitmap.width * bigScale - width) / 2)
+        offsetY = min(offsetY, (bitmap.height * bigScale - height) / 2)
+        offsetY = max(offsetY, -(bitmap.height * bigScale - height) / 2)
     }
 
     @SuppressLint("ClickableViewAccessibility")
     override fun onTouchEvent(event: MotionEvent): Boolean {
-        return gestureDetector.onTouchEvent(event) //废除原生，使用外挂
+        return simpleGestureDetector.onTouchEvent(event) //废除原生，使用外挂
     }
 
     override fun onSizeChanged(w: Int, h: Int, oldw: Int, oldh: Int) {
@@ -318,5 +337,43 @@ class ScalableImageView @JvmOverloads constructor(
         options.inDensity = options.outWidth
         options.inTargetDensity = image_size
         return BitmapFactory.decodeResource(resources, id, options)
+    }
+
+    /**
+     *
+     */
+    inner class SimpleGestureListener : GestureDetector.SimpleOnGestureListener() {
+        override fun onDown(e: MotionEvent?): Boolean {
+            return true
+        }
+
+        override fun onDoubleTap(e: MotionEvent): Boolean {
+            setDoubleTap(e)
+            return true
+        }
+
+        override fun onScroll(
+            downEvent: MotionEvent, currentEvent: MotionEvent,
+            distanceX: Float, distanceY: Float
+        ): Boolean {
+            setScroll(distanceX, distanceY)
+            return true
+        }
+
+        override fun onFling(
+            downEvent: MotionEvent, currentEvent: MotionEvent?,
+            velocityX: Float, velocityY: Float
+        ): Boolean {
+            LogUtils.tag(TAG).i("onFling -> velocityX:$velocityX ; velocityY:$velocityY")
+            setFling(velocityX, velocityY)
+            return true
+        }
+    }
+
+    inner class FlingRunner : Runnable {
+        override fun run() {
+            updateFling()
+
+        }
     }
 }

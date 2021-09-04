@@ -1,5 +1,7 @@
 package com.jyn.masterroad.view.touch
 
+import com.alibaba.android.arouter.facade.annotation.Route
+import com.jyn.common.ARouter.RoutePath
 import com.jyn.masterroad.R
 import com.jyn.masterroad.base.BaseActivity
 import com.jyn.masterroad.databinding.ActivityTouchBinding
@@ -14,7 +16,10 @@ import com.jyn.masterroad.databinding.ActivityTouchBinding
  * 反思 | Android 事件分发的“另一面”
  * https://mp.weixin.qq.com/s/27AL_nuIB6SR4lcB5S8B0Q
  */
-class TouchActivity : BaseActivity<ActivityTouchBinding>(R.layout.activity_touch) {
+@Route(path = RoutePath.Touch.path)
+class TouchActivity : BaseActivity<ActivityTouchBinding>
+    (R.layout.activity_touch) {
+
     override fun initView() {
 
     }

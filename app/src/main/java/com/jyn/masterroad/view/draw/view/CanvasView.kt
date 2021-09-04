@@ -25,9 +25,31 @@ class CanvasView @JvmOverloads constructor(
     private val bitmap = getBitmap(R.mipmap.icon_master_road2)
 
     override fun onDraw(canvas: Canvas) {
+        /**
+         * 裁切
+         * 会导致毛边
+         *
+         * clipRect()
+         * clipPath() path方向并无作用
+         */
         clip(canvas)
+
+        /**
+         * Canvas 二维变换
+         *
+         * translate()  平移
+         * rotate()     旋转
+         * scale()      缩放
+         * skew()       错切
+         */
         canvasConversion(canvas)
         matrix(canvas)
+
+        /**
+         * Camera   三维变换(旋转、平移、移动相机)
+         *
+         * 注意：是以(0,0)为变换基点的，所以大部分情况下需要先绘制内容移动到轴心
+         */
         camera(canvas)
     }
 

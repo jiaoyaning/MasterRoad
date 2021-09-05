@@ -10,6 +10,7 @@ import android.graphics.Paint
 import android.util.AttributeSet
 import android.view.GestureDetector
 import android.view.MotionEvent
+import android.view.ScaleGestureDetector
 import android.view.View
 import android.widget.OverScroller
 import androidx.annotation.Keep
@@ -22,15 +23,15 @@ import kotlin.math.max
 import kotlin.math.min
 
 /**
- * GestureDetector      监听: 双击 & Fling & 滑动
+ * GestureDetector      手势监听: 双击 & Fling & 滑动
  *  区别:
  *     GestureDetector              SDK 内置版本(跟随系统)
  *     GestureDetectorCompat        AndroidX 版本(跟随开发者SDK)
  *
- * scaleGestureDetector 监听: 双指放大手势
+ * scaleGestureDetector 缩放监听: 双指放大缩小手势
  *  区别：注意与上面完全不同
  *      ScaleGestureDetector        原始版本
- *      ScaleGestureDetectorCompat  原始版本的帮助类(不是替代关系，是扩充关系)
+ *      ScaleGestureDetectorCompat  原始版本的帮助类(不是替代关系，是帮助关系)
  */
 @Keep
 class ScalableImageView @JvmOverloads constructor(
@@ -64,8 +65,15 @@ class ScalableImageView @JvmOverloads constructor(
             invalidate()
         }
 
+    private var currentScale = 0f //当前缩放比
+        set(value) {
+            field = value
+            invalidate()
+        }
+
     private val scaleAnimator: ObjectAnimator by lazy {
-        ObjectAnimator.ofFloat(this, "scaleFraction", 0f, 1f)
+//        ObjectAnimator.ofFloat(this, "scaleFraction", 0f, 1f)
+        ObjectAnimator.ofFloat(this, "currentScale", smallScale, bigScale)
     }
 
     /**
@@ -196,9 +204,13 @@ class ScalableImageView @JvmOverloads constructor(
      *  约等于上面一坨(gestureDetector)
      */
     private val simpleGestureDetector = GestureDetectorCompat(context, SimpleGestureListener())
-
-
     private val flingRunnable = FlingRunner() //fling后的刷新
+
+    /**
+     * 缩放手势监听
+     */
+    private val scaleGestureDetector = ScaleGestureDetector(context, ScaleGestureListener())
+
 
     /**
      * 双击事件
@@ -206,19 +218,7 @@ class ScalableImageView @JvmOverloads constructor(
     fun setDoubleTap(e: MotionEvent) {
         big = !big
         if (big) { //放大动画时，根据点击位置进行放大后的偏移处理
-            /**
-             * scale = bigScale / smallScale    在smallScale的基础上又放大了多少倍，故而用除法(真实放大倍率)
-             * x = e.x - width / 2f             由中心点放大，所以要先找到触摸点相对中心店的位置(x,y)
-             * x * scale - x                    减去原始点坐标后，就是放大后的点相对原始点的偏移量了
-             *
-             * 但是，之所以没有根据触摸点放大，是因为放大倍速过多，我们应该是想要减去这部分多余的放大倍速的
-             * x - x * scale
-             */
-            val scale = bigScale / smallScale
-            val x = e.x - width / 2f
-            val y = e.y - height / 2f
-            offsetX = x - x * scale
-            offsetY = y - y * scale
+            fixScaleOffset(e.x, e.y)
             fixOffset() //控制缩放动画的边界
             scaleAnimator.start()
         } else {
@@ -285,6 +285,53 @@ class ScalableImageView @JvmOverloads constructor(
         ViewCompat.postOnAnimation(this, flingRunnable)
     }
 
+    /**
+     * 手指缩放 开始事件
+     */
+    fun setScaleBegin(detector: ScaleGestureDetector) {
+        fixScaleOffset(detector.focusX, detector.focusY)
+    }
+
+    /**
+     * 手指缩放
+     */
+    fun setScale(detector: ScaleGestureDetector): Boolean {
+        /**
+         * currentScale *= detector.scaleFactor
+         * // currentScale = max(currentScale, smallScale)
+         * // currentScale = min(currentScale, bigScale)
+         * currentScale.coerceAtLeast(smallScale).coerceAtMost(bigScale) //等于上面两行
+         * return true
+         */
+
+        val tempCurrentScale = currentScale * detector.scaleFactor
+        // 缩放到最大值或者最小值时，不再消费手指缩放事件
+        return if (tempCurrentScale < smallScale || tempCurrentScale > bigScale) {
+            false
+        } else {
+            currentScale *= detector.scaleFactor
+            true
+        }
+    }
+
+    /**
+     * 放缩偏移
+     */
+    private fun fixScaleOffset(eventX: Float, eventY: Float) {
+        /**
+         * scale = bigScale / smallScale    在smallScale的基础上又放大了多少倍，故而用除法(真实放大倍率)
+         * x = eventX - width / 2f          由放大点放大，所以要先找到触摸点相对中心店的位置(x,y)
+         * x * scale - x                    减去原始点坐标后，就是放大后的点相对原始点的偏移量了
+         *
+         * 但是，之所以没有根据触摸点放大，是因为放大倍速过多，我们应该是想要减去这部分多余的放大倍速的
+         * x - x * scale
+         */
+        val scale = bigScale / smallScale
+        val x = eventX - width / 2f
+        val y = eventY - height / 2f
+        offsetX = x - x * scale
+        offsetY = y - y * scale
+    }
 
     /**
      * 控制移动边界
@@ -300,7 +347,16 @@ class ScalableImageView @JvmOverloads constructor(
 
     @SuppressLint("ClickableViewAccessibility")
     override fun onTouchEvent(event: MotionEvent): Boolean {
-        return simpleGestureDetector.onTouchEvent(event) //废除原生，使用外挂
+        /*
+         * 这样只能选择一个
+         * return simpleGestureDetector.onTouchEvent(event) //双击和滑动
+         * return scaleGestureDetector.onTouchEvent(event) //缩放手势
+         */
+        scaleGestureDetector.onTouchEvent(event)
+        if (!scaleGestureDetector.isInProgress) {//判断是否在缩放手势中，非缩放时，才监听双击和滑动事件
+            simpleGestureDetector.onTouchEvent(event)
+        }
+        return true
     }
 
     override fun onSizeChanged(w: Int, h: Int, oldw: Int, oldh: Int) {
@@ -315,17 +371,30 @@ class ScalableImageView @JvmOverloads constructor(
             bigScale = width / bitmap.width.toFloat()// 最小为宽度比
             smallScale = height / bitmap.width.toFloat()// 最大为高度比
         }
+
+        currentScale = smallScale
+        scaleAnimator.setFloatValues(smallScale, bigScale) //更新一下动画的参数
     }
 
     override fun onDraw(canvas: Canvas) {
         /**
+         * 双击时，根据屏幕中心点放大缩小
          * 缩小动画时，可以逐步回到0点位置
          * 放大动画时，可以逐步放大到偏移位置
+         *      canvas.translate(offsetX * scaleFraction, offsetY * scaleFraction)
+         *
+         *      val scale = smallScale + (bigScale - smallScale) * scaleFraction
+         *      canvas.scale(scale, scale, width / 2f, height / 2f)
          */
-        canvas.translate(offsetX * scaleFraction, offsetY * scaleFraction)
-        val scale = smallScale + (bigScale - smallScale) * scaleFraction
-        //根据屏幕中心点放大缩小
-        canvas.scale(scale, scale, width / 2f, height / 2f)
+
+        /**
+         * 放缩手势：直接用整体放缩系数来替代上面
+         *  当前缩放 =
+         */
+        val translateFraction = (currentScale - smallScale) / (bigScale - smallScale)
+        canvas.translate(offsetX * translateFraction, offsetY * translateFraction)
+
+        canvas.scale(currentScale, currentScale, width / 2f, height / 2f)
         canvas.drawBitmap(bitmap, originalOffsetX, originalOffsetY, paint)
     }
 
@@ -340,7 +409,7 @@ class ScalableImageView @JvmOverloads constructor(
     }
 
     /**
-     *
+     * 双击 & Fling & 滑动
      */
     inner class SimpleGestureListener : GestureDetector.SimpleOnGestureListener() {
         override fun onDown(e: MotionEvent?): Boolean {
@@ -370,10 +439,42 @@ class ScalableImageView @JvmOverloads constructor(
         }
     }
 
+    /**
+     * Fling事件后续刷新
+     */
     inner class FlingRunner : Runnable {
         override fun run() {
             updateFling()
-
         }
+    }
+
+    /**
+     * 缩放手势监听
+     */
+    inner class ScaleGestureListener : ScaleGestureDetector.OnScaleGestureListener {
+        /**
+         * 缩放开始
+         */
+        override fun onScaleBegin(detector: ScaleGestureDetector): Boolean {
+            setScaleBegin(detector)
+            return true
+        }
+
+        /**
+         * 缩放过程
+         */
+        override fun onScale(detector: ScaleGestureDetector): Boolean {
+            /**
+             * scaleFactor：放缩系数，跟return值有关
+             * false：表示不消费，scaleFactor 值为当前状态和初始状态(第一次双指缩放状态)的比值
+             * true： 表示消费，scaleFactor 值为当前状态和上一个状态的比值
+             */
+            return setScale(detector)
+        }
+
+        /**
+         * 缩放结束
+         */
+        override fun onScaleEnd(detector: ScaleGestureDetector) {}
     }
 }

@@ -6,8 +6,9 @@ import android.view.MotionEvent
 import android.view.ViewGroup
 
 class TouchLayout @JvmOverloads constructor(
-        context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0
-) : ViewGroup(context, attrs, defStyleAttr) {
+        context: Context, attrs: AttributeSet? = null
+) : ViewGroup(context, attrs) {
+
     override fun onLayout(changed: Boolean, l: Int, t: Int, r: Int, b: Int) {
         TODO("Not yet implemented")
     }

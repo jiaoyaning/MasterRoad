@@ -5,19 +5,69 @@
 
     <data>
 
+        <variable
+            name="click"
+            type="android.view.View.OnClickListener" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".view.touch.TouchActivity">
+        tools:context=".view.touch.TouchActivity"
+        tools:ignore="HardcodedText">
 
-        <com.jyn.masterroad.view.touch.view.MultiTouchView
+        <HorizontalScrollView
+            android:id="@+id/horizontal_scroll_view"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
+            android:scrollbars="none"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/btn_multi_touch"
+                    style="@style/tv"
+                    android:layout_marginBottom="5dp"
+                    android:onClick="@{click}"
+                    android:text="MultiTouch" />
+
+                <Button
+                    android:id="@+id/btn_scalable"
+                    style="@style/tv"
+                    android:layout_marginBottom="5dp"
+                    android:onClick="@{click}"
+                    android:text="Scalable" />
+
+                <Button
+                    android:id="@+id/btn_touch_layout"
+                    style="@style/tv"
+                    android:layout_marginBottom="5dp"
+                    android:onClick="@{click}"
+                    android:text="TouchLayout" />
+            </LinearLayout>
+        </HorizontalScrollView>
+
+        <RelativeLayout
+            android:id="@+id/box_layout"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginTop="5dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/horizontal_scroll_view"
+            tools:ignore="UselessLeaf">
+
+            <com.jyn.masterroad.view.touch.view.MultiTouchView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+        </RelativeLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

@@ -9,6 +9,7 @@ import android.graphics.Paint
 import android.util.AttributeSet
 import android.view.MotionEvent
 import android.view.View
+import com.apkfuns.logutils.LogUtils
 import com.jyn.masterroad.R
 import com.jyn.masterroad.view.draw.dp
 
@@ -21,14 +22,29 @@ import com.jyn.masterroad.view.draw.dp
  *  三、各自为战型
  *     没个手指负责各自功能，比如切水果
  *
+ * 注意：触摸事件都是相对View而言的，而不是手指
+ *      比如，down事件的时候，应该是view上出现了一个触摸点，而不是手指触摸view。
+ *
  * 单点事件序列
- *    Down -> Move -> Up
+ *    -> Down
+ *    -> Move
+ *    -> Up
+ *
  * 多点事件序列
- *    Down -> Move -> PointerDone -> PointerUp -> Up
+ *    -> Down           p(x,y,index,id)
+ *    -> Move           p(x,y,index,id)
+ *    -> PointerDone    p(x,y,index,id) p(x,y,index,id) 多指包含多个
+ *    -> Move           p(x,y,index,id) p(x,y,index,id)
+ *    -> PointerUp      p(x,y,index,id) p(x,y,index,id)
+ *    -> Up
  */
 class MultiTouchView @JvmOverloads constructor(
-    context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0
+        context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0
 ) : View(context, attrs, defStyleAttr) {
+    companion object {
+        const val TAG = "MultiTouch"
+    }
+
     val paint = Paint(Paint.ANTI_ALIAS_FLAG)
     private val bitmap = getBitmap(R.mipmap.icon_master_road2)
 
@@ -50,8 +66,17 @@ class MultiTouchView @JvmOverloads constructor(
 
     @SuppressLint("ClickableViewAccessibility")
     override fun onTouchEvent(event: MotionEvent): Boolean {
+        /**
+         * event.getX() //获取的是index为0的触控点
+         */
+        for (i in 0 until event.pointerCount) {
+            event.getX(i)
+            event.getY(i)
+        }
+
         when (event.actionMasked) {
             MotionEvent.ACTION_DOWN -> {
+                LogUtils.tag(TAG).i("onTouchEvent -> DOWN")
                 //记录当前点击位置
                 downX = event.x
                 downY = event.y
@@ -62,14 +87,15 @@ class MultiTouchView @JvmOverloads constructor(
             }
 
             MotionEvent.ACTION_MOVE -> {
+                LogUtils.tag(TAG).i("onTouchEvent -> MOVE")
                 //此次偏移位置 = 移动后的位置 - 触摸点位置 + 上次偏移位置
                 offsetX = event.x - downX + originalOffsetX
-                offsetY = event.y - downY + originalOffsetX
+                offsetY = event.y - downY + originalOffsetY
                 invalidate()
             }
 
-            MotionEvent.ACTION_UP ->{
-
+            MotionEvent.ACTION_UP -> {
+                LogUtils.tag(TAG).i("onTouchEvent -> UP")
             }
         }
         return true

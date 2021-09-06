@@ -22,6 +22,7 @@ import com.jyn.masterroad.view.animation.view.ViewPropertyAnimatorView
  * https://www.jianshu.com/p/93abf14de14d
  * https://cloud.tencent.com/developer/article/1330040
  *
+ * https://www.jianshu.com/p/26ce9078fef4
  */
 @Route(path = RoutePath.Animation.path)
 class AnimationActivity : BaseActivity<ActivityAnimationBinding>
@@ -29,8 +30,10 @@ class AnimationActivity : BaseActivity<ActivityAnimationBinding>
 
     /**
      * 一、帧动画
-     * 二、补间动画
-     *     补间动画有4种类型，平移，旋转，透明度，缩放。补间动画只能作用在view上，并且不会改变View的属性,只会改变显示效果.
+     * 二、补间动画 只停留在canvas阶段
+     *     补间动画有4种类型，平移，旋转，透明度，缩放。补间动画只能作用在view上，并且不会改变View的属性,只会改变显示效果。
+     *     原理简单理解就是在每一次VSYCN到来时 在View的draw方法里面 根据当前时间计算动画进度 计算出一个需要变换的Transformation矩阵
+     *     然后最终设置到canvas上去 调用canvas concat做矩阵变换.
      * 三、属性动画
      */
     private val viewPropertyAnimatorView by lazy { ViewPropertyAnimatorView(this) }

@@ -14,10 +14,14 @@ import com.jyn.masterroad.R
 import com.jyn.masterroad.view.draw.dp
 
 /**
+ * 一、接力型
+ *  重点：焦点转移
+ *
+ *
  * 多点触控大致类型
  *  一、接力型
  *     一个手指做完，另一个手指可以接着做，比如滑动列表
- *  二、配合型
+ *  二、协作型
  *     需要根据多指配合的手势，比如地图双指上滑变为3D视图
  *  三、各自为战型
  *     没个手指负责各自功能，比如切水果
@@ -38,7 +42,7 @@ import com.jyn.masterroad.view.draw.dp
  *    -> PointerUp      p(x,y,index,id) p(x,y,index,id)
  *    -> Up
  */
-class MultiTouchView @JvmOverloads constructor(
+class MultiTouchView1 @JvmOverloads constructor(
         context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0
 ) : View(context, attrs, defStyleAttr) {
     companion object {

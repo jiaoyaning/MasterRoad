@@ -6,7 +6,8 @@ import com.jyn.common.ARouter.RoutePath
 import com.jyn.masterroad.R
 import com.jyn.masterroad.base.BaseActivity
 import com.jyn.masterroad.databinding.ActivityTouchBinding
-import com.jyn.masterroad.view.touch.view.MultiTouchView
+import com.jyn.masterroad.view.touch.view.MultiTouchView1
+import com.jyn.masterroad.view.touch.view.MultiTouchView2
 import com.jyn.masterroad.view.touch.view.ScalableImageView
 import com.jyn.masterroad.view.touch.view.TouchLayout
 
@@ -24,14 +25,16 @@ import com.jyn.masterroad.view.touch.view.TouchLayout
 class TouchActivity : BaseActivity<ActivityTouchBinding>
 (R.layout.activity_touch) {
 
-    private val multiTouchView by lazy { MultiTouchView(this) }
+    private val multiTouchView1 by lazy { MultiTouchView1(this) }
+    private val multiTouchView2 by lazy { MultiTouchView2(this) }
     private val scalableImageView by lazy { ScalableImageView(this) }
     private val touchLayout by lazy { TouchLayout(this) }
 
     override fun initView() {
         binding.click = View.OnClickListener {
             switchView(when (it.id) {
-                R.id.btn_multi_touch -> multiTouchView
+                R.id.btn_multi_touch1 -> multiTouchView1
+                R.id.btn_multi_touch2 -> multiTouchView2
                 R.id.btn_scalable -> scalableImageView
                 R.id.btn_touch_layout -> touchLayout
                 else -> scalableImageView

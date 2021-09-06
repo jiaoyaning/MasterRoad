@@ -28,26 +28,30 @@
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:gravity="center_vertical"
                 android:orientation="horizontal">
 
                 <Button
-                    android:id="@+id/btn_multi_touch"
+                    android:id="@+id/btn_multi_touch1"
                     style="@style/tv"
-                    android:layout_marginBottom="5dp"
                     android:onClick="@{click}"
-                    android:text="MultiTouch" />
+                    android:text="MultiTouch \n 接力型" />
+
+                <Button
+                    android:id="@+id/btn_multi_touch2"
+                    style="@style/tv"
+                    android:onClick="@{click}"
+                    android:text="MultiTouch\n协作型" />
 
                 <Button
                     android:id="@+id/btn_scalable"
                     style="@style/tv"
-                    android:layout_marginBottom="5dp"
                     android:onClick="@{click}"
                     android:text="Scalable" />
 
                 <Button
                     android:id="@+id/btn_touch_layout"
                     style="@style/tv"
-                    android:layout_marginBottom="5dp"
                     android:onClick="@{click}"
                     android:text="TouchLayout" />
             </LinearLayout>
@@ -64,7 +68,7 @@
             app:layout_constraintTop_toBottomOf="@+id/horizontal_scroll_view"
             tools:ignore="UselessLeaf">
 
-            <com.jyn.masterroad.view.touch.view.MultiTouchView
+            <com.jyn.masterroad.view.touch.view.MultiTouchView1
                 android:layout_width="match_parent"
                 android:layout_height="match_parent" />
         </RelativeLayout>

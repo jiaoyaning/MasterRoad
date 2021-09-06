@@ -41,6 +41,9 @@ class LayoutActivity : BaseActivity<ActivityLayoutBinding>
         binding.boxLayout.viewTreeObserver.addOnGlobalLayoutListener {
 
         }
+        binding.boxLayout.post {
+
+        }
     }
 
     /**

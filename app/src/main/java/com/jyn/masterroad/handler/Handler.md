@@ -77,8 +77,9 @@ public void dispatchMessage(@NonNull Message msg) {
 >答："内部类持有了外部类的引用，也就是Hanlder持有了Activity的引用，从而导致无法被回收呗。"
  其实这样回答是错误的，或者说没回答到点子上。
  我们必须找到那个最终的引用者，不会被回收的引用者，其实就是主线程，这条完整引用链应该是这样：
-> > **`主线程` —> `threadlocal` —> `Looper` —> `MessageQueue` —> `Message` —> `Handler` —> `Activity`**
->
+> > **`主线程(ActivityThread)` —> `threadlocal` —> `Looper` —> `MessageQueue` —> `Message` —> `Handler` —>`Activity`**
+
+
 ##### **延伸问题1：内部类为什么会持有外部类的引用?**
 > 因为内部类虽然和外部类写在同一个文件中，但是编译后还是会生成不同的class文件，其中内部类的构造函数中会传入外部类的实例，然后就可以通过this$0访问外部类的成员。
 >``` java

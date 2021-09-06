@@ -44,6 +44,12 @@
                     android:text="MultiTouch\n协作型" />
 
                 <Button
+                    android:id="@+id/btn_multi_touch3"
+                    style="@style/tv"
+                    android:onClick="@{click}"
+                    android:text="MultiTouch\n独立型" />
+
+                <Button
                     android:id="@+id/btn_scalable"
                     style="@style/tv"
                     android:onClick="@{click}"

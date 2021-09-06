@@ -28,7 +28,7 @@ import kotlin.math.min
  *     GestureDetector              SDK 内置版本(跟随系统)
  *     GestureDetectorCompat        AndroidX 版本(跟随开发者SDK)
  *
- * scaleGestureDetector 缩放监听: 双指放大缩小手势
+ * ScaleGestureDetector 缩放监听: 双指放大缩小手势
  *  区别：注意与上面完全不同
  *      ScaleGestureDetector        原始版本
  *      ScaleGestureDetectorCompat  原始版本的帮助类(不是替代关系，是帮助关系)

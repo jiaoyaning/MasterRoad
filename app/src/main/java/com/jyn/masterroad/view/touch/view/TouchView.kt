@@ -11,13 +11,21 @@ import android.view.View
  * https://www.jianshu.com/p/a62728297b1e
  */
 class TouchView @JvmOverloads constructor(
-    context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0
+        context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0
 ) : View(context, attrs, defStyleAttr) {
     /**
      * MotionEvent 解析
+     *
      * [MotionEvent.getAction]          //表示触摸动作的原始32位信息，包括Touch事件的具体动作和触控点信息
      * [MotionEvent.getActionMasked]    //表示触摸的动作，按下、抬起、移动等信息。
      * [MotionEvent.getActionIndex]     //表示多点触控中触控点的信息
+     * [MotionEvent.getX]               //获取的是index为0的触控点
+     * [MotionEvent.getX(index)]        //获取指定index的触控点
+     * [MotionEvent.getPointerCount]    //获取此时有多少个触控点
+     * [MotionEvent.findPointerIndex]   //获取对应index触控点的id
+     * [MotionEvent.getActionIndex]     //获取当前行为触控点的index(多点移动情况下，始终为0)
+     *
+     *
      *
      * [MotionEvent.ACTION_UP]
      * [MotionEvent.ACTION_DOWN]

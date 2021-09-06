@@ -171,6 +171,12 @@ object RoutePath {
         const val span = 2
     }
 
+    object Touch {
+        const val name = "Touch"
+        const val path = "/app/Touch"
+        const val span = 2
+    }
+
     object Custom {
         const val name = "自定义"
         const val path = "/app/Custom"

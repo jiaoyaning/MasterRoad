@@ -19,6 +19,9 @@ import dagger.hilt.android.HiltAndroidApp
  *
  * Android Lint代码检查实践
  * https://juejin.cn/post/6861562664582119432
+ *
+ * Android正确的保活方案，不要掉进保活需求死循环陷进
+ * https://juejin.cn/post/7003992225575075876
  */
 @HiltAndroidApp
 class MyApp : Application() {

@@ -74,9 +74,21 @@
             app:layout_constraintTop_toBottomOf="@+id/horizontal_scroll_view"
             tools:ignore="UselessLeaf">
 
-            <com.jyn.masterroad.view.touch.view.MultiTouchView1
+            <com.jyn.masterroad.view.touch.view.TwoPagerView
                 android:layout_width="match_parent"
-                android:layout_height="match_parent" />
+                android:layout_height="match_parent">
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="#795548" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="#388E3C" />
+            </com.jyn.masterroad.view.touch.view.TwoPagerView>
+
         </RelativeLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>

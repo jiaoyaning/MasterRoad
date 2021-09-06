@@ -14,6 +14,7 @@ import com.jyn.masterroad.view.draw.dp
 
 /**
  * 三、独立型
+ *  重点：各个焦点的处理
  *
  *  (本次实验：每个触点相互独立，互不影响)
  */

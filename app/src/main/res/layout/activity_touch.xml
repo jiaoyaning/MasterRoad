@@ -66,6 +66,12 @@
                     style="@style/tv"
                     android:onClick="@{click}"
                     android:text="TwoPager" />
+
+                <Button
+                    android:id="@+id/btn_drag"
+                    style="@style/tv"
+                    android:onClick="@{click}"
+                    android:text="TwoPager" />
             </LinearLayout>
         </HorizontalScrollView>
 

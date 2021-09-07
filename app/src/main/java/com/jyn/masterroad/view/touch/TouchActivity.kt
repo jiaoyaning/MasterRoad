@@ -30,6 +30,7 @@ class TouchActivity : BaseActivity<ActivityTouchBinding>
     private val multiTouchView3 by lazy { MultiTouchView3(this) }
     private val scalableImageView by lazy { ScalableImageView(this) }
     private val touchLayout by lazy { TouchLayout(this) }
+    private val twoPagerView by lazy { TwoPagerView(this) }
 
     override fun initView() {
         binding.click = View.OnClickListener {
@@ -39,6 +40,7 @@ class TouchActivity : BaseActivity<ActivityTouchBinding>
                 R.id.btn_multi_touch3 -> multiTouchView3
                 R.id.btn_scalable -> scalableImageView
                 R.id.btn_touch_layout -> touchLayout
+                R.id.btn_two_pager -> twoPagerView
                 else -> scalableImageView
             })
         }

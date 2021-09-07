@@ -60,6 +60,12 @@
                     style="@style/tv"
                     android:onClick="@{click}"
                     android:text="TouchLayout" />
+
+                <Button
+                    android:id="@+id/btn_two_pager"
+                    style="@style/tv"
+                    android:onClick="@{click}"
+                    android:text="TwoPager" />
             </LinearLayout>
         </HorizontalScrollView>
 
@@ -74,20 +80,9 @@
             app:layout_constraintTop_toBottomOf="@+id/horizontal_scroll_view"
             tools:ignore="UselessLeaf">
 
-            <com.jyn.masterroad.view.touch.view.TwoPagerView
+            <com.jyn.masterroad.view.touch.view.MultiTouchView1
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
-
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:background="@mipmap/icon_master_road" />
-
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:background="@mipmap/icon_master_road2" />
-            </com.jyn.masterroad.view.touch.view.TwoPagerView>
+                android:layout_height="match_parent" />
 
         </RelativeLayout>
 

@@ -26,7 +26,10 @@ class MultiTouchView2 @JvmOverloads constructor(
         const val TAG = "MultiTouch"
     }
 
-    val paint = Paint(Paint.ANTI_ALIAS_FLAG)
+    val paint = Paint(Paint.ANTI_ALIAS_FLAG).apply {
+        textSize = 15f.dp
+    }
+
     private val bitmap = getBitmap(R.mipmap.icon_master_road2)
 
     //图片偏移位置 (控制图片位移的本质参数)
@@ -43,6 +46,7 @@ class MultiTouchView2 @JvmOverloads constructor(
 
     override fun onDraw(canvas: Canvas) {
         canvas.drawBitmap(bitmap, offsetX, offsetY, paint)
+        canvas.drawText("协作型", 100f, height.toFloat() - 100, paint)
     }
 
     @SuppressLint("ClickableViewAccessibility")

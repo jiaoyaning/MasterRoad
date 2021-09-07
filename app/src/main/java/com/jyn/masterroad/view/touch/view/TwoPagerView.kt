@@ -3,13 +3,11 @@ package com.jyn.masterroad.view.touch.view
 import android.annotation.SuppressLint
 import android.content.Context
 import android.util.AttributeSet
-import android.view.MotionEvent
-import android.view.VelocityTracker
-import android.view.ViewConfiguration
-import android.view.ViewGroup
+import android.view.*
 import android.widget.OverScroller
 import androidx.core.view.children
 import com.apkfuns.logutils.LogUtils
+import com.jyn.masterroad.R
 import kotlin.math.abs
 
 /*
@@ -39,6 +37,11 @@ class TwoPagerView @JvmOverloads constructor(
 ) : ViewGroup(context, attrs) {
     companion object {
         const val TAG = "TwoPager"
+    }
+
+    init {
+        addView(View(context).apply { setBackgroundResource(R.mipmap.icon_master_road) })
+        addView(View(context).apply { setBackgroundResource(R.mipmap.icon_master_road2) })
     }
 
     var downX = 0f          //down点X坐标
@@ -87,9 +90,10 @@ class TwoPagerView @JvmOverloads constructor(
 
             MotionEvent.ACTION_MOVE -> {
                 if (!scrolling) {
-                    val dx = downX - event.x
-                    if (abs(dx) > pagingSlop) {
+                    //超过翻页距离时，才拦截滑动事件
+                    if (abs(downX - event.x) > pagingSlop) {
                         scrolling = true
+                        //通知父布局，不要拦截touch事件，否则自己无法使用
                         parent.requestDisallowInterceptTouchEvent(true)
                         result = true
                     }

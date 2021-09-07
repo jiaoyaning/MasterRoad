@@ -26,10 +26,15 @@ class MultiTouchView3 @JvmOverloads constructor(
     }
 
     val paint = Paint(Paint.ANTI_ALIAS_FLAG).apply {
+        textSize = 15f.dp
         style = Paint.Style.STROKE
         strokeWidth = 4f.dp
         strokeCap = Paint.Cap.ROUND
         strokeJoin = Paint.Join.ROUND
+    }
+
+    val textPaint = Paint(Paint.ANTI_ALIAS_FLAG).apply {
+        textSize = 15f.dp
     }
 
     //作为多点触控的path集合，用触点的ID当key
@@ -40,6 +45,8 @@ class MultiTouchView3 @JvmOverloads constructor(
             //valueAt(index)：取对应下标位置的value
             canvas.drawPath(paths.valueAt(i), paint)
         }
+
+        canvas.drawText("独立型", 100f, height.toFloat() - 100, textPaint)
     }
 
     @SuppressLint("ClickableViewAccessibility")

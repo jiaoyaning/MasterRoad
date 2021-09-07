@@ -6,6 +6,7 @@ import com.jyn.common.ARouter.RoutePath
 import com.jyn.masterroad.R
 import com.jyn.masterroad.base.BaseActivity
 import com.jyn.masterroad.databinding.ActivityTouchBinding
+import com.jyn.masterroad.view.touch.darg.DragHelperView
 import com.jyn.masterroad.view.touch.view.*
 
 /*
@@ -31,7 +32,7 @@ class TouchActivity : BaseActivity<ActivityTouchBinding>
     private val scalableImageView by lazy { ScalableImageView(this) }
     private val touchLayout by lazy { TouchLayout(this) }
     private val twoPagerView by lazy { TwoPagerView(this) }
-    private val dragView by lazy { DragView(this) }
+    private val dragView by lazy { DragHelperView(this) }
 
     override fun initView() {
         binding.click = View.OnClickListener {

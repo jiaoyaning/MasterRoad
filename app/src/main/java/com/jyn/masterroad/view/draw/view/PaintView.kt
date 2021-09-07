@@ -24,11 +24,23 @@ class PaintView @JvmOverloads constructor(
      *      Paint.Style.STROKE  空心
      *      Paint.Style.FILL_AND_STROKE   同时实心和空心，该参数在某些场合会带来不可预期的显示效果。
      *
-     *  Paint.setStrokeWidth(float width)   //设置宽度
+     * Paint.setStrokeWidth(float width)   //设置宽度
      *
-     *  Paint.setColor(int color)
-     *  Paint.setARGB(int a, int r, int g, int b)
-     *  前两个设置颜色的API太简单了，直接略过
+     * Paint.setStrokeCap(Paint.Cap cap)   //设置线条端点形状的方法，端点有圆头 (ROUND)、平头 (BUTT) 和方头 (SQUARE) 三种
+     *      Paint.Cap.BUTT   平头(默认)
+     *      Paint.Cap.ROUND  圆头
+     *      Paint.Cap.SQUARE 方形
+     *
+     * Paint.setStrokeJoin(Paint.Join join) //设置拐角的形状。有三个值可以选择：MITER 尖角、 BEVEL 平角和 ROUND 圆角。
+     *      Paint.Join.MITER   尖角(默认)
+     *      Paint.Join.BEVEL   平角
+     *      Paint.Join.ROUND   圆角
+     * Paint.setStrokeMiter(float miter)    //对于 setStrokeJoin() 的一个补充，它用于设置 MITER 型拐角的延长线的最大值。
+     *
+     *
+     * Paint.setColor(int color)
+     * Paint.setARGB(int a, int r, int g, int b)
+     * 前两个设置颜色的API太简单了，直接略过
      */
     override fun onDraw(canvas: Canvas) {
         shader(canvas)      //着色器

@@ -81,12 +81,12 @@
                 <View
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:background="#795548" />
+                    android:background="@mipmap/icon_master_road" />
 
                 <View
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:background="#388E3C" />
+                    android:background="@mipmap/icon_master_road2" />
             </com.jyn.masterroad.view.touch.view.TwoPagerView>
 
         </RelativeLayout>

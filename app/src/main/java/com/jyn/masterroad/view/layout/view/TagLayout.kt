@@ -14,27 +14,29 @@ import kotlin.math.max
  * https://www.jianshu.com/p/56b9d4ab4ee8
  */
 class TagLayout @JvmOverloads constructor(
-    context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0
+        context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0
 ) : ViewGroup(context, attrs, defStyleAttr) {
-    companion object{
+    companion object {
         const val TAG = "Layout"
     }
-    /**
-     *  1.AT_MOST       限制上限
-     *  2.EXACTLY       精确值
-     *  3.UNSPECIFIED   不做限制
-     */
+
+    //所以子view的界限记录
     private val childrenBounds = mutableListOf<Rect>()
 
     @SuppressLint("DrawAllocation")
     override fun onMeasure(widthMeasureSpec: Int, heightMeasureSpec: Int) {
+        /**
+         *  1.AT_MOST       限制上限
+         *  2.EXACTLY       精确值
+         *  3.UNSPECIFIED   不做限制
+         */
 
-        LogUtils.tag(TAG).i("onMeasure measuredWidth:"+this.measuredWidth)
+        LogUtils.tag(TAG).i("onMeasure measuredWidth:" + this.measuredWidth)
         this.post {
-            LogUtils.tag(TAG).i("post onMeasure measuredWidth:"+this.measuredWidth)
-            LogUtils.tag(TAG).i("post onMeasure width:"+this.width)
+            LogUtils.tag(TAG).i("post onMeasure measuredWidth:" + this.measuredWidth)
+            LogUtils.tag(TAG).i("post onMeasure width:" + this.width)
         }
-        LogUtils.tag(TAG).i("onMeasure width:"+this.width)
+        LogUtils.tag(TAG).i("onMeasure width:" + this.width)
 
 
         var widthUsed = 0  //整体已用宽度
@@ -108,8 +110,8 @@ class TagLayout @JvmOverloads constructor(
 
             val childBounds = childrenBounds[index]
             childBounds.set(
-                lineWidthUsed, heightUsed,
-                lineWidthUsed + child.measuredWidth, heightUsed + child.measuredHeight
+                    lineWidthUsed, heightUsed,
+                    lineWidthUsed + child.measuredWidth, heightUsed + child.measuredHeight
             )
             lineWidthUsed += child.measuredWidth
             widthUsed = max(widthUsed, lineWidthUsed)

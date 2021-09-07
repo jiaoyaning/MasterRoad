@@ -1,10 +1,7 @@
 package com.jyn.masterroad.view.draw.view
 
 import android.content.Context
-import android.graphics.Canvas
-import android.graphics.Paint
-import android.graphics.Path
-import android.graphics.PathMeasure
+import android.graphics.*
 import android.util.AttributeSet
 import android.view.View
 
@@ -14,6 +11,9 @@ import android.view.View
  *
  * Android：视图绘制(四) ------Path进阶
  * https://blog.csdn.net/u010635353/article/details/52649686
+ *
+ * Android：判断一个点是否在Path内部
+ * https://www.zybuluo.com/cxm-2016/note/645185
  */
 class PathView @JvmOverloads constructor(
     context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0
@@ -59,5 +59,11 @@ class PathView @JvmOverloads constructor(
          * Path.FillType.INVERSE_EVEN_ODD   EVEN_ODD的反规则
          */
         path.fillType = Path.FillType.EVEN_ODD
+
+        /**
+         * 获取path所在的矩形范围
+         */
+        val bounds = RectF()
+        path.computeBounds(bounds, true)
     }
 }

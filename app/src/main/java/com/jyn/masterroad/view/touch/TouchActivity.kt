@@ -17,6 +17,9 @@ import com.jyn.masterroad.view.touch.view.*
  *
  * 反思 | Android 事件分发的“另一面”
  * https://mp.weixin.qq.com/s/27AL_nuIB6SR4lcB5S8B0Q
+ *
+ * MotionEvent的getAction、getActionMask和getActionIndex的区别
+ * https://www.jianshu.com/p/a62728297b1e
  */
 @Route(path = RoutePath.Touch.path)
 class TouchActivity : BaseActivity<ActivityTouchBinding>

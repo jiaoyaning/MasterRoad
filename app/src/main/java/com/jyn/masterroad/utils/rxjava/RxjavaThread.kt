@@ -1,12 +1,10 @@
 package com.jyn.masterroad.utils.rxjava
 
+import com.apkfuns.logutils.LogUtils
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
-import io.reactivex.rxjava3.core.Single
-import io.reactivex.rxjava3.core.SingleObserver
+import io.reactivex.rxjava3.core.Observable
+import io.reactivex.rxjava3.core.Observer
 import io.reactivex.rxjava3.disposables.Disposable
-import io.reactivex.rxjava3.internal.operators.single.SingleObserveOn
-import io.reactivex.rxjava3.internal.operators.single.SingleSubscribeOn
-import io.reactivex.rxjava3.internal.schedulers.IoScheduler
 import io.reactivex.rxjava3.schedulers.Schedulers
 
 /*
@@ -20,24 +18,43 @@ import io.reactivex.rxjava3.schedulers.Schedulers
  * https://www.jianshu.com/p/a9ebf730cd08
  */
 class RxjavaThread {
+    companion object {
+        const val TAG = "Rxjava"
+    }
+
     /**
      * 线程切换
-     * subscribeOn() =      [SingleSubscribeOn] [SingleSubscribeOn.subscribeActual]
-     * Schedulers.io() =    [IoScheduler]
-     * observeOn() =        [SingleObserveOn] [SingleObserveOn.subscribeActual]
+     * 首先要明白，所有的 subscribe() 本质都是 subscribeActual()
      */
     fun switchThread() {
-        Single.just(1)
+        Observable
+                .create<Int> { emitter ->
+                    List(1) { emitter.onNext(it) }
+                    LogUtils.tag(TAG).i("create -> ${Thread.currentThread()}")
+                }
+                .subscribeOn(AndroidSchedulers.mainThread())
+                .flatMap {
+                    Observable
+                            .create<String> { emitter ->
+                                emitter.onNext("转换String$it")
+                                LogUtils.tag(TAG).i("flatMap create -> ${Thread.currentThread()}")
+                            }
+                            .subscribeOn(Schedulers.io())
+                }
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(object : SingleObserver<Int> {
-                    override fun onSubscribe(d: Disposable?) {
+                .subscribe(object : Observer<String> {
+                    override fun onSubscribe(d: Disposable) {
                     }
 
-                    override fun onSuccess(t: Int?) {
+                    override fun onNext(t: String) {
+                        LogUtils.tag(TAG).i("subscribe onNext -> ${Thread.currentThread()}")
                     }
 
-                    override fun onError(e: Throwable?) {
+                    override fun onError(e: Throwable) {
+                    }
+
+                    override fun onComplete() {
                     }
                 })
     }

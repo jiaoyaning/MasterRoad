@@ -7,7 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 
 /*
- * OnDragListener
+ * OnDragListener(半透明)
  *
  * 源码：https://github.com/rengwuxian/HenCoderPlus7/blob/main/CustomViewTouchDrag/app/src/main/java/com/hencoder/drag/view/DragListenerGridView.kt
  */
@@ -33,5 +33,9 @@ class DragListenerView @JvmOverloads constructor(
         override fun onDrag(v: View, event: DragEvent): Boolean {
             return true
         }
+    }
+
+    override fun onDragEvent(event: DragEvent?): Boolean {
+        return super.onDragEvent(event)
     }
 }

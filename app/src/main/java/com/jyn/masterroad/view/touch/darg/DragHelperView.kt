@@ -43,12 +43,12 @@ class DragHelperView @JvmOverloads constructor(
     }
 
     init {
-        addView(View(context).apply { setBackgroundColor(Color.parseColor("#EF5350")) })
-        addView(View(context).apply { setBackgroundColor(Color.parseColor("#9C27B0")) })
-        addView(View(context).apply { setBackgroundColor(Color.parseColor("#1E88E5")) })
-        addView(View(context).apply { setBackgroundColor(Color.parseColor("#00695C")) })
-        addView(View(context).apply { setBackgroundColor(Color.parseColor("#00695C")) })
-        addView(View(context).apply { setBackgroundColor(Color.parseColor("#546E7A")) })
+        addView(View(context).apply { setBackgroundColor(Color.parseColor("#FA5858")) })
+        addView(View(context).apply { setBackgroundColor(Color.parseColor("#F4FA58")) })
+        addView(View(context).apply { setBackgroundColor(Color.parseColor("#80FF00")) })
+        addView(View(context).apply { setBackgroundColor(Color.parseColor("#00FFFF")) })
+        addView(View(context).apply { setBackgroundColor(Color.parseColor("#0080FF")) })
+        addView(View(context).apply { setBackgroundColor(Color.parseColor("#FF00FF")) })
     }
 
     /**
@@ -145,8 +145,6 @@ class DragHelperView @JvmOverloads constructor(
          * 被拖拽View的回调
          */
         override fun onViewCaptured(capturedChild: View, activePointerId: Int) {
-            LogUtils.tag(TAG).i(capturedChild)
-
             //高度加1，可以显示在别的view上方
             capturedChild.elevation = capturedChild.elevation + 2
             //记录一下初始位置，等松手的时候再放回去

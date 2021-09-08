@@ -10,7 +10,7 @@ Android 中拖动问题很常见但是也很复杂，往往令开发者不知所
 
 如何移动一个视图对象呢，可以为这个视图对象设置 onTouchListener 方法，记录下最开始的 ACTION_DOWN 位置，在 ACTION_MOVE 事件里判断是否已经超出滑动最小范围 TOUCH_SLOP，超出就开始更新当前视图的位置，就好像视图跟随着用户的手指移动，用户拖动了当前的视图对象。实现的代码如下：
 
-```
+```java
 // 子视图自己监视用户触摸事件
 text.setOnTouchListener(new View.OnTouchListener() {
     // 记录下上一次移动到的位置
@@ -67,7 +67,7 @@ text.setOnTouchListener(new View.OnTouchListener() {
 
 这里使用三种改变当前视图位置的方法：
 
-```
+```java
 // text.setX(text.getX() + x - mLastX);
 // text.setY(text.getY() + y - mLastY);
 
@@ -82,7 +82,7 @@ text.offsetTopAndBottom(y - mLastY);
 
 但是实际操作发现这三种方式实现的拖动效果并不好，问题是手指已经移动了很远，视图虽然移动了但是离用户手指还是比较远，个人猜测这可能跟视图不停的改变位置同时不停的接收新的触摸事件不同步导致的，因而可以把拖动操作的用户触摸事件交给父控件监视，由父控件来根据用户动作更新视图的位置。但是用户拖动父控件的其他部分会发现子视图依然跟着移动，这种情况不应该发生，所以需要定位最开始用户按下位置是否是子视图的位置：
 
-```
+```java
 // 这里使用父控件监视用户的触摸事件
 rootView.setOnTouchListener(new View.OnTouchListener() {
     private int mLastX;
@@ -160,7 +160,7 @@ ViewDragHelper 简介
 
 ViewDragHelper 是 v4 包中添加的辅助自定义 ViewGroup 实现拖动操作的工具类，它目前有两个创建方法：
 
-```
+```java
 // 实际生成的方法，需要传递要监视用户触摸事件的ViewGroup和回调对象，回调对象里定义了用户的各种操作
 public static ViewDragHelper create(ViewGroup forParent, Callback cb) {
     return new ViewDragHelper(forParent.getContext(), forParent, cb);
@@ -176,7 +176,7 @@ public static ViewDragHelper create(ViewGroup forParent, float sensitivity, Call
 
 ViewDragHelper.Callback 回调里的方法提供了用户实现自己逻辑的接口，这里介绍每个方法的意义：
 
-```
+```java
 public abstract static class Callback {
     /**
      *当拖动状态改变的时候回调，主要的回调状态包含：
@@ -285,7 +285,7 @@ ViewDragHelper 实现抽屉菜单
 
 明白了 Callback 中每个回调接口的含义，现在先实现自定义的 ViewGroup 里的拖动多个对象操作。只需要在 tryCaptureView 方法里返回 true，那么对应的 child 就能够被拖动，同时对那些普通的子视图 clamp 方法返回的就是它们将要到达的 top 和 left 值。对于抽屉菜单需要明白它属于边沿触发的拖动对象，所以为 ViewDragHelper.setEdgeTrackingEnabled(ViewDragHelper.EDGE_LEFT); 设置左边缘触发，在 onEdgeDragStarted 方法里直接 helper.captureChildView(menu, pointerId); 设置为拖动对象，最后需要注意抽屉菜单只能左右滚动而且 left 最大值只能到 0，top 始终为 0，实现代码如下：
 
-```
+```java
 public class DraggerLayout extends FrameLayout {
     private static final String TAG = "DraggerLayout";
 

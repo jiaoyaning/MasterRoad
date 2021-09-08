@@ -25,7 +25,7 @@ import com.jyn.masterroad.view.touch.view.*
  */
 @Route(path = RoutePath.Touch.path)
 class TouchActivity : BaseActivity<ActivityTouchBinding>
-(R.layout.activity_touch) {
+    (R.layout.activity_touch) {
 
     private val multiTouchView1 by lazy { MultiTouchView1(this) }
     private val multiTouchView2 by lazy { MultiTouchView2(this) }

@@ -4,7 +4,6 @@ import android.annotation.SuppressLint
 import android.content.Context
 import android.graphics.Color
 import android.util.AttributeSet
-import android.view.DragEvent
 import android.view.MotionEvent
 import android.view.View
 import android.view.ViewGroup
@@ -137,9 +136,7 @@ class DragHelperView @JvmOverloads constructor(
          *      STATE_DRAGGING：用户正在拖动状态
          *      STATE_SETTLING: 用户拖动放手之后将子视图安置到最终位置的中间状态
          */
-        override fun onViewDragStateChanged(state: Int) {
-            super.onViewDragStateChanged(state)
-        }
+        override fun onViewDragStateChanged(state: Int) {}
 
         /**
          * 被拖拽View的回调

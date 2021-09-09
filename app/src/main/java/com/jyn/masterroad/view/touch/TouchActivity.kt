@@ -23,6 +23,9 @@ import com.jyn.masterroad.view.touch.view.*
  *
  * MotionEvent的getAction、getActionMask和getActionIndex的区别
  * https://www.jianshu.com/p/a62728297b1e
+ *
+ * 【透镜系列】看穿 > 触摸事件分发 >
+ * https://juejin.cn/post/6844903761052188679
  */
 @Route(path = RoutePath.Touch.path)
 class TouchActivity : BaseActivity<ActivityTouchBinding>

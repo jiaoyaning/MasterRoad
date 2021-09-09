@@ -15,6 +15,7 @@
 # Android
 [Handler](app/src/main/java/com/jyn/masterroad/handler/Handler.md)  
 [事件分发机制](app/src/main/java/com/jyn/masterroad/view/touch/事件分发机制.md)  
+[布局流程](app/src/main/java/com/jyn/masterroad/view/layout/布局流程.md)  
 [编译打包签名](blogs/编译打包签名.md)  
 [序列化Serializable 和 Parcelable](app/src/main/java/com/jyn/masterroad/base/serialize/序列化.md)  
 

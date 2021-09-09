@@ -1,4 +1,4 @@
-package com.jyn.masterroad.nestedscrolling
+package com.jyn.masterroad.nestedscrolling.nestedccrolling
 
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.jyn.common.ARouter.RoutePath

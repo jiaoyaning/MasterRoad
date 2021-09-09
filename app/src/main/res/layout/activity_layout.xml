@@ -39,20 +39,5 @@
             </LinearLayout>
         </HorizontalScrollView>
 
-        <com.jyn.masterroad.view.layout.view.TagLayout
-            android:id="@+id/box_layout"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_marginTop="5dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/horizontal_scroll_view"
-            tools:ignore="UselessLeaf">
-
-            <TextView
-                style="@style/tv"
-                android:text="子view1" />
-        </com.jyn.masterroad.view.layout.view.TagLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

@@ -40,8 +40,8 @@
         <activity android:name=".kotlin.flow.FlowActivity" />
         <activity android:name=".kotlin.coil.CoilActivity" />
         <activity android:name=".kotlin.coroutines.KotlinCoroutinesActivity" />
-        <activity android:name=".nestedscrolling.NestedScrolling2Activity" />
-        <activity android:name=".nestedscrolling.NestedScrolling1Activity" />
+        <activity android:name=".nestedscrolling.nestedccrolling.NestedScrolling2Activity" />
+        <activity android:name=".nestedscrolling.nestedccrolling.NestedScrolling1Activity" />
         <activity android:name=".nestedscrolling.scrollview.ScrollViewActivity" />
         <activity android:name=".nestedscrolling.recyclerview.RecyclerViewActivity" />
         <activity android:name=".nestedscrolling.constraintLayout.MotionLayoutActivity" />

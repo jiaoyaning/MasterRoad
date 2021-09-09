@@ -10,7 +10,7 @@
     <androidx.coordinatorlayout.widget.CoordinatorLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".nestedscrolling.NestedScrolling2Activity">
+        tools:context=".nestedscrolling.nestedccrolling.NestedScrolling2Activity">
 
         <com.google.android.material.appbar.AppBarLayout
             android:layout_width="match_parent"
@@ -47,8 +47,7 @@
                         <ImageView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_centerVertical="true"
-                            android:src="@drawable/abc_vector_test" />
+                            android:layout_centerVertical="true" />
 
                         <TextView
                             android:id="@+id/tool_bar_title"
@@ -88,7 +87,7 @@
             android:layout_height="match_parent"
             android:background="#90FFFFFF"
             app:layoutManager="LinearLayoutManager"
-            app:layout_behavior="com.jyn.masterroad.nestedscrolling.behavior.CeilingGoneBehavior"
+            app:layout_behavior="com.jyn.masterroad.nestedscrolling.nestedccrolling.behavior.CeilingGoneBehavior"
             tools:itemCount="30" />
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
 </layout>

@@ -1,4 +1,4 @@
-package com.jyn.masterroad.nestedscrolling.behavior;
+package com.jyn.masterroad.nestedscrolling.nestedccrolling.behavior;
 
 import android.content.Context;
 import android.util.AttributeSet;

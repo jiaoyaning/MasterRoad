@@ -42,12 +42,7 @@ class LayoutActivity : BaseActivity<ActivityLayoutBinding>
      */
 
     override fun initView() {
-        binding.boxLayout.viewTreeObserver.addOnGlobalLayoutListener {
 
-        }
-        binding.boxLayout.post {
-
-        }
     }
 
     /**

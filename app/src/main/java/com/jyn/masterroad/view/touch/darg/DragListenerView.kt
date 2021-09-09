@@ -21,19 +21,17 @@ class DragListenerView @JvmOverloads constructor(
         context: Context, attrs: AttributeSet? = null
 ) : ViewGroup(context, attrs) {
     /**
-     *  OnDragListener 使用步骤
+     * [startDrag] [OnDragListener] 使用步骤
      *      1. View.startDrag() 开始拖拽
      *      2. 实现OnDragListener接口，并重写onDrag方法
      *      3. View.setOnDragListener() 添加拖拽监听
      *
      * [startDrag] 参数解析
-     *   ClipData：拖拽时用于传递的数据，会在 DragEvent.ACTION_DROP 拖拽结束松手时才能获取到 ClipData 的数据
-     *   DragShadowBuilder：自定义在拖拽时生成View样式，默认为半透明，可以观察跟随手指的拖拽状态
-     *   myLocalState：可以用它传递本地数据，监听 DragEvent.ACTION_DRAG_STARTED、DragEvent.ACTION_DRAG_ENTERED、DragEvent.ACTION_DRAG_ENDED
+     *      ClipData：拖拽时用于传递的数据，会在 DragEvent.ACTION_DROP 拖拽结束松手时才能获取到 ClipData 的数据
+     *      DragShadowBuilder：自定义在拖拽时生成View样式，默认为半透明，可以观察跟随手指的拖拽状态
+     *      myLocalState：可以用它传递本地数据，监听 DragEvent.ACTION_DRAG_STARTED、DragEvent.ACTION_DRAG_ENTERED、DragEvent.ACTION_DRAG_ENDED
      *                 等拖拽状态时通过 DragEvent.getLocalState() 随时获取该本地数据。但需要注意的是，如果是跨进程的Activity之间通信，DragEvent.getLocalState() 会返回null
-     *   flags：控制拖拽时的操作，一般传递0即可
-     *
-     *
+     *      flags：控制拖拽时的操作，一般传递0即可
      *
      *  如何自定义子view绘制顺序？
      *      1. 调用 setChildrenDrawingOrderEnable(true) 开启自定义绘制顺序

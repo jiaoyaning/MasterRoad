@@ -92,8 +92,8 @@ class DragListenerView @JvmOverloads constructor(
     override fun onMeasure(widthMeasureSpec: Int, heightMeasureSpec: Int) {
         val specWidth = MeasureSpec.getSize(widthMeasureSpec)
         val specHeight = MeasureSpec.getSize(heightMeasureSpec)
-        val childWidth = specWidth / DragHelperView.COLUMNS
-        val childHeight = specHeight / DragHelperView.ROWS
+        val childWidth = specWidth / COLUMNS
+        val childHeight = specHeight / ROWS
         measureChildren(
                 MeasureSpec.makeMeasureSpec(childWidth, MeasureSpec.EXACTLY),
                 MeasureSpec.makeMeasureSpec(childHeight, MeasureSpec.EXACTLY)
@@ -104,8 +104,8 @@ class DragListenerView @JvmOverloads constructor(
     override fun onLayout(changed: Boolean, l: Int, t: Int, r: Int, b: Int) {
         var childLeft: Int
         var childTop: Int
-        val childWidth = width / DragHelperView.COLUMNS
-        val childHeight = height / DragHelperView.ROWS
+        val childWidth = width / COLUMNS
+        val childHeight = height / ROWS
         for ((index, child) in children.withIndex()) {
             childLeft = index % 2 * childWidth
             childTop = index / 2 * childHeight

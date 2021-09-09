@@ -1,4 +1,4 @@
-package com.jyn.masterroad.utils.rxjava
+package com.jyn.masterroad.utils.rxjava.test
 
 import com.apkfuns.logutils.LogUtils
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
@@ -103,8 +103,10 @@ class UseCombat {
      * 试想，[Single.just]发送完数据后，[Single.delay]正在阻塞的过程中时[SingleObserver]调用[Disposable.dispose]取消了订阅，该当如何
      *
      * [Single.delay]后的[Single.subscribe]订阅方法其实对应[SingleDelay.subscribeActual]
-     * 而[SingleDelay]此时创建了一个全新的[Disposable]对象传给下游，而这个全新的[Disposable]对象，会代替上游的[Disposable]
-     * 这样下游持有的就是[SingleDelay]的[Disposable]，所以[Disposable.dispose]的时候，相当于是取消了[SingleDelay]的延迟方法。
+     * [SingleDelay]会暂时创建一个[SequentialDisposable]来占位，等上游调用[onSubscribe]传递[Disposable]时,
+     *  再用这个上游的[Disposable]代替自己，并传递给下游，
+     *
+     * 其他操作符应该也大致相同，这样就能保证往下游传递的[Disposable]始终只有一个，就是最上游的那一个
      */
     fun test3() {
         Single.just("1")

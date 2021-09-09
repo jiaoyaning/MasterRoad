@@ -8,23 +8,23 @@
 
         <variable
             name="rxJavaCreate"
-            type="com.jyn.masterroad.utils.rxjava.RxJavaCreate" />
+            type="com.jyn.masterroad.utils.rxjava.test.RxJavaCreate" />
 
         <variable
             name="coldAndHotObservable"
-            type="com.jyn.masterroad.utils.rxjava.ColdAndHotObservable" />
+            type="com.jyn.masterroad.utils.rxjava.test.ColdAndHotObservable" />
 
         <variable
             name="subjectAndProcessorTest"
-            type="com.jyn.masterroad.utils.rxjava.SubjectAndProcessorTest" />
+            type="com.jyn.masterroad.utils.rxjava.test.SubjectAndProcessorTest" />
 
         <variable
             name="useCombat"
-            type="com.jyn.masterroad.utils.rxjava.UseCombat" />
+            type="com.jyn.masterroad.utils.rxjava.test.UseCombat" />
 
         <variable
             name="rxjavaThread"
-            type="com.jyn.masterroad.utils.rxjava.RxjavaThread" />
+            type="com.jyn.masterroad.utils.rxjava.test.RxjavaThread" />
     </data>
 
     <androidx.core.widget.NestedScrollView

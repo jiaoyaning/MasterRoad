@@ -8,7 +8,7 @@
 
         <variable
             name="rxJavaCreate"
-            type="com.jyn.masterroad.utils.rxjava.RxJavaCreate" />
+            type="com.jyn.masterroad.utils.rxjava.test.RxJavaCreate" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

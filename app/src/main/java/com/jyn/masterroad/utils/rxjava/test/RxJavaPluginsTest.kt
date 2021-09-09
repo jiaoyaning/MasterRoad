@@ -1,4 +1,4 @@
-package com.jyn.masterroad.utils.rxjava
+package com.jyn.masterroad.utils.rxjava.test
 
 import io.reactivex.rxjava3.plugins.RxJavaPlugins
 

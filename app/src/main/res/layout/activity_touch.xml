@@ -84,6 +84,12 @@
                     style="@style/tv"
                     android:onClick="@{click}"
                     android:text="DragToCollect" />
+
+                <Button
+                    android:id="@+id/btn_drag_helper_layout"
+                    style="@style/tv"
+                    android:onClick="@{click}"
+                    android:text="DragHelperLayout" />
             </LinearLayout>
         </HorizontalScrollView>
 

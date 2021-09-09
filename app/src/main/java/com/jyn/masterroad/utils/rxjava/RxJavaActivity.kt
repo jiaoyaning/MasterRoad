@@ -5,6 +5,7 @@ import com.jyn.common.ARouter.RoutePath
 import com.jyn.masterroad.R
 import com.jyn.masterroad.base.BaseActivity
 import com.jyn.masterroad.databinding.ActivityRxjavaBinding
+import com.jyn.masterroad.utils.rxjava.test.*
 
 /*
  * 不要打破链式调用！一个极低成本的RxJava全局Error处理方案

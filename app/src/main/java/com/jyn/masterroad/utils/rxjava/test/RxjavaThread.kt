@@ -1,4 +1,4 @@
-package com.jyn.masterroad.utils.rxjava
+package com.jyn.masterroad.utils.rxjava.test
 
 import com.apkfuns.logutils.LogUtils
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
@@ -32,6 +32,7 @@ class RxjavaThread {
                     List(1) { emitter.onNext(it) }
                     LogUtils.tag(TAG).i("create -> ${Thread.currentThread()}")
                 }
+                .map { it + 1 }
                 .subscribeOn(AndroidSchedulers.mainThread())
                 .flatMap {
                     Observable

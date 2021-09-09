@@ -1,4 +1,4 @@
-package com.jyn.masterroad.utils.rxjava
+package com.jyn.masterroad.utils.rxjava.test
 
 import com.apkfuns.logutils.LogUtils
 import io.reactivex.rxjava3.core.Observer

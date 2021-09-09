@@ -6,6 +6,7 @@ import com.jyn.common.ARouter.RoutePath
 import com.jyn.masterroad.R
 import com.jyn.masterroad.base.BaseActivity
 import com.jyn.masterroad.databinding.ActivityTouchBinding
+import com.jyn.masterroad.view.touch.darg.DragHelperLayout
 import com.jyn.masterroad.view.touch.darg.DragHelperView
 import com.jyn.masterroad.view.touch.darg.DragListenerView
 import com.jyn.masterroad.view.touch.view.*
@@ -46,6 +47,7 @@ class TouchActivity : BaseActivity<ActivityTouchBinding>
                 R.id.btn_two_pager -> TwoPagerView(this)
                 R.id.btn_drag_helper -> DragHelperView(this)
                 R.id.btn_drag_listener -> DragListenerView(this)
+                R.id.btn_drag_helper_layout -> DragHelperLayout(this)
                 else -> ScalableImageView(this)
             })
         }

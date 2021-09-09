@@ -139,7 +139,7 @@ class DragHelperView @JvmOverloads constructor(
         override fun onViewDragStateChanged(state: Int) {}
 
         /**
-         * 被拖拽View的回调
+         * 拖拽View开始时的回调
          */
         override fun onViewCaptured(capturedChild: View, activePointerId: Int) {
             //高度加1，可以显示在别的view上方
@@ -156,6 +156,8 @@ class DragHelperView @JvmOverloads constructor(
 
         /**
          * 当松手的时候会回调
+         *
+         * xvel,yvel 指针离开屏幕时的速度，单位为像素/秒
          */
         override fun onViewReleased(releasedChild: View, xvel: Float, yvel: Float) {
             /**

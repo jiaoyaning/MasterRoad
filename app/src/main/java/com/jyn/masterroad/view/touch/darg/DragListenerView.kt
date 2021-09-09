@@ -7,6 +7,7 @@ import android.view.DragEvent
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.view.children
+import com.apkfuns.logutils.LogUtils
 import com.jyn.masterroad.view.touch.darg.DragHelperView.Companion.COLUMNS
 import com.jyn.masterroad.view.touch.darg.DragHelperView.Companion.ROWS
 
@@ -17,7 +18,7 @@ import com.jyn.masterroad.view.touch.darg.DragHelperView.Companion.ROWS
  * 源码：https://github.com/rengwuxian/HenCoderPlus7/blob/main/CustomViewTouchDrag/app/src/main/java/com/hencoder/drag/view/DragListenerGridView.kt
  */
 class DragListenerView @JvmOverloads constructor(
-    context: Context, attrs: AttributeSet? = null
+        context: Context, attrs: AttributeSet? = null
 ) : ViewGroup(context, attrs) {
     /**
      *  OnDragListener 使用步骤
@@ -44,15 +45,18 @@ class DragListenerView @JvmOverloads constructor(
     }
 
     init {
-        //开启自定义绘制顺序
-
-        isChildrenDrawingOrderEnabled = true
         addView(View(context).apply { setBackgroundColor(Color.parseColor("#FF00FF")) })
         addView(View(context).apply { setBackgroundColor(Color.parseColor("#0080FF")) })
         addView(View(context).apply { setBackgroundColor(Color.parseColor("#00FFFF")) })
         addView(View(context).apply { setBackgroundColor(Color.parseColor("#80FF00")) })
         addView(View(context).apply { setBackgroundColor(Color.parseColor("#F4FA58")) })
         addView(View(context).apply { setBackgroundColor(Color.parseColor("#FA5858")) })
+
+        //开启自定义绘制顺序
+        isChildrenDrawingOrderEnabled = true
+
+        //view 绘制完成后回调
+        viewTreeObserver.addOnGlobalLayoutListener { setOnListener() }
     }
 
     //滑动监听
@@ -69,6 +73,13 @@ class DragListenerView @JvmOverloads constructor(
      */
     override fun onFinishInflate() {
         super.onFinishInflate()
+        setOnListener()
+    }
+
+    /**
+     *
+     */
+    private fun setOnListener() {
         for (child in children) {
             childList.add(child)
             child.setOnLongClickListener {
@@ -86,8 +97,8 @@ class DragListenerView @JvmOverloads constructor(
         val childWidth = specWidth / DragHelperView.COLUMNS
         val childHeight = specHeight / DragHelperView.ROWS
         measureChildren(
-            MeasureSpec.makeMeasureSpec(childWidth, MeasureSpec.EXACTLY),
-            MeasureSpec.makeMeasureSpec(childHeight, MeasureSpec.EXACTLY)
+                MeasureSpec.makeMeasureSpec(childWidth, MeasureSpec.EXACTLY),
+                MeasureSpec.makeMeasureSpec(childHeight, MeasureSpec.EXACTLY)
         )
         setMeasuredDimension(specWidth, specHeight)
     }
@@ -116,22 +127,32 @@ class DragListenerView @JvmOverloads constructor(
          * DragEvent    View的拖拽状态，比较常用的有以下几种状态：
          *      DragEvent.ACTION_DRAG_STARTED   开始拖拽，在调用 view.startDrag() 时回调
          *      DragEvent.ACTION_DRAG_ENTERED   当拖拽触摸到了被拖拽的那个View的区域内就会回调
+         *      DragEvent.ACTION_DRAG_LOCATION  被拖拽View在目标区域移动
+         *      DragEvent.ACTION_DRAG_EXITED    被拖拽View离开目标区域
+         *      DragEvent.ACTION_DROP           放开被拖拽View
          *      DragEvent.ACTION_DRAG_ENDED     已经松手结束拖拽
-         *      DragEvent.ACTION_DROP           拖拽结束松手了
          *
          *  return      true为处理该拖拽事件，false则表示不处理
          *              注意：false情况下将触发view的 onDragEvent() 方法
          */
         override fun onDrag(v: View, event: DragEvent): Boolean {
+            /**
+             * [DragEvent.getClipData] [startDrag]的第一个参数data
+             * [DragEvent.getLocalState] [startDrag]的第三个参数myLocalState
+             */
+            LogUtils.tag(TAG).i("event.clipData: ${event.clipData}")
+            LogUtils.tag(TAG).i("event.localState: ${event.localState}")
+
             when (event.action) {
+                //开始拖拽，在调用 view.startDrag() 时回调
                 DragEvent.ACTION_DRAG_STARTED -> if (event.localState === v) {
                     v.visibility = View.INVISIBLE
                 }
+                //当拖拽触摸到了被拖拽的那个View的区域内就会回调
                 DragEvent.ACTION_DRAG_ENTERED -> if (event.localState !== v) {
-                    sort(v)
+//                    sort(v)
                 }
-                DragEvent.ACTION_DRAG_EXITED -> {
-                }
+                //已经松手结束拖拽
                 DragEvent.ACTION_DRAG_ENDED -> if (event.localState === v) {
                     v.visibility = View.VISIBLE
                 }
@@ -159,9 +180,9 @@ class DragListenerView @JvmOverloads constructor(
                 childLeft = index % 2 * childWidth
                 childTop = index / 2 * childHeight
                 child.animate()
-                    .translationX(childLeft.toFloat())
-                    .translationY(childTop.toFloat())
-                    .setDuration(150)
+                        .translationX(childLeft.toFloat())
+                        .translationY(childTop.toFloat())
+                        .setDuration(150)
             }
         }
     }

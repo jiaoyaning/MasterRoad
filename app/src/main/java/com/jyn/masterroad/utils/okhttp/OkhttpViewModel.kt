@@ -16,6 +16,7 @@ import java.io.IOException
  *
  * OKHttp3--Dispatcher分发器实现同步异步请求源码解析【三】
  * https://blog.csdn.net/qq_30993595/article/details/86681210
+ * https://githublsh.github.io/2017/07/28/OkHttp3%E6%BA%90%E7%A0%81%E5%AD%A6%E4%B9%A0%EF%BC%884%EF%BC%89-Dispatcher/
  *
  * facebook网络调节库(此处才需要addNetworkInterceptor)
  * https://github.com/facebook/stetho/
@@ -37,10 +38,12 @@ class OkhttpViewModel(application: Application) : AndroidViewModel(application) 
 
         val okHttpClient by lazy {
             OkHttpClient.Builder()
-                //401的时候会走该监听，可用于更新token
-                .authenticator(Authenticator { _, _ -> return@Authenticator null })
-                .addInterceptor(LoggingInterceptor())
-                .build()
+                    //401的时候会走该监听，可用于更新token
+                    .authenticator(Authenticator { _, _ -> return@Authenticator null })
+                    .addInterceptor(LoggingInterceptor())
+                    //指定Dispatcher，可以二次设置请求优先级
+                    .dispatcher(Dispatcher())
+                    .build()
         }
     }
 
@@ -49,8 +52,8 @@ class OkhttpViewModel(application: Application) : AndroidViewModel(application) 
      */
     fun execute() {
         val request = Request.Builder()
-            .url(WAN_ANDROID)
-            .build()
+                .url(WAN_ANDROID)
+                .build()
 
         Thread {
             val realCall = okHttpClient.newCall(request)
@@ -64,8 +67,8 @@ class OkhttpViewModel(application: Application) : AndroidViewModel(application) 
      */
     fun enqueue() {
         val request = Request.Builder()
-            .url(WAN_ANDROID)
-            .build()
+                .url(WAN_ANDROID)
+                .build()
 
         val realCall = okHttpClient.newCall(request)
         realCall.enqueue(object : Callback {

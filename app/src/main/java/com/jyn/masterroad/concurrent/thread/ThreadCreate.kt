@@ -7,10 +7,6 @@ import java.util.concurrent.FutureTask
 import java.util.concurrent.ThreadFactory
 import javax.inject.Inject
 
-/*
- * 腾讯面试官：如何停止一个正在运行的线程？我蒙了
- * https://mp.weixin.qq.com/s/EZJNIP45D1alLq1VNx8q_g
- */
 class ThreadCreate @Inject constructor() {
 
     //region 一、线程创建的四种方式

@@ -64,5 +64,6 @@ class ThreadActivity : BaseActivity<ActivityThreadBinding>
         binding.threadLocal = threadLocalTest
         binding.countDownLatch = countDownLatchTest
         binding.syncAndLockTest = SyncAndLockTest()
+        binding.stop = ThreadStop()
     }
 }

@@ -19,6 +19,10 @@
             name="executors"
             type="com.jyn.masterroad.concurrent.thread.ExecutorsTest" />
 
+        <variable
+            name="stop"
+            type="com.jyn.masterroad.concurrent.thread.ThreadStop" />
+
         <!-- Wait 和 Notify-->
         <variable
             name="threadWaitNotify"
@@ -159,7 +163,7 @@
                 android:layout_marginEnd="8dp"
                 android:text="object中的wait()和notify()"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/thread_btn_start_executors" />
+                app:layout_constraintTop_toBottomOf="@+id/button76" />
 
             <Button
                 android:id="@+id/thread_btn_start"
@@ -313,6 +317,33 @@
                 android:text="MyTestLock"
                 app:layout_constraintStart_toEndOf="@+id/button3"
                 app:layout_constraintTop_toTopOf="@+id/button3" />
+
+            <TextView
+                android:id="@+id/textView55"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="8dp"
+                android:text="线程关闭"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/thread_btn_start_executors" />
+
+            <Button
+                android:id="@+id/button76"
+                style="@style/tv"
+                android:layout_marginTop="8dp"
+                android:onClick="@{() ->stop.stop()}"
+                android:text="stop\n过时"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView55" />
+
+            <Button
+                android:id="@+id/button77"
+                style="@style/tv2"
+                android:onClick="@{() ->stop.interrupt()}"
+                android:text="interrupt\n标记中断"
+                app:layout_constraintStart_toEndOf="@+id/button76"
+                app:layout_constraintTop_toTopOf="@+id/button76" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.core.widget.NestedScrollView>

@@ -7,7 +7,7 @@
 3. `FutureTask`类 + `Callable`接口
 4. 借助`Executors`
 
-**问: `new Thread()` 和 `new Object()` 有什么差别？**
+#### **问: `new Thread()` 和 `new Object()` 有什么差别？**
 - **`new Object()` 的过程**  
   1. 分配一块内存 M
   2. 在内存 M 上初始化该对象
@@ -143,10 +143,10 @@ Thread.sleep(1000);
 ### RUNNABLE与 TIMED-WAITING 状态转换
 调用带时间参数的等待API(`sleep()`)，自然就从 RUNNABLE 状态进入 TIMED-WAITING 状态；当被唤醒或超时时间到就会从TIMED_WAITING进入RUNNABLE状态
 
-问: 进入 BLOCKED 只有一种情况，就是等待 synchronized 监视器锁，那调用 JUC 中的 Lock.lock() 方法，如果某个线程等待这个锁，这个线程状态是什么呢？为什么？  
+#### 问: 进入 BLOCKED 只有一种情况，就是等待 synchronized 监视器锁，那调用 JUC 中的 Lock.lock() 方法，如果某个线程等待这个锁，这个线程状态是什么呢？为什么？  
 > WAITING
 
-问: 但既然都是阻塞，还要分成这 BLOCKED 和 WAITING 两种  
+#### 问: 但既然都是阻塞，还要分成这 BLOCKED 和 WAITING 两种  
 > blocked 状态指的是进行系统调用，通过操作系统挂起线程后，线程的状态。  
 而 waiting 状态则不需要进行系统调用，是一种 JVM 层面的线程阻塞后的状态。  
 由于转换到 blocked 状态需要进行系统调用，所以到这个状态的转换操作比较重。

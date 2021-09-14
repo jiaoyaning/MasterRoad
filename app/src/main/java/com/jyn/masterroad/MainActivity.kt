@@ -6,8 +6,6 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.Adapter
-import com.alibaba.android.arouter.facade.annotation.Route
-import com.jyn.common.ARouter.RoutePath
 import com.jyn.common.ARouter.goto
 import com.jyn.masterroad.base.BaseActivity
 import com.jyn.masterroad.databinding.ActivityMainBinding
@@ -24,9 +22,12 @@ import com.jyn.masterroad.databinding.ItemMainBinding
  *
  * Android 12：全新的App启动动画
  * https://mp.weixin.qq.com/s/AJZ7eM_GUaqOb9AuaLvrjA
+ *
+ * Carson带你学Android：BroadcastReceiver史上最全面解析
+ * https://www.jianshu.com/p/ca3d87a4cdf3
  */
 class MainActivity : BaseActivity<ActivityMainBinding>
-    (R.layout.activity_main) {
+(R.layout.activity_main) {
 
     private var routerList: ArrayList<MainViewModel> = MainViewModel.getRouterList()
 
@@ -48,13 +49,13 @@ class MainActivity : BaseActivity<ActivityMainBinding>
      * https://www.jianshu.com/p/379a8f5347de
      */
     open inner class MainAdapter(
-        private var routerList: ArrayList<MainViewModel>,
-        var context: Context
+            private var routerList: ArrayList<MainViewModel>,
+            var context: Context
     ) :
-        Adapter<MainAdapter.MainViewHolder>() {
+            Adapter<MainAdapter.MainViewHolder>() {
 
         open inner class MainViewHolder(var binding: ItemMainBinding) :
-            RecyclerView.ViewHolder(binding.root)
+                RecyclerView.ViewHolder(binding.root)
 
         override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MainViewHolder {
             val binding =

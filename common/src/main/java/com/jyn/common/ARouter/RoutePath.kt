@@ -64,7 +64,7 @@ object RoutePath {
     }
 
     object Okio {
-        const val name = "Okio"
+        const val name = "IO/NIO/Okio"
         const val path = "/app/OkioActivity"
         const val span = 2
     }

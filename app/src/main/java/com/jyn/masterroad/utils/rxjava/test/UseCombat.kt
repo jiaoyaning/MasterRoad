@@ -13,6 +13,7 @@ import io.reactivex.rxjava3.internal.operators.single.SingleSubscribeOn
 import io.reactivex.rxjava3.internal.operators.single.SingleObserveOn
 import io.reactivex.rxjava3.internal.operators.observable.ObservableInterval
 import io.reactivex.rxjava3.internal.operators.observable.ObservableMap
+import io.reactivex.rxjava3.internal.operators.observable.ObservableFlatMap
 import io.reactivex.rxjava3.internal.operators.observable.ObservableDelay
 import io.reactivex.rxjava3.schedulers.Schedulers
 import io.reactivex.rxjava3.internal.schedulers.IoScheduler
@@ -40,32 +41,32 @@ class UseCombat {
          * subscribe() 方法其实就是 [SingleJust.subscribeActual]方法
          */
         Single.just(1) //SingleJust对象
-            .subscribe( // subscribeActual方法
-                object : SingleObserver<Int> {
+                .subscribe( // subscribeActual方法
+                        object : SingleObserver<Int> {
+                            override fun onSubscribe(d: Disposable?) {
+                            }
+
+                            override fun onSuccess(t: Int?) {
+                            }
+
+                            override fun onError(e: Throwable?) {
+                            }
+                        })
+
+        Observable.just(1)
+                .subscribe(object : Observer<Int> {
                     override fun onSubscribe(d: Disposable?) {
                     }
 
-                    override fun onSuccess(t: Int?) {
+                    override fun onNext(t: Int?) {
                     }
 
                     override fun onError(e: Throwable?) {
                     }
+
+                    override fun onComplete() {
+                    }
                 })
-
-        Observable.just(1)
-            .subscribe(object : Observer<Int> {
-                override fun onSubscribe(d: Disposable?) {
-                }
-
-                override fun onNext(t: Int?) {
-                }
-
-                override fun onError(e: Throwable?) {
-                }
-
-                override fun onComplete() {
-                }
-            })
     }
 
     /**
@@ -84,17 +85,17 @@ class UseCombat {
          * 所以当[Disposable]取消订阅的时候，just会停止发送数据，map就接受不到数据了，也没办法再继续处理
          */
         Single.just(1) //返回SingleJust对象
-            .map { it.toString() } //把 SingleJust对象 以及自身的 Function 包装成SingleMap对象
-            .subscribe(object : SingleObserver<String> {
-                override fun onSubscribe(d: Disposable?) {
-                }
+                .map { it.toString() } //把 SingleJust对象 以及自身的 Function 包装成SingleMap对象
+                .subscribe(object : SingleObserver<String> {
+                    override fun onSubscribe(d: Disposable?) {
+                    }
 
-                override fun onSuccess(t: String?) {
-                }
+                    override fun onSuccess(t: String?) {
+                    }
 
-                override fun onError(e: Throwable?) {
-                }
-            })
+                    override fun onError(e: Throwable?) {
+                    }
+                })
     }
 
     /**
@@ -110,17 +111,17 @@ class UseCombat {
      */
     fun test3() {
         Single.just("1")
-            .delay(1, TimeUnit.SECONDS)
-            .subscribe(object : SingleObserver<String> {
-                override fun onSubscribe(d: Disposable?) {
-                }
+                .delay(1, TimeUnit.SECONDS)
+                .subscribe(object : SingleObserver<String> {
+                    override fun onSubscribe(d: Disposable?) {
+                    }
 
-                override fun onSuccess(t: String?) {
-                }
+                    override fun onSuccess(t: String?) {
+                    }
 
-                override fun onError(e: Throwable?) {
-                }
-            })
+                    override fun onError(e: Throwable?) {
+                    }
+                })
     }
 
     /**
@@ -128,24 +129,26 @@ class UseCombat {
      * [ObservableInterval.subscribeActual]
      * [ObservableDelay.subscribeActual]
      * [ObservableMap.subscribeActual]
+     * [ObservableFlatMap.subscribeActual]
      */
     fun test4() {
         Observable.interval(1, TimeUnit.SECONDS)
-            .delay(1, TimeUnit.SECONDS)
-            .map { it.toLong() }
-            .subscribe(object : Observer<Long> {
-                override fun onSubscribe(d: Disposable?) {
-                }
+                .delay(1, TimeUnit.SECONDS)
+                .map { it.toLong() }
+                .flatMap { Observable.just(it + 1) }
+                .subscribe(object : Observer<Long> {
+                    override fun onSubscribe(d: Disposable?) {
+                    }
 
-                override fun onNext(t: Long?) {
-                }
+                    override fun onNext(t: Long?) {
+                    }
 
-                override fun onError(e: Throwable?) {
-                }
+                    override fun onError(e: Throwable?) {
+                    }
 
-                override fun onComplete() {
-                }
-            })
+                    override fun onComplete() {
+                    }
+                })
     }
 
 
@@ -157,37 +160,37 @@ class UseCombat {
      */
     fun switchThread() {
         Single.just(1)
-            .subscribeOn(Schedulers.io())
-            .observeOn(AndroidSchedulers.mainThread())
-            .subscribe(object : SingleObserver<Int> {
-                override fun onSubscribe(d: Disposable?) {
-                }
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(object : SingleObserver<Int> {
+                    override fun onSubscribe(d: Disposable?) {
+                    }
 
-                override fun onSuccess(t: Int?) {
-                }
+                    override fun onSuccess(t: Int?) {
+                    }
 
-                override fun onError(e: Throwable?) {
-                }
-            })
+                    override fun onError(e: Throwable?) {
+                    }
+                })
     }
 
     fun delayTest() {
         Observable
-            .create(ObservableOnSubscribe<Int> {
-                val nextInt = Random().nextInt(10)
-                LogUtils.tag("Rxjava").i("Observable nextInt: $nextInt")
-                it.onNext(nextInt)
-            })
-            .flatMap {
-                LogUtils.tag("Rxjava").i("Observable flatMap: $it")
-                Observable.timer(it.toLong(), TimeUnit.SECONDS)
-            }
-            .flatMap {
-                LogUtils.tag("Rxjava").i("Observable flatMap 第二次转换 $it")
-                Observable.just("这是第二次转换")
-            }
-            .subscribe {
-                LogUtils.tag("Rxjava").i("subscribe onNext: $it")
-            }
+                .create(ObservableOnSubscribe<Int> {
+                    val nextInt = Random().nextInt(10)
+                    LogUtils.tag("Rxjava").i("Observable nextInt: $nextInt")
+                    it.onNext(nextInt)
+                })
+                .flatMap {
+                    LogUtils.tag("Rxjava").i("Observable flatMap: $it")
+                    Observable.timer(it.toLong(), TimeUnit.SECONDS)
+                }
+                .flatMap {
+                    LogUtils.tag("Rxjava").i("Observable flatMap 第二次转换 $it")
+                    Observable.just("这是第二次转换")
+                }
+                .subscribe {
+                    LogUtils.tag("Rxjava").i("subscribe onNext: $it")
+                }
     }
 }

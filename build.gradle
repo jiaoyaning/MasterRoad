@@ -8,6 +8,9 @@ apply plugin: 'com.alibaba.arouter'
  * 读书笔记--Android Gradle权威指南
  * https://www.cnblogs.com/dasusu/p/9085174.html
  * https://www.cnblogs.com/dasusu/p/9095738.html
+ *
+ * Github Actions 使用指南和Android 持续集成示例
+ * https://blog.csdn.net/xx326664162/article/details/103921480
  */
 buildscript {
 

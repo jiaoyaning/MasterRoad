@@ -35,6 +35,9 @@ import kotlinx.coroutines.cancel
  *
  * 关于kotlin中的Collections、Sequence、Channel和Flow (二)
  * https://juejin.cn/post/6979793981928374308
+ *
+ * 不做跟风党，LiveData，StateFlow，SharedFlow 使用场景对比
+ * https://juejin.cn/post/7007602776502960165
  */
 @Route(path = RoutePath.Flow.path)
 class FlowActivity : BaseScopeActivity<ActivityFlowBinding>(R.layout.activity_flow) {

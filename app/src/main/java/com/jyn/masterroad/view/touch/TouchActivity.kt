@@ -26,6 +26,9 @@ import com.jyn.masterroad.view.touch.view.*
  *
  * 【透镜系列】看穿 > 触摸事件分发 >
  * https://juejin.cn/post/6844903761052188679
+ *
+ * 事件到底是先到DecorView还是先到Window的？
+ * https://wanandroid.com/wenda/show/12119
  */
 @Route(path = RoutePath.Touch.path)
 class TouchActivity : BaseActivity<ActivityTouchBinding>

@@ -22,6 +22,12 @@ import dagger.hilt.android.HiltAndroidApp
  *
  * Android正确的保活方案，不要掉进保活需求死循环陷进
  * https://juejin.cn/post/7003992225575075876
+ *
+ * Android 控制 ContentProvider的创建
+ * https://juejin.cn/post/7007338307075964942
+ *
+ * 反思｜Android 输入系统 & ANR机制的设计与实现
+ * https://juejin.cn/post/6864555867023343623
  */
 @HiltAndroidApp
 class MyApp : Application() {

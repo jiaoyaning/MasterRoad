@@ -89,6 +89,11 @@ android {
 /*
  * https://www.jianshu.com/p/cc98a6b4f52e
  * gradle 高级用法
+ *
+ * compile : 会传递依赖
+ * implementation : 不会传递依赖
+ *      子依赖的子依赖修改代码时，可以不用进行全部编译
+ * api : 会传递依赖，代替compile
  */
 dependencies {
     def test = app.test

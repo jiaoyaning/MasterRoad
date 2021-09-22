@@ -176,3 +176,7 @@ dependencies {
     implementation utils["bindingcollectionadapter-recyclerview"]
     implementation utils["bindingcollectionadapter-viewpager2"]
 }
+
+afterEvaluate {
+    println("3. 插入第三顺位想插入的代码")
+}

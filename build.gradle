@@ -61,3 +61,7 @@ allprojects {
 task clean(type: Delete) {
     delete rootProject.buildDir
 }
+
+afterEvaluate {
+    println("2. 插入第二顺位想插入的代码")
+}

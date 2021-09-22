@@ -9,3 +9,5 @@ include ':Plugin:PluginHelloWorld'
 if (new File("codelocator.gradle").exists()) {
     apply from: 'codelocator.gradle'
 }
+
+println("1. 插入最早想插入的代码")

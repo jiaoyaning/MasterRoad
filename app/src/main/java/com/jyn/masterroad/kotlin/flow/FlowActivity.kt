@@ -5,11 +5,7 @@ import com.alibaba.android.arouter.facade.annotation.Route
 import com.jyn.common.ARouter.RoutePath
 import com.jyn.common.Base.BaseScopeActivity
 import com.jyn.masterroad.R
-import com.jyn.masterroad.base.BaseActivity
 import com.jyn.masterroad.databinding.ActivityFlowBinding
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.MainScope
-import kotlinx.coroutines.cancel
 
 /*
  * Kotlin Coroutines Flow 系列(一) Flow 基本使用

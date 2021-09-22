@@ -11,6 +11,10 @@ apply plugin: 'com.alibaba.arouter'
  *
  * Github Actions 使用指南和Android 持续集成示例
  * https://blog.csdn.net/xx326664162/article/details/103921480
+ *
+ * 一篇文章基本看懂gradle & 一篇文章深入gradle:依赖机制 TODO
+ * https://mp.weixin.qq.com/s/1Epgk-SGke4RMrf0IzMzMw
+ * https://mp.weixin.qq.com/s/m_v92yrqoq4jkUQfU9_7Pg
  */
 buildscript {
 

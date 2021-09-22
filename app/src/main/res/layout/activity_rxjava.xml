@@ -151,6 +151,14 @@
                 app:layout_constraintStart_toEndOf="@+id/button49"
                 app:layout_constraintTop_toTopOf="@+id/button49" />
 
+            <Button
+                android:id="@+id/button78"
+                style="@style/tv2"
+                android:text="线程切换Thread"
+                android:onClick="@{() -> rxjavaThread.emitterSwitchThread()}"
+                app:layout_constraintStart_toEndOf="@+id/button75"
+                app:layout_constraintTop_toTopOf="@+id/button49" />
+
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.core.widget.NestedScrollView>
 </layout>

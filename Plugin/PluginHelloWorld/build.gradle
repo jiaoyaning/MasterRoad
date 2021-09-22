@@ -1,14 +1,20 @@
 plugins {
+    id 'java-gradle-plugin' //配合下方gradlePlugin
     id 'java-library'
     id 'groovy'
     id 'kotlin'
     id 'maven'
-    /*
-     * [Gradle] 发布 library 到本地 maven 仓库
-     * https://www.cnblogs.com/shaobin0604/p/11038386.html
-     */
     id 'maven-publish' //可以我们的编译的输出物（artifacts）发布到Apache Maven仓库当中
 }
+
+/**
+ * [Gradle] 发布 library 到本地 maven 仓库
+ * https://www.cnblogs.com/shaobin0604/p/11038386.html
+ *
+ * 官方网站
+ * https://docs.gradle.org/current/userguide/publishing_maven.html
+ * https://developer.android.com/studio/build/maven-publish-plugin?hl=zh-cn
+ */
 
 java {
     sourceCompatibility = JavaVersion.VERSION_1_8
@@ -35,16 +41,47 @@ dependencies {
     implementation 'org.ow2.asm:asm-commons:7.1'
 }
 
-/*
- * 上传本地mavenLocal : ./gradlew publishHelloWorldPluginPublicationToMavenLocal
+/**
+ * 声明 gradlePlugin 后就可以不用再配置 properties文件
+ *  注意：需要在plugins中添加 java-gradle-plugin 插件
+ *
+ * >> src/main/resources/META-INF/gradle-plugins/com.jyn.helloworld.properties
  */
-publishing{
-    publications{
-        HelloWorldPlugin(MavenPublication){
+gradlePlugin {
+    plugins {
+        greeting {
+            // 插件id
+            id = 'com.jyn.plugins.HelloWorld'
+            // 插件实现类
+            implementationClass = 'com.jyn.plugins.HelloWorldPlugin'
+        }
+    }
+}
+
+/*
+ * 上传本地mavenLocal :
+ *  ./gradlew publishHelloWorldPluginPublicationToMavenLocal
+ */
+publishing {
+    publications {
+        HelloWorldPlugin(MavenPublication) {
             from components.java
             groupId 'com.jyn.plugins'
             artifactId 'HelloWorld'
             version '1.0'
         }
+    }
+}
+
+/**
+ * 或者这样
+ *  ./gradlew uploadArchives
+ */
+uploadArchives {
+    repositories.mavenDeployer {
+        repository(url: uri('../repo'))   // 本地仓库路径 ，依赖放需要在根目录build.gradle文件中添加这个maven路径才能找到该插件
+        pom.groupId = "com.jyn.plugins"// 唯一标识（通常为模块包名，也可以任意）
+        pom.artifactId = "HelloWorld"// 项目名称（通常为类库模块名称，也可以任意）
+        pom.version = "1.0"// 版本号
     }
 }

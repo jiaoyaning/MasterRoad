@@ -63,7 +63,7 @@ class IncrementalTransForm extends Transform {
         return true;
     }
 
-    /*
+    /**
      * 开启了增量编译之后需要检查每个文件的Status,然后根据这个文件的Status进行不同的操作.
      *
      * 具体的Status如下:

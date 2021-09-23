@@ -5,11 +5,7 @@ apply plugin: 'dagger.hilt.android.plugin'
 apply plugin: 'kotlin-kapt'
 apply plugin: 'com.google.protobuf'
 //apply plugin: 'com.jyn.helloworld'
-/*
- * 一款支持自动将图片转换成WebP格式的Android构建插件
- * https://github.com/zh8637688/AndroidWebP-GradlePlugin
- */
-
+apply from: 'SimplePlugin.gradle' //自定义极简插件，路径方式引入
 
 /*
  * 配置构建 官方文档
@@ -22,8 +18,12 @@ apply plugin: 'com.google.protobuf'
  * 补齐Android技能树 - 从害怕到玩转Android代码混淆
  * https://juejin.cn/post/6966526844552085512
  *
- * 玩转 Gradle，Plugin本质是什么？剖析个知名插件 TODO
- * https://mp.weixin.qq.com/s/XNJVXNZk_aMIVQsn16Dynw
+ * 连载 | 深入理解Gradle框架之一：Plugin, Extension, buildSrc
+ * https://mp.weixin.qq.com/s/mDCTtQZb6mhWOFAvLYKBSg
+ * 连载 | 深入理解gradle框架之二：依赖实现分析
+ * https://mp.weixin.qq.com/s/WQCqUaYDPHDIjUHlxjRIkw
+ * 连载 | 深入理解gradle框架之三：artifacts的发布
+ * https://mp.weixin.qq.com/s/-G0OHJrNHbjXTC7AHtVAKw
  */
 def app = rootProject.ext
 

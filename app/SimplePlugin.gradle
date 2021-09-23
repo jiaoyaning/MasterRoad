@@ -1,0 +1,43 @@
+/*
+ * 也可以使用 buildSrc 库来保存插件，buildSrc是gradle的保留目录，甚至先与settings.gradle执行
+ * 插件的意义在于复用
+ *
+ * Android Gradle学习(五)：Extension详解
+ * https://www.jianshu.com/p/58d86b4c0ee5
+ */
+
+class SimplePlugin implements Plugin<Project> {
+    @Override
+    void apply(org.gradle.api.Project target) {
+        println("SimplePlugin -> 这是一个自定义插件")
+
+        def extension = target.extensions.create('simpleEx', SimpleExtension) //创建一个扩展对象
+        println("SimplePlugin -> 这是一个自定义扩展 -> name: ${extension.name}")
+        target.afterEvaluate { //在整个方法执行完之后再执行
+            println("SimplePlugin -> afterEvaluate ${extension.name}")
+            println(target.extensions)
+        }
+    }
+}
+
+//自定义扩展
+class SimpleExtension {
+    def name = "这是一个自定义扩展的Name"
+}
+
+//只有在引入了对应插件之后，才能执行其扩展方法
+apply plugin: SimplePlugin
+
+/**
+ * 此处的testEx是创建扩展时的key
+ * 为什么要放在apply plugin: TestPlugin之后呢？
+ *  因为只有在引入了对应插件之后，才能执行其扩展方法
+ */
+simpleEx {
+    name '这是被修改后的Name' // = name('...') = setName('...')
+}
+
+def extension = new SimpleExtension()
+extension.name = "这是另外一个被修改的Name"
+println("SimplePlugin -> extension ${extension.name}")
+

@@ -7,7 +7,10 @@ plugins {
     id 'maven-publish' //可以我们的编译的输出物（artifacts）发布到Apache Maven仓库当中
 }
 
-/**
+/*
+ * 我想调试下build.gradle | Gradle 调试
+ * https://juejin.cn/post/6985188709356273701
+ *
  * [Gradle] 发布 library 到本地 maven 仓库
  * https://www.cnblogs.com/shaobin0604/p/11038386.html
  *
@@ -46,6 +49,9 @@ dependencies {
  *  注意：需要在plugins中添加 java-gradle-plugin 插件
  *
  * >> src/main/resources/META-INF/gradle-plugins/com.jyn.helloworld.properties
+ *
+ * 玩转 Gradle，Plugin本质是什么？剖析个知名插件
+ * https://mp.weixin.qq.com/s/XNJVXNZk_aMIVQsn16Dynw
  */
 gradlePlugin {
     plugins {

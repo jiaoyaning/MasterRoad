@@ -28,6 +28,9 @@ import dagger.hilt.android.HiltAndroidApp
  *
  * 反思｜Android 输入系统 & ANR机制的设计与实现
  * https://juejin.cn/post/6864555867023343623
+ *
+ * 抖音BoostMultiDex优化实践
+ * https://mp.weixin.qq.com/mp/appmsgalbum?__biz=MzI1MzYzMjE0MQ==&action=getalbum&album_id=1590431672955617284&scene=173&from_msgid=2247485522&from_itemidx=1&count=3&nolastread=1#wechat_redirect
  */
 @HiltAndroidApp
 class MyApp : Application() {

@@ -82,3 +82,6 @@ https://zhuanlan.zhihu.com/p/150935875
 
 ## Glide 是如何管理生命周期的
 https://mp.weixin.qq.com/s/Lu5xXQsshVDFCPhY1YcoMg
+
+## 一款支持自动将图片转换成WebP格式的Android构建插件
+https://github.com/zh8637688/AndroidWebP-GradlePlugin

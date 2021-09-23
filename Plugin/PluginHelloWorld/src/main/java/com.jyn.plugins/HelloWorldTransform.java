@@ -46,7 +46,7 @@ class HelloWorldTransform extends Transform {
         System.out.println("--- 创建一个 Transform :" + this.getName());
     }
 
-    /*
+    /**
      * Transform的名称，也对应了该 Transform 所代表的 Task 名称
      *
      * 类似：transformClassesWith + getName() + ForXXX
@@ -59,7 +59,7 @@ class HelloWorldTransform extends Transform {
         return "HelloWorldTransform";
     }
 
-    /*
+    /**
      * Transform处理文件的类型,TransformManager中所定义
      *
      * 1、CONTENT_CLASS                  javac 编译成的 class 文件，可能是jar包也可能是目录
@@ -76,8 +76,8 @@ class HelloWorldTransform extends Transform {
         return TransformManager.CONTENT_CLASS;
     }
 
-    /*
-     * Transform的作用域,TransformManager中定义了几种范围
+    /**
+     * Transform的作用域(项目),TransformManager中定义了几种范围
      *
      * SCOPE_FULL_PROJECT   Scope的集合（PROJECT、SUB_PROJECTS、EXTERNAL_LIBRARIES）基本代表所有Project「常用」
      *
@@ -125,7 +125,7 @@ class HelloWorldTransform extends Transform {
         super.transform(context, inputs, referencedInputs, outputProvider, isIncremental);
     }
 
-    /*
+    /**
      * TransformInput 接口 {@link TransformInput}
      * 所谓 Transform 就是对输入的 class 文件转变成目标字节码文件，
      * 而TransformInput 就是这些输入文件的抽象。目前它包括两部分：DirectoryInput 集合与 JarInput 集合。

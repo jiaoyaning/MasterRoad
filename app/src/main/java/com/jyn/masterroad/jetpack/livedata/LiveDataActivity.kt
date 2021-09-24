@@ -24,17 +24,8 @@ import kotlinx.android.synthetic.main.activity_live_data.*
  * 用LiveData打造EventBus有很多问题？拷贝代码干！
  * https://mp.weixin.qq.com/s/P85hN-hk-XeSN5b2rHILNg
  *
- * Android 架构组件 LiveData 的实现
- * https://mp.weixin.qq.com/s/ir3DBkGt5mna3RDjTpRFOQ
- *
- * 面试官：请你仔细说说 Jetpack.md LiveData 的粘性事件？
- * https://www.jianshu.com/p/e5455038aba3
- *
  * Jetpack 这么讲就懂了，LiveData原理、粘性事件掌握！
  * https://mp.weixin.qq.com/s/zW6X1CTnjdb3NX-d7nr6cw
- *
- * LiveData取代EventBus？LiveData的通信原理和粘性事件刨析
- * https://mp.weixin.qq.com/s/SyHlop4gLDbrbp8S5urMAA
  *
  * LiveData数据倒灌的解决方案之一
  * https://blog.csdn.net/ljcITworld/article/details/112849126
@@ -47,6 +38,11 @@ import kotlinx.android.synthetic.main.activity_live_data.*
  *
  * 【带着问题学】关于LiveData你应该知道的知识点
  * https://juejin.cn/post/6892704779781275662
+ *
+ * DataBinding使用教程（三）：各个注解详解
+ * https://blog.csdn.net/qiang_xi/article/details/75379321
+ * DataBinding使用教程（四）：BaseObservable与双向绑定
+ * https://blog.csdn.net/qiang_xi/article/details/77586836
  */
 @Route(path = RoutePath.LiveData.path)
 class LiveDataActivity : BaseActivity<ActivityLiveDataBinding>

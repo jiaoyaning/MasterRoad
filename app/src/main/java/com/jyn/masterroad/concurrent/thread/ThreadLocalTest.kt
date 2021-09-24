@@ -25,6 +25,9 @@ import javax.inject.Inject
  *
  * 细数ThreadLocal三大坑，内存泄露仅是小儿科
  * https://mp.weixin.qq.com/s/eWgTmP283kD_M2VxSxvYag
+ *
+ * ThreadLocal的短板，我TTL来补！
+ * https://mp.weixin.qq.com/s/JTW82eTZRyKbkgOe2E_qEg
  */
 class ThreadLocalTest @Inject constructor(){
     private val threadLocal: ThreadLocal<String> by lazy {

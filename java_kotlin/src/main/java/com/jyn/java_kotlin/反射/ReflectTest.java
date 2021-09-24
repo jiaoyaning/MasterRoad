@@ -52,12 +52,12 @@ public class ReflectTest {
         }
 
         // 2.实例对象的getClass()方法
-        com.jyn.java_kotlin.反射.Test test = new com.jyn.java_kotlin.反射.Test();
-        Class<? extends com.jyn.java_kotlin.反射.Test> clzGetClass = test.getClass();
+        Test test = new Test();
+        Class<? extends Test> clzGetClass = test.getClass();
         System.out.println("getClass()方法得到的 class :" + clzGetClass);
 
         // 3.直接获取
-        Class<com.jyn.java_kotlin.反射.Test> clz = com.jyn.java_kotlin.反射.Test.class;
+        Class<Test> clz = Test.class;
         System.out.println("Test.class方法得到的 class :" + clz);
 
         //endregion
@@ -90,7 +90,7 @@ public class ReflectTest {
     }
 
     // 反射获取构造方法 & 初始化对象
-    private static void constructor(Class<com.jyn.java_kotlin.反射.Test> clz) throws Exception {
+    private static void constructor(Class<Test> clz) throws Exception {
         //这个方法只能调用无参构造函数，也就是 Class 对象的 newInstance 方法不能传入参数
         clz.newInstance();
 
@@ -101,21 +101,21 @@ public class ReflectTest {
         Constructor<?>[] constructors2 = clz.getDeclaredConstructors();
 
         //获取无参构造函数
-        Constructor<com.jyn.java_kotlin.反射.Test> constructor = clz.getConstructor();
+        Constructor<Test> constructor = clz.getConstructor();
 
         //获取参数为String的构造函数
-        Constructor<com.jyn.java_kotlin.反射.Test> constructor1 = clz.getConstructor(String.class);
+        Constructor<Test> constructor1 = clz.getConstructor(String.class);
         constructor1.newInstance("反射获取构造方法 Constructor创建一个对象 constructor : " + constructor1.toGenericString());
 
         //获取参数为 (int , String) 的私有构造函数
-        Constructor<com.jyn.java_kotlin.反射.Test> constructor2 = clz.getDeclaredConstructor(int.class, String.class);
+        Constructor<Test> constructor2 = clz.getDeclaredConstructor(int.class, String.class);
         constructor2.setAccessible(true);
         constructor2.newInstance(1, "反射获取构造方法 Constructor创建一个对象 constructor : " + constructor2.toGenericString());
     }
 
     // 获取成员变量 & 获取方法
-    private static void instance(Class<com.jyn.java_kotlin.反射.Test> clz) throws Exception {
-        com.jyn.java_kotlin.反射.Test test = clz.newInstance();
+    private static void instance(Class<Test> clz) throws Exception {
+        Test test = clz.newInstance();
         /*
          * 获取类的属性（包括私有属性）
          */
@@ -145,8 +145,8 @@ public class ReflectTest {
     }
 
     // 反射获取注解
-    private static void annotation(Class<com.jyn.java_kotlin.反射.Test> clz) throws Exception {
-        com.jyn.java_kotlin.反射.Test test = clz.newInstance();
+    private static void annotation(Class<Test> clz) throws Exception {
+        Test test = clz.newInstance();
         Field[] fields = clz.getFields(); //获取所有的成员变量
         for (Field field : fields) {
             //判断有没有设置 @TestAnnotation
@@ -175,8 +175,8 @@ public class ReflectTest {
     }
 
     // 反射对于 final 关键字测试
-    private static void finalTest(Class<com.jyn.java_kotlin.反射.Test> clz) throws Exception {
-        com.jyn.java_kotlin.反射.Test test = clz.newInstance();
+    private static void finalTest(Class<Test> clz) throws Exception {
+        Test test = clz.newInstance();
 
         /*
          * 为什么不成功？
@@ -197,12 +197,12 @@ public class ReflectTest {
         System.out.println(test.finalInner);
         Field field2 = clz.getField("finalInner");
         field2.setAccessible(true);
-        field2.set(test, new com.jyn.java_kotlin.反射.Test.Inner());
+        field2.set(test, new Test.Inner());
         System.out.println(test.finalInner);            //前后地址变化，可见已被修改
     }
 
     // 反射对于 static 关键字测试
-    private static void staticTest(Class<com.jyn.java_kotlin.反射.Test> clz) throws Exception {
+    private static void staticTest(Class<Test> clz) throws Exception {
 
         /*
          * 静态变量是在类的实例化之前就进行了初始化（类的初始化阶段），
@@ -214,13 +214,13 @@ public class ReflectTest {
 
         Field field = clz.getField("staticStringTest");
         field.set(null, "反射static测试 这是反射修改后的值");
-        System.out.println(com.jyn.java_kotlin.反射.Test.staticStringTest);
+        System.out.println(Test.staticStringTest);
         System.out.println(field.get(null)); //直接通过null也可获取到static关键字
     }
 
     //reflectASM 使用
-    private static void reflectASMTest(Class<com.jyn.java_kotlin.反射.Test> clz) {
-        ConstructorAccess<com.jyn.java_kotlin.反射.Test> testConstructorAccess = ConstructorAccess.get(clz);
+    private static void reflectASMTest(Class<Test> clz) {
+        ConstructorAccess<Test> testConstructorAccess = ConstructorAccess.get(clz);
         Test test = testConstructorAccess.newInstance();
 
         MethodAccess methodAccess = MethodAccess.get(clz);
@@ -228,7 +228,7 @@ public class ReflectTest {
         System.out.println("通过reflectASM 调用getInteger方法 :" + reflectInt);
 
         FieldAccess fieldAccess = FieldAccess.get(clz);
-        fieldAccess.set(test,"string","reflectASM 获取属性 fieldAccess 反射修改后的string");
+        fieldAccess.set(test, "string", "reflectASM 获取属性 fieldAccess 反射修改后的string");
         System.out.println(test.toString());
     }
 }

@@ -22,6 +22,9 @@ import com.jyn.masterroad.databinding.ActivityLayoutBinding
  *
  * 面试官：View.post() 为什么能够获取到 View 的宽高？ (优秀)
  * https://mp.weixin.qq.com/s/GWB--a43N6I8Fl_81-Ltqw
+ *
+ * 手把手讲解 Android hook技术实现一键换肤
+ * https://www.jianshu.com/p/4c8d46f58c4f
  */
 @Route(path = RoutePath.Layout.path)
 class LayoutActivity : BaseActivity<ActivityLayoutBinding>

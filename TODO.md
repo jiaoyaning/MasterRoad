@@ -85,3 +85,6 @@ https://mp.weixin.qq.com/s/Lu5xXQsshVDFCPhY1YcoMg
 
 ## 一款支持自动将图片转换成WebP格式的Android构建插件
 https://github.com/zh8637688/AndroidWebP-GradlePlugin
+
+## 手把手讲解 Android hook技术实现一键换肤
+https://www.jianshu.com/p/4c8d46f58c4f

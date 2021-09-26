@@ -30,3 +30,4 @@
 [图文详解Java对象内存布局](https://mp.weixin.qq.com/s/qELVigGAxHCXvQ36XIFQUQ)
 [Java历史上有三次破坏双亲委派模型，是哪三次？](https://mp.weixin.qq.com/s/nC7yo8Cdsnlzc58UEwxs8g)
 [用了很多年的 CMS 垃圾收集器，终于换成了 G1，真香！！](https://mp.weixin.qq.com/s/LpbOUW8VSFsStUkpRayOAA)
+[动图图解GC算法 - 让垃圾回收动起来！](https://mp.weixin.qq.com/s/DvPaMfn7xEKIilv-_Ojk8g)

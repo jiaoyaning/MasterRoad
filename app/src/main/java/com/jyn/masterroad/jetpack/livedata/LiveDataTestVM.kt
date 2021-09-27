@@ -52,10 +52,6 @@ class LiveDataTestVM(application: Application) : BaseVM(application) {
 
     var num: MutableLiveData<Int> = MutableLiveData(10)
 
-    val liveData = liveData {
-        emit(" i am a ViewModelInject")
-    }
-
     private var postValueNum = object : MutableLiveData<Int>(0) {
         override fun setValue(value: Int?) {
             super.setValue(value)

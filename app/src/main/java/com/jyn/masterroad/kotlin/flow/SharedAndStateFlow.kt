@@ -59,7 +59,7 @@ class SharedAndStateFlow(application: Application) : BaseVM(application) {
     )
 
     //订阅
-    fun sharedFlowCollect() = mainScope.launch {
+    fun sharedFlowCollect() = viewModelScope.launch {
         LogUtils.tag(TAG).i("sharedFlowCollect -> 订阅")
         sharedFlow.collect {
             LogUtils.tag(TAG).i("SharedFlow -> emit：$it")
@@ -73,12 +73,12 @@ class SharedAndStateFlow(application: Application) : BaseVM(application) {
      */
 
     // emit
-    fun sharedFlowTry() = mainScope.launch {
+    fun sharedFlowTry() = viewModelScope.launch {
         List(10) { sharedFlow.emit(it) }
     }
 
     // tryEmit
-    fun sharedFlowTryEmit() = mainScope.launch {
+    fun sharedFlowTryEmit() = viewModelScope.launch {
         List(10) {
             val tryEmit = sharedFlow.tryEmit(it)
             LogUtils.tag(TAG).i("sharedFlowTryEmit -> tryEmit：$tryEmit")
@@ -86,7 +86,7 @@ class SharedAndStateFlow(application: Application) : BaseVM(application) {
     }
 
     // 扩展方法 shareIn: 将冷流flow转化为SharedFlow
-    fun flowShareIn() = mainScope.launch {
+    fun flowShareIn() = viewModelScope.launch {
 
         /*
          * 1. scope 表示共享开始时所在的协程作用域范围
@@ -139,7 +139,7 @@ class SharedAndStateFlow(application: Application) : BaseVM(application) {
 
     //订阅
     @InternalCoroutinesApi
-    fun stateFlowCollect() = mainScope.launch {
+    fun stateFlowCollect() = viewModelScope.launch {
         LogUtils.tag(TAG).i("stateFlowCollect -> 订阅")
         state.collect {
             LogUtils.tag(TAG).i("StateFlowTest -> emit：$it")
@@ -148,14 +148,14 @@ class SharedAndStateFlow(application: Application) : BaseVM(application) {
 
     //调用
     @InternalCoroutinesApi
-    fun stateFlowTest() = mainScope.launch {
+    fun stateFlowTest() = viewModelScope.launch {
         List(10) {
             state.value = it.toString()
             delay(100)
         }
     }
 
-    fun stateFlowStateIn() = mainScope.launch {
+    fun stateFlowStateIn() = viewModelScope.launch {
         /**
          * WhileSubscribed: 等待时间过后仍然没有订阅者存在时就自动终止
          * 1. 用户将您的应用转至后台运行，5 秒钟后所有来自其他层的数据更新会停止，这样可以节省电量。

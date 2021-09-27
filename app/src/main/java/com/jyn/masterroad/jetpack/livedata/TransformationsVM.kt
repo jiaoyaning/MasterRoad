@@ -4,6 +4,7 @@ import android.app.Application
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Transformations
+import androidx.lifecycle.map
 import com.apkfuns.logutils.LogUtils
 import com.jyn.common.Base.BaseVM
 
@@ -35,6 +36,11 @@ class TransformationsVM(application: Application) : BaseVM(application) {
 
     fun onClickMapLivedata() {
         liveData1.postValue(liveData1.value?.plus(1))
+        var newLiveData = Transformations.map(liveData1) { "转换成字符串$it" }
+    }
+
+    fun livedataMapKtx() {
+        var newLiveData = liveData1.map { "转换成字符串$it" }
     }
 
     fun onClickSwitchMapLivedata() {

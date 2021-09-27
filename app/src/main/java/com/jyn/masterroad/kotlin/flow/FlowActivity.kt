@@ -8,14 +8,13 @@ import com.jyn.masterroad.R
 import com.jyn.masterroad.databinding.ActivityFlowBinding
 
 /*
- * Kotlin Coroutines Flow 系列(一) Flow 基本使用
- * https://juejin.cn/post/6844904057530908679
+ * 官方文档
+ * https://developer.android.google.cn/kotlin/flow?hl=zh_cn
+ * 学习采用 Kotlin Flow 和 LiveData 的高级协程
+ * https://developer.android.com/codelabs/advanced-kotlin-coroutines
  *
  * Kotlin Flow 场景化学习
  * https://mp.weixin.qq.com/s/XfJ4Gkp_9Ww5Dxx8Di_AVg
- *
- * 协程 Flow 最佳实践 | 基于 Android 开发者峰会应用
- * https://mp.weixin.qq.com/s/YttebOHPLd3LR7rAuOYshg
  *
  * 从 LiveData 迁移到 Kotlin 数据流（Android 开发者）
  * https://mp.weixin.qq.com/s/o61NDIptP94X4HspKwiR2w

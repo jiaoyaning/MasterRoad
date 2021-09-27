@@ -33,6 +33,9 @@
         <entry key="app/src/main/res/layout/activity_rxjava.xml" value="0.32638535841382815" />
         <entry key="app/src/main/res/layout/activity_shapeable_image_view.xml" value="0.18703703703703703" />
         <entry key="app/src/main/res/layout/activity_touch.xml" value="0.2" />
+        <entry key="app/src/main/res/layout/activity_view_model.xml" value="0.32638535841382815" />
+        <entry key="app/src/main/res/layout/fragment_view_model1.xml" value="0.334375" />
+        <entry key="app/src/main/res/layout/fragment_view_model2.xml" value="0.32638535841382815" />
         <entry key="app/src/main/res/layout/item_main.xml" value="0.3328125" />
         <entry key="app/src/main/res/layout/item_view.xml" value="0.5" />
         <entry key="app/src/main/res/layout/layout_animator_view_property.xml" value="0.3328125" />

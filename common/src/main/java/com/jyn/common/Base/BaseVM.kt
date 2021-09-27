@@ -16,11 +16,13 @@ import kotlinx.coroutines.MainScope
 @SuppressLint("StaticFieldLeak")
 abstract class BaseVM(application: Application) : AndroidViewModel(application), LifecycleObserver {
 
+    /**
+     * 协程：[viewModelScope]
+     */
     companion object {
         const val TAG = "ViewModel"
     }
 
-    var mainScope = MainScope()
     var context: Context = application.baseContext
 
     // 应用进入后台

@@ -21,17 +21,17 @@ class ColdAndHotObservable {
         private const val TAG = "RxJava"
     }
     /*
-     * 1. Cold Observable 只有 Subscriber 订阅时，才开始执行发射数据流的代码。
-     *  并且 Cold Observable 和 Subscriber 只能是一对一的关系，当有多个不同的订阅者时，消息是重新完整发送的。
+     * 1. Cold Observable (冷流) 只有 Subscriber 订阅时，才开始执行发射数据流的代码。
+     *  并且 Cold Observable (冷流) 和 Subscriber 只能是一对一的关系，当有多个不同的订阅者时，消息是重新完整发送的。
      *  也就是说对 Cold Observable 而言，有多个Subscriber的时候，他们各自的事件是独立的。
      *
-     * 2. Hot Observable 无论有没有 Subscriber 订阅，事件始终都会发生。
+     * 2. Hot Observable (热流) 无论有没有 Subscriber 订阅，事件始终都会发生。
      *  当 Hot Observable 有多个订阅者时，Hot Observable 与订阅者们的关系是一对多的关系，可以与多个订阅者共享信息。
      *
      * 注：Cold可以转为Hot，但Hot无法转为Cold
      */
 
-    //region 1. Cold Observable
+    //region 1. Cold Observable (冷流)
     fun coldObservable() {
         /*
          * Observable 的 just、create、range、fromXXX 等操作符都能生成Cold Observable
@@ -52,7 +52,7 @@ class ColdAndHotObservable {
     }
     //endregion
 
-    //region 2. Hot Observable
+    //region 2. Hot Observable (热流)
     fun hotObservable() {
         /**
          * 使用 publish 操作符，可以让 Cold Observable 转换成 Hot Observable。

@@ -1,6 +1,7 @@
 package com.jyn.masterroad.app
 
 import android.app.Application
+import android.content.Context
 import android.content.res.Configuration
 import android.os.Handler
 import android.os.Looper
@@ -34,6 +35,13 @@ import dagger.hilt.android.HiltAndroidApp
  */
 @HiltAndroidApp
 class MyApp : Application() {
+
+    /**
+     * APP最早执行的方法
+     */
+    override fun attachBaseContext(base: Context?) {
+        super.attachBaseContext(base)
+    }
 
     override fun onCreate() {
         super.onCreate()

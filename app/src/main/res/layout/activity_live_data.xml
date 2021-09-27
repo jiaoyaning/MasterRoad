@@ -231,7 +231,7 @@
         <Button
             android:id="@+id/button36"
             style="@style/tv2"
-            android:onClick="@{() -> transformationsVM.onClickMapLivedata()}"
+            android:onClick="@{() -> transformationsVM.livedataMap()}"
             android:text="map转换"
             app:layout_constraintEnd_toStartOf="@+id/button37"
             app:layout_constraintStart_toStartOf="parent"

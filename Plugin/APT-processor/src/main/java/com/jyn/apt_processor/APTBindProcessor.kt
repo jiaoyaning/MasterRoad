@@ -19,8 +19,7 @@ class APTBindProcessor : AbstractProcessor() {
     }
 
     /**
-     * 添加限制
-     * 限制只有那些注解才能被使用
+     * 添加限制：限制只有那些注解才能被使用
      */
     override fun getSupportedAnnotationTypes(): MutableSet<String> {
         return super.getSupportedAnnotationTypes()

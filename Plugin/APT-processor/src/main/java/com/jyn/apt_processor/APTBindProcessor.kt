@@ -15,6 +15,14 @@ class APTBindProcessor : AbstractProcessor() {
         annotations: MutableSet<out TypeElement>?,
         roundEnv: RoundEnvironment?
     ): Boolean {
-        TODO("Not yet implemented")
+        return true
+    }
+
+    /**
+     * 添加限制
+     * 限制只有那些注解才能被使用
+     */
+    override fun getSupportedAnnotationTypes(): MutableSet<String> {
+        return super.getSupportedAnnotationTypes()
     }
 }

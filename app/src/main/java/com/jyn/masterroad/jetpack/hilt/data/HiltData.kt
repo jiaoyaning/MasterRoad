@@ -1,6 +1,5 @@
 package com.jyn.masterroad.jetpack.hilt.data
 
-import android.view.View
 import com.apkfuns.logutils.LogUtils
 import javax.inject.Inject
 
@@ -18,7 +17,7 @@ class HiltData @Inject constructor() {
         LogUtils.tag(TAG).i("HiltInjectData 被初始化……")
     }
 
-    fun print(v: View) {
+    fun print() {
         LogUtils.tag(TAG).i("如果打印出数据就算成功 --> $default")
     }
 }

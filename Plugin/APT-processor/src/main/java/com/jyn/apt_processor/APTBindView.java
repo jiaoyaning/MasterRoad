@@ -1,4 +1,4 @@
-package com.jyn.apt;
+package com.jyn.apt_processor;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;

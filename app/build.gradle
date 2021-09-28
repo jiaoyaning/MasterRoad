@@ -107,6 +107,7 @@ dependencies {
     implementation project(path: ':Leetcode')
     implementation project(path: ':common')
     implementation project(path: ':Plugin:APT')
+    kapt project(path: ':Plugin:APT-processor')
 
     testImplementation test["junit"]
     androidTestImplementation test["ext-junit"]

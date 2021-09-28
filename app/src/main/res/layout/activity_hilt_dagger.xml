@@ -33,7 +33,7 @@
         <Button
             android:id="@+id/button"
             style="@style/tv"
-            android:onClick="@{hiltInject.print}"
+            android:onClick="@{() -> hiltInject.print()}"
             android:text="测试"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

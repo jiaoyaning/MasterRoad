@@ -34,7 +34,7 @@ class TransformationsVM(application: Application) : BaseVM(application) {
         MutableLiveData("全新的LiveData$it")
     }
 
-    fun onClickMapLivedata() {
+    fun livedataMap() {
         liveData1.postValue(liveData1.value?.plus(1))
         var newLiveData = Transformations.map(liveData1) { "转换成字符串$it" }
     }
@@ -43,7 +43,7 @@ class TransformationsVM(application: Application) : BaseVM(application) {
         var newLiveData = liveData1.map { "转换成字符串$it" }
     }
 
-    fun onClickSwitchMapLivedata() {
+    fun livedataSwitchMap() {
         liveData2.postValue(liveData2.value?.plus(1))
     }
 

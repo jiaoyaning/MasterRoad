@@ -4,6 +4,9 @@
  *
  * Android Gradle学习(五)：Extension详解
  * https://www.jianshu.com/p/58d86b4c0ee5
+ *
+ * 如何自定义一个gradle插件 - 官方
+ * https://docs.gradle.org/current/userguide/custom_plugins.html#behind_the_scenes
  */
 
 class SimplePlugin implements Plugin<Project> {

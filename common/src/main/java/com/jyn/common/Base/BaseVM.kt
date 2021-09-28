@@ -14,7 +14,8 @@ import kotlinx.coroutines.MainScope
  *
  */
 @SuppressLint("StaticFieldLeak")
-abstract class BaseVM(application: Application) : AndroidViewModel(application), LifecycleObserver {
+abstract class BaseVM(application: Application) : AndroidViewModel(application),
+    LifecycleObserver, LifecycleOwner {
 
     /**
      * 协程：[viewModelScope]
@@ -58,4 +59,6 @@ abstract class BaseVM(application: Application) : AndroidViewModel(application),
     @OnLifecycleEvent(Lifecycle.Event.ON_DESTROY)
     open fun onDestroy() {
     }
+
+    override fun getLifecycle(): Lifecycle = ProcessLifecycleOwner.get().lifecycle
 }

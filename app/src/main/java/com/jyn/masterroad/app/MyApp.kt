@@ -39,7 +39,7 @@ class MyApp : Application() {
     /**
      * APP最早执行的方法
      */
-    override fun attachBaseContext(base: Context?) {
+    override fun attachBaseContext(base: Context) {
         super.attachBaseContext(base)
     }
 

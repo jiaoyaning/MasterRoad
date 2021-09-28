@@ -71,6 +71,7 @@ dependencies {
     implementation("androidx.lifecycle:lifecycle-viewmodel:2.3.1")
     implementation("androidx.lifecycle:lifecycle-livedata:2.3.1")
     implementation("androidx.lifecycle:lifecycle-runtime:2.3.1")
+    implementation("androidx.lifecycle:lifecycle-process:2.3.1")
     implementation("androidx.activity:activity-ktx:1.2.2")
     implementation("androidx.core:core-ktx:1.5.0")
 

@@ -1,10 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="CompilerConfiguration">
-    <bytecodeTargetLevel target="1.8">
+    <bytecodeTargetLevel target="1.7">
       <module name="java_kotlin" target="1.7" />
       <module name="Leetcode" target="1.8" />
       <module name="MasterRoad.animation" target="1.8" />
+      <module name="MasterRoad.app" target="1.8" />
+      <module name="MasterRoad.common" target="1.8" />
+      <module name="MasterRoad.ipc" target="1.8" />
+      <module name="MasterRoad.java_kotlin" target="1.8" />
+      <module name="MasterRoad.Leetcode" target="1.8" />
+      <module name="MasterRoad.Plugin.APT" target="1.8" />
+      <module name="MasterRoad.Plugin.PluginHelloWorld" target="1.8" />
     </bytecodeTargetLevel>
   </component>
 </project>

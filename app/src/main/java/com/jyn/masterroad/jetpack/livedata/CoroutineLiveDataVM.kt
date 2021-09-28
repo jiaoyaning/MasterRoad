@@ -1,10 +1,7 @@
 package com.jyn.masterroad.jetpack.livedata
 
 import android.app.Application
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.liveData
-import androidx.lifecycle.map
+import androidx.lifecycle.*
 import com.jyn.common.Base.BaseVM
 import kotlinx.coroutines.delay
 
@@ -27,5 +24,11 @@ class CoroutineLiveDataVM(application: Application) : BaseVM(application) {
          * emitSource() 发送新的数据源LiveData
          */
         emitSource(MutableLiveData(1))
+    }
+
+    init {
+        user.observe(this, Observer {
+
+        })
     }
 }

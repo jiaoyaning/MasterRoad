@@ -8,16 +8,16 @@
     tools:ignore="HardcodedText">
 
     <Button
-        android:id="@+id/btn_reflect_1"
+        android:id="@+id/aop_btn_reflect"
         style="@style/tv"
         android:text="reflect测试"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/btn_apt_1"
+        android:id="@+id/aop_btn_apt"
         style="@style/tv"
         android:text="apt测试"
-        app:layout_constraintStart_toEndOf="@+id/btn_reflect_1"
+        app:layout_constraintStart_toEndOf="@+id/aop_btn_reflect"
         app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

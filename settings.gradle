@@ -10,3 +10,4 @@ include ':Plugin:APT-processor'
 
 
 println("1. 插入最早想插入的代码")
+include ':Plugin:APT-annotation'

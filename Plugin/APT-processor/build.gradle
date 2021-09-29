@@ -8,5 +8,7 @@ java {
     targetCompatibility = JavaVersion.VERSION_1_8
 }
 dependencies {
+    implementation project(path: ':Plugin:APT-annotation')
     implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+    implementation "com.squareup:javapoet:1.13.0"
 }

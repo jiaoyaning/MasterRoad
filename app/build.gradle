@@ -106,6 +106,7 @@ dependencies {
     implementation project(path: ':java_kotlin')
     implementation project(path: ':Leetcode')
     implementation project(path: ':common')
+
     implementation project(path: ':Plugin:APT')
     kapt project(path: ':Plugin:APT-processor')
 

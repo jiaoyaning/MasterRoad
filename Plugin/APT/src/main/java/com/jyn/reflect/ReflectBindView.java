@@ -8,5 +8,5 @@ import java.lang.annotation.Target;
 @Retention(RetentionPolicy.RUNTIME) //运行时还需要用到
 @Target(ElementType.FIELD)
 public @interface ReflectBindView {
-    int id();
+    int value();
 }

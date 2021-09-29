@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".utils.aop.AOPActivity"
+    tools:ignore="HardcodedText">
+
+    <Button
+        android:id="@+id/btn_reflect_1"
+        style="@style/tv"
+        android:text="reflect测试"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/btn_apt_1"
+        style="@style/tv"
+        android:text="apt测试"
+        app:layout_constraintStart_toEndOf="@+id/btn_reflect_1"
+        app:layout_constraintTop_toTopOf="parent" />
+</androidx.constraintlayout.widget.ConstraintLayout>

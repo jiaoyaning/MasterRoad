@@ -8,5 +8,5 @@ import java.lang.annotation.Target;
 @Retention(RetentionPolicy.SOURCE) //只有编译时用到
 @Target(ElementType.FIELD)
 public @interface APTBindView {
-    int id();
+    int value();
 }

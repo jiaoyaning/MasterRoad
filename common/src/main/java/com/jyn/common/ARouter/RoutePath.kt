@@ -69,6 +69,12 @@ object RoutePath {
         const val span = 2
     }
 
+    object APT {
+        const val name = "APT"
+        const val path = "/app/apt"
+        const val span = 2
+    }
+
     // BindingAdapter 双向绑定 recyclerview
     object BindingAdapter {
         const val name = "BindingAdapter"

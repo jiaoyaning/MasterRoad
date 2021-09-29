@@ -3,7 +3,6 @@ package com.jyn.apt_processor
 import javax.annotation.processing.AbstractProcessor
 import javax.annotation.processing.RoundEnvironment
 import javax.lang.model.element.TypeElement
-
 /**
  * 注解处理器
  *

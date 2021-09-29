@@ -17,6 +17,9 @@
         tools:ignore="AllowBackup"
         tools:targetApi="m">
         <activity
+            android:name=".utils.aop.AOPActivity"
+            android:exported="true" />
+        <activity
             android:name=".view.custom.CustomActivity"
             android:exported="true" />
         <activity

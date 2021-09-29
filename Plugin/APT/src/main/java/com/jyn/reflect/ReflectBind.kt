@@ -11,8 +11,9 @@ class ReflectBind {
     companion object {
         fun bind(activity: Activity) {
             activity.javaClass.declaredFields.forEach { field ->
+                field.isAccessible = true
                 field.getAnnotation(ReflectBindView::class.java)
-                    ?.let { field.set(activity, activity.findViewById(it.id)) }
+                    ?.let { field.set(activity, activity.findViewById(it.value)) }
             }
         }
     }

@@ -3,9 +3,11 @@ package com.jyn.masterroad
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import android.widget.Button
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.Adapter
+import com.jyn.apt_annotation.APTBindView
 import com.jyn.common.ARouter.goto
 import com.jyn.masterroad.base.BaseActivity
 import com.jyn.masterroad.databinding.ActivityMainBinding
@@ -28,6 +30,8 @@ import com.jyn.masterroad.databinding.ItemMainBinding
  */
 class MainActivity : BaseActivity<ActivityMainBinding>
 (R.layout.activity_main) {
+    @APTBindView(R.id.aop_btn_apt)
+    var btnApt: Button? = null
 
     private var routerList: ArrayList<MainViewModel> = MainViewModel.getRouterList()
 

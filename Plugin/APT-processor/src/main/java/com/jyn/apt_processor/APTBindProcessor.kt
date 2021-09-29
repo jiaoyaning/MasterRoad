@@ -37,40 +37,52 @@ class APTBindProcessor : AbstractProcessor() {
         messager = processingEnv.messager
         typeUtils = processingEnv.typeUtils
         options = processingEnv.options
+        /**
+         * 读取build.gradle配置的常量
+         *  javaCompileOptions {
+         *      annotationProcessorOptions {
+         *          arguments = ["xxxx":"xxxxx", "CLASSNAME":"lidxclassname"]
+         *      }
+         *  }
+         */
+        println("options ——>$options")
     }
 
-    override fun process(
-        annotations: MutableSet<out TypeElement>,
-        roundEnv: RoundEnvironment
-    ): Boolean {
-        println("注解处理器开始工作")
 
-        //返回使用给定注释类型注释的元素
+    /**
+     * annotations  符合[getSupportedAnnotationTypes]条件的返回值
+     * roundEnv     当前论的上下文，因为注解处理后可能还会有注解，每个轮次不一样
+     *
+     *
+     * 编译时注解学习一之 Element元素
+     * https://blog.csdn.net/u010126792/article/details/95614328
+     *
+     * 编译时注解学习三之 注解处理器AbstractProcessor工具和Element属性简述
+     * https://blog.csdn.net/u010126792/article/details/96713820
+     *
+     * ExecutableElement:表示类或者接口中的方法，构造函数或者初始化器。
+     *      PackageElement :表示包程序元素
+     *      TypeELement:表示一个类或者接口元素
+     *      TypeParameterElement:表示类，接口，方法的泛型类型例如T。
+     *      VariableElement：表示字段，枚举常量，方法或者构造函数参数，局部变量，资源变量或者异常参数。
+     */
+    override fun process(annotations: MutableSet<out TypeElement>, roundEnv: RoundEnvironment): Boolean {
+        println("=========== 注解处理器开始工作 ===========")
+
+        roundEnv.rootElements.forEach { element -> //所有包含注解的Activity
+            val pkName1 = element.enclosingElement.toString()
+            println("pkName1 ——> $pkName1")
+            val className = element.simpleName.toString()
+            println("className ——> $className")
+            element.enclosedElements.forEach { enclosedElement -> //获取该Activity中所有的元素
+                val annotation: APTBindView? = enclosedElement.getAnnotation(APTBindView::class.java)
+                annotation?.let { println("annotation.value ——> ${annotation.value}") }
+            }
+        }
+
+        //返回使用给定注释类型注释的元素 不适合多个Activity的情况
         val elements: Set<Element> = roundEnv.getElementsAnnotatedWith(APTBindView::class.java)
-        /*
-         * 编译时注解学习一之 Element元素
-         * https://blog.csdn.net/u010126792/article/details/95614328
-         *
-         * 编译时注解学习三之 注解处理器AbstractProcessor工具和Element属性简述
-         * https://blog.csdn.net/u010126792/article/details/96713820
-         *
-         * ExecutableElement:表示类或者接口中的方法，构造函数或者初始化器。
-         *  PackageElement :表示包程序元素
-         *  TypeELement:表示一个类或者接口元素
-         *  TypeParameterElement:表示类，接口，方法的泛型类型例如T。
-         *  VariableElement：表示字段，枚举常量，方法或者构造函数参数，局部变量，资源变量或者异常参数。
-         */
         elements.forEach { element ->
-            /**
-             * 读取build.gradle配置的常量
-             *  javaCompileOptions {
-             *      annotationProcessorOptions {
-             *          arguments = ["xxxx":"xxxxx", "CLASSNAME":"lidxclassname"]
-             *      }
-             *  }
-             */
-            println("options ——>$options")
-
             /**
              * 元素的类型
              * [ElementKind]
@@ -80,31 +92,32 @@ class APTBindProcessor : AbstractProcessor() {
 
             //1.获取包名
             val packageElement = elementUtils.getPackageOf(element)
-            val pkName = packageElement.qualifiedName.toString()
-            println("pkName ——> $pkName") //com.jyn.masterroad.utils.aop
+            val pkName2 = packageElement.qualifiedName.toString()
+            println("pkName2 ——> $pkName2") //com.jyn.masterroad.utils.aop
 
             //2.获取包装类类型，及当前注解处在那个类中
             val enclosingElement = element.enclosingElement as TypeElement
-            val enclosingName = enclosingElement.qualifiedName.toString()
-            println("enclosingName ——> $enclosingName") //com.jyn.masterroad.utils.aop.AOPActivity
+            val enclosingName2 = enclosingElement.qualifiedName.toString()
+            println("enclosingName2 ——> $enclosingName2") //com.jyn.masterroad.utils.aop.AOPActivity
 
             //因为BindView只作用于filed，所以这里可直接进行强转
             val bindViewElement = element as VariableElement
             //3.获取注解的成员变量名
-            val bindViewFiledName = bindViewElement.simpleName.toString()
-            println("bindViewFiledName ——> $bindViewFiledName") //btnApt
+            val bindViewFiledName2 = bindViewElement.simpleName.toString()
+            println("bindViewFiledName2 ——> $bindViewFiledName2") //btnApt
             //3.获取注解的成员变量类型
-            val bindViewFiledClassType = bindViewElement.asType().toString()
-            println("bindViewFiledClassType ——> $bindViewFiledClassType") //android.widget.Button
+            val bindViewFiledClassType2 = bindViewElement.asType().toString()
+            println("bindViewFiledClassType2 ——> $bindViewFiledClassType2") //android.widget.Button
 
             //4.获取注解元数据
             val bindView: APTBindView = element.getAnnotation(APTBindView::class.java)
-            val bindViewValue: Int = bindView.value
-            println("bindViewValue ——> $bindViewValue") // R.id.aop_btn_apt 对应的值
-
-            //最后一步 生成文件
-            createBindFile()
+            val bindViewValue2: Int = bindView.value
+            println("bindViewValue2 ——> $bindViewValue2") // R.id.aop_btn_apt 对应的值
         }
+
+        createBindFile()
+
+        println("=========== 注解处理器工作结束 ===========")
         return false
     }
 

@@ -66,17 +66,23 @@ class APTBindProcessor : AbstractProcessor() {
      *      TypeParameterElement:表示类，接口，方法的泛型类型例如T。
      *      VariableElement：表示字段，枚举常量，方法或者构造函数参数，局部变量，资源变量或者异常参数。
      */
-    override fun process(annotations: MutableSet<out TypeElement>, roundEnv: RoundEnvironment): Boolean {
+    override fun process(
+        annotations: MutableSet<out TypeElement>,
+        roundEnv: RoundEnvironment
+    ): Boolean {
         println("=========== 注解处理器开始工作 ===========")
 
         roundEnv.rootElements.forEach { element -> //所有包含注解的Activity
             val pkName1 = element.enclosingElement.toString()
-            println("pkName1 ——> $pkName1")
             val className = element.simpleName.toString()
-            println("className ——> $className")
             element.enclosedElements.forEach { enclosedElement -> //获取该Activity中所有的元素
-                val annotation: APTBindView? = enclosedElement.getAnnotation(APTBindView::class.java)
-                annotation?.let { println("annotation.value ——> ${annotation.value}") }
+                val annotation: APTBindView? =
+                    enclosedElement.getAnnotation(APTBindView::class.java)
+                annotation?.let {
+                    println("pkName1 ——> $pkName1")
+                    println("className ——> $className")
+                    println("annotation.value ——> ${annotation.value}")
+                }
             }
         }
 
@@ -110,7 +116,7 @@ class APTBindProcessor : AbstractProcessor() {
             println("bindViewFiledClassType2 ——> $bindViewFiledClassType2") //android.widget.Button
 
             //4.获取注解元数据
-            val bindView: APTBindView = element.getAnnotation(APTBindView::class.java)
+            val bindView = element.getAnnotation(APTBindView::class.java)
             val bindViewValue2: Int = bindView.value
             println("bindViewValue2 ——> $bindViewValue2") // R.id.aop_btn_apt 对应的值
         }

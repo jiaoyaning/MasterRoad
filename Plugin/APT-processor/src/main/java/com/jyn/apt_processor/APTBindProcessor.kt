@@ -62,7 +62,7 @@ class APTBindProcessor : AbstractProcessor() {
      *
      * ExecutableElement:表示类或者接口中的方法，构造函数或者初始化器。
      *      PackageElement :表示包程序元素
-     *      TypeELement:表示一个类或者接口元素
+     *      TypeElement:表示一个类或者接口元素
      *      TypeParameterElement:表示类，接口，方法的泛型类型例如T。
      *      VariableElement：表示字段，枚举常量，方法或者构造函数参数，局部变量，资源变量或者异常参数。
      */

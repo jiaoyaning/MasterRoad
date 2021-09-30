@@ -1,3 +1,5 @@
+import com.android.build.gradle.internal.dsl.*
+
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
@@ -42,10 +44,16 @@ android {
 
         multiDexEnabled true
 
+        /**
+         * {@link JavaCompileOptions}
+         * @see JavaCompileOptions#annotationProcessorOptions(Action)
+         * {@link AnnotationProcessorOptions}
+         * @see AnnotationProcessorOptions#argument
+         */
         javaCompileOptions {
             annotationProcessorOptions {
-                arguments.put("AROUTER_MODULE_NAME", project.getName())
-                arguments.put("room.schemaLocation", "$projectDir/schemas".toString())
+                argument("AROUTER_MODULE_NAME", project.getName())
+                argument("room.schemaLocation", "$projectDir/schemas".toString())
             }
         }
     }

@@ -9,6 +9,9 @@
  * https://docs.gradle.org/current/userguide/custom_plugins.html#behind_the_scenes
  */
 
+/**
+ * 第一步、自定义Plugin
+ */
 class SimplePlugin implements Plugin<Project> {
     @Override
     void apply(org.gradle.api.Project target) {
@@ -28,10 +31,15 @@ class SimpleExtension {
     def name = "这是一个自定义扩展的Name"
 }
 
+/**
+ * 第二步、引入自定义的Plugin
+ */
 //只有在引入了对应插件之后，才能执行其扩展方法
 apply plugin: SimplePlugin
 
 /**
+ * 第三步、修改自定义Plugin中的扩展
+ *
  * 此处的testEx是创建扩展时的key
  * 为什么要放在apply plugin: TestPlugin之后呢？
  *  因为只有在引入了对应插件之后，才能执行其扩展方法

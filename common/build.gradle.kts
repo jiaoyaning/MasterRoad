@@ -82,7 +82,7 @@ dependencies {
     implementation("com.tencent:mmkv-static:1.2.7")
     api("com.apkfuns.logutils:library:1.7.5")
 
-    debugImplementation("com.squareup.leakcanary:leakcanary-android:2.6")
+    debugImplementation("com.squareup.leakcanary:leakcanary-android:2.7")
 
     //hilt
     implementation("com.google.dagger:hilt-android:2.28-alpha")

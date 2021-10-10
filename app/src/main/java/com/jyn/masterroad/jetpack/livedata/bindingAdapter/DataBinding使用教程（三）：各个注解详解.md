@@ -1,9 +1,6 @@
 > 本文由 [简悦 SimpRead](http://ksria.com/simpread/) 转码， 原文地址 [blog.csdn.net](https://blog.csdn.net/qiang_xi/article/details/75379321)
 
-### 文章有点长，请做好心理准备
-
-#### 有哪些注解
-
+[TOC]
 *   @Bindable
 *   @BindingAdapter
 *   @BindingBuildInfo

@@ -5,6 +5,9 @@ import android.app.Application
 import android.os.Bundle
 import com.apkfuns.logutils.LogUtils
 
+/**
+ * [leakcanary.ActivityWatcher]用的同样方式来监听Activity的销毁
+ */
 class ActivityLifecycle : Application.ActivityLifecycleCallbacks {
     override fun onActivityCreated(activity: Activity, savedInstanceState: Bundle?) {
 //        LogUtils.tag("MasterRoad").i("onActivityCreated:" + activity.localClassName)

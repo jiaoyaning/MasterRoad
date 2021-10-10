@@ -21,7 +21,7 @@ ext {
     startup = "1.1.0-beta01"
     recyclerview = "1.2.0-alpha04"
     bindingcollectionadapter = "4.0.0"
-
+    leakcanary = "2.7"
     /*
      * https://developer.android.com/training/testing/espresso/setup
      *
@@ -194,7 +194,14 @@ ext {
             "glide-compiler"                       : "com.github.bumptech.glide:compiler:$glide",
             "glide-integration"                    : "com.github.bumptech.glide:okhttp3-integration:$glide",
 
-            "leakcanary"                           : "com.squareup.leakcanary:leakcanary-android:2.6",
+            /**
+             * https://github.com/square/leakcanary
+             */
+            "leakcanary"                           : "com.squareup.leakcanary:leakcanary-android:$leakcanary",
+            /**
+             * https://github.com/markzhai/AndroidPerformanceMonitor
+             */
+            "blockcanary"                          : "com.github.markzhai:blockcanary-android:1.5.0",
             /*
              * 一款方便的设置状态栏和导航栏的各种效果的框架
              * https://github.com/Zackratos/UltimateBarX

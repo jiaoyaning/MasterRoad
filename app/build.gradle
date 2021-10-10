@@ -177,6 +177,7 @@ dependencies {
     implementation utils["ultimatebarx"]
     implementation utils["eventbus"]
     debugImplementation utils["leakcanary"]
+    debugImplementation utils["blockcanary"]
     implementation utils["arouter"]
     annotationProcessor utils["arouter-compiler"]
     kapt utils["arouter-compiler"]

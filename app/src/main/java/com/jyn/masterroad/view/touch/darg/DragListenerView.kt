@@ -18,7 +18,7 @@ import com.jyn.masterroad.view.touch.darg.DragHelperView.Companion.ROWS
  * 源码：https://github.com/rengwuxian/HenCoderPlus7/blob/main/CustomViewTouchDrag/app/src/main/java/com/hencoder/drag/view/DragListenerGridView.kt
  */
 class DragListenerView @JvmOverloads constructor(
-        context: Context, attrs: AttributeSet? = null
+    context: Context, attrs: AttributeSet? = null
 ) : ViewGroup(context, attrs) {
     /**
      * [startDrag] [OnDragListener] 使用步骤
@@ -95,8 +95,8 @@ class DragListenerView @JvmOverloads constructor(
         val childWidth = specWidth / COLUMNS
         val childHeight = specHeight / ROWS
         measureChildren(
-                MeasureSpec.makeMeasureSpec(childWidth, MeasureSpec.EXACTLY),
-                MeasureSpec.makeMeasureSpec(childHeight, MeasureSpec.EXACTLY)
+            MeasureSpec.makeMeasureSpec(childWidth, MeasureSpec.EXACTLY),
+            MeasureSpec.makeMeasureSpec(childHeight, MeasureSpec.EXACTLY)
         )
         setMeasuredDimension(specWidth, specHeight)
     }
@@ -138,9 +138,6 @@ class DragListenerView @JvmOverloads constructor(
              * [DragEvent.getClipData] [startDrag]的第一个参数data
              * [DragEvent.getLocalState] [startDrag]的第三个参数myLocalState
              */
-            LogUtils.tag(TAG).i("event.clipData: ${event.clipData}")
-            LogUtils.tag(TAG).i("event.localState: ${event.localState}")
-
             when (event.action) {
                 //开始拖拽，在调用 view.startDrag() 时回调
                 DragEvent.ACTION_DRAG_STARTED -> if (event.localState === v) {
@@ -148,7 +145,7 @@ class DragListenerView @JvmOverloads constructor(
                 }
                 //当拖拽触摸到了被拖拽的那个View的区域内就会回调
                 DragEvent.ACTION_DRAG_ENTERED -> if (event.localState !== v) {
-//                    sort(v)
+                    //                    sort(v)
                 }
                 //已经松手结束拖拽
                 DragEvent.ACTION_DRAG_ENDED -> if (event.localState === v) {
@@ -178,9 +175,9 @@ class DragListenerView @JvmOverloads constructor(
                 childLeft = index % 2 * childWidth
                 childTop = index / 2 * childHeight
                 child.animate()
-                        .translationX(childLeft.toFloat())
-                        .translationY(childTop.toFloat())
-                        .setDuration(150)
+                    .translationX(childLeft.toFloat())
+                    .translationY(childTop.toFloat())
+                    .duration = 150
             }
         }
     }

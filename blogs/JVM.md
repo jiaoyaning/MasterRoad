@@ -31,6 +31,8 @@
 ## 2. G1
 
 
+---
+
 [【318期】面试官：说说堆、栈和字符串常量池它们之间的关系](https://mp.weixin.qq.com/s/GuSg4R7Asi432jmn7gWOag)
 [终于搞懂了java8的内存结构，再也不纠结方法区和常量池了！](https://mp.weixin.qq.com/s/56nh1H4MYR6HRX0wayaENA)
 [JVM 内存区域划分](https://mp.weixin.qq.com/s/NaCFDOGuoHkfQZZjvY66Jg)

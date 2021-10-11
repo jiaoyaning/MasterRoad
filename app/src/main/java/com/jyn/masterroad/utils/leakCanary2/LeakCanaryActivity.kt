@@ -24,29 +24,32 @@ import leakcanary.*
  * 微信Android客户端的ANR监控方案
  * https://mp.weixin.qq.com/s/fWoXprt2TFL1tTapt7esYg
  *
- * LeakCanary 新版 2.x ，你应该知道的知识点
- * https://mp.weixin.qq.com/s/bFQEG3sYlwQdct5KNouBIA
+ * LeakCanary 2.7 原理分析
+ * https://blog.csdn.net/u011033906/article/details/117958603
  */
 @Route(path = RoutePath.LeakCanary.path)
 class LeakCanaryActivity : BaseActivity<ActivityLeakCanaryBinding>
     (R.layout.activity_leak_canary) {
 
     /**
+     * [LeakCanary]
      * 一、添加监听，判断是否内存泄漏
-     * 入口
-     * [LeakCanaryFileProvider]
-     * [AppWatcherInstaller.MainProcess]
-     *   [LeakCanary]
+     * 入口 [AppWatcherInstaller.MainProcess]
      *   [AppWatcherInstaller.onCreate]
      *   [AppWatcher.appDefaultWatchers]
-     * [PlumberInstaller]
      *
      * 监听
      * Activity     [ActivityWatcher]
+     *
      * Fragment     [FragmentAndViewModelWatcher] -> [AndroidXFragmentDestroyWatcher]
+     *
      * ViewMode     [ViewModelClearedWatcher]
+     *
      * RootView     [RootViewWatcher]
+     *  通过 OnAttachStateChangeListener 的 onViewAttachedToWindow 和onViewDetachedFromWindow 方法回调可做内存泄漏的检查工作:
+     *
      * Service      [ServiceWatcher]
+     *  Service 通过hook ActivityThread的 H 类和 AMS，当 AMS调用 serviceDoneExecuting 方法时做内存泄漏的检查工作。
      */
 
     /**

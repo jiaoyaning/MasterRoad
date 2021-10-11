@@ -5,6 +5,10 @@ import android.app.ActivityManager
 import android.content.Context
 import com.apkfuns.logutils.LogUtils
 
+/**
+ * Android中如何查看内存(上)
+ * https://blog.csdn.net/hudashi/article/details/7050897
+ */
 object MemoryCase {
 
     /*

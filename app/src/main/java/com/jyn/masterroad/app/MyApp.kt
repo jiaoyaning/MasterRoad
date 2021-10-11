@@ -3,6 +3,7 @@ package com.jyn.masterroad.app
 import android.app.Application
 import android.content.Context
 import android.content.res.Configuration
+import android.os.Debug
 import android.os.Handler
 import android.os.Looper
 import android.widget.Toast
@@ -46,11 +47,14 @@ class MyApp : Application() {
     override fun onCreate() {
         super.onCreate()
         // setUncaughtException()
-        
+
         // 第一种可检测activity生命周期的方式
         ProcessLifecycleOwner.get().lifecycle.addObserver(LifecycleChecker()) //原理同下一样
         // 第二种可检测activity生命周期的方式
         this.registerActivityLifecycleCallbacks(ActivityLifecycle()) //第三种可检测activity生命周期的方式 - 在BaseActivity中
+
+        val debuggerConnected = Debug.isDebuggerConnected() //判断apk是否运行在调试状态
+        LogUtils.tag("MasterRoad").e("是否在调试状态:$debuggerConnected")
     }
 
     /*

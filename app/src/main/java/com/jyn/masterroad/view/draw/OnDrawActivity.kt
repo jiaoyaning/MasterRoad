@@ -18,7 +18,7 @@ import com.jyn.masterroad.view.draw.view.*
  * https://juejin.cn/post/6950791235413999652
  *
  * Android 资源加载源码分析一
- * https://mp.weixin.qq.com/s/RrM======j_LJnHNackrVGOgD3TA
+ * https://mp.weixin.qq.com/s/RrMj_LJnHNackrVGOgD3TA
  *
  * 通俗易懂，Android视图系统的设计与实现
  * https://mp.weixin.qq.com/s/F_EAB39JkdHfQwnpcxhDsA
@@ -39,6 +39,9 @@ class OnDrawActivity : BaseActivity<ActivityOnDrawBinding>
      *      3.子 View（dispatchDraw()）
      *      4.滑动边缘渐变和滑动条
      *      5.前景
+     *
+     *
+     * SurfaceFlinger
      */
     private val drawView by lazy { CanvasDrawXXXView(this) }
     private val paintView by lazy { PaintView(this) }
@@ -74,6 +77,13 @@ class OnDrawActivity : BaseActivity<ActivityOnDrawBinding>
         }
     }
 
+    /**
+     * [ViewRootImpl.scheduleTraversals]
+     *
+     * [Choreographer]
+     *
+     * [Choreographer.FrameDisplayEventReceiver]
+     */
     private fun fpsDetection() {
         var starTime: Long = System.nanoTime()
         Choreographer.getInstance().postFrameCallback {

@@ -1,4 +1,4 @@
-package com.jyn.masterroad.nestedscrolling.nestedccrolling
+package com.jyn.masterroad.nestedscrolling.nestedscrolling
 
 import android.annotation.SuppressLint
 import android.view.LayoutInflater

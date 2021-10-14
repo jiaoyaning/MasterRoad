@@ -1,6 +1,6 @@
 package com.jyn.leetcode.二叉树
 
-import com.jyn.leetcode.TreeNode
+import com.jyn.leetcode.base.TreeNode
 
 /*
  * 二叉树遍历框架

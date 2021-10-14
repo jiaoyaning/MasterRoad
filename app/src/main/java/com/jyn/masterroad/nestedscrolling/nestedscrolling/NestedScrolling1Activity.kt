@@ -1,4 +1,4 @@
-package com.jyn.masterroad.nestedscrolling.nestedccrolling
+package com.jyn.masterroad.nestedscrolling.nestedscrolling
 
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.alibaba.android.arouter.facade.annotation.Route

@@ -43,8 +43,8 @@
         <activity android:name=".kotlin.flow.FlowActivity" />
         <activity android:name=".kotlin.coil.CoilActivity" />
         <activity android:name=".kotlin.coroutines.KotlinCoroutinesActivity" />
-        <activity android:name=".nestedscrolling.nestedccrolling.NestedScrolling2Activity" />
-        <activity android:name=".nestedscrolling.nestedccrolling.NestedScrolling1Activity" />
+        <activity android:name=".nestedscrolling.nestedscrolling.NestedScrolling2Activity" />
+        <activity android:name=".nestedscrolling.nestedscrolling.NestedScrolling1Activity" />
         <activity android:name=".nestedscrolling.scrollview.ScrollViewActivity" />
         <activity android:name=".nestedscrolling.recyclerview.RecyclerViewActivity" />
         <activity android:name=".nestedscrolling.constraintLayout.MotionLayoutActivity" />
@@ -96,7 +96,8 @@
         <activity android:name=".ipc.IpcClientActivity" />
         <activity
             android:name=".MainActivity"
-            android:configChanges="orientation|screenSize|keyboardHidden">
+            android:configChanges="orientation|screenSize|keyboardHidden"
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

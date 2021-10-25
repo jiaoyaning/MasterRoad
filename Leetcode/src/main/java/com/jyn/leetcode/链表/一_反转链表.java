@@ -1,6 +1,6 @@
 package com.jyn.leetcode.链表;
 
-import com.jyn.leetcode.ListNode;
+import com.jyn.leetcode.base.ListNode;
 
 /**
  * 反转链表

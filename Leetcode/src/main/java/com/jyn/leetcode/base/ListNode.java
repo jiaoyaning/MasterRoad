@@ -1,4 +1,4 @@
-package com.jyn.leetcode;
+package com.jyn.leetcode.base;
 
 /*
  * https://leetcode-cn.com/problems/fan-zhuan-lian-biao-lcof/

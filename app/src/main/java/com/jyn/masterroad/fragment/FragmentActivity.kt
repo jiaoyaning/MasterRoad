@@ -11,4 +11,9 @@ import com.jyn.masterroad.databinding.ActivityFragmentBinding
  * https://mp.weixin.qq.com/s/0-dcgg3gNpfm4oV7j2w3vQ
  */
 @Route(path = RoutePath.Fragment.path)
-class FragmentActivity : BaseActivity<ActivityFragmentBinding>(R.layout.activity_fragment) {}
+class FragmentActivity : BaseActivity<ActivityFragmentBinding>(R.layout.activity_fragment) {
+    /**
+     * Fragment 生命周期检测
+     * [leakcanary.internal.AndroidXFragmentDestroyWatcher]
+     */
+}

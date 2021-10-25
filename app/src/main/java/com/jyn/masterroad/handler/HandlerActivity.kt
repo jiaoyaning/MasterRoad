@@ -94,4 +94,11 @@ class HandlerActivity : BaseActivity<ActivityHandlerBinding>(R.layout.activity_h
         }
         finish()
     }
+
+    /**
+     * 对象被回收的时候会调用该方法
+     */
+    protected fun finalize() {
+        LogUtils.tag("Handler").i("finalize -> Activity被回收")
+    }
 }

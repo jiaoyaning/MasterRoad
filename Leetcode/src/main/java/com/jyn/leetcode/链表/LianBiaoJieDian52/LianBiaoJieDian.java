@@ -1,6 +1,6 @@
 package com.jyn.leetcode.链表.LianBiaoJieDian52;
 
-import com.jyn.leetcode.ListNode;
+import com.jyn.leetcode.base.ListNode;
 
 /**
  * 剑指 Offer 52. 两个链表的第一个公共节点

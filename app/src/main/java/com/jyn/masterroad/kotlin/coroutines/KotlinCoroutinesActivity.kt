@@ -32,6 +32,11 @@ import kotlinx.coroutines.ExperimentalCoroutinesApi
  *
  * 最全面的Kotlin协程: Coroutine/Channel/Flow 以及实际应用
  * https://juejin.cn/post/6844904037586829320
+ *
+ * https://lilei.pro/2019/11/17/kotlin-coroutines-01/
+ * https://lilei.pro/2019/12/10/kotlin-coroutines-02/
+ * https://lilei.pro/2019/12/13/kotlin-coroutines-03/
+ * https://lilei.pro/2020/03/16/kotlin-coroutines-04/
  */
 @ExperimentalCoroutinesApi
 @Route(path = RoutePath.KotlinCoroutines.path)

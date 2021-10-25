@@ -3,11 +3,9 @@ package com.jyn.masterroad
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import android.widget.Button
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.Adapter
-import com.jyn.apt_annotation.APTBindView
 import com.jyn.common.ARouter.goto
 import com.jyn.masterroad.base.BaseActivity
 import com.jyn.masterroad.databinding.ActivityMainBinding
@@ -29,14 +27,12 @@ import com.jyn.masterroad.databinding.ItemMainBinding
  * https://www.jianshu.com/p/ca3d87a4cdf3
  */
 class MainActivity : BaseActivity<ActivityMainBinding>
-(R.layout.activity_main) {
-    @APTBindView(R.id.aop_btn_apt)
-    var btnApt: Button? = null
+    (R.layout.activity_main) {
 
     private var routerList: ArrayList<MainViewModel> = MainViewModel.getRouterList()
 
     override fun initView() {
-//        binding = ActivityMainBinding.inflate(layoutInflater) //第二种实现方式
+        //        binding = ActivityMainBinding.inflate(layoutInflater) //第二种实现方式
         val mainAdapter = MainAdapter(routerList, this)
         binding.mainRecycle.adapter = mainAdapter
         val gridLayoutManager = GridLayoutManager(this, 2)
@@ -53,13 +49,11 @@ class MainActivity : BaseActivity<ActivityMainBinding>
      * https://www.jianshu.com/p/379a8f5347de
      */
     open inner class MainAdapter(
-            private var routerList: ArrayList<MainViewModel>,
-            var context: Context
-    ) :
-            Adapter<MainAdapter.MainViewHolder>() {
+        private var routerList: ArrayList<MainViewModel>, var context: Context
+    ) : Adapter<MainAdapter.MainViewHolder>() {
 
         open inner class MainViewHolder(var binding: ItemMainBinding) :
-                RecyclerView.ViewHolder(binding.root)
+            RecyclerView.ViewHolder(binding.root)
 
         override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MainViewHolder {
             val binding =

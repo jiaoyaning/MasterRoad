@@ -14,7 +14,20 @@ import java.util.HashMap;
  *
  * HashMap中的为什么hash的长度为2的幂而&位必须为奇数
  * https://blog.csdn.net/zjcjava/article/details/78495416
+ *
+ * jdk1.8中HashMap在扩容的时候做了哪些优化
+ * https://blog.csdn.net/weixin_32705525/article/details/113076205
  */
 public class HashMapTest {
-    HashMap hashMap = new HashMap();
+    /*
+     * 1.7 -> 1.8 优化
+     *      1. 链表 —> 红黑树 ：链表长度超过8时改为红黑树，低于6时才变回链表
+     *      2. 头插法 -> 尾插法
+     *      3. 扩容时重新计算hash -> 只计算是否需要移动到下一个扩容位
+     */
+    HashMap<String, String> hashMap = new HashMap<>();
+
+    public HashMapTest() {
+        hashMap.put("test", "test");
+    }
 }

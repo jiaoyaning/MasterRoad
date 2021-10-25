@@ -1,4 +1,4 @@
-package com.jyn.leetcode;
+package com.jyn.leetcode.base;
 
 /**
  * Created by jiaoyaning on 2021/5/24.

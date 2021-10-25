@@ -1,5 +1,6 @@
 package com.jyn.masterroad.kotlin.coroutines
 
+import androidx.lifecycle.lifecycleScope
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.jyn.common.ARouter.RoutePath
 import com.jyn.common.Base.BaseScopeActivity
@@ -42,5 +43,10 @@ class KotlinCoroutinesActivity : BaseScopeActivity<ActivityKotlinCoroutinesBindi
     override fun initView() {
         binding.create = kotlinCoroutinesCreate
         binding.channel = ChannelTest()
+    }
+
+    override fun initData() {
+        lifecycleScope.launchWhenCreated {
+        }
     }
 }

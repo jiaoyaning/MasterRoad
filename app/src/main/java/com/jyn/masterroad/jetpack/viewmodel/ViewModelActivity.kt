@@ -20,6 +20,9 @@ import com.jyn.masterroad.databinding.ActivityViewModelBinding
  *
  * ViewModel三问—阿里真题
  * https://mp.weixin.qq.com/s/5zIRbE69tWFZ3BIewusiLw
+ *
+ * 知识点 | ViewModel 四种集成方式
+ * https://juejin.cn/post/6844904167853522957
  */
 class ViewModelActivity : BaseActivity<ActivityViewModelBinding>(R.layout.activity_view_model) {
     val viewModelTest:ViewModelTest by viewModels()

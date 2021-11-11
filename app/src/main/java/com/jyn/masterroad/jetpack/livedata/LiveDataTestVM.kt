@@ -110,7 +110,7 @@ class LiveDataTestVM(application: Application) : BaseVM(application) {
     //region 连续postValue测试
     fun postValueTest() {
         /**
-         * 只会收到最后一次post
+         * 只会收到最后一次post，setValue则会每次都收到
          */
         for (i in 1..10) {
             postValueNum.postValue(i)

@@ -8,6 +8,9 @@ import com.apkfuns.logutils.LogUtils
 /*
  * Activity是如何实现LifecycleOwner的？
  * https://juejin.cn/post/6925620141170524167
+ *
+ * @OnLifecycleEvent 被废弃，替代方案是？ TODO
+ * https://mp.weixin.qq.com/s/vDn1Hrtgb_y8Ocn3lhAiag
  */
 class LifecycleChecker : LifecycleObserver {
     @OnLifecycleEvent(Lifecycle.Event.ON_STOP)

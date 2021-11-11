@@ -54,7 +54,7 @@
 ---
 
 ## 2. G1
-
+[什么？面试官问我G1垃圾收集器？](https://zhuanlan.zhihu.com/p/431908205)
 ---
 
 [【318期】面试官：说说堆、栈和字符串常量池它们之间的关系](https://mp.weixin.qq.com/s/GuSg4R7Asi432jmn7gWOag)

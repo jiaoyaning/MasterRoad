@@ -42,6 +42,8 @@ class LayoutActivity : BaseActivity<ActivityLayoutBinding>
      *
      *  measureChildWithMargins()
      *  measureChildren()
+     *
+     *  requestLayout 只会触发 measure 和 layout，invalidate 只会触发 draw。
      */
 
     override fun initView() {

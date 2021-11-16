@@ -59,7 +59,7 @@
     例如，如果`task`里会抛出`checked`或者`unchecked exception`，而你又希望外面的调用者能够感知这些`exception`并做出及时的处理，那么就需要用到`submit`，通过对`Future.get()`进行抛出异常的捕获，然后对其进行处理。  
 
 ---
-#### 问：`Callable<T>()` 和 `Runnable()` 区别？
+#### 问：`Callable<T>()` 和 `Runnable()` 和`Future()`区别？
 > 相同点：
 > 1. 都是接口
 > 2. 都可以编写多线程程序

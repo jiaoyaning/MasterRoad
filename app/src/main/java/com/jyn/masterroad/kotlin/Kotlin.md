@@ -1,5 +1,7 @@
-[Kotlin编译调校之WarningsAsErrors 压制警告](https://droidyue.com/blog/2019/08/03/kotlinc-config-warnings-as-errors/)
-[如何区分和使用 run, with, let, also, apply & 单例三种写法](https://mp.weixin.qq.com/s/FNG_R507TFeQg3xXsY-1MQ)
+[Kotlin编译调校之WarningsAsErrors 压制警告](https://droidyue.com/blog/2019/08/03/kotlinc-config-warnings-as-errors/)  
+[如何区分和使用 run, with, let, also, apply & 单例三种写法](https://mp.weixin.qq.com/s/FNG_R507TFeQg3xXsY-1MQ)  
+[Kotlin闭包](https://juejin.cn/post/6869643437357039623)  
+
 
 # 类和接口
 

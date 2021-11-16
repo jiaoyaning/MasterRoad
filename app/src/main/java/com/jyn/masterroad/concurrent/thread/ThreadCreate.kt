@@ -7,9 +7,13 @@ import java.util.concurrent.FutureTask
 import java.util.concurrent.ThreadFactory
 import javax.inject.Inject
 
+/*
+ * 廖雪峰的官方网站 - 使用CompletableFuture
+ * https://www.liaoxuefeng.com/wiki/1252599548343744/1306581182447650
+ */
 class ThreadCreate @Inject constructor() {
 
-    //region 一、线程创建的四种方式
+    //region 一、线程创建的几种方式
 
     //region 1.继承Thread类
     fun threadTest() {
@@ -75,20 +79,32 @@ class ThreadCreate @Inject constructor() {
     }
     //endregion
 
-    //region 4.借助Executors(线程池)
+    //region 4.CompletableFuture 可串行可并行的线程
+    fun completableFutureTest() {
+        /**
+         * 优点：设置好回调后，就不用再关系异步阻塞主流程问题
+         * 缺点：最终结果还是在异步之中，脱离了主线程调用
+         */
+
+    }
+    //endregion
+
+    //region 5.借助Executors(线程池)
     fun executorsTest() {
         val es = Executors.newCachedThreadPool()
         es.execute { LogUtils.tag("main").i("使用 Executors 创建的线程") }
     }
     //endregion
 
-    // region 5.ThreadFactory
+    // region 6.ThreadFactory
     fun threadFactory() {
         val threadFactory: ThreadFactory = ThreadFactory { Thread() }
         threadFactory.newThread {
 
         }
     }
+
+    //endregion
 
     //endregion
 

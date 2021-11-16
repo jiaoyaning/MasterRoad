@@ -1,4 +1,4 @@
-package com.jyn.java_kotlin.Kotlin学习.inline内联函数
+package com.jyn.java_kotlin.Kotlin学习.inline内联
 
 /*
  * inline、noinline、crossinline傻傻分不清楚
@@ -13,7 +13,7 @@ package com.jyn.java_kotlin.Kotlin学习.inline内联函数
  * 重学 Kotlin —— inline，包治百病的性能良药？
  * https://mp.weixin.qq.com/s/3TQQrl01F6jamMXWjK3f7w
  */
-class InlineTest {
+class InlineFun {
     companion object {
         @JvmStatic
         fun main(args: Array<String>) {

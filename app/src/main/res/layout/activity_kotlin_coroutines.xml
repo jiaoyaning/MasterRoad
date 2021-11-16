@@ -7,7 +7,7 @@
 
         <variable
             name="create"
-            type="com.jyn.masterroad.kotlin.coroutines.KotlinCoroutinesCreate" />
+            type="com.jyn.masterroad.kotlin.coroutines.CoroutinesCreate" />
 
         <variable
             name="channel"

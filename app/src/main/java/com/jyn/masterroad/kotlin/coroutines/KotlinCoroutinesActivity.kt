@@ -43,10 +43,10 @@ import kotlinx.coroutines.ExperimentalCoroutinesApi
 class KotlinCoroutinesActivity : BaseScopeActivity<ActivityKotlinCoroutinesBinding>
     (R.layout.activity_kotlin_coroutines) {
 
-    private val kotlinCoroutinesCreate: KotlinCoroutinesCreate by lazy { createVM() }
+    private val coroutinesCreate: CoroutinesCreate by lazy { createVM() }
 
     override fun initView() {
-        binding.create = kotlinCoroutinesCreate
+        binding.create = coroutinesCreate
         binding.channel = ChannelTest()
     }
 

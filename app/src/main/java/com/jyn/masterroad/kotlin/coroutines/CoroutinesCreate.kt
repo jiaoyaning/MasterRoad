@@ -6,6 +6,10 @@ import com.apkfuns.logutils.LogUtils
 import kotlinx.coroutines.*
 import java.lang.Thread.sleep
 import java.util.concurrent.Executors
+import kotlin.coroutines.Continuation
+import kotlin.coroutines.CoroutineContext
+import kotlin.coroutines.EmptyCoroutineContext
+import kotlin.coroutines.createCoroutine
 
 /*
  * 揭秘kotlin协程中的CoroutineContext
@@ -19,7 +23,7 @@ import java.util.concurrent.Executors
  */
 @ExperimentalCoroutinesApi
 @Suppress("UNUSED_VARIABLE", "UNREACHABLE_CODE")
-class KotlinCoroutinesCreate(application: Application) : AndroidViewModel(application) {
+class CoroutinesCreate(application: Application) : AndroidViewModel(application) {
     companion object {
         private const val TAG = "Coroutines"
     }

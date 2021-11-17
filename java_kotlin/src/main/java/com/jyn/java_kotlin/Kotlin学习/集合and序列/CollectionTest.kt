@@ -9,6 +9,9 @@ package com.jyn.java_kotlin.Kotlin学习.集合and序列
  *
  * Kotlin 集合函数速查
  * https://mp.weixin.qq.com/s/xRTiSQZ3v_u0DQTwG0H04A
+ *
+ *
+ * 注意：Kotlin中的集合扩展函数都是热流，如果要用冷流请使用 sequence
  */
 fun main() {
     val lists = mutableListOf<Int>(1, 2, 3, 4)

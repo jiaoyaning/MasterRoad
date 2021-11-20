@@ -16,11 +16,11 @@ public class 全排列 {
     }
 
     public static List<List<Integer>> permute(int[] nums) {
-        dps(nums);
+        dfs(nums);
         return res;
     }
 
-    public static void dps(int[] nums) {
+    public static void dfs(int[] nums) {
         if (track.size() == nums.length) {
             res.add(new LinkedList<>(track));
             return;
@@ -29,7 +29,7 @@ public class 全排列 {
         for (int num : nums) {
             if (track.contains(num)) continue;
             track.addLast(num);
-            dps(nums);
+            dfs(nums);
             track.removeLast();
         }
     }

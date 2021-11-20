@@ -20,7 +20,7 @@ public class N皇后 {
         for (char[] line : board) {
             Arrays.fill(line, '.');
         }
-        dps(board, 0);//先从第一行开始
+        dfs(board, 0);//先从第一行开始
         return res;
     }
 
@@ -28,7 +28,7 @@ public class N皇后 {
      * @param board 表盘
      * @param n     当前是第几行
      */
-    public static void dps(char[][] board, int n) {
+    public static void dfs(char[][] board, int n) {
         if (n == board.length) { //如果添加到最后一行了，则表示该表盘符合条件，可以添加进res中
             res.add(charArrayToList(board));
             return;
@@ -37,7 +37,7 @@ public class N皇后 {
         for (int i = 0; i < board[n].length; i++) { //对当前行进行添加
             if (isConform(board, n, i)) { //如果符合条件
                 board[n][i] = 'Q';
-                dps(board, n + 1);//进行下一行的排列
+                dfs(board, n + 1);//进行下一行的排列
                 board[n][i] = '.';
             }
         }

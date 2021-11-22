@@ -153,6 +153,7 @@ dependencies {
     implementation kotlin["kotlin"]
     implementation kotlin["coroutines-core"]
     implementation kotlin["coroutines-android"]
+    implementation kotlin["coroutines-jdk8"]
     implementation kotlin["koin"]
     implementation kotlin["koin-android"]
     implementation kotlin["koin-android-ext"]

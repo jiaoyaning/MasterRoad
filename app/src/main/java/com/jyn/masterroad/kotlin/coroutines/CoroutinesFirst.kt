@@ -33,7 +33,7 @@ suspend fun main() {
  * 1.[createCoroutine]
  * 2.[startCoroutine]
  */
-fun createCoroutineTest1() {
+fun createCoroutineTest() {
     //1.用 createCoroutine 来创建协程，需要 resume 方法启动
     val coroutine: Continuation<Unit> = suspend { //suspend{} 是协程的主体
         delayFun()
@@ -47,8 +47,7 @@ fun createCoroutineTest1() {
         }
     })
     coroutine.resume(Unit) //启动协程
-}
-fun createCoroutineTest2() {
+
     //2.直接用 startCoroutine 来创建并启动协程
     suspend {
         delayFun()
@@ -62,7 +61,8 @@ fun createCoroutineTest2() {
         }
     })
 }
-suspend fun delayFun(){
+
+suspend fun delayFun() {
     delay(1000)
 }
 
@@ -102,6 +102,34 @@ fun suspendCoroutineFun() {
     })
 }
 
+/**
+ * 自定义 Receiver 的协程体体
+ * kotlin 没有提供可以直接生命带有 receiver 的 Lambda 表达式语法，需要自己封装
+ */
+fun startCoroutineTest2() {
+    fun <R, T> launchCoroutine(receiver: R, block: suspend R.() -> T) {
+        block.startCoroutine(receiver, object : Continuation<T> {
+            override val context: CoroutineContext
+                get() = EmptyCoroutineContext
+
+            override fun resumeWith(result: Result<T>) {
+                LogUtils.tag(TAG).i(result)
+            }
+        })
+    }
+
+    class ProducerScope<T> {
+        suspend fun produce(value: T) {
+            // ...doSomething
+        }
+    }
+
+    launchCoroutine(ProducerScope<Int>()) {
+        produce(1)
+        delay(1000)
+        produce(3)
+    }
+}
 
 /**
  * 协程上下文

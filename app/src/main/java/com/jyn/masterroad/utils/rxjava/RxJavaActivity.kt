@@ -35,6 +35,9 @@ import com.jyn.masterroad.utils.rxjava.test.*
  * 解密 RxJava 的异常处理机制，不是你想的那么简单！
  * https://mp.weixin.qq.com/s/cvRD1rstDkitm-HflwiFnQ
  *
+ * AutoDispose解决RxJava内存泄漏（Android）
+ * https://www.jianshu.com/p/4b25ac968afe
+ *
  * 中文文档
  * https://github.com/mcxiaoke/RxDocs
  * https://github.com/zhaimi/RxJavaAwesome

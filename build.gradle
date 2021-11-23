@@ -63,5 +63,5 @@ task clean(type: Delete) {
 }
 
 afterEvaluate {
-    println("2. 插入第二顺位想插入的代码")
+    println("2. 插入第二顺位想插入的代码 -> build.gradle")
 }

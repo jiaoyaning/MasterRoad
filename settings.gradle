@@ -9,5 +9,5 @@ include ':Plugin:APT'
 include ':Plugin:APT-processor'
 
 
-println("1. 插入最早想插入的代码")
+println("1. 插入最早想插入的代码 -> settings.gradle")
 include ':Plugin:APT-annotation'

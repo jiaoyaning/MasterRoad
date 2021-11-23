@@ -205,5 +205,5 @@ gradle.taskGraph.whenReady {
 }
 
 afterEvaluate {
-    println("3. 插入第三顺位想插入的代码")
+    println("3. 插入第三顺位想插入的代码 -> app/build.gradle")
 }

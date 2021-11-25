@@ -34,7 +34,12 @@ class InlineFun {
              * inline 作用于函数，noinline作用于函数类型参数。
              * inline 代表整个函数内联，noinline则代表该函数类型参数不参与内联。
              */
-            noinlineTest({ println("noinlineTest before") }, { println("noinlineTest after") })
+            noinlineTest({
+                println("noinlineTest before")
+            }, {
+                println("noinlineTest after")
+                return@noinlineTest
+            })
             println()
 
             /*

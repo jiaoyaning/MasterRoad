@@ -1,4 +1,4 @@
-package com.jyn.masterroad.jetpack.livedata
+package com.jyn.masterroad.jetpack.livedata.test
 
 import android.util.Log
 import androidx.annotation.MainThread

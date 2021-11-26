@@ -7,7 +7,7 @@
 
         <import type="android.view.View.OnClickListener" />
 
-        <import type="com.jyn.masterroad.jetpack.livedata.LiveDataTestVM" />
+        <import type="com.jyn.masterroad.jetpack.livedata.test.LiveDataTestVM" />
 
         <variable
             name="onClick"
@@ -15,15 +15,15 @@
 
         <variable
             name="model"
-            type="LiveDataTestVM" />
+            type="com.jyn.masterroad.jetpack.livedata.test.LiveDataTestVM" />
 
         <variable
             name="mediatorLiveData"
-            type="com.jyn.masterroad.jetpack.livedata.MediatorLiveDataVM" />
+            type="com.jyn.masterroad.jetpack.livedata.test.MediatorLiveDataVM" />
 
         <variable
             name="transformationsVM"
-            type="com.jyn.masterroad.jetpack.livedata.TransformationsVM" />
+            type="com.jyn.masterroad.jetpack.livedata.test.TransformationsVM" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

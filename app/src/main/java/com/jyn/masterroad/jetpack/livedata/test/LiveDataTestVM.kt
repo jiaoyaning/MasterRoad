@@ -1,11 +1,10 @@
-package com.jyn.masterroad.jetpack.livedata
+package com.jyn.masterroad.jetpack.livedata.test
 
 import android.app.Application
 import android.view.View
 import androidx.databinding.ObservableInt
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.liveData
 import com.apkfuns.logutils.LogUtils
 import com.jyn.common.Base.BaseVM
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers

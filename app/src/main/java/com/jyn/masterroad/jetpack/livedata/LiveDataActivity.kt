@@ -8,7 +8,10 @@ import com.jyn.common.ARouter.RoutePath
 import com.jyn.masterroad.R
 import com.jyn.masterroad.base.BaseActivity
 import com.jyn.masterroad.databinding.ActivityLiveDataBinding
-import com.jyn.masterroad.jetpack.livedata.LiveDataTestVM.Companion.TAG
+import com.jyn.masterroad.jetpack.livedata.test.LiveDataTestVM
+import com.jyn.masterroad.jetpack.livedata.test.LiveDataTestVM.Companion.TAG
+import com.jyn.masterroad.jetpack.livedata.test.MediatorLiveDataVM
+import com.jyn.masterroad.jetpack.livedata.test.TransformationsVM
 import kotlinx.android.synthetic.main.activity_live_data.*
 
 /*
@@ -43,10 +46,18 @@ import kotlinx.android.synthetic.main.activity_live_data.*
  * https://blog.csdn.net/qiang_xi/article/details/75379321
  * DataBinding使用教程（四）：BaseObservable与双向绑定
  * https://blog.csdn.net/qiang_xi/article/details/77586836
+ *
+ * 关于LiveData可能引发的内存泄漏及优化
+ * https://mp.weixin.qq.com/s/RsyOHc31ouBspyMoQG2ofw
  */
 @Route(path = RoutePath.LiveData.path)
 class LiveDataActivity : BaseActivity<ActivityLiveDataBinding>
     (R.layout.activity_live_data) {
+
+    /**
+     * LiveData最重要的一个特性是具有生命周期感知能力，当Activity或者Fragment处于活跃状态时，观察者才能观察到LiveData的变化。
+     * 但是，如果我们把 Fragment 中的 LiveData 绑定的是 Activity 的生命周期时，会出现内存泄漏
+     */
 
     private val liveDataTestVM: LiveDataTestVM by viewModels()
     private val mediatorLiveDataVM: MediatorLiveDataVM by viewModels()
@@ -63,9 +74,9 @@ class LiveDataActivity : BaseActivity<ActivityLiveDataBinding>
             liveDataTestVM.subtract()
         }
 
-        liveDataTestVM.num.observe(this, {
+        liveDataTestVM.num.observe(this) {
             LogUtils.tag(TAG).i("Observer -> num改变了$it")
             tv_num.text = it.toString()
-        })
+        }
     }
 }

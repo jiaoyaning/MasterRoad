@@ -72,12 +72,10 @@ class MainActivity : BaseActivity<ActivityMainBinding>
 
         override fun getItemCount(): Int = routerList.size
 
-        override fun getItemViewType(position: Int): Int {
-            if (routerList[position].span == 1)
-                return 2
-            else if (routerList[position].span == 2)
-                return 1
-            return 2
+        override fun getItemViewType(position: Int): Int = when (routerList[position].span) {
+            1 -> 2
+            2 -> 1
+            else -> 2
         }
     }
 }

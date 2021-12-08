@@ -55,7 +55,7 @@ public class SyncAndLockTest {
 
     /*
      * 3. 修饰代码块：锁对象为synchronized紧接着的小括号内的对象
-     *       synchronized(object/this)   锁对象为当前对象
+     *       synchronized(object/this)   锁对象为当前引用对象
      *       synchronized(Object.class)  锁对象为当前Class对象
      *
      * 使用 synchronized 加锁 class 时，无论共享一个对象还是创建多个对象，它们用的都是同一把锁，

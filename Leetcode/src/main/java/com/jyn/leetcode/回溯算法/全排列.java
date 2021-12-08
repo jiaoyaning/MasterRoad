@@ -12,6 +12,7 @@ public class 全排列 {
 
     public static void main(String[] args) {
         int[] nums = new int[]{1, 2, 3};
+        char[] res = new char[0];
         System.out.println(permute(nums));
     }
 

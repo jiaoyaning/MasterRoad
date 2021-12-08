@@ -9,8 +9,12 @@ import java.util.Arrays;
 public class 删除被覆盖区间 {
     public static void main(String[] args) {
 //        int[][] intervals = {{34335, 39239}, {15875, 91969}, {29673, 66453}, {53548, 69161}, {40618, 93111}};
-        int[][] intervals = {{1, 4}, {3, 6}, {2, 8}};
-        System.out.println(removeCoveredIntervals2(intervals));
+//        int[][] intervals = {{1, 4}, {3, 6}, {2, 8}};
+//        System.out.println(removeCoveredIntervals2(intervals));
+
+        int[] a = {-1,0,1,2,-1,-4};
+        Arrays.sort(a);
+        System.out.println(Arrays.toString(a));
     }
 
     public static int removeCoveredIntervals(int[][] intervals) {

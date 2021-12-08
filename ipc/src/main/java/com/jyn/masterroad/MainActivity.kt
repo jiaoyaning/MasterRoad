@@ -9,11 +9,14 @@ import androidx.appcompat.app.AppCompatActivity
 import com.apkfuns.logutils.LogUtils
 import kotlinx.android.synthetic.main.activity_main.*
 
-/**
+/*
  * Messenger与AIDL的异同:
  * https://blog.csdn.net/jiwangkailai02/article/details/48098087
  *
  * https://github.com/leavesC/IPCSamples/blob/master/note/AndroidIPC%E6%9C%BA%E5%88%B6%EF%BC%883%EF%BC%89-AIDL.md
+ *
+ * 不得不学的Android Binder机制与AIDL
+ * https://mp.weixin.qq.com/s/aONNjelO0ZWtGU91iyKTKA
  */
 class MainActivity : AppCompatActivity() {
     private lateinit var aidlTestInterface: AidlTestInterface

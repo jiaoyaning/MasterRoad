@@ -12,6 +12,9 @@ import java.util.Stack;
  * https://mp.weixin.qq.com/s/TCg9_3cVuDfZLqK2eYrc7w
  */
 public class StackQueueTest {
+    // stack empty   push  pop
+    // queue isEmpty offer poll
+
     public static void main(String[] args) {
         //栈，先进后出
         Stack<String> stack = new Stack<>();

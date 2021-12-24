@@ -1,6 +1,6 @@
 package com.jyn.masterroad.nestedscrolling.recyclerview
 
-import androidx.recyclerview.widget.ConcatAdapter
+import androidx.recyclerview.widget.*
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.jyn.common.ARouter.RoutePath
 import com.jyn.masterroad.R
@@ -55,13 +55,23 @@ import com.jyn.masterroad.nestedscrolling.recyclerview.adapter.RecyclerAdapter
  *
  * GridLayoutManager这么用，你可能还真没尝试过
  * https://juejin.cn/post/6844903930002948110
+ *
+ * 读源码 - 用设计模式解析 RecyclerView
+ * https://juejin.cn/post/6844903438069792775
  */
 @Route(path = RoutePath.RecyclerView.path)
 class RecyclerViewActivity : BaseActivity<ActivityRecyclerViewBinding>
-    (R.layout.activity_recycler_view) {
+(R.layout.activity_recycler_view) {
     override fun initView() {
         val recyclerAdapter = RecyclerAdapter()
         val headerAdapter = HeaderAdapter()
-        binding.recycler.adapter = ConcatAdapter(headerAdapter, recyclerAdapter)
+        binding.recycler.apply {
+            adapter = ConcatAdapter(headerAdapter, recyclerAdapter)
+            layoutManager = LinearLayoutManager(this@RecyclerViewActivity, LinearLayoutManager.VERTICAL, false)
+
+            //分割线
+            addItemDecoration(object : RecyclerView.ItemDecoration() {
+            })
+        }
     }
 }

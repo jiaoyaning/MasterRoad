@@ -33,6 +33,7 @@ public class HashMapTest {
      *   如果数组长度是16，也就是 15 与运算这两个数，会发现结果都是0。这显然不是一个好的hash算法
      *
      *
+     *
      * 初始容量为什么是2的n次幂及扩容为什么是2倍的形式？(https://blog.csdn.net/weixin_44273302/article/details/113733422)
      *     1. 为了保证得到的新的数组索引和老数组索引一致
      *     2. rehash时的取余操作，hash % length == hash & (length - 1)这个关系只有在length等于二的幂次方时成立，位运算能比%高效得多。

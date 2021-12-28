@@ -1,5 +1,7 @@
 package com.jyn.masterroad.view.layout
 
+import android.view.LayoutInflater
+import androidx.appcompat.app.AppCompatViewInflater
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.jyn.common.ARouter.RoutePath
 import com.jyn.masterroad.R
@@ -44,6 +46,11 @@ class LayoutActivity : BaseActivity<ActivityLayoutBinding>
      *  measureChildren()
      *
      *  requestLayout 只会触发 measure 和 layout，invalidate 只会触发 draw。
+     *
+     *
+     *
+     *  [LayoutInflater.setFactory] ->
+     *  [AppCompatViewInflater.createView]
      */
 
     override fun initView() {

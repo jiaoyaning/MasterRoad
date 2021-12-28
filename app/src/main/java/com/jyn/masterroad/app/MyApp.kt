@@ -11,6 +11,8 @@ import androidx.lifecycle.ProcessLifecycleOwner
 import com.apkfuns.logutils.LogUtils
 import com.jyn.common.Utils.MemoryCase
 import dagger.hilt.android.HiltAndroidApp
+import leakcanary.AppWatcher
+import leakcanary.ObjectWatcher
 
 /*
  * 【从入门到实用】android启动优化深入解析

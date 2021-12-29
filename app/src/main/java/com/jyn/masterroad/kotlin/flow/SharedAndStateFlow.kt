@@ -37,6 +37,12 @@ class SharedAndStateFlow(application: Application) : BaseVM(application) {
      *    对于新的订阅者，StateFlow只会重播当前最新值，SharedFlow可配置重播元素个数（默认为0，即不重播）
      *
      *    sharedFlow 无观察者时会清除事件
+     *
+     * StateFlow 与 LiveData 十分像，或者说它们的定位类似，且需要初始值
+     *
+     * SharedFlow 根据配置可以保留历史数据，新的订阅者可以获取之前发射过的一系列数据
+     *
+     * StateFlow 与 SharedFlow 的使用场景不同，前者适用于「状态」，后者适用于「事件」
      */
 
     //region 一、SharedFlow

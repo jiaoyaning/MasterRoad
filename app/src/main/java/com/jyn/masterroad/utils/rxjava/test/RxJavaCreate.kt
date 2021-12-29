@@ -39,7 +39,7 @@ class RxJavaCreate {
     //region 1.1 观察者 Observable.subscribe(observer)
     fun observerSimple() { //1. 创建被观察者(Observable)，定义要发送的事件
         val observable = Observable.just(
-            "第 1 条数据", "第 2 条数据", "第 3 条数据", "第 4 条数据"
+                "第 1 条数据", "第 2 条数据", "第 3 条数据", "第 4 条数据"
         )
 
         //2. 创建观察者(Observer)，接受事件并做出响应操作
@@ -73,7 +73,7 @@ class RxJavaCreate {
 
     //region 1.2. 消费者 Observable.subscribe(consumer)
     fun consumerSimple() {
-        val observable = Observable.create(ObservableOnSubscribe<String> {
+        val observableOnSubscribe: ObservableOnSubscribe<String> = ObservableOnSubscribe<String> {
             LogUtils.tag(TAG).i("onNext Thread:${Thread.currentThread().name}")
             it.onNext("第 1 条数据")
             sleep(100)
@@ -84,10 +84,13 @@ class RxJavaCreate {
             it.onComplete()
             sleep(100)
             it.onNext("第 4 条数据")
-        }).onErrorReturn { //可以直接捕获错误
-            LogUtils.tag(TAG).i("Observable onErrorReturn: $it")
-            "这是一个错误"
         }
+        val observable = Observable
+                .create(observableOnSubscribe)
+                .onErrorReturn { //可以直接捕获错误
+                    LogUtils.tag(TAG).i("Observable onErrorReturn: $it")
+                    "这是一个错误"
+                }
 
         //创建消费者(Consumer)，接受并消费事件
         val consumer: Consumer<String> = Consumer { t ->
@@ -123,33 +126,33 @@ class RxJavaCreate {
          * LATEST   会丢失数据，但是可以收到最后一个
          */
         flowable.subscribeOn(Schedulers.newThread()).observeOn(AndroidSchedulers.mainThread())
-            .subscribe(object : Subscriber<String> {
-                override fun onSubscribe(s: Subscription) { //设置最多可接受数据的数量
-                    s.request(Long.MAX_VALUE)
-                    LogUtils.tag(TAG).i("Subscriber -> onSubscribe $s")
-                }
+                .subscribe(object : Subscriber<String> {
+                    override fun onSubscribe(s: Subscription) { //设置最多可接受数据的数量
+                        s.request(Long.MAX_VALUE)
+                        LogUtils.tag(TAG).i("Subscriber -> onSubscribe $s")
+                    }
 
-                override fun onNext(t: String?) {
-                    LogUtils.tag(TAG).i("Subscriber -> onNext $t")
-                }
+                    override fun onNext(t: String?) {
+                        LogUtils.tag(TAG).i("Subscriber -> onNext $t")
+                    }
 
-                override fun onError(t: Throwable?) {
-                    LogUtils.tag(TAG).i("Subscriber -> onError $t")
-                }
+                    override fun onError(t: Throwable?) {
+                        LogUtils.tag(TAG).i("Subscriber -> onError $t")
+                    }
 
-                override fun onComplete() {
-                    LogUtils.tag(TAG).i("Subscriber -> onComplete")
-                }
-            })
+                    override fun onComplete() {
+                        LogUtils.tag(TAG).i("Subscriber -> onComplete")
+                    }
+                })
     }
 
     fun flowableConsumerTest() {
         Flowable.just(
-            "第 1 条数据", "第 2 条数据", "第 3 条数据", "第 4 条数据"
+                "第 1 条数据", "第 2 条数据", "第 3 条数据", "第 4 条数据"
         ).subscribeOn(Schedulers.newThread())
-            .observeOn(AndroidSchedulers.mainThread()).subscribe {
-                LogUtils.tag(TAG).i("Consumer -> onNext $it")
-            }
+                .observeOn(AndroidSchedulers.mainThread()).subscribe {
+                    LogUtils.tag(TAG).i("Consumer -> onNext $it")
+                }
     }
 
     //endregion ================================================

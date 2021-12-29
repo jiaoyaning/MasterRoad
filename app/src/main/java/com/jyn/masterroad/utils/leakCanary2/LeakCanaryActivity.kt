@@ -79,7 +79,6 @@ class LeakCanaryActivity : BaseActivity<ActivityLeakCanaryBinding>
     private val weakReference = WeakReference<Activity>(this, referenceQueue)
 
     override fun initData() {
-
         objectWatcher.addOnObjectRetainedListener {
 
         }

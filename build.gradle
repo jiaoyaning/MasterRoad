@@ -26,6 +26,7 @@ buildscript {
      * https://mirrors.huaweicloud.com/
      */
     repositories {
+        mavenCentral()
         mavenLocal() //本地插件上传仓库
         maven { url 'https://maven.aliyun.com/repository/public' }
         maven { url 'https://maven.aliyun.com/repository/central' }
@@ -50,12 +51,14 @@ buildscript {
          * 饿了么字节码hook库
          * https://github.com/eleme/lancet
          */
-        classpath 'me.ele:lancet-plugin:1.0.6'
+//        classpath 'me.ele:lancet-plugin:1.0.6'
+//        classpath 'io.github.didi.dokit:dokitx-plugin:3.5.0'
     }
 }
 
 allprojects {
     repositories {
+        mavenCentral()
         mavenLocal() //本地插件上传仓库
         maven { url 'https://maven.aliyun.com/repository/public' }
         maven { url 'https://maven.aliyun.com/repository/central' }

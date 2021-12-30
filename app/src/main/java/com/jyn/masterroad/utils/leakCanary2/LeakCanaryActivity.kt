@@ -41,10 +41,13 @@ class LeakCanaryActivity : BaseActivity<ActivityLeakCanaryBinding>
      *
      * 监听
      *  1. Activity     [ActivityWatcher]
+     *      ActivityLifecycleCallbacks
      *
      *  2. Fragment     [FragmentAndViewModelWatcher] -> [AndroidXFragmentDestroyWatcher]
+     *      [FragmentLifecycleCallbacks]
      *
      *  3. ViewMode     [ViewModelClearedWatcher]
+     *      反射获取 ViewModelStore 的 mMap
      *
      *  4. RootView     [RootViewWatcher]
      *   通过 [View.addOnAttachStateChangeListener] 的 onViewAttachedToWindow 和onViewDetachedFromWindow 方法回调可做内存泄漏的检查工作:

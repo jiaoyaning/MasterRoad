@@ -13,6 +13,7 @@ import com.trello.rxlifecycle4.kotlin.bindUntilEvent
 import io.reactivex.rxjava3.core.Observable
 import io.reactivex.rxjava3.core.Observer
 import io.reactivex.rxjava3.disposables.Disposable
+import io.reactivex.rxjava3.plugins.RxJavaPlugins
 
 /*
  * 不要打破链式调用！一个极低成本的RxJava全局Error处理方案

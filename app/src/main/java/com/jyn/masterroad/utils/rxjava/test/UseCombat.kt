@@ -204,6 +204,7 @@ class UseCombat {
                     LogUtils.tag("Rxjava").i("Observable nextInt: $nextInt")
                     it.onNext(nextInt)
                 })
+                .map { it.toLong() }
                 .flatMap {
                     LogUtils.tag("Rxjava").i("Observable flatMap: $it")
                     Observable.timer(it.toLong(), TimeUnit.SECONDS)

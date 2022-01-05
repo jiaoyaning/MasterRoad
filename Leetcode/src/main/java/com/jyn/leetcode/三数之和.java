@@ -3,6 +3,7 @@ package com.jyn.leetcode;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashSet;
+import java.util.LinkedList;
 import java.util.List;
 
 /**
@@ -40,6 +41,11 @@ public class 三数之和 {
             cache.add(nums[i]);
             dfs(nums, i + 1);
             cache.remove(cache.size() - 1);
+        }
+
+        switch (start){
+            case 1:
+                break;
         }
     }
 }

@@ -201,6 +201,8 @@ public void dispatchMessage(@NonNull Message msg) {
 # 消息屏障与异步消息
 
 # epoll原理 
+[源码茶舍之没有epoll就没有Handler](https://juejin.cn/post/6896495861954510861)
+
 
 # IdleHandler
 > IdleHandler是一个回调接口，可以通过MessageQueue的addIdleHandler添加实现类。

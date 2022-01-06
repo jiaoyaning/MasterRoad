@@ -48,6 +48,11 @@ buildscript {
         classpath 'com.google.protobuf:protobuf-gradle-plugin:0.8.17'
 
         /**
+         * 提高 ARouter 的初始化速度
+         * https://github.com/alibaba/ARouter
+         */
+        classpath "com.alibaba:arouter-register:1.0.2"
+        /**
          * 饿了么字节码hook库
          * https://github.com/eleme/lancet
          */

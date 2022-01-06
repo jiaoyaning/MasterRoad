@@ -111,7 +111,13 @@ public void dispatchMessage(@NonNull Message msg) {
 >1. `Kotlin`中所有的内部类都是默认静态的，也就都是静态内部类。
 >2. 如果需要调用外部的对象方法，就需要用`inner`修饰，改成和`Java`一样的内部类，并且会持有外部类的引用，需要考虑内存泄漏问题。
 
+
+##### **问：为什么Handler不会引起ANR？**
+> ANR的管理是在AMS中进行一个Handler的延时事件，当到达时间后还没有拆出掉这个handler事件将会爆出ANR异常。而Hander整个过程并没有涉及到这些流程？
+
 ---
+
+
 
 # 延伸: HandlerThread
 
@@ -185,8 +191,10 @@ public void dispatchMessage(@NonNull Message msg) {
 #### **问：Looper.loop()启动了一个死循环，为什么没有阻塞主线程？**
 >死循环不会阻塞主线程的原因是，死循环本身就是这个线程的主要任务！ 
 再来想一想`Looper`是干嘛的？`Looper`是从`MessageQueue`里面取出消息并回调`Handler`处理的。
->当队列没有消息的时候证明主线程也不再需要刷新任何UI，也不需要处理任何数据，所以为了不让`Looper`空转导致资源浪费才有了`MessageQueue`的`阻塞机制`。  
->
+>当队列没有消息的时候证明主线程也不再需要刷新任何UI，也不需要处理任何数据，所以为了不让`Looper`空转导致资源浪费才有了`MessageQueue`的`阻塞机制 epoll`。  
+>`epoll`是一个异步回调监听事件变化状态的系统调用，当没有事件的时候将会进入到进程挂起。
+
+
 #### **延伸问题：整个线程处于死循环中，那么外部的事件是如何进入到`MessageQueue`中的呢？**  
 > 其实这个问题也很容易理解，我们知道`Activity`全是由`AMS`统一维护的，`Activity`在启动的时候就和`AMS`建立了联系，如果有外部事件（触摸等）需要被处理的话，会由`AMS`通过`App`中的其他线程将`Message`抛到主线程的`MessageQueue`中。
 

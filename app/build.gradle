@@ -6,6 +6,8 @@ apply plugin: 'kotlin-android-extensions'
 apply plugin: 'dagger.hilt.android.plugin'
 apply plugin: 'kotlin-kapt'
 apply plugin: 'com.google.protobuf'
+apply plugin: 'com.alibaba.arouter'
+
 //apply plugin: 'me.ele.lancet' //饿了么字节码hook库
 //apply plugin: 'com.jyn.helloworld'
 apply from: 'SimplePlugin.gradle' //自定义极简插件，路径方式引入
@@ -197,7 +199,7 @@ dependencies {
 
 
 
-    implementation "com.kuaishou.koom:koom-java-leak:2.0.0"
+//    implementation "com.kuaishou.koom:koom-java-leak:2.0.0"
 
     //只引入，不参与打包，这样即可在External Libraries 中看到其源码了
 //    compileOnly 'com.android.tools.build:gradle:4.1.3'

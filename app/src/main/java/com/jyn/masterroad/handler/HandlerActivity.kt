@@ -49,6 +49,7 @@ class HandlerActivity : BaseActivity<ActivityHandlerBinding>(R.layout.activity_h
 
     private val handlerCreateTest: HandlerCreateTest by lazy { HandlerCreateTest() }
     private val handlerSyncBarrier: HandlerSyncBarrier by lazy { HandlerSyncBarrier() }
+    private val handlerThreadTest : HandlerThreadTest by lazy { HandlerThreadTest() }
 
     private var handler = object : Handler(Looper.getMainLooper()) {
         override fun handleMessage(msg: Message) {
@@ -65,6 +66,7 @@ class HandlerActivity : BaseActivity<ActivityHandlerBinding>(R.layout.activity_h
     override fun initView() {
         binding.handlerCreate = handlerCreateTest
         binding.handlerSyncBarrier = handlerSyncBarrier
+        binding.handlerThreadTest = handlerThreadTest
 
         binding.handlerLeakBtnDelay.setOnClickListener { postDelayed() }
         binding.handlerLeakBtnDelayMessage.setOnClickListener { sendMessageDelayed() }

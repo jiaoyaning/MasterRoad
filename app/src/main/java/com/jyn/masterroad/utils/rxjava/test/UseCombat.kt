@@ -4,6 +4,7 @@ import com.apkfuns.logutils.LogUtils
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
 import io.reactivex.rxjava3.core.*
 import io.reactivex.rxjava3.disposables.Disposable
+import io.reactivex.rxjava3.internal.operators.observable.*
 import java.util.Random
 import java.util.concurrent.TimeUnit
 import io.reactivex.rxjava3.internal.operators.single.SingleJust
@@ -11,10 +12,6 @@ import io.reactivex.rxjava3.internal.operators.single.SingleMap
 import io.reactivex.rxjava3.internal.operators.single.SingleDelay
 import io.reactivex.rxjava3.internal.operators.single.SingleSubscribeOn
 import io.reactivex.rxjava3.internal.operators.single.SingleObserveOn
-import io.reactivex.rxjava3.internal.operators.observable.ObservableInterval
-import io.reactivex.rxjava3.internal.operators.observable.ObservableMap
-import io.reactivex.rxjava3.internal.operators.observable.ObservableFlatMap
-import io.reactivex.rxjava3.internal.operators.observable.ObservableDelay
 import io.reactivex.rxjava3.schedulers.Schedulers
 import io.reactivex.rxjava3.internal.schedulers.IoScheduler
 
@@ -53,6 +50,11 @@ class UseCombat {
                             }
                         })
 
+
+
+        /**
+         * [ObservableJust.subscribeActual]
+         */
         Observable.just(1)
                 .subscribe(object : Observer<Int> {
                     override fun onSubscribe(d: Disposable?) {
@@ -67,6 +69,27 @@ class UseCombat {
                     override fun onComplete() {
                     }
                 })
+
+
+        /**
+         * [ObservableCreate.subscribeActual]
+         * subscribe的时候，把[ObservableEmitter]和[Observer]两个对象合并成了一个
+         */
+        Observable.create(ObservableOnSubscribe<Int> {
+            it.onNext(1)
+        }).subscribe(object : Observer<Int> {
+            override fun onSubscribe(d: Disposable?) {
+            }
+
+            override fun onNext(t: Int?) {
+            }
+
+            override fun onError(e: Throwable?) {
+            }
+
+            override fun onComplete() {
+            }
+        })
     }
 
     /**
@@ -181,6 +204,7 @@ class UseCombat {
                     LogUtils.tag("Rxjava").i("Observable nextInt: $nextInt")
                     it.onNext(nextInt)
                 })
+                .map { it.toLong() }
                 .flatMap {
                     LogUtils.tag("Rxjava").i("Observable flatMap: $it")
                     Observable.timer(it.toLong(), TimeUnit.SECONDS)

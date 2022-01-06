@@ -25,6 +25,7 @@
         <entry key="app/src/main/res/layout/activity_aop.xml" value="0.3328125" />
         <entry key="app/src/main/res/layout/activity_constraintlayout.xml" value="0.22" />
         <entry key="app/src/main/res/layout/activity_custom.xml" value="0.5488257107540173" />
+        <entry key="app/src/main/res/layout/activity_handler.xml" value="0.334375" />
         <entry key="app/src/main/res/layout/activity_layout.xml" value="0.25462962962962965" />
         <entry key="app/src/main/res/layout/activity_leak_canary.xml" value="0.32486019318759535" />
         <entry key="app/src/main/res/layout/activity_live_data.xml" value="0.334375" />

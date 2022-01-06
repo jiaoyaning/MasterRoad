@@ -1,5 +1,7 @@
 package com.jyn.masterroad.view.layout
 
+import android.view.LayoutInflater
+import androidx.appcompat.app.AppCompatViewInflater
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.jyn.common.ARouter.RoutePath
 import com.jyn.masterroad.R
@@ -28,7 +30,7 @@ import com.jyn.masterroad.databinding.ActivityLayoutBinding
  */
 @Route(path = RoutePath.Layout.path)
 class LayoutActivity : BaseActivity<ActivityLayoutBinding>
-    (R.layout.activity_layout) {
+(R.layout.activity_layout) {
     /**
      * 自定义layout的步骤
      *   1.重写onMeasure()
@@ -44,6 +46,14 @@ class LayoutActivity : BaseActivity<ActivityLayoutBinding>
      *  measureChildren()
      *
      *  requestLayout 只会触发 measure 和 layout，invalidate 只会触发 draw。
+     *
+     *
+     *
+     *  [LayoutInflater.setFactory]
+     *  [LayoutInflater.setFactory2]
+     *  这两个的差别，只在于 setFactory2 多了一个 parent 字段
+     *
+     *  [AppCompatViewInflater.createView]
      */
 
     override fun initView() {

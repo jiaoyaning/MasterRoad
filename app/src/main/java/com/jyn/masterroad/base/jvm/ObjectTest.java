@@ -3,7 +3,11 @@ package com.jyn.masterroad.base.jvm;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
+import com.jyn.masterroad.base.collection.HashMapTest;
+
 import org.jetbrains.annotations.NotNull;
+
+import java.util.HashMap;
 
 /*
  * java深拷贝与浅拷贝
@@ -14,6 +18,17 @@ import org.jetbrains.annotations.NotNull;
  */
 public class ObjectTest {
 
+    /**
+     * 1. String的哈希算法
+     *   @see String#hashCode
+     *      使用 String 的 char 数组的数字每次乘以 31 再叠加最后返回。
+     *   为什么使用31呢？
+     *      因为31 有个很好的性能，即用移位和减法来代替乘法，可以得到更好的性能： 31 * i == (i << 5） - i， 现代的 VM 可以自动完成这种优化。
+     *
+     *
+     * 2. HashMap 的 hash 算法的实现原理
+     *   @see HashMapTest
+     */
     @Override
     public int hashCode() {
         return super.hashCode();

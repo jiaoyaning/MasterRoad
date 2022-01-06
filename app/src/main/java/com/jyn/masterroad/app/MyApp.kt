@@ -10,7 +10,13 @@ import android.widget.Toast
 import androidx.lifecycle.ProcessLifecycleOwner
 import com.apkfuns.logutils.LogUtils
 import com.jyn.common.Utils.MemoryCase
+import com.kwai.koom.base.MonitorLog
+import com.kwai.koom.base.MonitorManager
+import com.kwai.koom.javaoom.monitor.OOMHprofUploader
+import com.kwai.koom.javaoom.monitor.OOMMonitorConfig
+import com.kwai.koom.javaoom.monitor.OOMReportUploader
 import dagger.hilt.android.HiltAndroidApp
+import java.io.File
 
 /*
  * 【从入门到实用】android启动优化深入解析
@@ -55,6 +61,8 @@ class MyApp : Application() {
 
         val debuggerConnected = Debug.isDebuggerConnected() //判断apk是否运行在调试状态
         LogUtils.tag("MasterRoad").e("是否在调试状态:$debuggerConnected")
+
+        initMonitor()
     }
 
     /*
@@ -124,5 +132,32 @@ class MyApp : Application() {
                 LogUtils.tag("MasterRoad").i(" ——> 深色主题")
             }
         }
+    }
+
+    fun initMonitor(){
+        val config = OOMMonitorConfig.Builder()
+                .setThreadThreshold(50) //50 only for test! Please use default value!
+                .setFdThreshold(300) // 300 only for test! Please use default value!
+                .setHeapThreshold(0.9f) // 0.9f for test! Please use default value!
+                .setVssSizeThreshold(1_000_000) // 1_000_000 for test! Please use default value!
+                .setMaxOverThresholdCount(1) // 1 for test! Please use default value!
+                .setAnalysisMaxTimesPerVersion(3) // Consider use default value！
+                .setAnalysisPeriodPerVersion(15 * 24 * 60 * 60 * 1000) // Consider use default value！
+                .setLoopInterval(5_000) // 5_000 for test! Please use default value!
+                .setEnableHprofDumpAnalysis(true)
+                .setHprofUploader(object: OOMHprofUploader {
+                    override fun upload(file: File, type: OOMHprofUploader.HprofType) {
+                        MonitorLog.e("OOMMonitor", "todo, upload hprof ${file.name} if necessary")
+                    }
+                })
+                .setReportUploader(object: OOMReportUploader {
+                    override fun upload(file: File, content: String) {
+                        MonitorLog.i("OOMMonitor", content)
+                        MonitorLog.e("OOMMonitor", "todo, upload report ${file.name} if necessary")
+                    }
+                })
+                .build()
+
+        MonitorManager.addMonitorConfig(config)
     }
 }

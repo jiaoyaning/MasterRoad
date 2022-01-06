@@ -2,6 +2,7 @@ package com.jyn.masterroad.utils.leakCanary2
 
 import android.app.Activity
 import android.os.Debug
+import android.view.View
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.apkfuns.logutils.LogUtils
 import com.jyn.common.ARouter.RoutePath
@@ -29,7 +30,7 @@ import leakcanary.*
  */
 @Route(path = RoutePath.LeakCanary.path)
 class LeakCanaryActivity : BaseActivity<ActivityLeakCanaryBinding>
-    (R.layout.activity_leak_canary) {
+(R.layout.activity_leak_canary) {
 
     /**
      * [LeakCanary]
@@ -39,17 +40,20 @@ class LeakCanaryActivity : BaseActivity<ActivityLeakCanaryBinding>
      *   [AppWatcher.appDefaultWatchers]
      *
      * 监听
-     * Activity     [ActivityWatcher]
+     *  1. Activity     [ActivityWatcher]
+     *      ActivityLifecycleCallbacks
      *
-     * Fragment     [FragmentAndViewModelWatcher] -> [AndroidXFragmentDestroyWatcher]
+     *  2. Fragment     [FragmentAndViewModelWatcher] -> [AndroidXFragmentDestroyWatcher]
+     *      [FragmentLifecycleCallbacks]
      *
-     * ViewMode     [ViewModelClearedWatcher]
+     *  3. ViewMode     [ViewModelClearedWatcher]
+     *      反射获取 ViewModelStore 的 mMap
      *
-     * RootView     [RootViewWatcher]
-     *  通过 OnAttachStateChangeListener 的 onViewAttachedToWindow 和onViewDetachedFromWindow 方法回调可做内存泄漏的检查工作:
+     *  4. RootView     [RootViewWatcher]
+     *      通过 [View.addOnAttachStateChangeListener] 的 onViewAttachedToWindow 和onViewDetachedFromWindow 方法回调可做内存泄漏的检查工作:
      *
-     * Service      [ServiceWatcher]
-     *  Service 通过hook ActivityThread的 H 类和 AMS，当 AMS调用 serviceDoneExecuting 方法时做内存泄漏的检查工作。
+     *  5. Service      [ServiceWatcher]
+     *      Service 通过hook ActivityThread的 H 类和 AMS，当 AMS调用 serviceDoneExecuting 方法时做内存泄漏的检查工作。
      */
 
     /**
@@ -66,11 +70,18 @@ class LeakCanaryActivity : BaseActivity<ActivityLeakCanaryBinding>
      *
      * 注意：此处为引用而非引用所指向的对象
      */
+
+
+    /**
+     * 缺点：
+     * 1. 必须要退出当前Activity才能分析内存，且分析很慢
+     * 2. 如果要检测自定义对象需要另写RefWatcher
+     *
+     */
     private val referenceQueue = ReferenceQueue<Any>() //弱引用被回收时，会把引用塞入到该队列中
     private val weakReference = WeakReference<Activity>(this, referenceQueue)
 
     override fun initData() {
-
         objectWatcher.addOnObjectRetainedListener {
 
         }
@@ -82,6 +93,16 @@ class LeakCanaryActivity : BaseActivity<ActivityLeakCanaryBinding>
             sleep(2000)
             // System.gc() 该gc方法并不能保证每次都执行
             Runtime.getRuntime().gc()
+        }
+
+        /**
+         * 自定义监听对象
+         */
+        if (AppWatcher.isInstalled) {
+            objectWatcher.expectWeaklyReachable(
+                    this,
+                    "MyService received Service#onDestroy() callback"
+            )
         }
     }
 

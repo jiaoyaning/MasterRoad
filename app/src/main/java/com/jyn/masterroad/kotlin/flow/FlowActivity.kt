@@ -31,7 +31,7 @@ import com.jyn.masterroad.databinding.ActivityFlowBinding
  * 关于kotlin中的Collections、Sequence、Channel和Flow (二)
  * https://juejin.cn/post/6979793981928374308
  *
- * 不做跟风党，LiveData，StateFlow，SharedFlow 使用场景对比
+ * 不做跟风党，LiveData，StateFlow，SharedFlow 使用场景对比 (优秀)
  * https://juejin.cn/post/7007602776502960165
  *
  * 用Kotlin Flow解决Android开发中的痛点问题

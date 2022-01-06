@@ -41,16 +41,19 @@ class LeakCanaryActivity : BaseActivity<ActivityLeakCanaryBinding>
      *
      * 监听
      *  1. Activity     [ActivityWatcher]
+     *      ActivityLifecycleCallbacks
      *
      *  2. Fragment     [FragmentAndViewModelWatcher] -> [AndroidXFragmentDestroyWatcher]
+     *      [FragmentLifecycleCallbacks]
      *
      *  3. ViewMode     [ViewModelClearedWatcher]
+     *      反射获取 ViewModelStore 的 mMap
      *
      *  4. RootView     [RootViewWatcher]
-     *   通过 [View.addOnAttachStateChangeListener] 的 onViewAttachedToWindow 和onViewDetachedFromWindow 方法回调可做内存泄漏的检查工作:
+     *      通过 [View.addOnAttachStateChangeListener] 的 onViewAttachedToWindow 和onViewDetachedFromWindow 方法回调可做内存泄漏的检查工作:
      *
      *  5. Service      [ServiceWatcher]
-     *   Service 通过hook ActivityThread的 H 类和 AMS，当 AMS调用 serviceDoneExecuting 方法时做内存泄漏的检查工作。
+     *      Service 通过hook ActivityThread的 H 类和 AMS，当 AMS调用 serviceDoneExecuting 方法时做内存泄漏的检查工作。
      */
 
     /**
@@ -79,7 +82,6 @@ class LeakCanaryActivity : BaseActivity<ActivityLeakCanaryBinding>
     private val weakReference = WeakReference<Activity>(this, referenceQueue)
 
     override fun initData() {
-
         objectWatcher.addOnObjectRetainedListener {
 
         }
@@ -100,7 +102,7 @@ class LeakCanaryActivity : BaseActivity<ActivityLeakCanaryBinding>
             objectWatcher.expectWeaklyReachable(
                     this,
                     "MyService received Service#onDestroy() callback"
-            );
+            )
         }
     }
 

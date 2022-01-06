@@ -30,7 +30,7 @@ import com.jyn.masterroad.databinding.ActivityLayoutBinding
  */
 @Route(path = RoutePath.Layout.path)
 class LayoutActivity : BaseActivity<ActivityLayoutBinding>
-    (R.layout.activity_layout) {
+(R.layout.activity_layout) {
     /**
      * 自定义layout的步骤
      *   1.重写onMeasure()
@@ -49,7 +49,10 @@ class LayoutActivity : BaseActivity<ActivityLayoutBinding>
      *
      *
      *
-     *  [LayoutInflater.setFactory] ->
+     *  [LayoutInflater.setFactory]
+     *  [LayoutInflater.setFactory2]
+     *  这两个的差别，只在于 setFactory2 多了一个 parent 字段
+     *
      *  [AppCompatViewInflater.createView]
      */
 

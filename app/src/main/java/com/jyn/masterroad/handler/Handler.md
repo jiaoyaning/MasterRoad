@@ -139,6 +139,8 @@ public void dispatchMessage(@NonNull Message msg) {
  }
  ```
 
+ ##### **问：锁屏后的延时`Message`会按时送到么？**
+
  ## MessageQueue  
 
  **Handler的Message种类分为3种：**

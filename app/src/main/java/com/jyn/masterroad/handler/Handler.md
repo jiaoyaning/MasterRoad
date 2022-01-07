@@ -198,6 +198,10 @@ public void dispatchMessage(@NonNull Message msg) {
 #### **延伸问题：整个线程处于死循环中，那么外部的事件是如何进入到`MessageQueue`中的呢？**  
 > 其实这个问题也很容易理解，我们知道`Activity`全是由`AMS`统一维护的，`Activity`在启动的时候就和`AMS`建立了联系，如果有外部事件（触摸等）需要被处理的话，会由`AMS`通过`App`中的其他线程将`Message`抛到主线程的`MessageQueue`中。
 
+#### **Looper怎么判断是否是活跃的？**
+> Looper.myQueue().isPolling()
+> MessageQueue.isPolling()
+
 # 消息屏障与异步消息
 
 # epoll原理 

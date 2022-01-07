@@ -88,3 +88,6 @@ https://github.com/zh8637688/AndroidWebP-GradlePlugin
 
 ## 手把手讲解 Android hook技术实现一键换肤
 https://www.jianshu.com/p/4c8d46f58c4f
+
+## Android 端埋点自动采集技术原理剖析
+https://mp.weixin.qq.com/s/qFXtUrBEU3xeag9zKyL4ZA

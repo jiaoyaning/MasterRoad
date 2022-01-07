@@ -97,6 +97,11 @@ class HandlerActivity : BaseActivity<ActivityHandlerBinding>(R.layout.activity_h
         finish()
     }
 
+    override fun onDestroy() {
+        super.onDestroy()
+        LogUtils.tag("Handler").i("onDestroy ->")
+    }
+
     /**
      * 对象被回收的时候会调用该方法
      */

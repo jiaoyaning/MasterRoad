@@ -202,7 +202,13 @@ public void dispatchMessage(@NonNull Message msg) {
 
 # epoll原理 
 [源码茶舍之没有epoll就没有Handler](https://juejin.cn/post/6896495861954510861)
+epoll_wait这里也是整个Android消息机制阻塞的真正位置，阻塞等待期间可以保证线程进入休眠状态，不占用CPU资源，同时监听所注册的事件。
 
+在 Android 2.2 及之前，使用 Java wait / notify 进行等待，在 2.3 以后，使用 epoll 机制，为了可以同时处理 native 侧的消息。
+更详细一点，为了处理键盘鼠标轨迹球等输入设备的消息。Android基于linux内核，各种输入设备被抽象成了文件，监控这些文件描述符的I/O事件不正是epoll的拿手好戏么。
+
+为什么使用epoll而不是poll？
+>因为效率高，epoll时间复杂度是O1,而poll是On
 
 # IdleHandler
 > IdleHandler是一个回调接口，可以通过MessageQueue的addIdleHandler添加实现类。

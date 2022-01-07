@@ -25,7 +25,14 @@ class RecyclerAdapter : RecyclerView.Adapter<RecyclerAdapter.RecyclerViewHolder>
     }
 
     override fun onBindViewHolder(holder: RecyclerViewHolder, position: Int) {}
-    override fun getItemCount(): Int = 10
+    override fun getItemCount(): Int = 30
+
+    override fun onViewAttachedToWindow(holder: RecyclerViewHolder) {
+    }
+
+    override fun onViewDetachedFromWindow(holder: RecyclerViewHolder) {
+
+    }
 }
 
 class HeaderAdapter : RecyclerView.Adapter<HeaderAdapter.HeaderViewHolder>() {

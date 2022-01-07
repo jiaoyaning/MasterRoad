@@ -105,7 +105,6 @@
         <Button
             android:id="@+id/handler_leak_btn_delay"
             style="@style/tv"
-            android:onClick="@{() -> handlerThreadTest.postMessageDelayed()}"
             android:layout_marginTop="8dp"
             android:text="延时消息\nRunnable"
             app:layout_constraintEnd_toStartOf="@id/handler_leak_btn_delay_message"

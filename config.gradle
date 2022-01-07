@@ -118,6 +118,7 @@ ext {
             // Kotlin协程不属于Kotlin语言本身，所以需要手动引入
             "coroutines-core"   : "org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutines",
             "coroutines-android": "org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutines",
+            //兼容jdk8 的 CompletableFuture ； Stream to flow ;
             "coroutines-jdk8": "org.jetbrains.kotlinx:kotlinx-coroutines-jdk8:$coroutines",
             /**
              * https://github.com/Kotlin/anko

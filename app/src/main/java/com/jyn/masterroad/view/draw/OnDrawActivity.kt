@@ -28,10 +28,13 @@ import com.jyn.masterroad.view.draw.view.*
  *
  * Android 视图系统的设计与实现 | 通俗易懂
  * https://mp.weixin.qq.com/s/aFzPl6VcBNXujxw12GkT_w
+ *
+ * Android 重学系列 SurfaceFlinger的概述
+ * https://www.jianshu.com/p/c954bcceb22a
  */
 @Route(path = RoutePath.Draw.path)
 class OnDrawActivity : BaseActivity<ActivityOnDrawBinding>
-    (R.layout.activity_on_draw) {
+(R.layout.activity_on_draw) {
     /**
      * 一个完整的绘制过程会依次绘制以下几个内容：
      *      1.背景
@@ -42,6 +45,7 @@ class OnDrawActivity : BaseActivity<ActivityOnDrawBinding>
      *
      *
      * SurfaceFlinger
+     *
      */
     private val drawView by lazy { CanvasDrawXXXView(this) }
     private val paintView by lazy { PaintView(this) }
@@ -55,17 +59,17 @@ class OnDrawActivity : BaseActivity<ActivityOnDrawBinding>
     override fun initView() {
         binding.click = View.OnClickListener {
             switchView(
-                when (it.id) {
-                    R.id.btn_draw -> drawView
-                    R.id.btn_paint -> paintView
-                    R.id.btn_path -> pathView
-                    R.id.btn_PathEffect -> pathEffectView
-                    R.id.btn_xfermode -> paintSetXfermodeView
-                    R.id.btn_draw_text -> drawTextView
-                    R.id.btn_canvas_view -> canvasView
-                    R.id.btn_drawable -> drawableView
-                    else -> drawView
-                }
+                    when (it.id) {
+                        R.id.btn_draw -> drawView
+                        R.id.btn_paint -> paintView
+                        R.id.btn_path -> pathView
+                        R.id.btn_PathEffect -> pathEffectView
+                        R.id.btn_xfermode -> paintSetXfermodeView
+                        R.id.btn_draw_text -> drawTextView
+                        R.id.btn_canvas_view -> canvasView
+                        R.id.btn_drawable -> drawableView
+                        else -> drawView
+                    }
             )
         }
     }
@@ -88,7 +92,7 @@ class OnDrawActivity : BaseActivity<ActivityOnDrawBinding>
         var starTime: Long = System.nanoTime()
         Choreographer.getInstance().postFrameCallback {
             LogUtils.tag("FPS")
-                .i("starTime:$starTime ; frameTimeNanos:$it ; frameDueTime:${(it - starTime) / 1000000}")
+                    .i("starTime:$starTime ; frameTimeNanos:$it ; frameDueTime:${(it - starTime) / 1000000}")
             starTime = it
         }
     }

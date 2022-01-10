@@ -17,6 +17,9 @@ import java.util.HashMap;
  *
  * jdk1.8中HashMap在扩容的时候做了哪些优化
  * https://blog.csdn.net/weixin_32705525/article/details/113076205
+ *
+ * 面试官："准备用HashMap存1w条数据，构造时传10000还会触发扩容吗？"
+ * https://juejin.cn/post/6844903983748743175
  */
 public class HashMapTest {
     /*

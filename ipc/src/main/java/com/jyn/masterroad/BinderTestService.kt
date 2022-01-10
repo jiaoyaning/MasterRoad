@@ -6,6 +6,10 @@ import android.os.Binder
 import android.os.IBinder
 import java.util.*
 
+/*
+ * Android 重学系列 Binder的总结
+ * https://www.jianshu.com/p/62eee6cf03a3
+ */
 class BinderTestService : Service() {
 
     private val binder = ServiceBinder()

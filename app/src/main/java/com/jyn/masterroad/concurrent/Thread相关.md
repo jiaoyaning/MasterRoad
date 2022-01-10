@@ -143,14 +143,20 @@ Thread.sleep(1000);
 ### RUNNABLE与 TIMED-WAITING 状态转换
 调用带时间参数的等待API(`sleep()`)，自然就从 RUNNABLE 状态进入 TIMED-WAITING 状态；当被唤醒或超时时间到就会从TIMED_WAITING进入RUNNABLE状态
 
-#### 问: 进入 BLOCKED 只有一种情况，就是等待 synchronized 监视器锁，那调用 JUC 中的 Lock.lock() 方法，如果某个线程等待这个锁，这个线程状态是什么呢？为什么？  
+#### **问: 进入 BLOCKED 只有一种情况，就是等待 synchronized 监视器锁，那调用 JUC 中的 Lock.lock() 方法，如果某个线程等待这个锁，这个线程状态是什么呢？为什么？**
 > WAITING
 
-#### 问: 但既然都是阻塞，还要分成这 BLOCKED 和 WAITING 两种  
+#### **问: 但既然都是阻塞，还要分成这 BLOCKED 和 WAITING 两种** 
 > blocked 状态指的是进行系统调用，通过操作系统挂起线程后，线程的状态。  
 而 waiting 状态则不需要进行系统调用，是一种 JVM 层面的线程阻塞后的状态。  
 由于转换到 blocked 状态需要进行系统调用，所以到这个状态的转换操作比较重。
 
+#### **问：线程的缓存何时刷新？**
+[参考](https://juejin.cn/post/6844903749933072392)
+> 1. 当从synchronized 代码域离开的时候；
+> 2. 当线程结束时候；
+> 3. 当调用synchronized方法；
+> 4. 当第一次访问线程的某个属性。
 
 # ThreadLocal 和 InheritableThreadLocal
 

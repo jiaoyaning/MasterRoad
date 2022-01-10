@@ -59,6 +59,12 @@ class LiveDataActivity : BaseActivity<ActivityLiveDataBinding>
      * 但是，如果我们把 Fragment 中的 LiveData 绑定的是 Activity 的生命周期时，会出现内存泄漏
      */
 
+    /**
+     * LiveData 数据倒灌的解决方案
+     *  1.反射修改 ObserverWrapper 的 mLastVersion 使其与 mVersion相等
+     *  2.SingleLiveEvent 添加一个标识
+     */
+
     private val liveDataTestVM: LiveDataTestVM by viewModels()
     private val mediatorLiveDataVM: MediatorLiveDataVM by viewModels()
     private val transformationsVM: TransformationsVM by viewModels()

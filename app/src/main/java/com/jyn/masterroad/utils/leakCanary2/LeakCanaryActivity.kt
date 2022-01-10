@@ -1,5 +1,6 @@
 package com.jyn.masterroad.utils.leakCanary2
 
+import android.annotation.SuppressLint
 import android.app.Activity
 import android.os.Debug
 import android.view.View
@@ -81,19 +82,50 @@ class LeakCanaryActivity : BaseActivity<ActivityLeakCanaryBinding>
     private val referenceQueue = ReferenceQueue<Any>() //弱引用被回收时，会把引用塞入到该队列中
     private val weakReference = WeakReference<Activity>(this, referenceQueue)
 
-    override fun initData() {
-        objectWatcher.addOnObjectRetainedListener {
+    companion object {
+        const val TAG = "LeakCanary"
 
+        @SuppressLint("StaticFieldLeak")
+        var mActivity: Activity? = null
+    }
+
+    override fun initData() {
+        objectWatcher.addOnObjectRetainedListener {}
+
+        binding.onClick = View.OnClickListener {
+            when (it.id) {
+                R.id.btn_leak_canary_static -> staticFinish()
+                R.id.btn_leak_canary_thread -> threadFinish()
+            }
         }
+    }
+
+
+    private fun staticFinish() {
+        mActivity = this
+        finish()
+    }
+
+    private fun threadFinish() {
+        object : Thread() {
+            override fun run() {
+                while (true) {
+                    sleep(1000)
+                }
+            }
+        }.start()
+
+        finish()
     }
 
     override fun onDestroy() {
         super.onDestroy()
-        thread {
-            sleep(2000)
+        LogUtils.tag(TAG).i("onDestroy")
+        thread() {
+            sleep(1000)
             // System.gc() 该gc方法并不能保证每次都执行
             Runtime.getRuntime().gc()
-        }
+        }.start()
 
         /**
          * 自定义监听对象
@@ -110,6 +142,6 @@ class LeakCanaryActivity : BaseActivity<ActivityLeakCanaryBinding>
      * 对象被回收的时候会调用该方法
      */
     protected fun finalize() {
-        LogUtils.tag("LeakCanary").i("finalize -> Activity被回收")
+        LogUtils.tag(TAG).i("finalize -> Activity被回收")
     }
 }

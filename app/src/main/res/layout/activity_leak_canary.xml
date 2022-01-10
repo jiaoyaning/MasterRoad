@@ -5,6 +5,9 @@
 
     <data>
 
+        <variable
+            name="onClick"
+            type="android.view.View.OnClickListener" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -12,5 +15,24 @@
         android:layout_height="match_parent"
         tools:context=".utils.leakCanary2.LeakCanaryActivity">
 
+        <Button
+            android:id="@+id/btn_leak_canary_static"
+            style="@style/tv"
+            android:layout_width="match_parent"
+            android:onClick="@{onClick}"
+            android:text="Static finish"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Button
+            android:id="@+id/btn_leak_canary_thread"
+            style="@style/tv2"
+            android:layout_width="match_parent"
+            android:onClick="@{onClick}"
+            android:text="thread finish"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/btn_leak_canary_static" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

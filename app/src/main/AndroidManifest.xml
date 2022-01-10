@@ -17,6 +17,9 @@
         tools:ignore="AllowBackup"
         tools:targetApi="m">
         <activity
+            android:name=".utils.cronet.CronetActivity"
+            android:exported="false" />
+        <activity
             android:name=".utils.mmkv.MMkvActivity"
             android:exported="false" />
         <activity

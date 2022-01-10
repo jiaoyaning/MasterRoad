@@ -19,7 +19,7 @@ class BindingCollectionModel : ViewModel() {
     var recyclerView: RecyclerView? = null
 
     var itemBinding: ItemBinding<String> = ItemBinding
-        .of(BR.binding_collection_item, R.layout.item_binding_collection)
+            .of(BR.binding_collection_item, R.layout.item_binding_collection)
 
     fun addOne(v: View) {
         val value: MutableList<String>? = items.value?.apply {
@@ -29,6 +29,6 @@ class BindingCollectionModel : ViewModel() {
         items.postValue(value)
 
         recyclerView?.adapter?.itemCount?.minus(1)
-            ?.let { recyclerView?.scrollToPosition(it) } //滑动到最后一行
+                ?.let { recyclerView?.scrollToPosition(it) } //滑动到最后一行
     }
 }

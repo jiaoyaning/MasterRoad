@@ -23,7 +23,10 @@
 [编译打包签名](blogs/编译打包签名.md)  
 [Dalvik和ART.md](blogs/Dalvik和ART.md)  
 [Gradle](blogs/Gradle.md)
+[版本适配 & Gradle中的Version](blogs/版本问题.md)
 [序列化Serializable 和 Parcelable](app/src/main/java/com/jyn/masterroad/base/serialize/序列化.md)  
+[布局流程](app/src/main/java/com/jyn/masterroad/view/layout/布局流程.md)
+[UI绘制](app/src/main/java/com/jyn/masterroad/view/draw/绘制.md)
 
 # 测试
 [Junit](app/src/androidTest/java/com/jyn/masterroad/blogs/Junit.md)  

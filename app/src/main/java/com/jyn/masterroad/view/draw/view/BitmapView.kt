@@ -5,4 +5,5 @@ package com.jyn.masterroad.view.draw.view
  * https://mp.weixin.qq.com/s/pOpG6vtnu1IAQhXf6714EA
  */
 class BitmapView {
+
 }

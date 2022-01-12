@@ -37,7 +37,7 @@ class RxjavaThread {
                 LogUtils.tag(TAG).i("create -> ${Thread.currentThread()}")
             }
             .map { it + 1 }
-            .subscribeOn(AndroidSchedulers.mainThread())
+            .subscribeOn(AndroidSchedulers.mainThread()) //本质上是 HandlerScheduler
             .flatMap {
                 Observable
                     .create<String> { emitter ->

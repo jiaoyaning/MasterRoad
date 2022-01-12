@@ -17,6 +17,7 @@ ext {
     coroutines = "1.4.2"
     anko = "0.10.8"
     glide = "4.12.0"
+    fresco = "2.6.0"
     lifecycle = "2.3.1"
     startup = "1.1.0-beta01"
     recyclerview = "1.2.0-alpha04"
@@ -119,7 +120,7 @@ ext {
             "coroutines-core"   : "org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutines",
             "coroutines-android": "org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutines",
             //兼容jdk8 的 CompletableFuture ； Stream to flow ;
-            "coroutines-jdk8": "org.jetbrains.kotlinx:kotlinx-coroutines-jdk8:$coroutines",
+            "coroutines-jdk8"   : "org.jetbrains.kotlinx:kotlinx-coroutines-jdk8:$coroutines",
             /**
              * https://github.com/Kotlin/anko
              */
@@ -195,6 +196,12 @@ ext {
             "glide"                                : "com.github.bumptech.glide:glide:$glide",
             "glide-compiler"                       : "com.github.bumptech.glide:compiler:$glide",
             "glide-integration"                    : "com.github.bumptech.glide:okhttp3-integration:$glide",
+
+            /**
+             * 官网：https://github.com/facebook/fresco
+             * 文档：https://www.fresco-cn.org/docs/index.html
+             */
+            "fresco"                               : "com.facebook.fresco:fresco:$fresco",
 
             /**
              * https://github.com/square/leakcanary

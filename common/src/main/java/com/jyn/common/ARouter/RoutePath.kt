@@ -63,6 +63,12 @@ object RoutePath {
         const val span = 2
     }
 
+    object Glide {
+        const val name = "Glide"
+        const val path = "/app/Glide"
+        const val span = 2
+    }
+
     object Okio {
         const val name = "IO/NIO/Okio"
         const val path = "/app/OkioActivity"

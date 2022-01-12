@@ -182,6 +182,7 @@ dependencies {
     implementation utils["glide"]
     implementation utils["glide-integration"]
     annotationProcessor utils["glide-compiler"]
+    implementation utils["fresco"]
     implementation utils["ultimatebarx"]
     implementation utils["eventbus"]
     debugImplementation utils["leakcanary"]

@@ -41,8 +41,8 @@ class MMkvActivity : BaseActivity<ActivityMmkvBinding>
      *
      */
 
-    /**
-     * MMKV 可以匿名共享内存(Ashmem)
-     *      用来传输大文件很适合
-     */
+    override fun initData() {
+        //todo https://blog.csdn.net/qq_36487432/article/details/82877889
+        super.initData()
+    }
 }

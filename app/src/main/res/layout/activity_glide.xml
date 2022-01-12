@@ -12,5 +12,22 @@
         android:layout_height="match_parent"
         tools:context=".utils.glide.GlideActivity">
 
+        <ImageView
+            android:id="@+id/iv_glide_01"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:layout_margin="10dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="ContentDescription"
+            tools:srcCompat="@tools:sample/avatars" />
+
+        <com.facebook.drawee.view.SimpleDraweeView
+            android:id="@+id/iv_fresco_01"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:layout_margin="10dp"
+            app:layout_constraintStart_toEndOf="@+id/iv_glide_01"
+            app:layout_constraintTop_toTopOf="parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

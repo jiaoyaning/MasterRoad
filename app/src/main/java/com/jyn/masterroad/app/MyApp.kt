@@ -9,6 +9,7 @@ import android.os.Looper
 import android.widget.Toast
 import androidx.lifecycle.ProcessLifecycleOwner
 import com.apkfuns.logutils.LogUtils
+import com.facebook.drawee.backends.pipeline.Fresco
 import com.jyn.common.Utils.MemoryCase
 //import com.kwai.koom.base.MonitorLog
 //import com.kwai.koom.base.MonitorManager
@@ -52,6 +53,7 @@ class MyApp : Application() {
 
     override fun onCreate() {
         super.onCreate()
+        Fresco.initialize(this)
         // setUncaughtException()
 
         // 第一种可检测activity生命周期的方式

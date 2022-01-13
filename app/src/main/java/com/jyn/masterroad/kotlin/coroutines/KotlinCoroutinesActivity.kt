@@ -2,11 +2,13 @@ package com.jyn.masterroad.kotlin.coroutines
 
 import androidx.lifecycle.lifecycleScope
 import com.alibaba.android.arouter.facade.annotation.Route
+import com.apkfuns.logutils.LogUtils
 import com.jyn.common.ARouter.RoutePath
 import com.jyn.common.Base.BaseScopeActivity
 import com.jyn.masterroad.R
 import com.jyn.masterroad.databinding.ActivityKotlinCoroutinesBinding
-import kotlinx.coroutines.ExperimentalCoroutinesApi
+import kotlinx.coroutines.*
+import kotlin.coroutines.*
 
 /*
  * 官方文档
@@ -41,7 +43,10 @@ import kotlinx.coroutines.ExperimentalCoroutinesApi
 @ExperimentalCoroutinesApi
 @Route(path = RoutePath.KotlinCoroutines.path)
 class KotlinCoroutinesActivity : BaseScopeActivity<ActivityKotlinCoroutinesBinding>
-    (R.layout.activity_kotlin_coroutines) {
+(R.layout.activity_kotlin_coroutines) {
+    companion object {
+        const val TAG = "coroutine"
+    }
 
     private val coroutinesCreate: CoroutinesCreate by lazy { createVM() }
 
@@ -50,8 +55,67 @@ class KotlinCoroutinesActivity : BaseScopeActivity<ActivityKotlinCoroutinesBindi
         binding.channel = ChannelTest()
     }
 
+    /*
+     * kotlin协程硬核解读(5. Java异常本质&协程异常传播取消和异常处理机制)
+     * https://blog.csdn.net/xmxkf/article/details/117200099
+     */
     override fun initData() {
-        lifecycleScope.launchWhenCreated {
+        val coroutineExceptionHandler = CoroutineExceptionHandler { coroutineContext, throwable ->
+            LogUtils.tag(TAG).i("coroutineExceptionHandler coroutineContext -> $coroutineContext")
+            throwable.printStackTrace()
+            LogUtils.tag(TAG).i("coroutineExceptionHandler throwable -> $throwable")
+        }
+
+        lifecycleScope.launch(coroutineExceptionHandler) {
+            /**
+             * 协程代码块中之所以能直接捕获在异步挂起函数中"抛出"的异常？
+             *    是因为协程中通过调度器将子线程的异常对象切换到了协程所在线程，然后在协程代码块中throw抛出。
+             *    如果我们在挂起函数的子线程中直接通过throw抛出异常，协程代码块中的try并不能捕获到，
+             *    协程隐藏了线程切换的实现细节，让我们直接可以在协程代码块中捕获挂起函数中通过resume恢复的异常，从而将异步异常"变为"同步异常。
+             */
+//            try {
+            val coroutine1 = coroutine1(11)
+            LogUtils.tag(TAG).i("suspendCancellableCoroutine -> $coroutine1")
+
+            val coroutine2 = coroutine2(10)
+            LogUtils.tag(TAG).i("suspendCoroutine -> $coroutine2")
+//            } catch (e: Exception) {
+//                LogUtils.tag(TAG).i(e.message)
+//            }
         }
     }
+
+
+    /**
+     * suspendCancellableCoroutine 和 suspendCoroutine 唯一的区别就是前者是可以取消的
+     */
+
+    private suspend fun coroutine1(x: Int): String =
+            suspendCancellableCoroutine { continuation: CancellableContinuation<String> ->
+                continuation.invokeOnCancellation {
+                    LogUtils.tag(TAG).i("suspendCancellableCoroutine  invokeOnCancellation -> $it")
+                }
+
+                Thread {
+                    Thread.sleep(1000)
+
+                    if (x > 10) continuation.resume("大于10")
+                    /*
+                     * resumeWithException可以抛到协程线程，然后try catch住
+                     * 如果用了 throw Exception() ，在挂起的线程中就会直接崩溃，主协程就无法try catch住了
+                     */
+                    else continuation.resumeWithException(Exception("Exception 小于10"))
+                    continuation.cancel() // 只有suspendCancellableCoroutine才有的功能
+                }.start()
+            }
+
+    private suspend fun coroutine2(x: Int): String =
+            suspendCoroutine { continuation: Continuation<String> ->
+                Thread {
+                    Thread.sleep(1000)
+
+                    if (x > 10) continuation.resume("大于10")
+                    else continuation.resumeWithException(Exception("Exception 小于10"))
+                }.start()
+            }
 }

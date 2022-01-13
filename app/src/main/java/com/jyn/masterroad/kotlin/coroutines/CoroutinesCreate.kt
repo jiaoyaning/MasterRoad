@@ -224,12 +224,13 @@ class CoroutinesCreate(application: Application) : AndroidViewModel(application)
     fun parallel() {
         /**
          * 协程内部本身是并发的
+         * 测试结果显示 最多为CPU内核数
          */
         GlobalScope.launch {
-            for (index in 1..10) {
+            for (index in 1..100) {
                 launch {
                     delay(1000)
-                    LogUtils.tag(TAG).i("并发执行 launch:$index")
+                    LogUtils.tag(TAG).i("并发执行 launch:$index ； ${Thread.currentThread().name}")
                 }
             }
         }

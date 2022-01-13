@@ -3,7 +3,9 @@ package com.jyn.masterroad.utils.retrofit
 import androidx.lifecycle.LiveData
 import com.jyn.masterroad.utils.retrofit.factory.LiveDataCallAdapterFactory
 import io.reactivex.rxjava3.core.Observable
+import okhttp3.Request
 import retrofit2.Call
+import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava3.RxJava3CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
@@ -18,11 +20,11 @@ interface RetrofitService {
          * `addCallAdapterFactory(RxJavaCallAdapterFactory.create())`
          */
         var retrofit: Retrofit = Retrofit.Builder()
-            .baseUrl("https://www.wanandroid.com/")
-            .addCallAdapterFactory(RxJava3CallAdapterFactory.create())
-            .addCallAdapterFactory(LiveDataCallAdapterFactory.create())
-            .addConverterFactory(GsonConverterFactory.create())
-            .build()
+                .baseUrl("https://www.wanandroid.com/")
+                .addCallAdapterFactory(RxJava3CallAdapterFactory.create())
+                .addCallAdapterFactory(LiveDataCallAdapterFactory.create())
+                .addConverterFactory(GsonConverterFactory.create())
+                .build()
 
         val retrofitService: RetrofitService = retrofit.create(RetrofitService::class.java)
     }
@@ -35,6 +37,9 @@ interface RetrofitService {
 
     @GET("article/list/{page}/json")
     suspend fun getArticleList3(@Path("page") page: Int): Any
+
+    @GET("article/list/{page}/json")
+    suspend fun getArticleList5(@Path("page") page: Int): Response<Any> //同步请求
 
     @GET("article/list/{page}/json")
     fun getArticleList4(@Path("page") page: Int): LiveData<Any>

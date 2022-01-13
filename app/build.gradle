@@ -185,6 +185,7 @@ dependencies {
     implementation utils["fresco"]
     implementation utils["ultimatebarx"]
     implementation utils["eventbus"]
+    implementation utils["mmkv"]
     debugImplementation utils["leakcanary"]
     debugImplementation utils["blockcanary"]
     implementation utils["arouter"]

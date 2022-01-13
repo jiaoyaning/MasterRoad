@@ -57,7 +57,7 @@ class OkhttpViewModel(application: Application) : AndroidViewModel(application) 
 
         Thread {
             val realCall = okHttpClient.newCall(request)
-            val response = realCall.execute()
+            val response: Response = realCall.execute()
             LogUtils.tag(TAG).i("同步请求 execute response:$response")
         }.start()
     }

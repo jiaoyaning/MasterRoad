@@ -53,7 +53,7 @@
 > 比如我们的 APP 是基于5.0开发的，但是在安装在6.0的手机上时，显然是没有适配的。
 >
 > AOSP里有很多
-> ```java
+> ```
 >   getApplicationInfo().targetSdkVersion < Buid.XXXX样式的代码，就是用来判断targetSdkVersion的
 > ``` 
 

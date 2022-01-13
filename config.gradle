@@ -217,7 +217,12 @@ ext {
              * https://juejin.cn/post/6903165109485436935
              */
             "ultimatebarx"                         : "com.zackratos.ultimatebarx:ultimatebarx:0.5.1",
+
+            /*
+             * https://github.com/Tencent/MMKV
+             */
             "mmkv"                                 : "com.tencent:mmkv-static:1.2.7",
+
             /*
              * https://github.com/square/moshi
              */

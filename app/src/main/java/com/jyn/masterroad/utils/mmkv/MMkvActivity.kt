@@ -3,6 +3,7 @@ package com.jyn.masterroad.utils.mmkv
 import com.jyn.masterroad.R
 import com.jyn.masterroad.base.BaseActivity
 import com.jyn.masterroad.databinding.ActivityMmkvBinding
+import com.tencent.mmkv.MMKV
 
 /**
  * Android 存储之MMKV
@@ -41,8 +42,15 @@ class MMkvActivity : BaseActivity<ActivityMmkvBinding>
      *
      */
 
+    /**
+     * MMKV 可以匿名共享内存(Ashmem)
+     *      用来传输大文件很适合
+     */
+
+    val mmkv by lazy { MMKV.defaultMMKV() }
+
     override fun initData() {
         //todo https://blog.csdn.net/qq_36487432/article/details/82877889
-        super.initData()
+        mmkv?.encode("test", "test")
     }
 }

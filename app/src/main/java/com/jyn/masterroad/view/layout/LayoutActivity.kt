@@ -2,6 +2,7 @@ package com.jyn.masterroad.view.layout
 
 import android.view.LayoutInflater
 import androidx.appcompat.app.AppCompatViewInflater
+import androidx.asynclayoutinflater.view.AsyncLayoutInflater
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.jyn.common.ARouter.RoutePath
 import com.jyn.masterroad.R
@@ -48,16 +49,22 @@ class LayoutActivity : BaseActivity<ActivityLayoutBinding>
      *  requestLayout 只会触发 measure 和 layout，invalidate 只会触发 draw。
      *
      *
-     *
      *  [LayoutInflater.setFactory]
      *  [LayoutInflater.setFactory2]
      *  这两个的差别，只在于 setFactory2 多了一个 parent 字段
+     *  意义：通过 LayoutInflater 创建 View 时候的一个回调，可以通过 LayoutInflater.Factory 来改造或定制创建 View 的过程。
+     *  PS：这两个方法必须放在 [onCreate] 的 super.onCreate 之前
      *
      *  [AppCompatViewInflater.createView]
+     *
+     *
+     *  [AsyncLayoutInflater]
+     *  AsyncLayoutInflater 是来帮助做异步加载 layout 的，
+     *  inflate(int, ViewGroup, OnInflateFinishedListener) 方法运行结束之后
+     *  OnInflateFinishedListener 会在主线程回调返回 View；这样做旨在 UI 的懒加载或者对用户操作的高响应。
      */
 
     override fun initView() {
-
     }
 
     /**

@@ -12,7 +12,7 @@ import io.reactivex.rxjava3.core.Observable
 import io.reactivex.rxjava3.disposables.Disposable
 import com.jyn.masterroad.kotlin.flow.FlowCreate
 
-/**
+/*
  * https://github.com/android/architecture-components-samples/tree/main/LiveDataSample
  *
  * 面试官：你了解 LiveData 的 postValue 吗？
@@ -110,6 +110,12 @@ class LiveDataTestVM(application: Application) : BaseVM(application) {
     fun postValueTest() {
         /**
          * 只会收到最后一次post，setValue则会每次都收到
+         *
+         * postValue 和 setValue 前，使用了同一把锁
+         * 连续的post会一直抢占该锁，并重置value (volatile修饰) 值。
+         * 等最后一次postValue锁释放完之后，setValue获取锁并执行setValue
+         *
+         * 只有一个Runnable，只是设置的是最后一次 postValue 中所重置的 value 值
          */
         for (i in 1..10) {
             postValueNum.postValue(i)

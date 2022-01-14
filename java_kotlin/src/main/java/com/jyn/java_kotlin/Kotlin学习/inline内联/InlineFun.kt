@@ -91,6 +91,8 @@ class InlineFun {
 
         /*
          * 内联函数里函数类型参数不允许间接调用，通过crossinline修饰符允许函数类型参数被间接调用。
+         *
+         * 声明一个 lambda 不能有 return 语句(可以有 return@label 语句)。这样可以避免使用 inline 时，lambda 中的 return 影响程序流程。
          */
         private inline fun crossinlineTest(before: () -> Unit, crossinline after: () -> Unit) {
             before()

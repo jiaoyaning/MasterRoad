@@ -107,6 +107,7 @@ android {
  * api : 会传递依赖，代替compile
  */
 dependencies {
+    implementation 'androidx.asynclayoutinflater:asynclayoutinflater:1.0.0'
     def test = app.test
     def androidx = app.androidx
     def kotlin = app.kotlin

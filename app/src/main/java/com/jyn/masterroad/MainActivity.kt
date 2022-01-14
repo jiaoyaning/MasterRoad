@@ -6,7 +6,9 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.Adapter
+import com.apkfuns.logutils.LogUtils
 import com.jyn.common.ARouter.goto
+import com.jyn.common.Utils.TimeUtils
 import com.jyn.masterroad.base.BaseActivity
 import com.jyn.masterroad.databinding.ActivityMainBinding
 import com.jyn.masterroad.databinding.ItemMainBinding
@@ -25,22 +27,30 @@ import com.jyn.masterroad.databinding.ItemMainBinding
  *
  * Carson带你学Android：BroadcastReceiver史上最全面解析
  * https://www.jianshu.com/p/ca3d87a4cdf3
+ *
+ * 手撸网易云进阶课程-性能优化之NDK高效加载GIF
+ * https://juejin.cn/post/6844904008797126664
  */
 class MainActivity : BaseActivity<ActivityMainBinding>
 (R.layout.activity_main) {
 
     private var routerList: ArrayList<MainViewModel> = MainViewModel.getRouterList()
 
+    override fun initData() {
+        val coldStartTime: Long = TimeUtils.getTimeCalculate(TimeUtils.COLD_START)
+        // 这里记录的TimeUtils.coldStartTime是指Application启动的时间，最终的冷启动时间等于Application启动时间+热启动时间
+        TimeUtils.sColdStartTime = if (coldStartTime > 0) coldStartTime else 0
+        LogUtils.tag("MainActivity").i("冷启动时间：${TimeUtils.sColdStartTime}")
+    }
+
     override fun initView() {
-        //        binding = ActivityMainBinding.inflate(layoutInflater) //第二种实现方式
+        // binding = ActivityMainBinding.inflate(layoutInflater) //第二种实现方式
         val mainAdapter = MainAdapter(routerList, this)
         binding.mainRecycle.adapter = mainAdapter
         val gridLayoutManager = GridLayoutManager(this, 2)
         binding.mainRecycle.layoutManager = gridLayoutManager
         gridLayoutManager.spanSizeLookup = object : GridLayoutManager.SpanSizeLookup() {
-            override fun getSpanSize(position: Int): Int {
-                return mainAdapter.getItemViewType(position)
-            }
+            override fun getSpanSize(position: Int) = mainAdapter.getItemViewType(position)
         }
     }
 

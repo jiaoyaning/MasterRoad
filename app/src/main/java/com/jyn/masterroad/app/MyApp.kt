@@ -11,6 +11,7 @@ import androidx.lifecycle.ProcessLifecycleOwner
 import com.apkfuns.logutils.LogUtils
 import com.facebook.drawee.backends.pipeline.Fresco
 import com.jyn.common.Utils.MemoryCase
+import com.jyn.common.Utils.TimeUtils
 //import com.kwai.koom.base.MonitorLog
 //import com.kwai.koom.base.MonitorManager
 //import com.kwai.koom.javaoom.monitor.OOMHprofUploader
@@ -40,6 +41,9 @@ import java.io.File
  *
  * 抖音BoostMultiDex优化实践
  * https://mp.weixin.qq.com/mp/appmsgalbum?__biz=MzI1MzYzMjE0MQ==&action=getalbum&album_id=1590431672955617284&scene=173&from_msgid=2247485522&from_itemidx=1&count=3&nolastread=1#wechat_redirect
+ *
+ * 面试官：今日头条启动很快，你觉得可能是做了哪些优化？
+ * https://juejin.cn/post/6844903958113157128
  */
 @HiltAndroidApp
 class MyApp : Application() {
@@ -49,6 +53,7 @@ class MyApp : Application() {
      */
     override fun attachBaseContext(base: Context) {
         super.attachBaseContext(base)
+        TimeUtils.beginTimeCalculate(TimeUtils.COLD_START);
     }
 
     override fun onCreate() {

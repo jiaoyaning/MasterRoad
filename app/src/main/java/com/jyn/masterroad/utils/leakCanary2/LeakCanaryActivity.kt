@@ -28,6 +28,8 @@ import leakcanary.*
  *
  * LeakCanary 2.7 原理分析
  * https://blog.csdn.net/u011033906/article/details/117958603
+ *
+ * https://github.com/KwaiAppTeam/KOOM
  */
 @Route(path = RoutePath.LeakCanary.path)
 class LeakCanaryActivity : BaseActivity<ActivityLeakCanaryBinding>

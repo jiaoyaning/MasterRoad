@@ -42,6 +42,16 @@ class GlideActivity : BaseActivity<ActivityGlideBinding>(R.layout.activity_glide
      *
      *      Fresco 针对不同版本的系统用了不同的解码器，为什么呢？
      *      因为解码器最令人担心的问题，在于频繁解码会耗费大量的内存，这些内存频繁分配和回收，会造成GC卡顿。所以，Fresco做了很多针对解码器的优化
+     *
+     *  Glide 和 Fresco 都默认使用 HttpURLConnection
+     *
+     *
+     *  Glide4.0之前,Glide默认使用RGB565格式，比较省内存
+     *  Glide4.0之后，默认格式已经变成了ARGB_8888格式了,这一优势也就不存在了。
+     *
+     *  Glide.with(this)绑定了Activity的生命周期。在Activity内新建了一个无UI的Fragment，
+     *  这个Fragment持有一个Lifecycle，通过Lifecycle在Fragment关键生命周期通知RequestManager进行相关从操作。
+     *  在生命周期onStart时继续加载，onStop时暂停加载，onDestory时停止加载任务和清除操作。
      */
 
     override fun initData() {

@@ -7,5 +7,6 @@ import android.util.ArrayMap;
  */
 public class ArrayMapTest {
     public static void main(String[] args) {
+        ArrayMap<String,String> test = new ArrayMap<>();
     }
 }

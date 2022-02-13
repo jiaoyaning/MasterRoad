@@ -47,7 +47,7 @@ class MMkvActivity : BaseActivity<ActivityMmkvBinding>
      *      用来传输大文件很适合
      */
 
-    val mmkv by lazy { MMKV.defaultMMKV() }
+    private val mmkv by lazy { MMKV.defaultMMKV() }
 
     override fun initData() {
         //todo https://blog.csdn.net/qq_36487432/article/details/82877889

@@ -34,6 +34,10 @@ buildscript {
         maven { url 'https://maven.aliyun.com/repository/gradle-plugin' }
     }
 
+    /**
+     * 我们升级适配完Android Gradle Plugin 7.0
+     * https://mp.weixin.qq.com/s/kwG40yN0kbibRAb_dDBc6w
+     */
     dependencies {
         classpath 'com.android.tools.build:gradle:4.1.3'
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"

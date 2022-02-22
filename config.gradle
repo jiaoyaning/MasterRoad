@@ -3,6 +3,7 @@
  * https://mp.weixin.qq.com/s/l-wU8jQ-veide8oliqjS_g
  */
 ext {
+    kotlin_version = '1.4.31'
     compileSdkVersion = 30
     buildToolsVersion = "30.0.0"
     applicationId = "com.jyn.masterroad"
@@ -247,3 +248,14 @@ ext {
 
     ]
 }
+
+static def addRepos(RepositoryHandler handler){
+    handler.mavenCentral()
+    handler.mavenLocal() //本地插件上传仓库
+    handler.maven { url 'https://maven.aliyun.com/repository/public' }
+    handler.maven { url 'https://maven.aliyun.com/repository/central' }
+    handler.maven { url 'https://maven.aliyun.com/repository/google' }
+    handler.maven { url 'https://maven.aliyun.com/repository/gradle-plugin' }
+}
+
+ext.addRepos = this.&addRepos

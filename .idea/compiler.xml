@@ -8,6 +8,8 @@
       <module name="MasterRoad.app" target="11" />
       <module name="MasterRoad.common" target="11" />
       <module name="MasterRoad.ipc" target="11" />
+      <module name="MasterRoad.java_kotlin" target="11" />
+      <module name="MasterRoad.Leetcode" target="11" />
       <module name="MasterRoad.Plugin.APT" target="11" />
     </bytecodeTargetLevel>
   </component>

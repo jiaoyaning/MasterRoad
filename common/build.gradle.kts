@@ -18,15 +18,15 @@ plugins {
     id("kotlin-kapt")
 }
 
+val app = rootProject.ext
+
 android {
-    compileSdkVersion(30)
-    buildToolsVersion("30.0.3")
+    compileSdkVersion(app.get("compileSdkVersion") as Int)
+    buildToolsVersion(app.get("buildToolsVersion") as String)
 
     defaultConfig {
-        minSdkVersion(14)
-        targetSdkVersion(30)
-        versionCode = 1
-        versionName = "1.0"
+        minSdkVersion(app.get("minSdkVersion") as Int)
+        targetSdkVersion(app.get("targetSdkVersion") as Int)
         testInstrumentationRunner = "android.support.test.runner.AndroidJUnitRunner"
     }
 
@@ -52,8 +52,8 @@ android {
 //    buildFeatures.viewBinding = true
 
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_1_8
-        targetCompatibility = JavaVersion.VERSION_1_8
+        sourceCompatibility = JavaVersion.VERSION_11
+        targetCompatibility = JavaVersion.VERSION_11
     }
 }
 
@@ -61,9 +61,9 @@ android {
  * https://docs.gradle.org/current/userguide/organizing_gradle_projects.html#sec:build_sources
  */
 dependencies {
-    val test = rootProject.ext.get("test") as Map<*, *>
-    val androidx = rootProject.ext.get("androidx") as Map<*, *>
-    val utils = rootProject.ext.get("utils") as Map<*, *>
+    val test = app.get("test") as Map<*, *>
+    val androidx = app.get("androidx") as Map<*, *>
+    val utils = app.get("utils") as Map<*, *>
 
     implementation(fileTree(mapOf("dir" to "libs", "include" to listOf("*.jar"))))
     implementation(kotlin("stdlib-jdk8", KotlinCompilerVersion.VERSION))
@@ -80,8 +80,8 @@ dependencies {
     implementation(androidx["activity-ktx"]!!)
     implementation(androidx["core-ktx"]!!)
 
-    implementation("com.google.dagger:dagger-android:2.35.1")
-    annotationProcessor("com.google.dagger:dagger-android-processor:2.15")
+//    implementation("com.google.dagger:dagger-android:2.35.1")
+//    annotationProcessor("com.google.dagger:dagger-android-processor:2.15")
 
     implementation(utils["arouter"]!!)
     implementation(utils["mmkv"]!!)

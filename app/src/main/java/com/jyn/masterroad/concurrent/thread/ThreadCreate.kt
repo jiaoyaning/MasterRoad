@@ -11,7 +11,7 @@ import javax.inject.Inject
  * 廖雪峰的官方网站 - 使用CompletableFuture
  * https://www.liaoxuefeng.com/wiki/1252599548343744/1306581182447650
  */
-class ThreadCreate @Inject constructor() {
+class ThreadCreate {
 
     //region 一、线程创建的几种方式
 

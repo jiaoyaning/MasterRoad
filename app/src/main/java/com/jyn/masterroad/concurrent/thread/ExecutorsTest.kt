@@ -32,7 +32,7 @@ import javax.inject.Inject
  * 关于多线程中抛异常的这个面试题我再说最后一次！
  * https://www.cnblogs.com/thisiswhy/p/13704940.html
  */
-class ExecutorsTest @Inject constructor() {
+class ExecutorsTest {
 
     private val executor: ExecutorService by lazy {
         Executors.newCachedThreadPool()                 //创建一个可缓存线程池，如果线程池长度超过处理需要，可灵活回收空闲线程，若无可回收，则新建线程。

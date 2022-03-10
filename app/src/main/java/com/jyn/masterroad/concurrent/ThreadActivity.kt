@@ -37,25 +37,15 @@ import javax.inject.Inject
  * 漫话：如何给女朋友解释为什么Java线程没有Running状态？(优质)
  * https://mp.weixin.qq.com/s/JrpIVgXq1Jqg0weO4E1mzQ
  */
-@AndroidEntryPoint
 @Route(path = RoutePath.Thread.path)
 class ThreadActivity : BaseActivity<ActivityThreadBinding>
     (R.layout.activity_thread) {
 
-    @Inject
-    lateinit var threadCreate: ThreadCreate
-
-    @Inject
-    lateinit var executorsTest: ExecutorsTest
-
-    @Inject
-    lateinit var threadWaitNotifyTest: WaitAndNotifyTest
-
-    @Inject
-    lateinit var threadLocalTest: ThreadLocalTest
-
-    @Inject
-    lateinit var countDownLatchTest: CountDownLatchTest
+    val threadCreate: ThreadCreate by lazy { ThreadCreate() }
+    val executorsTest: ExecutorsTest  by lazy { ExecutorsTest() }
+    val threadWaitNotifyTest: WaitAndNotifyTest by lazy { WaitAndNotifyTest() }
+    val threadLocalTest: ThreadLocalTest by lazy { ThreadLocalTest() }
+    val countDownLatchTest: CountDownLatchTest by lazy { CountDownLatchTest() }
 
     override fun initView() {
         binding.threadCreate = threadCreate

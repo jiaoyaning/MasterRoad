@@ -1,9 +1,9 @@
 package com.jyn.masterroad.jetpack.hilt.data
 
-import androidx.hilt.Assisted
-import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.*
 import com.apkfuns.logutils.LogUtils
+import dagger.hilt.android.lifecycle.HiltViewModel
+import javax.inject.Inject
 
 /*
  * Android-Jetpack笔记-ViewModelSavedState
@@ -12,10 +12,11 @@ import com.apkfuns.logutils.LogUtils
  * 定义 Hilt 绑定
  * https://developer.android.google.cn/training/dependency-injection/hilt-android?hl=zh_cn#define-bindings
  */
-class HiltViewModelSaved @ViewModelInject constructor(
+@HiltViewModel
+class HiltViewModelSaved @Inject constructor(
     private val hiltSampleRepository: HiltSampleRepository,
     //SavedStateHandle 用于进程被终止时，存储和恢复数据
-    @Assisted private val savedStateHandle: SavedStateHandle
+    savedStateHandle: SavedStateHandle
 ) : ViewModel() {
 
     companion object {

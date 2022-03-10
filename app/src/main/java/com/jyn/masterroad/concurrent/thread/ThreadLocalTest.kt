@@ -29,7 +29,7 @@ import javax.inject.Inject
  * ThreadLocal的短板，我TTL来补！
  * https://mp.weixin.qq.com/s/JTW82eTZRyKbkgOe2E_qEg
  */
-class ThreadLocalTest @Inject constructor(){
+class ThreadLocalTest {
     private val threadLocal: ThreadLocal<String> by lazy {
         ThreadLocal<String>().apply {
             set("threadLocal 父线程 value")

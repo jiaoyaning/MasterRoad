@@ -4,7 +4,7 @@ import android.view.View
 import com.apkfuns.logutils.LogUtils
 import javax.inject.Inject
 
-class WaitAndNotifyTest @Inject constructor() {
+class WaitAndNotifyTest {
     companion object {
         var TAG = "WaitAndNotify"
     }

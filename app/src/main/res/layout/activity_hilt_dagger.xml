@@ -11,7 +11,7 @@
 
         <variable
             name="hiltViewModel"
-            type="com.jyn.masterroad.jetpack.hilt.data.HiltViewModel" />
+            type="com.jyn.masterroad.jetpack.hilt.data.HiltViewModelTest" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

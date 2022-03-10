@@ -1,13 +1,16 @@
 package com.jyn.masterroad.jetpack.hilt
 
+import android.os.Bundle
+import android.os.PersistableBundle
 import androidx.activity.viewModels
+import androidx.appcompat.app.AppCompatActivity
+import androidx.databinding.DataBindingUtil
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.jyn.common.ARouter.RoutePath
 import com.jyn.masterroad.R
-import com.jyn.masterroad.base.BaseActivity
 import com.jyn.masterroad.databinding.ActivityHiltDaggerBinding
 import com.jyn.masterroad.jetpack.hilt.data.HiltData
-import com.jyn.masterroad.jetpack.hilt.data.HiltViewModel
+import com.jyn.masterroad.jetpack.hilt.data.HiltViewModelTest
 import com.jyn.masterroad.jetpack.hilt.data.HiltViewModelSaved
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
@@ -36,18 +39,22 @@ import javax.inject.Inject
  */
 @AndroidEntryPoint
 @Route(path = RoutePath.Hilt.path)
-class HiltDaggerActivity : BaseActivity<ActivityHiltDaggerBinding>
-    (R.layout.activity_hilt_dagger) {
+class HiltDaggerActivity : AppCompatActivity(){
+    lateinit var binding:ActivityHiltDaggerBinding
 
     @Inject
     lateinit var hiltData: HiltData
 
-    private val hitViewModule: HiltViewModel by viewModels()
+    private val hitViewModuleTest: HiltViewModelTest by viewModels()
     private val hitViewModuleSaved: HiltViewModelSaved by viewModels()
 
-    override fun initView() {
+    override fun onCreate(savedInstanceState: Bundle?, persistentState: PersistableBundle?) {
+        super.onCreate(savedInstanceState, persistentState)
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_hilt_dagger)
+        setContentView(binding.root)
+
         binding.hiltInject = hiltData
-        binding.hiltViewModel = hitViewModule
+        binding.hiltViewModel = hitViewModuleTest
         hitViewModuleSaved.insert()
     }
 }

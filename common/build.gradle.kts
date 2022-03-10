@@ -79,8 +79,7 @@ dependencies {
     implementation(androidx["activity-ktx"]!!)
     implementation(androidx["core-ktx"]!!)
 
-//    implementation("com.google.dagger:dagger-android:2.35.1")
-//    annotationProcessor("com.google.dagger:dagger-android-processor:2.15")
+    implementation(androidx["hilt"]!!)
 
     implementation(utils["arouter"]!!)
     implementation(utils["mmkv"]!!)

@@ -15,30 +15,31 @@ plugins {
     id("com.android.library")
     id("kotlin-android")
     id("kotlin-android-extensions")
+    id("kotlin-kapt")
 }
 
 val app = rootProject.ext
 
 android {
-    compileSdkVersion(app.get("compileSdkVersion") as Int)
-    buildToolsVersion(app.get("buildToolsVersion") as String)
+    compileSdk = app.get("compileSdkVersion") as Int
+    buildToolsVersion = app.get("buildToolsVersion") as String
 
     defaultConfig {
-        minSdkVersion(app.get("minSdkVersion") as Int)
-        targetSdkVersion(app.get("targetSdkVersion") as Int)
+        minSdk = app.get("minSdkVersion") as Int
+        targetSdk = app.get("targetSdkVersion") as Int
         testInstrumentationRunner = "android.support.test.runner.AndroidJUnitRunner"
-
-        javaCompileOptions {
-            annotationProcessorOptions {
-                argument("AROUTER_MODULE_NAME", project.getName())
-            }
-        }
     }
 
     buildTypes {
         getByName("release") {
             isMinifyEnabled = false
             proguardFiles(getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro")
+        }
+    }
+
+    kapt {
+        arguments {
+            arg("AROUTER_MODULE_NAME", project.name)
         }
     }
 

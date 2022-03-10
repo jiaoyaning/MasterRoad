@@ -15,7 +15,6 @@ plugins {
     id("com.android.library")
     id("kotlin-android")
     id("kotlin-android-extensions")
-    id("kotlin-kapt")
 }
 
 val app = rootProject.ext
@@ -28,18 +27,18 @@ android {
         minSdkVersion(app.get("minSdkVersion") as Int)
         targetSdkVersion(app.get("targetSdkVersion") as Int)
         testInstrumentationRunner = "android.support.test.runner.AndroidJUnitRunner"
+
+        javaCompileOptions {
+            annotationProcessorOptions {
+                argument("AROUTER_MODULE_NAME", project.getName())
+            }
+        }
     }
 
     buildTypes {
         getByName("release") {
             isMinifyEnabled = false
             proguardFiles(getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro")
-        }
-    }
-
-    kapt {
-        arguments {
-            arg("AROUTER_MODULE_NAME", project.name)
         }
     }
 
@@ -88,10 +87,4 @@ dependencies {
     api(utils["logutils"]!!)
 
     debugImplementation(utils["leakcanary"]!!)
-
-    //hilt
-    implementation(androidx["hilt"]!!)
-    implementation(androidx["hilt-viewmodel"]!!)
-    kapt(androidx["hilt-compiler"]!!)
-    kapt(androidx["hilt-compiler2"]!!)
 }

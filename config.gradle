@@ -5,7 +5,7 @@
 ext {
     kotlin_version = '1.5.31'
     compileSdkVersion = 30
-    buildToolsVersion = "30.0.0"
+    buildToolsVersion = "30.0.2"
     applicationId = "com.jyn.masterroad"
     applicationId_ipc = "com.jyn.masterroad_ipc"
     minSdkVersion = 21
@@ -189,8 +189,8 @@ ext {
     utils = [
             "logutils"                             :"com.apkfuns.logutils:library:1.7.5",
             "eventbus"                             : "org.greenrobot:eventbus:3.2.0",
-            "arouter"                              : "com.alibaba:arouter-api:1.5.0",
-            "arouter-compiler"                     : "com.alibaba:arouter-compiler:1.2.2",
+            "arouter"                              : "com.alibaba:arouter-api:1.5.2",
+            "arouter-compiler"                     : "com.alibaba:arouter-compiler:1.5.2",
 
             /**
              * 官网：https://github.com/bumptech/glide

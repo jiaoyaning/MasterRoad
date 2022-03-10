@@ -179,7 +179,7 @@ dependencies {
     implementation 'com.trello.rxlifecycle4:rxlifecycle-kotlin:4.0.2'
     implementation 'com.trello.rxlifecycle4:rxlifecycle-android-lifecycle-kotlin:4.0.2'
     implementation http["rxhttp"]
-    kapt http["rxhttp-compiler"]
+    annotationProcessor http["rxhttp-compiler"]
 
     implementation utils["glide"]
     implementation utils["glide-integration"]
@@ -191,7 +191,7 @@ dependencies {
     debugImplementation utils["leakcanary"]
     debugImplementation utils["blockcanary"]
     implementation utils["arouter"]
-    annotationProcessor utils["arouter-compiler"]
+//    annotationProcessor utils["arouter-compiler"]
     kapt utils["arouter-compiler"]
     implementation utils["codelocator"]
 

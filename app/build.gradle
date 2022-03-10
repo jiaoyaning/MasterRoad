@@ -1,5 +1,3 @@
-import com.android.build.gradle.internal.dsl.*
-
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
@@ -8,7 +6,6 @@ apply plugin: 'kotlin-kapt'
 apply plugin: 'com.google.protobuf'
 apply plugin: 'com.alibaba.arouter'
 
-//apply plugin: 'me.ele.lancet' //饿了么字节码hook库
 //apply plugin: 'com.jyn.helloworld'
 apply from: 'SimplePlugin.gradle' //自定义极简插件，路径方式引入
 
@@ -151,7 +148,6 @@ dependencies {
     implementation androidx["fragment-ktx"]
     implementation androidx["hilt"]
     kapt androidx["hilt-compiler"]
-//    implementation androidx["hilt-viewmodel"]
     kapt androidx["hilt-compiler2"]
 
     implementation kotlin["kotlin"]

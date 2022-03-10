@@ -19,12 +19,12 @@ plugins {
 }
 
 android {
-    compileSdkVersion(29)
-    buildToolsVersion("29.0.3")
+    compileSdkVersion(30)
+    buildToolsVersion("30.0.3")
 
     defaultConfig {
         minSdkVersion(14)
-        targetSdkVersion(29)
+        targetSdkVersion(30)
         versionCode = 1
         versionName = "1.0"
         testInstrumentationRunner = "android.support.test.runner.AndroidJUnitRunner"
@@ -61,32 +61,37 @@ android {
  * https://docs.gradle.org/current/userguide/organizing_gradle_projects.html#sec:build_sources
  */
 dependencies {
+    val test = rootProject.ext.get("test") as Map<*, *>
+    val androidx = rootProject.ext.get("androidx") as Map<*, *>
+    val utils = rootProject.ext.get("utils") as Map<*, *>
+
     implementation(fileTree(mapOf("dir" to "libs", "include" to listOf("*.jar"))))
     implementation(kotlin("stdlib-jdk8", KotlinCompilerVersion.VERSION))
-    implementation("androidx.appcompat:appcompat:1.2.0")
-    testImplementation("junit:junit:4.12")
-    androidTestImplementation("androidx.test.ext:junit:1.1.1")
-    androidTestImplementation("androidx.test.espresso:espresso-core:3.2.0")
 
-    implementation("androidx.lifecycle:lifecycle-viewmodel:2.3.1")
-    implementation("androidx.lifecycle:lifecycle-livedata:2.3.1")
-    implementation("androidx.lifecycle:lifecycle-runtime:2.3.1")
-    implementation("androidx.lifecycle:lifecycle-process:2.3.1")
-    implementation("androidx.activity:activity-ktx:1.2.2")
-    implementation("androidx.core:core-ktx:1.5.0")
+    testImplementation(test["junit"]!!)
+    androidTestImplementation(test["ext-junit"]!!)
+    androidTestImplementation(test["espresso-core"]!!)
+
+    implementation(androidx["appcompat"]!!)
+    implementation(androidx["viewmodel-ktx"]!!)
+    implementation(androidx["livedata-ktx"]!!)
+    implementation(androidx["runtime-ktx"]!!)
+    implementation(androidx["lifecycle-process"]!!)
+    implementation(androidx["activity-ktx"]!!)
+    implementation(androidx["core-ktx"]!!)
 
     implementation("com.google.dagger:dagger-android:2.35.1")
     annotationProcessor("com.google.dagger:dagger-android-processor:2.15")
 
-    implementation("com.alibaba:arouter-api:1.5.0")
-    implementation("com.tencent:mmkv-static:1.2.7")
-    api("com.apkfuns.logutils:library:1.7.5")
+    implementation(utils["arouter"]!!)
+    implementation(utils["mmkv"]!!)
+    api(utils["logutils"]!!)
 
-    debugImplementation("com.squareup.leakcanary:leakcanary-android:2.7")
+    debugImplementation(utils["leakcanary"]!!)
 
     //hilt
-    implementation("com.google.dagger:hilt-android:2.28-alpha")
-    implementation("androidx.hilt:hilt-lifecycle-viewmodel:1.0.0-alpha01")
-    kapt("com.google.dagger:hilt-android-compiler:2.28-alpha")
-    kapt("androidx.hilt:hilt-compiler:1.0.0-alpha01")
+    implementation(androidx["hilt"]!!)
+    implementation(androidx["hilt-viewmodel"]!!)
+    kapt(androidx["hilt-compiler"]!!)
+    kapt(androidx["hilt-compiler2"]!!)
 }

@@ -17,7 +17,7 @@ class KoinInitializer : Initializer<Unit> {
             //声明Android上下文
             androidContext(context)
             //声明要使用的模块
-            modules(appKoinModule)
+//            modules(appKoinModule)
         }
     }
 

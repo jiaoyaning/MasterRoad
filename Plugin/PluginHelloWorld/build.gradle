@@ -3,7 +3,7 @@ plugins {
     id 'java-library'
     id 'groovy'
     id 'kotlin'
-    id 'maven'
+//    id 'maven'
     id 'maven-publish' //可以我们的编译的输出物（artifacts）发布到Apache Maven仓库当中
 }
 
@@ -83,11 +83,11 @@ publishing {
  * 或者这样
  *  ./gradlew uploadArchives
  */
-uploadArchives {
-    repositories.mavenDeployer {
-        repository(url: uri('../repo'))   // 本地仓库路径 ，依赖放需要在根目录build.gradle文件中添加这个maven路径才能找到该插件
-        pom.groupId = "com.jyn.plugins"// 唯一标识（通常为模块包名，也可以任意）
-        pom.artifactId = "HelloWorld"// 项目名称（通常为类库模块名称，也可以任意）
-        pom.version = "1.0"// 版本号
-    }
-}
+//uploadArchives {
+//    repositories.mavenDeployer {
+//        repository(url: uri('../repo'))   // 本地仓库路径 ，依赖放需要在根目录build.gradle文件中添加这个maven路径才能找到该插件
+//        pom.groupId = "com.jyn.plugins"// 唯一标识（通常为模块包名，也可以任意）
+//        pom.artifactId = "HelloWorld"// 项目名称（通常为类库模块名称，也可以任意）
+//        pom.version = "1.0"// 版本号
+//    }
+//}

@@ -5,7 +5,6 @@ import com.jyn.common.ARouter.RoutePath
 import com.jyn.masterroad.R
 import com.jyn.masterroad.base.BaseActivity
 import com.jyn.masterroad.databinding.ActivityNestedScrolling2Binding
-import kotlinx.android.synthetic.main.activity_nested_scrolling1.*
 
 /*
  * AppBarLayout v26+抖动BugFix

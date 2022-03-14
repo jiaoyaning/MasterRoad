@@ -1,6 +1,8 @@
+import com.android.build.gradle.internal.dsl.*
+
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
-apply plugin: 'kotlin-android-extensions'
+//apply plugin: 'kotlin-android-extensions'
 apply plugin: 'dagger.hilt.android.plugin'
 apply plugin: 'kotlin-kapt'
 apply plugin: 'com.google.protobuf'
@@ -31,7 +33,6 @@ def app = rootProject.ext
 
 android {
     compileSdkVersion app.compileSdkVersion
-    buildToolsVersion app.buildToolsVersion
 
     defaultConfig {
         applicationId app.applicationId
@@ -45,8 +46,11 @@ android {
         multiDexEnabled true
 
         /**
+         * @see BaseFlavor#javaCompileOptions(Action)
+         *
          * {@link JavaCompileOptions}
          * @see JavaCompileOptions#annotationProcessorOptions(Action)
+         *
          * {@link AnnotationProcessorOptions}
          * @see AnnotationProcessorOptions#argument
          */
@@ -56,6 +60,11 @@ android {
                 argument("room.schemaLocation", "$projectDir/schemas".toString())
             }
         }
+    }
+
+    packagingOptions {
+        exclude 'META-INF/AL2.0'
+        exclude 'META-INF/LGPL2.1'
     }
 
     /*
@@ -80,7 +89,7 @@ android {
     buildFeatures {
         dataBinding true
         viewBinding true
-//        compose true
+        compose true
     }
 
     compileOptions {
@@ -93,6 +102,14 @@ android {
     }
 
     kotlinOptions.useIR = true
+
+    composeOptions {
+        /**
+         * Compose 与 Kotlin 的兼容性对应关系
+         * https://developer.android.com/jetpack/androidx/releases/compose-kotlin
+         */
+        kotlinCompilerExtensionVersion = app.compose
+    }
 }
 /*
  * https://www.jianshu.com/p/cc98a6b4f52e
@@ -110,6 +127,7 @@ dependencies {
     def kotlin = app.kotlin
     def http = app.http
     def utils = app.utils
+    def compose_version = app.compose_version
 
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation project(path: ':java_kotlin')
@@ -196,9 +214,6 @@ dependencies {
     implementation utils["bindingcollectionadapter-recyclerview"]
     implementation utils["bindingcollectionadapter-viewpager2"]
 
-
-
-
 //    implementation "com.kuaishou.koom:koom-java-leak:2.0.0"
 
     //只引入，不参与打包，这样即可在External Libraries 中看到其源码了
@@ -215,6 +230,19 @@ dependencies {
      */
 //    debugImplementation 'io.github.didi.dokit:dokitx:3.5.0.1'
 //    releaseImplementation 'io.github.didi.dokit:dokitx-no-op:3.5.0.1'
+
+    /**
+     * 官方教程：https://developer.android.google.cn/jetpack/compose
+     */
+    implementation compose_version["ui"]
+    implementation compose_version["ui-tooling"]
+    implementation compose_version["foundation"]
+    implementation compose_version["material"]
+    implementation compose_version["material-icons-core"]
+    implementation compose_version["material-icons-extended"]
+    implementation compose_version["lifecycle-viewmodel-compose"]
+    implementation compose_version["runtime-livedata"]
+    implementation compose_version["ui-test-junit4"]
 }
 
 /**

@@ -5,7 +5,6 @@ import com.jyn.common.ARouter.RoutePath
 import com.jyn.masterroad.R
 import com.jyn.masterroad.base.BaseActivity
 import com.jyn.masterroad.databinding.ActivityMotionLayoutBinding
-import kotlinx.android.synthetic.main.activity_motion_layout.*
 
 /*
  * 官方文档：https://developer.android.google.cn/training/constraint-layout/motionlayout?hl=zh_cn
@@ -45,6 +44,6 @@ class MotionLayoutActivity : BaseActivity<ActivityMotionLayoutBinding>
     override fun initView() {
         val constraintSet = binding.motionLayout.getConstraintSet(R.id.end)
         constraintSet.setRotation(R.id.ball, 180f)
-        motionLayout.updateState(R.id.end, constraintSet)
+        binding.motionLayout.updateState(R.id.end, constraintSet)
     }
 }

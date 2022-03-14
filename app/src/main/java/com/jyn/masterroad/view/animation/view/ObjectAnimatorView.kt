@@ -10,8 +10,6 @@ import androidx.annotation.Keep
 import androidx.core.graphics.withSave
 import com.jyn.masterroad.R
 import com.jyn.masterroad.view.draw.dp
-import kotlinx.android.synthetic.main.activity_ipc_server.view.*
-import kotlinx.android.synthetic.main.layout_animator_view_property.view.*
 
 /*
  * Android动画框架总结

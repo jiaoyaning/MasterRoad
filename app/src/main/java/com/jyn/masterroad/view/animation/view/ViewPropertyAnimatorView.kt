@@ -3,11 +3,11 @@ package com.jyn.masterroad.view.animation.view
 import android.content.Context
 import android.util.AttributeSet
 import android.view.View
+import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.Toast
 import com.jyn.masterroad.R
 import com.jyn.masterroad.view.draw.dp
-import kotlinx.android.synthetic.main.layout_animator_view_property.view.*
 
 class ViewPropertyAnimatorView @JvmOverloads constructor(
     context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0
@@ -15,7 +15,7 @@ class ViewPropertyAnimatorView @JvmOverloads constructor(
 
     init {
         inflate(getContext(), R.layout.layout_animator_view_property, this)
-        animate_iv1.setOnClickListener(::viewAnimate)
+        findViewById<ImageView>(R.id.animate_iv1).setOnClickListener(::viewAnimate)
     }
 
     private fun viewAnimate(view: View) {

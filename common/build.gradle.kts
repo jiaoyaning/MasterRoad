@@ -14,7 +14,11 @@ import org.jetbrains.kotlin.config.KotlinCompilerVersion
 plugins {
     id("com.android.library")
     id("kotlin-android")
-    id("kotlin-android-extensions")
+//    id("kotlin-android-extensions")
+    /*
+     * kapt 中文官网
+     * https://www.kotlincn.net/docs/reference/kapt.html
+     */
     id("kotlin-kapt")
 }
 
@@ -60,8 +64,8 @@ android {
  */
 dependencies {
     val test = app.get("test") as Map<*, *>
-    val androidx = app.get("androidx") as Map<*, *>
     val utils = app.get("utils") as Map<*, *>
+    val androidx = app.get("androidx") as Map<*, *>
 
     implementation(fileTree(mapOf("dir" to "libs", "include" to listOf("*.jar"))))
     implementation(kotlin("stdlib-jdk8", KotlinCompilerVersion.VERSION))

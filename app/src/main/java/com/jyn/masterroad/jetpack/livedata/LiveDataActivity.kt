@@ -12,7 +12,6 @@ import com.jyn.masterroad.jetpack.livedata.test.LiveDataTestVM
 import com.jyn.masterroad.jetpack.livedata.test.LiveDataTestVM.Companion.TAG
 import com.jyn.masterroad.jetpack.livedata.test.MediatorLiveDataVM
 import com.jyn.masterroad.jetpack.livedata.test.TransformationsVM
-import kotlinx.android.synthetic.main.activity_live_data.*
 
 /*
  * 【带着问题学】关于LiveData你应该知道的知识点 TODO
@@ -82,7 +81,7 @@ class LiveDataActivity : BaseActivity<ActivityLiveDataBinding>
 
         liveDataTestVM.num.observe(this) {
             LogUtils.tag(TAG).i("Observer -> num改变了$it")
-            tv_num.text = it.toString()
+            binding.tvNum.text = it.toString()
         }
     }
 }

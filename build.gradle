@@ -15,6 +15,9 @@ apply plugin: 'com.alibaba.arouter'
  * 一篇文章基本看懂gradle & 一篇文章深入gradle:依赖机制 TODO
  * https://mp.weixin.qq.com/s/1Epgk-SGke4RMrf0IzMzMw
  * https://mp.weixin.qq.com/s/m_v92yrqoq4jkUQfU9_7Pg
+ *
+ * Kyson/AndroidGodEye TODO 待接入
+ * https://github.com/Kyson/AndroidGodEye/blob/master/README_zh.md
  */
 buildscript {
     apply from: "config.gradle"

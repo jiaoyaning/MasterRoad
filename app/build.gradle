@@ -1,4 +1,6 @@
 import com.android.build.gradle.internal.dsl.*
+import com.android.build.gradle.internal.plugins.AppPlugin
+import com.android.builder.core.AbstractProductFlavor
 
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
@@ -31,10 +33,21 @@ apply from: 'SimplePlugin.gradle' //自定义极简插件，路径方式引入
  */
 def app = rootProject.ext
 
+/**
+ * @see AppPlugin#createExtension
+ * @see BaseAppModuleExtension
+ */
 android {
     compileSdkVersion app.compileSdkVersion
 
+    /**
+     * @see DefaultConfig
+     */
     defaultConfig {
+        /**
+         * @see AbstractProductFlavor
+         * @see BaseFlavor
+         */
         applicationId app.applicationId
         minSdkVersion app.minSdkVersion
         targetSdkVersion app.targetSdkVersion
@@ -111,7 +124,7 @@ android {
         kotlinCompilerExtensionVersion = app.compose
     }
 }
-/*
+/**
  * https://www.jianshu.com/p/cc98a6b4f52e
  * gradle 高级用法
  *
@@ -119,9 +132,10 @@ android {
  * implementation : 不会传递依赖
  *      子依赖的子依赖修改代码时，可以不用进行全部编译
  * api : 会传递依赖，代替compile
+ *
+ * @see DependencyHandler#add(String,Object)
  */
 dependencies {
-    implementation 'androidx.asynclayoutinflater:asynclayoutinflater:1.0.0'
     def test = app.test
     def androidx = app.androidx
     def kotlin = app.kotlin
@@ -148,6 +162,7 @@ dependencies {
     androidTestImplementation test["test:core-ktx"]
     androidTestImplementation test["test.ext:truth"]
 
+    implementation androidx["asynclayoutinflater"]
     implementation androidx["material"]
     implementation androidx["appcompat"]
     implementation androidx["annotation"]
@@ -181,7 +196,7 @@ dependencies {
     implementation http["okio"]
     implementation http["okhttp3"]
     implementation http["okhttp3-logging"]
-    implementation 'com.google.android.gms:play-services-cronet:17.0.1'
+    implementation http["cronet"]
     implementation http["retrofit2"]
     implementation http["retrofit2-scalars"]
     implementation http["retrofit2-gson"]
@@ -205,7 +220,7 @@ dependencies {
     debugImplementation utils["leakcanary"]
     debugImplementation utils["blockcanary"]
     implementation utils["arouter"]
-//    annotationProcessor utils["arouter-compiler"]
+    annotationProcessor utils["arouter-compiler"]
     kapt utils["arouter-compiler"]
     implementation utils["codelocator"]
 
@@ -217,7 +232,7 @@ dependencies {
 //    implementation "com.kuaishou.koom:koom-java-leak:2.0.0"
 
     //只引入，不参与打包，这样即可在External Libraries 中看到其源码了
-//    compileOnly 'com.android.tools.build:gradle:4.1.3'
+    compileOnly 'com.android.tools.build:gradle:7.0.2'
 
     /**
      * Hook框架

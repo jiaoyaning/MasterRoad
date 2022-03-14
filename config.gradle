@@ -67,6 +67,7 @@ ext {
             "material"           : "com.google.android.material:material:1.4.0-beta01",
             "appcompat"          : "androidx.appcompat:appcompat:1.2.0",
             "annotation"         : "androidx.annotation:annotation:1.1.0",
+            "asynclayoutinflater": "androidx.asynclayoutinflater:asynclayoutinflater:1.0.0",
             /*
              * 一文带你了解Lifecycle（使用篇）
              * https://mp.weixin.qq.com/s/TmI0O4OsvdD6DHkLm9EiiQ
@@ -184,7 +185,8 @@ ext {
              * https://ktor.io/docs/getting-started-ktor-client.html
              */
             "ktor-core"        : "io.ktor:ktor-client-core:1.6.0",
-            "ktor-cio"         : "io.ktor:ktor-client-cio:1.6.0"
+            "ktor-cio"         : "io.ktor:ktor-client-cio:1.6.0",
+            "cronet"           : "com.google.android.gms:play-services-cronet:17.0.1"
     ]
 
     utils = [

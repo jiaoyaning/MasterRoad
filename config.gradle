@@ -1,6 +1,8 @@
 /**
  * MVVM+组件化+Arouter实现
  * https://mp.weixin.qq.com/s/l-wU8jQ-veide8oliqjS_g
+ *
+ * @see ExtraPropertiesExtension
  */
 ext {
     kotlin_version = '1.6.10'

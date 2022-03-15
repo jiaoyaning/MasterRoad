@@ -21,11 +21,14 @@ apply plugin: 'com.alibaba.arouter'
  */
 buildscript {
     apply from: "config.gradle"
-    /*
-     * 华为镜像
-     * https://mirrors.huaweicloud.com/
-     */
-    addRepos(repositories)
+    apply from: "config.gradle.kts"
+
+    println("======> addRH: ${getExtensions().getExtraProperties().get("addRH")}") //获取config.gradle.kts 中 extra 的扩展
+    def addRH = addRH //也可以直接获取
+    println("======> addRH: ${addRH}")
+
+//    addRepos(repositories)   //config.gradle中方法
+    addRH(repositories)     //config.gradle.kts中的方法
 
     /**
      * 我们升级适配完Android Gradle Plugin 7.0
@@ -59,7 +62,7 @@ buildscript {
 }
 
 allprojects {
-    addRepos(repositories)
+    addRepos(repositories)  //config.gradle中方法
 }
 
 task clean(type: Delete) {

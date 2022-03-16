@@ -6,6 +6,7 @@
  */
 ext {
     kotlin_version = '1.6.10'
+    gradle_version = "7.0.2"
     compileSdkVersion = 30
     buildToolsVersion = "30.0.2"
     applicationId = "com.jyn.masterroad"
@@ -285,4 +286,4 @@ static def addRepos(RepositoryHandler handler) {
     handler.maven { url 'https://maven.aliyun.com/repository/gradle-plugin' }
 }
 
-ext.addRepos = this.&addRepos
+ext.addRepos = this.&addRepos //直接闭包.call()方法可以省略这样赋值的过程

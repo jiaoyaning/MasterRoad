@@ -270,6 +270,9 @@ gradle.taskGraph.whenReady {
     println("taskGraph 结束 =============")
 }
 
+//app.printlnAllTask()
+app.printlnAllTask.invoke()
+
 afterEvaluate {
     println("3. 插入第三顺位想插入的代码 -> app/build.gradle")
 }

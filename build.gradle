@@ -23,19 +23,18 @@ buildscript {
     apply from: "config.gradle"
     apply from: "config.gradle.kts"
 
-    println("======> addRH: ${getExtensions().getExtraProperties().get("addRH")}") //获取config.gradle.kts 中 extra 的扩展
-    def addRH = addRH //也可以直接获取
+    println("======> addRH: ${getExtensions().getExtraProperties().get("addRH")}")
+    //获取config.gradle.kts 中 extra 的扩展
     println("======> addRH: ${addRH}")
-
-//    addRepos(repositories)   //config.gradle中方法
-    addRH(repositories)     //config.gradle.kts中的方法
+//    addRepos.call(repositories)   //config.gradle中方法
+    addRH.call(repositories)
 
     /**
      * 我们升级适配完Android Gradle Plugin 7.0
      * https://mp.weixin.qq.com/s/kwG40yN0kbibRAb_dDBc6w
      */
     dependencies {
-        classpath 'com.android.tools.build:gradle:7.0.2'
+        classpath "com.android.tools.build:gradle:$gradle_version"
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
         classpath 'com.google.dagger:hilt-android-gradle-plugin:2.37'
         classpath "com.alibaba:arouter-register:1.0.2"
@@ -62,7 +61,7 @@ buildscript {
 }
 
 allprojects {
-    addRepos(repositories)  //config.gradle中方法
+    addRH.call(repositories)
 }
 
 task clean(type: Delete) {

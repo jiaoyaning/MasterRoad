@@ -33,6 +33,9 @@ apply from: 'SimplePlugin.gradle' //自定义极简插件，路径方式引入
 def app = rootProject.ext
 
 /**
+ * Android Gradle plugin官方文档：
+ * https://developer.android.com/reference/tools/gradle-api
+ *
  * @see AppPlugin#createExtension
  * @see BaseAppModuleExtension
  */
@@ -133,6 +136,7 @@ android {
  * api : 会传递依赖，代替compile
  *
  * @see DependencyHandler#add(String,Object)
+ * @see JavaPlugin
  */
 dependencies {
     def test = app.test
@@ -207,11 +211,11 @@ dependencies {
     implementation 'com.trello.rxlifecycle4:rxlifecycle-kotlin:4.0.2'
     implementation 'com.trello.rxlifecycle4:rxlifecycle-android-lifecycle-kotlin:4.0.2'
     implementation http["rxhttp"]
-    annotationProcessor http["rxhttp-compiler"]
+    kapt http["rxhttp-compiler"]
 
     implementation utils["glide"]
     implementation utils["glide-integration"]
-    annotationProcessor utils["glide-compiler"]
+    kapt utils["glide-compiler"]
     implementation utils["fresco"]
     implementation utils["ultimatebarx"]
     implementation utils["eventbus"]
@@ -219,7 +223,7 @@ dependencies {
     debugImplementation utils["leakcanary"]
     debugImplementation utils["blockcanary"]
     implementation utils["arouter"]
-    annotationProcessor utils["arouter-compiler"]
+    kapt utils["arouter-compiler"]
     kapt utils["arouter-compiler"]
     implementation utils["codelocator"]
 
@@ -259,20 +263,6 @@ dependencies {
     implementation compose_version["ui-test-junit4"]
 }
 
-/**
- * 打印所有的Task
- */
-gradle.taskGraph.whenReady {
-    println("taskGraph 开始 =============")
-    it.getAllTasks().each { task ->
-        println "${task.name} : ${task.class.name - '_Decorated'}"
-    }
-    println("taskGraph 结束 =============")
-}
-
-//app.printlnAllTask()
-app.printlnAllTask.invoke()
-
 afterEvaluate {
-    println("3. 插入第三顺位想插入的代码 -> app/build.gradle")
+    println("3. 第三执行的Gradle文件 -> ${it.name} ${it.getBuildFile()} （此后按settings.gradle中include的顺序执行）")
 }

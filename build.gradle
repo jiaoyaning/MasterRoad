@@ -5,14 +5,10 @@ apply plugin: 'com.alibaba.arouter'
  * 最大程度提升你的Android Studio 中Gradle编译速度完全攻略
  * https://crazymo.blog.csdn.net/article/details/105188273
  *
- * 读书笔记--Android Gradle权威指南
- * https://www.cnblogs.com/dasusu/p/9085174.html
- * https://www.cnblogs.com/dasusu/p/9095738.html
- *
  * Github Actions 使用指南和Android 持续集成示例
  * https://blog.csdn.net/xx326664162/article/details/103921480
  *
- * 一篇文章基本看懂gradle & 一篇文章深入gradle:依赖机制 TODO
+ * 一篇文章基本看懂gradle & 一篇文章深入gradle:依赖机制
  * https://mp.weixin.qq.com/s/1Epgk-SGke4RMrf0IzMzMw
  * https://mp.weixin.qq.com/s/m_v92yrqoq4jkUQfU9_7Pg
  *
@@ -21,13 +17,14 @@ apply plugin: 'com.alibaba.arouter'
  */
 buildscript {
     apply from: "config.gradle"
-    apply from: "config.gradle.kts"
+    apply from: "utils.gradle.kts"
 
-    println("======> addRH: ${getExtensions().getExtraProperties().get("addRH")}")
-    //获取config.gradle.kts 中 extra 的扩展
-    println("======> addRH: ${addRH}")
-//    addRepos.call(repositories)   //config.gradle中方法
-    addRH.call(repositories)
+//    printlnAllTask.invoke() //打印全部task
+
+    println("=> addRH: ${getExtensions().getExtraProperties().get("addRH")}")
+    println("=> addRH: ${addRH}")
+//    addRepos.(repositories)   //config.gradle中方法
+    addRH.call(repositories)//config.gradle.kts中方法
 
     /**
      * 我们升级适配完Android Gradle Plugin 7.0
@@ -69,5 +66,5 @@ task clean(type: Delete) {
 }
 
 afterEvaluate {
-    println("2. 插入第二顺位想插入的代码 -> build.gradle")
+    println("2. 第二执行的Gradle文件 -> ${it.name} ${it.getBuildFile()}")
 }

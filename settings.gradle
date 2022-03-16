@@ -10,4 +10,7 @@ include ':Plugin:APT-processor'
 include ':Plugin:APT-annotation'
 
 
-println("1. 插入最早想插入的代码 -> settings.gradle")
+/**
+ * @see Settings
+ */
+println("1. 最早执行的Gradle文件 -> ${getRootDir().name} ${getBuildscript().getSourceFile()}")

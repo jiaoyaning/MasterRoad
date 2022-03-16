@@ -1,3 +1,6 @@
+[一篇文章基本看懂gradle](https://mp.weixin.qq.com/s/1Epgk-SGke4RMrf0IzMzMw)  
+[一篇文章深入gradle:依赖机制](https://mp.weixin.qq.com/s/m_v92yrqoq4jkUQfU9_7Pg)  
+
 # 各文件作用
 根目录下的 `gradlew(w是wrapper)` 才是真正的 `gradle wrapper`，
 `gradle-wrapper.properties`文件只是一个配置类，`gradlew`意思是 `gradle wrapper 即gradle的包装类`，

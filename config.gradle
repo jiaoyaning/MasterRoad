@@ -44,6 +44,8 @@ ext {
     test = [
             //断言
             "junit"                         : "junit:junit:4.12",
+            //断言匹配规则
+            "hamcrest-all"                  : "org.hamcrest:hamcrest-all:1.3",
             //测试类模拟
             "mockito-core"                  : "org.mockito:mockito-core:4.4.0",
             //拓展mockito，使其支持mock static方法、private方法、final方法与类等等
@@ -264,7 +266,7 @@ ext {
     /**
      * 官方教程：https://developer.android.google.cn/jetpack/compose
      */
-    composeList= [
+    composeList = [
             /**
              * 将 Android Studio 与 Jetpack Compose 配合使用
              * https://developer.android.google.cn/jetpack/compose/setup

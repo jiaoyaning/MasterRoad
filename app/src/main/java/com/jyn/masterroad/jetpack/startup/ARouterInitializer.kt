@@ -20,12 +20,12 @@ import com.jyn.masterroad.BuildConfig
  */
 class ARouterInitializer : Initializer<Unit> {
     override fun create(context: Context) {
+        LogUtils.getLogConfig().configShowBorders(false)
         if (BuildConfig.DEBUG) {
             ARouter.openLog()
             ARouter.openDebug()
         }
         ARouter.init(context as Application)
-        LogUtils.getLogConfig().configShowBorders(false)
     }
 
     override fun dependencies(): List<Class<out Initializer<*>>> {

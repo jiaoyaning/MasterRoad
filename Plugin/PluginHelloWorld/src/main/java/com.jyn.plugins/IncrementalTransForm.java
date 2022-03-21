@@ -10,12 +10,8 @@ import com.android.build.api.transform.TransformInput;
 import com.android.build.api.transform.TransformInvocation;
 import com.android.build.api.transform.TransformOutputProvider;
 import com.android.build.gradle.internal.pipeline.TransformManager;
-import com.android.build.gradle.internal.tasks.Workers;
-import com.android.ide.common.internal.WaitableExecutor;
-import com.android.ide.common.workers.ExecutorServiceAdapter;
-
-import org.apache.commons.io.FileUtils;
 import org.gradle.api.Project;
+import org.gradle.internal.impldep.org.apache.commons.io.FileUtils;
 
 import java.io.File;
 import java.io.IOException;
@@ -94,30 +90,30 @@ class IncrementalTransForm extends Transform {
             outputProvider.deleteAll();
         }
 
-        WaitableExecutor mWaitableExecutor = WaitableExecutor.useGlobalSharedThreadPool();
+//        WaitableExecutor mWaitableExecutor = WaitableExecutor.useGlobalSharedThreadPool();
 
         inputs.forEach(input -> {
             // 对文件夹进行遍历，里面包含的是我们手写的类以及R.class、BuildConfig.class以及R$XXX.class等
-            input.getDirectoryInputs().forEach(directoryInput ->
-                    mWaitableExecutor.execute(() -> {
-                        processDirectoryInput(directoryInput, outputProvider, isIncremental);
-                        return null;
-                    }));
+//            input.getDirectoryInputs().forEach(directoryInput ->
+//                    mWaitableExecutor.execute(() -> {
+//                        processDirectoryInput(directoryInput, outputProvider, isIncremental);
+//                        return null;
+//                    }));
 
             // 对类型为jar文件的input进行遍历
-            input.getJarInputs().forEach(jarInput ->
-                    mWaitableExecutor.execute(() -> {
-                        processJarInput(jarInput, outputProvider, isIncremental);
-                        return null;
-                    }));
+//            input.getJarInputs().forEach(jarInput ->
+//                    mWaitableExecutor.execute(() -> {
+//                        processJarInput(jarInput, outputProvider, isIncremental);
+//                        return null;
+//                    }));
         });
 
         //等待所有任务结束
-        try {
-            mWaitableExecutor.waitForTasksWithQuickFail(true);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+//        try {
+//            mWaitableExecutor.waitForTasksWithQuickFail(true);
+//        } catch (InterruptedException e) {
+//            e.printStackTrace();
+//        }
 
         System.out.println("--- transform 结束 历时:" + (System.currentTimeMillis() - startTime) + "ms");
     }

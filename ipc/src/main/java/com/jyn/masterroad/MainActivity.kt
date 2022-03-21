@@ -7,7 +7,7 @@ import android.content.ServiceConnection
 import android.os.*
 import androidx.appcompat.app.AppCompatActivity
 import com.apkfuns.logutils.LogUtils
-import kotlinx.android.synthetic.main.activity_main.*
+import com.jyn.masterroad.databinding.ActivityMainBinding
 
 /*
  * Messenger与AIDL的异同:
@@ -21,6 +21,7 @@ import kotlinx.android.synthetic.main.activity_main.*
 class MainActivity : AppCompatActivity() {
     private var aidlTestInterface: AidlTestInterface? = null
     private var serverMessenger: Messenger? = null
+    private lateinit var binding: ActivityMainBinding
 
     @SuppressLint("HandlerLeak")
     private var clientMessenger: Messenger = Messenger(object : Handler() {
@@ -32,7 +33,8 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
         LogUtils.getLogConfig().configShowBorders(false)
         initService()
         initView()
@@ -70,14 +72,14 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun initView() {
-        send_aidl_serve.setOnClickListener {
+        binding.sendAidlServe.setOnClickListener {
             val testFun = aidlTestInterface?.testFun(
-                    AidlTestBean().also { it.x = 100;it.y = 200 },
-                    AidlTestBean().also { it.x = 200;it.y = 200 })
+                AidlTestBean().also { it.x = 100;it.y = 200 },
+                AidlTestBean().also { it.x = 200;it.y = 200 })
             LogUtils.tag(TAG).i("MainActivity 获取结果" + testFun?.name)
         }
 
-        send_aidl_serve_in.setOnClickListener {
+        binding.sendAidlServeIn.setOnClickListener {
             LogUtils.tag(TAG).i("MainActivity setInTest 修改前：$testBean")
             aidlTestInterface?.setInTest(testBean)
             LogUtils.tag(TAG).i("MainActivity setInTest 修改后：$testBean")
@@ -86,7 +88,7 @@ class MainActivity : AppCompatActivity() {
         /**
          * 测试后发现，out Tag修饰的形参，set失败
          */
-        send_aidl_serve_out.setOnClickListener {
+        binding.sendAidlServeOut.setOnClickListener {
             LogUtils.tag(TAG).i("MainActivity setOutTest 修改前：$testBean")
             aidlTestInterface?.setOutTest(testBean)
             LogUtils.tag(TAG).i("MainActivity setOutTest 修改后：$testBean")
@@ -95,7 +97,7 @@ class MainActivity : AppCompatActivity() {
         /**
          * inout bean类被两端同步修改
          */
-        send_aidl_serve_inout.setOnClickListener {
+        binding.sendAidlServeInout.setOnClickListener {
             LogUtils.tag(TAG).i("MainActivity setInOutTest 修改前：$testBean")
             aidlTestInterface?.setInOutTest(testBean)
             LogUtils.tag(TAG).i("MainActivity setInOutTest 修改后：$testBean")
@@ -111,7 +113,7 @@ class MainActivity : AppCompatActivity() {
          *
          * 适合用来通知服务端，不修改数据，也没有返回值
          */
-        send_aidl_serve_oneway.setOnClickListener {
+        binding.sendAidlServeOneway.setOnClickListener {
             LogUtils.tag(TAG).i("MainActivity oneWayTest 修改前：$testBean")
             aidlTestInterface?.onewayTest(testBean)
             LogUtils.tag(TAG).i("MainActivity oneWayTest 修改后：$testBean")
@@ -119,7 +121,7 @@ class MainActivity : AppCompatActivity() {
             LogUtils.tag(TAG).i("MainActivity oneWayTest 修改后 & sleep：$testBean")
         }
 
-        send_messenger_serve_oneway.setOnClickListener {
+        binding.sendMessengerServeOneway.setOnClickListener {
             val message: Message = Message.obtain()
             message.also {
                 it.data = Bundle().also {

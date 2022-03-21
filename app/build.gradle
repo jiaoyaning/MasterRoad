@@ -12,9 +12,9 @@ apply plugin: 'dagger.hilt.android.plugin'
 apply plugin: 'kotlin-kapt'
 apply plugin: 'com.google.protobuf'
 apply plugin: 'com.alibaba.arouter'
-
-//apply plugin: 'com.jyn.helloworld'
+apply from: "$rootDir/upload.gradle"
 apply from: 'SimplePlugin.gradle' //自定义极简插件，路径方式引入
+//apply plugin: 'com.jyn.helloworld'
 
 /*
  * 配置构建 官方文档
@@ -44,8 +44,7 @@ android {
      */
     defaultConfig {
         /**
-         * @see AbstractProductFlavor
-         * @see BaseFlavor
+         * @see AbstractProductFlavor* @see BaseFlavor
          */
         applicationId app.applicationId
         minSdkVersion app.minSdkVersion
@@ -111,10 +110,8 @@ android {
 
     kotlinOptions {
         jvmTarget = JavaVersion.VERSION_11.toString()
-//        useIR = true
+        useIR = true
     }
-
-    kotlinOptions.useIR = true
 
     composeOptions {
         /**
@@ -133,10 +130,11 @@ android {
  *      子依赖的子依赖修改代码时，可以不用进行全部编译
  * api : 会传递依赖，代替compile
  *
- * @see DependencyHandler#add(String,Object)
+ * @see DependencyHandler#add(String, Object)
  * @see JavaPlugin
  */
 dependencies {
+    def dep = app.addDep
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation project(path: ':java_kotlin')
     implementation project(path: ':Leetcode')
@@ -144,32 +142,18 @@ dependencies {
     implementation project(path: ':Plugin:APT')
     kapt project(path: ':Plugin:APT-processor')
 
-    app.addDep.call(dependencies, "testImplementation", app.test)
-    app.addDep.call(dependencies, "androidTestImplementation", app.androidTest)
-    app.addDep.call(dependencies, "implementation", app.kotlinList)
-    app.addDep.call(dependencies, "implementation", app.composeList)
-    app.addDep.call(dependencies, "implementation", app.androidx)
-    app.addDep.call(dependencies, "implementation", app.http)
-    app.addDep.call(dependencies, "implementation", app.utils)
-
-//    implementation "com.kuaishou.koom:koom-java-leak:2.0.0"
+    dep(dependencies, "testImplementation", app.test)
+    dep(dependencies, "androidTestImplementation", app.androidTest)
+    dep(dependencies, "implementation", app.kotlinList)
+    dep(dependencies, "implementation", app.composeList)
+    dep(dependencies, "implementation", app.androidx)
+    dep(dependencies, "implementation", app.http)
+    dep(dependencies, "implementation", app.utils)
 
     //只引入，不参与打包，这样即可在External Libraries 中看到其源码了
     compileOnly "com.android.tools.build:gradle:$app.gradle_version"
-
-    /**
-     * Hook框架
-     * https://github.com/eleme/lancet
-     */
-//    compileOnly 'me.ele:lancet-base:1.0.6'
-
-    /**
-     * https://github.com/didi/DoraemonKit
-     */
-//    debugImplementation 'io.github.didi.dokit:dokitx:3.5.0.1'
-//    releaseImplementation 'io.github.didi.dokit:dokitx-no-op:3.5.0.1'
 }
 
 afterEvaluate {
-    println("3. 第三执行的Gradle文件 -> ${it.name} ${it.getBuildFile()} （此后按settings.gradle中include的顺序执行）")
+    println("3. 第三执行的Gradle文件 -> ${app.getLogMsg.invoke(getClass())}（此后按settings.gradle中include的顺序执行）")
 }

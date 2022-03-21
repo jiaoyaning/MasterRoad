@@ -15,12 +15,13 @@
 class SimplePlugin implements Plugin<Project> {
     @Override
     void apply(org.gradle.api.Project target) {
-        println("SimplePlugin -> 这是一个自定义插件")
+        def app = target.getRootProject().ext
+        println("SimplePlugin -> 这是一个自定义插件 ${app.getLogMsg.invoke(getClass())}")
 
         def extension = target.extensions.create('simpleEx', SimpleExtension) //创建一个扩展对象
-        println("SimplePlugin -> 这是一个自定义扩展 -> name: ${extension.name}")
+        println("SimplePlugin -> 这是一个自定义扩展 -> name: ${extension.name} ${app.getLogMsg.invoke(getClass())}")
         target.afterEvaluate { //在整个方法执行完之后再执行
-            println("SimplePlugin -> afterEvaluate ${extension.name}")
+            println("SimplePlugin -> afterEvaluate ${extension.name} ${app.getLogMsg.invoke(getClass())}")
             println(target.extensions)
         }
     }
@@ -50,5 +51,5 @@ simpleEx {
 
 def extension = new SimpleExtension()
 extension.name = "这是另外一个被修改的Name"
-println("SimplePlugin -> extension ${extension.name}")
+println("SimplePlugin -> extension ${extension.name} ${rootProject.ext.getLogMsg.invoke(getClass())}")
 

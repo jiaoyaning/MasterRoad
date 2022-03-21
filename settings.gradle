@@ -9,8 +9,8 @@ include ':Plugin:APT'
 include ':Plugin:APT-processor'
 include ':Plugin:APT-annotation'
 
-
 /**
  * @see Settings
  */
-println("1. 最早执行的Gradle文件 -> ${getRootDir().name} ${getBuildscript().getSourceFile()}")
+apply from: "utils.gradle.kts"
+println("1. 最早执行的Gradle文件 -> ${getLogMsg.invoke(getClass())}")

@@ -1,11 +1,11 @@
 ## Espresso (测试单个应用的界面)
 
-> Espresso 来编写简洁、美观且可靠的 Android 界面测试
-> [Espresso官方Demo](https://github.com/android/testing-samples/tree/master/ui/espresso/BasicSample)
-> [官方文档：测试单个应用的界面](https://developer.android.com/training/testing/ui-testing/espresso-testing)
-> [官方文档：Espresso](https://developer.android.com/training/testing/espresso)
-> [测试应用的 Activity](https://developer.android.com/guide/components/activities/testing)
-> [测试 Fragment](https://developer.android.com/guide/fragments/test)
+> Espresso 来编写简洁、美观且可靠的 Android 界面测试  
+> [Espresso官方Demo](https://github.com/android/testing-samples/tree/master/ui/espresso/BasicSample)  
+> [官方文档：测试单个应用的界面](https://developer.android.com/training/testing/ui-testing/espresso-testing)  
+> [官方文档：Espresso](https://developer.android.com/training/testing/espresso)  
+> [测试应用的 Activity](https://developer.android.com/guide/components/activities/testing)  
+> [测试 Fragment](https://developer.android.com/guide/fragments/test)  
 
 ### Espresso 的主要组件包括：
 

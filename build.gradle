@@ -1,10 +1,8 @@
-ext {
-    kotlinxCoroutinesAndroidVersion = coroutines
-    eventbusVersion = '3.3.1'
-}// Top-level build file where you can add configuration options common to all sub-projects/modules.
-
 apply plugin: 'com.alibaba.arouter'
 /*
+ * Android gradle 脚本断点调试
+ * https://www.jianshu.com/p/0c7d5fd5792d
+ *
  * 最大程度提升你的Android Studio 中Gradle编译速度完全攻略
  * https://crazymo.blog.csdn.net/article/details/105188273
  *
@@ -23,9 +21,8 @@ buildscript {
     apply from: "utils.gradle.kts"
 
 //    printlnAllTask.invoke() //打印全部task
-
-    println("=> addRH: ${getExtensions().getExtraProperties().get("addRH")}")
-    println("=> addRH: ${addRH}")
+//    println("=> addRH: ${getExtensions().getExtraProperties().get("addRH")}")
+//    println("=> addRH: ${addRH}")
 //    addRepos.(repositories)   //config.gradle中方法
     addRH.call(repositories)//config.gradle.kts中方法
 
@@ -69,5 +66,5 @@ task clean(type: Delete) {
 }
 
 afterEvaluate {
-    println("2. 第二执行的Gradle文件 -> ${it.name} ${it.getBuildFile()}")
+    println("2. 第二执行的Gradle文件 -> ${getLogMsg.invoke(getClass())}")
 }

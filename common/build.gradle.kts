@@ -10,16 +10,10 @@ import org.jetbrains.kotlin.config.KotlinCompilerVersion
  * Gradle Kotlin DSL (不错)
  * https://blog.csdn.net/Utzw0p0985/article/details/107551455
  */
-
 plugins {
     id("com.android.library")
     id("kotlin-android")
-//    id("kotlin-android-extensions")
-    /*
-     * kapt 中文官网
-     * https://www.kotlincn.net/docs/reference/kapt.html
-     */
-    id("kotlin-kapt")
+    id("kotlin-kapt") //https://www.kotlincn.net/docs/reference/kapt.html
 }
 
 val app = rootProject.ext
@@ -83,12 +77,16 @@ dependencies {
     implementation(androidx["activity-ktx"]!!)
     implementation(androidx["core-ktx"]!!)
 
-    implementation(androidx["hilt"]!!)
-
     implementation(utils["arouter"]!!)
     implementation(utils["mmkv"]!!)
     implementation(utils["logutils"]!!)
 
+    // https://github.com/didi/DoraemonKit
+//    debugImplementation("io.github.didi.dokit:dokitx:3.5.0.1")
+//    releaseImplementation("io.github.didi.dokit:dokitx-no-op:3.5.0.1")
+
     debugApi("com.squareup.leakcanary:leakcanary-android:2.8.1") //https://github.com/square/leakcanary
     debugApi("com.github.markzhai:blockcanary-android:1.5.0") //https://github.com/markzhai/AndroidPerformanceMonitor
+
+    compileOnly("org.jetbrains.kotlin:kotlin-gradle-plugin:${app.get("kotlin_version")}")
 }

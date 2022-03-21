@@ -1,7 +1,7 @@
 apply plugin: 'java-library'
 apply plugin: 'kotlin'
 
-def kotlin = rootProject.ext.kotlin
+def kotlin = rootProject.ext.kotlinList
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])

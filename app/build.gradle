@@ -137,116 +137,25 @@ android {
  * @see JavaPlugin
  */
 dependencies {
-    def test = app.test
-    def androidTest = app.androidTest
-    def androidx = app.androidx
-    def kotlin = app.kotlin
-    def http = app.http
-    def utils = app.utils
-    def compose_version = app.compose_version
-
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation project(path: ':java_kotlin')
     implementation project(path: ':Leetcode')
     implementation project(path: ':common')
-
     implementation project(path: ':Plugin:APT')
     kapt project(path: ':Plugin:APT-processor')
 
-    //断言
-    testImplementation test["junit"]
-    //测试类模拟
-    testImplementation test["mockito-core"]
-    //拓展mockito，使其支持mock static方法、private方法、final方法与类等等
-    testImplementation test["powermock-module-junit4"]
-    testImplementation test["powermock-module-junit4-rule"]
-    testImplementation test["powermock-api-mockito2"]
-    testImplementation test["powermock-classloading-xstream"]
-    //实现一套JVM能运行的Android代码，从而做到脱离Android运行环境进行测试
-    testImplementation test["robolectric"]
-
-    androidTestImplementation androidTest["ext-junit"]
-    androidTestImplementation androidTest["espresso-core"]
-    androidTestImplementation androidTest["espresso-contrib"]
-    androidTestImplementation androidTest["espresso-intents"]
-    androidTestImplementation androidTest["test-rules"]
-    androidTestImplementation androidTest["test-runner"]
-    androidTestImplementation androidTest["test:core"]
-    androidTestImplementation androidTest["test:core-ktx"]
-    androidTestImplementation androidTest["test.ext:truth"]
-
-
-    implementation androidx["asynclayoutinflater"]
-    implementation androidx["material"]
-    implementation androidx["appcompat"]
-    implementation androidx["annotation"]
-    implementation androidx["startup"]
-    implementation androidx["recyclerview"]
-    implementation androidx["constraintlayout"]
-    implementation androidx["lifecycle"]
-    implementation androidx["lifecycle-process"]
-    implementation androidx["viewmodel"]
-    implementation androidx["livedata"]
-    implementation androidx["core-ktx"]
-    implementation androidx["viewmodel-ktx"]
-    implementation androidx["livedata-ktx"]
-    implementation androidx["runtime-ktx"]
-    implementation androidx["activity-ktx"] //协程用得到
-    implementation androidx["fragment-ktx"]
-    implementation androidx["hilt"]
-    kapt androidx["hilt-compiler"]
-    kapt androidx["hilt-compiler2"]
-
-    implementation kotlin["kotlin"]
-    implementation kotlin["coroutines-core"]
-    implementation kotlin["coroutines-android"]
-    implementation kotlin["coroutines-jdk8"]
-    implementation kotlin["koin"]
-    implementation kotlin["koin-android"]
-    implementation kotlin["koin-android-ext"]
-    implementation kotlin["reflect"]
-    implementation kotlin["coil"]
-
-    implementation http["okio"]
-    implementation http["okhttp3"]
-    implementation http["okhttp3-logging"]
-    implementation http["cronet"]
-    implementation http["retrofit2"]
-    implementation http["retrofit2-scalars"]
-    implementation http["retrofit2-gson"]
-    implementation http["retrofit2-rxjava3"]
-    implementation http["rxjava3"]
-    implementation http["rxandroid3"]
-    implementation 'com.trello.rxlifecycle4:rxlifecycle:4.0.2'
-    implementation 'com.trello.rxlifecycle4:rxlifecycle-android:4.0.2'
-    implementation 'com.trello.rxlifecycle4:rxlifecycle-kotlin:4.0.2'
-    implementation 'com.trello.rxlifecycle4:rxlifecycle-android-lifecycle-kotlin:4.0.2'
-    implementation http["rxhttp"]
-    kapt http["rxhttp-compiler"]
-
-    implementation utils["glide"]
-    implementation utils["glide-integration"]
-    kapt utils["glide-compiler"]
-    implementation utils["fresco"]
-    implementation utils["ultimatebarx"]
-    implementation utils["eventbus"]
-    implementation utils["mmkv"]
-    debugImplementation utils["leakcanary"]
-    debugImplementation utils["blockcanary"]
-    implementation utils["arouter"]
-    kapt utils["arouter-compiler"]
-    kapt utils["arouter-compiler"]
-    implementation utils["codelocator"]
-
-    //https://github.com/evant/binding-collection-adapter
-    implementation utils["bindingcollectionadapter"]
-    implementation utils["bindingcollectionadapter-recyclerview"]
-    implementation utils["bindingcollectionadapter-viewpager2"]
+    app.addDep.call(dependencies, "testImplementation", app.test)
+    app.addDep.call(dependencies, "androidTestImplementation", app.androidTest)
+    app.addDep.call(dependencies, "implementation", app.kotlinList)
+    app.addDep.call(dependencies, "implementation", app.composeList)
+    app.addDep.call(dependencies, "implementation", app.androidx)
+    app.addDep.call(dependencies, "implementation", app.http)
+    app.addDep.call(dependencies, "implementation", app.utils)
 
 //    implementation "com.kuaishou.koom:koom-java-leak:2.0.0"
 
     //只引入，不参与打包，这样即可在External Libraries 中看到其源码了
-    compileOnly 'com.android.tools.build:gradle:7.0.2'
+    compileOnly "com.android.tools.build:gradle:$app.gradle_version"
 
     /**
      * Hook框架
@@ -259,19 +168,6 @@ dependencies {
      */
 //    debugImplementation 'io.github.didi.dokit:dokitx:3.5.0.1'
 //    releaseImplementation 'io.github.didi.dokit:dokitx-no-op:3.5.0.1'
-
-    /**
-     * 官方教程：https://developer.android.google.cn/jetpack/compose
-     */
-    implementation compose_version["ui"]
-    implementation compose_version["ui-tooling"]
-    implementation compose_version["foundation"]
-    implementation compose_version["material"]
-    implementation compose_version["material-icons-core"]
-    implementation compose_version["material-icons-extended"]
-    implementation compose_version["lifecycle-viewmodel-compose"]
-    implementation compose_version["runtime-livedata"]
-    implementation compose_version["ui-test-junit4"]
 }
 
 afterEvaluate {

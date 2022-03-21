@@ -21,6 +21,19 @@ fun addRH(handler: RepositoryHandler) {
 extra["addRH"] = this::addRH
 
 /**
+ * 添加依赖
+ */
+fun addDep(handler: DependencyHandler?, conf: String, map: Map<String, Any>?) {
+    handler?.apply {
+        map?.values?.map {
+            add(if (it.toString().contains("compiler")) "kapt" else conf, it)
+        }
+    }
+}
+
+extra["addDep"] = this::addDep
+
+/**
  * 调用示范：ext.testFun.invoke(1,2)
  */
 extra["testFun"] = { a: Int, b: Int ->

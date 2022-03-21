@@ -48,7 +48,7 @@ def app = rootProject.ext
 
 dependencies {
     def androidx = app.androidx
-    def kotlin = app.kotlin
+    def kotlin = app.kotlinList
 
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 

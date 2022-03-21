@@ -32,7 +32,6 @@ ext {
     startup = "1.1.0-beta01"
     recyclerview = "1.2.0-alpha04"
     bindingcollectionadapter = "4.0.0"
-    leakcanary = "2.7"
     /*
      * https://developer.android.com/training/testing/espresso/setup
      *
@@ -43,12 +42,16 @@ ext {
      * https://github.com/android/android-test
      */
     test = [
+            //断言
             "junit"                         : "junit:junit:4.12",
+            //测试类模拟
             "mockito-core"                  : "org.mockito:mockito-core:4.4.0",
+            //拓展mockito，使其支持mock static方法、private方法、final方法与类等等
             "powermock-module-junit4"       : "org.powermock:powermock-module-junit4:2.0.9",
             "powermock-module-junit4-rule"  : "org.powermock:powermock-module-junit4-rule:2.0.9",
             "powermock-api-mockito2"        : "org.powermock:powermock-api-mockito2:2.0.9",
             "powermock-classloading-xstream": "org.powermock:powermock-classloading-xstream:2.0.9",
+            //实现一套JVM能运行的Android代码，从而做到脱离Android运行环境进行测试
             "robolectric"                   : "org.robolectric:robolectric:4.7.3",
     ]
 
@@ -89,7 +92,7 @@ ext {
              * https://mp.weixin.qq.com/s/TmI0O4OsvdD6DHkLm9EiiQ
              * https://developer.android.google.cn/jetpack/androidx/releases/lifecycle
              */
-            "lifecycle-compiler" : "androidx.lifecycle:lifecycle-compiler:$lifecycle",
+//            "lifecycle-compiler" : "androidx.lifecycle:lifecycle-compiler:$lifecycle",
             "lifecycle-process"  : "androidx.lifecycle:lifecycle-process:$lifecycle",
             "lifecycle"          : "androidx.lifecycle:lifecycle-runtime:$lifecycle",
             "viewmodel"          : "androidx.lifecycle:lifecycle-viewmodel:$lifecycle",
@@ -129,12 +132,11 @@ ext {
              */
             "hilt"               : "com.google.dagger:hilt-android:$hilt",
             "hilt-compiler"      : "com.google.dagger:hilt-android-compiler:$hilt",
-            "hilt-viewmodel"     : "androidx.hilt:hilt-lifecycle-viewmodel:1.0.0-alpha01",
             "hilt-compiler2"     : "androidx.hilt:hilt-compiler:1.0.0-alpha01",
     ]
 
 
-    kotlin = [
+    kotlinList = [
             "kotlin"            : "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version",
             // Kotlin协程不属于Kotlin语言本身，所以需要手动引入
             "coroutines-core"   : "org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutines",
@@ -149,10 +151,10 @@ ext {
              * Kotlin 的依赖注入框架
              * https://insert-koin.io/docs/quickstart/kotlin
              */
-            "koin"              : "io.insert-koin:koin-core:$ext.koin",
+            "koin"              : "io.insert-koin:koin-core:$koin",
             // Koin main features for Android (Scope,ViewModel ...)
-            "koin-android"      : "io.insert-koin:koin-android:$ext.koin",
-            "koin-android-ext"  : "io.insert-koin:koin-android-ext:$ext.koin",
+            "koin-android"      : "io.insert-koin:koin-android:$koin",
+            "koin-android-ext"  : "io.insert-koin:koin-android-ext:$koin",
             /*
              * kotlin 反射 官网
              * http://www.kotlincn.net/docs/reference/reflection.html
@@ -180,12 +182,10 @@ ext {
             /**
              * https://github.com/ReactiveX/RxJava
              * https://github.com/ReactiveX/RxAndroid
+             * https://github.com/trello/RxLifecycle
              */
             "rxjava3"          : "io.reactivex.rxjava3:rxjava:3.0.13",
             "rxandroid3"       : "io.reactivex.rxjava3:rxandroid:3.0.0",
-            "rxjava2"          : "io.reactivex.rxjava2:rxjava:2.2.21",
-            "rxandroid2"       : "'io.reactivex.rxjava2:rxandroid:2.1.1'",
-
             "okhttp3"          : "com.squareup.okhttp3:okhttp:4.9.1",
             "okhttp3-logging"  : "com.squareup.okhttp3:logging-interceptor:4.0.0",
 
@@ -225,14 +225,6 @@ ext {
              */
             "fresco"                               : "com.facebook.fresco:fresco:$fresco",
 
-            /**
-             * https://github.com/square/leakcanary
-             */
-            "leakcanary"                           : "com.squareup.leakcanary:leakcanary-android:$leakcanary",
-            /**
-             * https://github.com/markzhai/AndroidPerformanceMonitor
-             */
-            "blockcanary"                          : "com.github.markzhai:blockcanary-android:1.5.0",
             /*
              * 一款方便的设置状态栏和导航栏的各种效果的框架
              * https://github.com/Zackratos/UltimateBarX
@@ -269,7 +261,10 @@ ext {
 
     ]
 
-    compose_version = [
+    /**
+     * 官方教程：https://developer.android.google.cn/jetpack/compose
+     */
+    composeList= [
             /**
              * 将 Android Studio 与 Jetpack Compose 配合使用
              * https://developer.android.google.cn/jetpack/compose/setup
@@ -285,7 +280,7 @@ ext {
             "activity-compose"           : "androidx.activity:activity-compose:1.3.1",
             "lifecycle-viewmodel-compose": "androidx.lifecycle:lifecycle-viewmodel-compose:1.0.0-alpha07",
             "runtime-livedata"           : "androidx.compose.runtime:runtime-livedata:1.0.5",
-            "runtime-rxjava2"            : "androidx.compose.runtime:runtime-rxjava2:1.0.5",
+//            "runtime-rxjava2"            : "androidx.compose.runtime:runtime-rxjava2:1.0.5",
             "ui-test-junit4"             : "androidx.compose.ui:ui-test-junit4:1.0.5",
     ]
 }
@@ -300,3 +295,4 @@ static def addRepos(RepositoryHandler handler) {
 }
 
 ext.addRepos = this.&addRepos //直接闭包.call()方法可以省略这样赋值的过程
+

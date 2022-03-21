@@ -87,7 +87,8 @@ dependencies {
 
     implementation(utils["arouter"]!!)
     implementation(utils["mmkv"]!!)
-    api(utils["logutils"]!!)
+    implementation(utils["logutils"]!!)
 
-    debugImplementation(utils["leakcanary"]!!)
+    debugApi("com.squareup.leakcanary:leakcanary-android:2.8.1") //https://github.com/square/leakcanary
+    debugApi("com.github.markzhai:blockcanary-android:1.5.0") //https://github.com/markzhai/AndroidPerformanceMonitor
 }

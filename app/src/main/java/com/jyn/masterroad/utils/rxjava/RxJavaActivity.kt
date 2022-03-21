@@ -6,14 +6,9 @@ import com.jyn.masterroad.R
 import com.jyn.masterroad.base.BaseActivity
 import com.jyn.masterroad.databinding.ActivityRxjavaBinding
 import com.jyn.masterroad.utils.rxjava.test.*
-import com.trello.lifecycle4.android.lifecycle.AndroidLifecycle.createLifecycleProvider
-import com.trello.rxlifecycle4.RxLifecycle
-import com.trello.rxlifecycle4.kotlin.bindToLifecycle
-import com.trello.rxlifecycle4.kotlin.bindUntilEvent
 import io.reactivex.rxjava3.core.Observable
 import io.reactivex.rxjava3.core.Observer
 import io.reactivex.rxjava3.disposables.Disposable
-import io.reactivex.rxjava3.plugins.RxJavaPlugins
 
 /*
  * 不要打破链式调用！一个极低成本的RxJava全局Error处理方案
@@ -69,7 +64,6 @@ class RxJavaActivity : BaseActivity<ActivityRxjavaBinding>(R.layout.activity_rxj
 
     override fun initData() {
         Observable.just(1)
-                .bindToLifecycle(createLifecycleProvider(this))
                 .subscribe(object : Observer<Int> {
                     override fun onSubscribe(d: Disposable?) {
                     }

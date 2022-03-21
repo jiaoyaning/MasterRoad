@@ -2,6 +2,10 @@ import com.android.build.gradle.internal.dsl.*
 import com.android.build.gradle.internal.plugins.AppPlugin
 import com.android.builder.core.AbstractProductFlavor
 
+/**
+ * 插件入口 com.android.application.properties
+ * @see AppPlugin
+ */
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'dagger.hilt.android.plugin'
@@ -22,13 +26,6 @@ apply from: 'SimplePlugin.gradle' //自定义极简插件，路径方式引入
  * https://juejin.cn/post/6963527524609425415
  * 补齐Android技能树 - 从害怕到玩转Android代码混淆
  * https://juejin.cn/post/6966526844552085512
- *
- * 连载 | 深入理解Gradle框架之一：Plugin, Extension, buildSrc
- * https://mp.weixin.qq.com/s/mDCTtQZb6mhWOFAvLYKBSg
- * 连载 | 深入理解gradle框架之二：依赖实现分析
- * https://mp.weixin.qq.com/s/WQCqUaYDPHDIjUHlxjRIkw
- * 连载 | 深入理解gradle框架之三：artifacts的发布
- * https://mp.weixin.qq.com/s/-G0OHJrNHbjXTC7AHtVAKw
  */
 def app = rootProject.ext
 
@@ -114,6 +111,7 @@ android {
 
     kotlinOptions {
         jvmTarget = JavaVersion.VERSION_11.toString()
+//        useIR = true
     }
 
     kotlinOptions.useIR = true
@@ -140,6 +138,7 @@ android {
  */
 dependencies {
     def test = app.test
+    def androidTest = app.androidTest
     def androidx = app.androidx
     def kotlin = app.kotlin
     def http = app.http
@@ -154,16 +153,28 @@ dependencies {
     implementation project(path: ':Plugin:APT')
     kapt project(path: ':Plugin:APT-processor')
 
+    //断言
     testImplementation test["junit"]
-    androidTestImplementation test["ext-junit"]
-    androidTestImplementation test["espresso-core"]
-    androidTestImplementation test["espresso-contrib"]
-    androidTestImplementation test["espresso-intents"]
-    androidTestImplementation test["test-rules"]
-    androidTestImplementation test["test-runner"]
-    androidTestImplementation test["test:core"]
-    androidTestImplementation test["test:core-ktx"]
-    androidTestImplementation test["test.ext:truth"]
+    //测试类模拟
+    testImplementation test["mockito-core"]
+    //拓展mockito，使其支持mock static方法、private方法、final方法与类等等
+    testImplementation test["powermock-module-junit4"]
+    testImplementation test["powermock-module-junit4-rule"]
+    testImplementation test["powermock-api-mockito2"]
+    testImplementation test["powermock-classloading-xstream"]
+    //实现一套JVM能运行的Android代码，从而做到脱离Android运行环境进行测试
+    testImplementation test["robolectric"]
+
+    androidTestImplementation androidTest["ext-junit"]
+    androidTestImplementation androidTest["espresso-core"]
+    androidTestImplementation androidTest["espresso-contrib"]
+    androidTestImplementation androidTest["espresso-intents"]
+    androidTestImplementation androidTest["test-rules"]
+    androidTestImplementation androidTest["test-runner"]
+    androidTestImplementation androidTest["test:core"]
+    androidTestImplementation androidTest["test:core-ktx"]
+    androidTestImplementation androidTest["test.ext:truth"]
+
 
     implementation androidx["asynclayoutinflater"]
     implementation androidx["material"]

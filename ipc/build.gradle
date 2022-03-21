@@ -62,6 +62,6 @@ dependencies {
 
     implementation 'com.apkfuns.logutils:library:1.7.5'
     testImplementation rootProject.ext.test["junit"]
-    androidTestImplementation rootProject.ext.test["ext-junit"]
-    androidTestImplementation rootProject.ext.test["espresso-core"]
+    androidTestImplementation rootProject.ext.androidTest["ext-junit"]
+    androidTestImplementation rootProject.ext.androidTest["espresso-core"]
 }

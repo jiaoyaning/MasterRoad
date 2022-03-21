@@ -17,12 +17,16 @@ ext {
     versionName = "1.0.0"
     compose = "1.2.0-alpha04"
 
-    test = "1.3.0"
+    //test
+    test_version = "1.3.0"
+    espresso = "3.3.0"
+    powermock = "2.0.9"
+
     koin = "3.0.1"
-    coroutines = "1.4.2"
+    coroutines = '1.6.0-native-mt'
     hilt = "2.41"
     anko = "0.10.8"
-    glide = "4.12.0"
+    glide = "4.13.1"
     fresco = "2.6.0"
     lifecycle = "2.3.1"
     startup = "1.1.0-beta01"
@@ -39,17 +43,26 @@ ext {
      * https://github.com/android/android-test
      */
     test = [
-            "junit"           : "junit:junit:4.12",
+            "junit"                         : "junit:junit:4.12",
+            "mockito-core"                  : "org.mockito:mockito-core:4.4.0",
+            "powermock-module-junit4"       : "org.powermock:powermock-module-junit4:2.0.9",
+            "powermock-module-junit4-rule"  : "org.powermock:powermock-module-junit4-rule:2.0.9",
+            "powermock-api-mockito2"        : "org.powermock:powermock-api-mockito2:2.0.9",
+            "powermock-classloading-xstream": "org.powermock:powermock-classloading-xstream:2.0.9",
+            "robolectric"                   : "org.robolectric:robolectric:4.7.3",
+    ]
+
+    androidTest = [
             "ext-junit"       : "androidx.test.ext:junit:1.1.2",
             "ext:junit-ktx"   : "androidx.test.ext:junit-ktx:1.1.2",
-            "espresso-core"   : "androidx.test.espresso:espresso-core:3.3.0",
-            "espresso-contrib": "androidx.test.espresso:espresso-contrib:3.3.0",
-            "espresso-intents": "androidx.test.espresso:espresso-intents:3.3.0",
-            "test-runner"     : "androidx.test:runner:$test",
-            "test-rules"      : "androidx.test:rules:$test",
-            "test:core"       : "androidx.test:core:$test",
-            "test:core-ktx"   : "androidx.test:core-ktx:$test",
-            "test.ext:truth"  : "androidx.test.ext:truth:$test",
+            "espresso-core"   : "androidx.test.espresso:espresso-core:$espresso",
+            "espresso-contrib": "androidx.test.espresso:espresso-contrib:$espresso",
+            "espresso-intents": "androidx.test.espresso:espresso-intents:$espresso",
+            "test-runner"     : "androidx.test:runner:$test_version",
+            "test-rules"      : "androidx.test:rules:$test_version",
+            "test:core"       : "androidx.test:core:$test_version",
+            "test:core-ktx"   : "androidx.test:core-ktx:$test_version",
+            "test.ext:truth"  : "androidx.test.ext:truth:$test_version",
             /*
              * An Espresso IdlingResource for OkHttp.
              * https://github.com/JakeWharton/okhttp-idling-resource

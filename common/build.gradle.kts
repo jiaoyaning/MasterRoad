@@ -64,6 +64,7 @@ android {
  */
 dependencies {
     val test = app.get("test") as Map<*, *>
+    val androidTest = app.get("androidTest") as Map<*, *>
     val utils = app.get("utils") as Map<*, *>
     val androidx = app.get("androidx") as Map<*, *>
 
@@ -71,8 +72,8 @@ dependencies {
     implementation(kotlin("stdlib-jdk8", KotlinCompilerVersion.VERSION))
 
     testImplementation(test["junit"]!!)
-    androidTestImplementation(test["ext-junit"]!!)
-    androidTestImplementation(test["espresso-core"]!!)
+    androidTestImplementation(androidTest["ext-junit"]!!)
+    androidTestImplementation(androidTest["espresso-core"]!!)
 
     implementation(androidx["appcompat"]!!)
     implementation(androidx["viewmodel-ktx"]!!)

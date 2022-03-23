@@ -136,8 +136,8 @@ android {
 dependencies {
     def dep = app.addDep
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation project(path: ':java_kotlin')
-    implementation project(path: ':Leetcode')
+    implementation project(path: ':language')
+    implementation project(path: ':leetcode')
     implementation project(path: ':common')
     implementation project(path: ':Plugin:APT')
     kapt project(path: ':Plugin:APT-processor')

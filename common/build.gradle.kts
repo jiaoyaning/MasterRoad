@@ -87,6 +87,4 @@ dependencies {
 
     debugApi("com.squareup.leakcanary:leakcanary-android:2.8.1") //https://github.com/square/leakcanary
     debugApi("com.github.markzhai:blockcanary-android:1.5.0") //https://github.com/markzhai/AndroidPerformanceMonitor
-
-    compileOnly("org.jetbrains.kotlin:kotlin-gradle-plugin:${app.get("kotlin_version")}")
 }

@@ -1,3 +1,5 @@
+[Android 单元测试第六篇(Hamcrest 匹配器)](https://www.jianshu.com/p/6f44a5e2bf5b)
+
 # @Rule和@ClassRule
 * @Rule注解是方法级别的，每个测试方法执行时都会执行被@Rule注解的成员变量的方法（类似于@Before）。
 * @ClassRule注解是类级别的，测试类执行时仅会执行一次被@ClassRule注解的静态变量的方法（类似于@BeforeClass）。

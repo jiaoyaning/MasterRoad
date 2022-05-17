@@ -157,3 +157,10 @@ dependencies {
 afterEvaluate {
     println("3. 第三执行的Gradle文件 -> ${app.getLogMsg.invoke(getClass())}（此后按settings.gradle中include的顺序执行）")
 }
+
+/**
+ * 强制依赖
+ */
+configurations.all {
+    resolutionStrategy.force 'com.tencent:mmkv-static:1.2.7'
+}

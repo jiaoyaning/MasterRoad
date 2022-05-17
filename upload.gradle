@@ -1,3 +1,13 @@
+buildscript {
+    repositories {
+        maven { setUrl("https://maven.aliyun.com/repository/central") }
+    }
+
+    dependencies {
+        classpath 'org.codehaus.groovy:groovy-json:3.0.9'
+    }
+}
+
 import groovy.json.JsonSlurper
 import groovy.json.JsonOutput
 
@@ -195,11 +205,11 @@ def sendMsgToDing(def data, def url, def pwd) {
     contentModel.title = "QMS Android"
     contentModel.text =
             "## QMS Android包" + " \n " +
-            "### build:" + data.buildBuildVersion + " \n " +
-            "### 下载地址\n [" + url + "](" + url + ")" + " \n " +
-            "### 密码：" + pwd + " \n " +
-            "![扫码下载](" + data.buildQRCodeURL + ")" + " \n " +
-            "### 最近更新\n " + k
+                    "### build:" + data.buildBuildVersion + " \n " +
+                    "### 下载地址\n [" + url + "](" + url + ")" + " \n " +
+                    "### 密码：" + pwd + " \n " +
+                    "![扫码下载](" + data.buildQRCodeURL + ")" + " \n " +
+                    "### 最近更新\n " + k
 
     map.put("markdown", contentModel)
     def json = JsonOutput.toJson(map)

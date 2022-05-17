@@ -259,9 +259,9 @@ ext {
             "bindingcollectionadapter-viewpager2"  : "me.tatarka.bindingcollectionadapter2:bindingcollectionadapter-viewpager2:$bindingcollectionadapter",
 
             /**
-             * https://github.com/bytedance/CodeLocator/blob/main/README_zh.md
+             * https://github.com/bytedance/CodeLocator
              */
-            "codelocator"                          : "com.bytedance.tools.codelocator:codelocator-core:1.0.0",
+//            "codelocator"                          : "com.bytedance.tools.codelocator:codelocator-core:1.0.0",
 
     ]
 

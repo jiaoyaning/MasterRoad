@@ -16,9 +16,9 @@ import groovy.json.JsonOutput
 def debugAppPath = project.getBuildDir().absolutePath + "/outputs/apk/debug"
 def releaseAppPath = project.getBuildDir().absolutePath + "/outputs/apk/release"
 
-
 //打包测试环境apk并上传蒲公英
-task uploadDebugApk {
+def uploadDebugApk = task(group: "build", "uploadDebugApk")
+uploadDebugApk.doLast {
     def apkDir = new File(debugAppPath)
     if (apkDir.exists() && apkDir.isDirectory()) {
         apkDir.deleteDir()
@@ -30,7 +30,8 @@ task uploadDebugApk {
 }
 
 //打包生产环境apk并上传蒲公英
-task uploadReleaseApk {
+def uploadReleaseApk = task(group: "build", "uploadReleaseApk")
+uploadReleaseApk.doLast {
     def apkDir = new File(releaseAppPath)
     if (apkDir.exists() && apkDir.isDirectory()) {
         apkDir.deleteDir()

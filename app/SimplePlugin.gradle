@@ -14,7 +14,7 @@
  */
 class SimplePlugin implements Plugin<Project> {
     @Override
-    void apply(org.gradle.api.Project target) {
+    void apply(Project target) {
         def app = target.getRootProject().ext
         println("SimplePlugin -> 这是一个自定义插件 ${app.getLogMsg.invoke(getClass())}")
 

@@ -56,6 +56,8 @@ class LiveDataActivity : BaseActivity<ActivityLiveDataBinding>
     /**
      * LiveData最重要的一个特性是具有生命周期感知能力，当Activity或者Fragment处于活跃状态时，观察者才能观察到LiveData的变化。
      * 但是，如果我们把 Fragment 中的 LiveData 绑定的是 Activity 的生命周期时，会出现内存泄漏
+     *
+     * LiveData 本身是单进程的
      */
 
     /**

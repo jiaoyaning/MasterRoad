@@ -13,7 +13,8 @@ apply plugin: 'kotlin-kapt'
 apply plugin: 'com.google.protobuf'
 apply plugin: 'com.alibaba.arouter'
 apply from: "$rootDir/upload.gradle"
-apply from: 'SimplePlugin.gradle' //自定义极简插件，路径方式引入
+//apply from: 'SimplePlugin.gradle' //自定义极简插件，路径方式引入
+apply from: "Statistics.gradle"
 //apply plugin: 'com.jyn.helloworld'
 
 /*

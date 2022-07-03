@@ -24,7 +24,7 @@ buildscript {
 //    println("=> addRH: ${getExtensions().getExtraProperties().get("addRH")}")
 //    println("=> addRH: ${addRH}")
 //    addRepos.(repositories)   //config.gradle中方法
-    addRH.call(repositories)//config.gradle.kts中方法
+    addRH2.invoke(repositories)//utils.gradle.kts中方法
 
     /**
      * 我们升级适配完Android Gradle Plugin 7.0

@@ -6,7 +6,7 @@
  */
 ext {
     kotlin_version = '1.6.10'
-    gradle_version = "7.0.2"
+    gradle_version = "7.2.1"
     compileSdkVersion = 30
     buildToolsVersion = "30.0.2"
     applicationId = "com.jyn.masterroad"

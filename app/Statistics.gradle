@@ -13,35 +13,59 @@ import com.android.build.gradle.internal.api.DefaultAndroidSourceSet
 import com.android.build.gradle.internal.api.DefaultAndroidSourceDirectorySet
 import org.gradle.api.internal.file.FilteredFileTree
 import com.android.build.gradle.BaseExtension
+import com.android.build.gradle.internal.dsl.BaseAppModuleExtension
+import org.gradle.api.internal.FactoryNamedDomainObjectContainer
 
+/**
+ * all 是 gradle 中 DomainObjectCollection 接口的方法。
+ * each 是 groovy 中 List、Map 等集合类的方法。
+ *
+ * 它们的区别：
+ * 1.
+ *  all 会对集合内现有的元素和之后加入的元素，都执行给定的闭包操作。
+ *  each 只会对集合内现有的元素执行给定的闭包操作。
+ * 2.
+ *  all 接收的闭包，可以直接访问集合内元素的属性和方法。
+ *  each 接收的闭包，不能直接访问集合内元素的属性和方法。
+ */
 class StatisticsPlugin implements Plugin<Project> {
     @Override
     void apply(Project target) {
         /**
-         * @see BaseExtension
+         * @see BaseExtension 子类
+         * @see BaseAppModuleExtension#getSourceSets ->
+         * @see FactoryNamedDomainObjectContainer
          */
         def extension = target.getPlugins().getPlugin("com.android.application").getExtension()
         def sourceSets = extension.getSourceSets()
 
+        println("sourceSets：${sourceSets.class}")
+
         /**
+         * @see FactoryNamedDomainObjectContainer -> all
          * @see AndroidSourceSet 父类
          * @see DefaultAndroidSourceSet 子类
          */
         sourceSets.all { androidSourceSet ->
+            println("androidSourceSet：${androidSourceSet.class}")
             def name = androidSourceSet.getName()
             if (name != "main") return
 //            if (name.toLowerCase().contains("test")) return
             println("源码名：${name}")
+
             /**
              * @see DefaultAndroidSourceSet#getJavaDirectories
              */
-            androidSourceSet.getJavaDirectories().forEach { file ->
+            androidSourceSet.getJavaDirectories().each { File file ->
                 println("源码地址：${file.getAbsolutePath()}")
             }
+
             /**
              * @see DefaultAndroidSourceSet#getJava ->
              * @see DefaultAndroidSourceDirectorySet ->
-             * @see FilteredFileTree
+             * @see FilteredFileTree*
+             *
+             * https://www.w3cschool.cn/gradle_user_guide/gradle_user_guide-fonl26lp.html
              */
             def fileTree = androidSourceSet.getJava().getSourceFiles()
             println("fileTree -> ${fileTree.class}")

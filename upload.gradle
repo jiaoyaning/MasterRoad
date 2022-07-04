@@ -17,8 +17,7 @@ def debugAppPath = project.getBuildDir().absolutePath + "/outputs/apk/debug"
 def releaseAppPath = project.getBuildDir().absolutePath + "/outputs/apk/release"
 
 //打包测试环境apk并上传蒲公英
-def uploadDebugApk = task(group: "build", "uploadDebugApk")
-uploadDebugApk.doLast {
+task uploadDebugApk {
     def apkDir = new File(debugAppPath)
     if (apkDir.exists() && apkDir.isDirectory()) {
         apkDir.deleteDir()
@@ -30,8 +29,7 @@ uploadDebugApk.doLast {
 }
 
 //打包生产环境apk并上传蒲公英
-def uploadReleaseApk = task(group: "build", "uploadReleaseApk")
-uploadReleaseApk.doLast {
+task uploadReleaseApk {
     def apkDir = new File(releaseAppPath)
     if (apkDir.exists() && apkDir.isDirectory()) {
         apkDir.deleteDir()

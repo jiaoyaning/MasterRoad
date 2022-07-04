@@ -1,0 +1,70 @@
+import org.gradle.api.internal.file.FilteredFileTree
+
+/**
+ * 统计代码行
+ */
+buildscript {
+    repositories {
+        maven { setUrl("https://maven.aliyun.com/repository/public") }
+        maven { setUrl("https://maven.aliyun.com/repository/central") }
+        maven { setUrl("https://maven.aliyun.com/repository/google") }
+    }
+    dependencies {
+        classpath "com.android.tools.build:gradle:$gradle_version"
+        classpath "org.javassist:javassist:3.29.0-GA"
+    }
+}
+
+//def assembleTask = ":${project.name}:assemble"
+def assembleTask = ["compileDebugKotlin", "compileDebugJavaWithJavac"]
+String group = "statistic"
+
+//统计代码行
+task lineStatistic(group: group) {
+    doLast {
+        def extension = project.getPlugins().getPlugin("com.android.application").getExtension()
+        def sourceSets = extension.getSourceSets()
+        /**
+         * @see com.android.build.gradle.internal.api.DefaultAndroidSourceSet
+         */
+        sourceSets.all { androidSourceSet ->
+            String name = androidSourceSet.getName()
+            if (name != "main") return
+            //java 源文件
+            FilteredFileTree javaFileTree = androidSourceSet.getJava().getSourceFiles()
+            javaFileTree.each { File file ->
+                List<String> lines = file.readLines()
+//                println(" java file -> ${file.readLines()} : ${file.getAbsolutePath()}")
+            }
+
+            //kotlin源文件
+            FilteredFileTree kotlinFileTree = androidSourceSet.getKotlin().getSourceFiles()
+            kotlinFileTree.each { File file ->
+//                println(" kotlin file -> ${file.readLines()} : ${file.getAbsolutePath()}")
+            }
+        }
+        println()
+    }
+}
+
+//统计方法数
+task methodStatistic(dependsOn: assembleTask, group: group) {
+    doLast {
+        println("Java class 生成路径 -> ${compileDebugJavaWithJavac.destinationDir}")
+        println("Kotlin class 生成路径 -> ${compileDebugKotlin.destinationDir}")
+
+        FileTree javaClassTree = fileTree(dir: compileDebugJavaWithJavac.destinationDir, includes: ['**/*.class'])
+        FileTree kotlinClassTree = fileTree(dir: compileDebugKotlin.destinationDir, includes: ['**/*.class'])
+
+        //java class文件
+        javaClassTree.each { File file ->
+//            println(" Java Class -> ${file.getAbsolutePath()}")
+        }
+        //kotlin class文件
+        kotlinClassTree.each { File file ->
+//            println(" Kotlin Class -> ${file.getAbsolutePath()}")
+        }
+
+        println()
+    }
+}

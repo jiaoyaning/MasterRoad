@@ -6,6 +6,7 @@ buildscript {
     }
     dependencies {
         classpath "com.android.tools.build:gradle:$gradle_version"
+        classpath "org.javassist:javassist:3.29.0-GA"
     }
 }
 import com.android.build.api.dsl.AndroidSourceSet
@@ -39,15 +40,12 @@ class StatisticsPlugin implements Plugin<Project> {
         def extension = target.getPlugins().getPlugin("com.android.application").getExtension()
         def sourceSets = extension.getSourceSets()
 
-        println("sourceSets：${sourceSets.class}")
-
         /**
          * @see FactoryNamedDomainObjectContainer -> all
          * @see AndroidSourceSet 父类
          * @see DefaultAndroidSourceSet 子类
          */
         sourceSets.all { androidSourceSet ->
-            println("androidSourceSet：${androidSourceSet.class}")
             def name = androidSourceSet.getName()
             if (name != "main") return
 //            if (name.toLowerCase().contains("test")) return
@@ -68,7 +66,6 @@ class StatisticsPlugin implements Plugin<Project> {
              * https://www.w3cschool.cn/gradle_user_guide/gradle_user_guide-fonl26lp.html
              */
             def fileTree = androidSourceSet.getJava().getSourceFiles()
-            println("fileTree -> ${fileTree.class}")
             fileTree.each { File file ->
                 println(" file -> ${file.getAbsolutePath()}")
             }

@@ -1,4 +1,15 @@
+import javassist.CtMethod
+import javassist.bytecode.CodeAttribute
+import javassist.bytecode.CodeIterator
+import org.apache.http.util.TextUtils
 import org.gradle.api.internal.file.FilteredFileTree
+import com.android.build.gradle.internal.api.DefaultAndroidSourceSet
+import java.nio.file.Path
+import javassist.CtClass
+import javassist.bytecode.MethodInfo
+import javassist.bytecode.ClassFile
+import javassist.ClassPool
+import javassist.bytecode.Mnemonic
 
 /**
  * 统计代码行
@@ -19,50 +30,108 @@ buildscript {
 def assembleTask = ["compileDebugKotlin", "compileDebugJavaWithJavac"]
 String group = "statistic"
 
-//统计代码行
+/**
+ * 统计代码行
+ */
 task lineStatistic(group: group) {
     doLast {
+        long lineSize = 0 //总行数
         def extension = project.getPlugins().getPlugin("com.android.application").getExtension()
         def sourceSets = extension.getSourceSets()
         /**
-         * @see com.android.build.gradle.internal.api.DefaultAndroidSourceSet
+         * @see DefaultAndroidSourceSet
          */
         sourceSets.all { androidSourceSet ->
             String name = androidSourceSet.getName()
             if (name != "main") return
             //java 源文件
             FilteredFileTree javaFileTree = androidSourceSet.getJava().getSourceFiles()
-            javaFileTree.each { File file ->
-                List<String> lines = file.readLines()
-//                println(" java file -> ${file.readLines()} : ${file.getAbsolutePath()}")
-            }
-
             //kotlin源文件
             FilteredFileTree kotlinFileTree = androidSourceSet.getKotlin().getSourceFiles()
-            kotlinFileTree.each { File file ->
-//                println(" kotlin file -> ${file.readLines()} : ${file.getAbsolutePath()}")
+
+            /**
+             * 合并源文件，其实源码中已存在文件过滤，从此再次添加是为了展示写法
+             * @see FilteredFileTree#matching(PatternFilterable) -> 添加规则
+             * @see PatternFilterable#getIncludes 得到现有规则，然后 allAll() 添加新规则
+             */
+            FileTree fileTree = (javaFileTree + kotlinFileTree).matching { includes.addAll(['**/*.java', '**/*.kt']) }
+
+            //遍历源，进行行统计
+            fileTree.each { File file ->
+                List<String> lines = file.readLines().findAll { String line ->
+                    String trim = line.trim()
+                    return !(trim.startsWith("/") || trim.startsWith("*") || TextUtils.isBlank(trim))
+                }
+                lineSize += lines.size()
+                println("${file.getAbsolutePath()} 行数-> ${lines.size()}")
             }
         }
-        println()
+        println("总代码行数: ${lineSize}")
     }
 }
 
-//统计方法数
+/**
+ * 统计方法数
+ */
 task methodStatistic(dependsOn: assembleTask, group: group) {
     doLast {
-        println("Java class 生成路径 -> ${compileDebugJavaWithJavac.destinationDir}")
-        println("Kotlin class 生成路径 -> ${compileDebugKotlin.destinationDir}")
+        int methods = 0
 
-        FileTree javaClassTree = fileTree(dir: compileDebugJavaWithJavac.destinationDir, includes: ['**/*.class'])
-        FileTree kotlinClassTree = fileTree(dir: compileDebugKotlin.destinationDir, includes: ['**/*.class'])
+        // 文件排查规则
+        ArrayList<String> excludeArray = ['**/databinding/**', '**/BR.class',
+                                          '**/R.class', '**/BuildConfig.class',
+                                          '**/arouter/routes/**', '**/arouter/routes/**',
+                                          '**/*_*.class', '**/rxhttp/wrapper/**']
 
-        //java class文件
-        javaClassTree.each { File file ->
-//            println(" Java Class -> ${file.getAbsolutePath()}")
+//        LinkedHashMap<String, Integer> methodsMap = new LinkedHashMap<String, Integer>() // 记录类的方法数
+
+        DirectoryProperty javaDirectory = compileDebugJavaWithJavac.getDestinationDirectory()
+        DirectoryProperty kotlinDirectory = compileDebugKotlin.getDestinationDirectory()
+
+        FileTree javaClassTree = javaDirectory.getAsFileTree().matching {
+            include '**/*.class'
+            excludes.addAll(excludeArray)
         }
-        //kotlin class文件
-        kotlinClassTree.each { File file ->
-//            println(" Kotlin Class -> ${file.getAbsolutePath()}")
+        FileTree kotlinClassTree = kotlinDirectory.getAsFileTree().matching {
+            include '**/*.class'
+            exclude '**/databinding/**'
+        }
+
+        Path javaClassPath = javaDirectory.getAsFile().getOrNull().toPath()
+        Path kotlinClassPath = kotlinDirectory.getAsFile().getOrNull().toPath()
+
+        ClassPool classPool = ClassPool.getDefault()
+        List<CtClass> classes = new ArrayList<>()
+        classPool.appendClassPath(javaClassPath.toString())
+
+        javaClassTree.each { File file ->
+            String qualifiedClassName = javaClassPath.relativize(file.toPath())
+                    .toFile()
+                    .getPath()
+                    .replace('\\', '.')
+                    .replace(".class", "")
+            println("file -> ${file.absolutePath}")
+
+//            ClassFile classFile = classPool.getCtClass(qualifiedClassName).getClassFile()
+//            classPool.getCtClass(qualifiedClassName).getDeclaredMethods().each { CtMethod ctMethod ->
+//                println(" ${ctMethod.getName()}")
+//            }
+            classPool.getCtClass(qualifiedClassName).getClassFile().getMethods().each { MethodInfo methodInfo ->
+                println(" ${methodInfo.getName()} -> ")
+                CodeAttribute codeAttribute = methodInfo.getCodeAttribute()
+                def codeIterator = codeAttribute.iterator()
+                while (codeIterator.hasNext()) {
+                    int index = codeIterator.next();
+                    int op = codeIterator.byteAt(index)
+                    def mnemonic = Mnemonic.OPCODE[op]
+                    println("       ${mnemonic}")
+
+                    if (mnemonic == "invokestatic") {
+
+                    }
+                }
+            }
+            println()
         }
 
         println()

@@ -8,7 +8,7 @@ ext {
     kotlin_version = '1.6.10'
     gradle_version = "7.2.1"
     compileSdkVersion = 30
-    buildToolsVersion = "30.0.2"
+    buildToolsVersion = "30.0.3"
     applicationId = "com.jyn.masterroad"
     applicationId_ipc = "com.jyn.masterroad_ipc"
     minSdkVersion = 21

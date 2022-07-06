@@ -15,7 +15,7 @@ plugins {
     id("kotlin-android")
     id("kotlin-kapt") //https://www.kotlincn.net/docs/reference/kapt.html
 }
-apply(from = "$rootDir/statistic.gradle")
+//apply(from = "$rootDir/statistic.gradle")
 
 val app = rootProject.ext
 

@@ -1,10 +1,13 @@
+import javassist.ByteArrayClassPath
 import org.apache.http.util.TextUtils
 import org.gradle.api.internal.file.FilteredFileTree
 import com.android.build.gradle.internal.api.DefaultAndroidSourceSet
+
+import java.nio.file.Files
 import java.nio.file.Path
 
-import javassist.CtClass
 import javassist.ClassPool
+import javassist.CtClass
 import javassist.CtMethod
 import javassist.bytecode.*
 
@@ -22,7 +25,6 @@ buildscript {
     }
 }
 
-//def assembleTask = ":${project.name}:assemble"
 def assembleTask = ["compileDebugKotlin", "compileDebugJavaWithJavac"]
 String group = "statistic"
 
@@ -71,72 +73,128 @@ task lineStatistic(group: group) {
  */
 task methodStatistic(dependsOn: assembleTask, group: group) {
     doLast {
-        int methods = 0
-
         // 文件排查规则
-        ArrayList<String> excludeArray = ['**/databinding/**', '**/BR.class',
-                                          '**/R.class', '**/BuildConfig.class',
-                                          '**/arouter/routes/**', '**/arouter/routes/**',
-                                          '**/*_*.class', '**/rxhttp/wrapper/**']
+        List<String> excludeArray = ['**/databinding/**', '**/BR.class',
+                                     '**/R.class', '**/BuildConfig.class',
+                                     '**/arouter/routes/**', '**/arouter/routes/**',
+                                     '**/*_*.class', '**/rxhttp/wrapper/**']
 
-//        LinkedHashMap<String, Integer> methodsMap = new LinkedHashMap<String, Integer>() // 记录类的方法数
+        List<String> targetMethod = ['com.apkfuns.logutils.LogUtils.tag']
 
         DirectoryProperty javaDirectory = compileDebugJavaWithJavac.getDestinationDirectory()
         DirectoryProperty kotlinDirectory = compileDebugKotlin.getDestinationDirectory()
 
-        FileTree javaClassTree = javaDirectory.getAsFileTree().matching {
+        println("kotlinDirectory : ${kotlinDirectory.class}")
+
+        /**
+         * @see FilteredFileTree
+         */
+        FileTree javaTree = javaDirectory.getAsFileTree().matching {
+            it.include '**/*.class'
+            it.excludes.addAll(excludeArray)
+        }
+        FileTree kotlinTree = kotlinDirectory.getAsFileTree().matching {
             include '**/*.class'
             excludes.addAll(excludeArray)
         }
-        FileTree kotlinClassTree = kotlinDirectory.getAsFileTree().matching {
-            include '**/*.class'
-            exclude '**/databinding/**'
-        }
 
-        Path javaClassPath = javaDirectory.getAsFile().getOrNull().toPath()
-        Path kotlinClassPath = kotlinDirectory.getAsFile().getOrNull().toPath()
+        println("kotlinDirectory : ${kotlinTree.class}")
+        Path javaPath = javaDirectory.getAsFile().getOrNull().toPath()
+        Path kotlinPath = kotlinDirectory.getAsFile().getOrNull().toPath()
 
-        ClassPool classPool = ClassPool.getDefault()
-        List<CtClass> classes = new ArrayList<>()
-        classPool.appendClassPath(javaClassPath.toString())
+        javaTree.each { File file ->
+            println(file.absolutePath)
+            String qualifiedClassName = getQualifiedClassName(javaPath, file.toPath())
 
-        javaClassTree.each { File file ->
-            String qualifiedClassName = javaClassPath.relativize(file.toPath())
-                    .toFile()
-                    .getPath()
-                    .replace('\\', '.')
-                    .replace(".class", "")
-            println("file -> ${file.absolutePath}")
+            ByteArrayClassPath cp = new ByteArrayClassPath(qualifiedClassName, Files.readAllBytes(file.toPath()))
+            ClassPool.getDefault().appendClassPath(cp)
 
-            classPool.getCtClass(qualifiedClassName).getDeclaredMethods().each { CtMethod ctMethod ->
-//                InstructionPrinter.print(ctMethod, System.out)
-                println(" ${ctMethod.name}")
-                MethodInfo info = ctMethod.getMethodInfo2();
-                ConstPool pool = info.getConstPool();
-                CodeAttribute code = info.getCodeAttribute();
-                if (code == null)
-                    return
-
-                CodeIterator iterator = code.iterator();
-                while (iterator.hasNext()) {
-                    int pos
-                    try {
-                        pos = iterator.next()
-                    } catch (BadBytecode e) {
-                        throw new RuntimeException(e);
-                    }
-
-                    int opcode = iterator.byteAt(pos)
-                    if (Opcode.INVOKESTATIC == opcode) {
-                        int index = iterator.u16bitAt(pos + 1)
-                        println("   -> ${pool.getMethodrefClassName(index)}.${pool.getMethodrefName(index)}(${pool.getMethodrefType(index)})")
-                    }
-                }
-            }
+            CtClass ctClass = ClassPool.getDefault().getOrNull(qualifiedClassName)
+            if (ctClass == null) return true
+            int count = findTargetMethodUsedCountInClass(ctClass, targetMethod)
+            println("  -> ${qualifiedClassName} : ${count}/${ctClass.getDeclaredMethods().length}")
             println()
+            ClassPool.getDefault().removeClassPath(cp)
         }
 
-        println()
+        kotlinTree.each { File file ->
+            println(file.absolutePath)
+            String qualifiedClassName = getQualifiedClassName(kotlinPath, file.toPath())
+
+            ByteArrayClassPath cp = new ByteArrayClassPath(qualifiedClassName, Files.readAllBytes(file.toPath()))
+            ClassPool.getDefault().appendClassPath(cp)
+
+            CtClass ctClass = ClassPool.getDefault().getOrNull(qualifiedClassName)
+            if (ctClass == null) return true
+            int count = findTargetMethodUsedCountInClass(ctClass, targetMethod)
+            println("  -> ${qualifiedClassName} : ${count}/${ctClass.getDeclaredMethods().length}")
+            println()
+            ClassPool.getDefault().removeClassPath(cp)
+        }
     }
 }
 
+static def statisticMethod(FileTree tree, Path path, List<String> targetMethod) {
+    tree.each { File file ->
+        println(file.absolutePath)
+        String qualifiedClassName = getQualifiedClassName(path, file.toPath())
+        ByteArrayClassPath cp = new ByteArrayClassPath(qualifiedClassName, Files.readAllBytes(file.toPath()))
+        ClassPool.getDefault().appendClassPath(cp)
+        CtClass ctClass = ClassPool.getDefault().getOrNull(qualifiedClassName)
+        if (ctClass == null) return true
+        int count = findTargetMethodUsedCountInClass(ctClass, targetMethod)
+        println("  -> ${qualifiedClassName} : ${count}/${ctClass.getDeclaredMethods().length}")
+        println()
+        ClassPool.getDefault().removeClassPath(cp)
+    }
+}
+
+/**
+ * 获取合格可用的的类名
+ */
+static def getQualifiedClassName(Path classPath, Path filePath) {
+    return classPath.relativize(filePath)
+            .toFile().getPath()
+            .replace('\\', '.')
+            .replace(".class", "")
+}
+
+/**
+ * 找出 Class 中使用了目标方法的方法数
+ * @see InstructionPrinter 参考
+ */
+static def findTargetMethodUsedCountInClass(CtClass ctClass, List<String> targetMethod) {
+    int methods = 0
+    ctClass.getDeclaredMethods().each { CtMethod ctMethod ->
+        MethodInfo info = ctMethod.getMethodInfo2()
+        ConstPool pool = info.getConstPool()
+        CodeAttribute code = info.getCodeAttribute()
+        if (code == null) return true //跳出本轮循环
+
+        //遍历方法体字节码
+        CodeIterator iterator = code.iterator()
+        while (iterator.hasNext()) {
+            int pos
+            try {
+                pos = iterator.next()
+            } catch (BadBytecode e) {
+                throw new RuntimeException(e)
+            }
+
+            //读取当前位置指令
+            int opcode = iterator.byteAt(pos)
+            //判断该指令是否为方法调用
+            if (opcode == Opcode.INVOKESTATIC || opcode == Opcode.INVOKEVIRTUAL || opcode == Opcode.INVOKESPECIAL) {
+                int index = iterator.u16bitAt(pos + 1)
+                String methodFullName = "${pool.getMethodrefClassName(index)}.${pool.getMethodrefName(index)}"
+                boolean isUsed = targetMethod.findAll { methodFullName == it }.size() > 0
+                if (isUsed) { //包含目标方法
+                    methods++
+                    break
+                }
+            }
+        }
+    }
+    ctClass.detach() //该CtClass已经不需要了，从ClassPool中移除
+    return methods
+}

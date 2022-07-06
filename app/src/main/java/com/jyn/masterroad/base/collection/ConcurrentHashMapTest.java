@@ -1,5 +1,7 @@
 package com.jyn.masterroad.base.collection;
 
+import com.apkfuns.logutils.LogUtils;
+
 /*
  * 你真的了解 ConcurrentHashMap 吗？
  * https://mp.weixin.qq.com/s/7qcmwNbKfEgRIfpUqCoNsg
@@ -20,4 +22,8 @@ public class ConcurrentHashMapTest {
      *              大于表明有改动需要重新计算，等于则直接返回，如果重新计算次数过多，则全部加锁，再次计算。
      *         1.8：在扩容 和 addCount()时 实时计算
      */
+
+    private void logUtilsTest() {
+        LogUtils.tag("ConcurrentHashMapTest").i("logUtilsTest ----> 1");
+    }
 }

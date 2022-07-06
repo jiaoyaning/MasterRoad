@@ -1,15 +1,12 @@
-import javassist.CtMethod
-import javassist.bytecode.CodeAttribute
-import javassist.bytecode.CodeIterator
 import org.apache.http.util.TextUtils
 import org.gradle.api.internal.file.FilteredFileTree
 import com.android.build.gradle.internal.api.DefaultAndroidSourceSet
 import java.nio.file.Path
+
 import javassist.CtClass
-import javassist.bytecode.MethodInfo
-import javassist.bytecode.ClassFile
 import javassist.ClassPool
-import javassist.bytecode.Mnemonic
+import javassist.CtMethod
+import javassist.bytecode.*
 
 /**
  * 统计代码行
@@ -17,7 +14,6 @@ import javassist.bytecode.Mnemonic
 buildscript {
     repositories {
         maven { setUrl("https://maven.aliyun.com/repository/public") }
-        maven { setUrl("https://maven.aliyun.com/repository/central") }
         maven { setUrl("https://maven.aliyun.com/repository/google") }
     }
     dependencies {
@@ -112,22 +108,28 @@ task methodStatistic(dependsOn: assembleTask, group: group) {
                     .replace(".class", "")
             println("file -> ${file.absolutePath}")
 
-//            ClassFile classFile = classPool.getCtClass(qualifiedClassName).getClassFile()
-//            classPool.getCtClass(qualifiedClassName).getDeclaredMethods().each { CtMethod ctMethod ->
-//                println(" ${ctMethod.getName()}")
-//            }
-            classPool.getCtClass(qualifiedClassName).getClassFile().getMethods().each { MethodInfo methodInfo ->
-                println(" ${methodInfo.getName()} -> ")
-                CodeAttribute codeAttribute = methodInfo.getCodeAttribute()
-                def codeIterator = codeAttribute.iterator()
-                while (codeIterator.hasNext()) {
-                    int index = codeIterator.next();
-                    int op = codeIterator.byteAt(index)
-                    def mnemonic = Mnemonic.OPCODE[op]
-                    println("       ${mnemonic}")
+            classPool.getCtClass(qualifiedClassName).getDeclaredMethods().each { CtMethod ctMethod ->
+//                InstructionPrinter.print(ctMethod, System.out)
+                println(" ${ctMethod.name}")
+                MethodInfo info = ctMethod.getMethodInfo2();
+                ConstPool pool = info.getConstPool();
+                CodeAttribute code = info.getCodeAttribute();
+                if (code == null)
+                    return
 
-                    if (mnemonic == "invokestatic") {
+                CodeIterator iterator = code.iterator();
+                while (iterator.hasNext()) {
+                    int pos
+                    try {
+                        pos = iterator.next()
+                    } catch (BadBytecode e) {
+                        throw new RuntimeException(e);
+                    }
 
+                    int opcode = iterator.byteAt(pos)
+                    if (Opcode.INVOKESTATIC == opcode) {
+                        int index = iterator.u16bitAt(pos + 1)
+                        println("   -> ${pool.getMethodrefClassName(index)}.${pool.getMethodrefName(index)}(${pool.getMethodrefType(index)})")
                     }
                 }
             }
@@ -137,3 +139,4 @@ task methodStatistic(dependsOn: assembleTask, group: group) {
         println()
     }
 }
+

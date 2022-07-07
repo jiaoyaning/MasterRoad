@@ -140,7 +140,7 @@ static Pair<Long, Long> statisticMethod(FileTree tree, Path classPath, List<Stri
         ClassPool.getDefault().appendClassPath(cp)
         CtClass ctClass = ClassPool.getDefault().getOrNull(qualifiedClassName)
         if (ctClass == null) return true
-        def statistic = findTargetMethodUsedCountInClass(ctClass, target)
+        def statistic = findUsedCountInClass(ctClass, target)
         targetUsedMethodsCount += statistic.left().size()
         allMethodsCount += statistic.right().size()
 //        println("${qualifiedClassName} : ${statistic.left().size()}/${statistic.right().size()} -> ${statistic.left()}/${statistic.right()} ")
@@ -155,22 +155,24 @@ static Pair<Long, Long> statisticMethod(FileTree tree, Path classPath, List<Stri
  *
  * @return left:使用了目标方法的方法，right:类中的全部方法
  */
-static Pair<List<String>, List<String>> findTargetMethodUsedCountInClass(CtClass ctClass, List<String> targetMethod) {
+static Pair<List<String>, List<String>> findUsedCountInClass(CtClass ctClass, List<String> targetMethod) {
     //目标方法使用数量
     def targetUsedMethods = []
     //全部方法数量
     def allMethods = []
 
+    //构造方法
     ctClass.getConstructors().each { CtConstructor ctConstructor ->
         allMethods.add(ctConstructor.longName)
-        if (isContainsTargetMethods(ctConstructor.getMethodInfo2(), targetMethod)) {
+        if (isContainTargetMethod(ctConstructor.getMethodInfo2(), targetMethod)) {
             targetUsedMethods.add(ctConstructor.longName)
         }
     }
 
-    ctClass.getDeclaredMethods().each { CtMethod ctMethod ->
+    //全部方法
+    ctClass.getMethod().each { CtMethod ctMethod ->
         allMethods.add(ctMethod.longName)
-        if (isContainsTargetMethods(ctMethod.getMethodInfo2(), targetMethod)) {
+        if (isContainTargetMethod(ctMethod.getMethodInfo2(), targetMethod)) {
             targetUsedMethods.add(ctMethod.longName)
         }
     }
@@ -179,7 +181,7 @@ static Pair<List<String>, List<String>> findTargetMethodUsedCountInClass(CtClass
     return new Pair<List<String>, List<String>>(targetUsedMethods, allMethods)
 }
 
-static boolean isContainsTargetMethods(MethodInfo info, List<String> targetMethod) {
+static boolean isContainTargetMethod(MethodInfo info, List<String> targetMethod) {
     ConstPool pool = info.getConstPool()
     CodeAttribute code = info.getCodeAttribute()
     if (code == null) return true //跳出本轮循环

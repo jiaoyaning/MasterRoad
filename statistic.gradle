@@ -126,7 +126,20 @@ task methodStatistic(dependsOn: assembleTask, group: group) {
  * 增量代码行统计
  */
 task diffLineStatistic(group: group) {
-
+    /**
+     * https://git-scm.com/docs/git-diff
+     * https://www.php.cn/manual/view/34963.html
+     */
+    doLast {
+        List<String> diffFile = "git diff master statistic --name-only".execute().text.split('\n')
+        diffFile.each { String filepath ->
+            println("DiffFile -> ${filepath}")
+            String diff = "git diff master statistic -- ${filepath}".execute().text
+            println("-----")
+            println("${diff}")
+            println("-----")
+        }
+    }
 }
 
 static Pair<Long, Long> statisticMethod(FileTree tree, Path classPath, List<String> target) {

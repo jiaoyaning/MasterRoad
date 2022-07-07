@@ -1,7 +1,8 @@
+import com.android.build.gradle.internal.dsl.BaseAppModuleExtension
+import com.android.build.gradle.internal.api.DefaultAndroidSourceSet
+import javassist.CtConstructor
 import org.gradle.api.internal.file.FilteredFileTree
 import org.gradle.internal.Pair
-import org.apache.http.util.TextUtils
-import com.android.build.gradle.internal.api.DefaultAndroidSourceSet
 
 import java.nio.file.Files
 import java.nio.file.Path
@@ -35,7 +36,7 @@ def exclude = ['**/databinding/**', '**/BR.class',
                '**/arouter/routes/**', '**/arouter/routes/**',
                '**/*_*.class', '**/rxhttp/wrapper/**', '**/LiveLiterals$*']
 
-// 目标方法
+// 目标方法 (格式要求：完整类名.方法名)
 def target = ['com.apkfuns.logutils.LogUtils.tag']
 
 /**
@@ -43,13 +44,18 @@ def target = ['com.apkfuns.logutils.LogUtils.tag']
  */
 task lineStatistic(group: group) {
     doLast {
+        long fileSize = 0 //总文件数
         long lineSize = 0 //总行数
-        def extension = project.getPlugins().getPlugin("com.android.application").getExtension()
-        def sourceSets = extension.getSourceSets()
+        long targetLineSize = 0 //包含日志的行数
+
+        //截取出目标方法
+        List<String> targetMethod = target.collect { it.substring(it.lastIndexOf(".", it.lastIndexOf(".") - 1) + 1, it.length()) }
+
         /**
-         * @see DefaultAndroidSourceSet
+         * @see BaseAppModuleExtension <- project.extensions.getByName("android")
+         * @see DefaultAndroidSourceSet <- .getSourceSets()
          */
-        sourceSets.all { androidSourceSet ->
+        project.extensions.getByName("android").getSourceSets().all { androidSourceSet ->
             String name = androidSourceSet.getName()
             if (name != "main") return
             //java 源文件
@@ -63,18 +69,26 @@ task lineStatistic(group: group) {
              * @see PatternFilterable#getIncludes 得到现有规则，然后 allAll() 添加新规则
              */
             FileTree fileTree = (javaFileTree + kotlinFileTree).matching { includes.addAll(['**/*.java', '**/*.kt']) }
-
-            //遍历源，进行行统计
+            fileSize += fileTree.getFiles().size()
+            //遍历源文件，开始行统计
             fileTree.each { File file ->
-                List<String> lines = file.readLines().findAll { String line ->
-                    String trim = line.trim()
-                    return !(trim.startsWith("/") || trim.startsWith("*") || TextUtils.isBlank(trim))
+                file.readLines().eachWithIndex { String line, int index ->
+                    String trimLine = line.trim()
+                    if (trimLine.startsWith("/") || trimLine.startsWith("*") || trimLine.isBlank()) return true
+                    targetMethod.each {
+                        if (trimLine.contains(it)) {
+                            targetLineSize++
+//                            println("${file.absolutePath}:${++index}")
+//                            println(" ${targetLineSize} -> ${trimLine}")
+                        }
+                    }
+                    lineSize++
                 }
-                lineSize += lines.size()
-                println("${file.getAbsolutePath()} 行数-> ${lines.size()}")
             }
         }
-        println("总代码行数: ${lineSize}")
+
+        println("总文件数: ${fileSize}")
+        println("行覆盖率: ${targetLineSize}/${lineSize}")
     }
 }
 
@@ -83,6 +97,8 @@ task lineStatistic(group: group) {
  */
 task methodStatistic(dependsOn: assembleTask, group: group) {
     doLast {
+        println("compileDebugJavaWithJavac -> ${compileDebugJavaWithJavac}")
+        println("compileDebugKotlin -> ${compileDebugKotlin}")
         // java 源码目录
         def javaDirectory = compileDebugJavaWithJavac.getDestinationDirectory()
         // kotlin 源码目录
@@ -92,10 +108,9 @@ task methodStatistic(dependsOn: assembleTask, group: group) {
          * @see FilteredFileTree 文件树
          */
         def filter = { include '**/*.class'; excludes.addAll(exclude) }
+
         def javaTree = javaDirectory.getAsFileTree().matching(filter)
         def kotlinTree = kotlinDirectory.getAsFileTree().matching(filter)
-
-        println("kotlinDirectory : ${kotlinTree.class}")
         def javaPath = javaDirectory.getAsFile().getOrNull().toPath()
         def kotlinPath = kotlinDirectory.getAsFile().getOrNull().toPath()
 
@@ -128,14 +143,14 @@ static Pair<Long, Long> statisticMethod(FileTree tree, Path classPath, List<Stri
         def statistic = findTargetMethodUsedCountInClass(ctClass, target)
         targetUsedMethodsCount += statistic.left().size()
         allMethodsCount += statistic.right().size()
-        println("${qualifiedClassName} : ${statistic.left().size()}/${statistic.right().size()} -> ${statistic.left()}/${statistic.right()} ")
+//        println("${qualifiedClassName} : ${statistic.left().size()}/${statistic.right().size()} -> ${statistic.left()}/${statistic.right()} ")
         ClassPool.getDefault().removeClassPath(cp)
     }
     return new Pair<Long, Long>(targetUsedMethodsCount, allMethodsCount)
 }
 
 /**
- * 找出 Class 中使用了目标方法的方法数
+ * 找出 Class 中使用了目标方法的方法数 (忽略了构造方法)
  * @see InstructionPrinter 参考
  *
  * @return left:使用了目标方法的方法，right:类中的全部方法
@@ -145,38 +160,51 @@ static Pair<List<String>, List<String>> findTargetMethodUsedCountInClass(CtClass
     def targetUsedMethods = []
     //全部方法数量
     def allMethods = []
-    ctClass.getDeclaredMethods().each { CtMethod ctMethod ->
-        allMethods.add(ctMethod.name)
-        MethodInfo info = ctMethod.getMethodInfo2()
-        ConstPool pool = info.getConstPool()
-        CodeAttribute code = info.getCodeAttribute()
-        if (code == null) return true //跳出本轮循环
 
-        //遍历方法体字节码
-        CodeIterator iterator = code.iterator()
-        while (iterator.hasNext()) {
-            int pos
-            try {
-                pos = iterator.next()
-            } catch (BadBytecode e) {
-                throw new RuntimeException(e)
-            }
-
-            //读取当前位置指令
-            int opcode = iterator.byteAt(pos)
-            //判断该指令是否为方法调用
-            if (opcode == Opcode.INVOKESTATIC || opcode == Opcode.INVOKEVIRTUAL || opcode == Opcode.INVOKESPECIAL) {
-                int index = iterator.u16bitAt(pos + 1)
-                //拼接出完整方法：类名+方法
-                String methodFullName = "${pool.getMethodrefClassName(index)}.${pool.getMethodrefName(index)}"
-                boolean isUsed = targetMethod.findAll { methodFullName == it }.size() > 0
-                if (isUsed) { //包含目标方法
-                    targetUsedMethods.add(ctMethod.name)
-                    break
-                }
-            }
+    ctClass.getConstructors().each { CtConstructor ctConstructor ->
+        allMethods.add(ctConstructor.longName)
+        if (isContainsTargetMethods(ctConstructor.getMethodInfo2(), targetMethod)) {
+            targetUsedMethods.add(ctConstructor.longName)
         }
     }
+
+    ctClass.getDeclaredMethods().each { CtMethod ctMethod ->
+        allMethods.add(ctMethod.longName)
+        if (isContainsTargetMethods(ctMethod.getMethodInfo2(), targetMethod)) {
+            targetUsedMethods.add(ctMethod.longName)
+        }
+    }
+
     ctClass.detach() //该CtClass已经不需要了，从ClassPool中移除
     return new Pair<List<String>, List<String>>(targetUsedMethods, allMethods)
+}
+
+static boolean isContainsTargetMethods(MethodInfo info, List<String> targetMethod) {
+    ConstPool pool = info.getConstPool()
+    CodeAttribute code = info.getCodeAttribute()
+    if (code == null) return true //跳出本轮循环
+
+    //遍历方法体字节码
+    CodeIterator iterator = code.iterator()
+    while (iterator.hasNext()) {
+        int pos
+        try {
+            pos = iterator.next()
+        } catch (BadBytecode e) {
+            throw new RuntimeException(e)
+        }
+
+        //读取当前位置指令
+        int opcode = iterator.byteAt(pos)
+        //判断该指令是否为方法调用
+        if (opcode == Opcode.INVOKESTATIC || opcode == Opcode.INVOKEVIRTUAL || opcode == Opcode.INVOKESPECIAL) {
+            int index = iterator.u16bitAt(pos + 1)
+            //拼接出完整方法：类名+方法
+            String methodFullName = "${pool.getMethodrefClassName(index)}.${pool.getMethodrefName(index)}"
+            boolean isUsed = targetMethod.findAll { methodFullName == it }.size() > 0
+            //包含目标方法
+            if (isUsed) return true
+        }
+    }
+    return false
 }

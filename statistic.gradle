@@ -97,11 +97,8 @@ task lineStatistic(group: group) {
  */
 task methodStatistic(dependsOn: assembleTask, group: group) {
     doLast {
-        println("compileDebugJavaWithJavac -> ${compileDebugJavaWithJavac}")
-        println("compileDebugKotlin -> ${compileDebugKotlin}")
-        // java 源码目录
+        // 源码
         def javaDirectory = compileDebugJavaWithJavac.getDestinationDirectory()
-        // kotlin 源码目录
         def kotlinDirectory = compileDebugKotlin.getDestinationDirectory()
         /**
          * @see PatternFilterable 筛选规则
@@ -123,6 +120,13 @@ task methodStatistic(dependsOn: assembleTask, group: group) {
         println("kotlin 方法覆盖率：${kotlinRes.left()}/${kotlinRes.right()}")
         println("方法覆盖率：${javaRes.left() + kotlinRes.left()}/${javaRes.right() + kotlinRes.right()}")
     }
+}
+
+/**
+ * 增量代码行统计
+ */
+task diffLineStatistic(group: group) {
+
 }
 
 static Pair<Long, Long> statisticMethod(FileTree tree, Path classPath, List<String> target) {
@@ -156,7 +160,7 @@ static Pair<Long, Long> statisticMethod(FileTree tree, Path classPath, List<Stri
  * @return left:使用了目标方法的方法，right:类中的全部方法
  */
 static Pair<List<String>, List<String>> findUsedCountInClass(CtClass ctClass, List<String> targetMethod) {
-    //目标方法使用数量
+    //使用了目标方法的方法
     def targetUsedMethods = []
     //全部方法数量
     def allMethods = []
@@ -181,6 +185,9 @@ static Pair<List<String>, List<String>> findUsedCountInClass(CtClass ctClass, Li
     return new Pair<List<String>, List<String>>(targetUsedMethods, allMethods)
 }
 
+/**
+ * 判断方法体中是否引用了目标方法
+ */
 static boolean isContainTargetMethod(MethodInfo info, List<String> targetMethod) {
     ConstPool pool = info.getConstPool()
     CodeAttribute code = info.getCodeAttribute()
@@ -189,13 +196,7 @@ static boolean isContainTargetMethod(MethodInfo info, List<String> targetMethod)
     //遍历方法体字节码
     CodeIterator iterator = code.iterator()
     while (iterator.hasNext()) {
-        int pos
-        try {
-            pos = iterator.next()
-        } catch (BadBytecode e) {
-            throw new RuntimeException(e)
-        }
-
+        int pos = iterator.next()
         //读取当前位置指令
         int opcode = iterator.byteAt(pos)
         //判断该指令是否为方法调用

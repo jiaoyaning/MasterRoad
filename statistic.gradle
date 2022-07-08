@@ -48,9 +48,6 @@ task lineStatistic(group: group) {
         long lineSize = 0 //总行数
         long targetLineSize = 0 //包含日志的行数
 
-        //截取出目标方法
-        List<String> targetMethod = target.collect { it.substring(it.lastIndexOf(".", it.lastIndexOf(".") - 1) + 1, it.length()) }
-
         /**
          * @see BaseAppModuleExtension <- project.extensions.getByName("android")
          * @see DefaultAndroidSourceSet <- .getSourceSets()
@@ -72,23 +69,14 @@ task lineStatistic(group: group) {
             fileSize += fileTree.getFiles().size()
             //遍历源文件，开始行统计
             fileTree.each { File file ->
-                file.readLines().eachWithIndex { String line, int index ->
-                    String trimLine = line.trim()
-                    if (trimLine.startsWith("/") || trimLine.startsWith("*") || trimLine.isBlank()) return true
-                    targetMethod.each {
-                        if (trimLine.contains(it)) {
-                            targetLineSize++
-//                            println("${file.absolutePath}:${++index}")
-//                            println(" ${targetLineSize} -> ${trimLine}")
-                        }
-                    }
-                    lineSize++
-                }
+                def lines = file.readLines()
+                lineSize += lines.size()
+                targetLineSize += statisticTargetLines(lines, target)
             }
         }
 
         println("总文件数: ${fileSize}")
-        println("行覆盖率: ${targetLineSize}/${lineSize}")
+        println("行覆盖率(目标代码行数/代码总行数): ${targetLineSize}/${lineSize}")
     }
 }
 
@@ -118,7 +106,7 @@ task methodStatistic(dependsOn: assembleTask, group: group) {
 
         println("java 方法覆盖率：${javaRes.left()}/${javaRes.right()}")
         println("kotlin 方法覆盖率：${kotlinRes.left()}/${kotlinRes.right()}")
-        println("方法覆盖率：${javaRes.left() + kotlinRes.left()}/${javaRes.right() + kotlinRes.right()}")
+        println("方法覆盖率(含有目标代码的方法数/总方法数)：${javaRes.left() + kotlinRes.left()}/${javaRes.right() + kotlinRes.right()}")
     }
 }
 
@@ -127,24 +115,62 @@ task methodStatistic(dependsOn: assembleTask, group: group) {
  */
 task diffLineStatistic(group: group) {
     doLast {
+        long addedLineSize = 0 //新增总代码行数
+        long targetLineSize = 0 //新增目标代码行数
         /**
          * https://git-scm.com/docs/git-diff
          * https://github.com/apachecn/git-doc-zh/blob/master/docs/8.md
          */
         List<String> diffFile = "git diff master statistic --name-only".execute().text.split('\n')
-                .grep { //只保留 java 和 kt 文件
-                    def suffix = it.substring(it.lastIndexOf(".") + 1, it.length())
-                    suffix == "java"
+                .grep { String line -> //只保留 java 和 kt 文件
+                    def suffix = line.substring(line.lastIndexOf(".") + 1, line.length())
+                    suffix == "java" || suffix == "kt"
                 }
 
         diffFile.each { String filepath ->
-            println("DiffFile -> ${filepath}")
-            String diff = "git diff --no-renames master statistic -- ${filepath}".execute().text
-            println("-----------------------------------------------------------------")
-            println("${diff}")
-            println("-----------------------------------------------------------------")
+            List<String> addedLine = "git diff --no-renames master statistic -- ${filepath}".execute().text
+                    .split('\n')
+                    .grep {     //过滤出新增行
+                        def line = it.trim()
+                        return line.startsWith("+") && !line.startsWith("+++")
+                    }
+                    .collect {  //将+号去除
+                        def format = it.replaceAll("\\+ +", "")
+                        if (format.startsWith("+")) {
+                            format = format.substring(1, format.length())
+                        }
+                        return format
+                    }
+            addedLineSize += addedLine.size()
+            def lines = statisticTargetLines(addedLine, target)
+            targetLineSize += lines
+            println("${filepath} --> ${lines}/${addedLine.size()}")
+        }
+        println("增量行覆盖率(新增目标代码行/全部新增行)：${targetLineSize}/${addedLineSize}")
+    }
+}
+
+/**
+ * 统计目标代码行
+ * @return
+ */
+static long statisticTargetLines(List<String> lines, List<String> target) {
+    long targetLineSize = 0 //新增目标代码行数
+    //截取出目标方法
+    List<String> targetMethod = target.collect { it.substring(it.lastIndexOf(".", it.lastIndexOf(".") - 1) + 1, it.length()) }
+
+    lines.each {
+        def trimLine = it.trim()
+        targetMethod.each {
+            //过滤空白行和注释
+            if (trimLine.startsWith("/") || trimLine.startsWith("*") || trimLine.isBlank()) return true
+            if (trimLine.contains(it)) {
+                targetLineSize++
+            }
         }
     }
+
+    return targetLineSize
 }
 
 static Pair<Long, Long> statisticMethod(FileTree tree, Path classPath, List<String> target) {

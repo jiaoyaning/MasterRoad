@@ -157,10 +157,12 @@ static Pair<Long, Long> statisticMethod(FileTree tree, Path classPath, List<Stri
         ClassPool.getDefault().appendClassPath(cp)
         CtClass ctClass = ClassPool.getDefault().getOrNull(qualifiedClassName)
         if (ctClass == null) return true
+
         def statistic = findUsedCountInClass(ctClass, target)
         targetUsedMethodsCount += statistic.left().size()
         allMethodsCount += statistic.right().size()
-//        println("${qualifiedClassName} : ${statistic.left().size()}/${statistic.right().size()} -> ${statistic.left()}/${statistic.right()} ")
+        println("覆盖率 : ${statistic.left().size()}/${statistic.right().size()} -> ${targetUsedMethodsCount}/${allMethodsCount} \n")
+
         ClassPool.getDefault().removeClassPath(cp)
     }
     return new Pair<Long, Long>(targetUsedMethodsCount, allMethodsCount)
@@ -178,20 +180,28 @@ static Pair<List<String>, List<String>> findUsedCountInClass(CtClass ctClass, Li
     //全部方法数量
     def allMethods = []
 
+    println("${ctClass.name} -> ")
+
     //构造方法
     ctClass.getConstructors().each { CtConstructor ctConstructor ->
+        print("   ${ctConstructor.name}()")
         allMethods.add(ctConstructor.longName)
         if (isContainTargetMethod(ctConstructor.getMethodInfo2(), targetMethod)) {
+            print("  -->*覆盖* ")
             targetUsedMethods.add(ctConstructor.longName)
         }
+        println()
     }
 
     //全部方法
-    ctClass.getMethod().each { CtMethod ctMethod ->
+    ctClass.getDeclaredMethods().each { CtMethod ctMethod ->
+        print("   ${ctMethod.name}()")
         allMethods.add(ctMethod.longName)
         if (isContainTargetMethod(ctMethod.getMethodInfo2(), targetMethod)) {
+            print("  -->*覆盖* ")
             targetUsedMethods.add(ctMethod.longName)
         }
+        println()
     }
 
     ctClass.detach() //该CtClass已经不需要了，从ClassPool中移除

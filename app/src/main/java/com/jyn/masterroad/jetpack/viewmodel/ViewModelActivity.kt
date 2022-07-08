@@ -2,7 +2,7 @@ package com.jyn.masterroad.jetpack.viewmodel
 
 import androidx.activity.viewModels
 import com.jyn.masterroad.R
-import com.jyn.masterroad.base.BaseActivity
+import com.jyn.common.Base.BaseActivity
 import com.jyn.masterroad.databinding.ActivityViewModelBinding
 
 /*

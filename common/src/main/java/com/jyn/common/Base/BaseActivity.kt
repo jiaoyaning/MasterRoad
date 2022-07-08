@@ -1,4 +1,4 @@
-package com.jyn.masterroad.base
+package com.jyn.common.Base
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity

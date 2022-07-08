@@ -1,7 +1,7 @@
 package com.jyn.masterroad.utils.mmkv
 
 import com.jyn.masterroad.R
-import com.jyn.masterroad.base.BaseActivity
+import com.jyn.common.Base.BaseActivity
 import com.jyn.masterroad.databinding.ActivityMmkvBinding
 import com.tencent.mmkv.MMKV
 

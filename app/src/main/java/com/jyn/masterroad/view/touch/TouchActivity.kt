@@ -4,7 +4,7 @@ import android.view.View
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.jyn.common.ARouter.RoutePath
 import com.jyn.masterroad.R
-import com.jyn.masterroad.base.BaseActivity
+import com.jyn.common.Base.BaseActivity
 import com.jyn.masterroad.databinding.ActivityTouchBinding
 import com.jyn.masterroad.view.touch.darg.DragHelperLayout
 import com.jyn.masterroad.view.touch.darg.DragHelperView

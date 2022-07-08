@@ -2,7 +2,7 @@ package com.jyn.masterroad.utils.cronet
 
 import android.util.Log
 import com.jyn.masterroad.R
-import com.jyn.masterroad.base.BaseActivity
+import com.jyn.common.Base.BaseActivity
 import com.jyn.masterroad.databinding.ActivityCronetBinding
 import org.chromium.net.CronetEngine
 import org.chromium.net.CronetException

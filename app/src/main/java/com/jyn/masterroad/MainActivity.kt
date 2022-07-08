@@ -9,7 +9,7 @@ import androidx.recyclerview.widget.RecyclerView.Adapter
 import com.apkfuns.logutils.LogUtils
 import com.jyn.common.ARouter.goto
 import com.jyn.common.Utils.TimeUtils
-import com.jyn.masterroad.base.BaseActivity
+import com.jyn.common.Base.BaseActivity
 import com.jyn.masterroad.databinding.ActivityMainBinding
 import com.jyn.masterroad.databinding.ItemMainBinding
 
@@ -30,6 +30,9 @@ import com.jyn.masterroad.databinding.ItemMainBinding
  *
  * 手撸网易云进阶课程-性能优化之NDK高效加载GIF
  * https://juejin.cn/post/6844904008797126664
+ *
+ * ViewBinding，您真的理解了吗?
+ * https://mp.weixin.qq.com/s/53rkQB3EoNXLn6N_406JBA
  */
 class MainActivity : BaseActivity<ActivityMainBinding>
 (R.layout.activity_main) {

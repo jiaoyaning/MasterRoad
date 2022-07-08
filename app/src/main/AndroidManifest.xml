@@ -38,7 +38,7 @@
             android:name=".view.layout.LayoutActivity"
             android:exported="true" />
         <activity android:name=".base.jvm.ClassLoaderActivity" />
-        <activity android:name=".base.BaseActivity" />
+        <activity android:name="com.jyn.common.Base.BaseActivity" />
         <activity android:name=".concurrent.ThreadActivity" />
         <activity android:name=".fragment.FragmentActivity" />
         <activity android:name=".handler.HandlerActivity" />

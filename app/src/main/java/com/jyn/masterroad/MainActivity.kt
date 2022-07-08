@@ -44,10 +44,10 @@ class MainActivity : BaseActivity<ActivityMainBinding>
         // 这里记录的TimeUtils.coldStartTime是指Application启动的时间，最终的冷启动时间等于Application启动时间+热启动时间
         TimeUtils.sColdStartTime = if (coldStartTime > 0) coldStartTime else 0
         LogUtils.tag("MainActivity").i("冷启动时间：${TimeUtils.sColdStartTime}")
+        //故意添加一行
     }
 
     override fun initView() {
-        // binding = ActivityMainBinding.inflate(layoutInflater) //第二种实现方式
         val mainAdapter = MainAdapter(routerList, this)
         binding.mainRecycle.adapter = mainAdapter
         val gridLayoutManager = GridLayoutManager(this, 2)

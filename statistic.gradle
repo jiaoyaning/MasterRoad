@@ -40,7 +40,7 @@ def exclude = ['**/databinding/**', '**/BR.class',
 def target = ['com.apkfuns.logutils.LogUtils.tag']
 
 /**
- * 统计代码行
+ * 代码行覆盖率
  */
 task lineStatistic(group: group) {
     doLast {
@@ -81,7 +81,7 @@ task lineStatistic(group: group) {
 }
 
 /**
- * 统计方法数
+ * 方法覆盖率
  */
 task methodStatistic(dependsOn: assembleTask, group: group) {
     doLast {
@@ -111,7 +111,7 @@ task methodStatistic(dependsOn: assembleTask, group: group) {
 }
 
 /**
- * 增量代码行统计
+ * 增量代码行 覆盖率
  */
 task diffLineStatistic(group: group) {
     doLast {
@@ -148,6 +148,13 @@ task diffLineStatistic(group: group) {
         }
         println("增量行覆盖率(新增目标代码行/全部新增行)：${targetLineSize}/${addedLineSize}")
     }
+}
+
+/**
+ * 增量方法 覆盖率
+ */
+task diffMethodStatistic(dependsOn: assembleTask, group: group) {
+
 }
 
 /**

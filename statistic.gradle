@@ -126,18 +126,23 @@ task methodStatistic(dependsOn: assembleTask, group: group) {
  * 增量代码行统计
  */
 task diffLineStatistic(group: group) {
-    /**
-     * https://git-scm.com/docs/git-diff
-     * https://www.php.cn/manual/view/34963.html
-     */
     doLast {
+        /**
+         * https://git-scm.com/docs/git-diff
+         * https://github.com/apachecn/git-doc-zh/blob/master/docs/8.md
+         */
         List<String> diffFile = "git diff master statistic --name-only".execute().text.split('\n')
+                .grep { //只保留 java 和 kt 文件
+                    def suffix = it.substring(it.lastIndexOf(".") + 1, it.length())
+                    suffix == "java"
+                }
+
         diffFile.each { String filepath ->
             println("DiffFile -> ${filepath}")
-            String diff = "git diff master statistic -- ${filepath}".execute().text
-            println("-----")
+            String diff = "git diff --no-renames master statistic -- ${filepath}".execute().text
+            println("-----------------------------------------------------------------")
             println("${diff}")
-            println("-----")
+            println("-----------------------------------------------------------------")
         }
     }
 }

@@ -1,18 +1,12 @@
 package com.jyn.masterroad.ipc
 
 import android.app.ActivityManager.TaskDescription
-import android.content.ComponentName
-import android.content.Intent
-import android.content.ServiceConnection
 import android.os.Build
-import android.os.IBinder
-import android.view.View
 import androidx.activity.viewModels
 import com.alibaba.android.arouter.facade.annotation.Route
-import com.apkfuns.logutils.LogUtils
 import com.jyn.common.ARouter.RoutePath
 import com.jyn.masterroad.R
-import com.jyn.masterroad.base.BaseActivity
+import com.jyn.common.Base.BaseActivity
 import com.jyn.masterroad.databinding.ActivityIpcClientBinding
 import com.jyn.masterroad.ipc.aidl.AidlClientViewModel
 

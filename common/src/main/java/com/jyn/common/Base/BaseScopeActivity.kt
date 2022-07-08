@@ -1,7 +1,6 @@
 package com.jyn.common.Base
 
 import androidx.databinding.ViewDataBinding
-import com.jyn.masterroad.base.BaseActivity
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.MainScope
 import kotlinx.coroutines.cancel

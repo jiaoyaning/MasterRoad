@@ -3,12 +3,10 @@ package com.jyn.masterroad.concurrent
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.jyn.common.ARouter.RoutePath
 import com.jyn.masterroad.R
-import com.jyn.masterroad.base.BaseActivity
+import com.jyn.common.Base.BaseActivity
 import com.jyn.masterroad.concurrent.lock.SyncAndLockTest
 import com.jyn.masterroad.concurrent.thread.*
 import com.jyn.masterroad.databinding.ActivityThreadBinding
-import dagger.hilt.android.AndroidEntryPoint
-import javax.inject.Inject
 
 /*
  *

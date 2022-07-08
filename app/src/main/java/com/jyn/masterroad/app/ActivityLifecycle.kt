@@ -10,11 +10,11 @@ import com.apkfuns.logutils.LogUtils
  */
 class ActivityLifecycle : Application.ActivityLifecycleCallbacks {
     override fun onActivityCreated(activity: Activity, savedInstanceState: Bundle?) {
-//        LogUtils.tag("MasterRoad").i("onActivityCreated:" + activity.localClassName)
+        LogUtils.tag("MasterRoad").i("onActivityCreated:" + activity.localClassName)
     }
 
     override fun onActivityStarted(activity: Activity) {
-//        LogUtils.tag("MasterRoad").i("onActivityStarted:" + activity.localClassName)
+        LogUtils.tag("MasterRoad").i("onActivityStarted:" + activity.localClassName)
     }
 
     override fun onActivityResumed(activity: Activity) {

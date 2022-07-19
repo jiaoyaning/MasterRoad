@@ -1,184 +1,108 @@
-buildscript {
-    repositories {
-        maven { setUrl("https://maven.aliyun.com/repository/central") }
-    }
-
-    dependencies {
-        classpath 'org.codehaus.groovy:groovy-json:3.0.9'
-    }
-}
-
 import groovy.json.JsonSlurper
 import groovy.json.JsonOutput
 
-//打包上传脚本
-
-def debugAppPath = project.getBuildDir().absolutePath + "/outputs/apk/debug"
-def releaseAppPath = project.getBuildDir().absolutePath + "/outputs/apk/release"
+/**
+ * 打包上传脚本
+ */
+rootProject.ext {
+    API_KEY = "e82e4fc6296107d021bd20f0723b18d8"
+    APP_KEY = "11a4db2b0c7459571fa453122d8411fc"
+    PWD = "123456"
+    PGY_URL = "https://www.pgyer.com/apiv2"
+}
 
 //打包测试环境apk并上传蒲公英
-task uploadDebugApk {
-    def apkDir = new File(debugAppPath)
-    if (apkDir.exists() && apkDir.isDirectory()) {
-        apkDir.deleteDir()
-    }
-    dependsOn("assembleDebug")
+task uploadDebugApk(dependsOn: ['assembleDebug']) {
     doLast {
-        uploadApk(apkDir)
+        uploadAPK(true)
     }
 }
 
 //打包生产环境apk并上传蒲公英
-task uploadReleaseApk {
-    def apkDir = new File(releaseAppPath)
-    if (apkDir.exists() && apkDir.isDirectory()) {
-        apkDir.deleteDir()
-    }
-    dependsOn("assembleRelease")
+task uploadReleaseApk(dependsOn: ['assembleRelease']) {
     doLast {
-        uploadApk(apkDir)
+        uploadAPK(false)
     }
 }
 
-def uploadApk(def apkDir) {
-    def apiKey = "e82e4fc6296107d021bd20f0723b18d8"
-    def pwd = "123456"
+/**
+ * 上传apk文件
+ * @param isDebug 是否是debug包
+ * @param apiKey 蒲公英apk key
+ * @param pwd 默认下载密码
+ */
+def uploadAPK(boolean isDebug) {
+    //本地apk文件路径
+    def apkPath = project.getBuildDir().absolutePath + "/outputs/apk/" + (isDebug ? "debug" : "release")
+    println("apkPath : ${apkPath}")
+    def apkFile = new File(apkPath).listFiles().grep { it.name.endsWith("apk") }.sort { it.lastModified() }.last()
+    println("upload apk file : ${apkFile.absolutePath}")
+    //上次打包时的 commit ID
+    def lastCommitId = getLastCommitId()
 
-    //查找上传的apk文件，这里需要换成自己apk路径
-    if (!apkDir.exists()) {
-        throw new RuntimeException("apk output path not exists!")
-    }
+    def ext = rootProject.ext
+    def uploadCurl = "curl \"${ext.PGY_URL}/app/upload\" -X POST " +
+            "--form \"file=@${apkFile}\" " +
+            "-F \"_api_key=${ext.API_KEY}&" +
+            "buildInstallType=2&" +
+            "buildPassword=${ext.PWD}&" +
+            "buildUpdateDescription=${getUploadDescription()}\""
 
-    def apk = null
-    def apkName = null
-    for (int i = apkDir.listFiles().length - 1; i >= 0; i--) {
-        File file = apkDir.listFiles()[i]
-        if (file.name.endsWith(".apk")) {
-            apk = file
-            apkName = file.name
-            break
-        }
-    }
-
-    if (apk == null) {
-        throw new RuntimeException("apk file not exists!")
-    }
-    println "apk path:" + apk.absolutePath
-    println "*********************************************"
-    println "*************** start upload file ***********"
-    println "*********************************************"
-    def twoHyphens = "--"
-    def boundary = "*********"
-    def end = "\r\n"
-    //模拟表单上传 multipart/form-data
-    def conn = new URL("https://www.pgyer.com/apiv2/app/upload").openConnection()
-    conn.setRequestMethod('POST')
-    conn.setRequestProperty("Connection", "Keep-Alive")
-    conn.setRequestProperty("Charset", "UTF-8")
-    conn.setRequestProperty("Content-Type", "multipart/form-data;boundary=" + boundary)
-    conn.setDoInput(true)
-    conn.setDoOutput(true)
-    def sb = new StringBuilder()
-
-
-    //添加参数：_api_key
-    sb.append(twoHyphens).append(boundary).append(end)
-    sb.append("Content-Disposition: form-data; name=_api_key")
-    sb.append(end).append(end)
-    sb.append(apiKey).append(end)
-
-    //添加参数：安装方式
-    sb.append(twoHyphens).append(boundary).append(end)
-    sb.append("Content-Disposition: form-data; name=buildInstallType")
-    sb.append(end).append(end)
-    sb.append("2").append(end)
-
-    //添加参数：安装密码
-    sb.append(twoHyphens).append(boundary).append(end)
-    sb.append("Content-Disposition: form-data; name=buildPassword")
-    sb.append(end).append(end)
-    sb.append(pwd).append(end)
-
-    //添加参数：应用名称
-    sb.append(twoHyphens).append(boundary).append(end)
-    sb.append("Content-Disposition: form-data; name=buildName")
-    sb.append(end).append(end)
-    sb.append(apkName).append(end)
-
-    //添加参数：buildUpdateDescription 更新日志，取值gradle.properties中的 BUILD_NOTES
-    sb.append(twoHyphens).append(boundary).append(end)
-    sb.append("Content-Disposition: form-data; name=buildUpdateDescription")
-    sb.append(end).append(end)
-    sb.append("QMS Android\n" + getMessage()).append(end)
-
-    //添加参数file: 需要上传的apk文件
-    sb.append(twoHyphens).append(boundary).append(end)
-    sb.append("Content-Disposition: form-data; name=file;filename=").append(apk.getName())
-    sb.append(end).append(end)
-
-    def dos = new DataOutputStream(conn.getOutputStream())
-    dos.writeBytes(sb.toString())
-    dos.flush()
-    sb.delete(0, sb.length())
-
-    def fis = new FileInputStream(apk)
-    byte[] bf = new byte[8192]
-    int len
-    while ((len = fis.read(bf)) != -1) {
-        dos.write(bf, 0, len)
-    }
-    sb.append(end)
-    sb.append(twoHyphens).append(boundary).append(end)
-    dos.writeBytes(sb.toString())
-
-    dos.flush()
-    fis.close()
-    dos.close()
-    conn.connect()
-
-    def text = conn.getContent().text
-    def resp = new JsonSlurper().parseText(text)
-
-    println text
-    println "*********************************************"
-    println "*************** upload finish ***************"
-    println "*********************************************"
-    if (resp.code != 0) {
-        throw new RuntimeException(resp.message)
-    }
-    println resp
-    //浏览器中打开短连接
-    def url = "https://www.pgyer.com/" + resp.data.buildShortcutUrl
-    exec {
-        if (isWindows()) {
-            commandLine "powershell", "start", url
-        } else {
-            commandLine "open", url
-        }
-    }
-
-    sendMsgToDing(resp.data, url, pwd)
+    println("uploadCurl : ${uploadCurl}")
+    def process = uploadCurl.execute()
+    process.waitFor()
+    println("uploadResult : ${process.text}")
 }
 
-static def isWindows() {
-    return org.gradle.internal.os.OperatingSystem.current().isWindows()
+static def getUploadDescription() {
+    return "CommitID:" + getLatestCommitID() +
+            "Uploader:" + System.getProperty("user.name")
 }
 
-static def getMessage() {
-    return "Uploader:" + System.getProperty("user.name") +
-            "\nOS:" + System.getProperty("os.name") +
-            "\nUpload Time:" + new Date().format("yyyy-MM-dd HH:mm", TimeZone.getTimeZone("GMT+08:00"))
+/**
+ * 获取上一次打包时的commit ID
+ */
+def getLastCommitId() {
+    def ext = rootProject.ext
+    def appViewCurl = "curl \"${ext.PGY_URL}/app/view\" -X POST -d \"_api_key=${ext.API_KEY}&appKey=${ext.APP_KEY}\""
+    println("appViewCurl : ${appViewCurl}")
+    def appInfo = appViewCurl.execute().text
+    println("LastAppInfo : ${appInfo}")
+    def appInfoJson = new JsonSlurper().parseText(appInfo)
+    if (appInfoJson.code != 0) throw new RuntimeException(resp.message)
+
+    def des = appInfoJson.data.buildUpdateDescription.split("\n").find { it.startsWithIgnoreCase("CommitID") }
+    println("LastAppCommitID :${des}")
+    if (des == null || des.size() == 0) return ""
+    def id = des.takeAfter(":")
+    println("LastCommitId :${id}")
+    return id
 }
 
+/**
+ * 是否与git仓库同步
+ */
+static def isPushOrigin() {
+    //TODO
+}
 
+/**
+ * 获取最近一次的commit id
+ * @return
+ */
+static def getLatestCommitID() {
+    return "git rev-parse --short HEAD".execute().text.replace("\n", "\\n")
+}
+
+//================= 钉钉机器人 =====================
 class ContentModel {
     String text
-    String content
     String title
-//    String picUrl
-//    String messageUrl
 }
 
+/**
+ * git log 9f8b9876..bcaef8e9  --pretty=format:'%s' --abbrev-commit
+ */
 def sendMsgToDing(def data, def url, def pwd) {
     def dingURL = "https://oapi.dingtalk.com/robot/send?access_token=5a854c11b17ca617a90c3b615d63047190b19b01e494fc4de24821844fd90e6c"
 
@@ -194,13 +118,12 @@ def sendMsgToDing(def data, def url, def pwd) {
     HashMap<String, Object> map = new HashMap<>()
     map.put("msgtype", "markdown")
     ContentModel contentModel = new ContentModel()
-    def command = """git log  -3  --pretty=format:'%s' --abbrev-commit"""// Create the String
-    def proc = command.execute()                 // Call *execute* on the string
-    proc.waitFor()                               // Wait for the command to finish
-// Obtain status and output
-    def k = proc.in.text.replaceAll("'", "")
-    println "stdout: ${k}"
+    String k = "git log  -3  --pretty=format:'%s' --abbrev-commit".execute()
+            .text
+            .replaceAll("'", "")
+            .replaceAll("\n", "  \n")
 
+    println "stdout: ${k}"
     contentModel.title = "QMS Android"
     contentModel.text =
             "## QMS Android包" + " \n " +

@@ -4,7 +4,7 @@
  */
 fun addRH(handler: RepositoryHandler) {
     handler.apply {
-        mavenCentral()
+//        mavenCentral()
         mavenLocal() //本地插件上传仓库
         maven { setUrl("https://maven.aliyun.com/repository/public") }
         maven { setUrl("https://maven.aliyun.com/repository/central") }
@@ -16,7 +16,7 @@ extra["addRH"] = this::addRH
 
 extra["addRH2"] = { handler: RepositoryHandler ->
     handler.apply {
-        mavenCentral()
+//        mavenCentral()
         mavenLocal() //本地插件上传仓库
         maven { setUrl("https://maven.aliyun.com/repository/public") }
         maven { setUrl("https://maven.aliyun.com/repository/central") }

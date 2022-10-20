@@ -154,6 +154,7 @@ dependencies {
 
     //只引入，不参与打包，这样即可在External Libraries 中看到其源码了
     compileOnly "com.android.tools.build:gradle:$app.gradle_version"
+    compileOnly 'org.codehaus.groovy:groovy-all:2.5.14'
 }
 
 afterEvaluate {

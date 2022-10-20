@@ -24,14 +24,16 @@ dependencies {
 
 buildscript {
     repositories {
-        mavenCentral()
+//        mavenCentral()
+        maven { url("https://maven.aliyun.com/repository/central") }
     }
     dependencies {
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
     }
 }
 repositories {
-    mavenCentral()
+//    mavenCentral()
+    maven { url("https://maven.aliyun.com/repository/central") }
 }
 compileKotlin {
     kotlinOptions {

@@ -43,6 +43,6 @@ abstract class BaseActivity<dataBinding : ViewDataBinding>(var id: Int = 0) : Ap
      * reified 能保证运行时依然能拿到泛型的具体类型.(当前只限制支持内联函数可用)
      */
     inline fun <reified T : ViewModel> createVM(): T {
-        return ViewModelProvider(this).get(T::class.java)
+        return ViewModelProvider(this)[T::class.java]
     }
 }

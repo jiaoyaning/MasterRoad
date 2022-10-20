@@ -290,7 +290,7 @@ ext {
 }
 
 static def addRepos(RepositoryHandler handler) {
-    handler.mavenCentral()
+//    handler.mavenCentral()
     handler.mavenLocal() //本地插件上传仓库
     handler.maven { url 'https://maven.aliyun.com/repository/public' }
     handler.maven { url 'https://maven.aliyun.com/repository/central' }

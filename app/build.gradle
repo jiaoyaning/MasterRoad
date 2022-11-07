@@ -1,4 +1,5 @@
 import com.android.build.gradle.internal.dsl.*
+import com.android.build.gradle.*
 import com.android.build.gradle.internal.plugins.AppPlugin
 import com.android.builder.core.AbstractProductFlavor
 
@@ -36,6 +37,7 @@ def app = rootProject.ext
  * https://developer.android.com/reference/tools/gradle-api
  *
  * @see AppPlugin#createExtension
+ * @see BaseExtension
  * @see BaseAppModuleExtension
  */
 android {
@@ -112,7 +114,6 @@ android {
 
     kotlinOptions {
         jvmTarget = JavaVersion.VERSION_11.toString()
-        useIR = true
     }
 
     composeOptions {
@@ -121,6 +122,15 @@ android {
          * https://developer.android.com/jetpack/androidx/releases/compose-kotlin
          */
         kotlinCompilerExtensionVersion = app.compose
+    }
+
+    /**
+     *  @see BaseExtension#lintOptions
+     *  @see LintOptions
+     *  @see LintImpl
+     */
+    lint {
+
     }
 }
 /**
@@ -155,6 +165,7 @@ dependencies {
     //只引入，不参与打包，这样即可在External Libraries 中看到其源码了
     compileOnly "com.android.tools.build:gradle:$app.gradle_version"
     compileOnly 'org.codehaus.groovy:groovy-all:2.5.14'
+    implementation project(':lint:checker')
 }
 
 afterEvaluate {

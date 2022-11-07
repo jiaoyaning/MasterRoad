@@ -86,6 +86,6 @@ dependencies {
 //    debugImplementation("io.github.didi.dokit:dokitx:3.5.0.1")
 //    releaseImplementation("io.github.didi.dokit:dokitx-no-op:3.5.0.1")
 
-    debugApi("com.squareup.leakcanary:leakcanary-android:2.8.1") //https://github.com/square/leakcanary
-    debugApi("com.github.markzhai:blockcanary-android:1.5.0") //https://github.com/markzhai/AndroidPerformanceMonitor
+    debugApi("com.squareup.leakcanary:leakcanary-android:latest.integration") //https://github.com/square/leakcanary
+//    debugApi("com.github.markzhai:blockcanary-android:latest.integration") //https://github.com/markzhai/AndroidPerformanceMonitor
 }

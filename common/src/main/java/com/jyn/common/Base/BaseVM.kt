@@ -29,15 +29,18 @@ abstract class BaseVM(application: Application) : AndroidViewModel(application),
     // 应用进入后台
     @OnLifecycleEvent(Lifecycle.Event.ON_STOP)
     open fun onAppBackground() {
+        LogUtils.tag(TAG).i("onAppBackground")
     }
 
     // 应用进入前台
     @OnLifecycleEvent(Lifecycle.Event.ON_START)
     open fun onAppForeground() {
+        LogUtils.tag(TAG).i("onAppForeground")
     }
 
     @OnLifecycleEvent(Lifecycle.Event.ON_CREATE)
     open fun onCreate() {
+        LogUtils.tag(TAG).i("onCreate")
     }
 
     @OnLifecycleEvent(Lifecycle.Event.ON_START)

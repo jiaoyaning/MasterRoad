@@ -8,7 +8,8 @@ include ':Plugin:PluginHelloWorld'
 include ':Plugin:APT'
 include ':Plugin:APT-processor'
 include ':Plugin:APT-annotation'
-
+include ':lint:checker'
+include ':lint:wrapper'
 /**
  * @see Settings
  */

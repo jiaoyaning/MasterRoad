@@ -4,11 +4,12 @@
  */
 fun addRH(handler: RepositoryHandler) {
     handler.apply {
-//        mavenCentral()
+        mavenCentral()
         mavenLocal() //本地插件上传仓库
+        google()
         maven { setUrl("https://maven.aliyun.com/repository/public") }
-        maven { setUrl("https://maven.aliyun.com/repository/central") }
-        maven { setUrl("https://maven.aliyun.com/repository/google") }
+//        maven { setUrl("https://maven.aliyun.com/repository/central") }
+//        maven { setUrl("https://maven.aliyun.com/repository/google") }
         maven { setUrl("https://maven.aliyun.com/repository/gradle-plugin") }
     }
 }
@@ -16,11 +17,12 @@ extra["addRH"] = this::addRH
 
 extra["addRH2"] = { handler: RepositoryHandler ->
     handler.apply {
-//        mavenCentral()
+        mavenCentral()
         mavenLocal() //本地插件上传仓库
+        google()
         maven { setUrl("https://maven.aliyun.com/repository/public") }
-        maven { setUrl("https://maven.aliyun.com/repository/central") }
-        maven { setUrl("https://maven.aliyun.com/repository/google") }
+//        maven { setUrl("https://maven.aliyun.com/repository/central") }
+//        maven { setUrl("https://maven.aliyun.com/repository/google") }
         maven { setUrl("https://maven.aliyun.com/repository/gradle-plugin") }
     }
 }

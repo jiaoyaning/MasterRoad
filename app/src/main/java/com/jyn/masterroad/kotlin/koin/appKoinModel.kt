@@ -21,7 +21,7 @@ val appKoinModule = module {
      */
     single<HelloRepository> { HelloRepositoryImpl() } //注入无参数单例
 
-    single(override = true) { ParameterData() }  //使用覆盖放式注入
+    single { ParameterData() }  //使用覆盖放式注入
 
     single(named("Special")) { ParameterData("限定符1", "限定符2") } //相同类型注入使用限定符
     //注入多个参数，并且需要引用已注入的单例时 用get()获取

@@ -105,7 +105,7 @@ class ScalableImageView @JvmOverloads constructor(
                 /**
                  * 是否显示按下状态，比如按下变色等场景
                  */
-                override fun onShowPress(e: MotionEvent?) {
+                override fun onShowPress(e: MotionEvent) {
                 }
 
                 /**
@@ -141,7 +141,7 @@ class ScalableImageView @JvmOverloads constructor(
                  * 长按事件
                  * 用于代替onTouchEvent()方法所覆盖的长按事件
                  */
-                override fun onLongPress(e: MotionEvent?) {
+                override fun onLongPress(e: MotionEvent) {
                 }
 
                 /**
@@ -154,7 +154,7 @@ class ScalableImageView @JvmOverloads constructor(
                  *  注意：惯性事件需要自己手动写哦
                  */
                 override fun onFling(
-                    downEvent: MotionEvent, currentEvent: MotionEvent?,
+                    downEvent: MotionEvent, currentEvent: MotionEvent,
                     velocityX: Float, velocityY: Float
                 ): Boolean {
                     LogUtils.tag(TAG).i("onFling -> velocityX:$velocityX ; velocityY:$velocityY")
@@ -412,7 +412,7 @@ class ScalableImageView @JvmOverloads constructor(
      * 双击 & Fling & 滑动
      */
     inner class SimpleGestureListener : GestureDetector.SimpleOnGestureListener() {
-        override fun onDown(e: MotionEvent?): Boolean {
+        override fun onDown(e: MotionEvent): Boolean {
             return true
         }
 
@@ -430,7 +430,7 @@ class ScalableImageView @JvmOverloads constructor(
         }
 
         override fun onFling(
-            downEvent: MotionEvent, currentEvent: MotionEvent?,
+            downEvent: MotionEvent, currentEvent: MotionEvent,
             velocityX: Float, velocityY: Float
         ): Boolean {
             LogUtils.tag(TAG).i("onFling -> velocityX:$velocityX ; velocityY:$velocityY")

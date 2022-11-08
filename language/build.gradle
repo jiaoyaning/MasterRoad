@@ -6,46 +6,46 @@ def kotlin = rootProject.ext.kotlinList
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlin_version"
-    implementation 'androidx.annotation:annotation:1.2.0'
+    implementation 'androidx.annotation:annotation:latest.release'
     /*
      * https://github.com/jboss-javassist/javassist
      * 字节码编译类库
      */
-    implementation 'org.javassist:javassist:3.27.0-GA'
+    implementation 'org.javassist:javassist:latest.release'
 
     /*
      * https://github.com/EsotericSoftware/reflectasm
      * 反射优化库
      */
-    implementation 'com.esotericsoftware:reflectasm:1.11.9'
+    implementation 'com.esotericsoftware:reflectasm:latest.release'
     implementation kotlin["coroutines-core"]
     implementation kotlin["coroutines-android"]
 }
 
-buildscript {
-    repositories {
-//        mavenCentral()
-        maven { url("https://maven.aliyun.com/repository/central") }
-    }
-    dependencies {
-        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
-    }
-}
-repositories {
-//    mavenCentral()
-    maven { url("https://maven.aliyun.com/repository/central") }
-}
-compileKotlin {
-    kotlinOptions {
-        jvmTarget = JavaVersion.VERSION_11.toString()
-        languageVersion = "1.5"
-    }
-}
-compileTestKotlin {
-    kotlinOptions {
-        jvmTarget = JavaVersion.VERSION_11.toString()
-    }
-}
+//buildscript {
+//    repositories {
+////        mavenCentral()
+//        maven { url("https://maven.aliyun.com/repository/central") }
+//    }
+//    dependencies {
+//        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+//    }
+//}
+//repositories {
+////    mavenCentral()
+//    maven { url("https://maven.aliyun.com/repository/central") }
+//}
+//compileKotlin {
+//    kotlinOptions {
+//        jvmTarget = JavaVersion.VERSION_11.toString()
+//        languageVersion = "1.5"
+//    }
+//}
+//compileTestKotlin {
+//    kotlinOptions {
+//        jvmTarget = JavaVersion.VERSION_11.toString()
+//    }
+//}
 java {
     sourceCompatibility = JavaVersion.VERSION_11
     targetCompatibility = JavaVersion.VERSION_11

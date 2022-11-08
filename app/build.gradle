@@ -1,7 +1,7 @@
 import com.android.build.gradle.internal.dsl.*
 import com.android.build.gradle.*
 import com.android.build.gradle.internal.plugins.AppPlugin
-import com.android.builder.core.AbstractProductFlavor
+import com.android.build.api.dsl.BaseFlavor
 
 /**
  * 插件入口 com.android.application.properties
@@ -41,18 +41,19 @@ def app = rootProject.ext
  * @see BaseAppModuleExtension
  */
 android {
-    compileSdkVersion app.compileSdkVersion
+    compileSdk app.compileSdkVersion
 
     /**
      * @see DefaultConfig
      */
     defaultConfig {
         /**
-         * @see AbstractProductFlavor* @see BaseFlavor
+         * @see BaseAppModuleExtension
+         * @see BaseFlavor
          */
         applicationId app.applicationId
-        minSdkVersion app.minSdkVersion
-        targetSdkVersion app.targetSdkVersion
+        minSdk app.minSdkVersion
+        targetSdk app.targetSdkVersion
         versionCode app.versionCode
         versionName app.versionName
 
@@ -61,7 +62,7 @@ android {
         multiDexEnabled true
 
         /**
-         * @see BaseFlavor#javaCompileOptions(Action)
+         * @see BaseFlavor#javaCompileOptions
          *
          * {@link JavaCompileOptions}
          * @see JavaCompileOptions#annotationProcessorOptions(Action)
@@ -78,8 +79,8 @@ android {
     }
 
     packagingOptions {
-        exclude 'META-INF/AL2.0'
-        exclude 'META-INF/LGPL2.1'
+        resources.excludes.add('META-INF/AL2.0')
+        resources.excludes.add('META-INF/LGPL2.1')
     }
 
     /*
@@ -129,9 +130,9 @@ android {
      *  @see LintOptions
      *  @see LintImpl
      */
-    lint {
-
-    }
+//    lint {
+//        baseline = file("build/lint-baseline.xml")
+//    }
 }
 /**
  * https://www.jianshu.com/p/cc98a6b4f52e
@@ -165,7 +166,7 @@ dependencies {
     //只引入，不参与打包，这样即可在External Libraries 中看到其源码了
     compileOnly "com.android.tools.build:gradle:$app.gradle_version"
     compileOnly 'org.codehaus.groovy:groovy-all:2.5.14'
-    implementation project(':lint:checker')
+    implementation project(':lint:wrapper')
 }
 
 afterEvaluate {

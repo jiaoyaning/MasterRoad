@@ -13,7 +13,7 @@ class BindingCollectionModel : ViewModel() {
 
 //    var items: ObservableList<String> = ObservableArrayList()
 
-    var items: MutableLiveData<MutableList<String>> = MutableLiveData(mutableListOf())
+    var items: MutableLiveData<MutableList<String>?> = MutableLiveData(mutableListOf())
 
     @SuppressLint("StaticFieldLeak")
     var recyclerView: RecyclerView? = null

@@ -64,7 +64,7 @@ static def getUploadDescription() {
  */
 def getLastCommitId() {
     def ext = rootProject.ext
-    def appViewCurl = "curl \"${ext.PGY_URL}/app/view\" -X POST -d \"_api_key=${ext.API_KEY}&appKey=${ext.APP_KEY}\""
+    def appViewCurl = "curl \"${extw.PGY_URL}/app/view\" -X POST -d \"_api_key=${ext.API_KEY}&appKey=${ext.APP_KEY}\""
     println("appViewCurl : ${appViewCurl}")
     def appInfo = appViewCurl.execute().text
     println("LastAppInfo : ${appInfo}")

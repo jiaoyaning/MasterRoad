@@ -20,7 +20,7 @@ println("1. 最早执行的Gradle文件 -> ${getLogMsg.invoke(getClass())}")
 gradle.allprojects {
     if (it == rootProject) return
     println("gradle allproject -> ${it.name} : ${it.projectDir}")
-    configurations.all { configuration ->
+    configurations.all { Configuration configuration ->
         configuration.resolutionStrategy.dependencySubstitution {
             //替换远程依赖为本地project
             substitute module('com.jyn.common:substitute-test') using project(':common')

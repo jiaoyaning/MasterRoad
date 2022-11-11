@@ -177,6 +177,6 @@ afterEvaluate {
 /**
  * 强制依赖
  */
-configurations.all {
-    resolutionStrategy.force 'com.tencent:mmkv-static:1.2.7'
+configurations.all { Configuration configuration ->
+    configuration.resolutionStrategy.force 'com.tencent:mmkv-static:1.2.7'
 }

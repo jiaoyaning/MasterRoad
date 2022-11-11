@@ -12,7 +12,6 @@ buildscript {
 import com.android.build.api.dsl.AndroidSourceSet
 import com.android.build.gradle.internal.api.DefaultAndroidSourceSet
 import com.android.build.gradle.internal.api.DefaultAndroidSourceDirectorySet
-import org.gradle.api.internal.file.FilteredFileTree
 import com.android.build.gradle.BaseExtension
 import com.android.build.gradle.internal.dsl.BaseAppModuleExtension
 import org.gradle.api.internal.FactoryNamedDomainObjectContainer
@@ -61,7 +60,6 @@ class StatisticsPlugin implements Plugin<Project> {
             /**
              * @see DefaultAndroidSourceSet#getJava ->
              * @see DefaultAndroidSourceDirectorySet ->
-             * @see FilteredFileTree*
              *
              * https://www.w3cschool.cn/gradle_user_guide/gradle_user_guide-fonl26lp.html
              */

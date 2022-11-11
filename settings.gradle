@@ -15,3 +15,15 @@ include ':lint:wrapper'
  */
 apply from: "utils.gradle.kts"
 println("1. 最早执行的Gradle文件 -> ${getLogMsg.invoke(getClass())}")
+
+//组件级联
+gradle.allprojects {
+    if (it == rootProject) return
+    println("gradle allproject -> ${it.name} : ${it.projectDir}")
+    configurations.all { configuration ->
+        configuration.resolutionStrategy.dependencySubstitution {
+            //替换远程依赖为本地project
+            substitute module('com.jyn.common:substitute-test') using project(':common')
+        }
+    }
+}

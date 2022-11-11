@@ -41,7 +41,7 @@ def app = rootProject.ext
  * @see BaseAppModuleExtension
  */
 android {
-    compileSdk app.compileSdkVersion
+    compileSdk app.compileSdk
 
     /**
      * @see DefaultConfig
@@ -151,7 +151,8 @@ dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation project(path: ':language')
     implementation project(path: ':leetcode')
-    implementation project(path: ':common')
+//    implementation project(path: ':common')
+    implementation 'com.jyn.common:substitute-test:1.0.0' //settings.gradle 中替换远程依赖为本地测试
     implementation project(path: ':Plugin:APT')
     kapt project(path: ':Plugin:APT-processor')
 

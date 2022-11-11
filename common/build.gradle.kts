@@ -20,7 +20,7 @@ plugins {
 val app = rootProject.ext
 
 android {
-    compileSdk = app.get("compileSdkVersion") as Int
+    compileSdk = app.get("compileSdk") as Int
     buildToolsVersion = app.get("buildToolsVersion") as String
 
     defaultConfig {

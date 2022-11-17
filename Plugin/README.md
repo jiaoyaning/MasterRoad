@@ -1,3 +1,7 @@
+## Java ASM系列一：Core API
+https://blog.51cto.com/lsieun/2924583
+https://lsieun.github.io/java/asm/index.html
+
 ## apt和aspectj有什么区别？
 https://unclecat.wang/posts/c9c6684c.html
 

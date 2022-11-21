@@ -154,7 +154,7 @@ dependencies {
 //    implementation project(path: ':common')
     implementation 'com.jyn.common:substitute-test:1.0.0' //在 settings.gradle 中被替换为 project(path: ':common')
     implementation project(path: ':Plugin:APT')
-    kapt project(path: ':Plugin:APT-processor')
+//    kapt project(path: ':Plugin:APT-processor')
 
     dep(dependencies, "testImplementation", app.test)
     dep(dependencies, "androidTestImplementation", app.androidTest)

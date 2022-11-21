@@ -10,6 +10,7 @@ import com.apkfuns.logutils.LogUtils
 import com.jyn.common.ARouter.goto
 import com.jyn.common.Utils.TimeUtils
 import com.jyn.common.Base.BaseActivity
+import com.jyn.common.Utils.MLog
 import com.jyn.masterroad.databinding.ActivityMainBinding
 import com.jyn.masterroad.databinding.ItemMainBinding
 
@@ -35,7 +36,10 @@ import com.jyn.masterroad.databinding.ItemMainBinding
  * https://mp.weixin.qq.com/s/53rkQB3EoNXLn6N_406JBA
  */
 class MainActivity : BaseActivity<ActivityMainBinding>
-(R.layout.activity_main) {
+    (R.layout.activity_main) {
+    companion object {
+        fun getUserId() = "用户ID"
+    }
 
     private var routerList: ArrayList<MainViewModel> = MainViewModel.getRouterList()
 
@@ -44,6 +48,9 @@ class MainActivity : BaseActivity<ActivityMainBinding>
         // 这里记录的TimeUtils.coldStartTime是指Application启动的时间，最终的冷启动时间等于Application启动时间+热启动时间
         TimeUtils.sColdStartTime = if (coldStartTime > 0) coldStartTime else 0
         LogUtils.tag("MainActivity").i("冷启动时间：${TimeUtils.sColdStartTime}")
+
+        val userid = getUserId()
+        MLog.log("this is msg1 $userid")
     }
 
     override fun initView() {
@@ -55,6 +62,8 @@ class MainActivity : BaseActivity<ActivityMainBinding>
         gridLayoutManager.spanSizeLookup = object : GridLayoutManager.SpanSizeLookup() {
             override fun getSpanSize(position: Int) = mainAdapter.getItemViewType(position)
         }
+
+        MLog.log("this is msg2 ${getUserId()}")
     }
 
     /*
@@ -62,15 +71,15 @@ class MainActivity : BaseActivity<ActivityMainBinding>
      * https://www.jianshu.com/p/379a8f5347de
      */
     open inner class MainAdapter(
-            private var routerList: ArrayList<MainViewModel>, var context: Context
+        private var routerList: ArrayList<MainViewModel>, var context: Context
     ) : Adapter<MainAdapter.MainViewHolder>() {
 
         open inner class MainViewHolder(var binding: ItemMainBinding) :
-                RecyclerView.ViewHolder(binding.root)
+            RecyclerView.ViewHolder(binding.root)
 
         override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MainViewHolder {
             val binding =
-                    ItemMainBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+                ItemMainBinding.inflate(LayoutInflater.from(parent.context), parent, false)
             return MainViewHolder(binding)
         }
 
@@ -86,10 +95,10 @@ class MainActivity : BaseActivity<ActivityMainBinding>
         override fun getItemCount(): Int = routerList.size
 
         override fun getItemViewType(position: Int): Int =
-                when (routerList[position].span) {
-                    1 -> 2
-                    2 -> 1
-                    else -> 2
-                }
+            when (routerList[position].span) {
+                1 -> 2
+                2 -> 1
+                else -> 2
+            }
     }
 }

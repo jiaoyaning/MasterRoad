@@ -38,10 +38,15 @@ import com.jyn.masterroad.databinding.ItemMainBinding
 class MainActivity : BaseActivity<ActivityMainBinding>
     (R.layout.activity_main) {
     companion object {
-        fun getUserId() = "用户ID"
+        fun getUserId(): String {
+            System.currentTimeMillis()
+            return "测试方法1"
+        }
     }
 
     private var routerList: ArrayList<MainViewModel> = MainViewModel.getRouterList()
+
+    private var userid = getUserId()
 
     override fun initData() {
         val coldStartTime: Long = TimeUtils.getTimeCalculate(TimeUtils.COLD_START)
@@ -49,8 +54,19 @@ class MainActivity : BaseActivity<ActivityMainBinding>
         TimeUtils.sColdStartTime = if (coldStartTime > 0) coldStartTime else 0
         LogUtils.tag("MainActivity").i("冷启动时间：${TimeUtils.sColdStartTime}")
 
-        val userid = getUserId()
-        MLog.log("this is msg1 $userid")
+        userid = "测试变量2"
+
+        MLog.log("this is 属性 msg $userid")
+
+        val test = "局部变量"
+
+        MLog.log("this is 局部变量 msg $test")
+
+        testLog(userid)
+    }
+
+    private fun testLog(msg: String) {
+        MLog.log("this is 形参 msg $msg")
     }
 
     override fun initView() {
@@ -63,7 +79,7 @@ class MainActivity : BaseActivity<ActivityMainBinding>
             override fun getSpanSize(position: Int) = mainAdapter.getItemViewType(position)
         }
 
-        MLog.log("this is msg2 ${getUserId()}")
+        MLog.log("this is 方法 msg ${getUserId()}")
     }
 
     /*

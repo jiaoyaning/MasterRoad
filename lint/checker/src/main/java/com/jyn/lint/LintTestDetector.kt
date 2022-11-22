@@ -1,9 +1,13 @@
 package com.jyn.lint
 
 import com.android.tools.lint.detector.api.*
+import com.intellij.psi.PsiElement
 import com.intellij.psi.PsiMethod
 import com.intellij.psi.PsiMethodCallExpression
 import com.intellij.psi.PsiReferenceExpression
+import org.jetbrains.kotlin.psi.KtParameter
+import org.jetbrains.kotlin.psi.KtProperty
+import org.jetbrains.kotlin.psi.psiUtil.isFunctionalExpression
 import org.jetbrains.uast.*
 import org.jetbrains.uast.generate.refreshed
 import org.jetbrains.uast.generate.shortenReference
@@ -31,45 +35,60 @@ class LintTestDetector : Detector(), Detector.UastScanner {
             return
         }
 
-        println("Detector -> ")
-
-        node.valueArguments[0].sourcePsi?.children?.forEach { psiElement ->
-            print(" " + psiElement.text)
-
-            when (psiElement) {
-                is PsiMethodCallExpression -> {
-                    print(" -> java方法")
-                }
-                is PsiReferenceExpression -> {
-                    print(" -> java变量")
-                }
-            }
-
-            psiElement.toUElement()?.let { uElement ->
-                when (uElement) {
-                    is ULiteralExpression -> {
-                        print(" -> 字符串 ")
-                    }
-                    is UCallExpression -> {
-                        print(" -> 方法 ")
-                        val text = uElement.resolveToUElement()?.sourcePsi?.text
-                        print(text)
-                    }
-                    is UReferenceExpression -> {
-                        print(" -> 变量 ")
-                        val text = uElement.resolve()?.text
-                        print(text)
-                    }
-                    else -> {}
-                }
-            }
+        //遍历参数体
+        node.valueArguments[0].sourcePsi?.children?.forEach {
+            resolvePsiElement(it)
             println()
         }
+    }
 
-//        println("node.typeArguments -> ${node.typeArguments}")
-//        println("node.typeArguments -> ${node.kind}")
-//        println("node.methodName -> ${node.methodName}")
-//        println("node.valueArguments -> ${node.valueArguments}")
-//        println("context:$context ,node:$node , method:$method")
+    /**
+     * PsiElement 类型判断
+     */
+    private fun resolvePsiElement(psiElement: PsiElement?) {
+        when (val uElement = psiElement?.toUElement()) { // psi 转 UAST
+            is ULiteralExpression -> {
+                println(" -> 字符串 -> " + uElement.sourcePsi?.text)
+            }
+            is UCallExpression -> {
+                print(" -> 方法 -> ")
+                resolveCall(uElement)
+            }
+            is UReferenceExpression -> {
+                print(" -> 变量 -> ")
+                resolveVariable(uElement)
+            }
+            else -> {
+                println(" -> ${uElement?.javaClass?.simpleName} :" + uElement?.sourcePsi?.text)
+            }
+        }
+    }
+
+    /**
+     * 回溯方法
+     */
+    private fun resolveCall(uCall: UCallExpression): Boolean {
+        val uElement: UElement? = uCall.resolveToUElement() //回溯至方法定义时UElement
+        val sourcePsi = uElement?.sourcePsi
+        println(sourcePsi?.text)
+        return true
+    }
+
+    /**
+     * 回溯变量
+     */
+    private fun resolveVariable(uReference: UReferenceExpression): Boolean {
+        val uElement = uReference.resolveToUElement() //回溯至变量初始化时UElement
+        val sourcePsi = uElement?.sourcePsi
+
+        //判断变量值类型
+        if (sourcePsi is KtProperty) {  //kotlin属性类型，包含局部变量
+            print(" 变量 -> ")
+        } else if (sourcePsi is KtParameter) { //kotlin形参类型
+            print(" 参数 -> ")
+        }
+        println(sourcePsi?.text)
+        val resolveLastChild: PsiElement? = sourcePsi?.lastChild
+        return true
     }
 }

@@ -1,14 +1,15 @@
 package com.jyn.lint
 
 import com.android.tools.lint.detector.api.*
-import com.intellij.psi.*
+import com.intellij.psi.PsiElement
+import com.intellij.psi.PsiMethod
 import org.jetbrains.uast.*
-import org.jetbrains.uast.util.isAssignment
-import org.jetbrains.uast.util.isMethodCall
 import java.util.*
 
 class LintTestDetector : Detector(), Detector.UastScanner {
     companion object {
+        const val DEBUG = true
+
         val ISSUE = Issue.create(
             "TestDetectorError",
             "这是一个测试Detector的描述",
@@ -30,7 +31,7 @@ class LintTestDetector : Detector(), Detector.UastScanner {
         }
 
         //遍历参数体
-        node.valueArguments[0].sourcePsi?.children?.forEach(::resolvePsiElement)
+        node.valueArguments.last().sourcePsi?.children?.forEach(::resolvePsiElement)
     }
 
     /**
@@ -41,22 +42,22 @@ class LintTestDetector : Detector(), Detector.UastScanner {
         psiElement?.toUElement()?.let {
             when (it) {
                 is ULiteralExpression -> { //字符串类型
-                    print("字符串 -> ")
+                    log("字符串 -> ")
                     checkLiteral(it)
                 }
                 is UCallExpression -> { //方法类型
-                    print("方法 -> ")
+                    log("方法 -> ")
                     resolveCall(it)
                 }
                 is UReferenceExpression -> { //变量类型
-                    print("变量 -> ")
+                    log("变量 -> ")
                     resolveVariable(it)
                 }
                 else -> {
-                    println("${it.javaClass.simpleName} ->" + it.sourcePsi?.text)
+                    log("${it.javaClass.simpleName} ->" + it.sourcePsi?.text)
                 }
             }
-            println()
+            log()
         }
     }
 
@@ -64,7 +65,7 @@ class LintTestDetector : Detector(), Detector.UastScanner {
      * 检查字符串类型是否涉及隐私数据
      */
     private fun checkLiteral(uLiteral: ULiteralExpression): Boolean {
-        println(uLiteral.sourcePsi?.text)
+        log(uLiteral.sourcePsi?.text)
         return true
     }
 
@@ -74,7 +75,7 @@ class LintTestDetector : Detector(), Detector.UastScanner {
     private fun resolveCall(uCall: UCallExpression): Boolean {
         val uElement: UElement? = uCall.resolveToUElement() //回溯至方法定义时UElement
         val sourcePsi = uElement?.sourcePsi
-        println(sourcePsi?.text)
+        log(sourcePsi?.text)
         return true
     }
 
@@ -83,44 +84,34 @@ class LintTestDetector : Detector(), Detector.UastScanner {
      */
     private fun resolveVariable(uReference: UReferenceExpression): Boolean {
         val uElement = uReference.resolveToUElement() //回溯至变量初始化时UElement
-        print("【${uElement?.sourcePsi?.text}】 -> ")
+        log("【${uElement?.sourcePsi?.text}】 -> ")
 
         //判断变量值类型
         when (uElement) {
             is UField -> {
-                print("全局变量 -> ")
+                log("全局变量 -> ")
                 val initSourcePsi = uElement.uastInitializer?.sourcePsi //返回变量的初始化值内容
-                print("提取Value值 -> ")
+                log("提取Value值 -> ")
                 resolvePsiElement(initSourcePsi)
             }
             is ULocalVariable -> {
-                print("局部变量 -> ")
+                log("局部变量 -> ")
                 val initSourcePsi = uElement.uastInitializer?.sourcePsi //返回变量的初始化值内容
-                print("提取Value值 -> ")
+                log("提取Value值 -> ")
                 resolvePsiElement(initSourcePsi)
             }
             is UParameter -> {
-                print("形参 -> ${uElement.sourcePsi?.text} -> ")
+                log("形参 -> ${uElement.sourcePsi?.text} -> ")
             }
         }
 
-        //判断变量值类型
-//        when (sourcePsi) {
-//            is KtProperty -> {  //kotlin属性类型，包含局部变量
-//                print(" kotlin 变量 -> ")
-//            }
-//            is KtParameter -> { //kotlin形参类型
-//                print(" kotlin 形参 -> ")
-//            }
-//            is PsiVariable -> { //Java 全局变量PsiField & 局部变量PsiLocalVariable
-//                print(" java 变量 -> ")
-//            }
-//            is PsiParameter -> {
-//                print(" java 形参 -> ")
-//            }
-//        }
-        println()
+//        log()
 //        val resolveLastChild: PsiElement? = sourcePsi?.lastChild
         return true
+    }
+
+    private fun log(msg: String? = null) {
+        if (!DEBUG) return
+        msg?.let { print(it) } ?: println()
     }
 }

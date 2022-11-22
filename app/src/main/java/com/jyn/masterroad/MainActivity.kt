@@ -8,9 +8,8 @@ import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.Adapter
 import com.apkfuns.logutils.LogUtils
 import com.jyn.common.ARouter.goto
-import com.jyn.common.Utils.TimeUtils
 import com.jyn.common.Base.BaseActivity
-import com.jyn.common.Utils.MLog
+import com.jyn.common.Utils.TimeUtils
 import com.jyn.masterroad.databinding.ActivityMainBinding
 import com.jyn.masterroad.databinding.ItemMainBinding
 
@@ -37,36 +36,13 @@ import com.jyn.masterroad.databinding.ItemMainBinding
  */
 class MainActivity : BaseActivity<ActivityMainBinding>
     (R.layout.activity_main) {
-    companion object {
-        fun getUserId(): String {
-            System.currentTimeMillis()
-            return "测试方法1"
-        }
-    }
-
     private var routerList: ArrayList<MainViewModel> = MainViewModel.getRouterList()
-
-    private var userid = getUserId()
 
     override fun initData() {
         val coldStartTime: Long = TimeUtils.getTimeCalculate(TimeUtils.COLD_START)
         // 这里记录的TimeUtils.coldStartTime是指Application启动的时间，最终的冷启动时间等于Application启动时间+热启动时间
         TimeUtils.sColdStartTime = if (coldStartTime > 0) coldStartTime else 0
         LogUtils.tag("MainActivity").i("冷启动时间：${TimeUtils.sColdStartTime}")
-
-        userid = "测试变量2"
-
-        MLog.log("this is 属性 msg $userid")
-
-        val test = "局部变量"
-
-        MLog.log("this is 局部变量 msg $test")
-
-        testLog(userid)
-    }
-
-    private fun testLog(msg: String) {
-        MLog.log("this is 形参 msg $msg")
     }
 
     override fun initView() {
@@ -78,8 +54,6 @@ class MainActivity : BaseActivity<ActivityMainBinding>
         gridLayoutManager.spanSizeLookup = object : GridLayoutManager.SpanSizeLookup() {
             override fun getSpanSize(position: Int) = mainAdapter.getItemViewType(position)
         }
-
-        MLog.log("this is 方法 msg ${getUserId()}")
     }
 
     /*

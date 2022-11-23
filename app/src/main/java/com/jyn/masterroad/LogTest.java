@@ -9,17 +9,19 @@ class LogTest {
     public String id;
 
     public LogTest() {
-        test2("** Java 方法传参 **");
+        test2("** JAVA 形参 **");
     }
 
-    public static final String userid = "** Java 全局变量 **";
+    public String userid = "** JAVA 全局变量 **";
 
     public void test1() {
         MLog.log("this is java 方法 msg " + getUserId());
+        String userId = getUserId();
+        MLog.log("this is java 方法 msg " + userId);
     }
 
     public void test2(String id) {
-        String userid2 = "** Java 局部变量 **";
+        String userid2 = "** JAVA 局部变量 **";
         MLog.log("this is java 全局变量 msg " + userid);
         MLog.log("this is java 局部变量 msg " + userid2);
         LogTest logTest = new LogTest();
@@ -28,6 +30,6 @@ class LogTest {
     }
 
     private String getUserId() {
-        return "** Java 方法返回值 **";
+        return "** JAVA 方法返回值 **";
     }
 }

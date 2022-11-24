@@ -102,8 +102,9 @@ class LintTestDetector : Detector(), Detector.UastScanner {
             if (uastBody is UBlockExpression) {
                 val last = uastBody.expressions.last()
                 if (last is UReturnExpression) {
-                    val returnExpression = last.returnExpression
+                    val returnExpression: UExpression? = last.returnExpression
                     sout(" return值 -> ${returnExpression?.sourcePsi?.text}")
+                    resolvePsiElement(returnExpression?.sourcePsi, count + 1)
                 }
             }
         }

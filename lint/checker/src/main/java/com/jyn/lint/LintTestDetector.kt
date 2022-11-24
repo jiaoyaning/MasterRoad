@@ -3,10 +3,6 @@ package com.jyn.lint
 import com.android.tools.lint.detector.api.*
 import com.intellij.psi.PsiElement
 import com.intellij.psi.PsiMethod
-import com.intellij.psi.PsiMethodCallExpression
-import com.intellij.psi.util.PsiTreeUtil
-import org.jetbrains.kotlin.analysis.api.calls.KtCall
-import org.jetbrains.kotlin.psi.KtCallExpression
 import org.jetbrains.uast.*
 import java.util.*
 
@@ -73,6 +69,7 @@ class LintTestDetector : Detector(), Detector.UastScanner {
                     resolveVariable(it, count)
                 }
                 else -> {
+                    sout("未知 -> ")
                     sout("${it?.javaClass?.simpleName} ->" + it?.sourcePsi?.text)
                 }
             }
@@ -109,29 +106,30 @@ class LintTestDetector : Detector(), Detector.UastScanner {
 
         //判断变量值类型
         when (uElement) {
-            is UField -> {
-                sout("全局变量 -> ")
-//                sout("提取Value值 -> ")
-                val initSourcePsi = uElement.uastInitializer?.sourcePsi //返回变量的初始化值内容
-                resolvePsiElement(initSourcePsi, count + 1)
-            }
+            is UField,
             is ULocalVariable -> {
-                sout("局部变量 -> ")
-//                sout("提取Value值 -> ")
-                val initSourcePsi = uElement.uastInitializer?.sourcePsi //返回变量的初始化值内容
+                sout("变量 -> ")
+                val initSourcePsi = (uElement as UVariable).uastInitializer?.sourcePsi //返回变量的初始化值内容
                 resolvePsiElement(initSourcePsi, count + 1)
             }
             is UParameter -> {
                 sout("形参 -> ")
-                //提取所属的方法体
-                val psiMethod = PsiTreeUtil.getParentOfType(
-                    uReference.sourcePsi,
-                    PsiMethod::class.java, false
-                )
+                sout("${uElement.text} ->")
+//                PSI提取所属的方法体，只对Java生效换
+//                val psiMethod = PsiTreeUtil.getParentOfType(uReference.sourcePsi, PsiMethod::class.java, false)
+                val uMethod = uReference.getParentOfType(UMethod::class.java, false)
 
-                val uCallExpression = uReference.getParentOfType(UCallExpression::class.java, false)
+                //获取形参index
+//                uElement.parameterIndex() // 该方法不知道为什么会报错，因此换成通过字符串匹配来获取index
+                val index = uMethod?.parameterList?.parameters
+                    ?.indexOfFirst {
+                        it.text.equals(uElement.text)
+                    }
+                sout("方法名：${uMethod?.name},index：${index} ")
 
-                sout("方法名: $psiMethod | $uCallExpression")
+                uMethod?.references?.forEach {
+                    sout(it.canonicalText)
+                }
             }
         }
         return false

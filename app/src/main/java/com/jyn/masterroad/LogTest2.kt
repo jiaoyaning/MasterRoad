@@ -15,7 +15,7 @@ class LogTest2 {
 
     init {
         test1()
-        test2("** KOTLIN 形参 **")
+        test3("", "** KOTLIN 形参 **", "")
     }
 
 
@@ -25,15 +25,17 @@ class LogTest2 {
         MLog.log("this is kotlin 方法 msg $userId")
     }
 
-    private fun test2(id: String) {
+    private fun test2() {
         val userid2 = "** KOTLIN 局部变量 **"
         MLog.log("this is kotlin 全局变量 msg $userid")
         MLog.log("this is kotlin 局部变量 msg $userid2")
         val logTest2 = LogTest2()
         MLog.log("this is kotlin 对象属性 msg " + logTest2.id)
-        MLog.log("this is kotlin 形参 msg $id")
     }
 
+    private fun test3(first: String, id: String, last: String) {
+        MLog.log("this is kotlin 形参 msg $id")
+    }
 
     private fun getUserId(): String {
         System.currentTimeMillis()

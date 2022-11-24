@@ -40,6 +40,7 @@ class LintTestDetector : Detector(), Detector.UastScanner {
         node.valueArguments.last()
             .sourcePsi?.apply { sout("原文 -> ${this.text}\n") }
             ?.children?.forEach { resolvePsiElement(it, 0) }
+
         sout()
     }
 
@@ -49,7 +50,7 @@ class LintTestDetector : Detector(), Detector.UastScanner {
     private fun resolvePsiElement(psiElement: PsiElement?, count: Int) {
         if (psiElement == null || psiElement.text.isNullOrBlank() || psiElement.toUElement() == null) return
 
-        sout(" Count:$count【${psiElement.text}】 -> ")
+        sout(" 【${psiElement.text}】 -> ")
 
         // psi 转 UAST
         psiElement.toUElement().let {
@@ -60,23 +61,26 @@ class LintTestDetector : Detector(), Detector.UastScanner {
                     return
                 }
                 is UCallExpression -> { //方法类型
-                    sout("方法 -> ")
-                    resolveCall(it, count)
+                    //TODO 对方法名进行匹配
+                    sout("方法 Count:${count}//TODO 方法名 -> ")
+                    resolveCall(it, count + 1)
                 }
                 is USimpleNameReferenceExpression -> { //变量类型
-                    sout("变量 -> ")
-                    resolveVariable(it, count)
+                    //TODO 对变量名进行匹配
+                    sout("变量 Count:${count}//TODO 变量名 -> ")
+                    resolveVariable(it, count + 1)
                 }
                 is UQualifiedReferenceExpression -> { //对象属性
-                    sout("对象属性 -> ")
-                    resolveVariable(it, count)
+                    //TODO 对对象名进行匹配
+                    sout("对象属性 Count:${count}//TODO 对象名 -> ")
+                    resolveVariable(it, count + 1)
                 }
                 else -> {
-                    sout("未知 -> ")
-                    sout("${it?.javaClass?.simpleName} ->" + it?.sourcePsi?.text)
+                    sout("未知 -> ${it?.javaClass?.simpleName} ->" + it?.sourcePsi?.text)
                 }
             }
         }
+        sout()
     }
 
     /**
@@ -84,7 +88,7 @@ class LintTestDetector : Detector(), Detector.UastScanner {
      * 如数字、布尔值和字符串
      */
     private fun checkLiteral(uLiteral: ULiteralExpression, count: Int): Boolean {
-        sout("END \n")
+        sout("END")
         return false
     }
 
@@ -100,8 +104,8 @@ class LintTestDetector : Detector(), Detector.UastScanner {
                 val last = uastBody.expressions.last()
                 if (last is UReturnExpression) {
                     val returnExpression: UExpression? = last.returnExpression
-                    sout(" return值 -> ${returnExpression?.sourcePsi?.text} ->")
-                    resolvePsiElement(returnExpression?.sourcePsi, count + 1)
+                    sout(" return值 ->")
+                    resolvePsiElement(returnExpression?.sourcePsi, count)
                 }
             }
         }
@@ -114,7 +118,7 @@ class LintTestDetector : Detector(), Detector.UastScanner {
     private fun resolveVariable(uReference: UReferenceExpression, count: Int): Boolean {
         val uElement = uReference.resolveToUElement() //回溯至变量初始化时UElement
         if (uElement?.sourcePsi?.text.isNullOrBlank()) return false
-        sout("初始值【${uElement?.sourcePsi?.text}】 -> ")
+        sout("初始值【${uElement?.sourcePsi?.text}】-> ")
 
         //判断变量值类型
         when (uElement) {

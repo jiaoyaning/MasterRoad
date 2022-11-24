@@ -3,6 +3,9 @@ package com.jyn.lint
 import com.android.tools.lint.detector.api.*
 import com.intellij.psi.PsiElement
 import com.intellij.psi.PsiMethod
+import com.intellij.psi.PsiReferenceService
+import com.intellij.psi.util.PsiTreeUtil
+import org.jetbrains.kotlin.utils.sure
 import org.jetbrains.uast.*
 import java.util.*
 
@@ -22,6 +25,8 @@ class LintTestDetector : Detector(), Detector.UastScanner {
         )
     }
 
+    lateinit var context: JavaContext
+
     override fun getApplicableMethodNames(): List<String> {
         return Collections.singletonList("log")
     }
@@ -30,7 +35,7 @@ class LintTestDetector : Detector(), Detector.UastScanner {
         if (!context.evaluator.isMemberInClass(method, "com.jyn.common.Utils.MLog")) {
             return
         }
-
+        this.context = context
         //遍历参数体
         node.valueArguments.last()
             .sourcePsi?.apply { sout("原文 -> ${this.text}\n") }
@@ -115,8 +120,8 @@ class LintTestDetector : Detector(), Detector.UastScanner {
             is UParameter -> {
                 sout("形参 -> ")
                 sout("${uElement.text} ->")
-//                PSI提取所属的方法体，只对Java生效换
-//                val psiMethod = PsiTreeUtil.getParentOfType(uReference.sourcePsi, PsiMethod::class.java, false)
+
+                //提取方法体
                 val uMethod = uReference.getParentOfType(UMethod::class.java, false)
 
                 //获取形参index
@@ -125,11 +130,7 @@ class LintTestDetector : Detector(), Detector.UastScanner {
                     ?.indexOfFirst {
                         it.text.equals(uElement.text)
                     }
-                sout("方法名：${uMethod?.name},index：${index} ")
-
-                uMethod?.references?.forEach {
-                    sout(it.canonicalText)
-                }
+                sout("方法名：${uMethod?.name}, index：${index} ")
             }
         }
         return false

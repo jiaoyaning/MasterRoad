@@ -9,7 +9,11 @@ class LogTest {
     public String id;
 
     public LogTest() {
-        test3("", "** JAVA 形参 **", "");
+        test3("", "** JAVA 形参1 **", "");
+    }
+
+    public void test0() {
+        test3("", "** JAVA 形参2 **", "");
     }
 
     public String userid = "** JAVA 全局变量 **";

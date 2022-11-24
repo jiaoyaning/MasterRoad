@@ -15,9 +15,12 @@ class LogTest2 {
 
     init {
         test1()
-        test3("", "** KOTLIN 形参 **", "")
+        test3("", "** KOTLIN 形参1 **", "")
     }
 
+    private fun test0() {
+        test3("", "** KOTLIN 形参2 **", "")
+    }
 
     private fun test1() {
         MLog.log("this is kotlin 方法 msg ${getUserId()}")

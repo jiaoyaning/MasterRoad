@@ -96,8 +96,17 @@ class LintTestDetector : Detector(), Detector.UastScanner {
      */
     private fun resolveCall(uCall: UCallExpression, count: Int): Boolean {
         val uElement: UElement? = uCall.resolveToUElement() //回溯至方法定义时UElement
-        val sourcePsi = uElement?.sourcePsi
-        sout(" \n\t${sourcePsi?.text}")
+        sout(" \n\t${uElement?.sourcePsi?.text}\n")
+        if (uElement is UMethod) {
+            val uastBody = uElement.uastBody
+            if (uastBody is UBlockExpression) {
+                val last = uastBody.expressions.last()
+                if (last is UReturnExpression) {
+                    val returnExpression = last.returnExpression
+                    sout(" return值 -> ${returnExpression?.sourcePsi?.text}")
+                }
+            }
+        }
         return false
     }
 

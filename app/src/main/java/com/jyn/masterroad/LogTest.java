@@ -37,6 +37,7 @@ class LogTest {
     }
 
     private String getUserId() {
-        return "** JAVA 方法返回值 **";
+        System.currentTimeMillis();
+        return new LogTest().id;
     }
 }

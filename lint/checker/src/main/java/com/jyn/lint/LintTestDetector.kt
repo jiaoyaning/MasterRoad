@@ -25,8 +25,6 @@ class LintTestDetector : Detector(), Detector.UastScanner {
         )
     }
 
-    lateinit var context: JavaContext
-
     override fun getApplicableMethodNames(): List<String> {
         return Collections.singletonList("log")
     }
@@ -35,13 +33,14 @@ class LintTestDetector : Detector(), Detector.UastScanner {
         if (!context.evaluator.isMemberInClass(method, "com.jyn.common.Utils.MLog")) {
             return
         }
-        this.context = context
+
+        sout("\n-----------------------------------\n\n")
+
         //遍历参数体
         node.valueArguments.last()
             .sourcePsi?.apply { sout("原文 -> ${this.text}\n") }
             ?.children?.forEach { resolvePsiElement(it, 0) }
-
-        sout("\n-----------------------------------\n\n")
+        sout()
     }
 
     /**
@@ -51,13 +50,12 @@ class LintTestDetector : Detector(), Detector.UastScanner {
         if (psiElement == null || psiElement.text.isNullOrBlank() || psiElement.toUElement() == null) return
 
         sout(" Count:$count【${psiElement.text}】 -> ")
-//        sout(" 类名：${uElement?.javaClass?.simpleName} -> ")
 
         // psi 转 UAST
         psiElement.toUElement().let {
             when (it) {
                 is ULiteralExpression -> { //文字值类型，如数字、布尔值和字符串。
-                    sout("字符串 -> ")
+                    sout("文字值 -> ")
                     checkLiteral(it, count)
                     return
                 }
@@ -79,7 +77,6 @@ class LintTestDetector : Detector(), Detector.UastScanner {
                 }
             }
         }
-        sout()
     }
 
     /**
@@ -103,7 +100,7 @@ class LintTestDetector : Detector(), Detector.UastScanner {
                 val last = uastBody.expressions.last()
                 if (last is UReturnExpression) {
                     val returnExpression: UExpression? = last.returnExpression
-                    sout(" return值 -> ${returnExpression?.sourcePsi?.text}")
+                    sout(" return值 -> ${returnExpression?.sourcePsi?.text} ->")
                     resolvePsiElement(returnExpression?.sourcePsi, count + 1)
                 }
             }

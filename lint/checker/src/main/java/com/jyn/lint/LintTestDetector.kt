@@ -39,16 +39,19 @@ class LintTestDetector : Detector(), Detector.UastScanner {
         //遍历参数体
         node.valueArguments.last()
             .sourcePsi?.apply { sout("原文 -> ${this.text}\n") }
-            ?.children?.forEach { resolvePsiElement(it, 0) }
-
-        sout()
+            ?.children?.forEach {
+                resolvePsiElement(it, 0)
+            }
     }
 
     /**
      * PsiElement 类型判断
      */
     private fun resolvePsiElement(psiElement: PsiElement?, count: Int) {
-        if (psiElement == null || psiElement.text.isNullOrBlank() || psiElement.toUElement() == null) return
+        if (psiElement == null || psiElement.text.isNullOrBlank() || psiElement.toUElement() == null) {
+            sout(" NULL")
+            return
+        }
 
         sout(" 【${psiElement.text}】 -> ")
 
@@ -58,7 +61,6 @@ class LintTestDetector : Detector(), Detector.UastScanner {
                 is ULiteralExpression -> { //文字值类型，如数字、布尔值和字符串。
                     sout("文字值 -> ")
                     checkLiteral(it, count)
-                    return
                 }
                 is UCallExpression -> { //方法类型
                     //TODO 对方法名进行匹配
@@ -80,7 +82,7 @@ class LintTestDetector : Detector(), Detector.UastScanner {
                 }
             }
         }
-        sout()
+        if (count == 0) sout()
     }
 
     /**
@@ -96,16 +98,16 @@ class LintTestDetector : Detector(), Detector.UastScanner {
      * 回溯方法类型
      */
     private fun resolveCall(uCall: UCallExpression, count: Int): Boolean {
-        val uElement: UElement? = uCall.resolveToUElement() //回溯至方法定义时UElement
+        val uElement: UElement? = uCall.resolveToUElement() //回溯至方法定义处UElement
         sout(" \n\t${uElement?.sourcePsi?.text}\n")
         if (uElement is UMethod) {
-            val uastBody = uElement.uastBody
+            val uastBody = uElement.uastBody //获取方法体
             if (uastBody is UBlockExpression) {
-                val last = uastBody.expressions.last()
-                if (last is UReturnExpression) {
-                    val returnExpression: UExpression? = last.returnExpression
+                val last = uastBody.expressions.last() //获取最后一行表达式
+                if (last is UReturnExpression) { // 判断表达式是否为return值类型
+                    val returnExpression = last.returnExpression //获取return值
                     sout(" return值 ->")
-                    resolvePsiElement(returnExpression?.sourcePsi, count)
+                    resolvePsiElement(returnExpression?.sourcePsi, count) //回溯返回值
                 }
             }
         }
@@ -126,7 +128,8 @@ class LintTestDetector : Detector(), Detector.UastScanner {
             is ULocalVariable -> {
                 sout("变量 -> ")
                 val initSourcePsi = (uElement as UVariable).uastInitializer?.sourcePsi //返回变量的初始化值内容
-                resolvePsiElement(initSourcePsi, count + 1)
+                initSourcePsi?.let { resolvePsiElement(initSourcePsi, count + 1) }
+                    ?: sout("初始值NULL")
             }
             is UParameter -> {
                 sout("形参 -> ")

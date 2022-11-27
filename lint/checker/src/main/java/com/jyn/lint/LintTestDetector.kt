@@ -3,11 +3,9 @@ package com.jyn.lint
 import com.android.tools.lint.detector.api.*
 import com.intellij.psi.PsiElement
 import com.intellij.psi.PsiMethod
-import com.intellij.psi.PsiReferenceService
-import com.intellij.psi.util.PsiTreeUtil
-import org.jetbrains.kotlin.utils.sure
 import org.jetbrains.uast.*
 import java.util.*
+import javax.annotation.RegEx
 
 class LintTestDetector : Detector(), Detector.UastScanner {
     companion object {
@@ -16,8 +14,8 @@ class LintTestDetector : Detector(), Detector.UastScanner {
 
         val ISSUE = Issue.create(
             "TestDetectorError",
-            "这是一个测试Detector的描述",
-            "这是一个测试Detector的解释",
+            "这是一个测试Lint",
+            "这是一个测试Lint",
             Category.CORRECTNESS,
             8,
             Severity.WARNING,
@@ -33,6 +31,7 @@ class LintTestDetector : Detector(), Detector.UastScanner {
         if (!context.evaluator.isMemberInClass(method, "com.jyn.common.Utils.MLog")) {
             return
         }
+        ReportUtil.context = context
 
         sout("\n-----------------------------------\n\n")
 
@@ -48,8 +47,7 @@ class LintTestDetector : Detector(), Detector.UastScanner {
      * PsiElement 类型判断
      */
     private fun resolvePsiElement(psiElement: PsiElement?, count: Int) {
-        if (psiElement == null || psiElement.text.isNullOrBlank() || psiElement.toUElement() == null) {
-            sout(" NULL")
+        if (psiElement == null || psiElement.text.isNullOrBlank() || psiElement.toUElement() == null || count > 2) {
             return
         }
 
@@ -63,19 +61,17 @@ class LintTestDetector : Detector(), Detector.UastScanner {
                     checkLiteral(it, count)
                 }
                 is UCallExpression -> { //方法类型
-                    //TODO 对方法名进行匹配
-                    sout("方法 Count:${count}//TODO 方法名 -> ")
+                    sout("方法 $count 方法名 -> ")
+                    val isHit = check(it.methodName, it)
+                    if (isHit) return
                     resolveCall(it, count + 1)
                 }
+                is UQualifiedReferenceExpression,
                 is USimpleNameReferenceExpression -> { //变量类型
-                    //TODO 对变量名进行匹配
-                    sout("变量 Count:${count}//TODO 变量名 -> ")
-                    resolveVariable(it, count + 1)
-                }
-                is UQualifiedReferenceExpression -> { //对象属性
-                    //TODO 对对象名进行匹配
-                    sout("对象属性 Count:${count}//TODO 对象名 -> ")
-                    resolveVariable(it, count + 1)
+                    sout("变量 $count 变量名 -> ")
+                    val isHit = check(it.sourcePsi?.text, it)
+                    if (isHit) return
+                    resolveVariable(it as UReferenceExpression, count + 1)
                 }
                 else -> {
                     sout("未知 -> ${it?.javaClass?.simpleName} ->" + it?.sourcePsi?.text)
@@ -153,5 +149,17 @@ class LintTestDetector : Detector(), Detector.UastScanner {
     private fun sout(msg: String? = null) {
         if (!DEBUG) return
         msg?.let { print(it) } ?: println()
+    }
+
+    private fun check(target: String?, element: UElement): Boolean {
+        sout(" check【$target】 ->  ")
+        if (target.isNullOrBlank()) return false
+        val isMatch = Regex("chat.?id|user.?id", RegexOption.IGNORE_CASE).containsMatchIn(target)
+        if (isMatch) {
+            sout("【==> 匹配成功 <==】")
+            ReportUtil.report(ISSUE, element.sourcePsi, "$target -> Log有问题哦，请改正！！！")
+            return true
+        }
+        return false
     }
 }

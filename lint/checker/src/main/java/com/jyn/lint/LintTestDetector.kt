@@ -138,7 +138,7 @@ class LintTestDetector : Detector(), Detector.UastScanner {
                 sout("变量 ->")
                 val initSourcePsi = (uElement as UVariable).uastInitializer?.sourcePsi //返回变量的初始化值内容
                 initSourcePsi
-                    ?.let { resolvePsiElement(initSourcePsi, count + 1) }
+                    ?.let { resolvePsiElement(initSourcePsi, count) }
                     ?: sout("初始值NULL")
             }
             is UParameter -> {
@@ -162,7 +162,7 @@ class LintTestDetector : Detector(), Detector.UastScanner {
     }
 
     private fun check(target: String?): Boolean {
-        sout(" check【$target】 ->  ")
+        sout(" check【$target】 ->")
         if (target.isNullOrBlank()) return false
         val isMatch = Regex("chat.?id|user.?id", RegexOption.IGNORE_CASE).containsMatchIn(target)
         if (isMatch) {

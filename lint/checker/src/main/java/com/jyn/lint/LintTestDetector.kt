@@ -23,6 +23,8 @@ class LintTestDetector : Detector(), Detector.UastScanner {
         )
     }
 
+    var node: UElement? = null
+
     override fun getApplicableMethodNames(): List<String> {
         return Collections.singletonList("log")
     }
@@ -36,9 +38,11 @@ class LintTestDetector : Detector(), Detector.UastScanner {
         sout("\n-----------------------------------\n\n")
 
         //遍历参数体
-        node.valueArguments.last()
-            .sourcePsi?.apply { sout("原文 -> ${this.text}\n") }
-            ?.children?.forEach {
+        node.valueArguments.last().sourcePsi
+            ?.apply { sout("原文 -> ${this.text}\n") }
+            ?.children
+            ?.forEach {
+                this.node = node
                 resolvePsiElement(it, 0)
             }
     }
@@ -47,7 +51,11 @@ class LintTestDetector : Detector(), Detector.UastScanner {
      * PsiElement 类型判断
      */
     private fun resolvePsiElement(psiElement: PsiElement?, count: Int) {
-        if (psiElement == null || psiElement.text.isNullOrBlank() || psiElement.toUElement() == null || count > 2) {
+        if (psiElement == null ||
+            psiElement.text.isNullOrBlank() ||
+            psiElement.toUElement() == null ||
+            count > (MAX_COUNT - 1) //从零开始计算，因此减一
+        ) {
             return
         }
 
@@ -62,14 +70,14 @@ class LintTestDetector : Detector(), Detector.UastScanner {
                 }
                 is UCallExpression -> { //方法类型
                     sout("方法 $count 方法名 -> ")
-                    val isHit = check(it.methodName, it)
+                    val isHit = check(it.methodName)
                     if (isHit) return
                     resolveCall(it, count + 1)
                 }
                 is UQualifiedReferenceExpression,
                 is USimpleNameReferenceExpression -> { //变量类型
                     sout("变量 $count 变量名 -> ")
-                    val isHit = check(it.sourcePsi?.text, it)
+                    val isHit = check(it.sourcePsi?.text)
                     if (isHit) return
                     resolveVariable(it as UReferenceExpression, count + 1)
                 }
@@ -97,13 +105,18 @@ class LintTestDetector : Detector(), Detector.UastScanner {
         val uElement: UElement? = uCall.resolveToUElement() //回溯至方法定义处UElement
         sout(" \n\t${uElement?.sourcePsi?.text}\n")
         if (uElement is UMethod) {
-            val uastBody = uElement.uastBody //获取方法体
+            //获取方法体
+            val uastBody = uElement.uastBody
             if (uastBody is UBlockExpression) {
-                val last = uastBody.expressions.last() //获取最后一行表达式
-                if (last is UReturnExpression) { // 判断表达式是否为return值类型
-                    val returnExpression = last.returnExpression //获取return值
+                //获取最后一行表达式
+                val last = uastBody.expressions.last()
+                // 判断表达式是否为return值类型
+                if (last is UReturnExpression) {
+                    //获取return值
+                    val returnExpression = last.returnExpression
                     sout(" return值 ->")
-                    resolvePsiElement(returnExpression?.sourcePsi, count) //回溯返回值
+                    //回溯return值
+                    resolvePsiElement(returnExpression?.sourcePsi, count)
                 }
             }
         }
@@ -122,9 +135,10 @@ class LintTestDetector : Detector(), Detector.UastScanner {
         when (uElement) {
             is UField,
             is ULocalVariable -> {
-                sout("变量 -> ")
+                sout("变量 ->")
                 val initSourcePsi = (uElement as UVariable).uastInitializer?.sourcePsi //返回变量的初始化值内容
-                initSourcePsi?.let { resolvePsiElement(initSourcePsi, count + 1) }
+                initSourcePsi
+                    ?.let { resolvePsiElement(initSourcePsi, count + 1) }
                     ?: sout("初始值NULL")
             }
             is UParameter -> {
@@ -141,7 +155,20 @@ class LintTestDetector : Detector(), Detector.UastScanner {
                         it.text.equals(uElement.text)
                     }
                 sout("方法名：${uMethod?.name}, index：${index} ")
+//                val references = uMethod?.references // TODO 方法调用处回溯一直为null，占未找到解决方法
             }
+        }
+        return false
+    }
+
+    private fun check(target: String?): Boolean {
+        sout(" check【$target】 ->  ")
+        if (target.isNullOrBlank()) return false
+        val isMatch = Regex("chat.?id|user.?id", RegexOption.IGNORE_CASE).containsMatchIn(target)
+        if (isMatch) {
+            sout("【==> 匹配成功 <==】")
+            ReportUtil.report(ISSUE, this.node, "$target -> Log有问题哦，请改正！！！")
+            return true
         }
         return false
     }
@@ -149,17 +176,5 @@ class LintTestDetector : Detector(), Detector.UastScanner {
     private fun sout(msg: String? = null) {
         if (!DEBUG) return
         msg?.let { print(it) } ?: println()
-    }
-
-    private fun check(target: String?, element: UElement): Boolean {
-        sout(" check【$target】 ->  ")
-        if (target.isNullOrBlank()) return false
-        val isMatch = Regex("chat.?id|user.?id", RegexOption.IGNORE_CASE).containsMatchIn(target)
-        if (isMatch) {
-            sout("【==> 匹配成功 <==】")
-            ReportUtil.report(ISSUE, element.sourcePsi, "$target -> Log有问题哦，请改正！！！")
-            return true
-        }
-        return false
     }
 }

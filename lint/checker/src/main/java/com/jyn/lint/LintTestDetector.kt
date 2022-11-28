@@ -5,7 +5,6 @@ import com.intellij.psi.PsiElement
 import com.intellij.psi.PsiMethod
 import org.jetbrains.uast.*
 import java.util.*
-import javax.annotation.RegEx
 
 class LintTestDetector : Detector(), Detector.UastScanner {
     companion object {
@@ -23,7 +22,7 @@ class LintTestDetector : Detector(), Detector.UastScanner {
         )
     }
 
-    var node: UElement? = null
+    private var node: UElement? = null
 
     override fun getApplicableMethodNames(): List<String> {
         return Collections.singletonList("log")
@@ -59,7 +58,7 @@ class LintTestDetector : Detector(), Detector.UastScanner {
             return
         }
 
-        sout(" 【${psiElement.text}】 -> ")
+        sout("【${psiElement.text}】 -> ")
 
         // psi 转 UAST
         psiElement.toUElement().let {
@@ -93,15 +92,14 @@ class LintTestDetector : Detector(), Detector.UastScanner {
      * 检查文字值类型
      * 如数字、布尔值和字符串
      */
-    private fun checkLiteral(uLiteral: ULiteralExpression, count: Int): Boolean {
+    private fun checkLiteral(uLiteral: ULiteralExpression, count: Int) {
         sout("END")
-        return false
     }
 
     /**
      * 回溯方法类型
      */
-    private fun resolveCall(uCall: UCallExpression, count: Int): Boolean {
+    private fun resolveCall(uCall: UCallExpression, count: Int) {
         val uElement: UElement? = uCall.resolveToUElement() //回溯至方法定义处UElement
         sout(" \n\t${uElement?.sourcePsi?.text}\n")
         if (uElement is UMethod) {
@@ -120,15 +118,14 @@ class LintTestDetector : Detector(), Detector.UastScanner {
                 }
             }
         }
-        return false
     }
 
     /**
      * 回溯变量类型
      */
-    private fun resolveVariable(uReference: UReferenceExpression, count: Int): Boolean {
+    private fun resolveVariable(uReference: UReferenceExpression, count: Int) {
         val uElement = uReference.resolveToUElement() //回溯至变量初始化时UElement
-        if (uElement?.sourcePsi?.text.isNullOrBlank()) return false
+        if (uElement?.sourcePsi?.text.isNullOrBlank()) return
         sout("初始值【${uElement?.sourcePsi?.text}】-> ")
 
         //判断变量值类型
@@ -157,8 +154,8 @@ class LintTestDetector : Detector(), Detector.UastScanner {
                 sout("方法名：${uMethod?.name}, index：${index} ")
 //                val references = uMethod?.references // TODO 方法调用处回溯一直为null，占未找到解决方法
             }
+
         }
-        return false
     }
 
     private fun check(target: String?): Boolean {

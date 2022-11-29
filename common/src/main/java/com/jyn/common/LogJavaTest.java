@@ -5,10 +5,10 @@ import com.jyn.common.Utils.MLog;
 /**
  * Created by jiaoyaning on 2022/11/22.
  */
-class LogTest {
+class LogJavaTest {
     public String chat_id;
 
-    public LogTest() {
+    public LogJavaTest() {
         testParameter("1", getUserId(), "");
         testParameter("2", testFun(), "");
         test1();
@@ -30,8 +30,8 @@ class LogTest {
         String test_Id2 = userid2;
         MLog.log("this is java 全局变量 msg " + test_Id);
         MLog.log("this is java 局部变量 msg " + test_Id2);
-        LogTest logTest = new LogTest();
-        MLog.log("this is java 对象属性 msg " + logTest.chat_id);
+        LogJavaTest logJavaTest = new LogJavaTest();
+        MLog.log("this is java 对象属性 msg " + logJavaTest.chat_id);
         testParameter("3", testFun(), "");
     }
 
@@ -48,6 +48,6 @@ class LogTest {
 
     private String getUserId() {
         System.currentTimeMillis();
-        return new LogTest().chat_id;
+        return new LogJavaTest().chat_id;
     }
 }

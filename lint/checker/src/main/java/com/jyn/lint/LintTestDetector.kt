@@ -1,5 +1,6 @@
 package com.jyn.lint
 
+import com.android.tools.lint.client.api.UElementHandler
 import com.android.tools.lint.detector.api.*
 import com.intellij.psi.PsiElement
 import com.intellij.psi.PsiMethod
@@ -175,7 +176,7 @@ class LintTestDetector : Detector(), Detector.UastScanner {
     }
 
     private fun check(target: String?): Boolean {
-        sout(" check【$target】 ->")
+        sout(" check【$target】 -> ")
         if (target.isNullOrBlank()) return false
         val isMatch = Regex("chat.?id|user.?id", RegexOption.IGNORE_CASE).containsMatchIn(target)
         if (isMatch) {
@@ -186,25 +187,21 @@ class LintTestDetector : Detector(), Detector.UastScanner {
         return false
     }
 
-//    override fun getApplicableUastTypes(): List<Class<out UElement>>? {
-//        return listOf(UClass::class.java, UCallExpression::class.java)
-//    }
-//
-//    override fun createUastHandler(context: JavaContext): UElementHandler {
-//        return object : UElementHandler() {
-//            override fun visitClass(node: UClass) {
-//                node.accept(LogVisitor())
-//            }
-//
-//            override fun visitCallExpression(node: UCallExpression) {
-//                if (node.methodName != methodName || node.methodName.isNullOrBlank()) {
-//                    return
-//                }
-//                sout("===> 访问Call【${node.methodName}】-> ${node.sourcePsi?.text}\n")
-//            }
-//        }
-//    }
-//
+    override fun getApplicableUastTypes(): List<Class<out UElement>>? {
+        return listOf(UCallExpression::class.java)
+    }
+
+    override fun createUastHandler(context: JavaContext): UElementHandler {
+        return object : UElementHandler() {
+            override fun visitCallExpression(node: UCallExpression) {
+                if (node.methodName != methodName || node.methodName.isNullOrBlank()) {
+                    return
+                }
+                sout("===> 访问Call【${node.methodName}】-> ${node.sourcePsi?.text}\n")
+            }
+        }
+    }
+
 //    object LogCallVisitor : AbstractUastVisitor() {
 //        override fun visitCallExpression(node: UCallExpression): Boolean {
 //            sout("===> 访问Call【${node.methodName}】-> ${node.sourcePsi?.text}\n")

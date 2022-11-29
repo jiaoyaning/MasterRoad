@@ -5,7 +5,7 @@ import com.jyn.common.Utils.MLog
 /**
  * Created by jiaoyaning on 2022/11/22.
  */
-class LogTest2 {
+class LogKotlinTest {
 
     companion object {
         private const val userid = "** KOTLIN 全局变量**"
@@ -37,8 +37,8 @@ class LogTest2 {
         val test_Id2 = userid2
         MLog.log("this is kotlin 全局变量 msg $test_Id")
         MLog.log("this is kotlin 局部变量 msg $test_Id2")
-        val logTest2 = LogTest2()
-        MLog.log("this is kotlin 对象属性 msg " + logTest2.chat_id)
+        val logKotlinTest = LogKotlinTest()
+        MLog.log("this is kotlin 对象属性 msg " + logKotlinTest.chat_id)
         testParameter("4", testFun(), "")
     }
 

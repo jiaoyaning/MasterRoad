@@ -1,12 +1,9 @@
 package com.jyn.lint
 
-import com.android.tools.lint.client.api.UElementHandler
 import com.android.tools.lint.detector.api.*
 import com.intellij.psi.PsiElement
 import com.intellij.psi.PsiMethod
 import org.jetbrains.uast.*
-import org.jetbrains.uast.java.JavaUCallExpression
-import org.jetbrains.uast.kotlin.KotlinUFunctionCallExpression
 import java.util.*
 
 
@@ -32,13 +29,15 @@ class LintTestDetector : Detector(), Detector.UastScanner {
         }
     }
 
-    private var node: UElement? = null
+    private var rootNode: UElement? = null
 
     //形参所属的方法名
     private var methodName: String? = null
 
     //形参方法所属的类名
     private var qualifiedName: String? = null
+
+    private var uCallNode: UCallExpression? = null
 
     override fun getApplicableMethodNames(): List<String> {
         return Collections.singletonList("log")
@@ -57,7 +56,7 @@ class LintTestDetector : Detector(), Detector.UastScanner {
             ?.apply { sout("原文 -> ${this.text}\n") }
             ?.children
             ?.forEach {
-                this.node = node
+                this.rootNode = node
                 resolvePsiElement(it, 0)
             }
     }
@@ -169,6 +168,7 @@ class LintTestDetector : Detector(), Detector.UastScanner {
                     }
                 methodName = uMethod?.name
                 qualifiedName = uMethod?.containingClass?.qualifiedName
+
                 sout("方法名：${qualifiedName}.${methodName}, index：${index}")
             }
         }
@@ -180,27 +180,47 @@ class LintTestDetector : Detector(), Detector.UastScanner {
         val isMatch = Regex("chat.?id|user.?id", RegexOption.IGNORE_CASE).containsMatchIn(target)
         if (isMatch) {
             sout("【==> 匹配成功 <==】")
-            ReportUtil.report(ISSUE, this.node, "$target -> Log有问题哦，请改正！！！")
+            ReportUtil.report(ISSUE, this.rootNode, "$target -> Log有问题哦，请改正！！！")
             return true
         }
         return false
     }
 
-    override fun getApplicableUastTypes(): List<Class<out UElement>>? {
-        return Collections.singletonList(UCallExpression::class.java)
-    }
-
-    override fun createUastHandler(context: JavaContext): UElementHandler {
-        return object : UElementHandler() {
-            override fun visitCallExpression(node: UCallExpression) {
-                if (node.methodName != methodName || node.methodName.isNullOrBlank()) {
-//                   return
-                    sout(" 未命中")
-                }else{
-                    sout(" 命中")
-                }
-                sout(" -> 访问方法【${node.methodName}】-> ${node.sourcePsi?.text}\n")
-            }
-        }
-    }
+//    override fun getApplicableUastTypes(): List<Class<out UElement>>? {
+//        return listOf(UClass::class.java, UCallExpression::class.java)
+//    }
+//
+//    override fun createUastHandler(context: JavaContext): UElementHandler {
+//        return object : UElementHandler() {
+//            override fun visitClass(node: UClass) {
+//                node.accept(LogVisitor())
+//            }
+//
+//            override fun visitCallExpression(node: UCallExpression) {
+//                if (node.methodName != methodName || node.methodName.isNullOrBlank()) {
+//                    return
+//                }
+//                sout("===> 访问Call【${node.methodName}】-> ${node.sourcePsi?.text}\n")
+//            }
+//        }
+//    }
+//
+//    object LogCallVisitor : AbstractUastVisitor() {
+//        override fun visitCallExpression(node: UCallExpression): Boolean {
+//            sout("===> 访问Call【${node.methodName}】-> ${node.sourcePsi?.text}\n")
+//            return super.visitCallExpression(node)
+//        }
+//    }
+//
+//    class LogVisitor : AbstractUastVisitor() {
+//        override fun visitMethod(node: UMethod): Boolean {
+//            sout(" 访问Method【${node.name}】\n")
+//            return super.visitMethod(node)
+//        }
+//
+//        override fun visitCallExpression(node: UCallExpression): Boolean {
+//            sout("===> 访问Call【${node.methodName}】-> ${node.sourcePsi?.text}\n")
+//            return super.visitCallExpression(node)
+//        }
+//    }
 }

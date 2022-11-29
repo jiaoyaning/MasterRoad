@@ -1,4 +1,4 @@
-package com.jyn.masterroad;
+package com.jyn.common;
 
 import com.jyn.common.Utils.MLog;
 

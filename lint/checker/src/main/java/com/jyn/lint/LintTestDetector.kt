@@ -5,7 +5,10 @@ import com.android.tools.lint.detector.api.*
 import com.intellij.psi.PsiElement
 import com.intellij.psi.PsiMethod
 import org.jetbrains.uast.*
+import org.jetbrains.uast.java.JavaUCallExpression
+import org.jetbrains.uast.kotlin.KotlinUFunctionCallExpression
 import java.util.*
+
 
 class LintTestDetector : Detector(), Detector.UastScanner {
     companion object {
@@ -192,11 +195,11 @@ class LintTestDetector : Detector(), Detector.UastScanner {
             override fun visitCallExpression(node: UCallExpression) {
                 if (node.methodName != methodName || node.methodName.isNullOrBlank()) {
 //                   return
-//                    sout(" 未命中")
+                    sout(" 未命中")
                 }else{
-//                    sout(" 命中")
+                    sout(" 命中")
                 }
-//                sout(" -> 访问方法【${node.methodName}】-> ${node.sourcePsi?.text}\n")
+                sout(" -> 访问方法【${node.methodName}】-> ${node.sourcePsi?.text}\n")
             }
         }
     }

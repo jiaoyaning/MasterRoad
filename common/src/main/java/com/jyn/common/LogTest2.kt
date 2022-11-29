@@ -1,4 +1,6 @@
-package com.jyn.masterroad
+package com.jyn.common
+
+import com.jyn.common.Utils.MLog
 
 /**
  * Created by jiaoyaning on 2022/11/22.

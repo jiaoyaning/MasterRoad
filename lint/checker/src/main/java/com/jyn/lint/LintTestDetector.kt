@@ -1,5 +1,6 @@
 package com.jyn.lint
 
+import com.android.tools.lint.client.api.UElementHandler
 import com.android.tools.lint.detector.api.*
 import com.intellij.psi.PsiElement
 import com.intellij.psi.PsiMethod
@@ -8,8 +9,8 @@ import java.util.*
 
 class LintTestDetector : Detector(), Detector.UastScanner {
     companion object {
-        const val MAX_COUNT = 3 //最大回溯次数
-        const val DEBUG = true
+        private const val MAX_COUNT = 3 //最大回溯次数
+        private const val DEBUG = true
 
         val ISSUE = Issue.create(
             "TestDetectorError",
@@ -20,9 +21,21 @@ class LintTestDetector : Detector(), Detector.UastScanner {
             Severity.WARNING,
             Implementation(LintTestDetector::class.java, Scope.JAVA_FILE_SCOPE)
         )
+
+        @JvmStatic
+        fun sout(msg: String? = null) {
+            if (!DEBUG) return
+            msg?.let { print(it) } ?: println()
+        }
     }
 
     private var node: UElement? = null
+
+    //形参所属的方法名
+    private var methodName: String? = null
+
+    //形参方法所属的类名
+    private var qualifiedName: String? = null
 
     override fun getApplicableMethodNames(): List<String> {
         return Collections.singletonList("log")
@@ -101,7 +114,7 @@ class LintTestDetector : Detector(), Detector.UastScanner {
      */
     private fun resolveCall(uCall: UCallExpression, count: Int) {
         val uElement: UElement? = uCall.resolveToUElement() //回溯至方法定义处UElement
-        sout(" \n\t${uElement?.sourcePsi?.text}\n")
+//        sout(" \n\t${uElement?.sourcePsi?.text}\n")
         if (uElement is UMethod) {
             //获取方法体
             val uastBody = uElement.uastBody
@@ -140,7 +153,7 @@ class LintTestDetector : Detector(), Detector.UastScanner {
             }
             is UParameter -> {
                 sout("形参 -> ")
-                sout("${uElement.text} ->")
+                sout("${uElement.text} -> ")
 
                 //提取方法体
                 val uMethod = uReference.getParentOfType(UMethod::class.java, false)
@@ -151,10 +164,10 @@ class LintTestDetector : Detector(), Detector.UastScanner {
                     ?.indexOfFirst {
                         it.text.equals(uElement.text)
                     }
-                sout("方法名：${uMethod?.name}, index：${index} ")
-//                val references = uMethod?.references // TODO 方法调用处回溯一直为null，占未找到解决方法
+                methodName = uMethod?.name
+                qualifiedName = uMethod?.containingClass?.qualifiedName
+                sout("方法名：${qualifiedName}.${methodName}, index：${index}")
             }
-
         }
     }
 
@@ -170,8 +183,21 @@ class LintTestDetector : Detector(), Detector.UastScanner {
         return false
     }
 
-    private fun sout(msg: String? = null) {
-        if (!DEBUG) return
-        msg?.let { print(it) } ?: println()
+    override fun getApplicableUastTypes(): List<Class<out UElement>>? {
+        return Collections.singletonList(UCallExpression::class.java)
+    }
+
+    override fun createUastHandler(context: JavaContext): UElementHandler {
+        return object : UElementHandler() {
+            override fun visitCallExpression(node: UCallExpression) {
+                if (node.methodName != methodName || node.methodName.isNullOrBlank()) {
+//                   return
+//                    sout(" 未命中")
+                }else{
+//                    sout(" 命中")
+                }
+//                sout(" -> 访问方法【${node.methodName}】-> ${node.sourcePsi?.text}\n")
+            }
+        }
     }
 }

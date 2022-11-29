@@ -9,11 +9,10 @@ class LogTest {
     public String chat_id;
 
     public LogTest() {
-        test3("", "** JAVA 形参1 **", "");
-    }
-
-    public void test0() {
-        test3("", "** JAVA 形参2 **", "");
+        testParameter("1", getUserId(), "");
+        testParameter("2", testFun(), "");
+        test1();
+        test2();
     }
 
     public String userid = "** JAVA 全局变量 **";
@@ -33,10 +32,11 @@ class LogTest {
         MLog.log("this is java 局部变量 msg " + test_Id2);
         LogTest logTest = new LogTest();
         MLog.log("this is java 对象属性 msg " + logTest.chat_id);
+        testParameter("3", testFun(), "");
     }
 
-    public void test3(String first, String chat_id, String last) {
-        MLog.log("this is java 形参 msg " + chat_id);
+    public void testParameter(String first, String id, String last) {
+        MLog.log("this is java 形参 msg " + id);
     }
 
     private String testFun() {

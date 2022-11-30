@@ -15,6 +15,7 @@ class LintTestDetector : Detector(), Detector.UastScanner {
     companion object {
         private const val MAX_COUNT = 3 //最大回溯次数
         private const val DEBUG = true
+        private const val WLOG = "com.jyn.common.Utils.MLog"
 
         val ISSUE = Issue.create(
             "TestDetectorError",
@@ -49,7 +50,7 @@ class LintTestDetector : Detector(), Detector.UastScanner {
      * 检测
      */
     override fun visitMethodCall(context: JavaContext, node: UCallExpression, method: PsiMethod) {
-        if (!context.evaluator.isMemberInClass(method, "com.jyn.common.Utils.MLog")) {
+        if (!context.evaluator.isMemberInClass(method, WLOG)) {
             return
         }
         ReportUtil.context = context

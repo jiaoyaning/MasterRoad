@@ -2,9 +2,12 @@ package com.jyn.lint
 
 import com.android.tools.lint.client.api.UElementHandler
 import com.android.tools.lint.detector.api.*
+import com.intellij.psi.JavaElementVisitor
 import com.intellij.psi.PsiElement
 import com.intellij.psi.PsiMethod
+import com.intellij.psi.PsiMethodCallExpression
 import org.jetbrains.uast.*
+import org.jetbrains.uast.visitor.AbstractUastVisitor
 import java.util.*
 
 
@@ -38,12 +41,13 @@ class LintTestDetector : Detector(), Detector.UastScanner {
     //形参方法所属的类名
     private var qualifiedName: String? = null
 
-    private var uCallNode: UCallExpression? = null
-
     override fun getApplicableMethodNames(): List<String> {
         return Collections.singletonList("log")
     }
 
+    /**
+     * 检测
+     */
     override fun visitMethodCall(context: JavaContext, node: UCallExpression, method: PsiMethod) {
         if (!context.evaluator.isMemberInClass(method, "com.jyn.common.Utils.MLog")) {
             return
@@ -57,6 +61,8 @@ class LintTestDetector : Detector(), Detector.UastScanner {
             ?.apply { sout("原文 -> ${this.text}\n") }
             ?.children
             ?.forEach {
+                methodName = null
+                qualifiedName = null
                 this.rootNode = node
                 resolvePsiElement(it, 0)
             }

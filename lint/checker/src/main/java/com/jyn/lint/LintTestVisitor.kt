@@ -5,10 +5,11 @@ import com.android.tools.lint.detector.api.*
 import com.intellij.psi.PsiElement
 import com.intellij.psi.PsiMethod
 import org.jetbrains.uast.*
+import org.jetbrains.uast.visitor.AbstractUastVisitor
 import java.util.*
 
 
-class LintTestDetector : Detector(), Detector.UastScanner {
+class LintTestVisitor : Detector(), Detector.UastScanner {
     companion object {
         private const val MAX_COUNT = 3 //最大回溯次数
         private const val DEBUG = true
@@ -21,7 +22,7 @@ class LintTestDetector : Detector(), Detector.UastScanner {
             Category.CORRECTNESS,
             8,
             Severity.WARNING,
-            Implementation(LintTestDetector::class.java, Scope.JAVA_FILE_SCOPE)
+            Implementation(LintTestVisitor::class.java, Scope.JAVA_FILE_SCOPE)
         )
 
         @JvmStatic
@@ -31,6 +32,19 @@ class LintTestDetector : Detector(), Detector.UastScanner {
         }
     }
 
+    override fun getApplicableUastTypes(): List<Class<out UElement>> {
+        return listOf(UCallExpression::class.java,)
+    }
+
+    override fun createUastHandler(context: JavaContext): UElementHandler {
+        return object : UElementHandler() {
+            override fun visitCallExpression(node: UCallExpression) {
+                sout("===> 访问Call 1【${node.methodName}】 \n")
+            }
+        }
+    }
+
+
     private var rootNode: UElement? = null
 
     //形参所属的方法名
@@ -39,14 +53,11 @@ class LintTestDetector : Detector(), Detector.UastScanner {
     //形参方法所属的类名
     private var qualifiedName: String? = null
 
-    override fun getApplicableMethodNames(): List<String> {
-        return Collections.singletonList("log")
-    }
-
     /**
      * 检测
      */
     override fun visitMethodCall(context: JavaContext, node: UCallExpression, method: PsiMethod) {
+        sout("visitMethodCall ===> ${method.name} ")
         if (!context.evaluator.isMemberInClass(method, WLOG)) {
             return
         }
@@ -190,38 +201,4 @@ class LintTestDetector : Detector(), Detector.UastScanner {
         }
         return false
     }
-
-    override fun getApplicableUastTypes(): List<Class<out UElement>>? {
-        return listOf(UCallExpression::class.java)
-    }
-
-    override fun createUastHandler(context: JavaContext): UElementHandler {
-        return object : UElementHandler() {
-            override fun visitCallExpression(node: UCallExpression) {
-                if (node.methodName != methodName || node.methodName.isNullOrBlank()) {
-                    return
-                }
-                sout("===> 访问Call【${node.methodName}】-> ${node.sourcePsi?.text}\n")
-            }
-        }
-    }
-
-//    object LogCallVisitor : AbstractUastVisitor() {
-//        override fun visitCallExpression(node: UCallExpression): Boolean {
-//            sout("===> 访问Call【${node.methodName}】-> ${node.sourcePsi?.text}\n")
-//            return super.visitCallExpression(node)
-//        }
-//    }
-//
-//    class LogVisitor : AbstractUastVisitor() {
-//        override fun visitMethod(node: UMethod): Boolean {
-//            sout(" 访问Method【${node.name}】\n")
-//            return super.visitMethod(node)
-//        }
-//
-//        override fun visitCallExpression(node: UCallExpression): Boolean {
-//            sout("===> 访问Call【${node.methodName}】-> ${node.sourcePsi?.text}\n")
-//            return super.visitCallExpression(node)
-//        }
-//    }
 }

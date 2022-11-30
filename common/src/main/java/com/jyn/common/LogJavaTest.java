@@ -36,6 +36,8 @@ class LogJavaTest {
     }
 
     public void testParameter(String first, String id, String last) {
+        System.currentTimeMillis();
+        System.currentTimeMillis();
         MLog.log("this is java 形参 msg " + id);
     }
 

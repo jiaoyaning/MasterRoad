@@ -43,6 +43,8 @@ class LogKotlinTest {
     }
 
     private fun testParameter(first: String, id: String, last: String) {
+        System.currentTimeMillis()
+        System.currentTimeMillis()
         MLog.log("this is kotlin 形参 msg $id")
     }
 

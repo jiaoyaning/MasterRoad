@@ -14,7 +14,10 @@ class LintTestRegistry : IssueRegistry() {
     }
 
     override val issues: List<Issue>
-        get() = listOf(LintTestDetector.ISSUE)
+        get() = listOf(
+//            LintTestDetector.ISSUE,
+            LintTestVisitor.ISSUE
+        )
 
     override val api: Int
         get() = CURRENT_API

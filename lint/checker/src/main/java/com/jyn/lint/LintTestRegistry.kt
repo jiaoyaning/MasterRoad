@@ -1,6 +1,7 @@
 package com.jyn.lint
 
 import com.android.tools.lint.client.api.IssueRegistry
+import com.android.tools.lint.client.api.Vendor
 import com.android.tools.lint.detector.api.CURRENT_API
 import com.android.tools.lint.detector.api.Issue
 
@@ -15,9 +16,17 @@ class LintTestRegistry : IssueRegistry() {
 
     override val issues: List<Issue>
         get() = listOf(
-//            LintTestDetector.ISSUE,
-            LintTestVisitor.ISSUE
+//            MethodTestDetector.ISSUE,
+            HandlerTestDetector.ISSUE
         )
+
+    override val vendor: Vendor
+        get() = Vendor(
+            vendorName = "jiaoyaning Test Lint",
+            feedbackUrl = "https://github.com/jiaoyaning/MasterRoad/issues/new",
+            contact = "https://github.com/jiaoyaning/MasterRoad"
+        )
+
 
     override val api: Int
         get() = CURRENT_API

@@ -8,7 +8,7 @@ import org.jetbrains.uast.*
 import java.util.*
 
 
-class LintTestDetector : Detector(), Detector.UastScanner {
+class MethodTestDetector : Detector(), Detector.UastScanner {
     companion object {
         private const val MAX_COUNT = 3 //最大回溯次数
         private const val DEBUG = true
@@ -21,7 +21,7 @@ class LintTestDetector : Detector(), Detector.UastScanner {
             Category.CORRECTNESS,
             8,
             Severity.WARNING,
-            Implementation(LintTestDetector::class.java, Scope.JAVA_FILE_SCOPE)
+            Implementation(MethodTestDetector::class.java, Scope.JAVA_FILE_SCOPE)
         )
 
         @JvmStatic

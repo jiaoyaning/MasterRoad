@@ -130,9 +130,9 @@ android {
      *  @see LintOptions
      *  @see LintImpl
      */
-    lint {
-        baseline = file("build/lint-baseline.xml")
-    }
+//    lint {
+//        baseline = file("build/lint-baseline.xml")
+//    }
 }
 /**
  * https://www.jianshu.com/p/cc98a6b4f52e

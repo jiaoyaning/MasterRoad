@@ -82,6 +82,8 @@ dependencies {
     implementation(utils["mmkv"]!!)
     implementation(utils["logutils"]!!)
 
+    implementation(project(":lint:wrapper"))
+
     // https://github.com/didi/DoraemonKit
 //    debugImplementation("io.github.didi.dokit:dokitx:3.5.0.1")
 //    releaseImplementation("io.github.didi.dokit:dokitx-no-op:3.5.0.1")

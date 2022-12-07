@@ -157,7 +157,7 @@ dependencies {
 //    implementation project(path: ':common')
     implementation 'com.jyn.common:substitute-test:1.0.0' //在 settings.gradle 中被替换为 project(path: ':common')
     implementation project(path: ':Plugin:APT')
-    kapt project(path: ':Plugin:APT-processor')
+//    kapt project(path: ':Plugin:APT-processor')
 
     dep(dependencies, "testImplementation", app.test)
     dep(dependencies, "androidTestImplementation", app.androidTest)
@@ -170,7 +170,6 @@ dependencies {
     //只引入，不参与打包，这样即可在External Libraries 中看到其源码了
     compileOnly "com.android.tools.build:gradle:$app.gradle_version"
     compileOnly 'org.codehaus.groovy:groovy-all:2.5.14'
-    implementation project(':lint:wrapper')
 }
 
 afterEvaluate {

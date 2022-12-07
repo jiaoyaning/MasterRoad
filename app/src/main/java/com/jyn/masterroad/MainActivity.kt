@@ -8,8 +8,8 @@ import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.Adapter
 import com.apkfuns.logutils.LogUtils
 import com.jyn.common.ARouter.goto
-import com.jyn.common.Utils.TimeUtils
 import com.jyn.common.Base.BaseActivity
+import com.jyn.common.Utils.TimeUtils
 import com.jyn.masterroad.databinding.ActivityMainBinding
 import com.jyn.masterroad.databinding.ItemMainBinding
 
@@ -35,8 +35,7 @@ import com.jyn.masterroad.databinding.ItemMainBinding
  * https://mp.weixin.qq.com/s/53rkQB3EoNXLn6N_406JBA
  */
 class MainActivity : BaseActivity<ActivityMainBinding>
-(R.layout.activity_main) {
-
+    (R.layout.activity_main) {
     private var routerList: ArrayList<MainViewModel> = MainViewModel.getRouterList()
 
     override fun initData() {
@@ -62,15 +61,15 @@ class MainActivity : BaseActivity<ActivityMainBinding>
      * https://www.jianshu.com/p/379a8f5347de
      */
     open inner class MainAdapter(
-            private var routerList: ArrayList<MainViewModel>, var context: Context
+        private var routerList: ArrayList<MainViewModel>, var context: Context
     ) : Adapter<MainAdapter.MainViewHolder>() {
 
         open inner class MainViewHolder(var binding: ItemMainBinding) :
-                RecyclerView.ViewHolder(binding.root)
+            RecyclerView.ViewHolder(binding.root)
 
         override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MainViewHolder {
             val binding =
-                    ItemMainBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+                ItemMainBinding.inflate(LayoutInflater.from(parent.context), parent, false)
             return MainViewHolder(binding)
         }
 
@@ -86,10 +85,10 @@ class MainActivity : BaseActivity<ActivityMainBinding>
         override fun getItemCount(): Int = routerList.size
 
         override fun getItemViewType(position: Int): Int =
-                when (routerList[position].span) {
-                    1 -> 2
-                    2 -> 1
-                    else -> 2
-                }
+            when (routerList[position].span) {
+                1 -> 2
+                2 -> 1
+                else -> 2
+            }
     }
 }

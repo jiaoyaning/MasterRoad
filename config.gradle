@@ -5,7 +5,7 @@
  * @see ExtraPropertiesExtension
  */
 ext {
-    kotlin_version = '1.7.20'
+    kotlin_version = '1.7.21'
     gradle_version = "7.2.1"
     compileSdk = 33
     buildToolsVersion = "33.0.0"

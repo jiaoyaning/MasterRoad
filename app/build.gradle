@@ -138,6 +138,9 @@ android {
  * https://www.jianshu.com/p/cc98a6b4f52e
  * gradle 高级用法
  *
+ * https://juejin.cn/post/6895299152226615309#heading-24
+ * 强制依赖版本 isForce
+ *
  * compile : 会传递依赖
  * implementation : 不会传递依赖
  *      子依赖的子依赖修改代码时，可以不用进行全部编译

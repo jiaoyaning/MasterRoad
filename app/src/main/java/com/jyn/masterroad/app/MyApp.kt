@@ -62,7 +62,8 @@ class MyApp : Application() {
         // setUncaughtException()
 
         // 第一种可检测activity生命周期的方式
-        ProcessLifecycleOwner.get().lifecycle.addObserver(LifecycleChecker()) //原理同下一样
+//        ProcessLifecycleOwner.get().lifecycle.addObserver(LifecycleChecker()) //原理同下一样
+        ProcessLifecycleOwner.get().lifecycle.addObserver(LifecycleChecker2()) //原理同下一样
         // 第二种可检测activity生命周期的方式
         this.registerActivityLifecycleCallbacks(ActivityLifecycle()) //第三种可检测activity生命周期的方式 - 在BaseActivity中
 

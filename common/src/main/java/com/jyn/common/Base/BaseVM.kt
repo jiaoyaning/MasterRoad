@@ -46,7 +46,6 @@ abstract class BaseVM(application: Application) : AndroidViewModel(application),
     @OnLifecycleEvent(Lifecycle.Event.ON_START)
     open fun onStart() {
     }
-
     @OnLifecycleEvent(Lifecycle.Event.ON_RESUME)
     open fun onResume() {
     }

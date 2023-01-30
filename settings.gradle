@@ -1,6 +1,9 @@
 /**
  * 再见吧 buildSrc, 拥抱 Composing builds 提升 Android 编译速度
  * https://juejin.cn/post/6844904176250519565
+ *
+ * 学习一下 nowinandroid 的构建脚本
+ * https://juejin.cn/post/7170848190139203614
  */
 rootProject.name = 'MasterRoad'
 include ':app'

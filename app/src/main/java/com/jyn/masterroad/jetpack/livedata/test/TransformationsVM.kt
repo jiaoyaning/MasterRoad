@@ -1,10 +1,7 @@
 package com.jyn.masterroad.jetpack.livedata.test
 
 import android.app.Application
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.Transformations
-import androidx.lifecycle.map
+import androidx.lifecycle.*
 import com.apkfuns.logutils.LogUtils
 import com.jyn.common.Base.BaseVM
 
@@ -26,17 +23,15 @@ class TransformationsVM(application: Application) : BaseVM(application) {
      * map可以转换类型
      * 🌰：把int类型的LiveData 转换为string类型
      */
-    var mapLiveData: LiveData<String> = Transformations.map(liveData1) {
-        "转换成字符串$it"
-    }
+    var mapLiveData: LiveData<String> = liveData1.map { "转换成字符串$it" }
 
-    var switchMapLiveData = Transformations.switchMap(liveData2) {
+    var switchMapLiveData = liveData2.switchMap {
         MutableLiveData("全新的LiveData$it")
     }
 
     fun livedataMap() {
         liveData1.postValue(liveData1.value?.plus(1))
-        var newLiveData = Transformations.map(liveData1) { "转换成字符串$it" }
+        var newLiveData = liveData1.map { "转换成字符串$it" }
     }
 
     fun livedataMapKtx() {

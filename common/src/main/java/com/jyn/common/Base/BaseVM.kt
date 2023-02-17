@@ -26,6 +26,9 @@ abstract class BaseVM(application: Application) : AndroidViewModel(application),
 
     var context: Context = application.baseContext
 
+    final override val lifecycle: Lifecycle
+        get() = ProcessLifecycleOwner.get().lifecycle
+
     // 应用进入后台
     @OnLifecycleEvent(Lifecycle.Event.ON_STOP)
     open fun onAppBackground() {
@@ -46,6 +49,7 @@ abstract class BaseVM(application: Application) : AndroidViewModel(application),
     @OnLifecycleEvent(Lifecycle.Event.ON_START)
     open fun onStart() {
     }
+
     @OnLifecycleEvent(Lifecycle.Event.ON_RESUME)
     open fun onResume() {
     }
@@ -61,6 +65,4 @@ abstract class BaseVM(application: Application) : AndroidViewModel(application),
     @OnLifecycleEvent(Lifecycle.Event.ON_DESTROY)
     open fun onDestroy() {
     }
-
-    override fun getLifecycle(): Lifecycle = ProcessLifecycleOwner.get().lifecycle
 }
